@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    
+    
+    <!-- TDS Import -->
+    <bean id="tdsImportItemListExcelView" class="no.systema.tds.tdsimport.view.ItemLineListExcelBuilder" />
+    <!-- TDS Export -->
+    <bean id="tdsExportItemListExcelView" class="no.systema.tds.tdsexport.view.ItemLineListExcelBuilder" />
+    <!-- TDS NCTS-Export -->
+    <bean id="tdsNctsExportItemListExcelView" class="no.systema.tds.nctsexport.view.ItemLineListExcelBuilder" />
+    <!-- TDS NCTS-Import -->
+    <bean id="tdsNctsImportItemListExcelView" class="no.systema.tds.nctsimport.view.ItemLineListExcelBuilder" />
+    <bean id="tdsNctsImportUnloadingItemListExcelView" class="no.systema.tds.nctsimport.view.UnloadingItemLineListExcelBuilder" />
+    
+    
+
+     
+</beans>

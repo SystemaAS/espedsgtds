@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- ================  -->
+ 	<!-- APPLICATION WIDE -->  
+	<!-- ================  -->
+	<bean id="urlCgiProxyService" class="no.systema.main.service.UrlCgiProxyServiceImpl"/>
+	<bean id="systemaWebLoginService" class="no.systema.main.service.login.SystemaWebLoginServiceImpl"/>
+	<bean id="currencyRateService" class="no.systema.main.service.general.CurrencyRateServiceImpl"/>
+	<bean id="notisblockService" class="no.systema.main.service.general.notisblock.NotisblockServiceImpl"/>
+	<bean id="ediFtpLogService" class="no.systema.main.service.general.EdiFtpLogServiceImpl"/>
+	<bean id="firmLoginService" class="no.systema.main.service.FirmLoginServiceImpl"/>
+	<bean id="uploadFileToArchiveService" class="no.systema.main.service.general.UploadFileToArchiveServiceImpl"/>
+	
+	
+	<!-- =========  -->
+	<!-- TDS WIDE   -->
+	<!-- =========  -->
+	<bean id="tdsTaricVarukodService" class="no.systema.tds.service.TdsTaricVarukodServiceImpl"/>
+	<!-- TDS - Drop down bean --> 
+    <bean id="tdsDropDownListPopulationService" class="no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService"/>
+	<!-- TDS - Authorization -->
+    <bean id="tdsAuthorizationService" class="no.systema.tds.service.TdsAuthorizationServiceImpl"/>
+    <!-- TDS - Sign/Name -->
+    <bean id="tdsSignatureNameService" class="no.systema.tds.service.TdsSignatureNameServiceImpl"/>
+    <!-- TDS - Godsnr -->
+    <bean id="tdsGodsnrService" class="no.systema.tds.service.TdsGodsnrServiceImpl"/>
+    <!-- TDS - Tilläggskoder -->
+    <bean id="tdsTillaggskoderService" class="no.systema.tds.service.TdsTillaggskoderServiceImpl"/>
+    <!-- TDS - Bilagda Handlingar YKoder -->
+    <bean id="tdsBilagdaHandlingarYKoderService" class="no.systema.tds.service.TdsBilagdaHandlingarYKoderServiceImpl"/>
+    <!-- TDS - General Codes ChildWindow Service -->
+    <bean id="tdsGeneralCodesChildWindowService" class="no.systema.tds.service.TdsGeneralCodesChildWindowServiceImpl"/>
+    <!-- TDS - Customer Service -->
+    <bean id="tdsCustomerService" class="no.systema.tds.service.TdsCustomerServiceImpl"/>
+    
+    
+	<!-- ==========  -->
+	<!-- TDS EXPORT  -->
+	<!-- =========== -->
+	<bean id="tdsExportCustomerService" class="no.systema.tds.tdsexport.service.TdsExportCustomerServiceImpl"/>
+	<bean id="tdsExportTullkontorService" class="no.systema.tds.tdsexport.service.TdsExportTullkontorServiceImpl"/>
+	<bean id="tdsExportTopicListService" class="no.systema.tds.tdsexport.service.TdsExportTopicListServiceImpl"/>
+	<bean id="tdsExportSpecificTopicService" class="no.systema.tds.tdsexport.service.TdsExportSpecificTopicServiceImpl"/>
+	<bean id="tdsExportSpecificTopicItemService" class="no.systema.tds.tdsexport.service.TdsExportSpecificTopicItemServiceImpl"/>
+	<!-- TDS EXPORT Drop down bean --> 
+    <bean id="dropDownListPopulationService" class="no.systema.tds.tdsexport.service.html.dropdown.DropDownListPopulationService"/>
+	
+	<!-- ===========  -->
+	<!-- TDS-NCTS EXPORT  -->
+	<!-- ===========  -->
+	<bean id="nctsExportTopicListService" class="no.systema.tds.nctsexport.service.NctsExportTopicListServiceImpl"/>
+	<bean id="nctsExportSpecificTopicService" class="no.systema.tds.nctsexport.service.NctsExportSpecificTopicServiceImpl"/>
+	<bean id="nctsExportSpecificTopicItemService" class="no.systema.tds.nctsexport.service.NctsExportSpecificTopicItemServiceImpl"/>
+	<!-- TDS-NCTS EXPORT Drop down bean --> 
+    <bean id="nctsExportdropDownListPopulationService" class="no.systema.tds.nctsexport.service.html.dropdown.DropDownListPopulationService"/>
+	
+	<!-- ==========  -->
+	<!-- TDS IMPORT  -->
+	<!-- =========== -->
+	<bean id="tdsImportCustomerService" class="no.systema.tds.tdsimport.service.TdsImportCustomerServiceImpl"/>
+	<bean id="tdsImportTullkontorService" class="no.systema.tds.tdsimport.service.TdsImportTullkontorServiceImpl"/>
+	<bean id="tdsImportTopicListService" class="no.systema.tds.tdsimport.service.TdsImportTopicListServiceImpl"/>
+	<bean id="tdsImportSpecificTopicService" class="no.systema.tds.tdsimport.service.TdsImportSpecificTopicServiceImpl"/>
+	<bean id="tdsImportSpecificTopicItemService" class="no.systema.tds.tdsimport.service.TdsImportSpecificTopicItemServiceImpl"/>
+	
+	<!-- TDS IMPORT Drop down bean --> 
+    <bean id="tdsImportDropDownListPopulationService" class="no.systema.tds.tdsimport.service.html.dropdown.DropDownListPopulationService"/>
+	
+	<!-- ===========  -->
+	<!-- TDS-NCTS IMPORT  -->
+	<!-- ===========  -->
+	<bean id="nctsImportTopicListService" class="no.systema.tds.nctsimport.service.NctsImportTopicListServiceImpl"/>
+	<bean id="nctsImportSpecificTopicService" class="no.systema.tds.nctsimport.service.NctsImportSpecificTopicServiceImpl"/>
+	<bean id="nctsImportSpecificTopicItemService" class="no.systema.tds.nctsimport.service.NctsImportSpecificTopicItemServiceImpl"/>
+	<bean id="nctsImportSpecificTopicUnloadingService" class="no.systema.tds.nctsimport.service.NctsImportSpecificTopicUnloadingServiceImpl"/>
+	<bean id="nctsImportSpecificTopicUnloadingItemService" class="no.systema.tds.nctsimport.service.NctsImportSpecificTopicUnloadingItemServiceImpl"/>
+	<!-- NCTS IMPORT Drop down bean --> 
+    <bean id="nctsImportDropDownListPopulationService" class="no.systema.tds.nctsimport.service.html.dropdown.DropDownListPopulationService"/>
+	
+	<!-- ===========  -->
+	<!-- TDS ADMIN    -->
+	<!-- ===========  -->
+	<bean id="tdsAdminTransportService" class="no.systema.tds.admin.service.TdsAdminTransportServiceImpl"/>
+	
+	
+	
+	
+</beans>
