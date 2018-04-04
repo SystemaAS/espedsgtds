@@ -48,6 +48,34 @@ public class LogoutController {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * This method is used when the Maintenance link is called from within TDS domain.
+	 * TDS's session MUST be invalidated in order to end correctly. Otherwise we will be havin problems with TDS-authorization ...
+	 * 
+	 * @param session
+	 * @param response
+	 * @param request
+	 */
+	@RequestMapping(value="logoutMaintenanceCompanyLevel.do", method={RequestMethod.POST, RequestMethod.GET} )
+	public void logoutMaintenaceCompanyLevel(HttpSession session, HttpServletResponse response, HttpServletRequest request){
+		
+		//String user = request.getParameter("user");
+		//String pwd = request.getParameter("password");
+		//String aes = request.getParameter("aes");
+		
+		
+		if (session!=null){ 
+            session.removeAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+            session.invalidate();
+            logger.info("Session invalidated..." + Calendar.getInstance().getTime());       
+        }
+		try{
+			
+			response.sendRedirect("/espedsg2/mainmaintenancegate.do");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	
     

@@ -22,7 +22,7 @@
 			<tr height="2"><td></td></tr>
 			<tr height="25"> 
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a id="alinkMainMaintGate" tabindex=-1 style="display:block;" href="mainmaintenancegate.do">
+					<a id="alinkMainMaintGate" tabindex=-1 style="display:block;" href="logoutMaintenanceCompanyLevel.do">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.main.maintenance.label"/></font>
 					<img style="vertical-align: middle;"  src="resources/images/list.gif" border="0" alt="general list">
 					</a>

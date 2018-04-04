@@ -75,7 +75,7 @@
 			    			<%-- --------------------- --%>
 			    			<%-- MAINTENANCE MENU --%>
 			    			<%-- --------------------- --%>
-			    			<a id="alinkTopicListMenuExp" tabindex=-1 href="/espedsg2/mainmaintenancegate.do">
+			    			<a id="alinkTopicListMenuExp" tabindex=-1 href="logoutMaintenanceCompanyLevel.do">
 			    				&nbsp;<font class="headerMenuOrange" >&nbsp;<spring:message code="systema.main.maintenance.label"/>&nbsp;</font>
 			    			</a>
 			    			&nbsp;<font color="#FF6600"; style="font-weight: bold;">|</font>
