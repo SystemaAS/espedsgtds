@@ -252,7 +252,7 @@
 						        		</span>	
 				    				<font class="text11User"  >${user.user}&nbsp;</font>${user.usrLang}</font>
 				    				<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
-					    			<a tabindex=-1 href="logoutTds.do">
+					    			<a tabindex=-1 href="logout.do">
 					    				<font class="headerMenuGreen"><img src="resources/images/home.gif" border="0">
 					    					<font class="text11User"  ><spring:message code="dashboard.menu.button"/></font>
 					    				</font>
@@ -290,7 +290,7 @@
 								<font style="color:#000000" >${user.user}&nbsp;</font>${user.usrLang}
 				    			</font>
 				    			<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
-				    			<a tabindex=-1 href="logoutTds.do">
+				    			<a tabindex=-1 href="logout.do">
 				    				<font class="headerMenuGreen"><img src="resources/images/home.gif" border="0">&nbsp;
 				    					<font style="color:#000000;" ><spring:message code="dashboard.menu.button"/>&nbsp;</font>
 				    				</font>

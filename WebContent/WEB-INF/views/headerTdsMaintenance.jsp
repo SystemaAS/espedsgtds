@@ -87,6 +87,7 @@
 			    			<%-- --------------------- --%>
 			    			<%-- TDS IMPORT MENU --%>
 			    			<%-- --------------------- --%>
+			    			<%-- There is no link today but could be in the future ...
 			    			<a id="alinkTopicListMenuImp" tabindex=-1 href="tdsmaintenanceimport.do?">
 			    				&nbsp;<font 
 			    				<c:choose>           
@@ -100,7 +101,8 @@
 			    				
 		    				>&nbsp;<spring:message code="systema.tds.import.label"/>&nbsp;</font>
 			    			</a>
-			    			&nbsp;<font color="#FF6600"; style="font-weight: bold;">|</font>
+			    			--%>
+			    			&nbsp;<font class="headerMenuWhite"><spring:message code="systema.tds.import.label"/>&nbsp;</font><font color="#FF6600"; style="font-weight: bold;">|</font>
 			    			<%-- -------------------------- --%>
 			    			<%-- TDS NCTS EXPORT MENU --%>
 			    			<%-- -------------------------- --%>
@@ -178,7 +180,7 @@
 			    			</font>
 			    				
 		    				<font color="#FF6600"; style="font-weight: bold;">&nbsp;&nbsp;|&nbsp;&nbsp;</font>
-			    			<a tabindex=-1 href="logoutTds.do">
+			    			<a tabindex=-1 href="logout.do">
 			    				<font class="headerMenuWhite"><img src="resources/images/home.gif" border="0">&nbsp;
 			    					<font style="color:#000000;" ><spring:message code="dashboard.menu.button"/>&nbsp;</font>
 			    				</font>

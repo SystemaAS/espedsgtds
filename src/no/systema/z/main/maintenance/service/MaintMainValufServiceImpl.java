@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package no.systema.z.main.maintenance.service;
+
+import no.systema.z.main.maintenance.mapper.MaintMainGenericMapper;
+import no.systema.z.main.maintenance.model.JsonMaintMainValufContainer;
+
+/**
+ * 
+ * @author Fredrik Möller
+ * @date Apr 4, 2018
+ * 
+ * 
+ */
+public class MaintMainValufServiceImpl implements MaintMainValufService {
+	
+	@Override
+	public JsonMaintMainValufContainer getContainer(String utfPayload) {
+		JsonMaintMainValufContainer container = null;
+		try {
+			MaintMainGenericMapper mapper = new MaintMainGenericMapper(new JsonMaintMainValufContainer());
+			container = (JsonMaintMainValufContainer)mapper.getContainer(utfPayload);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return container;
+
+	}
+
+}

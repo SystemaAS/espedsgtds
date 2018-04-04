@@ -3,7 +3,6 @@
  */
 package no.systema.main.mapper.jsonjackson.general;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper; 

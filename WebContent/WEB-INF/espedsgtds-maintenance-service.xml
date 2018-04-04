@@ -24,6 +24,33 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<bean id="maintSvxkodfService" class="no.systema.tds.z.maintenance.tdsncts.service.MaintSvxkodfServiceImpl"/>
 	<bean id="maintSvxghService" class="no.systema.tds.z.maintenance.tdsnctsexport.service.MaintSvxghServiceImpl"/>
 	
+	<!-- ======================================  -->
+	<!-- TVINN related maintenacne services  	 -->
+	<!-- ======================================  -->
+	<bean id="maintSadSadlService" class="no.systema.tvinn.sad.z.maintenance.sad.service.MaintSadSadlServiceImpl"/>
+	<bean id="maintSadFellesKodtsiService" class="no.systema.tvinn.sad.z.maintenance.felles.service.MaintSadFellesKodtsiServiceImpl"/>
+	<bean id="maintNctsExportTrkodfService" class="no.systema.tvinn.sad.z.maintenance.nctsexport.service.MaintNctsExportTrkodfServiceImpl"/>
+	<bean id="maintSadExportKodts6Service" class="no.systema.tvinn.sad.z.maintenance.sadexport.service.MaintSadExportKodts6ServiceImpl"/>
+	<bean id="maintSadImportKodtlikService" class="no.systema.tvinn.sad.z.maintenance.sadimport.service.MaintSadImportKodtlikServiceImpl"/>
+	
+	
+	<!-- =================  -->
+	<!-- GENERAL   -->
+	<!-- =================  -->
+	<bean id="maintMainCundcService" class="no.systema.z.main.maintenance.service.MaintMainCundcServiceImpl"/>
+	<bean id="maintMainCundfService" class="no.systema.z.main.maintenance.service.MaintMainCundfServiceImpl"/>
+	<bean id="maintMainEdiiService" class="no.systema.z.main.maintenance.service.MaintMainEdiiServiceImpl"/>
+	<bean id="maintMainKodtsfSyparfService" class="no.systema.z.main.maintenance.service.MaintMainKodtsfSyparfServiceImpl"/>
+	<bean id="maintMainKodtot2Service" class="no.systema.z.main.maintenance.service.MaintMainKodtot2ServiceImpl"/>
+	<bean id="maintMainQaokp08aService" class="no.systema.z.main.maintenance.service.MaintMainQaokp08aServiceImpl"/>
+	<bean id="maintMainFratxtService" class="no.systema.z.main.maintenance.service.MaintMainFratxtServiceImpl"/>
+	<bean id="maintMainKofastService" class="no.systema.z.main.maintenance.service.MaintMainKofastServiceImpl"/>
+	<bean id="maintMainSyparfService" class="no.systema.z.main.maintenance.service.MaintMainSyparfServiceImpl"/>
+	<bean id="maintMainSadvareService" class="no.systema.z.main.maintenance.service.MaintMainSadvareServiceImpl"/>
+	<bean id="maintMainKodtlikService" class="no.systema.z.main.maintenance.service.MaintMainKodtlikServiceImpl"/>
+	<bean id="maintMainKodtotyService" class="no.systema.z.main.maintenance.service.MaintMainKodtotyServiceImpl"/>
+	<bean id="maintMainValufService" class="no.systema.z.main.maintenance.service.MaintMainValufServiceImpl"/>
+	
 	
 	
 </beans>

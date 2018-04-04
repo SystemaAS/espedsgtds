@@ -75,25 +75,22 @@
 			    			<%-- --------------------- --%>
 			    			<%-- MAINTENANCE MENU --%>
 			    			<%-- --------------------- --%>
-			    			<a id="alinkTopicListMenuExp" tabindex=-1 href="mainmaintenancegate.do?">
-			    				&nbsp;<font 
-			    				<c:choose>           
-		                   			<c:when test="${user.activeMenu=='MAIN_MAINTENANCE'}">
-		                       			class="headerMenuOrange"
-		                   			</c:when>
-		                   			<c:otherwise>   
-		                       			class="headerMenuWhite"
-		                   			</c:otherwise>
-		               			</c:choose>
-			    				
-			    				>&nbsp;<spring:message code="systema.main.maintenance.label"/>&nbsp;</font>
+			    			<a id="alinkTopicListMenuExp" tabindex=-1 href="/espedsg2/mainmaintenancegate.do">
+			    				&nbsp;<font class="headerMenuOrange" >&nbsp;<spring:message code="systema.main.maintenance.label"/>&nbsp;</font>
 			    			</a>
 			    			&nbsp;<font color="#FF6600"; style="font-weight: bold;">|</font>
-
+							<%-- --------------------- --%>
+			    			<%-- TDS MENU --%>
+			    			<%-- --------------------- --%>
+			    			<a id="alinkTopicListMenuExp" tabindex=-1 href="tdsgate.do">
+			    				&nbsp;<font class="headerMenuWhite" >&nbsp;Tillbaka till TDS&nbsp;</font>
+			    			</a>
+			    			&nbsp;<font color="#FF6600"; style="font-weight: bold;">|</font>
+							
 		    			 	<%-- ------------------- --%>
 			    			<%-- Maintenance  MENU    --%>
 			    			<%-- -------------------- --%>
-			    			<a tabindex=-1 href="logoutMainMaintenance.do">
+			    			<a tabindex=-1 href="logout.do">
 			    				&nbsp;<font class="headerMenuMaintenance">
 		                   		&nbsp;&nbsp;<spring:message code="systema.main.maintenance.main.gate.returnTo.label"/>&nbsp;&nbsp;</font>
 			    			</a>
@@ -127,7 +124,7 @@
 			    			</font>
 			    				
 		    				<font color="#FF6600"; style="font-weight: bold;">&nbsp;&nbsp;|&nbsp;&nbsp;</font>
-			    			<a tabindex=-1 href="logoutMainMaintenance.do">
+			    			<a tabindex=-1 href="logout.do">
 			    				<font class="headerMenuWhite"><img src="resources/images/home.gif" border="0">&nbsp;
 			    					<font style="color:#000000;" ><spring:message code="dashboard.menu.button"/>&nbsp;</font>
 			    				</font>

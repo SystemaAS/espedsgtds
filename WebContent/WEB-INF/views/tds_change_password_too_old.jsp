@@ -62,7 +62,7 @@ It has been a design decision in order to keep this function explicitly separate
 							<font style="color:#000000" >${user.user}&nbsp;</font>${user.usrLang}
 			    			</font>
 			    			<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
-			    			<a href="logoutTds.do">
+			    			<a href="logout.do">
 			    				<font class="headerMenuGreen"><img src="resources/images/home.gif" border="0">&nbsp;
 			    					<font style="color:#000000" ><spring:message code="dashboard.menu.button"/>&nbsp;</font>
 			    				</font>
