@@ -57,7 +57,7 @@
 					<form action="skatmaintenanceexport_dkg210d.do?id=${Xmodel.dbTable}" name="formRecordSearch" id="formRecordSearch" method="POST" >
 					Kode&nbsp;
 					<input type="text" class="inputTextMediumBlue" name="searchKode" id="searchKode" size="5" maxlength="3" value='${Xmodel.searchKode}'>
-					&nbsp;&nbsp;<input onClick="setBlockUI(this);" class="inputFormSubmit" type="submit" name="submitSearch" id="submitSearch" value='<spring:message code="systema.skat.search"/>'/>
+					&nbsp;&nbsp;<input onClick="setBlockUI(this);" class="inputFormSubmit" type="submit" name="submitSearch" id="submitSearch" value='<spring:message code="search.label"/>'/>
 					</form>
 				</td>
 			</tr>

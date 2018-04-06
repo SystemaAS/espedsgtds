@@ -54,7 +54,7 @@
 							<td class="text11">&nbsp;<input type="text" class="inputText" name="status" id="status" size="3" maxlength="1" value="${searchFilter.status}"></td>
 							<td class="text11">&nbsp;<input type="text" class="inputText" name="avsNavn" id="avsNavn" size="15" maxlength="25" value="${searchFilter.avsNavn}"></td>
 							<td class="text11">&nbsp;<input type="text" class="inputText" name="motNavn" id="motNavn" size="15" maxlength="25" value="${searchFilter.motNavn}"></td>
-							<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="systema.skat.search"/>'>
+							<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="search.label"/>'>
 		           		</tr>
 		           		</form>
 		           		</table>

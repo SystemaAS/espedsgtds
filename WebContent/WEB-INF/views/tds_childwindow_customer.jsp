@@ -35,7 +35,7 @@
 							<td class="text11">&nbsp;<input type="text" class="inputText" name="sonavn" id="sonavn" size="30" maxlength="50" value="${model.sonavn}"></td>
 							
 							<td class="text11">&nbsp;</td>
-	           				<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="systema.skat.search"/>'></td>
+	           				<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="search.label"/>'></td>
 		           		</tr>
 		           		</form>
 		           		</table>
