@@ -3,7 +3,7 @@
  */
 package no.systema.z.main.maintenance.service;
 
-import no.systema.z.main.maintenance.model.JsonMaintMainKodtlikContainer;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainKodtlikContainer;
 
 /**
  * 

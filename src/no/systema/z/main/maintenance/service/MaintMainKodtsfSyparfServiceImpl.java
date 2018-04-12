@@ -3,8 +3,8 @@
  */
 package no.systema.z.main.maintenance.service;
 
-import no.systema.z.main.maintenance.model.JsonMaintMainKodtsfSyparfContainer;
-import no.systema.z.main.maintenance.mapper.MaintMainKodtsfSyparfMapper;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainKodtsfSyparfContainer;
+import no.systema.z.main.maintenance.mapper.jsonjackson.dbtable.MaintMainKodtsfSyparfMapper;
 
 /**
  * 

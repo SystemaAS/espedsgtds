@@ -3,8 +3,8 @@
  */
 package no.systema.z.main.maintenance.service;
 
-import no.systema.z.main.maintenance.model.JsonMaintMainCundfContainer;
-import no.systema.z.main.maintenance.mapper.MaintMainCundfMapper;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainCundfContainer;
+import no.systema.z.main.maintenance.mapper.jsonjackson.dbtable.MaintMainCundfMapper;
 
 /**
  * 

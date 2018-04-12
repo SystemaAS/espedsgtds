@@ -31,10 +31,9 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
 import no.systema.z.main.maintenance.mapper.url.request.UrlRequestParameterMapper;
-import no.systema.z.main.maintenance.model.JsonMaintMainSyparfContainer;
-import no.systema.z.main.maintenance.model.JsonMaintMainSyparfRecord;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainSyparfContainer;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainSyparfRecord;
 import no.systema.z.main.maintenance.service.MaintMainSyparfService;
-import no.systema.z.main.maintenance.service.MaintMainSyparfServiceImpl;
 //models
 import no.systema.z.main.maintenance.url.store.MaintenanceMainUrlDataStore;
 import no.systema.z.main.maintenance.util.MainMaintenanceConstants;

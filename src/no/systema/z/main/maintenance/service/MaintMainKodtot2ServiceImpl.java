@@ -3,8 +3,8 @@
  */
 package no.systema.z.main.maintenance.service;
 
-import no.systema.z.main.maintenance.model.JsonMaintMainKodtot2Container;
-import no.systema.z.main.maintenance.mapper.MaintMainKodtot2Mapper;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainKodtot2Container;
+import no.systema.z.main.maintenance.mapper.jsonjackson.dbtable.MaintMainKodtot2Mapper;
 
 /**
  * 

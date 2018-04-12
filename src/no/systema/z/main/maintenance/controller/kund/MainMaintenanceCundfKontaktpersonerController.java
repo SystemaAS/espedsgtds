@@ -26,8 +26,8 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
 import no.systema.z.main.maintenance.mapper.url.request.UrlRequestParameterMapper;
-import no.systema.z.main.maintenance.model.JsonMaintMainCundcContainer;
-import no.systema.z.main.maintenance.model.JsonMaintMainCundcRecord;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainCundcContainer;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainCundcRecord;
 import no.systema.z.main.maintenance.service.MaintMainCundcService;
 //models
 import no.systema.z.main.maintenance.url.store.MaintenanceMainUrlDataStore;

@@ -3,8 +3,8 @@
  */
 package no.systema.z.main.maintenance.service;
 
-import no.systema.z.main.maintenance.model.JsonMaintMainQaokp08aContainer;
-import no.systema.z.main.maintenance.mapper.MaintMainQaokp08aMapper;
+import no.systema.z.main.maintenance.model.jsonjackson.dbtable.JsonMaintMainQaokp08aContainer;
+import no.systema.z.main.maintenance.mapper.jsonjackson.dbtable.MaintMainQaokp08aMapper;
 
 /**
  * 
