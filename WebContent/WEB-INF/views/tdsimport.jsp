@@ -53,16 +53,16 @@
  	        <tr height="3"><td></td></tr>
  	        <form name="tdsImportSearchForm" id="searchForm" action="tdsimport?action=doFind" method="post" >
  	        <tr>	
-                <td class="text12" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.avd"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.signatur"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.arende"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.extRef"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.tullid"/>
+                <td class="text14" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.avd"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.signatur"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.arende"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.extRef"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.tullid"/>
 					<a class="text14" target="_blank" href="${model.taricFragaTullidURL.value}" onclick="${model.taricFragaTullidURL.windowOpenDimensions}" >
 	            			<img title="Fråga Tullid (hos Tullverket)" style="vertical-align:bottom;" width="14px" height="14px" src="resources/images/help.png" border="0" alt="question">                		
 	            		</a>																	 			
                 </td>
-                <td class="text12" align="left" >
+                <td class="text14" align="left" >
 	 				<img onMouseOver="showPop('meddTyp_info');" onMouseOut="hidePop('meddTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 	 				<spring:message code="systema.tds.import.list.search.label.mtyp"/>
 	 				<div class="text11" style="position: relative;" align="left" >
@@ -90,7 +90,7 @@
 					</div>
                 </td>
                 
-                <td class="text12" align="left" >
+                <td class="text14" align="left" >
 				<img onMouseOver="showPop('datum_info');" onMouseOut="hidePop('datum_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
                 <spring:message code="systema.tds.import.list.search.label.datum"/>
                 <div class="text11" style="position: relative;" align="left" >
@@ -103,7 +103,7 @@
 				</span>
 				</div>	
                 </td>
-                <td class="text12" align="left" >
+                <td class="text14" align="left" >
                 <img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
                 <spring:message code="systema.tds.import.list.search.label.status"/>
                 <div class="text11" style="position: relative;" align="left" >
@@ -141,8 +141,8 @@
 					</span>	
 					</div>
                 </td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.avsandare"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.mottagare"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.avsandare"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.mottagare"/></td>
                 <td>&nbsp;</td>
 			</tr>
  	        <tr>
@@ -315,8 +315,8 @@
 		 						<input type="hidden" name="originalAvd${counter.count}" id="originalAvd${counter.count}" value='${topic.avd}'/>
 			 						
 			 					<p class="text14" >Tullid: <font class="text14Bold">${topic.tullid}</font></p>
-				 				<p class="text12" >Är du säker på att du vill rätta detta ej klarerat ärende ? </p>
-					 			<p class="text12" >Meddelandetyp kommer att ändras automatiskt från <font class="text12BoldGray">${topic.mtyp}</font> till
+				 				<p class="text14" >Är du säker på att du vill rätta detta ej klarerat ärende ? </p>
+					 			<p class="text14" >Meddelandetyp kommer att ändras automatiskt från <font class="text14BoldGray">${topic.mtyp}</font> till
 					 				<c:choose>
 						 				<c:when test="${ topic.mtyp=='DNU' || topic.mtyp=='HNU' }">
 						 					<c:if test="${ topic.mtyp=='DNU'}">
@@ -352,8 +352,8 @@
 		 						<input type="hidden" name="originalAvd${counter.count}" id="originalAvd${counter.count}" value='${topic.avd}'/>
 			 						
 			 					<p class="text14" >Tullid: <font class="text14Bold">${topic.tullid}</font></p>
-				 				<p class="text12" >Är du säker på att du vill ompröva ärendet ? </p>
-					 			<p class="text12" >Meddelandetyp kommer att ändras automatiskt från <font class="text12BoldGray">${topic.mtyp}</font> till
+				 				<p class="text14" >Är du säker på att du vill ompröva ärendet ? </p>
+					 			<p class="text14" >Meddelandetyp kommer att ändras automatiskt från <font class="text14BoldGray">${topic.mtyp}</font> till
 				 					<b>OMP</b>&nbsp;<code>[Ansökan om omprövning]</code>
 				 					<input type="hidden" name="originalMtyp${counter.count}" id="originalMtyp${counter.count}" value="OMP"/>
 				 				</p>
@@ -387,8 +387,8 @@
 					 						<input type="hidden" name="originalAvd${counter.count}" id="originalAvd${counter.count}" value='${topic.avd}'/>
 
 					 					<p class="text14" >Tullid: <font class="text14Bold">${topic.tullid}</font></p>
-						 				<p class="text12" >Är du säker på att du vill skicka en begära om klarering för detta ärende? </p>
-							 			<p class="text12" >Meddelandetyp kommer att ändras automatiskt från <font class="text12BoldGray">${topic.mtyp}</font> till
+						 				<p class="text14" >Är du säker på att du vill skicka en begära om klarering för detta ärende? </p>
+							 			<p class="text14" >Meddelandetyp kommer att ändras automatiskt från <font class="text14BoldGray">${topic.mtyp}</font> till
 							 				<c:choose>
 								 				<c:when test="${ topic.mtyp=='HNU' || topic.mtyp=='HRT' }">
 								 					<b>HBK</b>&nbsp;<code>[Förenklat deklarationsförfarande förtullning begäran om klarering]</code>
@@ -421,19 +421,19 @@
 									<input type="hidden" name="originalAvd${counter.count}" id="originalAvd${counter.count}" value='${topic.avd}'/>
 				 					<input type="hidden" name="originalOpd${counter.count}" id="originalOpd${counter.count}" value='${topic.opd}'/>
 					 					
-									<p class="text12" >Du måste välja ny&nbsp;<code>Avdelning</code>&nbsp;och ny&nbsp;
+									<p class="text14" >Du måste välja ny&nbsp;<code>Avdelning</code>&nbsp;och ny&nbsp;
 												<code>Signatur</code> för att kunna kopiera ett ärende
 									</p>
-									<p class="text12" >Ett nytt ärendenummer kommer att skapas automatiskt.
+									<p class="text14" >Ett nytt ärendenummer kommer att skapas automatiskt.
 									</p>
 									
 									<table>
 										<tr>
-											<td class="text12" align="left" >&nbsp;Avdelning</td>
-	                							<td class="text12" align="left" >&nbsp;Signatur</td>
+											<td class="text14" align="left" >&nbsp;Avdelning</td>
+	                							<td class="text14" align="left" >&nbsp;Signatur</td>
 	                						</tr>
 	 									<tr>
-											<td class="text12MediumBlue">
+											<td class="text14MediumBlue">
 												<select class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.avdList}" >
@@ -441,7 +441,7 @@
 													</c:forEach> 
 												</select>
 											</td>
-											<td class="text12MediumBlue">
+											<td class="text14MediumBlue">
 												<select class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.signList}" >
@@ -486,32 +486,32 @@
 				 	<input type="hidden" name="actionGS" id="actionGS" value='doUpdate'/>
 					<input type="hidden" name="sign" id="sign" value='${searchFilterTdsImport.sign}'/>
 						
-					<p class="text12" >Du kan hämta ett nytt ärende från Norsk Exportförtullning eller från ett Transportuppdrag.
+					<p class="text14" >Du kan hämta ett nytt ärende från Norsk Exportförtullning eller från ett Transportuppdrag.
 					 	Du måste då välja:&nbsp;<b>Avdelning</b>&nbsp;och&nbsp;<b>Ärendenummer</b>.
 					</p>
-					<p class="text12">Flödet för att hämta är:
+					<p class="text14">Flödet för att hämta är:
 					</p>
-					<ol class="text12" >
-						<li class="text12" >
+					<ol class="text14" >
+						<li class="text14" >
 							Ett nytt ärendenummer kommer att skapas om det ärendet du matar in finns i antingen 
 							(a)&nbsp;<b>Norsk Exportförtullning</b> eller (b)&nbsp;<b>Transportuppdrag</b>
 						</li>
 						<br/>
-						<li class="text12" >
+						<li class="text14" >
 							Om ärendet inte finns varken i Norsk Exportförtullning eller i Transportuppdrag måste du skapa ett nytt ärende. Du omdirigeras dit automatiskt.
 						</li>
 					</ol>
 					
-					<p class="text12" >Om du däremot vill mata in ett nytt ärende, utan att köra denna rutinen, lämna Avdelning och Ärendenr. tomma och klicka på "Gå vidare".
+					<p class="text14" >Om du däremot vill mata in ett nytt ärende, utan att köra denna rutinen, lämna Avdelning och Ärendenr. tomma och klicka på "Gå vidare".
 					</p>
 					
 					<table>
 						<tr>
-							<td class="text12" align="left" >&nbsp;Avdelning</td>
-          							<td class="text12" align="left" >&nbsp;Ärendenr.</td>
+							<td class="text14" align="left" >&nbsp;Avdelning</td>
+          							<td class="text14" align="left" >&nbsp;Ärendenr.</td>
           						</tr>
 						<tr>
-							<td class="text12MediumBlue">
+							<td class="text14MediumBlue">
 								<select name="selectedAvd" id="selectedAvd">
 				            		<option value="">-Välj-</option>
 				 				  	<c:forEach var="record" items="${model.avdList}" >
@@ -519,7 +519,7 @@
 									</c:forEach> 
 								</select>
 							</td>
-							<td class="text12MediumBlue">
+							<td class="text14MediumBlue">
 								<input type="text" class="inputText" id="selectedOpd" name="selectedOpd" size="10" maxlength="35" value=''>&nbsp;</td>
 							</td>
 						</tr>

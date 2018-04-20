@@ -28,12 +28,12 @@
 	<%--datatables grid --%>
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 	
-    <table class="noBg" width="1100" border="0" cellspacing="0" cellpadding="0">
+    <table class="noBg" width="100%" border="0" cellspacing="0" cellpadding="0">
 		<%--Banner --%>
 	 	<tr>
 	 		 <%-- class="grayTitanBg" --%>
     		<td height="60" class="headerTdsBannerAreaBg" width="100%" align="left" colspan="3"> 
-    			 <table width="1100" border="0" cellspacing="0" cellpadding="0">
+    			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     			 	<tr>
 			        	<td>&nbsp;</td>
 			        	<td>&nbsp;</td>
@@ -41,7 +41,7 @@
 			        </tr>
 				 	<tr>
 				 		<td class="text12white" width="10%" align=left valign="bottom" >&nbsp;</td>
-				 		<td class="text22Bold" width="80%" align="middle" valign="middle" style="color:#778899;" >
+				 		<td class="text32Bold" width="100%" align="middle" valign="middle" style="color:#778899;" >
 				 			eSped<font style="color:#003300;">sg</font> - TDS - UNDERHÅLL
 				 			
 				 		</td>
@@ -62,7 +62,7 @@
 		<c:if test="${user.authorizedTdsUserAS400 == 'Y'}">
 		<tr >
 			<td height="22" class="tabThinBorderLightGray" width="100%" align="left" colspan="3"> 
-    			 <table width="1100" border="0" cellspacing="0" cellpadding="0">
+    			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 				 	<tr >
 			    		<td class="text11" width="70%" align="left" >&nbsp;&nbsp;
 			    			<%-- --------------------- --%>

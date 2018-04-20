@@ -34,7 +34,7 @@
 						&sysg=${model.sign}&tuid=${model.tullId}&syst=${model.status}&sydt=${model.datum}">
 					
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.created.mastertopic.tab"/></font>
-					<font class="text12MediumBlue">[${model.opd}]</font>
+					<font class="text14MediumBlue">[${model.opd}]</font>
 					<c:if test="${model.status == 'M' || empty model.status}">
 						<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 					</c:if>
@@ -205,27 +205,27 @@
 											           			<td colspan="3" class="text14"><b>Varuposter</b></td>
 											           		</tr>
 												           	<tr>	
-																<td class="text12" width="95%" >
+																<td class="text14" width="95%" >
 																<table id="tblItemLinesAll" class="display compact cell-border" width="95%" >
 																	<thead> 
 																	<tr style="background-color:#DDDDDD">
-																	    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vano.varupostNr"/>&nbsp;</th>   
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ulkd.urspLand"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vata.varukod"/><font class="text9">Taric.nr</font>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fokd.formanskod"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_eup1.forfarande1"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_brut.bruttoVikt"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_neto.nettoVikt"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ankv.extraMangd"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sum_of_sviv_kotas.kolliAnt"/>(&Sigma;)</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vasl.varuBeskrivning"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_unknown.avgifter"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_err.error"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fabl.fbelopp"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_stva.statvarde"/>&nbsp;</th>
+																	    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vano.varupostNr"/>&nbsp;</th>   
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ulkd.urspLand"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vata.varukod"/><font class="text9">Taric.nr</font>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fokd.formanskod"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_eup1.forfarande1"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_brut.bruttoVikt"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_neto.nettoVikt"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ankv.extraMangd"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sum_of_sviv_kotas.kolliAnt"/>(&Sigma;)</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vasl.varuBeskrivning"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_unknown.avgifter"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_err.error"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fabl.fbelopp"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_stva.statvarde"/>&nbsp;</th>
 													                    
 													                    <c:if test="${model.status == 'M' || empty model.status}">
-													                    	<th align="center" class="text12" nowrap>Radera</th>
+													                    	<th align="center" class="text14" nowrap>Radera</th>
 													                    </c:if>   
 													                   
 													                </tr> 
@@ -245,7 +245,7 @@
 														               <td class="text11" >&nbsp;${record.sum_of_sviv_kotas}</td>
 														               <td class="text11" >&nbsp;${record.sviv_vasl}</td>
 														               <td class="text11" align="center">
-														               		<font class="text12OrangeBold" onMouseOver="showPop('avgifterReadOnly_all_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_all_info_${record.sviv_syli}');" alt="info">
+														               		<font class="text14OrangeBold" onMouseOver="showPop('avgifterReadOnly_all_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_all_info_${record.sviv_syli}');" alt="info">
 														               		 <img valign="bottom" src="resources/images/infoOrange.png" width="12px" height="12px" border="0" alt="avg.info">&nbsp;
 														               		</font>
 														               		
@@ -254,14 +254,14 @@
 													
 													           				<table class="noBg" >
 													           					<tr>
-													           						<td colspan="5" class="text12OrangeBold">Avgiftsberäkningar</td>
+													           						<td colspan="5" class="text14OrangeBold">Avgiftsberäkningar</td>
 													           					</tr>
-													           					<tr height="10"><td class="text12"></td></tr>
+													           					<tr height="10"><td class="text14"></td></tr>
 													           					<tr>
-													           						<td class="text12" colspan="2" >Linjenr&nbsp;<b>${record.sviv_syli}</b></td>
-													           						<td class="text12" colspan="3" >Varukod&nbsp;<b>${record.sviv_vata}</b></td>
+													           						<td class="text14" colspan="2" >Linjenr&nbsp;<b>${record.sviv_syli}</b></td>
+													           						<td class="text14" colspan="3" >Varukod&nbsp;<b>${record.sviv_vata}</b></td>
 													           					</tr>
-													           					<tr height="10"><td class="text12"></td></tr>
+													           					<tr height="10"><td class="text14"></td></tr>
 													           					<tr class="tableHeaderField" height="20" valign="left">
 																    					<td class="tableHeaderFieldFirst">&nbsp;Slag&nbsp;</td>   
 																    					<td class="tableHeaderField">&nbsp;Grund&nbsp;</td>   
@@ -344,7 +344,7 @@
 																	<%-- OK BUTTON --%>
 											           				<tr align="left" >
 																		<td class="text11"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
-																		<td class="text12">&nbsp;&nbsp;&nbsp;
+																		<td class="text14">&nbsp;&nbsp;&nbsp;
 															 	        		<a href="tdsImportItemListExcelView.do" target="_new">
 														                 		<img valign="bottom" id="itemListExcel" src="resources/images/excel.png" border="0" alt="excel">&nbsp;Excel
 															 	        		</a>
@@ -359,7 +359,7 @@
 													&nbsp;<button tabindex=-1 title="Kontrollera varuposter" name="itemListControlButton" id="itemListControlButton" class="buttonGrayWithGreenFrame11" type="button" >Varupostkontroll</button>
 												</c:if>			
 										</td>
-										<td width="5%" class="text12">&nbsp;</td>
+										<td width="5%" class="text14">&nbsp;</td>
 										<td align="right" class="text11">Fakturabelopp:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value='${recordTopic.svih_fabl}'>
 										</td>
@@ -398,23 +398,23 @@
 								<table id="tblItemLines" class="display compact cell-border" >
 									<thead>
 									<tr style="background-color:#DDDDDD">
-										<th width="2%" class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.update"/>&nbsp;</th>   
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vano.varupostNr"/>&nbsp;</th>   
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ulkd.urspLand"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vata.varukod"/><font class="text9">Taric.nr</font>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fokd.formanskod"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_eup1.forfarande1"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_brut.bruttoVikt"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_neto.nettoVikt"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ankv.extraMangd"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sum_of_sviv_kotas.kolliAnt"/>(&Sigma;)</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vasl.varuBeskrivning"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_unknown.avgifter"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_err.error"/>&nbsp;</th>
-										<th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fabl.fbelopp"/>&nbsp;</th>
-										<th class="text12">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_stva.statvarde"/>&nbsp;</th>
+										<th width="2%" class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.update"/>&nbsp;</th>   
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vano.varupostNr"/>&nbsp;</th>   
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ulkd.urspLand"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vata.varukod"/><font class="text9">Taric.nr</font>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fokd.formanskod"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_eup1.forfarande1"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_brut.bruttoVikt"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_neto.nettoVikt"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ankv.extraMangd"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sum_of_sviv_kotas.kolliAnt"/>(&Sigma;)</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vasl.varuBeskrivning"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_unknown.avgifter"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_err.error"/>&nbsp;</th>
+										<th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fabl.fbelopp"/>&nbsp;</th>
+										<th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_stva.statvarde"/>&nbsp;</th>
 										<c:if test="${model.status == 'M' || empty model.status}">
-					                    	<th align="center" class="text12" nowrap>Radera</th>
+					                    	<th align="center" class="text14" nowrap>Radera</th>
 					                    </c:if>
 					               </tr> 
 					               </thead>
@@ -439,7 +439,7 @@
 							               <td class="text11" >${record.sum_of_sviv_kotas}</td>
 							               <td class="text11" >&nbsp;${record.sviv_vasl}</td>
 							               <td class="text11" align="center">
-							               		<font class="text12OrangeBold" onMouseOver="showPop('avgifterReadOnly_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_info_${record.sviv_syli}');" alt="info">
+							               		<font class="text14OrangeBold" onMouseOver="showPop('avgifterReadOnly_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_info_${record.sviv_syli}');" alt="info">
 							               		 <img valign="bottom" src="resources/images/infoOrange.png" width="12px" height="12px" border="0" alt="avg.info">&nbsp;
 							               		</font>
 							               
@@ -448,14 +448,14 @@
 						
 						           				<table class="noBg" >
 						           					<tr>
-						           						<td colspan="5" class="text12OrangeBold">Avgiftsberäkningar</td>
+						           						<td colspan="5" class="text14OrangeBold">Avgiftsberäkningar</td>
 						           					</tr>
-						           					<tr height="10"><td class="text12"></td></tr>
+						           					<tr height="10"><td class="text14"></td></tr>
 						           					<tr>
-						           						<td class="text12" colspan="2" >Linjenr&nbsp;<b>${record.sviv_syli}</b></td>
-						           						<td class="text12" colspan="3" >Varukod&nbsp;<b>${record.sviv_vata}</b></td>
+						           						<td class="text14" colspan="2" >Linjenr&nbsp;<b>${record.sviv_syli}</b></td>
+						           						<td class="text14" colspan="3" >Varukod&nbsp;<b>${record.sviv_vata}</b></td>
 						           					</tr>
-						           					<tr height="10"><td class="text12"></td></tr>
+						           					<tr height="10"><td class="text14"></td></tr>
 						           					<tr class="tableHeaderField" height="20" valign="left">
 									    					<td class="tableHeaderFieldFirst">&nbsp;Slag&nbsp;</td>   
 									    					<td class="tableHeaderField">&nbsp;Grund&nbsp;</td>   
@@ -578,7 +578,7 @@
 				 	<%-- Topic ITEM CREATE --%>
 	 				<table width="100%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;</b>
 								<img onClick="showPop('updateInfo');" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
@@ -590,15 +590,15 @@
 				 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				 				<c:choose>
 					 				<c:when test="${not empty model.record.sviv_syli}">
-				 						<input title="from model" tabindex=-1 align="center" class="text12BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${model.record.sviv_syli}">
+				 						<input title="from model" tabindex=-1 align="center" class="text14BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${model.record.sviv_syli}">
 				 					</c:when>
 				 					<c:otherwise>
 				 						<c:choose>
 						 					<c:when test="${not empty sviv_syli_SESSION}">
-					 							<input title="from session" tabindex=-1 align="center" class="text12BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${sviv_syli_SESSION}">
+					 							<input title="from session" tabindex=-1 align="center" class="text14BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${sviv_syli_SESSION}">
 					 						</c:when>
 					 						<c:otherwise>
-					 							<input title="from session" tabindex=-1 align="center" class="text12BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="Ny">
+					 							<input title="from session" tabindex=-1 align="center" class="text14BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="Ny">
 					 						</c:otherwise>
 				 						</c:choose>
 				 					</c:otherwise>
@@ -614,7 +614,7 @@
 						 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
 							 			<td>&nbsp;</td>
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 							 			<img onMouseOver="showPop('34a_info');" onMouseOut="hidePop('34a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>34a.</b><font class="text16RedBold" >*</font><span title="sviv_ulkd">Ursp.land</span>
 										<div class="text11" style="position: relative;" align="left" >
@@ -631,7 +631,7 @@
 										</div>
 										</td>
 							 			
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 							            <img onMouseOver="showPop('33_info');" onMouseOut="hidePop('33_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>33.</b>
 							            <c:if test="${ fn:startsWith(recordTopic.svih_mtyp, 'D') || fn:startsWith(recordTopic.svih_mtyp, 'T') || fn:startsWith(recordTopic.svih_mtyp, 'O') }">
@@ -652,10 +652,10 @@
 										</div>
 										</td>
 							            
-							            <td class="text12" align="left"><b>&nbsp;<span title="sviv_vati">33.3</span></b>&nbsp;&nbsp;</td>
-							            <td class="text12" align="left"><b>&nbsp;<span title="sviv_vat4">33.4</span></b>&nbsp;&nbsp;</td>
+							            <td class="text14" align="left"><b>&nbsp;<span title="sviv_vati">33.3</span></b>&nbsp;&nbsp;</td>
+							            <td class="text14" align="left"><b>&nbsp;<span title="sviv_vat4">33.4</span></b>&nbsp;&nbsp;</td>
 							            	
-							            	<td class="text12" align="left">
+							            	<td class="text14" align="left">
 							            <img onMouseOver="showPop('36_info');" onMouseOut="hidePop('36_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info" >
 				 						<b>36.</b>
 				 							<c:if test="${ fn:startsWith(recordTopic.svih_mtyp, 'D') || fn:startsWith(recordTopic.svih_mtyp, 'T') || fn:startsWith(recordTopic.svih_mtyp, 'O') }">
@@ -702,7 +702,7 @@
 				 						</div>
 							            </td>
 							            
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('37_1_info');" onMouseOut="hidePop('37_1_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b><font class="text16RedBold" >*</font><span title="sviv_eup1">Förf. 1</span>
 				 						
@@ -726,7 +726,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('37_2_info');" onMouseOut="hidePop('37_2_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b><span title="sviv_eup2">Förf. 2</span>
 				 						<div class="text11" style="position: relative;" align="left" >
@@ -752,7 +752,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('35_info');" onMouseOut="hidePop('35_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>35.</b><font class="text16RedBold" >*</font><span title="sviv_brut">Brut.vikt(kg)</span>
 							            
@@ -777,7 +777,7 @@
 										</span>
 										</div>
 										</td>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 										<b>&nbsp;38.</b>&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sviv_neto">Net.vikt(kg)</span></td>
 										
 							        </tr>
@@ -794,7 +794,7 @@
 						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 						            		</a>																	 			
 										</td>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            	<a id="tillaggskoderLink"></a>
 							            	<input onKeyPress="return numberKey(event)" onBlur="getFormanskodOnBlurVata(this)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_vata" id="sviv_vata" size="12" maxlength="10" value="${model.record.sviv_vata}">
 							            	<a tabindex="-1" id="sviv_vataIdLink">
@@ -863,10 +863,10 @@
 							             --%>
 							            
 										</td>
-										<td class="text12" align="left"><input type="text" class="inputText" name="sviv_vati" id="sviv_vati" size="4" maxlength="4" value="${model.record.sviv_vati}"></td>
-										<td class="text12" align="left"><input type="text" class="inputText" name="sviv_vat4" id="sviv_vat4" size="4" maxlength="4" value="${model.record.sviv_vat4}"></td>
+										<td class="text14" align="left"><input type="text" class="inputText" name="sviv_vati" id="sviv_vati" size="4" maxlength="4" value="${model.record.sviv_vati}"></td>
+										<td class="text14" align="left"><input type="text" class="inputText" name="sviv_vat4" id="sviv_vat4" size="4" maxlength="4" value="${model.record.sviv_vat4}"></td>
 										
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 											<a id="bhandlingarYkoderLink"></a>
 							            	<select class="inputTextMediumBlueMandatoryField" name="sviv_fokd" id="sviv_fokd">
 						 						<option value="">-Välj-</option>
@@ -901,15 +901,15 @@
 					            				<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 					            			</a>	
 						 				</td>
-						 				<td class="text12" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_brut" id="sviv_brut" size="12" maxlength="13" value="${model.record.sviv_brut}"></td>
-										<td class="text12" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_neto" id="sviv_neto" size="10" maxlength="11" value="${model.record.sviv_neto}"></td>
+						 				<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_brut" id="sviv_brut" size="12" maxlength="13" value="${model.record.sviv_brut}"></td>
+										<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_neto" id="sviv_neto" size="10" maxlength="11" value="${model.record.sviv_neto}"></td>
 										
 							        </tr>
 
 							        <tr height="10"><td class="text" align="left" colspan="12"><hr></td></tr>
 							        
 									<tr>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 										<img onMouseOver="showPop('41_info');" onMouseOut="hidePop('41_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>41.</b><span title="sviv_ankv">Extra mängd:&nbsp;</span>
 										<div class="text11" style="position: relative;" align="left" >
@@ -921,7 +921,7 @@
 										</span>
 										</div>
 										</td>
-										<td class="text12">
+										<td class="text14">
 										<img onMouseOver="showPop('31_kantal_info');" onMouseOut="hidePop('31_kantal_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 										<span id="kotaRubrik">
 											<b>31.</b>
@@ -942,7 +942,7 @@
 							            </div>
 							            </td>
 							            
-										<td class="text12">
+										<td class="text14">
 										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="sviv_kosl">Kolli slag</span>
 										<div class="text11" style="position: relative;" align="left" >
@@ -955,7 +955,7 @@
 							            </div>
 							            </td>
 							            
-										<td class="text12" align="left" colspan="3">
+										<td class="text14" align="left" colspan="3">
 										<img onMouseOver="showPop('31_varubesk_info');" onMouseOut="hidePop('31_varubesk_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="sviv_vasl">Varubeskrivning&nbsp;</span>
 										
@@ -992,7 +992,7 @@
 							            </td>
 							            
 										<td>&nbsp;</td>
-										<td class="text12" align="left" colspan="2">
+										<td class="text14" align="left" colspan="2">
 							            <img onMouseOver="showPop('31_gods_info');" onMouseOut="hidePop('31_gods_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><span title="sviv_godm">Godsmärkning&nbsp;</span>
 							            <div class="text11" style="position: relative;" align="left" >
@@ -1011,7 +1011,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left"><b>42.</b>
+							            <td class="text14" align="left"><b>42.</b>
 							            		<c:if test="${ fn:startsWith(recordTopic.svih_mtyp, 'D') || fn:startsWith(recordTopic.svih_mtyp, 'T') || fn:startsWith(recordTopic.svih_mtyp, 'O') }">
 							            			<font class="text16RedBold" >*</font>
 							            		</c:if>
@@ -1023,7 +1023,7 @@
 							        
 							        
 									<tr>
-										<td class="text12" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_ankv" id="sviv_ankv" size="10" maxlength="10" value="${model.record.sviv_ankv}"></td>
+										<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_ankv" id="sviv_ankv" size="10" maxlength="10" value="${model.record.sviv_ankv}"></td>
 					           			<td class="text11" valign="bottom">
 											&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kota" id="sviv_kota" size="5" maxlength="5" value="${model.record.sviv_kota}">
 										</td>
@@ -1039,14 +1039,14 @@
 					            			</a>	
 										
 				            				</td> 										
-										<td class="text12" align="left" colspan="3"><input type="text" class="inputTextMediumBlueMandatoryField" name="sviv_vasl" id="sviv_vasl" size="32" maxlength="70" value="${model.record.sviv_vasl}"></td>
+										<td class="text14" align="left" colspan="3"><input type="text" class="inputTextMediumBlueMandatoryField" name="sviv_vasl" id="sviv_vasl" size="32" maxlength="70" value="${model.record.sviv_vasl}"></td>
 							            
-							            <td class="text12" align="left"><button name="itemDescriptionExtraInformationButton" class="buttonGray" type="button" onClick="showPop('itemDescriptionExtraInformation');" >Flera varubesk.</button> 
+							            <td class="text14" align="left"><button name="itemDescriptionExtraInformationButton" class="buttonGray" type="button" onClick="showPop('itemDescriptionExtraInformation');" >Flera varubesk.</button> 
 								        <span style="position:absolute; left:280px; top:500px; width:350px; height:300px;" id="itemDescriptionExtraInformation" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table>
 								           				<tr>
-										           			<td class="text12">
+										           			<td class="text14">
 																<b>Flera varubeskrivningar</b>
 															</td>
 														</tr>
@@ -1083,8 +1083,8 @@
 										</span>
 										</td>
 										
-										<td class="text12" align="left" colspan="2"><input type="text" class="inputText" name="sviv_godm" id="sviv_godm" size="25" maxlength="42" value="${model.record.sviv_godm}"></td>
-							            <td colspan="2" class="text12" align="left">
+										<td class="text14" align="left" colspan="2"><input type="text" class="inputText" name="sviv_godm" id="sviv_godm" size="25" maxlength="42" value="${model.record.sviv_godm}"></td>
+							            <td colspan="2" class="text14" align="left">
 							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_fabl" id="sviv_fabl" size="11" maxlength="11" value="${model.record.sviv_fabl}">
 							            	</td>
 										<%--
@@ -1123,7 +1123,7 @@
 											<table class="tableBorderWithRoundCornersGray">
 										        <tr >
 										        
-										        <td colspan="99" class="text12Bold">
+										        <td colspan="99" class="text14Bold">
 										        		&nbsp;<img onMouseOver="showPop('47_info');" onMouseOut="hidePop('47_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 										        		<b>47.</b>Avgifts<label onClick="showPop('debugPrintlnAjaxAdmin');" >b</label>eräkningar
 														<span style="position:absolute; left:200px; top:500px; width:600px; height:180px;" id="debugPrintlnAjaxAdmin" class="popupWithInputText"  >
@@ -1187,10 +1187,10 @@
 										        </tr>
 												<tr height="5"><td></td></tr>
 												<tr>
-													<td class="text12" align="left" >&nbsp;<span title="sviva_abk1">Slag</span></td>
-			                							<td class="text12" align="left" >&nbsp;<span title="sviva_abg1">Grund</span></td>
-			                							<td class="text12" align="left" >&nbsp;<span title="sviva_abs1">Sats</span></td>
-			                							<td class="text12" align="left" >&nbsp;
+													<td class="text14" align="left" >&nbsp;<span title="sviva_abk1">Slag</span></td>
+			                							<td class="text14" align="left" >&nbsp;<span title="sviva_abg1">Grund</span></td>
+			                							<td class="text14" align="left" >&nbsp;<span title="sviva_abs1">Sats</span></td>
+			                							<td class="text14" align="left" >&nbsp;
 			                							<img onMouseOver="showPop('47_enhet_info');" onMouseOut="hidePop('47_enhet_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			                								<span title="sviva_abx1">Enhet</span>
 			                							
@@ -1210,10 +1210,10 @@
 													</div>
 													</td>
 													
-		                							<td class="text12" align="left" >&nbsp;<span title="sviv_abb1">Belopp</span></td>
+		                							<td class="text14" align="left" >&nbsp;<span title="sviv_abb1">Belopp</span></td>
 			                						</tr>
 			 									<tr>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abk1" id="sviva_abk1">
 											            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.chaCodeList}" >
@@ -1221,13 +1221,13 @@
 																</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg1" id="sviva_abg1" size="10" maxlength="11" value="${model.record.sviva_abg1}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs1" id="sviva_abs1" size="10" maxlength="9" value="${model.record.sviva_abs1}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abx1" id="sviva_abx1">
 											            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
@@ -1236,12 +1236,12 @@
 											 				  	
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb1" id="sviva_abb1" size="10" maxlength="9" value="${model.record.sviva_abb1}">
 													</td>
 												</tr>
 			 									<tr>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abk2" id="sviva_abk2">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
@@ -1249,13 +1249,13 @@
 															</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg2" id="sviva_abg2" size="10" maxlength="11" value="${model.record.sviva_abg2}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs2" id="sviva_abs2" size="10" maxlength="9" value="${model.record.sviva_abs2}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abx2" id="sviva_abx2">
 											            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
@@ -1263,12 +1263,12 @@
 																</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb2" id="sviva_abb2" size="10" maxlength="9" value="${model.record.sviva_abb2}">
 													</td>
 												</tr>
 			 									<tr>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abk3" id="sviva_abk3">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
@@ -1276,13 +1276,13 @@
 															</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg3" id="sviva_abg3" size="10" maxlength="11" value="${model.record.sviva_abg3}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs3" id="sviva_abs3" size="10" maxlength="9" value="${model.record.sviva_abs3}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abx3" id="sviva_abx3">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
@@ -1290,12 +1290,12 @@
 																</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb3" id="sviva_abb3" size="10" maxlength="9" value="${model.record.sviva_abb3}">
 													</td>
 												</tr>
 			 									<tr>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abk4" id="sviva_abk4">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
@@ -1303,13 +1303,13 @@
 															</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg4" id="sviva_abg4" size="10" maxlength="11" value="${model.record.sviva_abg4}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs4" id="sviva_abs4" size="10" maxlength="9" value="${model.record.sviva_abs4}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abx4" id="sviva_abx4">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
@@ -1317,12 +1317,12 @@
 																</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb4" id="sviva_abb4" size="10" maxlength="9" value="${model.record.sviva_abb4}">
 													</td>
 												</tr>
 			 									<tr>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abk5" id="sviva_abk5">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
@@ -1330,13 +1330,13 @@
 															</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg5" id="sviva_abg5" size="10" maxlength="11" value="${model.record.sviva_abg5}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs5" id="sviva_abs5" size="10" maxlength="9" value="${model.record.sviva_abs5}">
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<select name="sviva_abx5" id="sviva_abx5">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
@@ -1344,24 +1344,24 @@
 																</c:forEach> 
 														</select>
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb5" id="sviva_abb5" size="10" maxlength="9" value="${model.record.sviva_abb5}">
 													</td>
 												</tr>
 			 									<tr>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														&nbsp;
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														&nbsp;
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														&nbsp;
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														&nbsp;
 													</td>
-													<td class="text12MediumBlue">
+													<td class="text14MediumBlue">
 														<%--
 														<input style="display: none;" class="inputFormSubmitStd" type="button" id="calcAvgifterAjax" value='Räkna om'>
 														<input class="inputFormSubmitStd" type="button" id="calcAvgifterDeleteAll" value='Radera värden'>
@@ -1378,14 +1378,14 @@
 										<table >
 										<tr height="1"><td></td></tr>
 								 		<tr>
-								            <td colspan="2" class="text12Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;
+								            <td colspan="2" class="text14Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;
 								            		<%--<input class="inputFormSubmitStd" type="button" id="calcOnlyStatisticValueAjax" value='Beräkna'>--%>
 								            </td>
-								            <td class="text12" align="left" >&nbsp;</td>
+								            <td class="text14" align="left" >&nbsp;</td>
 								        </tr>
 								        <tr height="1"><td></td></tr>
 								        <tr>
-								            <td class="text12" align="left">
+								            <td class="text14" align="left">
 								            &nbsp;<img onMouseOver="showPop('46_info');" onMouseOut="hidePop('46_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<b>46.</b>
 											<c:if test="${ fn:startsWith(recordTopic.svih_mtyp, 'D') || fn:startsWith(recordTopic.svih_mtyp, 'T') || fn:startsWith(recordTopic.svih_mtyp, 'O') }">
@@ -1412,10 +1412,10 @@
 											</div>
 											</td>
 											
-								           	<td class="text12" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_stva" id="sviv_stva" size="10" maxlength="10" value="${model.record.sviv_stva}"></td>
+								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_stva" id="sviv_stva" size="10" maxlength="10" value="${model.record.sviv_stva}"></td>
 								        </tr>
 								        <tr>
-								            <td class="text12" align="left">
+								            <td class="text14" align="left">
 								            &nbsp;<img onMouseOver="showPop('tullvarde_info');" onMouseOut="hidePop('tullvarde_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<span title="sviv_stva2">Tullvärde:&nbsp;</span>
 					 						
@@ -1436,11 +1436,11 @@
 											</div>
 											</td>
 											
-								           	<td class="text12" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_stva2" id="sviv_stva2" size="10" maxlength="10" value="${model.record.sviv_stva2}"></td>
+								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_stva2" id="sviv_stva2" size="10" maxlength="10" value="${model.record.sviv_stva2}"></td>
 								        </tr>
 								        <tr height="10"><td></td></tr>
 										<tr>
-											<td class="text12Bold" align="left" >
+											<td class="text14Bold" align="left" >
 					 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<font class="text16RedBold" >*</font><span title="sviv_call">Call me:&nbsp;</span>
 								            
@@ -1460,7 +1460,7 @@
 											</td>
 								        </tr>
 								        <tr>    
-								            <td colspan="99" class="text12" align="left" >
+								            <td colspan="99" class="text14" align="left" >
 								            	<select class="inputTextMediumBlueMandatoryField" name="sviv_call" id="sviv_call">
 					 								<option value="00" <c:if test="${model.record.sviv_call == '00'}"> selected </c:if> >00 Inga restriktioner</option>
 									  				<option value="01" <c:if test="${model.record.sviv_call == '01'}"> selected </c:if> >01 Restriktioner, villkoren uppfyllda</option>
@@ -1482,7 +1482,7 @@
 														<div style="float:right;" id="warningCodesFlagDiv" >
 															<a id="warningCodesLink" style="cursor:pointer;">
 																<img width="18px" height="20px" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="warning">
-																<font class="text12Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
+																<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
 															</a>
 														</div>
 														<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.import.item.createnew.submit"/>'>
@@ -1506,7 +1506,7 @@
 							<td>
 							<table width="80%" class="tableBorderWithRoundCornersGray">
 							        <tr >
-						            <td colspan="10" class="text12">
+						            <td colspan="10" class="text14">
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 						            <div class="text11" style="position: relative;" align="left" >
@@ -1530,7 +1530,7 @@
 							        </tr>
 									<tr height="5"><td></td></tr>
 							        <tr>
-							            <td valign="top" class="text12" align="left">
+							            <td valign="top" class="text14" align="left">
 						           			<table >
 						           				<tr>
 								           			<td class="text11" colspan="3">
@@ -1749,7 +1749,7 @@
 	 				<%-- Item header --%>
 	 				<table width="100%" align="center" class="secondarySectionHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extraordinära uppgifter&nbsp;</b>
 				 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				
@@ -1763,7 +1763,7 @@
 					 		<td width="50%">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td colspan="2" class="text12" align="left">
+							            <td colspan="2" class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('44_info');" onMouseOut="hidePop('44_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 							            
@@ -1787,13 +1787,13 @@
 										</div>
 										</td>
 										
-							           	<td class="text12" align="left">&nbsp;</td>
+							           	<td class="text14" align="left">&nbsp;</td>
 							        </tr>
 							        <tr height="5"><td class="text" align="left"></td></tr>
 									
 									<tr>
-							            <td class="text12" align="left">&nbsp;&nbsp;<span title="sviv_suko/sutx...">Särskilda upplysningar kod/text:&nbsp;</td>
-							           	<td class="text12" align="left"><button name="specialInformationCodeButton" class="buttonGray" type="button" onClick="showPop('specialInformationCode');" >Mer...</button> 
+							            <td class="text14" align="left">&nbsp;&nbsp;<span title="sviv_suko/sutx...">Särskilda upplysningar kod/text:&nbsp;</td>
+							           	<td class="text14" align="left"><button name="specialInformationCodeButton" class="buttonGray" type="button" onClick="showPop('specialInformationCode');" >Mer...</button> 
 								        <span style="position:absolute; left:280px; top:1000px; width:600px; height:420px;" id="specialInformationCode" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table>
@@ -1899,7 +1899,7 @@
 							        </tr>
 							        <tr height="10"><td colspan="2" ></td></tr>
 							        <tr>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('40_info');" onMouseOut="hidePop('40_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>40.</b><span title="sviv_tik1/sviv_tit1/sviv_tix1...">Tidigare handlingar:</span>
 							            
@@ -1932,7 +1932,7 @@
 										</div>
 										</td>
 							            
-							           	<td class="text12" align="left"><button name="previousDocumentsButton" class="buttonGray" type="button" onClick="showPop('previousDocuments');" >Mer...</button> 
+							           	<td class="text14" align="left"><button name="previousDocumentsButton" class="buttonGray" type="button" onClick="showPop('previousDocuments');" >Mer...</button> 
 								        <span style="position:absolute; left:280px; top:1000px; width:550px; height:280px;" id="previousDocuments" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table width="100%">
@@ -2097,13 +2097,13 @@
 					        <td width="50%" valign="top">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 						 			<tr>
-							            <td class="text12" nowrap colspan="2" align="left"><b>&nbsp;31.</b>Godsmärkning, kolli och varuslag&nbsp;</td>
-							           	<td class="text12" align="left">&nbsp;</td>
+							            <td class="text14" nowrap colspan="2" align="left"><b>&nbsp;31.</b>Godsmärkning, kolli och varuslag&nbsp;</td>
+							           	<td class="text14" align="left">&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left">&nbsp;&nbsp;&nbsp;
+							            <td class="text14" align="left">&nbsp;&nbsp;&nbsp;
 							            <span title="sviv_god2/sviv_kot2/sviv_kos2">Godsmärkning ,antal kolli och kollislag:&nbsp;</span></td>
-							           	<td class="text12" align="left"><button name="goodsMarkButton" class="buttonGray" type="button" onClick="showPop('goodsMark');" >Mer...</button> 
+							           	<td class="text14" align="left"><button name="goodsMarkButton" class="buttonGray" type="button" onClick="showPop('goodsMark');" >Mer...</button> 
 								        <span style="position:absolute; left:480px; top:1000px; width:350px; height:320px;" id="goodsMark" class="popupWithInputText"  >
 								           		<div class="text10" align="left" valign="top">
 								           			<table>
@@ -2192,7 +2192,7 @@
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td  class="text12"><button name="goodsMarkButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('goodsMark');">&nbsp;Ok</button> 
+															<td  class="text14"><button name="goodsMarkButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('goodsMark');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -2201,9 +2201,9 @@
 										</td>
 							        </tr>
 									<tr>
-							            <td class="text12" align="left">&nbsp;&nbsp;&nbsp;&nbsp;
+							            <td class="text14" align="left">&nbsp;&nbsp;&nbsp;&nbsp;
 							            <span title="sviv_co01 ...">Container nr:&nbsp;</span></td>
-							           	<td class="text12" align="left"><button name="containerNrButton" class="buttonGray" type="button" onClick="showPop('containerNrInfo');" >Mer...</button> 
+							           	<td class="text14" align="left"><button name="containerNrButton" class="buttonGray" type="button" onClick="showPop('containerNrInfo');" >Mer...</button> 
 								           	<span style="position:absolute; left:480px; top:1000px; width:580px; height:250px;" id="containerNrInfo" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table>
@@ -2285,7 +2285,7 @@
 													</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text12" ><button name="containerNrButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('containerNrInfo');">&nbsp;Ok</button> 
+															<td class="text14" ><button name="containerNrButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('containerNrInfo');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -2304,7 +2304,7 @@
 					 		<td colspan="2">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td class="text12" align="left" >
+							            <td class="text14" align="left" >
 							            &nbsp;<img onMouseOver="showPop('49_info');" onMouseOut="hidePop('49_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>49.</b>
 							            <span title="sviv_lagt">Identifiering av lager:&nbsp;</span>
@@ -2333,7 +2333,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left" >
+							            <td class="text14" align="left" >
 							            	<select name="sviv_lagt" id="sviv_lagt">
 				 								<option selected value="">-Välj-</option>
 				 								<c:choose>
@@ -2355,7 +2355,7 @@
 								  				</c:choose>
 											</select>
 										</td>
-										<td class="text12" align="left">&nbsp;&nbsp;
+										<td class="text14" align="left">&nbsp;&nbsp;
 											<span title="sviv_lagi">Id:</span>
 											<c:choose>
 			 									<%-- only when new record and header value exists --%>
@@ -2367,7 +2367,7 @@
 												</c:otherwise>
 											</c:choose>
 										</td>
-							           	<td class="text12" align="left">&nbsp;
+							           	<td class="text14" align="left">&nbsp;
 							           	<span title="sviv_lagl">Landkod&nbsp;</span>
 							            	<select name="sviv_lagl" id="sviv_lagl">
 						 						<option value="">-Välj-</option>
@@ -2435,7 +2435,7 @@
 				 	
 					<table>
 						<tr>
-							<td colspan="6">Beskrivning:&nbsp;<label class="text12Bold" id="description_sviw" name="description_sviw"></label></td>
+							<td colspan="6">Beskrivning:&nbsp;<label class="text14Bold" id="description_sviw" name="description_sviw"></label></td>
 						</tr>
 						<tr height="5"><td></td></tr>
 						

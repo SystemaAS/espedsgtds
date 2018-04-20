@@ -53,15 +53,15 @@
  	        <form name="tdsImportSearchForm" id="searchForm" action="tdsimportutlam?action=doFind" method="post" >
  	        <input type="hidden" name="sign" id="sign" value='${searchFilter.sign}'/>
  	        <tr>	
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.tullid"/>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.tullid"/>
 					<a class="text14" target="_blank" href="${model.taricFragaTullidURL.value}" onclick="${model.taricFragaTullidURL.windowOpenDimensions}" >
             			<img title="Fråga Tullid (hos Tullverket)" style="vertical-align:bottom;" width="14px" height="14px" src="resources/images/help.png" border="0" alt="question">                		
             		</a>																	 			
                 </td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.datum"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.datumt"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.avsandare"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.mottagare"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.datum"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.datumt"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.avsandare"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.mottagare"/></td>
                 <td>&nbsp;</td>
 			</tr>
  	        <tr>
@@ -174,32 +174,32 @@
 				 	<input type="hidden" name="actionGS" id="actionGS" value='doUpdate'/>
 					<input type="hidden" name="sign" id="sign" value='${searchFilter.sign}'/>
 						
-					<p class="text12" >Du kan hämta ett nytt ärende från Norsk Exportförtullning eller från ett Transportuppdrag.
+					<p class="text14" >Du kan hämta ett nytt ärende från Norsk Exportförtullning eller från ett Transportuppdrag.
 					 	Du måste då välja:&nbsp;<b>Avdelning</b>&nbsp;och&nbsp;<b>Ärendenummer</b>.
 					</p>
-					<p class="text12">Flödet för att hämta är:
+					<p class="text14">Flödet för att hämta är:
 					</p>
-					<ol class="text12" >
-						<li class="text12" >
+					<ol class="text14" >
+						<li class="text14" >
 							Ett nytt ärendenummer kommer att skapas om det ärendet du matar in finns i antingen 
 							(a)&nbsp;<b>Norsk Exportförtullning</b> eller (b)&nbsp;<b>Transportuppdrag</b>
 						</li>
 						<br/>
-						<li class="text12" >
+						<li class="text14" >
 							Om ärendet inte finns varken i Norsk Exportförtullning eller i Transportuppdrag måste du skapa ett nytt ärende. Du omdirigeras dit automatiskt.
 						</li>
 					</ol>
 					
-					<p class="text12" >Om du däremot vill mata in ett nytt ärende, utan att köra denna rutinen, lämna Avdelning och Ärendenr. tomma och klicka på "Gå vidare".
+					<p class="text14" >Om du däremot vill mata in ett nytt ärende, utan att köra denna rutinen, lämna Avdelning och Ärendenr. tomma och klicka på "Gå vidare".
 					</p>
 					
 					<table>
 						<tr>
-							<td class="text12" align="left" >&nbsp;Avdelning</td>
-          							<td class="text12" align="left" >&nbsp;Ärendenr.</td>
+							<td class="text14" align="left" >&nbsp;Avdelning</td>
+          							<td class="text14" align="left" >&nbsp;Ärendenr.</td>
           						</tr>
 						<tr>
-							<td class="text12MediumBlue">
+							<td class="text14MediumBlue">
 								<select name="selectedAvd" id="selectedAvd">
 				            		<option value="">-Välj-</option>
 				 				  	<c:forEach var="record" items="${model.avdList}" >
@@ -207,7 +207,7 @@
 									</c:forEach> 
 								</select>
 							</td>
-							<td class="text12MediumBlue">
+							<td class="text14MediumBlue">
 								<input type="text" class="inputText" id="selectedOpd" name="selectedOpd" size="10" maxlength="35" value=''>&nbsp;</td>
 							</td>
 						</tr>

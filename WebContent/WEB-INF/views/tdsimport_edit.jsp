@@ -43,7 +43,7 @@
 						<font class="tabLink">
 							&nbsp;<spring:message code="systema.tds.import.created.mastertopic.tab"/>
 						</font>
-						<font class="text12MediumBlue">[${model.record.svih_syop}]</font>
+						<font class="text14MediumBlue">[${model.record.svih_syop}]</font>
 						<c:if test="${model.record.svih_syst == 'M' || empty model.record.svih_syst}">
 							<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						</c:if>
@@ -144,7 +144,7 @@
 	    	<input type="hidden" name="avd" id="avd" value='${model.record.svih_syav}'>
 			<input type="hidden" name="sign" id="sign" value='${model.record.svih_sysg}'>
 			<tr >
-				<td align="left" class="text12MediumBlue" >
+				<td align="left" class="text14MediumBlue" >
 					&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.svih_syav}&nbsp;&nbsp;Ärende:&nbsp;<b>${model.record.svih_syop}</b>
 					&nbsp;&nbsp;Tullid:&nbsp;<b>${model.record.svih_tuid}</b>
 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricFragaTullidURL.value}" onclick="${model.taricFragaTullidURL.windowOpenDimensions}" >
@@ -167,7 +167,7 @@
 					</c:choose>	
 					&nbsp;&nbsp;
 					<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text12MediumBlue">u</font></a>s:
+					Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text14MediumBlue">u</font></a>s:
 					<b>
 						<c:choose>
 							<c:when test="${empty model.record.svih_syst}">
@@ -183,7 +183,7 @@
 				<td align="right" valign="top">
 					<c:if test="${'1' != isTestAvd}">
 						<%--This checkbox appears only in real production. Otherwise use the Testavdelning --%>
-						<input tabindex=-1 type="checkbox" name="svih_0035" id="svih_0035" value="1" <c:if test="${model.record.svih_0035 == '1'}"> checked </c:if> ><font class="text12MediumBlue"><b>TEST flag</b></font>&nbsp;&nbsp;&nbsp;						
+						<input tabindex=-1 type="checkbox" name="svih_0035" id="svih_0035" value="1" <c:if test="${model.record.svih_0035 == '1'}"> checked </c:if> ><font class="text14MediumBlue"><b>TEST flag</b></font>&nbsp;&nbsp;&nbsp;						
 					</c:if>
 					<a tabindex=-1 href="tdsimport_edit_printTopic.do?avd=${model.record.svih_syav}&opd=${model.record.svih_syop}">
 					 	<img style="cursor:pointer;" src="resources/images/printer.png" width="30" hight="30" border="0" alt="Print">
@@ -239,7 +239,7 @@
 		<%-- CREATE MODE --%> 
 		<c:otherwise>
 			<tr >
-				<td align="left" class="text12MediumBlue">
+				<td align="left" class="text14MediumBlue">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;
            			<select name="avd" id="avd">
 	            		<option value="">-Välj-</option>
@@ -274,7 +274,7 @@
 	            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 	            		
 				 		<tr>
-				 			<td class="text12">
+				 			<td class="text14">
 				 				<img onMouseOver="showPop('1_1_info');" onMouseOut="hidePop('1_1_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 					<b>1.1</b>
 			 					<div class="text11" style="position: relative;display:inline;" align="left">
@@ -303,7 +303,7 @@
 								  <option value="IM"<c:if test="${model.record.svih_dek1 == 'IM'}"> selected </c:if> >IM</option>
 								</select>
 			 				</td>
-			 				<td class="text12">
+			 				<td class="text14">
 			 					&nbsp;<img onMouseOver="showPop('48_info');" onMouseOut="hidePop('48_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>48.</b><font class="text16RedBold" >*</font><span title="svih_upps">Upp.bet.&nbsp;</span>
 			 					<div class="text11" style="position: relative;display:inline;" align="left">
@@ -335,7 +335,7 @@
 								  
 						  		</select>
 			 				</td>
-			 				<td class="text12">&nbsp;&nbsp;
+			 				<td class="text14">&nbsp;&nbsp;
 			 				<img onMouseOver="showPop('meddTyp_info');" onMouseOut="hidePop('meddTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 				<div class="text11" style="position: relative;display:inline;" align="left">
 			 				<span style="position:absolute; top:2px; width:250px;" id="meddTyp_info" class="popupWithInputText text11"  >
@@ -379,7 +379,7 @@
 				 			</td>
 		 				</tr>
 		 				<tr>
-		 					<td class="text12">
+		 					<td class="text14">
 		 						<img onMouseOver="showPop('1_2_info');" onMouseOut="hidePop('1_2_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>1.2</b>&nbsp;<font class="text16RedBold" >*</font><span title="svih_dek2">Dekl.typ&nbsp;</span>
 				 				<div class="text11" style="position: relative;display:inline" align="left" >
@@ -428,7 +428,7 @@
 								</select>
 			 				</td>
 			 				
-			 				<td class="text12">
+			 				<td class="text14">
 			 					&nbsp;<img onMouseOver="showPop('24_info');" onMouseOut="hidePop('24_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>24.</b><span title="svih_tart">Trans.art&nbsp;</span>
 				 				<div class="text11" style="position: relative;display:inline" align="left" >
@@ -484,12 +484,12 @@
 								  <option value="9"<c:if test="${model.record.svih_tart == 9}"> selected </c:if> >9</option>
 								</select>
 			 				</td>
-			 				<td class="text12">&nbsp;</td>
-			 				<td class="text12">&nbsp;</td>
+			 				<td class="text14">&nbsp;</td>
+			 				<td class="text14">&nbsp;</td>
 		 				</tr>
 		 				<tr height="5"><td></td></tr>
 		 				<tr>
-				 			<td class="text12"><span title="h_xref">&nbsp;&nbsp;&nbsp;&nbsp;Ext.ref.&nbsp;</span></td>
+				 			<td class="text14"><span title="h_xref">&nbsp;&nbsp;&nbsp;&nbsp;Ext.ref.&nbsp;</span></td>
 				 			<td colspan="3">
 				 				<input type="text" class="inputText" name="h_xref" id="h_xref" size="20" maxlength="35" value='${model.record.h_xref}'>
 			 				</td>
@@ -547,7 +547,7 @@
 	 				<%-- SENDER --%>
 	 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 								&nbsp;<img onMouseOver="showPop('2_info');" onMouseOut="hidePop('2_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 			<b>&nbsp;2.</b><font class="text16RedBold" >*</font>Avsändare/Exportör&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 					 			<div class="text11" style="position:relative" >
@@ -593,9 +593,9 @@
 							        	<input type="hidden" name="orig_svih_avtl" id="orig_svih_avtl" value='${model.record.svih_avtl}'>
 							        	
 							        	
-							            <td class="text12" align="left" >&nbsp;&nbsp;
+							            <td class="text14" align="left" >&nbsp;&nbsp;
 							            <span title="svih_avkn">Kundnummer</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_avna">Namn&nbsp;</span>
 							            	<a tabindex="-1" id="svih_avnaIdLink">
 												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
@@ -603,15 +603,15 @@
 							            </td>
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left"><input type="text" class="inputTextMediumBlue" name="svih_avkn" id="svih_avkn" size="8" maxlength="8" value="${model.record.svih_avkn}"></td>
-							            <td class="text12" align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avna" id="svih_avna" size="30" maxlength="35" value="${model.record.svih_avna}"></td>
+							            <td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="svih_avkn" id="svih_avkn" size="8" maxlength="8" value="${model.record.svih_avkn}"></td>
+							            <td class="text14" align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avna" id="svih_avna" size="30" maxlength="35" value="${model.record.svih_avna}"></td>
 							            
 							        </tr>
 							        
 							        <%--
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>EORI</td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>EORI</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td align="left"><input type="text" class="inputTextMediumBlue" name="svih_aveo" id="svih_aveo" size="20" maxlength="17" value='${model.record.svih_aveo}'></td>
@@ -621,9 +621,9 @@
 							         
 							        <tr height="4"><td>&nbsp;</td></tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_ava1">Adress 1</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;
+							            <td class="text14" align="left" >&nbsp;&nbsp;
 							            <span title="svih_ava2">Adress 2</span></td>
 							        </tr>
 							        <tr>
@@ -634,24 +634,24 @@
 							        	<td>
 							        		<table>
 								        		<tr>
-								            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_avpa">Postadress</span></td>
-								            		<td class="text12" >&nbsp;</td>
+								            		<td class="text14" >&nbsp;</td>
 								            	</tr>
 								        		<tr>
 								            		<td align="left" colspan="2">
 								            			<input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avpa" id="svih_avpa" size="30" maxlength="35" value="${model.record.svih_avpa}">
 								            		</td> 
-								            		<td class="text12" >&nbsp;</td>
+								            		<td class="text14" >&nbsp;</td>
 								        		</tr>    	
 							            	</table>
 						            </td>
 						            <td>
 							            	<table>
 								        		<tr>
-								            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_avpn">Postnummer</span></td>
-								            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_avlk">Land</span>
 													<a tabindex="-1" id="svih_avlkIdLink">
            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -677,7 +677,7 @@
 							        </tr>
 							        
 							        <tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 						        </table>
 					        </td>
@@ -693,7 +693,7 @@
 	            <td >		
 	 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				&nbsp;<img onMouseOver="showPop('8_info');" onMouseOut="hidePop('8_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>&nbsp;8.</b><font class="text16RedBold" >*</font>Mottagare&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<div class="text11" style="position: relative;" align="left" >
@@ -735,9 +735,9 @@
 							        	<input type="hidden" name="orig_svih_mopa" id="orig_svih_mopa" value='${model.record.svih_mopa}'>
 							        	<input type="hidden" name="orig_svih_molk" id="orig_svih_molk" value='${model.record.svih_molk}'>
 							        	
-							            <td class="text12" align="left" >&nbsp;&nbsp;
+							            <td class="text14" align="left" >&nbsp;&nbsp;
 							            <span title="svih_mokn">Kundnummer</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_mona">Namn</span>&nbsp;
 							            	<a tabindex="-1" id="svih_monaIdLink">
 												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
@@ -749,9 +749,9 @@
 							            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_mona" id="svih_mona" size="30" maxlength="35" value="${model.record.svih_mona}"></td>
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_moeo">EORI</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_moeo" id="svih_moeo" size="20" maxlength="17" value="${model.record.svih_moeo}"></td>
@@ -759,9 +759,9 @@
 							        </tr>
 							        <tr height="4"><td>&nbsp;</td></tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_moa1">Adress 1</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;
+							            <td class="text14" align="left" >&nbsp;&nbsp;
 							            <span title="svih_moa2">Adress 2</span></td>
 							        </tr>
 							        <tr>
@@ -772,7 +772,7 @@
 							        	<td>
 							        		<table>
 								        		<tr>
-								            		<td class="text12" align="left" >&nbsp;<font class="text16RedBold" >*</font>
+								            		<td class="text14" align="left" >&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_mopa">Postadress</span></td>
 												<td align="left">&nbsp;</td>
 								            	</tr>
@@ -785,9 +785,9 @@
 						            <td>
 							            	<table>
 								        		<tr>
-								        			<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+								        			<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								        			<span title="svih_mopn">Postnummer</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_molk">Land</span>
 													<a tabindex="-1" id="svih_molkIdLink">
            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -809,9 +809,9 @@
 						            </td>
 							        </tr>
 							        <tr>
-							            <td align="left" class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td align="left" class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_moha">Handläggare</span></td>
-							            <td align="left"class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+							            <td align="left"class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 							            <span title="svih_motl">Telefon</span></td>
 							        </tr>
 							        <tr>
@@ -820,7 +820,7 @@
 							        </tr>
 							        
 							        <tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 						        </table>
 					        </td>
@@ -837,7 +837,7 @@
 	                	<c:choose>
 		                	<c:when test="${ empty model.record.invoiceListTotSum}">
 						 		<tr>
-						 			<td class="text12">
+						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="svih_fabl">Fakt.total&nbsp;</span>
@@ -845,7 +845,7 @@
 						 			<td align="left" >
 						 				<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svih_fabl" id="svih_fabl" size="20" maxlength="20" value="${model.record.svih_fabl}">
 						 			</td>
-						 			<td class="text12">&nbsp;
+						 			<td class="text14">&nbsp;
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="svih_vakd">Valuta</span>
 						 				<%-- Note: onChange event in jQuery for this currency list --%>
@@ -862,19 +862,19 @@
 					 				</td>
 				 				</tr>
 				 				<tr>
-					 				<td class="text12" align="right">
+					 				<td class="text14" align="right">
 					 					<font class="text16RedBold" >*</font>
 						 				<span title="svih_vaku">Kurs&nbsp;</span>
 						 			</td>
-						 			<td class="text12" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svih_vaku" id="svih_vaku" size="20" maxlength="20" value="${model.record.svih_vaku}"></td>
-						 			<td class="text12" align="left" >&nbsp;
+						 			<td class="text14" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svih_vaku" id="svih_vaku" size="20" maxlength="20" value="${model.record.svih_vaku}"></td>
+						 			<td class="text14" align="left" >&nbsp;
 						 			<span title="svih_vaom">Faktor</span>
 						 			<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svih_vaom" id="svih_vaom" size="10" maxlength="10" value="${model.record.svih_vaom}"></td>
 				 				</tr>
 			 				</c:when>
 			 				<c:otherwise> <%-- otherwise READ ONLY --%>
 			 					<tr>
-						 			<td class="text12">
+						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="svih_fabl">Fakt.total&nbsp;</span>
@@ -882,19 +882,19 @@
 						 			<td align="left" >
 						 				<input readonly type="text" class="inputTextReadOnly" name="svih_fabl" id="svih_fabl" size="20" maxlength="20" value="${model.record.invoiceListTotSum}">
 						 			</td>
-						 			<td class="text12">&nbsp;
+						 			<td class="text14">&nbsp;
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="svih_vakd">Valuta</span>
 						 				<input readonly type="text" class="inputTextReadOnly" name="svih_vakd" id="svih_vakd" size="4" maxlength="3" value="${model.record.invoiceListTotValidCurrency}">
 					 				</td>
 				 				</tr>
 				 				<tr>
-					 				<td class="text12" align="right">
+					 				<td class="text14" align="right">
 					 					<font class="text16RedBold" >*</font>
 						 				<span title="svih_vaku">Kurs&nbsp;</span>
 						 			</td>
-						 			<td class="text12" align="left" ><input readonly type="text" class="inputTextReadOnly" name="svih_vaku" id="svih_vaku" size="20" maxlength="20" value="${model.record.invoiceListTotKurs}"></td>
-						 			<td class="text12" align="left" >&nbsp;
+						 			<td class="text14" align="left" ><input readonly type="text" class="inputTextReadOnly" name="svih_vaku" id="svih_vaku" size="20" maxlength="20" value="${model.record.invoiceListTotKurs}"></td>
+						 			<td class="text14" align="left" >&nbsp;
 						 			<span title="svih_vaom">Faktor</span>
 						 			<input readonly type="text" class="inputTextReadOnly" name="svih_vaom" id="svih_vaom" size="10" maxlength="10" value="${model.record.svih_vaom}"></td>
 				 				</tr>
@@ -902,10 +902,10 @@
 		 				</c:choose>
 		 				<tr height="10"><td></td></tr>
 		 				<tr>
-		 					<td class="text12Gray" align="right">
+		 					<td class="text14Gray" align="right">
 				 				<span title="invoiceListTotSum/invoiceListTotValidCurrency"></span>Fakt.total (fakt.lista)&nbsp;</span>
 				 			</td>
-				            <td colspan="2" class="text12" align="left" >
+				            <td colspan="2" class="text14" align="left" >
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotSum" id="invoiceListTotSum" size="15" value='${ model.record.invoiceListTotSum}'>
 				            &nbsp;&nbsp;
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotValidCurrency" id="invoiceListTotValidCurrency" size="5" value='${ model.record.invoiceListTotValidCurrency}'>
@@ -919,10 +919,10 @@
 				        </tr>
 				        <tr height="2"><td></td></tr>
 				        <tr>
-			 				<td class="text12Gray" align="right">
+			 				<td class="text14Gray" align="right">
 				 				<span title="sumOfItemAmounts">Fakt.total (Varuposter)&nbsp;</span>
 				 			</td>
-				 			<td colspan="2" class="text12" align="left" >
+				 			<td colspan="2" class="text14" align="left" >
 				 				<input readonly style="text-align: left" type="text" class="inputTextReadOnly" name="sumOfInvoiceAmountInItemLines" id="sumOfInvoiceAmountInItemLines" size="20" maxlength="20" value="${model.record.sumOfInvoiceAmountInItemLinesStr}">
 				 				<c:if test="${not empty (sumOfInvoiceAmountInItemLinesStr && model.record.svih_fabl)}">
 			            			<c:if test="${model.record.sumOfInvoiceAmountInItemLines != model.record.svih_fabl_dbl}">
@@ -952,7 +952,7 @@
 					<%-- Special section --%>
 					<table align="left" class="formFrameHeader" width="100%" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;44.</b>&nbsp;Särskilda upplysningar&nbsp;/&nbsp;Bilagda handlingar&nbsp;/&nbsp;Certifikat och tillstånd&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 			 				</td>
 		 				</tr>
@@ -968,13 +968,13 @@
 					 		<td>
 						 		<table align="left" border="0" cellspacing="0" cellpadding="0">
 							 		<tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;
+							            <td class="text14" align="left" >&nbsp;
 							            <font class="text16RedBold" >*</font><span title="svih_fatx">Fakt.nr.&nbsp;</span></td>
 							            <td ><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_fatx" id="svih_fatx" size="40" maxlength="50" value='${model.record.svih_fatx}'></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;&nbsp;
+							            <td class="text14" align="left" >&nbsp;&nbsp;&nbsp;
 							            <img onMouseOver="showPop('faktTyp_info');" onMouseOut="hidePop('faktTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 				<font class="text16RedBold" >*</font><span title="svih_faty">Fakt.typ&nbsp;</span>
 							            <div class="text11" style="position: relative;" align="left" > 
@@ -995,7 +995,7 @@
 			 							</td>
 							        </tr>
 							        <tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 								</table>
 							</td>
@@ -1016,7 +1016,7 @@
 					<td valign="top">
 			 			<table border="0" cellspacing="0" cellpadding="0">
 					 		<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('15_a_info');" onMouseOut="hidePop('15_a_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 					<b>15a.</b><font class="text16RedBold" >*</font><span title="svih_avut">Avsändnings-/Exportland</span>
 			 					<div class="text11" style="position: relative;" align="left" >
@@ -1049,11 +1049,11 @@
 			 		<td>
 			 			<table border="0" cellspacing="0" cellpadding="0">
 					 		<tr height="15">
-					            <td class="text12Bold" align="left" >&nbsp;</td> 
+					            <td class="text14Bold" align="left" >&nbsp;</td> 
 					        </tr>
 					        <tr height="5"><td class="text">&nbsp;</td> </tr>
 							<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('26_info');" onMouseOut="hidePop('26_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>26.</b><font class="text16RedBold" >*</font><span title="svih_trin">Transportsätt inrikes</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1088,7 +1088,7 @@
 			 			<table border="0" cellspacing="0" cellpadding="0">
 			 				<tr height="5"><td class="text">&nbsp;</td> </tr>
 			 				<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('25_info');" onMouseOut="hidePop('25_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>25.</b><font class="text16RedBold" >*</font><span title="svih_trgr">Transportsätt vid gränsen</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1121,7 +1121,7 @@
 			 		<td>
 						<table border="0" cellspacing="0" cellpadding="0">	
 					 		<tr>
-					            <td class="text12" align="left">
+					            <td class="text14" align="left">
 					            <img onMouseOver="showPop('21_info');" onMouseOut="hidePop('21_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>21.</b><span title="svih_tral">Aktiva transportmedlets nationalitet vid gränspassagen</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1164,7 +1164,7 @@
 			 			<table border="0" cellspacing="1" cellpadding="0">
 			 				<tr height="5"><td class="text">&nbsp;</td> </tr>
 			 				<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('30_info');" onMouseOut="hidePop('30_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>30.</b><span title="svih_golk">Godslokal kod</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1181,7 +1181,7 @@
 							    <td ><input type="text" class="inputTextMediumBlue" name="svih_golk" id="svih_golk" size="4" maxlength="3" value="${model.record.svih_golk}"></td>	
 					        </tr>
 					        <tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('godsnr_info');" onMouseOut="hidePop('godsnr_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <span title="svih_godn">Godsnummer</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1203,7 +1203,7 @@
 	        				</tr>
 				            <tr height="5"><td class="text">&nbsp;</td> </tr>
 				            <tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('6_info');" onMouseOut="hidePop('6_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>6.&nbsp;</b><font class="text16RedBold" >*</font><span title="svih_kota">Antal kollin (alltid > 0)</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1223,7 +1223,7 @@
 					            </td>
 					        </tr>
 					        <tr>
-				        		<td class="text12Gray" align="center" >
+				        		<td class="text14Gray" align="center" >
 				        			Antal kollin (varuposter)&nbsp;
 				        		</td>
 					        	<td >
@@ -1245,7 +1245,7 @@
 					        </tr>
 					        <tr height="2"><td class="text">&nbsp;</td> </tr>
 				            <tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('35_info');" onMouseOut="hidePop('35_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>35.</b><span title="svih_brut">Bruttovikt</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1266,7 +1266,7 @@
 					            <td ><input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="svih_brut" id="svih_brut" size="13" maxlength="13" value="${model.record.svih_brut}"></td>
 					        </tr>
 					        <tr>
-				        		<td class="text12Gray" align="center" >
+				        		<td class="text14Gray" align="center" >
 				        			Bruttovikt (varuposter)&nbsp;
 				        		</td>
 						        <td colspan="2">
@@ -1293,7 +1293,7 @@
 					        </tr>
 					     	<tr height="20"><td>&nbsp;</td></tr>
 					     	<tr>
-					     		<td class="text12" align="left" >
+					     		<td class="text14" align="left" >
 					            <img onMouseOver="showPop('20_info');" onMouseOut="hidePop('20_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>20a.</b>&nbsp;<span title="svih_lekd">Leveransvillkor - kod</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1315,7 +1315,7 @@
 								</span>
 								</div>	
 					            </td>
-		 						<td class="text12">
+		 						<td class="text14">
 		 							<select name="svih_lekd" id="svih_lekd">
 		 							<option value="">-Välj-</option>
 								  		<option value="EXW"<c:if test="${model.record.svih_lekd == 'EXW'}"> selected </c:if> >EXW</option>
@@ -1334,7 +1334,7 @@
 					     	</tr>
 							<tr height="1"><td class="text"></td></tr>					     						     	
 				            <tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('20b_info');" onMouseOut="hidePop('20b_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>20b.</b>&nbsp;<span title="svih_leor">Leveransvillkor - ort</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1349,7 +1349,7 @@
 					        </tr>
 					        <tr height="10"><td class="text"></td></tr>					     						     	
 				            <tr>
-								<td class="text12">
+								<td class="text14">
 					 				<img onMouseOver="showPop('19_info');" onMouseOut="hidePop('19_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 				<b>19.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svih_cont">Container&nbsp;&nbsp;</span>
 				 				
@@ -1365,7 +1365,7 @@
 									</div>
 								</td>
 								
-		 						<td class="text12" >
+		 						<td class="text14" >
 		 							<select class="inputTextMediumBlueMandatoryField" name="svih_cont" id="svih_cont">
 				 						<option value="0"<c:if test="${model.record.svih_cont == 0}"> selected </c:if> >0</option>
 								  		<option value="1"<c:if test="${model.record.svih_cont == 1}"> selected </c:if> >1</option>
@@ -1450,7 +1450,7 @@
 			 				<%-- DEKLARANT --%>
 			 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 						 		<tr height="18px">
-						 			<td class="text12White">
+						 			<td class="text14White">
 						 				&nbsp;<img onMouseOver="showPop('14_info');" onMouseOut="hidePop('14_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>&nbsp;14.</b>Deklarant&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						 					&nbsp;&nbsp;<font style="font-style: italic;">[om annat än Mottagare]</font>
@@ -1482,7 +1482,7 @@
 							 		<td>
 								 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									 		<tr height="15">
-									            <td class="text12" align="left">&nbsp;</td> 
+									            <td class="text14" align="left">&nbsp;</td> 
 									        </tr>
 									        <tr>
 									        	<%-- ================================================================================== --%>
@@ -1499,9 +1499,9 @@
 									        	<input type="hidden" name="orig_svih_dkpa" id="orig_svih_dkpa" value='${model.record.svih_dkpa}'>
 									        	<input type="hidden" name="orig_svih_dklk" id="orig_svih_dklk" value='${model.record.svih_dklk}'>
 							        	
-									            <td class="text12" align="left" >&nbsp;&nbsp;
+									            <td class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dkkn">Kundnummer</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;
+									            <td class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dkna">Namn</span>
 									            	<a tabindex="-1" id="svih_dknaIdLink">
 														<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
@@ -1513,9 +1513,9 @@
 									            <td align="left"><input type="text" class="inputTextMediumBlue" name="svih_dkna" id="svih_dkna" size="30" maxlength="35" value="${model.record.svih_dkna}"></td>
 									        </tr>
 									        <tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;
+									            <td class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dkeo">EORI</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;</td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 									        </tr>
 									        <tr>
 									            <td align="left"><input type="text" class="inputTextMediumBlue" name="svih_dkeo" id="svih_dkeo" size="17" maxlength="17" value="${model.record.svih_dkeo}"></td>
@@ -1523,9 +1523,9 @@
 									        </tr>
 									        <tr height="4"><td>&nbsp;</td></tr>
 									        <tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;
+									            <td class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dka1">Adress 1</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;
+									            <td class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dka2">Adress 2</span></td>
 									        </tr>
 									        <tr>
@@ -1536,7 +1536,7 @@
 									        		<td>
 										        		<table>
 										        		<tr>
-										            		<td class="text12" align="left" >&nbsp;
+										            		<td class="text14" align="left" >&nbsp;
 										            		<span title="svih_dkpa">Postadress</span></td>
 										            		<td align="left">&nbsp;</td>
 										            	</tr>
@@ -1551,9 +1551,9 @@
 									            <td >
 										            	<table>
 										        		<tr>
-										        			<td class="text12" align="left" >&nbsp;&nbsp;
+										        			<td class="text14" align="left" >&nbsp;&nbsp;
 										        			<span title="svih_dkpn">Postnummer</span></td>
-										            		<td class="text12" align="left" >&nbsp;&nbsp;
+										            		<td class="text14" align="left" >&nbsp;&nbsp;
 										            		<span title="svih_dklk">Land</span>
 															<a tabindex="-1" id="svih_dklkIdLink">
            													<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1576,9 +1576,9 @@
 									        </tr>
 
 									        <tr>
-									            <td align="left" class="text12" align="left" >&nbsp;&nbsp;
+									            <td align="left" class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dkha">Handläggare</span></td>
-									            <td align="left"class="text12" align="left" >&nbsp;&nbsp;
+									            <td align="left"class="text14" align="left" >&nbsp;&nbsp;
 									            <span title="svih_dktl">Telefon</span></td>
 									        </tr>
 									        <tr>
@@ -1587,8 +1587,8 @@
 									        </tr>
 							        
 									        <tr height="15">
-								            		<td class="text12Bold" align="left" >&nbsp;</td>
-								            		<td class="text12Bold" align="left" >&nbsp;</td> 
+								            		<td class="text14Bold" align="left" >&nbsp;</td>
+								            		<td class="text14Bold" align="left" >&nbsp;</td> 
 									        </tr>  
 								        </table>
 							        </td>
@@ -1603,7 +1603,7 @@
 			 				<%-- OMBUD --%>
 			 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 						 		<tr height="18px">
-						 			<td class="text12White">
+						 			<td class="text14White">
 						 				&nbsp;<img onMouseOver="showPop('14_b_info');" onMouseOut="hidePop('14_b_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>&nbsp;14.</b><font class="text16RedBold" >*</font>Ombud&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						 				<div class="text11" style="position: relative;" align="left" >
@@ -1635,12 +1635,12 @@
 							 		<td>
 								 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									 		<tr height="15">
-									            <td class="text12" align="left">&nbsp;</td> 
+									            <td class="text14" align="left">&nbsp;</td> 
 									        </tr>
 									        <tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 									            <span title="svih_omeo">Ombud EORI</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 									            <span title="svih_omty">Typ av ombudskap</span></td>
 									        </tr>
 									        <tr>
@@ -1657,9 +1657,9 @@
 									        </tr>
 									        
 									        <tr>
-									            <td align="left" class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+									            <td align="left" class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 									            <span title="svih_omha">Handläggare</span></td>
-									            <td align="left"class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+									            <td align="left"class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 									            <span title="svih_omtl">Telefon</span></td>
 									            <td>&nbsp;</td>
 									        </tr>
@@ -1695,14 +1695,14 @@
 							<td valign="top">
 					 			<table border="0" cellspacing="0" cellpadding="0">
 				                	<tr>
-						 			<td class="text12" >
+						 			<td class="text14" >
 						 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 							 				<tr>
-								 				<td nowrap class="text12">
+								 				<td nowrap class="text14">
 								 					&nbsp;&nbsp;
 								 					<span title="svih_kvsa">Kvalitetssäkring tillämpas</span>&nbsp;
 								 				</td>
-								 				<td align="right" class="text12">
+								 				<td align="right" class="text14">
 								 					<select name="svih_kvsa" id="svih_kvsa">
 							 						<option value="">-Välj-</option>
 											  		<option value="J"<c:if test="${model.record.svih_kvsa == 'J'}"> selected </c:if> >Ja</option>
@@ -1719,10 +1719,10 @@
 						<tr height="10"><td></td><td></td></tr>
 						<tr>
 							<td width="2">&nbsp;</td>
-				 			<td class="text12" >
+				 			<td class="text14" >
 				 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-						 			<td class="text12" align="right" >
+						 			<td class="text14" align="right" >
 						 			<img onMouseOver="showPop('7_info');" onMouseOut="hidePop('7_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 			<b>7.</b>&nbsp;<span title="svih_rfac, svih_rfac2">Ytterligare ref.nr.&nbsp;</span>
 						 			<div class="text11" style="position: relative;" align="left" >
@@ -1748,11 +1748,11 @@
 				 		<tr height="4"><td width="2">&nbsp;</td><td>&nbsp;</td></tr>
 				 		<tr>
 				 			<td width="2">&nbsp;</td>
-				 			<td class="text12">
+				 			<td class="text14">
 				 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 				<tr height="5"><td>&nbsp;</td></tr>
 				 				<tr>
-				 					<td class="text12" >
+				 					<td class="text14" >
 				 					<img onMouseOver="showPop('klareringsenhetEori_info');" onMouseOut="hidePop('klareringsenhetEori_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 				&nbsp;<span title="svih_kenh">Klareringsenhet&nbsp;</span>
 					 				<div class="text11" style="position: relative;" align="left" >
@@ -1763,12 +1763,12 @@
 									</div>
 									</td>
 									
-				 					<td class="text12">
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="svih_kenh" id="svih_kenh" size="20" maxlength="35" value='${model.record.svih_kenh}'>
 				 					</td>
 									</tr>
 									<tr>
-				 					<td class="text12" >
+				 					<td class="text14" >
 			 						<img onMouseOver="showPop('klareringsbEori_info');" onMouseOut="hidePop('klareringsbEori_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 				&nbsp;<span title="svih_kleo">Klareringsbehörig EORI&nbsp;</span>
 				 					<div class="text11" style="position: relative;" align="left" >
@@ -1784,7 +1784,7 @@
 									</div>
 									</td>
 									
-				 					<td class="text12">
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="svih_kleo" id="svih_kleo" size="20" maxlength="17" value="${model.record.svih_kleo}">
 				 					</td>
 									</tr>
@@ -1794,11 +1794,11 @@
 						<tr height="20"><td>&nbsp;</td><td>&nbsp;</td></tr>
 						<tr>
 							<td width="2">&nbsp;</td>
-				 			<td class="text12">
+				 			<td class="text14">
 				 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 				<tr height="5"><td>&nbsp;</td></tr>
 				 				<tr>
-				 					<td class="text12" ><b>12.&nbsp;Värdeuppgifter&nbsp;</b></td>
+				 					<td class="text14" ><b>12.&nbsp;Värdeuppgifter&nbsp;</b></td>
 								</tr>
 									
 				 				</table>
@@ -1806,36 +1806,36 @@
 						</tr> 				 		
 						<tr>
 							<td width="2">&nbsp;</td>
-				 			<td class="text12">
+				 			<td class="text14">
 				 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 				<tr height="2"><td></td></tr>
 				 				<tr>
-				 					<td class="text12" >12.&nbsp;<span title="svih_vufr">Frakt</span>&nbsp; </td>
-				 					<td class="text12">
+				 					<td class="text14" >12.&nbsp;<span title="svih_vufr">Frakt</span>&nbsp; </td>
+				 					<td class="text14">
 				 						<input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="svih_vufr" id="svih_vufr" size="15" maxlength="11" value="${model.record.svih_vufr}">
 				 					</td>
 								</tr>
 								<tr>
-				 					<td class="text12" >12.&nbsp;<span title="svih_vufo">Försäkring</span>&nbsp; </td>
-				 					<td class="text12">
+				 					<td class="text14" >12.&nbsp;<span title="svih_vufo">Försäkring</span>&nbsp; </td>
+				 					<td class="text14">
 				 						<input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="svih_vufo" id="svih_vufo" size="15" maxlength="11" value="${model.record.svih_vufo}">
 				 					</td>
 								</tr>
 								<tr>
-				 					<td class="text12" >12.&nbsp;<span title="svih_ovko">Övriga kostnader</span>&nbsp; </td>
-				 					<td class="text12">
+				 					<td class="text14" >12.&nbsp;<span title="svih_ovko">Övriga kostnader</span>&nbsp; </td>
+				 					<td class="text14">
 				 						<input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="svih_ovko" id="svih_ovko" size="15" maxlength="11" value="${model.record.svih_ovko}">
 				 					</td>
 								</tr>
 								<tr>
-				 					<td class="text12" >12.&nbsp;<span title="svih_kara">Kassarabatt</span>&nbsp; </td>
-				 					<td class="text12">
+				 					<td class="text14" >12.&nbsp;<span title="svih_kara">Kassarabatt</span>&nbsp; </td>
+				 					<td class="text14">
 				 						<input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="svih_kara" id="svih_kara" size="15" maxlength="11" value="${model.record.svih_kara}">
 				 					</td>
 								</tr>
 								<tr>
-				 					<td class="text12" >12.&nbsp;<span title="svih_anra">Annan rabatt</span>&nbsp; </td>
-				 					<td class="text12">
+				 					<td class="text14" >12.&nbsp;<span title="svih_anra">Annan rabatt</span>&nbsp; </td>
+				 					<td class="text14">
 				 						<input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="svih_anra" id="svih_anra" size="15" maxlength="11" value="${model.record.svih_anra}">
 				 					</td>
 								</tr>	
@@ -1863,11 +1863,11 @@
 			 	<input type="hidden" name="currentAvd" id="currentAvd" value="${model.record.svih_syav}">
 			 	<input type="hidden" name="currentOpd" id="currentOpd" value="${model.record.svih_syop}">
 			 		
-				<p class="text12" >Change status as needed.</p>
+				<p class="text14" >Change status as needed.</p>
 				<table>
 					<tr>
-						<td class="text12" align="left" >&nbsp;Status</td>
-						<td class="text12MediumBlue">
+						<td class="text14" align="left" >&nbsp;Status</td>
+						<td class="text14MediumBlue">
 							<select name="selectedStatus" id="selectedStatus">
 			            		<option value=" ">-vælg-</option>
 			            		<option value="M">M</option>

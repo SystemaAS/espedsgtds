@@ -18,7 +18,7 @@
 	</style>
 	
 	<%-- tab container component --%>
-	<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
+	<table width="100%"  class="text14" cellspacing="0" border="0" cellpadding="0">
 		<tr height="2"><td></td></tr>
 		<tr height="25"> 
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
@@ -33,7 +33,7 @@
 						&sysg=${model.sign}&tuid=${model.tullId}&syst=${model.status}&sydt=${model.datum}">
 					
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.created.mastertopic.tab"/></font>
-					<font class="text12MediumBlue">[${model.opd}]</font>
+					<font class="text14MediumBlue">[${model.opd}]</font>
 					<c:if test="${model.status == 'M' || empty model.status}">
 						<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 					</c:if>
@@ -98,7 +98,7 @@
 	 				<%-- MASTER Topic header --%>
 	 				<table width="80%" align="left" class="formFrameHeaderTransparent" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12MediumBlue">
+				 			<td class="text14MediumBlue">
 				 				&nbsp;Avd&nbsp;<b>${model.avd}</b>
 				 				&nbsp;Tolldeknr.&nbsp;<b>${model.opd}</b>
 				 				&nbsp;Sign&nbsp;<b>${model.sign}</b>
@@ -114,64 +114,64 @@
 					 		<td width="50%">
 						 		<table width="100%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Exportör</td>
-							            <td class="text11" align="left" >&nbsp;&nbsp;</td>
+							            <td width="30%" class="text14Bold" align="left" >Exportör</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">EORI&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left"></td>
+							            <td width="30%" class="text14" align="left">EORI&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left"></td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avna}</td>
+							            <td width="30%" class="text14" align="left">Namn&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_avna}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Adress 1&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_ava1}</td>
+							            <td width="30%" class="text14" align="left">Adress 1&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_ava1}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Adress 2&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_ava2}</td>
+							            <td width="30%" class="text14" align="left">Adress 2&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_ava2}</td>
 							        </tr>
 							        
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avpn}&nbsp;${recordTopic.svih_avpa}&nbsp;${recordTopic.svih_avlk}</td>
+							            <td width="30%" class="text14" align="left">Postadress&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_avpn}&nbsp;${recordTopic.svih_avpa}&nbsp;${recordTopic.svih_avlk}</td>
 							        </tr>
 							        <tr>
-							        		<td width="30%" class="text11" align="left">&nbsp;</td>
+							        		<td width="30%" class="text14" align="left">&nbsp;</td>
 							        </tr>						        
 			        	        </table>
 					        </td>
 					        <td width="50%">
 						 		<table width="100%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Mottagare</td>
-							            <td class="text11" align="left" >&nbsp;&nbsp;</td>
+							            <td width="30%" class="text14Bold" align="left" >Mottagare</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">EORI.&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moeo}</td>
+							            <td width="30%" class="text14" align="left">EORI.&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_moeo}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_mona}</td>
+							            <td width="30%" class="text14" align="left">Namn&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_mona}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Adress 1&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moa1}</td>
+							            <td width="30%" class="text14" align="left">Adress 1&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_moa1}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Adress 2&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moa2}</td>
+							            <td width="30%" class="text14" align="left">Adress 2&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_moa2}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_mopn}&nbsp;${recordTopic.svih_mopa}&nbsp;${recordTopic.svih_molk}</td>
+							            <td width="30%" class="text14" align="left">Postadress&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_mopn}&nbsp;${recordTopic.svih_mopa}&nbsp;${recordTopic.svih_molk}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Handläggare&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moha}&nbsp;tel:${recordTopic.svih_motl}</td>
+							            <td width="30%" class="text14" align="left">Handläggare&nbsp;</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_moha}&nbsp;tel:${recordTopic.svih_motl}</td>
 							        </tr>
 							        
 			        	        </table>
@@ -192,21 +192,21 @@
 							<td>
 								<table width="80%" cellspacing="0" border="0" cellpadding="0">
 									<tr>
-										<td class="text12Bold">&nbsp;Antal fakturor&nbsp;&nbsp;<font class="text12MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
+										<td class="text14Bold">&nbsp;Antal fakturor&nbsp;&nbsp;<font class="text14MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
 						            	</td>
 						            	
-										<td align="right" class="text11">Fsum:&nbsp;
+										<td align="right" class="text14">Fsum:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" value="${recordTopic.svih_fabl}">
 											<font class="inputText11BlueBoldReadOnly">${recordTopic.svih_vakd}</font>
 										</td>
 										
-										<td align="right" class="text11">Vsum&nbsp;(&Sigma;):&nbsp;
+										<td align="right" class="text14">Vsum&nbsp;(&Sigma;):&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" value="${model.recordItemContainerInvoiceTopic.calculatedItemLinesTotalAmount}">
 											<font class="inputText11BlueBoldReadOnly">${model.recordItemContainerInvoiceTopic.calculatedValidCurrency}</font>											
 										</td>
 										 
 										<%-- Bug somewhere !!!
-										<td align="right" class="text11">Diff:&nbsp;
+										<td align="right" class="text14">Diff:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly
 												<c:choose>
 												<c:when test="${fn:contains(model.recordItemContainerInvoiceTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
@@ -240,15 +240,15 @@
 								<table id="tblInvoices" class="display compact cell-border" >
 									<thead>
 									<tr style="background-color:#DDDDDD">
-										<th width="2%" class="text12">&nbsp;Uppd.&nbsp;</th> 
-									    <th class="text12"><span title="svif_fatx">&nbsp;Fakturanr.&nbsp;</span></th>   
-					                    <th class="text12" ><span title="svif_faty">&nbsp;Typ&nbsp;</span></th>
-					                    <th align="right" class="text12" ><span title="svif_fabl">&nbsp;Belopp&nbsp;</span></th>
-					                    <th class="text12" ><span title="svif_vakd">&nbsp;Valuta&nbsp;</span></th>
-					                    <th align="right" class="text12" ><span title="svif_vaku">&nbsp;Kurs&nbsp;</span></th>
-					                    <th class="text12" align="left"><span title="svif_omr">Faktor&nbsp;</span></th> 
+										<th width="2%" class="text14">&nbsp;Uppd.&nbsp;</th> 
+									    <th class="text14"><span title="svif_fatx">&nbsp;Fakturanr.&nbsp;</span></th>   
+					                    <th class="text14" ><span title="svif_faty">&nbsp;Typ&nbsp;</span></th>
+					                    <th align="right" class="text14" ><span title="svif_fabl">&nbsp;Belopp&nbsp;</span></th>
+					                    <th class="text14" ><span title="svif_vakd">&nbsp;Valuta&nbsp;</span></th>
+					                    <th align="right" class="text14" ><span title="svif_vaku">&nbsp;Kurs&nbsp;</span></th>
+					                    <th class="text14" align="left"><span title="svif_omr">Faktor&nbsp;</span></th> 
 					                    <c:if test="${model.status == 'M' || empty model.status}">
-					                    	<th align="center" class="text12" >Radera</th>
+					                    	<th align="center" class="text14" >Radera</th>
 					                    </c:if>
 					                    
 					               </tr> 
@@ -263,21 +263,21 @@
 							                       <tr class="tableOddRow" height="20" >
 							                   </c:otherwise>
 							               </c:choose>
-							               <td width="2%" class="text11" >
+							               <td width="2%" class="text14" >
 							               		<a tabindex=-1 id="recordUpdate_${record.svif_fatx}" href="#" onClick="getItemData(this);">
 							               			&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
-							               <td width="10%" class="text11" >
+							               <td width="10%" class="text14" >
 							               		<a tabindex=-1 id="recordUpdate_${record.svif_fatx}" href="#" onClick="getItemData(this);">&nbsp;${record.svif_fatx}</a>
 							               </td>
-							               <td class="text11" >&nbsp;${record.svif_faty}</td>
-							               <td align="right" class="text11" >&nbsp;${record.svif_fabl}&nbsp;</td>
-							               <td class="text11" >&nbsp;${record.svif_vakd}</td>
-							               <td align="right" class="text11" >&nbsp;${record.svif_vaku}&nbsp;</td>
-							               <td class="text11" >&nbsp;${record.svif_omr}</td>
+							               <td class="text14" >&nbsp;${record.svif_faty}</td>
+							               <td align="right" class="text14" >&nbsp;${record.svif_fabl}&nbsp;</td>
+							               <td class="text14" >&nbsp;${record.svif_vakd}</td>
+							               <td align="right" class="text14" >&nbsp;${record.svif_vaku}&nbsp;</td>
+							               <td class="text14" >&nbsp;${record.svif_omr}</td>
 							               <c:if test="${model.status == 'M' || empty model.status}">	
-								               <td width="4%" class="text11" align="center" nowrap>
+								               <td width="4%" class="text14" align="center" nowrap>
 								               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsimport_edit_invoice.do?action=doDelete&sign=${model.sign}&avd=${model.avd}&opd=${model.opd}&status=${model.status}&fak=${record.svif_fatx}">
 								               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	&nbsp;
@@ -362,7 +362,7 @@
 	 				<input type="hidden" name="totalGrossWeight" id="totalGrossWeight" value='${XrecordTopicTvinnSad.sevkb}'>
 	 				<table width="80%" cellspacing="0" border="0" cellpadding="0">
 						<tr>
-							<td class="text12Bold">
+							<td class="text14Bold">
 								<c:if test="${model.status == 'M' || empty model.status}">
 									<input tabindex=-1 class="inputFormSubmitStd" type="submit" name="submit" onclick="javascript: form.action='tdsimport_edit_invoice.do';" value="Skapa ny">
 									&nbsp;<button title="Import av externa fakturor" name="importInvoicesButton" id="importInvoicesButton" class="buttonGrayWithGreenFrame" type="button" >Importera externa fakturor</button>
@@ -394,11 +394,11 @@
 				 	<%-- Topic ITEM CREATE --%>
 	 				<table width="80%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White" align="left" >
+				 			<td class="text14White" align="left" >
 				 				<b>&nbsp;&nbsp;F<label onClick="showPop('debugPrintlnAjaxItemFetchAdmin');" >a</label>ktura&nbsp;</b>
 				 				
 		 									<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="debugPrintlnAjaxItemFetchAdmin" class="popupWithInputText"  >
-								           		<div class="text11" align="left">
+								           		<div class="text14" align="left">
 								           			<label id="debugPrintlnAjaxItemFetchInfo"></label>
 								           			<br/>
 								           			&nbsp;&nbsp;
@@ -411,7 +411,7 @@
 				 				
 				 				<img onClick="showPop('updateInfo');" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
-		           		   			<div class="text12" align="left" style="display:block;width:700px;word-break:break-all;">
+		           		   			<div class="text14" align="left" style="display:block;width:700px;word-break:break-all;">
 		           		   				${activeUrlRPGUpdate}<br/><br/>
 		           		   				<button name="updateInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('updateInfo');">Close</button> 
 		           		   			</div>
@@ -426,12 +426,12 @@
 					 		<td>
 						 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
-							 			<td class="text12" align="left"><span title="svif_fatx"><font class="text16RedBold" >*</font>Fakturanr.</span></td>
-							            <td class="text12" align="left"><font class="text16RedBold" >*</font><span title="svif_faty">&nbsp;Typ</span></td>
-							            <td class="text12" align="left"><font class="text16RedBold" >*</font><span title="svif_fabl">&nbsp;Belopp</span></td>
-							            <td class="text12" align="left"><font class="text16RedBold" >*</font><span title="svif_vakd">&nbsp;Valuta</span></td>
-					            		<td class="text12" align="left"><font class="text16RedBold" >*</font><span title="svif_vaku">&nbsp;Kurs</span></td>
-					            		<td class="text12" align="left"><span title="factor">Faktor&nbsp;</span></td>
+							 			<td class="text14" align="left"><span title="svif_fatx"><font class="text16RedBold" >*</font>Fakturanr.</span></td>
+							            <td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_faty">&nbsp;Typ</span></td>
+							            <td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_fabl">&nbsp;Belopp</span></td>
+							            <td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_vakd">&nbsp;Valuta</span></td>
+					            		<td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_vaku">&nbsp;Kurs</span></td>
+					            		<td class="text14" align="left"><span title="factor">Faktor&nbsp;</span></td>
 					            		
 							        </tr>
 							        <tr>
@@ -458,7 +458,7 @@
            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            									</a>
 			 							</td>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svif_fabl" id="svif_fabl" size="13" maxlength="12" value="${model.record.svif_fabl}">
 							            </td>
 										<td align="left" nowrap>
@@ -474,11 +474,11 @@
            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            									</a>
 										</td>
-						        		<td class="text12" align="left">
+						        		<td class="text14" align="left">
 						            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svif_vaku" id="svif_vaku" size="10" maxlength="8" value="${model.record.svif_vaku}">
 							            </td>
 							            <%-- this field is only used via Ajax since there is no database field. It is used to disclosed a factor when changing the currency --%>
-							 			<td class="text12Grey" align="left" ><input readonly type="text" class="inputTextReadOnly" name="factor" id="factor" size="6" value=""></td>
+							 			<td class="text14Grey" align="left" ><input readonly type="text" class="inputTextReadOnly" name="factor" id="factor" size="6" value=""></td>
 							        </tr>
 							        <tr height="10"><td class="text" align="left"></td></tr>
 						        </table>

@@ -43,7 +43,7 @@
 						<font class="tabLink">
 							&nbsp;<spring:message code="systema.tds.export.created.mastertopic.tab"/>
 						</font>
-						<font class="text12MediumBlue">[${model.record.sveh_syop}]</font>
+						<font class="text14MediumBlue">[${model.record.sveh_syop}]</font>
 						<c:if test="${model.record.sveh_syst == 'M' || empty model.record.sveh_syst}">
 							<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						</c:if>
@@ -152,7 +152,7 @@
 	    	<input type="hidden" name="avd" id="avd" value='${model.record.sveh_syav}'>
 			<input type="hidden" name="sign" id="sign" value='${model.record.sveh_sysg}'>
 			<tr >
-				<td align="left" class="text12MediumBlue" >
+				<td align="left" class="text14MediumBlue" >
 					&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.sveh_syav}&nbsp;&nbsp;Ärende:&nbsp;<b>${model.record.sveh_syop}</b>
 					&nbsp;&nbsp;Tullid:&nbsp;<b>${model.record.sveh_tuid}</b>
 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricFragaTullidURL.value}" onclick="${model.taricFragaTullidURL.windowOpenDimensions}" >
@@ -175,7 +175,7 @@
 					</c:choose>	
             		&nbsp;&nbsp;
 					<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text12MediumBlue">u</font></a>s:
+					Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text14MediumBlue">u</font></a>s:
 					<b>
 						<c:choose>
 							<c:when test="${empty model.record.sveh_syst}">
@@ -223,7 +223,7 @@
 				<td align="right" >
 					<c:if test="${'1' != isTestAvd}">
 						<%--This checkbox appears only in real production. Otherwise use the Testavdelning --%>
-						<input tabindex=-1 type="checkbox" name="sveh_0035" id="sveh_0035" value="1" <c:if test="${model.record.sveh_0035 == '1'}"> checked </c:if> ><font class="text12MediumBlue"><b>TEST flag</b></font>&nbsp;&nbsp;&nbsp;						
+						<input tabindex=-1 type="checkbox" name="sveh_0035" id="sveh_0035" value="1" <c:if test="${model.record.sveh_0035 == '1'}"> checked </c:if> ><font class="text14MediumBlue"><b>TEST flag</b></font>&nbsp;&nbsp;&nbsp;						
 					</c:if>
 					<a tabindex=-1 href="tdsexport_edit_printTopic.do?avd=${model.record.sveh_syav}&opd=${model.record.sveh_syop}">
 					 	<img style="cursor:pointer;" src="resources/images/printer.png" width="30" hight="30" border="0" alt="Print">
@@ -244,7 +244,7 @@
 		<%-- CREATE MODE --%>
 		<c:otherwise>
 			<tr >
-				<td align="left" class="text12MediumBlue">
+				<td align="left" class="text14MediumBlue">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;
            			<select name="avd" id="avd">
 	            		<option value="">-Välj-</option>
@@ -279,7 +279,7 @@
 	            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 	            		
 				 		<tr>
-				 			<td class="text12">
+				 			<td class="text14">
 				 				<img onMouseOver="showPop('1_1_info');" onMouseOut="hidePop('1_1_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 					<b>1.1</b><font class="text16RedBold" >*</font><span title="sveh_dek1">Dekl.&nbsp;</span>
 			 					<div class="text11" style="position: relative;" align="left" >
@@ -306,7 +306,7 @@
 								  <option value="EX"<c:if test="${model.record.sveh_dek1 == 'EX'}"> selected </c:if> >EX</option>
 								</select>
 			 				</td>
-			 				<td class="text12">
+			 				<td class="text14">
 			 					&nbsp;<img onMouseOver="showPop('48_info');" onMouseOut="hidePop('48_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>48.</b><font class="text16RedBold" >*</font><span title="sveh_upps">Uppskj. bet.&nbsp;</span>
 				 				
@@ -338,7 +338,7 @@
 								  
 						  		</select>
 			 				</td>
-			 				<td class="text12">&nbsp;&nbsp;
+			 				<td class="text14">&nbsp;&nbsp;
 			 				<img onMouseOver="showPop('meddTyp_info');" onMouseOut="hidePop('meddTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 				<font class="text16RedBold" >*</font><span title="sveh_mtyp">Medd.typ&nbsp;</span>
 			 				<div class="text11" style="position: relative;" align="left" >
@@ -369,7 +369,7 @@
 				 			</td>
 		 				</tr>
 		 				<tr>
-		 					<td class="text12">
+		 					<td class="text14">
 		 						<img onMouseOver="showPop('1_2_info');" onMouseOut="hidePop('1_2_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>1.2</b><font class="text16RedBold" >*</font><span title="sveh_dek2">Dekl.typ&nbsp;</span>
 				 				<div class="text11" style="position: relative;" align="left" >
@@ -392,7 +392,7 @@
 								</select>
 			 				</td>
 			 				
-			 				<td class="text12">
+			 				<td class="text14">
 			 					&nbsp;<img onMouseOver="showPop('24_info');" onMouseOut="hidePop('24_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>24.</b><font class="text16RedBold" >*</font><span title="sveh_tart">Trans.art&nbsp;</span>
 				 				
@@ -447,12 +447,12 @@
 								  <option value="9"<c:if test="${model.record.sveh_tart == 9}"> selected </c:if> >9</option>
 								</select>
 			 				</td>
-			 				<td class="text12">&nbsp;</td>
-			 				<td class="text12">&nbsp;</td>
+			 				<td class="text14">&nbsp;</td>
+			 				<td class="text14">&nbsp;</td>
 		 				</tr>
 		 				<tr height="5"><td></td></tr>
 		 				<tr>
-				 			<td class="text12"><span title="h_xref">&nbsp;&nbsp;&nbsp;&nbsp;Ext.ref.&nbsp;</span></td>
+				 			<td class="text14"><span title="h_xref">&nbsp;&nbsp;&nbsp;&nbsp;Ext.ref.&nbsp;</span></td>
 				 			<td colspan="3">
 				 				<input type="text" class="inputText" name="h_xref" id="h_xref" size="20" maxlength="35" value='${model.record.h_xref}'>
 			 				</td>
@@ -511,7 +511,7 @@
 	 				<%-- SENDER --%>
 	 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 								&nbsp;<img onMouseOver="showPop('2_info');" onMouseOut="hidePop('2_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 			<b>&nbsp;2.</b><font class="text16RedBold" >*</font>Avsändare/Exportör&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<div class="text11" style="position: relative;" align="left" >
@@ -557,22 +557,22 @@
 							        	<input type="hidden" name="orig_sveh_avtl" id="orig_sveh_avtl" value='${model.record.sveh_avtl}'>
 							        	
 							        	
-							            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_avkn">Kundnummer</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avna">Namn&nbsp;</span>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_avkn">Kundnummer</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avna">Namn&nbsp;</span>
 							            	<a tabindex="-1" id="sveh_avnaIdLink">
 												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 											</a>		
 							            </td>
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left"><input type="text" class="inputTextMediumBlue" name="sveh_avkn" id="sveh_avkn" size="8" maxlength="8" value="${model.record.sveh_avkn}"></td>
-							            <td class="text12" align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_avna" id="sveh_avna" size="30" maxlength="35" value="${model.record.sveh_avna}"></td>
+							            <td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="sveh_avkn" id="sveh_avkn" size="8" maxlength="8" value="${model.record.sveh_avkn}"></td>
+							            <td class="text14" align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_avna" id="sveh_avna" size="30" maxlength="35" value="${model.record.sveh_avna}"></td>
 							            
 							        </tr>
 							        
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_aveo">EORI</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_aveo">EORI</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_aveo" id="sveh_aveo" size="20" maxlength="17" value="${model.record.sveh_aveo}"></td>
@@ -580,8 +580,8 @@
 							        </tr>
 							        <tr height="4"><td>&nbsp;</td></tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_ava1">Adress 1</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_ava2">Adress 2</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_ava1">Adress 1</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_ava2">Adress 2</span></td>
 							        </tr>
 							        <tr>
 							            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_ava1" id="sveh_ava1" size="30" maxlength="35" value="${model.record.sveh_ava1}"></td>
@@ -591,22 +591,22 @@
 							        	<td>
 							        		<table>
 							        		<tr>
-							            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avpa">Postadress</span></td>
-							            		<td class="text12" >&nbsp;</td>
+							            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avpa">Postadress</span></td>
+							            		<td class="text14" >&nbsp;</td>
 							            	</tr>
 							        		<tr>
 							            		<td align="left" colspan="2">
 							            			<input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_avpa" id="sveh_avpa" size="30" maxlength="35" value="${model.record.sveh_avpa}">
 							            		</td> 
-							            		<td class="text12" >&nbsp;</td>
+							            		<td class="text14" >&nbsp;</td>
 							        		</tr>    	
 							            	</table>
 							            </td>
 							            <td>
 							            	<table>
 							        		<tr>
-							            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avpn">Postnummer</span></td>
-							            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avlk">Land</span>
+							            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avpn">Postnummer</span></td>
+							            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avlk">Land</span>
 							            		<a tabindex="-1" id="sveh_avlkIdLink">
        												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            										</a>
@@ -630,15 +630,15 @@
 							        </tr>
 							        
 							        <tr>
-							            <td align="left" class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avha">Handläggare</span></td>
-							            <td align="left"class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avtl">Telefon</span></td>
+							            <td align="left" class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avha">Handläggare</span></td>
+							            <td align="left"class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_avtl">Telefon</span></td>
 							        </tr>
 							        <tr>
 							            <td align="left" ><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_avha" id="sveh_avha" size="25" maxlength="35" value="${model.record.sveh_avha}"></td>
 							            <td align="left" ><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_avtl" id="sveh_avtl" size="20" maxlength="25" value="${model.record.sveh_avtl}"></td>
 							        </tr>
 							        <tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 						        </table>
 					        </td>
@@ -654,7 +654,7 @@
 	            <td >		
 	 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				&nbsp;<img onMouseOver="showPop('8_info');" onMouseOut="hidePop('8_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 				<b>&nbsp;8.</b><font class="text16RedBold" >*</font>Mottagare&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<div class="text11" style="position: relative;" align="left" >
@@ -697,8 +697,8 @@
 							        	<input type="hidden" name="orig_sveh_mopa" id="orig_sveh_mopa" value='${model.record.sveh_mopa}'>
 							        	<input type="hidden" name="orig_sveh_molk" id="orig_sveh_molk" value='${model.record.sveh_molk}'>
 							        	
-							            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_mokn">Kundnummer</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_mona">Namn&nbsp;</span>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_mokn">Kundnummer</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_mona">Namn&nbsp;</span>
 							            	<a tabindex="-1" id="sveh_monaIdLink">
 												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 											</a>
@@ -709,8 +709,8 @@
 							            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_mona" id="sveh_mona" size="30" maxlength="35" value="${model.record.sveh_mona}"></td>
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_moeo">EORI</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_moeo">EORI</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td align="left"><input type="text" class="inputTextMediumBlue" name="sveh_moeo" id="sveh_moeo" size="20" maxlength="17" value="${model.record.sveh_moeo}"></td>
@@ -718,8 +718,8 @@
 							        </tr>
 							        <tr height="4"><td>&nbsp;</td></tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_moa1">Adress 1</span></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_moa2">Adress 2</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_moa1">Adress 1</span></td>
+							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_moa2">Adress 2</span></td>
 							        </tr>
 							        <tr>
 							            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_moa1" id="sveh_moa1" size="30" maxlength="35" value="${model.record.sveh_moa1}"></td>
@@ -729,7 +729,7 @@
 							        	<td>
 							        		<table>
 							        		<tr>
-							            		<td class="text12" align="left" >&nbsp;<font class="text16RedBold" >*</font><span title="sveh_mopa">Postadress</span></td>
+							            		<td class="text14" align="left" >&nbsp;<font class="text16RedBold" >*</font><span title="sveh_mopa">Postadress</span></td>
 											<td align="left">&nbsp;</td>
 							            	</tr>
 							        		<tr>
@@ -741,8 +741,8 @@
 							            <td>
 							            	<table>
 							        		<tr>
-							        			<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_mopn">Postnummer</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							            		<td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_molk">Land</span>
+							        			<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_mopn">Postnummer</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_molk">Land</span>
 							            		<a tabindex="-1" id="sveh_molkIdLink">
        												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            										</a>
@@ -765,7 +765,7 @@
 							            </td>
 							        </tr>
 							        <tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 						        </table>
 					        </td>
@@ -782,13 +782,13 @@
 	                	<c:choose>
 		                	<c:when test="${ empty model.record.invoiceListTotSum}">
 						 		<tr>
-						 			<td class="text12">
+						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="sveh_fabl">Fakt.total&nbsp;</span>
 						 			</td>
 						 			<td align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_fabl" id="sveh_fabl" size="20" maxlength="20" value="${model.record.sveh_fabl}"></td>
-						 			<td class="text12">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
+						 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
 						 				<%-- Note: onChange event in jQuery for this currency list --%>
 						 				<select class="inputTextMediumBlueMandatoryField" name="sveh_vakd" id="sveh_vakd">
 							            		<option value="">-Välj-</option>
@@ -802,41 +802,41 @@
 					 				</td>
 				 				</tr>
 				 				<tr>
-					 				<td class="text12">
+					 				<td class="text14">
 						 				<b>&nbsp;23.</b>&nbsp;<span title="sveh_vaku"><font class="text16RedBold" >*</font>Kurs&nbsp;</span>
 						 			</td>
-						 			<td class="text12" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.sveh_vaku}"></td>
-						 			<td class="text12" align="left" ><span title="sveh_vaom">Faktor</span><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'></td>
+						 			<td class="text14" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.sveh_vaku}"></td>
+						 			<td class="text14" align="left" ><span title="sveh_vaom">Faktor</span><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'></td>
 				 				</tr>
 			 				</c:when>
 			 				<c:otherwise> <%-- otherwise READ ONLY --%>
 			 					<tr>
-						 			<td class="text12">
+						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="sveh_fabl">Fakt.total&nbsp;</span>
 						 			</td>
 						 			<td align="left" ><input readonly type="text" class="inputTextReadOnly" name="sveh_fabl" id="sveh_fabl" size="20" maxlength="20" value="${model.record.invoiceListTotSum}"></td>
-						 			<td class="text12">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
+						 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
 						 				<input readonly type="text" class="inputTextReadOnly" name="sveh_vakd" id="sveh_vakd" size="4" maxlength="3" value="${model.record.invoiceListTotValidCurrency}">						 												
 					 				</td>
 				 				</tr>
 				 				<tr>
-					 				<td class="text12">
+					 				<td class="text14">
 						 				<b>&nbsp;23.</b>&nbsp;<span title="sveh_vaku"><font class="text16RedBold" >*</font>Kurs&nbsp;</span>
 						 			</td>
-						 			<td class="text12" align="left" ><input readonly type="text" class="inputTextReadOnly" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.invoiceListTotKurs}"></td>
-						 			<td class="text12" align="left" ><span title="sveh_vaom">Faktor</span><input readonly type="text" class="inputTextReadOnly" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'></td>
+						 			<td class="text14" align="left" ><input readonly type="text" class="inputTextReadOnly" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.invoiceListTotKurs}"></td>
+						 			<td class="text14" align="left" ><span title="sveh_vaom">Faktor</span><input readonly type="text" class="inputTextReadOnly" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'></td>
 				 				</tr>
 			 				</c:otherwise>
 		 				</c:choose>
 		 				
 		 				<tr height="10"><td></td></tr>
 		 				<tr>
-		 					<td class="text12Gray" align="right">
+		 					<td class="text14Gray" align="right">
 				 				<span title="invoiceListTotSum/invoiceListTotValidCurrency"></span>Fakt.total (fakt.lista)&nbsp;</span>
 				 			</td>
-				            <td colspan="2" class="text12" align="left" >
+				            <td colspan="2" class="text14" align="left" >
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotSum" id="invoiceListTotSum" size="15" value='${ model.record.invoiceListTotSum}'>
 				            &nbsp;&nbsp;
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotValidCurrency" id="invoiceListTotValidCurrency" size="5" value='${ model.record.invoiceListTotValidCurrency}'>
@@ -850,10 +850,10 @@
 				        </tr>
 				        <tr height="2"><td></td></tr>
 		 				<tr>
-			 				<td class="text12Gray" align="right">
+			 				<td class="text14Gray" align="right">
 				 				<span title="sumOfItemAmounts">Fakt.total (varuposter)&nbsp;</span>
 				 			</td>
-				 			<td colspan="2" class="text12" align="left" >
+				 			<td colspan="2" class="text14" align="left" >
 				 				<input readonly style="text-align: left" type="text" class="inputTextReadOnly" name="sumOfInvoiceAmountInItemLines" id="sumOfInvoiceAmountInItemLines" size="20" maxlength="20" value="${model.record.sumOfInvoiceAmountInItemLinesStr}">
 				 				<c:if test="${not empty (sumOfInvoiceAmountInItemLinesStr && model.record.sveh_fabl)}">
 			            			<c:if test="${model.record.sumOfInvoiceAmountInItemLinesStr != model.record.sveh_fabl_dbl}">
@@ -882,7 +882,7 @@
 					<%-- Special section --%>
 					<table align="left" class="formFrameHeader" width="100%" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;44.</b>&nbsp;Särskilda upplysningar&nbsp;/&nbsp;Bilagda handlingar&nbsp;/&nbsp;Certifikat och tillstånd&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 			 				</td>
 		 				</tr>
@@ -898,12 +898,12 @@
 					 		<td>
 						 		<table align="left" border="0" cellspacing="0" cellpadding="0">
 							 		<tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left" >&nbsp;<span title="sveh_fatx">Fakt.nr.&nbsp;</span></td>
+							            <td class="text14" align="left" >&nbsp;<span title="sveh_fatx">Fakt.nr.&nbsp;</span></td>
 							            <td ><input type="text" class="inputTextMediumBlue" name="sveh_fatx" id="sveh_fatx" size="20" maxlength="50" value="${model.record.sveh_fatx}"></td>
-							            <td class="text12" align="left" >&nbsp;&nbsp;&nbsp;
+							            <td class="text14" align="left" >&nbsp;&nbsp;&nbsp;
 							            <img onMouseOver="showPop('faktTyp_info');" onMouseOut="hidePop('faktTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 				<span title="sveh_faty">Fakt.typ&nbsp;</span>
 							            
@@ -925,7 +925,7 @@
 			 							</td>
 							        </tr>
 							        <tr height="15">
-							            <td class="text12Bold" align="left" >&nbsp;</td> 
+							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 								</table>
 							</td>
@@ -946,7 +946,7 @@
 					<td valign="top">
 			 			<table border="0" cellspacing="0" cellpadding="0">
 					 		<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('15_a_info');" onMouseOut="hidePop('15_a_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 					<b>15a.</b><font class="text16RedBold" >*</font><span title="sveh_avut">Avsändnings-/Exportland&nbsp;</span>
 			 					
@@ -972,7 +972,7 @@
 								</td>
 							</tr>
 							<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('17_a_info');" onMouseOut="hidePop('17_a_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>17a.</b><font class="text16RedBold" >*</font><span title="sveh_aube">Bestämmelseland, kod&nbsp;</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1010,11 +1010,11 @@
 			 		<td>
 			 			<table border="0" cellspacing="0" cellpadding="0">
 					 		<tr height="15">
-					            <td class="text12Bold" align="left" >&nbsp;</td> 
+					            <td class="text14Bold" align="left" >&nbsp;</td> 
 					        </tr>
 					        <tr height="5"><td class="text">&nbsp;</td> </tr>
 							<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('26_info');" onMouseOut="hidePop('26_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>26.</b>
 					            <font class="text16RedBold" >*</font><span title="sveh_trin">Transportsätt inrikes</span>
@@ -1051,7 +1051,7 @@
 			 		<td>
 			 			<table border="0" cellspacing="0" cellpadding="0">
 			 				<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('18_info');" onMouseOut="hidePop('18_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>18.</b>
 					            <span title="sveh_trid / sveh_trlk">Transportmedlets identitet och nationalitet vid avgången/ankomsten</span>
@@ -1099,7 +1099,7 @@
 			 			<table border="0" cellspacing="0" cellpadding="0">
 			 				<tr height="5"><td class="text">&nbsp;</td> </tr>
 			 				<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('25_info');" onMouseOut="hidePop('25_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>25.</b>
 					            <font class="text16RedBold" >*</font><span title="sveh_trgr">Transportsätt vid gränsen</span>
@@ -1135,9 +1135,9 @@
 			 		<td>
 						<table border="0" cellspacing="0" cellpadding="0">	
 					 		<tr>
-					            <td class="text12" align="left">
+					            <td class="text14" align="left">
 					            <img onMouseOver="showPop('21_info');" onMouseOut="hidePop('21_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					            <b>21.</b><font class="text12RedBold" >*</font>
+					            <b>21.</b><font class="text14RedBold" >*</font>
 					            <span title="sveh_trai / sveh_tral">Aktiva transportmedlets identitet och nationalitet vid gränspassagen</span>
 					            <div class="text11" style="position: relative;" align="left" >
 					            <span style="position:absolute;top:2px; width:250px;" id="21_info" class="popupWithInputText text11"  >
@@ -1186,7 +1186,7 @@
 			 			<table border="0" cellspacing="0" cellpadding="0">
 			 				<tr height="5"><td class="text">&nbsp;</td> </tr>
 			 				<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('30_info');" onMouseOut="hidePop('30_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>30.</b><span title="sveh_golk">Godslokal kod</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1206,7 +1206,7 @@
 													        
 	        				</tr>
 	        				<tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('godsnr_info');" onMouseOut="hidePop('godsnr_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <span title="sveh_godn">Godsnummer</span>
 					            <div class="text11" style="position: relative;" align="left" >
@@ -1230,7 +1230,7 @@
 	        				</tr>
 	        				<tr height="5"><td class="text">&nbsp;</td> </tr>
 			 				<tr>
-					            <td class="text12" align="left">
+					            <td class="text14" align="left">
 					            <img onMouseOver="showPop('29_info');" onMouseOut="hidePop('29_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>29.</b><font class="text16RedBold" >*</font><span title="sveh_utfa">Utfartstullkontor&nbsp;</span>
 					            
@@ -1298,7 +1298,7 @@
 								</td>
 					        </tr>
 				            <tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('6_info');" onMouseOut="hidePop('6_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>6.&nbsp;</b><font class="text16RedBold" >*</font><span title="sveh_kota">Antal kollin (alltid > 0)</span>
 					            
@@ -1318,7 +1318,7 @@
 					            <td ><input onKeyPress="return numberKey(event)" style="text-align: right" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_kota" id="sveh_kota" size="8" maxlength="7" value="${model.record.sveh_kota}"></td>
 					        </tr>
 					        <tr>
-				        		<td class="text12Gray" align="center" >Antal kollin (varuposter)&nbsp;</td>
+				        		<td class="text14Gray" align="center" >Antal kollin (varuposter)&nbsp;</td>
 						        <td colspan="2">
 				            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfAntalKolliInItemLines" id="sumOfAntalKolliInItemLines" size="8" maxlength="7" value="${model.record.sumOfAntalKolliInItemLinesStr}">
 				            		<c:if test="${not empty (model.record.sumOfAntalKolliInItemLinesStr && model.record.sveh_kota)}">
@@ -1341,7 +1341,7 @@
 					        <tr height="2"><td class="text">&nbsp;</td> </tr>
 					        
 				            <tr>
-					            <td class="text12" align="left" >
+					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('35_info');" onMouseOut="hidePop('35_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
 					            <b>35.</b><font class="text16RedBold" >*</font><span title="sveh_brut">Bruttovikt</span>
 					            <div class="text11" style="position: relative;" align="left">
@@ -1362,7 +1362,7 @@
 					            <td ><input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_brut" id="sveh_brut" size="13" maxlength="13" value="${model.record.sveh_brut}"></td>
 					        </tr>
 					        <tr>
-				        		<td class="text12Gray" align="center" >
+				        		<td class="text14Gray" align="center" >
 				        			Bruttovikt (varuposter)&nbsp;
 				        		</td>
 						        <td colspan="2">
@@ -1387,10 +1387,10 @@
 					        <tr height="2"><td class="text">&nbsp;</td> </tr>
 					        <tr height="5"><td>&nbsp;</td></tr>
 							<tr>
-					 			<td class="text12">
+					 			<td class="text14">
 					 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 						 				<tr>
-							 				<td class="text12">
+							 				<td class="text14">
 							 				<img onMouseOver="showPop('19_info');" onMouseOut="hidePop('19_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 							 				<b>19.</b>&nbsp;<font class="text16RedBold" >*</font>Container&nbsp;&nbsp;
 							 				<div class="text11" style="position: relative;" align="left">
@@ -1407,25 +1407,25 @@
 				 			</tr>
 				 			
 					 		<tr>
-					 			<td colspan="2" class="text12">
+					 			<td colspan="2" class="text14">
 					 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 					 				<tr>
-					 					<td class="text12">&nbsp;&nbsp;<span title="sveh_cont">Kod&nbsp;</span></td>
-					 					<td class="text12">&nbsp;&nbsp;<span title="sveh_last">Lastplatskod&nbsp;</span></td>
+					 					<td class="text14">&nbsp;&nbsp;<span title="sveh_cont">Kod&nbsp;</span></td>
+					 					<td class="text14">&nbsp;&nbsp;<span title="sveh_last">Lastplatskod&nbsp;</span></td>
 				 					</tr>
 				 					<tr>
 					 					<%--
-					 					<td class="text12">&nbsp;Id&nbsp;
+					 					<td class="text14">&nbsp;Id&nbsp;
 					 						<input type="text" class="inputTextMediumBlue" name="sveh_conn" id="sveh_conn" size="20" maxlength="35" value='${model.record.sveh_conn}'>
 				 						</td>
 				 						 --%>
-				 						<td class="text12" >
+				 						<td class="text14" >
 				 							<select class="inputTextMediumBlueMandatoryField" name="sveh_cont" id="sveh_cont">
 						 						<option value="0"<c:if test="${model.record.sveh_cont == 0}"> selected </c:if> >0</option>
 										  		<option value="1"<c:if test="${model.record.sveh_cont == 1}"> selected </c:if> >1</option>
 										  	</select>
 				 						</td>
-					 					<td class="text12">&nbsp;&nbsp;
+					 					<td class="text14">&nbsp;&nbsp;
 					 						<input type="text" class="inputTextMediumBlue" name="sveh_last" id="sveh_last" size="20" maxlength="25" value="${model.record.sveh_last}">
 				 						</td>
 			 						</tr>
@@ -1441,7 +1441,7 @@
 									<%-- Special section --%>
 									<table align="left" class="formFrameHeader" width="100%" border="0" cellspacing="0" cellpadding="0">
 								 		<tr height="15">
-								 			<td class="text12White">
+								 			<td class="text14White">
 								 				<b>&nbsp;12.</b>&nbsp;Fraktkostnader&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 							 				</td>
 						 				</tr>
@@ -1449,13 +1449,13 @@
 					 			</td>
 				 			</tr>
 					     	<tr>
-				        		<td colspan="3" class="text12">
+				        		<td colspan="3" class="text14">
 					 				<table align="left" class="formFrame" width="100%" border="0" cellspacing="0" cellpadding="0">
 					 				<tr height="5"><td></td></tr>
 					 				<tr>
-					 					<td class="text12">&nbsp;<span title="sveh_vufr">Fraktkostnad&nbsp;</span></td>
+					 					<td class="text14">&nbsp;<span title="sveh_vufr">Fraktkostnad&nbsp;</span></td>
 					 					<td><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_vufr" id="sveh_vufr" size="15" maxlength="14" value="${model.record.sveh_vufr}"></td>
-					 					<td class="text12">&nbsp;&nbsp;<span title="sveh_vuva">Fraktvaluta</span>
+					 					<td class="text14">&nbsp;&nbsp;<span title="sveh_vuva">Fraktvaluta</span>
 							 				<%-- Note: onChange event in jQuery for this currency list --%>
 							 				<select class="inputTextMediumBlue" name="sveh_vuva" id="sveh_vuva">
 								            		<option value="">-Välj-</option>
@@ -1470,7 +1470,7 @@
 						 				
 				 					</tr>
 				 					<tr>
-					 					<td class="text12">&nbsp;<span title="sveh_vuku">Fraktkurs&nbsp;</span></td>
+					 					<td class="text14">&nbsp;<span title="sveh_vuku">Fraktkurs&nbsp;</span></td>
 					 					<td><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_vuku" id="sveh_vuku" size="10" maxlength="8" value="${model.record.sveh_vuku}"></td>
 				 					</tr>
 				 					<tr height="5"><td></td></tr>
@@ -1579,7 +1579,7 @@
 			 				<%-- DEKLARANT --%>
 			 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 						 		<tr height="18px">
-						 			<td class="text12White">
+						 			<td class="text14White">
 						 				&nbsp;<img onMouseOver="showPop('14_info');" onMouseOut="hidePop('14_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>&nbsp;14.</b>Deklarant&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						 				&nbsp;&nbsp;<font style="font-style: italic;">[om annat än Avsändare]</font>
@@ -1616,7 +1616,7 @@
 							 		<td>
 								 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									 		<tr height="15">
-									            <td class="text12" align="left">&nbsp;</td> 
+									            <td class="text14" align="left">&nbsp;</td> 
 									        </tr>
 									        <tr>
 									        	<%-- ================================================================================== --%>
@@ -1633,8 +1633,8 @@
 									        	<input type="hidden" name="orig_sveh_dkpa" id="orig_sveh_dkpa" value='${model.record.sveh_dkpa}'>
 									        	<input type="hidden" name="orig_sveh_dklk" id="orig_sveh_dklk" value='${model.record.sveh_dklk}'>
 							        	
-									            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dkkn">Kundnummer</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dkna">Namn</span>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dkkn">Kundnummer</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dkna">Namn</span>
 									            	<a tabindex="-1" id="sveh_dknaIdLink">
 														<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 													</a>
@@ -1645,8 +1645,8 @@
 									            <td align="left"><input type="text" class="inputTextMediumBlue" name="sveh_dkna" id="sveh_dkna" size="30" maxlength="35" value="${model.record.sveh_dkna}"></td>
 									        </tr>
 									        <tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dkeo">EORI</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;</td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dkeo">EORI</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;</td>
 									        </tr>
 									        <tr>
 									            <td align="left"><input type="text" class="inputTextMediumBlue" name="sveh_dkeo" id="sveh_dkeo" size="17" maxlength="17" value="${model.record.sveh_dkeo}"></td>
@@ -1654,8 +1654,8 @@
 									        </tr>
 									        <tr height="4"><td>&nbsp;</td></tr>
 									        <tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dka1">Adress 1</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dka2">Adress 2</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dka1">Adress 1</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dka2">Adress 2</span></td>
 									        </tr>
 									        <tr>
 									            <td align="left"><input type="text" class="inputTextMediumBlue" name="sveh_dka1" id="sveh_dka1" size="30" maxlength="35" value="${model.record.sveh_dka1}"></td>
@@ -1665,7 +1665,7 @@
 									        		<td>
 										        		<table>
 										        		<tr>
-										            		<td class="text12" align="left" >&nbsp;<span title="sveh_dkpa">Postadress</span></td>
+										            		<td class="text14" align="left" >&nbsp;<span title="sveh_dkpa">Postadress</span></td>
 										            		<td align="left">&nbsp;</td>
 										            	</tr>
 										        		<tr>
@@ -1679,8 +1679,8 @@
 									            <td >
 										            	<table>
 										        		<tr>
-										        			<td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dkpn">Postnummer</span></td>
-										            		<td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_dklk">Land</span>
+										        			<td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dkpn">Postnummer</span></td>
+										            		<td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_dklk">Land</span>
 								            				<a tabindex="-1" id="sveh_dklkIdLink">
        															<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            													</a>
@@ -1701,8 +1701,8 @@
 									            </td>
 									        </tr>
 									        <tr height="15">
-								            		<td class="text12Bold" align="left" >&nbsp;</td>
-								            		<td class="text12Bold" align="left" >&nbsp;</td> 
+								            		<td class="text14Bold" align="left" >&nbsp;</td>
+								            		<td class="text14Bold" align="left" >&nbsp;</td> 
 									        </tr>  
 								        </table>
 							        </td>
@@ -1717,7 +1717,7 @@
 			 				<%-- OMBUD --%>
 			 				<table width="100%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 						 		<tr height="18px">
-						 			<td class="text12White">
+						 			<td class="text14White">
 						 				&nbsp;<img onMouseOver="showPop('14_b_info');" onMouseOut="hidePop('14_b_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>&nbsp;14.</b><font class="text16RedBold" >*</font>Ombud&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 						<div class="text11" style="position: relative;" align="left">
@@ -1748,11 +1748,11 @@
 							 		<td>
 								 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									 		<tr height="15">
-									            <td class="text12" align="left">&nbsp;</td> 
+									            <td class="text14" align="left">&nbsp;</td> 
 									        </tr>
 									        <tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omeo">Ombud EORI</span></td>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omty">Typ av ombudskap</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omeo">Ombud EORI</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omty">Typ av ombudskap</span></td>
 									        </tr>
 									        <tr>
 									            <td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_omeo" id="sveh_omeo" size="16" maxlength="17" value="${model.record.sveh_omeo}"></td>
@@ -1768,8 +1768,8 @@
 									        </tr>
 									        
 									        <tr>
-									            <td align="left" class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omha">Handläggare</span></td>
-									            <td align="left"class="text12" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omtl">Telefon</span></td>
+									            <td align="left" class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omha">Handläggare</span></td>
+									            <td align="left"class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sveh_omtl">Telefon</span></td>
 									            <td>&nbsp;</td>
 									        </tr>
 									        <tr>
@@ -1796,7 +1796,7 @@
 								 	<td>  
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									 		<tr>
-									            <td class="text12" align="left" >&nbsp;&nbsp;<span title="sveh_res1/res2, etc">Resplan - i ruttordning</span></td>
+									            <td class="text14" align="left" >&nbsp;&nbsp;<span title="sveh_res1/res2, etc">Resplan - i ruttordning</span></td>
 									            
 									        </tr>
 									        <tr>
@@ -1914,7 +1914,7 @@
 						 				<%-- Item header --%>
 						 				<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
 									 		<tr height="15">
-									 			<td class="text12">
+									 			<td class="text14">
 									 				&nbsp;&nbsp;<b>Ytterligare säkerhetsuppgifter&nbsp;</b>
 									 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 									 				
@@ -1928,7 +1928,7 @@
 						            <td >
 						                <table align="left" border="0" cellspacing="1" cellpadding="0">
 						                	<tr>
-									            <td class="text12" align="left">
+									            <td class="text14" align="left">
 									            <img onMouseOver="showPop('S02_info');" onMouseOut="hidePop('S02_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								<b>S02.</b>&nbsp;<span title="sveh_komr">Kommersiellt referensnr.&nbsp;</span>
 				 								
@@ -1948,10 +1948,10 @@
 												</div>
 												</td>
 												
-									           	<td class="text12" align="left"><input type="text" class="inputTextMediumBlue" name="sveh_komr" id="sveh_komr" size="25" maxlength="70" value="${model.record.sveh_komr}"></td>
+									           	<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="sveh_komr" id="sveh_komr" size="25" maxlength="70" value="${model.record.sveh_komr}"></td>
 								           	</tr>
 						                	<tr>
-									 			<td class="text12" align="left" >
+									 			<td class="text14" align="left" >
 									 			<img onMouseOver="showPop('S28_info');" onMouseOut="hidePop('S28_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								<b>S28.</b>&nbsp;<span title="sveh_sel1 / sel2">Förseglingsid&nbsp;</span>
 				 								<div class="text11" style="position: relative;" align="left">
@@ -1968,15 +1968,15 @@
 												</span>
 												</div>
 												</td>
-									 			<td class="text12" align="left" >&nbsp;&nbsp;Id(1)&nbsp;<input type="text" class="inputTextMediumBlue" name="sveh_sel1" id="sveh_sel1" size="20" maxlength="70" value="${model.record.sveh_sel1}"></td>
+									 			<td class="text14" align="left" >&nbsp;&nbsp;Id(1)&nbsp;<input type="text" class="inputTextMediumBlue" name="sveh_sel1" id="sveh_sel1" size="20" maxlength="70" value="${model.record.sveh_sel1}"></td>
 									 		</tr>
 									 		<tr>
-									 			<td class="text12">&nbsp;</td>
-									 			<td class="text12" align="left" >&nbsp;&nbsp;Id(2)&nbsp;<input type="text" class="inputTextMediumBlue" name="sveh_sel2" id="sveh_sel2" size="20" maxlength="70" value="${model.record.sveh_sel2}"></td>
+									 			<td class="text14">&nbsp;</td>
+									 			<td class="text14" align="left" >&nbsp;&nbsp;Id(2)&nbsp;<input type="text" class="inputTextMediumBlue" name="sveh_sel2" id="sveh_sel2" size="20" maxlength="70" value="${model.record.sveh_sel2}"></td>
 									 			
 							 				</tr>
 									 		<tr>
-								 				<td class="text12">
+								 				<td class="text14">
 								 				<img onMouseOver="showPop('S29_info');" onMouseOut="hidePop('S29_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								<b>S29.&nbsp;</b><span title="sveh_betk">Betalningssätt&nbsp;</span>
 
@@ -2011,7 +2011,7 @@
 								 				</td>
 							 				</tr>
 							 				<tr>
-								 				<td class="text12">
+								 				<td class="text14">
 								 				<img onMouseOver="showPop('S32_info');" onMouseOut="hidePop('S32_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								<b>S32.&nbsp;</b><span title="sveh_saom">Särsk.omständ&nbsp;</span>
 								 				<div class="text11" style="position: relative;" align="left">
@@ -2063,13 +2063,13 @@
 							<td valign="top">
 					 			<table border="0" cellspacing="0" cellpadding="0">
 			                	<tr>
-						 			<td class="text12" >
+						 			<td class="text14" >
 						 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 							 				<tr>
-								 				<td nowrap class="text12">
+								 				<td nowrap class="text14">
 								 					&nbsp;&nbsp;<span title="sveh_kvsa">Kvalitetssäkring tillämpas&nbsp;</span>
 								 				</td>
-								 				<td align="right" class="text12">
+								 				<td align="right" class="text14">
 								 					<select name="sveh_kvsa" id="sveh_kvsa">
 							 						<option value="">-Välj-</option>
 											  		<option value="J"<c:if test="${model.record.sveh_kvsa == 'J'}"> selected </c:if> >Ja</option>
@@ -2085,10 +2085,10 @@
 						</tr>
 						<tr>
 							<td width="2">&nbsp;</td>
-				 			<td class="text12" >
+				 			<td class="text14" >
 				 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-						 			<td class="text12" align="right" >
+						 			<td class="text14" align="right" >
 						 			<img onMouseOver="showPop('7_info');" onMouseOut="hidePop('7_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 			<b>7.</b>&nbsp;<span title="sveh_rfac / rfac2 / rfac3">Ytterligare ref.nr.&nbsp;</span>
 						 			<div class="text11" style="position: relative;" align="left">
@@ -2116,30 +2116,30 @@
 				 		
 						<tr>
 							<td width="2">&nbsp;</td>
-				 			<td class="text12">
+				 			<td class="text14">
 				 				<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 				<tr height="5"><td>&nbsp;</td></tr>
 				 				<tr>
-				 					<td class="text12" >&nbsp;<span title="sveh_kenh">Klareringsenhet&nbsp;</span></td>
-				 					<td class="text12">
+				 					<td class="text14" >&nbsp;<span title="sveh_kenh">Klareringsenhet&nbsp;</span></td>
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="sveh_kenh" id="sveh_kenh" size="20" maxlength="35" value="${model.record.sveh_kenh}">
 				 					</td>
 									</tr>
 									<tr>
-				 					<td class="text12" >&nbsp;<span title="sveh_kleo">Klareringsbehörig EORI&nbsp;</span></td>
-				 					<td class="text12">
+				 					<td class="text14" >&nbsp;<span title="sveh_kleo">Klareringsbehörig EORI&nbsp;</span></td>
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="sveh_kleo" id="sveh_kleo" size="20" maxlength="17" value="${model.record.sveh_kleo}">
 				 					</td>
 									</tr>
 									<tr>
-				 					<td class="text12" >&nbsp;<span title="sveh_trnr">Transitnr/land&nbsp;</span></td>
-				 					<td class="text12">
+				 					<td class="text14" >&nbsp;<span title="sveh_trnr">Transitnr/land&nbsp;</span></td>
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="sveh_trnr" id="sveh_trnr" size="20" maxlength="20" value="${model.record.sveh_trnr}">
 				 					</td>
 									</tr>
 									
 									<tr>
-				 					<td class="text12" >&nbsp;
+				 					<td class="text14" >&nbsp;
 				 					<img onMouseOver="showPop('berAvg_info');" onMouseOut="hidePop('berAvg_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 					<span title="sveh_beat">Ber.Avg.Tid&nbsp;</span>
 				 					<div class="text11" style="position: relative;" align="left">
@@ -2151,7 +2151,7 @@
 									</div>
 									</td>
 									
-				 					<td class="text12">
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="sveh_beat" id="sveh_beat" size="20" maxlength="12" value="${model.record.sveh_beat}">
 				 					</td>
 									</tr>
@@ -2160,8 +2160,8 @@
 									
 						 			
 									<tr>
-				 					<td class="text12" >&nbsp;<span title="sveh_taxd">Taxeb.Dag..&nbsp;</span></td>
-				 					<td class="text12">
+				 					<td class="text14" >&nbsp;<span title="sveh_taxd">Taxeb.Dag..&nbsp;</span></td>
+				 					<td class="text14">
 				 						<input type="text" class="inputTextMediumBlue" name="sveh_taxd" id="sveh_taxd" size="20" maxlength="25" value="${model.record.sveh_taxd}">
 				 					</td>
 									</tr>
@@ -2187,11 +2187,11 @@
 			 	<input type="hidden" name="currentAvd" id="currentAvd" value="${model.record.sveh_syav}">
 			 	<input type="hidden" name="currentOpd" id="currentOpd" value="${model.record.sveh_syop}">
 			 		
-				<p class="text12" >Change status as needed.</p>
+				<p class="text14" >Change status as needed.</p>
 				<table>
 					<tr>
-						<td class="text12" align="left" >&nbsp;Status</td>
-						<td class="text12MediumBlue">
+						<td class="text14" align="left" >&nbsp;Status</td>
+						<td class="text14MediumBlue">
 							<select name="selectedStatus" id="selectedStatus">
 				            		<option value=" ">-vælg-</option>
 				            		<option value="M">M</option>

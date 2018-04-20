@@ -29,7 +29,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="25%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Handläggare</font>&nbsp;<font class="text12">SVT056 / SVTHA</font>&nbsp;
+						<font class="tabLink">Handläggare</font>&nbsp;<font class="text14">SVT056 / SVTHA</font>&nbsp;
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_svt056r.do?id=${model.dbTable}">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -98,7 +98,7 @@
 		           	<table align="left" border="0" cellspacing="0" cellpadding="0">
 		           	<tr >
 		           	<td >					
-			            <ul class="isa_error text12" >
+			            <ul class="isa_error text14" >
 			            <c:forEach var="error" items="${errors.allErrors}">
 			                <li >
 			                	<spring:message code="${error.code}" text="${error.defaultMessage}"/>&nbsp;&nbsp;
@@ -120,7 +120,7 @@
 		           	<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 		<tr>
 				 			<td >
-				 				<ul class="isa_error text12" >
+				 				<ul class="isa_error text14" >
 		                                  <li>[ERROR on Update] - Server return code: ${model.errorMessage}</li>                                    
 		                              </ul>
 				 			</td>
@@ -145,7 +145,7 @@
 						</tr>
 						<tr height="20"><td></td></tr>
 						<tr>
-							<td class="text12" ><font class="text14RedBold" >*</font><span title="svth_sysg">Signatur&nbsp;</span>
+							<td class="text14" ><font class="text14RedBold" >*</font><span title="svth_sysg">Signatur&nbsp;</span>
 								<c:choose>
 									<c:when test="${not empty model.updateId}">
 										<input readonly type="text" class="inputTextReadOnly"  name="svth_sysg" id="svth_sysg" size="5" maxlength="3" value='${model.record.svth_sysg}'>

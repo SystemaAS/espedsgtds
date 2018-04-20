@@ -29,7 +29,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="25%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Leveransvillkor</font>&nbsp;<font class="text12">SVT058 / SVTLV</font>&nbsp;
+						<font class="tabLink">Leveransvillkor</font>&nbsp;<font class="text14">SVT058 / SVTLV</font>&nbsp;
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_svt058r.do?id=${model.dbTable}">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -47,7 +47,7 @@
 	 	    
 	 	    <tr >
 	 	    	<td width="5%">&nbsp;</td>
-				<td width="100%" class="text12">
+				<td width="100%" class="text14">
 					<form action="tdsmaintenancefelles_svt058r.do?id=${model.dbTable}" name="formRecordSearch" id="formRecordSearch" method="POST" >
 					Kode&nbsp;
 					<input type="text" class="inputTextMediumBlue" name="searchKode" id="searchKode" size="5" maxlength="3" value='${model.searchKode}'>
@@ -89,29 +89,29 @@
 				               <td id="recordUpdate_${record.svlv_kd}" onClick="getRecord(this);" align="center" width="2%" class="tableCellFirst" style="cursor:pointer; border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;">
 		               				<img src="resources/images/update.gif" border="0" alt="edit">
 				               </td>
-				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 1px;border-color:#FAEBD7;"><font class="text12">&nbsp;${record.svlv_kd}&nbsp;</font></td>
-				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text12">&nbsp;${record.svlv_trText}&nbsp;</font></td>
-				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text12">&nbsp;${record.svlv_tr2Text}&nbsp;</font></td>
+				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 1px;border-color:#FAEBD7;"><font class="text14">&nbsp;${record.svlv_kd}&nbsp;</font></td>
+				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.svlv_trText}&nbsp;</font></td>
+				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.svlv_tr2Text}&nbsp;</font></td>
 				               <td align="center" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" >
 				               		<table width="70%" >
 				               			<tr >
-				               				<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="left" ><font class="text12">&nbsp;&nbsp;${record.svlv_fsText}</font></td>
-					               			<td style="border-style: solid;border-width: 0px 0px 0px 0px;"	 align="right" ><font class="text12MediumBlue">${record.svlv_fspFormatted}&nbsp;</font></td>
+				               				<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="left" ><font class="text14">&nbsp;&nbsp;${record.svlv_fsText}</font></td>
+					               			<td style="border-style: solid;border-width: 0px 0px 0px 0px;"	 align="right" ><font class="text14MediumBlue">${record.svlv_fspFormatted}&nbsp;</font></td>
 				               			</tr>
 				               		</table>
 				               	</td>
 				               <td align="center" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" >
 				               		<table width="70%" >
 				               			<tr >
-				               				<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="left" ><font class="text12">&nbsp;&nbsp;${record.svlv_fs2Text}</font></td>
-					               			<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="right" ><font class="text12MediumBlue">${record.svlv_fs2pFormatted}&nbsp;</font></td>
+				               				<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="left" ><font class="text14">&nbsp;&nbsp;${record.svlv_fs2Text}</font></td>
+					               			<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="right" ><font class="text14MediumBlue">${record.svlv_fs2pFormatted}&nbsp;</font></td>
 				               			</tr>
 				               		</table>
 				               </td>
 				               
-				               <td width="4%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text12">&nbsp;${record.svlv_okText}&nbsp;</font></td>
-				               <td width="4%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text12">&nbsp;${record.svlv_krText}&nbsp;</font></td>
-				               <td width="4%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text12">&nbsp;${record.svlv_arText}&nbsp;</font></td>
+				               <td width="4%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.svlv_okText}&nbsp;</font></td>
+				               <td width="4%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.svlv_krText}&nbsp;</font></td>
+				               <td width="4%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.svlv_arText}&nbsp;</font></td>
 				               
 				               <td align="center" width="2%" class="tableCell" style="cursor:pointer; border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;">
 		               				<a onclick="javascript:return confirm('Är du säker på at du vill ta bort denna?')" tabindex=-1 href="tdsmaintenancefelles_svt058r_edit.do?action=doDelete&id=${model.dbTable}&svlv_kd=${record.svlv_kd}">
@@ -138,7 +138,7 @@
 	            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 	            	<tr >
 					<td >					
-			            <ul class="isa_error text12" >
+			            <ul class="isa_error text14" >
 			            <c:forEach var="error" items="${errors.allErrors}">
 			                <li >
 			                	<spring:message code="${error.code}" text="${error.defaultMessage}"/>&nbsp;&nbsp;
@@ -160,7 +160,7 @@
 	            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 		<tr>
 				 			<td >
-				 				<ul class="isa_error text12" >
+				 				<ul class="isa_error text14" >
                                     <li>[ERROR on Update] - Server return code: ${model.errorMessage}</li>                                    
                                 </ul>
 				 			</td>
@@ -185,16 +185,16 @@
 					
 					<table width="99%" cellspacing="1" border="0" align="left">
 			    	    <tr>
-							<td width="8%" class="text12" title="svlv_kd">&nbsp;<font class="text14RedBold" >*</font>Kod</td>
-							<td class="text12" title="svlv_tr">&nbsp;Transport - Stat.värde/Tullvärde</td>
-							<td class="text12" title="svlv_tr2">&nbsp;Försäkring - Stat.värde/Tullvärde</td>
-							<td class="text12" title="svlv_ok">&nbsp;Övr.kost.</td>
-							<td class="text12" title="svlv_kr">&nbsp;Kassarab.</td>
-							<td class="text12" title="svlv_ar">&nbsp;Annan rab.</td>
+							<td width="8%" class="text14" title="svlv_kd">&nbsp;<font class="text14RedBold" >*</font>Kod</td>
+							<td class="text14" title="svlv_tr">&nbsp;Transport - Stat.värde/Tullvärde</td>
+							<td class="text14" title="svlv_tr2">&nbsp;Försäkring - Stat.värde/Tullvärde</td>
+							<td class="text14" title="svlv_ok">&nbsp;Övr.kost.</td>
+							<td class="text14" title="svlv_kr">&nbsp;Kassarab.</td>
+							<td class="text14" title="svlv_ar">&nbsp;Annan rab.</td>
 						</tr>
 						<tr>
 							<td width="8%" ><input type="text" required oninvalid="this.setCustomValidity('Obligatoriskt')" oninput="setCustomValidity('')" class="inputTextMediumBlueMandatoryField" name="svlv_kd" id="svlv_kd" size="4" maxlength="3" value='${model.record.svlv_kd}'></td>
-							<td class="text12" >Stat.v.
+							<td class="text14" >Stat.v.
 								<select name="svlv_tr" id="svlv_tr">
 									<option value="" >-Välj-</option>
 			 						<option value="J" <c:if test="${model.record.svlv_tr == 'J'}"> selected </c:if> >Ja</option>
@@ -207,7 +207,7 @@
 			 						<option value="N" <c:if test="${model.record.svlv_tr2 == 'N'}"> selected </c:if> >Nej</option>
 								</select>						
 							</td>
-							<td class="text12">Stat.v
+							<td class="text14">Stat.v
 								<select name="svlv_fs" id="svlv_fs">
 									<option value="" >-Välj-</option>
 			 						<option value="J" <c:if test="${model.record.svlv_fs == 'J'}"> selected </c:if> >Ja</option>

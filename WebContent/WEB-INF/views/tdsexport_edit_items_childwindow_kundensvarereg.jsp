@@ -28,9 +28,9 @@
 						<table>
 						<form name="tvinnsadImportTolltariffForm" id="tvinnsadImportTolltariffForm" action="tvinnsadimport_edit_items_childwindow_tolltariff.do?action=doInit" method="post">
 						<tr>
-							<td class="text11">&nbsp;Varekod</td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="vkod" id="vkod" size="10" maxlength="10" value="${model.vkod}"></td>
-							<td class="text11">&nbsp;</td>
+							<td class="text14">&nbsp;Varekod</td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="vkod" id="vkod" size="10" maxlength="10" value="${model.vkod}"></td>
+							<td class="text14">&nbsp;</td>
 	           				<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="search.label"/>'>
 		           		</tr>
 		           		
@@ -41,33 +41,33 @@
 													           		
 	           		<tr height="5"><td></td></tr>
 					
-					<tr class="text12" >
+					<tr class="text14" >
 					<td class="ownScrollableSubWindowDynamicWidthHeight" width="100%" style="height:30em;">
 					<%-- this is the datatables grid (content)--%>
 					<table id="kundensVareRegList" class="display compact cell-border" width="100%" >
 						<thead>
 						<tr style="background-color:#EEEEEE">
-							<th class="text11" title="svew_knso">&nbsp;Varunr&nbsp;</th>
-		                    <th class="text11" title="svew_vata">&nbsp;Varukod/Tulltaxa&nbsp;</th>
-		                    <th class="text11" title="svew_vasl">&nbsp;Beskrivning&nbsp;</th>
-		                    <th class="text11" title="svew_ulkd">&nbsp;Ursp.land&nbsp;</th>
-		                    <th class="text11" title="svew_kosl">&nbsp;Kolli slag&nbsp;</th>
-		                    <th class="text11" title="svew_brut">&nbsp;Bruttovikt&nbsp;</th>
-		                    <th class="text11" title="svew_neto">&nbsp;Nettovikt&nbsp;</th>
-		                    <th class="text11" title="svew_fabl">&nbsp;Varans pris&nbsp;</th>
+							<th class="text14" title="svew_knso">&nbsp;Varunr&nbsp;</th>
+		                    <th class="text14" title="svew_vata">&nbsp;Varukod/Tulltaxa&nbsp;</th>
+		                    <th class="text14" title="svew_vasl">&nbsp;Beskrivning&nbsp;</th>
+		                    <th class="text14" title="svew_ulkd">&nbsp;Ursp.land&nbsp;</th>
+		                    <th class="text14" title="svew_kosl">&nbsp;Kolli slag&nbsp;</th>
+		                    <th class="text14" title="svew_brut">&nbsp;Bruttovikt&nbsp;</th>
+		                    <th class="text14" title="svew_neto">&nbsp;Nettovikt&nbsp;</th>
+		                    <th class="text14" title="svew_fabl">&nbsp;Varans pris&nbsp;</th>
 		                </tr> 
 		                </thead>
 		                <tbody>
 		                <c:forEach var="record" items="${model.kundensVareRegList}" varStatus="counter">    
 			               <c:choose>           
 			                   <c:when test="${counter.count%2==0}">
-			                       <tr class="text11">
+			                       <tr class="text14">
 			                   </c:when>
 			                   <c:otherwise>   
-			                       <tr class="text11">
+			                       <tr class="text14">
 			                   </c:otherwise>
 			               </c:choose>
-			               <td nowrap style="cursor:pointer;" class="text11MediumBlue" id="svew_knso${record.svew_knso}@svew_vasl${record.svew_vasl}
+			               <td nowrap style="cursor:pointer;" class="text14MediumBlue" id="svew_knso${record.svew_knso}@svew_vasl${record.svew_vasl}
 			               		@svew_vata${record.svew_vata}@svew_brut${record.svew_brut}@svew_neto${record.svew_neto}
 			               		@svew_ulkd${record.svew_ulkd}@svew_fokd${record.svew_fokd}@svew_eup1${record.svew_eup1}@svew_kota${record.svew_kota}
 			               		@svew_kosl${record.svew_kosl}@svew_godm${record.svew_godm}@svew_kono${record.svew_kono}@svew_ankv${record.svew_ankv}
@@ -77,14 +77,14 @@
 			               		
                			   		<img title="select" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;${record.svew_knso}
 			               </td>
-		               	   <td class="text11">&nbsp;${record.svew_vata}</td>
-		               	   <td class="text11">&nbsp;${record.svew_vasl}</td>
-		               	   <td class="text11">&nbsp;${record.svew_ulkd}</td>
-		               	   <td class="text11">&nbsp;${record.svew_kosl}</td>
+		               	   <td class="text14">&nbsp;${record.svew_vata}</td>
+		               	   <td class="text14">&nbsp;${record.svew_vasl}</td>
+		               	   <td class="text14">&nbsp;${record.svew_ulkd}</td>
+		               	   <td class="text14">&nbsp;${record.svew_kosl}</td>
 		               	   
-		               	   <td class="text11">&nbsp;${record.svew_brut}</td>
-		               	   <td class="text11">&nbsp;${record.svew_neto}</td>
-		               	   <td class="text11">&nbsp;${record.svew_fabl}</td>
+		               	   <td class="text14">&nbsp;${record.svew_brut}</td>
+		               	   <td class="text14">&nbsp;${record.svew_neto}</td>
+		               	   <td class="text14">&nbsp;${record.svew_fabl}</td>
 			            </tr> 
 			            </c:forEach>
 			            </tbody>

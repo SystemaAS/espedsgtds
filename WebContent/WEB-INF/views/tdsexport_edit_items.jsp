@@ -36,7 +36,7 @@
 						&sysg=${model.sign}&tuid=${model.tullId}&syst=${model.status}&sydt=${model.datum}">
 					
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.created.mastertopic.tab"/></font>
-					<font class="text12MediumBlue">[${model.opd}]</font>
+					<font class="text14MediumBlue">[${model.opd}]</font>
 					<c:if test="${model.status == 'M' || empty model.status}">
 						<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 					</c:if>
@@ -199,26 +199,26 @@
 											           			<td colspan="3" class="text14"><b>Varuposter</b></td>
 											           		</tr>
 												           	<tr>	
-																<td class="text12" width="95%" >
+																<td class="text14" width="95%" >
 																<table id="tblItemLinesAll" class="display compact cell-border" width="95%" >
 																	<thead> 
 																	<tr style="background-color:#DDDDDD">
 																	    
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vano.varupostNr"/>&nbsp;</th>   
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ulkd.urspLand"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vata.varukod"/> <font class="text9">Taric.nr</font>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_eup1.forfarande1"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_brut.bruttoVikt"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_neto.nettoVikt"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ankv.extraMangd"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.sum_of_svev_kotas.kolliAnt"/>(&Sigma;)</th>					                    					                    
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vasl.varuBeskrivning"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_err.error"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_fabl.fbelopp"/>&nbsp;</th>
-													                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_stva.statvarde"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vano.varupostNr"/>&nbsp;</th>   
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ulkd.urspLand"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vata.varukod"/> <font class="text9">Taric.nr</font>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_eup1.forfarande1"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_brut.bruttoVikt"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_neto.nettoVikt"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ankv.extraMangd"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.sum_of_svev_kotas.kolliAnt"/>(&Sigma;)</th>					                    					                    
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vasl.varuBeskrivning"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_err.error"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_fabl.fbelopp"/>&nbsp;</th>
+													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_stva.statvarde"/>&nbsp;</th>
 													                    
 													                    <c:if test="${model.status == 'M' || empty model.status}">
-													                    	<th align="center" class="text12" nowrap>Radera</th>
+													                    	<th align="center" class="text14" nowrap>Radera</th>
 													                    </c:if>
 													               </tr>  
 													               </thead>
@@ -272,7 +272,7 @@
 													         	<%-- OK BUTTON --%>
 										           				<tr align="left" >
 																	<td class="text11"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
-																	<td class="text12">&nbsp;&nbsp;&nbsp;
+																	<td class="text14">&nbsp;&nbsp;&nbsp;
 														 	        		<a href="tdsExportItemListExcelView.do" target="_new">
 													                 		<img valign="bottom" id="itemListExcel" src="resources/images/excel.png" border="0" alt="excel">&nbsp;Excel
 														 	        		</a>
@@ -286,7 +286,7 @@
 												&nbsp;<button tabindex=-1 title="Kontrollera varuposter" name="itemListControlButton" id="itemListControlButton" class="buttonGrayWithGreenFrame11" type="button" >Varupostkontroll</button>
 											</c:if>
 										</td>
-										<td width="5%" class="text12">&nbsp;</td>
+										<td width="5%" class="text14">&nbsp;</td>
 										<td align="right" class="text11">Fakturabelopp:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value='${recordTopic.sveh_fabl}'>
 										</td>
@@ -327,24 +327,24 @@
 									<thead>
 									<tr style="background-color:#DDDDDD">
 									    <%-- 
-									    <td class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_syli.linjeNr"/>&nbsp;</td> 
+									    <td class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_syli.linjeNr"/>&nbsp;</td> 
 									    --%>
-					                    <th width="2%" class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.update"/>&nbsp;</th>   
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vano.varupostNr"/>&nbsp;</th>   
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ulkd.urspLand"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vata.varukod"/> <font class="text9">Taric.nr</font>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_eup1.forfarande1"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_brut.bruttoVikt"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_neto.nettoVikt"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ankv.extraMangd"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.sum_of_svev_kotas.kolliAnt"/>(&Sigma;)</th>					                    					                    
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vasl.varuBeskrivning"/>&nbsp;</th>
-					                    <th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_err.error"/>&nbsp;</th>
-										<th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_fabl.fbelopp"/>&nbsp;</th>
-										<th class="text12">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_stva.statvarde"/>&nbsp;</th>
+					                    <th width="2%" class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.update"/>&nbsp;</th>   
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vano.varupostNr"/>&nbsp;</th>   
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ulkd.urspLand"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vata.varukod"/> <font class="text9">Taric.nr</font>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_eup1.forfarande1"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_brut.bruttoVikt"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_neto.nettoVikt"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ankv.extraMangd"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.sum_of_svev_kotas.kolliAnt"/>(&Sigma;)</th>					                    					                    
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vasl.varuBeskrivning"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_err.error"/>&nbsp;</th>
+										<th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_fabl.fbelopp"/>&nbsp;</th>
+										<th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_stva.statvarde"/>&nbsp;</th>
 													                    
 					                    <c:if test="${model.status == 'M' || empty model.status}">
-					                    	<th align="center" class="text12" nowrap>Radera</th>
+					                    	<th align="center" class="text14" nowrap>Radera</th>
 					                    </c:if>
 					               </tr> 
 					               </thead>
@@ -465,7 +465,7 @@
 				 	<%-- Topic ITEM CREATE --%>
 	 				<table width="100%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;</b>
 								<img onClick="showPop('updateInfo');" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
@@ -478,15 +478,15 @@
 				 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				 				<c:choose>
 					 				<c:when test="${not empty model.record.svev_syli}">
-				 						<input title="from model" tabindex=-1 align="center" class="text12BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${model.record.svev_syli}">
+				 						<input title="from model" tabindex=-1 align="center" class="text14BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${model.record.svev_syli}">
 				 					</c:when>
 				 					<c:otherwise>
 				 						<c:choose>
 						 					<c:when test="${not empty svev_syli_SESSION}">
-					 							<input title="from session" tabindex=-1 align="center" class="text12BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${svev_syli_SESSION}">
+					 							<input title="from session" tabindex=-1 align="center" class="text14BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="${svev_syli_SESSION}">
 					 						</c:when>
 					 						<c:otherwise>
-					 							<input title="from session" tabindex=-1 align="center" class="text12BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="Ny">
+					 							<input title="from session" tabindex=-1 align="center" class="text14BoldLightGreenForItemLinenr" readonly type="text" name="lineNr" id="lineNr" size="3" value="Ny">
 					 						</c:otherwise>
 				 						</c:choose>
 				 					</c:otherwise>
@@ -501,12 +501,12 @@
 						 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
 							 			<td>&nbsp;</td>
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 							 			<b>&nbsp;34a.</b>&nbsp;<span title="svev_ulkd">Ursp.land</span>
 										</td>
 							 			
 							 			
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 							            <img onMouseOver="showPop('33_info');" onMouseOut="hidePop('33_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>33.</b><font class="text16RedBold" >*</font><span title="svev_vata">Varukod</span>
 							            
@@ -525,9 +525,9 @@
 										</div>
 							 			</td>
 							 			
-							            <td class="text12" align="left"><b>&nbsp;<span title="svev_vati">33.3</span></b>&nbsp;&nbsp;</td>
-							            <td class="text12" align="left"><b>&nbsp;<span title="svev_vatu">33.4</span></b>&nbsp;&nbsp;</td>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left"><b>&nbsp;<span title="svev_vati">33.3</span></b>&nbsp;&nbsp;</td>
+							            <td class="text14" align="left"><b>&nbsp;<span title="svev_vatu">33.4</span></b>&nbsp;&nbsp;</td>
+							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('37_1_info');" onMouseOut="hidePop('37_1_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b>
 							            <font class="text16RedBold" >*</font><span title="svev_eup1">Förf. 1</span>
@@ -561,7 +561,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('37_2_info');" onMouseOut="hidePop('37_2_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b>
 							            <span title="svev_eup2">Förf. 2</span>
@@ -587,7 +587,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            	<img onMouseOver="showPop('35_info');" onMouseOut="hidePop('35_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 							<b>35.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svev_brut">Brut.vikt(kg)</span>
 				 						
@@ -617,7 +617,7 @@
 										</div>
 										</td>
 										
-										<td class="text12" align="left"><b>&nbsp;38.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svev_neto">Net.vikt(kg)</span></td>
+										<td class="text14" align="left"><b>&nbsp;38.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svev_neto">Net.vikt(kg)</span></td>
 										
 							        </tr>
 							        <tr>
@@ -633,15 +633,15 @@
 						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 						            		</a>
 										</td>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            	<a id="tillaggskoderLink"></a>
 							            	<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_vata" id="svev_vata" size="10" maxlength="10" value='${model.record.svev_vata}'>
 							            	<a tabindex="-1" id="svev_vataIdLink">
            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            									</a>
 						            	</td>
-										<td class="text12" align="left"><input type="text" class="inputText" name="svev_vati" id="svev_vati" size="8" maxlength="4" value='${model.record.svev_vati}'></td>
-										<td class="text12" align="left"><input type="text" class="inputText" name="svev_vat4" id="svev_vat4" size="8" maxlength="4" value='${model.record.svev_vat4}'></td>
+										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vati" id="svev_vati" size="8" maxlength="4" value='${model.record.svev_vati}'></td>
+										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vat4" id="svev_vat4" size="8" maxlength="4" value='${model.record.svev_vat4}'></td>
 										<td align="left">	
 						 					<select class="inputTextMediumBlueMandatoryField" name="svev_eup1" id="svev_eup1" >
 							 					<option value="">-Välj-</option>
@@ -665,14 +665,14 @@
 						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 					            			</a>
 						 				</td>
-						 				<td class="text12" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_brut" id="svev_brut" size="10" maxlength="11" value='${model.record.svev_brut}'></td>
-										<td class="text12" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_neto" id="svev_neto" size="10" maxlength="11" value='${model.record.svev_neto}'></td>
+						 				<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_brut" id="svev_brut" size="10" maxlength="11" value='${model.record.svev_brut}'></td>
+										<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_neto" id="svev_neto" size="10" maxlength="11" value='${model.record.svev_neto}'></td>
 										
 							        </tr>
 							        <tr height="10"><td class="text" align="left" colspan="9"><hr></td></tr>
 							        
 									<tr>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 											<img onMouseOver="showPop('41_xmenheter_info');" onMouseOut="hidePop('41_xmenheter_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 												
 											<b>41.</b><span title="svev_ankv">Extra mängd:&nbsp;</span>
@@ -686,7 +686,7 @@
 											</span>
 								            </div>
 										</td>
-										<td class="text12">
+										<td class="text14">
 										<img onMouseOver="showPop('31_kantal_info');" onMouseOut="hidePop('31_kantal_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 										<span id="kotaRubrik">
 				 							<b>31.</b>
@@ -708,7 +708,7 @@
 							            </div>
 							            </td>
 							            
-										<td class="text12">
+										<td class="text14">
 										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_kosl">Kolli slag</span>
 										
@@ -723,7 +723,7 @@
 										</div>
 										</td>
 							            
-										<td class="text12" align="left" colspan="2">
+										<td class="text14" align="left" colspan="2">
 										<img onMouseOver="showPop('31_varubesk_info');" onMouseOut="hidePop('31_varubesk_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_vasl / svev_vas2...svev_vas5">Varubeskrivning&nbsp;</span>
 										<div class="text11" style="position: relative;" align="left">
@@ -758,7 +758,7 @@
 										</div>
 										</td>
 							            <td>&nbsp;</td>
-										<td class="text12" align="left" colspan="2">
+										<td class="text14" align="left" colspan="2">
 							            <img onMouseOver="showPop('31_gods_info');" onMouseOut="hidePop('31_gods_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b>
 							            <font class="text16RedBold" >*</font><span title="svev_godm">Godsmärkning&nbsp;</span>
@@ -774,14 +774,14 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left"><b></b>&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="svev_fabl">Varans pris&nbsp;</span></td>
+							            <td class="text14" align="left"><b></b>&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="svev_fabl">Varans pris&nbsp;</span></td>
 							            <td>&nbsp;</td>
 							            <td>&nbsp;</td>
 							        </tr>
 							        
 							        
 									<tr>
-										<td class="text12" align="left">&nbsp;
+										<td class="text14" align="left">&nbsp;
 											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
 											
 										</td>
@@ -800,7 +800,7 @@
 					            			</a>
 											
 				            				</td> 										
-										<td class="text12" align="left" colspan="2">
+										<td class="text14" align="left" colspan="2">
 											<input type="text" class="inputTextMediumBlueMandatoryField" name="svev_vasl" id="svev_vasl" size="25" maxlength="70" value="${model.record.svev_vasl}">
 										</td>
 										<td>
@@ -809,7 +809,7 @@
 								           		<div class="text10" align="left">
 								           			<table>
 								           				<tr>
-										           			<td class="text12">
+										           			<td class="text14">
 																<b>Flera varubeskrivningar</b>
 															</td>
 														</tr>
@@ -845,8 +845,8 @@
 												</div>
 											</span>
 										</td>
-										<td class="text12" align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svev_godm" id="svev_godm" size="25" maxlength="42" value="${model.record.svev_godm}"></td>
-							            <td class="text12" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_fabl" id="svev_fabl" size="11" maxlength="11" value="${model.record.svev_fabl}"></td>
+										<td class="text14" align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svev_godm" id="svev_godm" size="25" maxlength="42" value="${model.record.svev_godm}"></td>
+							            <td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_fabl" id="svev_fabl" size="11" maxlength="11" value="${model.record.svev_fabl}"></td>
 							            <td></td>
  							        </tr>
  							        
@@ -856,11 +856,11 @@
 									<td colspan="3">
 										<table class="tableBorderWithRoundCornersGray">
 								 		<tr>
-								            <td class="text12Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;</td>
-								            <td class="text12" align="left" >&nbsp;</td>
+								            <td class="text14Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;</td>
+								            <td class="text14" align="left" >&nbsp;</td>
 								        </tr>
 								        <tr>
-								            <td class="text12" align="left">
+								            <td class="text14" align="left">
 								            &nbsp;<img onMouseOver="showPop('46_info');" onMouseOut="hidePop('46_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<b>46.</b>
 								            <font class="text16RedBold" >*</font><span title="svev_stva">Statistiskt värde:&nbsp;</span>
@@ -885,11 +885,11 @@
 											</div>
 											</td>
 											
-								           	<td class="text12" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_stva" id="svev_stva" size="10" maxlength="10" value="${model.record.svev_stva}"></td>
+								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_stva" id="svev_stva" size="10" maxlength="10" value="${model.record.svev_stva}"></td>
 								        </tr>
 								        
 								        <tr>
-								            <td class="text12" align="left">
+								            <td class="text14" align="left">
 								            &nbsp;<img onMouseOver="showPop('tullvarde_info');" onMouseOut="hidePop('tullvarde_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<font class="text16RedBold" >*</font><span title="svev_stva2">Tullvärde:&nbsp;</span>
 								            
@@ -908,7 +908,7 @@
 											</div>
 											</td>
 											
-								           	<td class="text12" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_stva2" id="svev_stva2" size="10" maxlength="10" value="${model.record.svev_stva2}"></td>
+								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_stva2" id="svev_stva2" size="10" maxlength="10" value="${model.record.svev_stva2}"></td>
 								        </tr>
 								        <tr height="5"><td></td></tr>
 										</table>
@@ -917,7 +917,7 @@
 							 		<td valign="top" colspan="5">
 								 		<table border="0" cellspacing="0" cellpadding="0">
 											<tr>
-												<td class="text12Bold" align="left" >
+												<td class="text14Bold" align="left" >
 						 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 						<font class="text16RedBold" >*</font><span title="svev_call">Call me:&nbsp;</span>
 									            
@@ -937,7 +937,7 @@
 												</div>
 												</td>
 									            
-									            <td class="text12" align="left" >
+									            <td class="text14" align="left" >
 									            	<select class="inputTextMediumBlueMandatoryField" name="svev_call" id="svev_call">
 						 								<option value="00" <c:if test="${model.record.svev_call == '00' || empty model.record.svev_call}"> selected </c:if> >00-CM Inga exportrestr.</option>
 										  				<option value="01" <c:if test="${model.record.svev_call == '01'}"> selected </c:if> >01-CM Exportrestr. villkor uppfyllda</option>
@@ -959,7 +959,7 @@
 														<div style="float:right;" id="warningCodesFlagDiv" >
 															<a id="warningCodesLink" style="cursor:pointer;">
 																<img width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="warning">
-																<font class="text12Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
+																<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
 															</a>
 														</div>
 														<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
@@ -988,7 +988,7 @@
 							<td>
 							<table width="80%" class="tableBorderWithRoundCornersGray">
 							        <tr >
-						            <td colspan="10" class="text12">
+						            <td colspan="10" class="text14">
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 						            
@@ -1015,7 +1015,7 @@
 									
 									<tr height="5"><td></td></tr>
 							        <tr>
-							            <td valign="top" class="text12" align="left">
+							            <td valign="top" class="text14" align="left">
 						           			<table >
 						           				<tr>
 								           			<td class="text11" colspan="3">
@@ -1236,7 +1236,7 @@
 	 				<%-- Item header --%>
 	 				<table width="100%" align="center" class="secondarySectionHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extraordinära uppgifter&nbsp;</b>
 				 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				
@@ -1250,7 +1250,7 @@
 					 		<td width="50%">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td colspan="2" class="text12" align="left">
+							            <td colspan="2" class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('44_info');" onMouseOut="hidePop('44_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 							            
@@ -1274,13 +1274,13 @@
 										</div>
 										</td>
 										
-							           	<td class="text12" align="left">&nbsp;</td>
+							           	<td class="text14" align="left">&nbsp;</td>
 							        </tr>
 							        <tr height="5"><td class="text" align="left"></td></tr>
 									
 									<tr>
-							            <td class="text12" align="left">&nbsp;&nbsp;Särskilda upplysningar kod/text:&nbsp;</td>
-							           	<td class="text12" align="left"><button name="specialInformationCodeButton" class="buttonGray" type="button" onClick="showPop('specialInformationCode');" >Mer...</button> 
+							            <td class="text14" align="left">&nbsp;&nbsp;Särskilda upplysningar kod/text:&nbsp;</td>
+							           	<td class="text14" align="left"><button name="specialInformationCodeButton" class="buttonGray" type="button" onClick="showPop('specialInformationCode');" >Mer...</button> 
 								        <span style="position:absolute; left:280px; top:1000px; width:600px; height:420px;" id="specialInformationCode" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table>
@@ -1385,7 +1385,7 @@
 							        </tr>
 							        <tr height="10"><td colspan="2" ></td></tr>
 							        <tr>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('40_info');" onMouseOut="hidePop('40_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>40.</b><span title="svev_tik1-svev_tit1-svev_tix1 / svev_tik2-svev_tit2-svev_tix2 ... etc">Tidigare handlingar:</span>
 							            
@@ -1418,7 +1418,7 @@
 										</div>
 										</td>
 							            
-							           	<td class="text12" align="left"><button name="previousDocumentsButton" class="buttonGray" type="button" onClick="showPop('previousDocuments');" >Mer...</button> 
+							           	<td class="text14" align="left"><button name="previousDocumentsButton" class="buttonGray" type="button" onClick="showPop('previousDocuments');" >Mer...</button> 
 								        <span style="position:absolute; left:280px; top:1000px; width:550px; height:280px;" id="previousDocuments" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table width="100%">
@@ -1583,12 +1583,12 @@
 					        <td width="50%" valign="top">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 						 			<tr>
-							            <td class="text12" nowrap colspan="2" align="left"><b>&nbsp;31.</b>Godsmärkning, kolli och varuslag&nbsp;</td>
-							           	<td class="text12" align="left">&nbsp;</td>
+							            <td class="text14" nowrap colspan="2" align="left"><b>&nbsp;31.</b>Godsmärkning, kolli och varuslag&nbsp;</td>
+							           	<td class="text14" align="left">&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td class="text12" align="left">&nbsp;&nbsp;&nbsp;<span title="svev_god2-svev_kot2-svev_kos2 / etc">Godsmärkning ,antal kolli och kollislag:&nbsp;</td>
-							           	<td class="text12" align="left"><button name="goodsMarkButton" class="buttonGray" type="button" onClick="showPop('goodsMark');" >Mer...</button> 
+							            <td class="text14" align="left">&nbsp;&nbsp;&nbsp;<span title="svev_god2-svev_kot2-svev_kos2 / etc">Godsmärkning ,antal kolli och kollislag:&nbsp;</td>
+							           	<td class="text14" align="left"><button name="goodsMarkButton" class="buttonGray" type="button" onClick="showPop('goodsMark');" >Mer...</button> 
 								        <span style="position:absolute; left:480px; top:1000px; width:350px; height:320px;" id="goodsMark" class="popupWithInputText"  >
 								           		<div class="text10" align="left" valign="top">
 								           			<table>
@@ -1677,7 +1677,7 @@
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td  class="text12"><button name="goodsMarkButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('goodsMark');">&nbsp;Ok</button> 
+															<td  class="text14"><button name="goodsMarkButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('goodsMark');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -1686,8 +1686,8 @@
 										</td>
 							        </tr>
 									<tr>
-							            <td class="text12" align="left">&nbsp;&nbsp;&nbsp;&nbsp;<span title="svev_co01/svev_co02...etc">Container nr:&nbsp;</span></td>
-							           	<td class="text12" align="left"><button name="containerNrButton" class="buttonGray" type="button" onClick="showPop('containerNrInfo');" >Mer...</button> 
+							            <td class="text14" align="left">&nbsp;&nbsp;&nbsp;&nbsp;<span title="svev_co01/svev_co02...etc">Container nr:&nbsp;</span></td>
+							           	<td class="text14" align="left"><button name="containerNrButton" class="buttonGray" type="button" onClick="showPop('containerNrInfo');" >Mer...</button> 
 								           	<span style="position:absolute; left:480px; top:1000px; width:580px; height:250px;" id="containerNrInfo" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table>
@@ -1769,7 +1769,7 @@
 													</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text12" ><button name="containerNrButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('containerNrInfo');">&nbsp;Ok</button> 
+															<td class="text14" ><button name="containerNrButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('containerNrInfo');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -1787,7 +1787,7 @@
 					 		<td colspan="2">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td class="text12" align="left" >
+							            <td class="text14" align="left" >
 							            &nbsp;<img onMouseOver="showPop('49_info');" onMouseOut="hidePop('49_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>49.</b><span title="svev_lagt">Identifiering av lager:&nbsp;</span>
 							            
@@ -1811,7 +1811,7 @@
 							            </div>
 							            </td>
 							            
-							            <td class="text12" align="left" >
+							            <td class="text14" align="left" >
 							            	<select name="svev_lagt" id="svev_lagt">
 				 								<option selected value="">-Välj-</option>
 												<c:choose>
@@ -1833,7 +1833,7 @@
 												</c:choose>
 											</select>
 										</td>
-										<td class="text12" align="left">&nbsp;&nbsp;<span title="svev_lagi">Id:</span>
+										<td class="text14" align="left">&nbsp;&nbsp;<span title="svev_lagi">Id:</span>
 											<c:choose>
 			 									<%-- only when new record and header value exists --%>
 												<c:when test="${recordTopic.sveh_godn!='' && empty model.record.svev_syli}">
@@ -1844,7 +1844,7 @@
 												</c:otherwise>
 											</c:choose>
 										</td>
-							           	<td class="text12" align="left">&nbsp;<span title="svev_lagl">Landkod&nbsp;</span>
+							           	<td class="text14" align="left">&nbsp;<span title="svev_lagl">Landkod&nbsp;</span>
 							            	<select name="svev_lagl" id="svev_lagl">
 						 						<option value="">-Välj-</option>
 						 						<c:choose>
@@ -1877,7 +1877,7 @@
 				 				<%-- Item header --%>
 				 				<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
 							 		<tr height="15">
-							 			<td class="text12">
+							 			<td class="text14">
 							 				&nbsp;&nbsp;<b>Ytterligare säkerhetsuppgifter&nbsp;</b>
 							 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 							 				
@@ -1891,7 +1891,7 @@
 							<td colspan="2">
 						 		<table border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('S02_info');" onMouseOut="hidePop('S02_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>S02.</b><span title="svev_komr">Kommersiellt referensnr.&nbsp;</span>
 							            
@@ -1915,10 +1915,10 @@
 										</span>
 										</div>
 										</td>
-							           	<td class="text12" align="left"><input type="text" class="inputText" name="svev_komr" id="svev_komr" size="25" maxlength="70" value="${model.record.svev_komr}"></td>
+							           	<td class="text14" align="left"><input type="text" class="inputText" name="svev_komr" id="svev_komr" size="25" maxlength="70" value="${model.record.svev_komr}"></td>
 						           	</tr>
 						           	<tr>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('S27_info');" onMouseOut="hidePop('S27_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>S27.</b><span title="svev_fnkd">FN-kod för farligt gods:&nbsp;</span>
 							            
@@ -1937,10 +1937,10 @@
 										</span>
 										</div>
 										</td>
-							            <td class="text12" align="left"><input type="text" class="inputText" name="svev_fnkd" id="svev_fnkd" size="4" maxlength="4" value="${model.record.svev_fnkd}"></td>
+							            <td class="text14" align="left"><input type="text" class="inputText" name="svev_fnkd" id="svev_fnkd" size="4" maxlength="4" value="${model.record.svev_fnkd}"></td>
 							        </tr>
 							        <tr>
-						 				<td class="text12">
+						 				<td class="text14">
 						 				&nbsp;<img onMouseOver="showPop('S29_info');" onMouseOut="hidePop('S29_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>S29.</b><span title="svev_betk">Betalningssätt&nbsp;</span>
 						 				
@@ -2021,7 +2021,7 @@
 				 	
 					<table>
 						<tr>
-							<td colspan="6">Beskrivning:&nbsp;<label class="text12Bold" id="description_svew" name="description_svew"></label></td>
+							<td colspan="6">Beskrivning:&nbsp;<label class="text14Bold" id="description_svew" name="description_svew"></label></td>
 						</tr>
 						<tr height="5"><td></td></tr>
 						
@@ -2033,11 +2033,11 @@
           					<td class="tableHeaderField" align="left" >&nbsp;Kundnr.</td>
           				</tr>
 						<tr>
-							<td class="tableCellFirst11"><input class="inputTextReadOnly" type="text" id="svew_ulkd" name="svew_ulkd" size="10px" value=""></input></td>
-							<td class="tableCell11"><input readonly class="inputTextReadOnly" type="text"  id="svew_vata" name="svew_vata" size="10px" value=""></input></td>
-							<td class="tableCell11"><input readonly class="inputTextReadOnly" type="text"  id="svew_eup1" name="svew_eup1" size="10px" value=""></input></td>
-							<td class="tableCell11"><input  class="inputTextMediumBlue" type="text"  id="svew_knso" name="svew_knso" size="10px" value=""></input></td>
-							<td class="tableCell11"><input  class="inputTextMediumBlue" type="text"  id="svew_knnr" name="svew_knnr" size="10px" value=""></input></td>
+							<td class="tableCellFirst"><input class="inputTextReadOnly" type="text" id="svew_ulkd" name="svew_ulkd" size="10px" value=""></input></td>
+							<td class="tableCell"><input readonly class="inputTextReadOnly" type="text"  id="svew_vata" name="svew_vata" size="10px" value=""></input></td>
+							<td class="tableCell"><input readonly class="inputTextReadOnly" type="text"  id="svew_eup1" name="svew_eup1" size="10px" value=""></input></td>
+							<td class="tableCell"><input  class="inputTextMediumBlue" type="text"  id="svew_knso" name="svew_knso" size="10px" value=""></input></td>
+							<td class="tableCell"><input  class="inputTextMediumBlue" type="text"  id="svew_knnr" name="svew_knnr" size="10px" value=""></input></td>
 						</tr>
 						
 					</table>

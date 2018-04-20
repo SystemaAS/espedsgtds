@@ -36,12 +36,12 @@
 							<table id="tblInvoices" class="display compact cell-border" width="100%">
 								<thead>
 								<tr style="background-color:#DDDDDD">
-									<th class="text12">&nbsp;Välj&nbsp;</th>
-								    <th class="text12">&nbsp;Fakturanr.&nbsp;</th>   
-				                    <th class="text12">&nbsp;Typ&nbsp;</th> 
-				                    <th align="right" class="text12">&nbsp;Belopp&nbsp;</th> 
-				                    <th class="text12">&nbsp;Valuta&nbsp;</th> 
-				                    <th align="center" class="text12">Radera</th>
+									<th class="text14">&nbsp;Välj&nbsp;</th>
+								    <th class="text14">&nbsp;Fakturanr.&nbsp;</th>   
+				                    <th class="text14">&nbsp;Typ&nbsp;</th> 
+				                    <th align="right" class="text14">&nbsp;Belopp&nbsp;</th> 
+				                    <th class="text14">&nbsp;Valuta&nbsp;</th> 
+				                    <th align="center" class="text14">Radera</th>
 				             
 			                    </tr>
 			                    </thead>
@@ -55,14 +55,14 @@
 					                       <tr class="tableOddRow" height="15" >
 					                   </c:otherwise>
 					               </c:choose>
-					               <td class="text11" align="center">
+					               <td class="text14" align="center">
 					               		<input class="clazzInvoiceAware" type="checkbox" value="J" id="id${record.svef_reff}_unik${record.svef_unik}" name="id${record.svef_reff}_unik${record.svef_unik}" >
 					               </td>
-					               <td width="10%" class="text11" align="center">&nbsp;<span title="reff/unik:${record.svef_reff}/${record.svef_unik}">${record.svef_fatx}</span></td>
-					               <td class="text11" >&nbsp;${record.svef_faty}</td>
-					               <td align="right" class="text11" >&nbsp;${record.svef_fabl}&nbsp;</td>
-					               <td class="text11" >&nbsp;${record.svef_vakd}</td>
-					               <td width="4%" class="text11" align="center" nowrap>
+					               <td width="10%" class="text14" align="center">&nbsp;<span title="reff/unik:${record.svef_reff}/${record.svef_unik}">${record.svef_fatx}</span></td>
+					               <td class="text14" >&nbsp;${record.svef_faty}</td>
+					               <td align="right" class="text14" >&nbsp;${record.svef_fabl}&nbsp;</td>
+					               <td class="text14" >&nbsp;${record.svef_vakd}</td>
+					               <td width="4%" class="text14" align="center" nowrap>
 						               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_childwindow_external_invoices_delete.do?action=doDelete&svef_syav=${model.avd}&svef_syop=${model.opd}&svef_reff=${record.svef_reff}&svef_unik=${record.svef_unik}">
 						               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 						               	</a>

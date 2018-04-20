@@ -7,11 +7,11 @@
 <SCRIPT type="text/javascript" src="resources/js/tdsimport_archive.js?ver=${user.versionEspedsg}"></SCRIPT>
 
 
-<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
+<table width="100%"  class="text14" cellspacing="0" border="0" cellpadding="0">
 	<tr>
 		<td>
 		<%-- tab container component --%>
-		<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
+		<table width="100%"  class="text14" cellspacing="0" border="0" cellpadding="0">
 			<tr height="2"><td></td></tr>
 			<tr height="25"> 
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
@@ -25,7 +25,7 @@
 					<a id="alinkHeader" tabindex=-1 style="display:block;" href="tdsimport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
 							&sysg=${model.sign}&tuid=${model.tullId}&syst=${model.status}&sydt=${model.datum}">
 						<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.created.mastertopic.tab"/></font>
-						<font class="text12MediumBlue">[${model.opd}]</font>
+						<font class="text14MediumBlue">[${model.opd}]</font>
 						<c:if test="${model.status == 'M' || empty model.status}">
 							<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						</c:if>

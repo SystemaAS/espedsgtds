@@ -29,7 +29,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="20%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Firmauppl.</font>&nbsp;<font class="text12">SVT055 / SVTFI</font>&nbsp;
+						<font class="tabLink">Firmauppl.</font>&nbsp;<font class="text14">SVT055 / SVTFI</font>&nbsp;
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_svt055r.do?id=${model.dbTable}">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -58,7 +58,7 @@
 	            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 	            	<tr >
 					<td >					
-			            <ul class="isa_error text12" >
+			            <ul class="isa_error text14" >
 			            <c:forEach var="error" items="${errors.allErrors}">
 			                <li >
 			                	<spring:message code="${error.code}" text="${error.defaultMessage}"/>&nbsp;&nbsp;
@@ -80,7 +80,7 @@
 	            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 				 		<tr>
 				 			<td >
-				 				<ul class="isa_error text12" >
+				 				<ul class="isa_error text14" >
                                     <li>[ERROR on Update] - Server return code: ${model.errorMessage}</li>                                    
                                 </ul>
 				 			</td>
@@ -99,7 +99,7 @@
 	 	    	<td width="5%">&nbsp;</td>
 				<td width="100%">
 					<table class=formFrameHeaderPeachWithBorder width="80%" cellspacing="0" border="0" align="left">
-						<tr><td class="text12White" >&nbsp;<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="10px" height="10px" alt="test"></td>
+						<tr><td class="text14White" >&nbsp;<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="10px" height="10px" alt="test"></td>
 						</tr>
 					</table>
 					<table class="formFramePeachGrayRoundBottom" width="80%" cellspacing="1" border="0" align="left">	
@@ -112,7 +112,7 @@
 						<tr>
 							<td colspan="2" class="text14" title=""><b>&nbsp;UNB</b>&nbsp;
 								<img style="vertical-align: middle;"  src="resources/images/checkmarkOK.png" border="0" width="12px" height="12px" alt="UNB">
-								<font class="text12">&nbsp;&nbsp;&nbsp;Test&nbsp;</font>
+								<font class="text14">&nbsp;&nbsp;&nbsp;Test&nbsp;</font>
 								<select name="svtf_0035" id="svtf_0035">
 			 						<option value="1" <c:if test="${model.record.svtf_0035 == '1'}"> selected </c:if> >Ja</option>
 			 						<option value="" <c:if test="${empty model.record.svtf_0035}"> selected </c:if> >Nej</option>
@@ -122,25 +122,25 @@
 						</tr>
 						<tr height="5"><td></td>
 						<tr>
-							<td class="text12" title="svtf_0004"><font class="text12RedBold" >*</font>Avsändarid
+							<td class="text14" title="svtf_0004"><font class="text14RedBold" >*</font>Avsändarid
 								<a tabindex="-1" id="svtf_0004IdLink">
 									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 								</a>
 							</td>
-							<td class="text12" title="svtf_0008">&nbsp;Avs.vidareadress</td>
+							<td class="text14" title="svtf_0008">&nbsp;Avs.vidareadress</td>
 						</tr>
 						<tr>
 							<td ><input type="text" required oninvalid="this.setCustomValidity('Obligatorisk')" oninput="setCustomValidity('')" class="inputTextMediumBlueMandatoryField" name="svtf_0004" id="svtf_0004" size="36" maxlength="35" value='${model.record.svtf_0004}'></td>
 							<td ><input type="text" class="inputTextMediumBlue" name="svtf_0008" id="svtf_0008" size="15" maxlength="14" value='${model.record.svtf_0008}'></td>
 						</tr>
 						<tr>
-							<td class="text12" title="svtf_0010"><font class="text12RedBold" >*</font>Mottagarid
+							<td class="text14" title="svtf_0010"><font class="text14RedBold" >*</font>Mottagarid
 								<a tabindex="-1" id="svtf_0010IdLink">
 									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 								</a>
 							</td>
-							<td class="text12" title="svtf_0014">&nbsp;Mottag.vidareadress</td>
-							<td class="text12" title="svtf_0022"><font class="text12RedBold" >*</font>Lösenord</td>
+							<td class="text14" title="svtf_0014">&nbsp;Mottag.vidareadress</td>
+							<td class="text14" title="svtf_0022"><font class="text14RedBold" >*</font>Lösenord</td>
 						</tr>
 						<tr>
 							<td ><input type="text" required oninvalid="this.setCustomValidity('Obligatorisk')" oninput="setCustomValidity('')" class="inputTextMediumBlueMandatoryField" name="svtf_0010" id="svtf_0010" size="36" maxlength="35" value='${model.record.svtf_0010}'></td>
@@ -149,15 +149,15 @@
 						</tr>
 						<tr height="20"><td></td>
 						<tr>
-							<td class="text12" title="svtf_pref"><font class="text12RedBold" >*</font>Tullid prefix</td>
-							<td class="text12" title="svtf_numb"><font class="text12RedBold" >*</font>Sist använda nr.</td>
-							<td class="text12" title="svtf_kval">&nbsp;Kvalitetsäkrad</td>
-							<td class="text12" title="svtf_usri"><font class="text12RedBold" >*</font>SMS-sender Userid
+							<td class="text14" title="svtf_pref"><font class="text14RedBold" >*</font>Tullid prefix</td>
+							<td class="text14" title="svtf_numb"><font class="text14RedBold" >*</font>Sist använda nr.</td>
+							<td class="text14" title="svtf_kval">&nbsp;Kvalitetsäkrad</td>
+							<td class="text14" title="svtf_usri"><font class="text14RedBold" >*</font>SMS-sender Userid
 								<a tabindex="-1" id="svtf_usriIdLink">
 									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 								</a>
 							</td>
-							<td class="text12" title="svtf_usra"><font class="text12RedBold" >*</font>SMS-sender Adress</td>
+							<td class="text14" title="svtf_usra"><font class="text14RedBold" >*</font>SMS-sender Adress</td>
 						</tr>
 						<tr>
 							<td ><input type="text" required oninvalid="this.setCustomValidity('Obligatorisk')" oninput="setCustomValidity('')" class="inputTextMediumBlueMandatoryField" name="svtf_pref" id="svtf_pref" size="4" maxlength="3" value='${model.record.svtf_pref}'></td>
@@ -186,11 +186,11 @@
 									</tr>
 									<tr height="5"><td></td>
 									<tr>
-										<td class="text12" >&nbsp;<b>Security party id</b></td>
+										<td class="text14" >&nbsp;<b>Security party id</b></td>
 									</tr>
 									<tr>
-										<td class="text12" title="svtf_sec1"><font class="text12RedBold" >*</font>Egen</td>
-										<td class="text12" title="svtf_sec2"><font class="text12RedBold" >*</font>Tullverket</td>
+										<td class="text14" title="svtf_sec1"><font class="text14RedBold" >*</font>Egen</td>
+										<td class="text14" title="svtf_sec2"><font class="text14RedBold" >*</font>Tullverket</td>
 									</tr>
 									<tr>
 										<td >
@@ -202,11 +202,11 @@
 									</tr>
 									<tr height="10"><td></td>
 									<tr>
-										<td class="text12" >&nbsp;<b>Certifikatserienr.</b></td>
+										<td class="text14" >&nbsp;<b>Certifikatserienr.</b></td>
 									</tr>
 									<tr>
-										<td class="text12" title="svtf_cer1"><font class="text12RedBold" >*</font>Egen</td>
-										<td class="text12" title="svtf_cer2"><font class="text12RedBold" >*</font>Tullverket</td>
+										<td class="text14" title="svtf_cer1"><font class="text14RedBold" >*</font>Egen</td>
+										<td class="text14" title="svtf_cer2"><font class="text14RedBold" >*</font>Tullverket</td>
 									</tr>
 									<tr>
 										<td >
@@ -218,11 +218,11 @@
 									</tr>
 									<tr height="10"><td></td>
 									<tr>
-										<td class="text12" >&nbsp;<b>Certifikatnyckelid</b></td>
+										<td class="text14" >&nbsp;<b>Certifikatnyckelid</b></td>
 									</tr>
 									<tr>
-										<td class="text12" title="svtf_cer3">&nbsp;Egen</td>
-										<td class="text12" title="svtf_cer4">&nbsp;Tullverket</td>
+										<td class="text14" title="svtf_cer3">&nbsp;Egen</td>
+										<td class="text14" title="svtf_cer4">&nbsp;Tullverket</td>
 									</tr>
 									<tr>
 										<td >
@@ -244,7 +244,7 @@
 	 	    		<table width="80%" cellspacing="1" border="0" align="left">
 	 	    			<tr height="10"><td>&nbsp;</td>
 			    	    <tr>
-				    	    <td class="text12" align="right">
+				    	    <td class="text14" align="right">
 								<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='Spara'/>
 							</td>
 						</tr>
