@@ -37,12 +37,12 @@
 	<%--datatables grid --%>
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 	
-    <table class="noBg" width="1250" border="0" cellspacing="0" cellpadding="0">
+    <table class="noBg" width="100%" border="0" cellspacing="0" cellpadding="0">
 		<%--Banner --%>
 	 	<tr>
 	 		 <%-- class="grayTitanBg" --%>
     		<td height="60" class="headerTdsBannerAreaBg" width="100%" align="left" colspan="3"> 
-    			 <table width="1250" border="0" cellspacing="0" cellpadding="0">
+    			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     			 	<tr>
 			        	<td>&nbsp;</td>
 			        	<td>&nbsp;</td>
@@ -81,7 +81,7 @@
 					 		</c:otherwise>
 				 		</c:choose>
 					 		
-				 		<td class="text22Bold" width="80%" align="middle" valign="middle" style="color:#778899;" > 
+				 		<td class="text32Bold" width="100%" align="middle" valign="middle" style="color:#778899;" > 
 				 			eSped<font style="color:#003300;">sg</font> - TDS
 				 		</td>
 			    		<td class="text12" width="10%" align="center" valign="middle" ><img src="resources/images/systema_logo.png" border="0" width=80px height=50px ></td>
@@ -100,8 +100,8 @@
 		<c:choose>
 		<c:when test="${user.authorizedTdsUserAS400 == 'Y'}">
 			<tr >
-				<td height="23" class="tabThinBorderLightSlateGray" width="100%" align="left" colspan="3"> 
-	    			 <table width="1250" border="0" cellspacing="0" cellpadding="0">
+				<td height="23" class="tabThinBorderLightGreenLogoutE2" width="100%" align="left" colspan="3"> 
+	    			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 					 	<tr >
 				    		<td class="text11" width="75%" align="left" >&nbsp;&nbsp;
 				    			<%-- --------------- --%>
@@ -238,7 +238,7 @@
 			                   		&nbsp;&nbsp;Underhåll&nbsp;</font>
 				    			</a>
 		      				</td>		      				
-		      				<td class="text11"  align="right">
+		      				<td class="text14"  align="right">
 		      					<img valign="bottom" src="resources/images/countryFlags/Flag_SE.gif" height="12" border="0" alt="country">
 		      					&nbsp;
 		      					<font class="headerMenuGreen">
@@ -250,11 +250,11 @@
 						           			<button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('specialInformationAdmin');">Close</button> 
 						           		</div>
 						        		</span>	
-				    				<font class="text11User"  >${user.user}&nbsp;</font>${user.usrLang}</font>
+				    				<font class="text14User"  >${user.user}&nbsp;</font>${user.usrLang}</font>
 				    				<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
 					    			<a tabindex=-1 href="logout.do">
 					    				<font class="headerMenuGreen"><img src="resources/images/home.gif" border="0">
-					    					<font class="text11User"  ><spring:message code="dashboard.menu.button"/></font>
+					    					<font class="text14User"  ><spring:message code="dashboard.menu.button"/></font>
 					    				</font>
 					    			</a>
 					    			<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
@@ -278,11 +278,11 @@
 	    
 	    <c:otherwise>
 	    		<tr>
-				<td height="23" class="tabThinBorderLightSlateGray" width="100%" align="left" colspan="3"> 
-	    			 <table width="1250" border="0" cellspacing="1" cellpadding="1">
+				<td height="23" class="tabThinBorderLightGreenLogoutE2" width="100%" align="left" colspan="3"> 
+	    			 <table width="100%" border="0" cellspacing="1" cellpadding="1">
 					 	<tr >
-				    		<td class="text11" width="50%" align="left" >&nbsp;&nbsp;</td>
-	      				<td class="text11" width="50%" align="right">
+				    		<td class="text14" width="50%" align="left" >&nbsp;&nbsp;</td>
+	      				<td class="text14" width="50%" align="right">
 	      					<img valign="bottom" src="resources/images/countryFlags/Flag_SE.gif" height="12" border="0" alt="country">
 		      				&nbsp;
 		      				<font class="headerMenuGreen">
@@ -297,12 +297,14 @@
 				    			</a>
 				    			<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;&nbsp;|&nbsp;</font>
 				    			<font class="text12LightGreen" style="cursor:pointer;" onClick="showPop('versionInfo');">${user.versionSpring}&nbsp;</font>
-						        <span style="position:absolute; left:800px; top:105px; width:150px; height:50px;" id="versionInfo" class="popupWithInputText"  >
-						           		<div class="text11" align="left">
-						           			<b>${user.versionEspedsg}</b></br></br>
-						           			<button name="versionInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('versionInfo');">Close</button> 
-						           		</div>
-						        </span>  
+						       <div class="text11" style="position: relative;display: inline;" align="left">
+								<span style="position:absolute; left:-150px; top:3px; width:150;" id="versionInfo" class="popupWithInputText"  >
+									<div class="text11" align="left">
+					           			<b>${user.versionEspedsg}</b></br></br>
+					           			<button name="versionInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('versionInfo');">Close</button> 
+						           	</div>
+								</span>
+								</div> 
 				    		</td>
 		      	        </tr>
 		      	     </table> 
@@ -314,7 +316,7 @@
 					<form autocomplete='off' action="tdsgate.do" name="loginTdsForm" id="loginTdsForm" method="POST" > 
     			 		<table width="250" border="0" cellspacing="1" cellpadding="0">
     			 		<tr >
-				    		<td colspan="2" class="text12" >&nbsp;
+				    		<td colspan="2" class="text14" >&nbsp;
 				    			<img onMouseOver="showPop('tdsBehorighet_info');" onMouseOut="hidePop('tdsBehorighet_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				    			<b>TDS Behörighetskontroll</b>
 								<span style="position:absolute; left:300px; top:120px; width:250px; height:200px;" id="tdsBehorighet_info" class="popupWithInputText"  >
@@ -332,14 +334,14 @@
 	      	        </tr>
 	      	        <tr class="text" height="5"><td></td></tr>
 				 	<tr >
-				    		<td class="text12" >&nbsp;&nbsp;AnvändarId</td>
-		      				<td class="text12" >
+				    		<td class="text14" >&nbsp;&nbsp;AnvändarId</td>
+		      				<td class="text14" >
 		      					<input readonly type="text" autocomplete='off' class="inputTextReadOnly" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 				    		</td>
 	      	        </tr>
 	      	        <tr >
-				    		<td class="text12" >&nbsp;&nbsp;Lösenord</td>
-		      				<td class="text12" >
+				    		<td class="text14" >&nbsp;&nbsp;Lösenord</td>
+		      				<td class="text14" >
 		      					<%-- this will ensure not to enable the brower to ask the user to remember the password --%>
 		      					<input type="password" autocomplete='off' readonly onfocus="this.removeAttribute('readonly');" class="inputTextMediumBlue" name="pwAS400" id="pwAS400" size="10" maxlength="20" value="">	
 				    		</td>
