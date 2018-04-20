@@ -147,7 +147,7 @@
 			</tr>
  	        <tr>
 				<td align="left" >&nbsp;
-           			<select name="avd" id="avd">
+           			<select class="selectMediumBlueE2" name="avd" id="avd">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.avdList}" >
                         	 	<option value="${record.avd}"<c:if test="${searchFilterTdsImport.avd == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
@@ -155,7 +155,7 @@
 					</select>
 				</td>
 				<td align="left" >
-           			<select name="sign" id="sign">
+           			<select class="selectMediumBlueE2" name="sign" id="sign">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.signList}" >
                              	 	<option value="${record.sign}"
@@ -226,10 +226,11 @@
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
-	                    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.import.list.search.label.avd"/>&nbsp;</td>   
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.signatur"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>
+	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.import.list.search.label.avd"/>&nbsp;</th>   
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.signatur"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>
 	                    		<img onMouseOver="showPop('update_info');" onMouseOut="hidePop('update_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 		 					<spring:message code="systema.tds.import.list.search.label.update"/>
 	 					
@@ -252,21 +253,23 @@
 				           		</ul>
 						</span>
 						</div>
-						</td>	
+						</th>	
 	                    
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.arende"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.extRef"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.tullid"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.mtyp"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.datum"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.status"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.avsandare"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.mottagare"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.begaranOmKlarering"/></td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.kopieraArende"/></td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.raderaArende"/></td>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.arende"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.extRef"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.tullid"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.mtyp"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.datum"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.status"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.avsandare"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.mottagare"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.begaranOmKlarering"/></th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.kopieraArende"/></th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.raderaArende"/></th>
 	                    
-	                </tr>     
+	                </tr>   
+	                </thead>
+	                <tbody>  
 		            <c:forEach items="${list}" var="topic" varStatus="counter">    
 		               <c:choose>           
 		                   <c:when test="${counter.count%2==0}">
@@ -434,7 +437,7 @@
 	                						</tr>
 	 									<tr>
 											<td class="text14MediumBlue">
-												<select class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
+												<select class="selectMediumBlueE2" class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.avdList}" >
 							                             	 	<option value="${record.avd}">${record.avd}</option>
@@ -442,7 +445,7 @@
 												</select>
 											</td>
 											<td class="text14MediumBlue">
-												<select class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
+												<select class="selectMediumBlueE2" class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.signList}" >
 							                            <option value="${record.sign}" <c:if test="${searchFilterTdsImport.sign == record.sign}"> selected </c:if> > ${record.sign}</option> 
@@ -468,8 +471,10 @@
 			               </c:otherwise>
 		               </c:choose>
                		   
-		            </tr> 
+		            </tr>
 		            </c:forEach>
+		            </tbody> 
+		            
 	            </table>
 			</td>	
 			</tr>
@@ -512,7 +517,7 @@
           						</tr>
 						<tr>
 							<td class="text14MediumBlue">
-								<select name="selectedAvd" id="selectedAvd">
+								<select class="selectMediumBlueE2" name="selectedAvd" id="selectedAvd">
 				            		<option value="">-Välj-</option>
 				 				  	<c:forEach var="record" items="${model.avdList}" >
 			                             	 	<option value="${record.avd}">${record.avd}</option>

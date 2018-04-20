@@ -199,8 +199,8 @@
 											           			<td colspan="3" class="text14"><b>Varuposter</b></td>
 											           		</tr>
 												           	<tr>	
-																<td class="text14" width="95%" >
-																<table id="tblItemLinesAll" class="display compact cell-border" width="95%" >
+																<td class="text14" >
+																<table id="tblItemLinesAll" class="display compact cell-border" width="100%" >
 																	<thead> 
 																	<tr class="tableHeaderField" >
 																	    
@@ -323,7 +323,7 @@
 								<tr>
 								<td class="text12">	
 							
-								<table id="tblItemLines" class="display compact cell-border" >
+								<table id="tblItemLines" class="display compact cell-border" width="100%" >
 									<thead>
 									<tr class="tableHeaderField" >
 									    <%-- 

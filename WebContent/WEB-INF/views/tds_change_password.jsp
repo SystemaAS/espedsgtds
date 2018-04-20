@@ -42,20 +42,20 @@
 		 	        <form name="tdsChangePasswordForm" id="tdsChangePasswordForm" action="tds_change_password_submit.do" method="post" >
 		 	        <table  align="left" border="0" cellspacing="1" cellpadding="0">
 				 		<tr >
-				    		<td class="text12Gray" >Användarid</td>
-		      				<td class="text12Gray" >
+				    		<td class="text14Gray" >Användarid</td>
+		      				<td class="text14Gray" >
 		      					<input readonly type="text" class="inputTextReadOnly" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 				    		</td>
 		      	        </tr>
 		      	        <tr height="15"><td></td></tr>
 		      	        <tr >
-					    		<td class="text12" >Nytt lösenord:</td>
+					    		<td class="text14" >Nytt lösenord:</td>
 		      				<td class="text" >
 		      					<input type="password" class="inputText" name="pwAS400N1" id="pwAS400N1" size="10" maxlength="20" value=''>	
 					    		</td>
 		      	        </tr>
 		      	        <tr >
-					    		<td class="text12" >Repetera lösenord:</td>
+					    		<td class="text14" >Repetera lösenord:</td>
 		      				<td class="text" >
 		      					<input type="password" class="inputText" name="pwAS400N2" id="pwAS400N2" size="10" maxlength="20" value=''>	
 					    		</td>
@@ -98,7 +98,7 @@
 							<td colspan=3>
 							<table>
 								<tr>
-								<td class="text12MediumBlue">					
+								<td class="text14MediumBlue">					
 					                	${successMessage}
 								</td>
 								</tr>

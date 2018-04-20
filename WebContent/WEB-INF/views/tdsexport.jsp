@@ -221,13 +221,14 @@
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
-	                    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.list.search.label.avd"/>&nbsp;</td>   
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.signatur"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>
+	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.list.search.label.avd"/>&nbsp;</th>   
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.signatur"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>
 							<img onMouseOver="showPop('update_info');" onMouseOut="hidePop('update_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 		 					<spring:message code="systema.tds.export.list.search.label.update"/>
-		 				</td>	
+		 				</th>	
 						<span style="position:absolute; left:1020px; top:150px; width:250px; height:400px;" id="update_info" class="popupWithInputText"  >
 			           		<div class="text11" align="left">
 			           			<img title="Rättelse" style="vertical-align:bottom;" src="resources/images/request.gif" width="14px" height="12px" border="0">
@@ -257,19 +258,21 @@
 							</div>
 						</span>	
 					
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.arende"/>&nbsp;</td>
-	                    <td class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.export.list.search.label.extRef"/></td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.tullid"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.mtyp"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.status"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.avsandare"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.mottagare"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.begaranOmKlarering"/></td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.kopieraArende"/></td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.raderaArende"/></td>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.arende"/>&nbsp;</th>
+	                    <th class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.export.list.search.label.extRef"/></th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.tullid"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.mtyp"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.status"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.avsandare"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.mottagare"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.begaranOmKlarering"/></th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.kopieraArende"/></th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.raderaArende"/></th>
 	                    
-	                </tr>     
+	                </tr>
+	                </thead>
+	                <tbody>     
 		            <c:forEach items="${list}" var="topic" varStatus="counter">    
 		               <c:choose>           
 		                   <c:when test="${counter.count%2==0}">
@@ -467,9 +470,10 @@
 			               </c:otherwise>
 		               </c:choose>
 		               
-		            </tr> 
+		            </tr>
 		            </c:forEach>
-					
+					</tbody> 
+		            
 	            </table>
 	            
 			</td>	

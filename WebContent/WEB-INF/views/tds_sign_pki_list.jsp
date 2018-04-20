@@ -43,21 +43,25 @@
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
-	                    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.avd"/>&nbsp;</td>   
-	                    <td class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.signatur"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.arende"/>&nbsp;</td>
-	                    <td class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.refId"/>&nbsp;</td>
-	                    <td class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.datum"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.status"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.partnerName"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.mtyp"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.ursprung"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.godkann"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.aterkalla"/>&nbsp;</td>
+	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.avd"/>&nbsp;</th>   
+	                    <th class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.signatur"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.arende"/>&nbsp;</th>
+	                    <th class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.refId"/>&nbsp;</th>
+	                    <th class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.datum"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.status"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.partnerName"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.mtyp"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.ursprung"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.godkann"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.sign.pki.list.topic.column.label.aterkalla"/>&nbsp;</th>
 	                    
 	               </tr> 
+	               </thead>
+	               
 	               <form  name="signOrRevokeTopicForm" id="signOrRevokeTopicForm" method="post">
+	               <tbody>
 		           		<c:forEach items="${list}" var="topic" varStatus="counter"> 
 		           			<input type="hidden" name="refid_${counter.count}" value='<c:out value="${topic.refid}"/>' />
 		           			<input type="hidden" name="syavd_${counter.count}" value='<c:out value="${topic.syav}"/>' />
@@ -95,6 +99,7 @@
 			            </tr> 
 			            <c:set var="nrOfRecordsInPage" value="${counter.count}" scope="request" />
 			            </c:forEach>
+			           </tbody> 
 			            <input type="hidden" name="nrOfRecordsInPage" value='<c:out value="${nrOfRecordsInPage}"/>' />
 		               
 	            	</table>

@@ -37,10 +37,10 @@ It has been a design decision in order to keep this function explicitly separate
 				 		<td>&nbsp;</td>
 			        </tr>
 				 	<tr>
-				 		<td class="text12white" width="10%" align=left valign="bottom" >&nbsp;</td>
+				 		<td class="text14white" width="10%" align=left valign="bottom" >&nbsp;</td>
 				 		<td class="text22Bold" width="80%" align="middle" valign="middle" > Systema - TDS</td>
-			    		<td class="text12" width="10%" align="center" valign="middle" ><img src="resources/images/systema_logo.png" border="0" width=90px height=60px ></td>
-			      		<%-- <td class="text12white" width="10%" align=right valign="bottom" >&nbsp;</td>--%>
+			    		<td class="text14" width="10%" align="center" valign="middle" ><img src="resources/images/systema_logo.png" border="0" width=90px height=60px ></td>
+			      		<%-- <td class="text14white" width="10%" align=right valign="bottom" >&nbsp;</td>--%>
 			        </tr>
 			        <tr>
 			        	<td>&nbsp;</td>
@@ -82,7 +82,7 @@ It has been a design decision in order to keep this function explicitly separate
 				<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
 					<tr height="2"><td></td></tr>
 					<tr height="25"> 
-						<td colspan="2" class="text12" >&nbsp;
+						<td colspan="2" class="text14" >&nbsp;
 							<img onMouseOver="showPop('changePassword_info');" onMouseOut="hidePop('changePassword_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 							<font class="tabLink">&nbsp;<spring:message code="systema.tds.change.password.tab"/> eftersom lösenordet är för gammalt</font>
 							<img valign="bottom" src="resources/images/lockOrig.png" width="12" hight="12" border="0" alt="Change password">
@@ -111,20 +111,20 @@ It has been a design decision in order to keep this function explicitly separate
 			 	        <form name="tdsChangePasswordForm" id="tdsChangePasswordForm" action="tds_change_password_too_old_submit.do" method="post" >
 			 	        <table  align="left" border="0" cellspacing="1" cellpadding="0">
 					 		<tr >
-						    		<td class="text12Gray" >Användarid</td>
-			      				<td class="text12Gray" >
+						    		<td class="text14Gray" >Användarid</td>
+			      				<td class="text14Gray" >
 			      					<input readonly type="text" class="inputTextReadOnly" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 						    		</td>
 			      	        </tr>
 			      	        <tr height="15"><td></td></tr>
 			      	        <tr >
-						    		<td class="text12" >Nytt lösenord:</td>
+						    		<td class="text14" >Nytt lösenord:</td>
 			      				<td class="text" >
 			      					<input type="password" class="inputText" name="pwAS400N1" id="pwAS400N1" size="10" maxlength="20" value=''>	
 						    		</td>
 			      	        </tr>
 			      	        <tr >
-						    		<td class="text12" >Repetera lösenord:</td>
+						    		<td class="text14" >Repetera lösenord:</td>
 			      				<td class="text" >
 			      					<input type="password" class="inputText" name="pwAS400N2" id="pwAS400N2" size="10" maxlength="20" value=''>	
 						    		</td>
@@ -168,7 +168,7 @@ It has been a design decision in order to keep this function explicitly separate
 								<td colspan=3>
 								<table>
 									<tr>
-									<td class="text12MediumBlue">					
+									<td class="text14MediumBlue">					
 						                	${successMessage}
 									</td>
 									</tr>

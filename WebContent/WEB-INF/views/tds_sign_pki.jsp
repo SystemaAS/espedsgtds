@@ -42,21 +42,21 @@
 			 	        <form name="tdsExportSignPkiForm" id="tdsExportSignPkiForm" action="tds_sign_pki_submit_smscode.do" method="post" >
 			 	        <table  align="left" border="0" cellspacing="1" cellpadding="0">
 					 		<tr >
-					    		<td class="text12Gray" >AnvändarId</td>
-			      				<td class="text12Gray" >
+					    		<td class="text14Gray" >AnvändarId</td>
+			      				<td class="text14Gray" >
 			      					<input readonly type="text" class="inputTextReadOnly" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 					    		</td>
 			      	        </tr>
 			      	        <tr >
-					    		<td class="text12Gray" >Lösenord</td>
-			      				<td class="text12Gray" >
+					    		<td class="text14Gray" >Lösenord</td>
+			      				<td class="text14Gray" >
 			      					<input readonly type="password" class="inputTextReadOnly" name="pwAS400" id="pwAS400" size="10" maxlength="20" value='dummy'>	
 					    		</td>
 			      	        </tr>
 				 	        <tr height="30"><td></td></tr>
 			      	        
 			      	        <tr >
-					    		<td class="text12" >
+					    		<td class="text14" >
 					    		<img onMouseOver="showPop('signSmsCode_info');" onMouseOut="hidePop('signSmsCode_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					    		Engångskod
 					    		<span style="position:absolute; left:300px; top:150px; width:250px; height:100px;" id="signSmsCode_info" class="popupWithInputText"  >
@@ -66,7 +66,7 @@
 								</span>
 					    		</td>
 
-			      				<td class="text12" >
+			      				<td class="text14" >
 			      					<input  onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="signSmsCode" id="signSmsCode" size="10" maxlength="7" value=''>	
 					    		</td>
 			      	        </tr>
@@ -87,14 +87,14 @@
 				 	        <form name="tdsExportSignPkiForm" id="tdsExportSignPkiForm" action="tds_sign_pki.do" method="post" >
 				 	        <table align="left" border="0" cellspacing="1" cellpadding="0">
 						 		<tr >
-						    		<td class="text12" >AnvändarId</td>
-				      				<td class="text12" >
+						    		<td class="text14" >AnvändarId</td>
+				      				<td class="text14" >
 				      					<input type="text" class="inputTextMediumBlue" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 						    		</td>
 				      	        </tr>
 				      	        <tr >
-						    		<td class="text12" >Lösenord</td>
-				      				<td class="text12" >
+						    		<td class="text14" >Lösenord</td>
+				      				<td class="text14" >
 				      					<input type="password" class="inputTextMediumBlue" name="pwAS400" id="pwAS400" size="10" maxlength="20" value=''>	
 						    		</td>
 				      	        </tr>
@@ -109,14 +109,14 @@
 					    <td valign="top">
 				 	        <table align="left" border="0" cellspacing="0" cellpadding="0">
 						 		<tr>
-						    		<td valign="top" class="text12">Vid giltigt lösenord överförs ni till del-2 där ett sms-meddelande med en engångskod<br/> skickas då till er personliga mobiltelefon.</td>
+						    		<td valign="top" class="text14">Vid giltigt lösenord överförs ni till del-2 där ett sms-meddelande med en engångskod<br/> skickas då till er personliga mobiltelefon.</td>
 			    				</tr>
 				  	     	</table>
 					    </td>
 					    <td valign="top" width="20%">
 				 	        <table align="left" border="0" cellspacing="0" cellpadding="0">
 						 		<tr>
-						    		<td valign="top" class="text12" colspan="2">&nbsp;&nbsp;&nbsp;</td>
+						    		<td valign="top" class="text14" colspan="2">&nbsp;&nbsp;&nbsp;</td>
 			    				</tr>
 				  	     	</table>
 					    </td>
