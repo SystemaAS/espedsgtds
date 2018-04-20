@@ -24,7 +24,7 @@
 					<a id="alinkHeader" tabindex=-1 style="display:block;" href="tdsexport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
 							&sysg=${model.sign}&tuid=${model.tullId}&syst=${model.status}&sydt=${model.datum}">
 						<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.created.mastertopic.tab"/></font>
-						<font class="text12MediumBlue">[${model.opd}]</font>
+						<font class="text14MediumBlue">[${model.opd}]</font>
 						<c:if test="${model.status == 'M' || empty model.status}">
 							<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						</c:if>
@@ -87,12 +87,12 @@
  	        <tr height="3"><td></td></tr>
  	        <form name="tdsExportSearchForm" id="searchForm" action="tdsexport?action=doFind" method="post" >
  	        <tr>	
-                <td class="text12" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.avd"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.signatur"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.arende"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.tullid"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/></td>
-                <td class="text12" align="left" >
+                <td class="text14" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.avd"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.signatur"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.arende"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.tullid"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/></td>
+                <td class="text14" align="left" >
                 <img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
                 <spring:message code="systema.tds.export.list.search.label.status"/>
                 <span style="position:absolute; left:1020px; top:150px; width:250px; height:400px;" id="status_info" class="popupWithInputText"  >
@@ -132,8 +132,8 @@
 						</div>
 					</span>	
                 </td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.avsandare"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.mottagare"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.avsandare"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.export.list.search.label.mottagare"/></td>
                 <td>&nbsp;</td>
 			</tr>
  	        <tr>
@@ -202,18 +202,21 @@
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
 					
-	                    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.archive.list.label.topicNr"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.docType"/>&nbsp;</td> 
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.subject"/>&nbsp;</td> 
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.date"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.time"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.additionalInfo"/>&nbsp;</td>
-	                    <%-- <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.url"/>&nbsp;</td>  --%>
-	                    <td class="tableHeaderField">&nbsp;Dokument</td> 
+	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.archive.list.label.topicNr"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.docType"/>&nbsp;</th> 
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.subject"/>&nbsp;</th> 
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.date"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.time"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.additionalInfo"/>&nbsp;</th>
+	                    <%-- <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.archive.list.label.url"/>&nbsp;</th>  --%>
+	                    <th class="tableHeaderField">&nbsp;Dokument</th> 
 	                    
-	               </tr>     
+	               </tr> 
+	               </thead>
+	               <tbody>    
 		           	<c:forEach items="${list}" var="record" varStatus="counter">    
 		               <c:choose>           
 		                   <c:when test="${counter.count%2==0}">
@@ -238,7 +241,7 @@
 		               </td>
 		            </tr> 
 		            </c:forEach>
-		            
+		            </tbody>
 	            </table>
 			</td>	
 			</tr>

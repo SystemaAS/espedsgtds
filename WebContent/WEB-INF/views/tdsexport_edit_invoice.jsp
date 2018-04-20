@@ -113,33 +113,33 @@
 					 		<td width="50%">
 						 		<table width="100%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Exportör</td>
-							            <td class="text11" align="left" >&nbsp;&nbsp;</td>
+							            <td width="30%" class="text12Bold" align="left" >Exportör</td>
+							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">EORI&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_aveo}</td>
+							            <td width="30%" class="text12" align="left">EORI&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_aveo}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_avna}</td>
+							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_avna}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Adress 1&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_ava1}</td>
+							            <td width="30%" class="text12" align="left">Adress 1&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_ava1}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Adress 2&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_ava2}</td>
+							            <td width="30%" class="text12" align="left">Adress 2&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_ava2}</td>
 							        </tr>
 							        
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_avpn}&nbsp;${recordTopic.sveh_avpa}&nbsp;${recordTopic.sveh_avlk}</td>
+							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_avpn}&nbsp;${recordTopic.sveh_avpa}&nbsp;${recordTopic.sveh_avlk}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Handläggare&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_avha}&nbsp;tel:${recordTopic.sveh_avtl}</td>
+							            <td width="30%" class="text12" align="left">Handläggare&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_avha}&nbsp;tel:${recordTopic.sveh_avtl}</td>
 							        </tr>
 							        						        
 			        	        </table>
@@ -147,31 +147,31 @@
 					        <td width="50%">
 						 		<table width="100%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Mottagare</td>
-							            <td class="text11" align="left" >&nbsp;&nbsp;</td>
+							            <td width="30%" class="text12Bold" align="left" >Mottagare</td>
+							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">EORI.&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left"></td>
+							            <td width="30%" class="text12" align="left">EORI.&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left"></td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_mona}</td>
+							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_mona}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Adress 1&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_moa1}</td>
+							            <td width="30%" class="text12" align="left">Adress 1&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_moa1}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Adress 2&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_moa2}</td>
+							            <td width="30%" class="text12" align="left">Adress 2&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_moa2}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_mopn}&nbsp;${recordTopic.sveh_mopa}&nbsp;${recordTopic.sveh_molk}</td>
+							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_mopn}&nbsp;${recordTopic.sveh_mopa}&nbsp;${recordTopic.sveh_molk}</td>
 							        </tr>
 							        <tr>
-							        		<td width="30%" class="text11" align="left">&nbsp;</td>
+							        		<td width="30%" class="text12" align="left">&nbsp;</td>
 							        </tr>
 							        
 			        	        </table>
@@ -194,16 +194,16 @@
 									<tr>
 										<td class="text14Bold">&nbsp;Antal fakturor&nbsp;&nbsp;<font class="text14MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
 						            		</td>
-										<td align="right" class="text11">Fsum:&nbsp;
+										<td align="right" class="text12">Fsum:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value="${recordTopic.sveh_fabl}">
 											<font class="inputText11BlueBoldReadOnly">${recordTopic.sveh_vakd}</font>
 										</td>
-										<td align="right" class="text11">Vsum&nbsp;(&Sigma;):&nbsp;
+										<td align="right" class="text12">Vsum&nbsp;(&Sigma;):&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value="${model.recordItemContainerInvoiceTopic.calculatedItemLinesTotalAmount}">
 											<font class="inputText11BlueBoldReadOnly">${model.recordItemContainerInvoiceTopic.calculatedValidCurrency}</font>											
 										</td>
 										<%--
-										<td align="right" class="text11">Diff:&nbsp;
+										<td align="right" class="text12">Diff:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly
 												<c:choose>
 												<c:when test="${fn:contains(Xmodel.recordItemContainerInvoiceTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
@@ -257,21 +257,21 @@
 							                       <tr class="tableOddRow" height="20" >
 							                   </c:otherwise>
 							               </c:choose>
-							               <td width="2%" class="text11" >
+							               <td width="2%" class="text14" >
 							               		<a tabindex=-1 id="recordUpdate_${record.svef_fatx}" href="#" onClick="getItemData(this);">
 							               			&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
-							               <td width="20%" class="text11" >
+							               <td width="20%" class="text14" >
 							               		<a tabindex=-1 id="recordUpdate_${record.svef_fatx}" href="#" onClick="getItemData(this);">${record.svef_fatx}</a>
 							               </td>
-							               <td class="text11" >&nbsp;${record.svef_faty}</td>
-							               <td align="right" class="text11" >&nbsp;${record.svef_fabl}&nbsp;</td>
-							               <td class="text11" >&nbsp;${record.svef_vakd}</td>
-							               <td align="right" class="text11" >&nbsp;${record.svef_vaku}&nbsp;</td>
-							               <td class="text11" >&nbsp;${record.svef_omr}</td>
+							               <td class="text14" >&nbsp;${record.svef_faty}</td>
+							               <td align="right" class="text14" >&nbsp;${record.svef_fabl}&nbsp;</td>
+							               <td class="text14" >&nbsp;${record.svef_vakd}</td>
+							               <td align="right" class="text14" >&nbsp;${record.svef_vaku}&nbsp;</td>
+							               <td class="text14" >&nbsp;${record.svef_omr}</td>
 							               <c:if test="${model.status == 'M' || empty model.status}">	
-								               <td width="4%" class="text11" align="center" nowrap>
+								               <td width="4%" class="text14" align="center" nowrap>
 								               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_invoice.do?action=doDelete&sign=${model.sign}&avd=${model.avd}&opd=${model.opd}&status=${model.status}&fak=${record.svef_fatx}">
 								               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	&nbsp;

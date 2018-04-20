@@ -35,7 +35,7 @@
 						<td colspan="3" >
 							<table id="tblInvoices" class="display compact cell-border" width="100%">
 								<thead>
-								<tr style="background-color:#DDDDDD">
+								<tr class="tableHeaderField" >
 									<th class="text14">&nbsp;Välj&nbsp;</th>
 								    <th class="text14">&nbsp;Fakturanr.&nbsp;</th>   
 				                    <th class="text14">&nbsp;Typ&nbsp;</th> 

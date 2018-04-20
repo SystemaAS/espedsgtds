@@ -49,7 +49,7 @@
 					<%-- this is the datatables grid (content)--%>
 					<table id="tullTaxaList" class="display compact cell-border" width="100%" >
 						<thead>
-						<tr style="background-color:#EEEEEE">
+						<tr class="tableHeaderField" >
 							<th class="text14" title="adunnr">&nbsp;Grupp&nbsp;</th>
 							<th class="text14" title="adunnr">&nbsp;Varukod&nbsp;</th>
 		                    <th class="text14" title="adembg">&nbsp;Beskrivning&nbsp;</th>

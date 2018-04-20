@@ -144,7 +144,7 @@
 			</tr>
  	        <tr>
 				<td align="left" >&nbsp;
-           			<select name="avd" id="avd">
+           			<select class="selectMediumBlueE2" name="avd" id="avd">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.avdList}" >
                           	 	<option value="${record.avd}"<c:if test="${searchFilterTdsExport.avd == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
@@ -152,7 +152,7 @@
 					</select>
 				</td>
 				<td align="left" >
-           			<select name="sign" id="sign">
+           			<select class="selectMediumBlueE2" name="sign" id="sign">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.signList}" >
                        	 	<option value="${record.sign}" <c:if test="${searchFilterTdsExport.sign == record.sign}"> selected </c:if> > ${record.sign}</option>
@@ -429,7 +429,7 @@
 	                						</tr>
 	 									<tr>
 											<td class="text14MediumBlue">
-												<select class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
+												<select class="selectMediumBlueE2" class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.avdList}" >
 							                             <option value="${record.avd}">${record.avd}</option>
@@ -437,7 +437,7 @@
 												</select>
 											</td>
 											<td class="text14MediumBlue">
-												<select class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
+												<select class="selectMediumBlueE2" class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.signList}" >
 						                             	<option value="${record.sign}" <c:if test="${searchFilterTdsExport.sign == record.sign}"> selected </c:if> > ${record.sign}</option> 	
@@ -513,7 +513,7 @@
           						</tr>
 						<tr>
 							<td class="text14MediumBlue">
-								<select name="selectedAvd" id="selectedAvd">
+								<select class="selectMediumBlueE2" name="selectedAvd" id="selectedAvd">
 				            		<option value="">-Välj-</option>
 				 				  	<c:forEach var="record" items="${model.avdList}" >
 			                             	 	<option value="${record.avd}">${record.avd}</option>

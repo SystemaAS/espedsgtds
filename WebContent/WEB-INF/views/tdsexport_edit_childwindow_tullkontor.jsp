@@ -49,7 +49,7 @@
 					<%-- this is the datatables grid (content)--%>
 					<table id="tullkontorList" class="display compact cell-border" width="100%" >
 						<thead>
-						<tr style="background-color:#EEEEEE">
+						<tr class="tableHeaderField" >
 							<th class="text14" title="tkkode">&nbsp;Kode&nbsp;</th>
 		                    <th class="text14" title="tktxtn">&nbsp;Tullkontor&nbsp;</th>
 		                    <th class="text14" title="tkavg">&nbsp;Avg.&nbsp;</th>

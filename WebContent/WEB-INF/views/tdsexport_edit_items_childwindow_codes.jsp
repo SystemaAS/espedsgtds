@@ -27,11 +27,14 @@
 					<tr>
 						<td class="ownScrollableSubWindow" style="width:600px; height:10em;">
 							<table id="codeList" width="100%" cellspacing="0" border="0" cellpadding="0">
+								<thead>
 								<tr class="tableHeaderField" height="20" valign="left">
-									<td align="center" class="tableHeaderFieldFirst">&nbsp;Välj&nbsp;</td>
-								    <td align="center" class="tableHeaderField">&nbsp;Kod&nbsp;</td>   
-				                    <td class="tableHeaderField">&nbsp;Text&nbsp;</td> 
+									<th align="center" class="tableHeaderFieldFirst">&nbsp;Välj&nbsp;</th>
+								    <th align="center" class="tableHeaderField">&nbsp;Kod&nbsp;</th>   
+				                    <th class="tableHeaderField">&nbsp;Text&nbsp;</th> 
 			                    </tr>
+			                    <thead>
+			                    <tbody>
 			                    <c:forEach items="${model.listTillaggskoder}" var="record" varStatus="counter">    
 					               <c:choose>           
 					                   <c:when test="${counter.count%2==0}">
@@ -48,7 +51,7 @@
 					               <td class="tableCell" >&nbsp;${record.txt}</td>
 				               </tr>
 				               </c:forEach>
-				               
+				               </tbody>
 		                    </table>  
 						</td>
 					</tr>

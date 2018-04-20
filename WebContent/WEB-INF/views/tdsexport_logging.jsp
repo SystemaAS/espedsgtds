@@ -10,7 +10,7 @@
 	<tr>
 		<td>
 		<%-- tab container component --%>
-		<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
+		<table width="100%"  class="text14" cellspacing="0" border="0" cellpadding="0">
 			<tr height="2"><td></td></tr>
 			<tr height="25"> 
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
@@ -93,7 +93,7 @@
                 <img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
                 <spring:message code="systema.tds.export.list.search.label.status"/>
                 <span style="position:absolute; left:1020px; top:150px; width:250px; height:400px;" id="status_info" class="popupWithInputText"  >
-		           		<div class="text11" align="left">
+		           		<div class="text14" align="left">
 		           		<br/>
 		           		Endast <b>M</b> och <b>' '</b> kan editeras. Alla andra kan man bara titta på
 		           		
@@ -195,21 +195,24 @@
 		<td>		
 		<table width="100%" cellspacing="0" border="0" cellpadding="0">
 	    	<%-- separator --%>
-	        <tr height="2"><td></td></tr> 
+	        <tr height="2"><th></td></tr> 
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
 					
-	                    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.logging.list.label.topicNr"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;Interch.nr&nbsp;</td>
-						<td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.messageNr"/>&nbsp;</td> 
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.type"/>&nbsp;</td> 
+	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.logging.list.label.topicNr"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;Interch.nr&nbsp;</th>
+						<th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.messageNr"/>&nbsp;</th> 
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.type"/>&nbsp;</th> 
 	                      
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.date"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.time"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.text"/>&nbsp;</td>
-	               </tr>     
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.date"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.time"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.text"/>&nbsp;</th>
+	               </tr>
+	               </thead>
+	               <tbody>     
 		           	<c:forEach items="${list}" var="record" varStatus="counter">    
 		               <c:choose>           
 		                   <c:when test="${counter.count%2==0}">
@@ -246,6 +249,7 @@
 		               </td>
 		            </tr> 
 		            </c:forEach>
+		            </tbody>
 	            </table>
 			</td>	
 			</tr>

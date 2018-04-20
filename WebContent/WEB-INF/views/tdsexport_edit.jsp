@@ -161,7 +161,7 @@
             		<c:choose>
 	 				    <c:when test="${model.record.sveh_syst == 'M' || empty model.record.sveh_syst}">																	 			
 							&nbsp;&nbsp;Sign:&nbsp;
-		           			<select name="sveh_sysg" id="sveh_sysg">
+		           			<select class="selectMediumBlueE2" name="sveh_sysg" id="sveh_sysg">
 			            		<option value="">-Välj-</option>
 			 				  	<c:forEach var="record" items="${model.signList}" >
                              	 	<option value="${record.sign}"<c:if test="${model.record.sveh_sysg == record.sign}"> selected </c:if> >${record.sign}</option>
@@ -246,7 +246,7 @@
 			<tr >
 				<td align="left" class="text14MediumBlue">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;
-           			<select name="avd" id="avd">
+           			<select class="selectMediumBlueE2" name="avd" id="avd">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.avdList}" >
                         	 	<option value="${record.avd}"<c:if test="${model.record.sveh_syav == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
@@ -254,7 +254,7 @@
 					</select>
 					
 					&nbsp;Sign:&nbsp;
-           			<select name="sign" id="sign">
+           			<select class="selectMediumBlueE2" name="sign" id="sign">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.signList}" >
                              	 	<option value="${record.sign}"<c:if test="${model.record.sveh_sysg == record.sign}"> selected </c:if> >${record.sign}</option>
@@ -918,7 +918,7 @@
 							            </td>
 							            
 							            <td>
-							 				<select name="sveh_faty" id="sveh_faty">
+							 				<select class="selectMediumBlueE2" name="sveh_faty" id="sveh_faty">
 							 					<option value="">-Välj-</option><option value="N380"<c:if test="${model.record.sveh_faty == 'N380'}"> selected </c:if> >N380</option>
 											  	<option value="N325"<c:if test="${model.record.sveh_faty == 'N325'}"> selected </c:if> >N325</option>
 											</select>
@@ -1078,7 +1078,7 @@
 				            	<td >
 				            		<input type="text" class="inputTextMediumBlue" name="sveh_trid" id="sveh_trid" size="30" maxlength="35" value="${model.record.sveh_trid}">
 				            		&nbsp;
-				            		<select name="sveh_trlk" id="sveh_trlk">
+				            		<select class="selectMediumBlueE2" name="sveh_trlk" id="sveh_trlk">
 				 						<option value="">-Välj-</option>
 					 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_trlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1164,7 +1164,7 @@
 				            	<td >
 				            		<input type="text" class="inputTextMediumBlue" name="sveh_trai" id="sveh_trai" size="30" maxlength="35" value="${model.record.sveh_trai}">
 				            		&nbsp;
-				            		<select name="sveh_tral" id="sveh_tral">
+				            		<select class="selectMediumBlueE2" name="sveh_tral" id="sveh_tral">
 				 						<option value="">-Välj-</option>
 					 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_tral == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1282,7 +1282,7 @@
 							           		</tr>
 							           		<tr>
 												<td colspan="2">&nbsp;
-													<select class="text11" id="tullkontorList" name="tullkontorList" size="3" onDblClick="hidePop('searchTullkontorDialog10');" >
+													<select class="selectMediumBlueE2"  id="tullkontorList" name="tullkontorList" size="3" onDblClick="hidePop('searchTullkontorDialog10');" >
 	 													<option selected value="">-Välj-</option>
 	 							 					</select>
 												</td>
@@ -1689,7 +1689,7 @@
 										        		<tr >
 										        			<td align="left"><input type="text" class="inputTextMediumBlue" name="sveh_dkpn" id="sveh_dkpn" size="10" maxlength="9" value="${model.record.sveh_dkpn}"></td> 
 										            		<td align="left">
-										            			<select name="sveh_dklk" id="sveh_dklk">
+										            			<select class="selectMediumBlueE2" name="sveh_dklk" id="sveh_dklk">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  							<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_dklk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1818,7 +1818,7 @@
 												        </tr>
 												        <tr>
 												        	<td>    
-												            	<select name="sveh_res1" id="sveh_res1">
+												            	<select class="selectMediumBlueE2" name="sveh_res1" id="sveh_res1">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res1 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1826,7 +1826,7 @@
 																</select>
 															</td>
 															<td class="text11" align="left">
-												            	<select name="sveh_res2" id="sveh_res2">
+												            	<select class="selectMediumBlueE2" name="sveh_res2" id="sveh_res2">
 											 						<option value="">-Välj-</option>										            	
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res2 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1834,7 +1834,7 @@
 																</select>
 															</td>
 															<td class="text11" align="left">
-										 						<select name="sveh_res3" id="sveh_res3">
+										 						<select class="selectMediumBlueE2" name="sveh_res3" id="sveh_res3">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res3 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1842,7 +1842,7 @@
 																</select>
 															</td>
 															<td class="text11" align="left">													
-												            	<select name="sveh_res4" id="sveh_res4">
+												            	<select class="selectMediumBlueE2" name="sveh_res4" id="sveh_res4">
 											 						<option value="">-Välj-</option>										            	
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res4 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1867,7 +1867,7 @@
 												        </tr>
 												        <tr>
 												        	<td>    
-												            	<select name="sveh_res5" id="sveh_res5">
+												            	<select class="selectMediumBlueE2" name="sveh_res5" id="sveh_res5">
 											 						<option value="">-Välj-</option>										            	
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res5 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1875,7 +1875,7 @@
 																</select>
 															</td>
 															<td class="text11" align="left">
-												            	<select name="sveh_res6" id="sveh_res6">
+												            	<select class="selectMediumBlueE2" name="sveh_res6" id="sveh_res6">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res6 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1883,7 +1883,7 @@
 																</select>
 															</td>
 															<td class="text11" align="left">
-												            	<select name="sveh_res7" id="sveh_res7">
+												            	<select class="selectMediumBlueE2" name="sveh_res7" id="sveh_res7">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res7 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1891,7 +1891,7 @@
 																</select>
 															</td>
 															<td class="text11" align="left">
-												            	<select name="sveh_res8" id="sveh_res8">
+												            	<select class="selectMediumBlueE2" name="sveh_res8" id="sveh_res8">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  								<option value="${country.svkd_kd}"<c:if test="${model.record.sveh_res8 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1998,7 +1998,7 @@
 												</td>
 												
 								 				<td>
-									 				<select name="sveh_betk" id="sveh_betk" >
+									 				<select class="selectMediumBlueE2" name="sveh_betk" id="sveh_betk" >
 									 				  <option value="">-Välj-</option>
 													  <option value="A"<c:if test="${model.record.sveh_betk == 'A'}"> selected </c:if> >A</option>
 													  <option value="B"<c:if test="${model.record.sveh_betk == 'B'}"> selected </c:if> >B</option>
@@ -2031,7 +2031,7 @@
 												</td>
 												
 								 				<td>
-									 				<select name="sveh_saom" id="sveh_saom" >
+									 				<select class="selectMediumBlueE2" name="sveh_saom" id="sveh_saom" >
 									 				  <option value="">-Välj-</option>
 													  <option value="A"<c:if test="${model.record.sveh_saom == 'A'}"> selected </c:if> >A</option>
 													  <option value="B"<c:if test="${model.record.sveh_saom == 'B'}"> selected </c:if> >B</option>
@@ -2070,7 +2070,7 @@
 								 					&nbsp;&nbsp;<span title="sveh_kvsa">Kvalitetssäkring tillämpas&nbsp;</span>
 								 				</td>
 								 				<td align="right" class="text14">
-								 					<select name="sveh_kvsa" id="sveh_kvsa">
+								 					<select class="selectMediumBlueE2" name="sveh_kvsa" id="sveh_kvsa">
 							 						<option value="">-Välj-</option>
 											  		<option value="J"<c:if test="${model.record.sveh_kvsa == 'J'}"> selected </c:if> >Ja</option>
 											  		<option value="N"<c:if test="${model.record.sveh_kvsa == 'N'}"> selected </c:if> >Nej</option>
@@ -2192,7 +2192,7 @@
 					<tr>
 						<td class="text14" align="left" >&nbsp;Status</td>
 						<td class="text14MediumBlue">
-							<select name="selectedStatus" id="selectedStatus">
+							<select class="selectMediumBlueE2" name="selectedStatus" id="selectedStatus">
 				            		<option value=" ">-vælg-</option>
 				            		<option value="M">M</option>
 				            		<option value="G">G</option>

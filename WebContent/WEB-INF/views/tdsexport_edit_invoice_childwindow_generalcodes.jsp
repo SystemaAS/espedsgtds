@@ -44,12 +44,12 @@
 													           		
 	           		<tr height="10"><td></td></tr>
 					
-					<tr class="text12" >
+					<tr class="text14" >
 					<td class="ownScrollableSubWindowDynamicWidthHeight" width="100%" style="height:30em;">
 					<%-- this is the datatables grid (content)--%>
 					<table id="generalCodeList" class="display compact cell-border" width="100%" >
 						<thead>
-						<tr style="background-color:#EEEEEE">
+						<tr class="tableHeaderField" >
 							<th class="text14" title="adunnr">&nbsp;Kod&nbsp;</th>
 		                    <th class="text14" title="adembg">&nbsp;Beskrivning&nbsp;</th>
 		                </tr> 
