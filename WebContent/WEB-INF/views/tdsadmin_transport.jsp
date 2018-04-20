@@ -54,12 +54,12 @@
  	        <tr height="3"><td></td></tr>
  	        <form name="tdsAdminTransportSearchForm" id="tdsAdminTransportSearchForm" action="tdsadmin_transport?action=doFind" method="post" >
  	        <tr>	
- 	        		<td class="text12" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.avd"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.sign"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.transportuppdrag"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.sender"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.receiver"/></td>
-                <td class="text12" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.datum"/></td>
+ 	        		<td class="text14" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.avd"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.sign"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.transportuppdrag"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.sender"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.receiver"/></td>
+                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.tds.admin.transport.list.search.label.datum"/></td>
                 <td>&nbsp;</td>
 			</tr>
  	        <tr>

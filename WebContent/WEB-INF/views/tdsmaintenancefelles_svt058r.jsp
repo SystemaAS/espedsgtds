@@ -77,10 +77,10 @@
 									<th rowspan="2" align="center" class="tableHeaderField">Ta bort</th>
 				                </tr>
 				                <tr>
-				                	<th>Stat.värde</th>
-            						<th>Tullvärde</th>
-            						<th>Stat.värde</th>
-            						<th>Tullvärde</th>
+				                	<th class="text12">Stat.värde</th>
+            						<th class="text12">Tullvärde</th>
+            						<th class="text12">Stat.värde</th>
+            						<th class="text12">Tullvärde</th>
             					</tr>	  
 			                </thead> 
 			                <tbody >  
@@ -95,16 +95,16 @@
 				               <td align="center" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" >
 				               		<table width="70%" >
 				               			<tr >
-				               				<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="left" ><font class="text14">&nbsp;&nbsp;${record.svlv_fsText}</font></td>
-					               			<td style="border-style: solid;border-width: 0px 0px 0px 0px;"	 align="right" ><font class="text14MediumBlue">${record.svlv_fspFormatted}&nbsp;</font></td>
+				               				<td style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" align="left" ><font class="text14">&nbsp;&nbsp;${record.svlv_fsText}</font></td>
+					               			<td style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;"	 align="right" ><font class="text14MediumBlue">${record.svlv_fspFormatted}&nbsp;</font></td>
 				               			</tr>
 				               		</table>
 				               	</td>
 				               <td align="center" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" >
 				               		<table width="70%" >
 				               			<tr >
-				               				<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="left" ><font class="text14">&nbsp;&nbsp;${record.svlv_fs2Text}</font></td>
-					               			<td style="border-style: solid;border-width: 0px 0px 0px 0px;" align="right" ><font class="text14MediumBlue">${record.svlv_fs2pFormatted}&nbsp;</font></td>
+				               				<td style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" align="left" ><font class="text14">&nbsp;&nbsp;${record.svlv_fs2Text}</font></td>
+					               			<td style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" align="right" ><font class="text14MediumBlue">${record.svlv_fs2pFormatted}&nbsp;</font></td>
 				               			</tr>
 				               		</table>
 				               </td>

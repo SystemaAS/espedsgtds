@@ -53,7 +53,7 @@
 	 	    
 	 	    <tr >
 	 	    	<td width="5%">&nbsp;</td>
-				<td width="100%" class="text12">
+				<td width="100%" class="text14">
 					<form action="mainmaintenancecundf_vkund.do?id=${model.dbTable}" name="formRecord" id="formRecord" method="POST" >
 					<input type="hidden" name="firma" id="firma" value="${user.companyCode}">
 					<spring:message code="systema.main.maintenance.mainmaintenancecundf.customer.customernr"/>&nbsp;

@@ -84,7 +84,7 @@
 				               		<c:choose>
 					               		<c:when test="${record.status == 'G'}">
 					               			<a id="alinkRecordDesc_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancenctsexport_${record.pgm}.do?id=${record.dbTable}&legend=${record.subject}&tkunik=${record.code}">
-		               							<font class="SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
+		               							<font class="text14SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
 		               						</a>
 					               		</c:when>
 					               		<c:otherwise>

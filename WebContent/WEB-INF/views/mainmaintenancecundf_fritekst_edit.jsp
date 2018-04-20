@@ -192,7 +192,7 @@
 			 	    </tr>
 			 	    <tr>
 			 	    	<td>&nbsp;</td>
-						<td width="7%" class="text12">
+						<td width="7%" class="text14">
 							<span title="searchKfkod"><spring:message code="systema.main.maintenance.mainmaintenancecundf.fratxt.delsystem"/></span>
 						</td>
 						<td>
@@ -211,7 +211,7 @@
 					
 					<tr>
 						<td>&nbsp;</td>
-				 		<td class="text12" valign="top"><spring:message code="systema.main.maintenance.mainmaintenancecundf.fratxt.text"/> </td>  
+				 		<td class="text14" valign="top"><spring:message code="systema.main.maintenance.mainmaintenancecundf.fratxt.text"/> </td>  
 				 		<td class="text11">
 					 		<form action="mainmaintenancecundf_fritekst_edit.do" name="formRecord" id="formRecord" method="POST" >
 					 		<input type="hidden" name="action" id="action" value="doUpdate">
@@ -223,7 +223,7 @@
 										<div><span id="linesUsed"></span> <spring:message code="systema.main.maintenance.mainmaintenancecundf.fratxt.rows"/></div>
 				 				   </td>
 				 				   
-				 				   <td class="text12" valign="top">&nbsp;<spring:message code="systema.main.maintenance.mainmaintenancecundf.fratxt.changelog"/>
+				 				   <td class="text14" valign="top">&nbsp;<spring:message code="systema.main.maintenance.mainmaintenancecundf.fratxt.changelog"/>
 				 				   		<img onMouseOver="showPop('log_info');" onMouseOut="hidePop('log_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 				<div class="text11"  style="position: relative;" align="left">
 							 				<span style="position:absolute; width:150px; right:240px" id="log_info" class="popupWithInputText text11" >
