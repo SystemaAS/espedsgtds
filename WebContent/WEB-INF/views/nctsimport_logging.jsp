@@ -217,17 +217,20 @@
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
 					
-	                    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.topicNr"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;Interch.nr&nbsp;</td>
-						<td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.messageNr"/>&nbsp;</td> 
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.type"/>&nbsp;</td> 
+	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.topicNr"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;Interch.nr&nbsp;</th>
+						<th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.messageNr"/>&nbsp;</th> 
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.type"/>&nbsp;</th> 
 	                      
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.date"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.time"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.text"/>&nbsp;</td>
-	               </tr>     
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.date"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.time"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.text"/>&nbsp;</th>
+	               </tr> 
+	               </thead>
+	               <tbody>    
 		           	<c:forEach items="${list}" var="record" varStatus="counter">    
 		               <c:choose>           
 		                   <c:when test="${counter.count%2==0}">
@@ -264,6 +267,7 @@
 		               </td>
 		            </tr> 
 		            </c:forEach>
+		            </tbody>
 	            </table>
 			</td>	
 			</tr>

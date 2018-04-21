@@ -15,7 +15,7 @@
 	</style>
 	
 	<%-- tab container component --%>
-	<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
+	<table width="100%"  class="text14" cellspacing="0" border="0" cellpadding="0">
 		
 		<tr height="2"><td></td></tr>
 		<tr height="25"> 
@@ -31,7 +31,7 @@
 				<a tabindex=-1 style="display:block;" href="nctsimport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
 						&sysg=${model.sign}&syst=${model.status}&sydt=${model.datum}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.created.mastertopic.tab"/></font>
-					<font class="text12MediumBlue">[${model.opd}]</font>
+					<font class="text14MediumBlue">[${model.opd}]</font>
 					<c:if test="${ model.status == 'F' || model.status == 'M' || empty model.status}">
 						<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 					</c:if>
@@ -108,7 +108,7 @@
 	 				<%-- MASTER Topic header --%>
 	 				<table width="100%" align="center" class="formFrameHeaderTransparent" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text11MediumBlue">
+				 			<td class="text14MediumBlue">
 				 				&nbsp;Avd&nbsp;<b>${recordTopic.tiavd}</b>
 				 				&nbsp;Ärende&nbsp;<b>${recordTopic.titdn}</b>
 				 				&nbsp;Sign&nbsp;<b>${recordTopic.tisg}</b>
@@ -123,7 +123,7 @@
 				 				
 			 				</td>
 							<span style="position:absolute; left:800px; top:150px; width:250px; height:520px;" id="status_info" class="popupWithInputText"  >
-								<div class="text11" align="left">
+								<div class="text12" align="left">
 				           		<br/>
 				           		Endast <b>M</b>, F eller <b>' '</b> kan editeras. Alla andra kan man bara titta på.
 				           			<ul>
@@ -163,41 +163,41 @@
 					 		<td width="50%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Ansvarig&nbsp;</td>
-							            <td class="text11" align="left" ></td>
+							            <td width="30%" class="text12Bold" align="left" >Ansvarig&nbsp;</td>
+							            <td class="text12" align="left" ></td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left" >Kundnr&nbsp;</td>
-							            <td class="text11MediumBlue" align="left" >${recordTopic.tikn}</td>
+							            <td width="30%" class="text12" align="left" >Kundnr&nbsp;</td>
+							            <td class="text12MediumBlue" align="left" >${recordTopic.tikn}</td>
 							        </tr>
 							        
 							        <tr>
-							            <td width="30%" class="text11" align="left">TIN-nr&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left"><b>${recordTopic.titin}</b></td>
+							            <td width="30%" class="text12" align="left">TIN-nr&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left"><b>${recordTopic.titin}</b></td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left"><b>${recordTopic.tina}</b></td>
+							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left"><b>${recordTopic.tina}</b></td>
 							        </tr>
 								</table>
 					        </td>
 							<td width="50%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td class="text11" align="left" >&nbsp;</td>
+							            <td class="text12" align="left" >&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Adress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.tiad1}</td>
+							            <td width="30%" class="text12" align="left">Adress&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.tiad1}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.tipn}&nbsp;${recordTopic.tips}</td>
+							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.tipn}&nbsp;${recordTopic.tips}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Landkod
+							            <td width="30%" class="text12" align="left">Landkod
 							            </td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.tilk}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.tilk}</td>
 							        </tr>
 							        
 			        	        </table>
@@ -241,16 +241,19 @@
 								           		</tr>
 									           	<tr>	
 													<td >
-													<table width="95%" cellspacing="0" border="0" cellpadding="0">
+													<table width="100%" cellspacing="0" border="0" cellpadding="0">
+														<thead>
 														<tr class="tableHeaderField" height="20" valign="left">
-														    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvli.linjeNr"/>Linjenr.&nbsp;</td> 
+														    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvli.linjeNr"/>Linjenr.&nbsp;</th> 
 														    <c:if test="${model.status == 'F' || model.status == 'M' || empty model.status}">
-										                    	<td align="center" class="tableHeaderField" nowrap>Ta bort</td>
+										                    	<th align="center" class="tableHeaderField" nowrap>Ta bort</td>
 										                    </c:if>
-										                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvst.plats"/>&nbsp;</td> 
-														    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvinf2.handelser"/>&nbsp;</td>   
-										                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvtaid.omlastning"/>&nbsp;</td>
+										                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvst.plats"/>&nbsp;</th> 
+														    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvinf2.handelser"/>&nbsp;</th>   
+										                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvtaid.omlastning"/>&nbsp;</th>
 										               </tr> 
+										               </thead>
+										               <tbody>
 											           <c:forEach items="${model.list}" var="record" varStatus="counter">    
 											               <c:choose>           
 											                   <c:when test="${counter.count%2==0}">
@@ -283,6 +286,7 @@
 													       <c:set var="numberOfItemLinesInTopic" value="${record.tvli}" scope="request" />
 												         
 											            </c:forEach>
+											            </tbody>
 											        </table>
 													</td>											           		
 										         </tr>
@@ -293,8 +297,8 @@
 						           				<table >
 													<%-- OK BUTTON --%>
 							           				<tr align="left" >
-														<td class="text11"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
-														<td class="text12">&nbsp;&nbsp;&nbsp;
+														<td class="text12"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
+														<td class="text14">&nbsp;&nbsp;&nbsp;
 											 	        		<a href="tdsNctsImportItemListExcelView.do" target="_new">
 										                 		<img valign="bottom" id="itemListExcel" src="resources/images/excel.png" border="0" alt="excel">&nbsp;Excel
 											 	        		</a>
@@ -308,23 +312,24 @@
 							</form>
 						</tr> 
 						<tr>
-							<td class="ownScrollableSubWindow" style="width:1050px; height:10em;">
+							<td class="ownScrollableSubWindow" style="width:100%; height:10em;">
 								<table width="100%" cellspacing="0" border="0" cellpadding="0">
+									<thead>
 									<tr class="tableHeaderField" height="20" valign="left">
-									    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvli.linjeNr"/>&nbsp;</td> 
+									    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvli.linjeNr"/>&nbsp;</th> 
 									    <c:if test="${model.status == 'F' || model.status == 'M' || empty model.status}">
-					                    	<td align="center" class="tableHeaderField" nowrap>Ta bort</td>
+					                    	<th align="center" class="tableHeaderField" nowrap>Ta bort</th>
 					                    </c:if>
-					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvst.plats"/>&nbsp;</td> 
-									    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvinf2.handelser"/>&nbsp;</td>   
-					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvtaid.omlastning"/>&nbsp;</td>
+					                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvst.plats"/>&nbsp;</th> 
+									    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvinf2.handelser"/>&nbsp;</th>   
+					                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.item.list.label.tvtaid.omlastning"/>&nbsp;</th>
 					               </tr> 
-					               
+					               </thead>
 					               <form name="formItemList" id="formItemList" method="POST" >
 					               		<input type="hidden" name="opdItemList" id="opdItemList" value="${model.opd}">
 				 						<input type="hidden" name="avdItemList" id="avdItemList" value="${model.avd}"> 
 				 						<input type="hidden" name="applicationUser" id="applicationUser" value="${user.user}">
-				 						 
+				 					   <tbody>	 
 							           <c:forEach items="${model.list}" var="record" varStatus="counter">    
 							               <c:choose>           
 							                   <c:when test="${counter.count%2==0}">
@@ -362,6 +367,7 @@
 									       <c:set var="numberOfItemLinesInTopic" value="${record.tvli}" scope="request" />
 								         
 							            </c:forEach>
+							            </tbody>
 						            </form>	
 					            </table>
 							</td>	
@@ -411,7 +417,7 @@
 				 	<%-- Topic ITEM CREATE --%>
 	 				<table width="100%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text12White">
+				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Händelsebeskrivning&nbsp;</b>
 				 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -426,25 +432,25 @@
 					 		<td colspan="3">
 						 		<table class="tableBorderWithRoundCornersGray" width="80%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 							            		&nbsp;&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="tvst" >Plats</span>
 							            </td>
-							            <td class="text12" align="left" valign="bottom">
+							            <td class="text14" align="left" valign="bottom">
 										<font class="text16RedBold" >*</font><span title="tvstlk" >Landkod</span>
 						 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
 							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
 							            		</a>
 										</td>
-										<td class="text12" align="left" valign="bottom">
+										<td class="text14" align="left" valign="bottom">
 											&nbsp;<span title="tvstsk" >Språkkod</span>
 											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
 							            		</a>
 										</td>
-										<td class="text12" align="left" valign="bottom">
+										<td class="text14" align="left" valign="bottom">
 											<img onMouseOver="showPop('kontroll_info');" onMouseOut="hidePop('kontroll_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 							                <span style="position:absolute; left:1020px; top:300px; width:250px; height:150px;" id="kontroll_info" class="popupWithInputText"  >
-								           		<div class="text11" align="left">
+								           		<div class="text12" align="left">
 								           			<br/>
 								           			<b>Nej</b>&nbsp;(0) = Händelsen är ej registrerat i NCTS.
 								           			<br/>
@@ -455,11 +461,11 @@
 										</td>
 							        </tr>
 							        <tr>
-							        		<td class="text12" align="left" >
+							        		<td class="text14" align="left" >
 							        			&nbsp;&nbsp;<input type="text" class="inputText" name="tvst" id="tvst" size="35" maxlength="35" value="${model.record.tvst}">
 			 			            		</td>
 			 			            		<td>
-							 				<select name="tvstlk" id="tvstlk">
+							 				<select class="selectMediumBlueE2" name="tvstlk" id="tvstlk">
 								            		<option value="">-Välj-</option>
 							 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 			                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvstlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -467,7 +473,7 @@
 											</select>
 						 				</td>
 										<td >
-											<select name="tvstsk" id="tvstsk">
+											<select class="selectMediumBlueE2" name="tvstsk" id="tvstsk">
 							            			<option value="">-Välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvstsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -475,7 +481,7 @@
 											</select>
 										</td>
 										<td >
-											<select name="tvctl" id="tvctl">
+											<select class="selectMediumBlueE2" name="tvctl" id="tvctl">
 							            			<option value="">-Välj-</option>
 						 					  	<option value="1"<c:if test="${model.record.tvctl == '1'}"> selected </c:if> >Ja</option>
 											  	<option value="0"<c:if test="${model.record.tvctl == '0'}"> selected </c:if> >Nej</option>
@@ -491,12 +497,12 @@
 					 		<td valign="top">
 						 		<table width="95%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
-							 			<td class="text12" align="left" valign="top" >
+							 			<td class="text14" align="left" valign="top" >
 							 				&nbsp;&nbsp;<span title="tvinf1-4" ><b>Händelser</b></span>
 							 			</td>
 							 		</tr>
 							 		<tr>	
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 								            &nbsp;<textarea name="tvinf" id="tvinf" cols="50" rows="7" maxlength="279">${model.record.tvinf}</textarea>
 							            </td>
 						            </tr>
@@ -505,18 +511,18 @@
 					        <td valign="top">
 						 		<table width="100%" align="left" border="0" cellspacing="0" cellpadding="0">
 						 			<tr>
-							 			<td class="text12" align="left" valign="top" >
+							 			<td class="text14" align="left" valign="top" >
 							 				&nbsp;
 							 			</td>
 							 		</tr>
 							 		<tr>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;<span title="tvgdt" >Godk.datum</span>
 							 			</td>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;<span title="tvgm" >Myndighet</span>
 							 			</td>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 											&nbsp;<span title="tvgmsk" >Språkkod</span>
 											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
@@ -524,14 +530,14 @@
 										</td>
 									</tr>
 									<tr>	
-							 			<td class="text12" align="left">
+							 			<td class="text14" align="left">
 								            <input type="text" class="inputText" name="tvgdt" id="tvgdt" size="9" maxlength="8" value="${model.record.tvgdt}">
 							            </td>
-							            <td class="text12" align="left">
+							            <td class="text14" align="left">
 								            <input type="text" class="inputText" name="tvgm" id="tvgm" size="35" maxlength="35" value="${model.record.tvgm}">
 							            </td>
 							            <td >
-											<select name="tvgmsk" id="tvgmsk">
+											<select class="selectMediumBlueE2" name="tvgmsk" id="tvgmsk">
 							            			<option value="">-Välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvgmsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -540,16 +546,16 @@
 										</td>
 						            </tr>
 						            <tr>
-							            <td class="text12" align="left" valign="bottom">
+							            <td class="text14" align="left" valign="bottom">
 											&nbsp;<span title="tvgmlk" >Godk.landkod</span>
 							 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
 								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
 								            		</a>
 										</td>
-										<td class="text12" align="left" valign="bottom">
+										<td class="text14" align="left" valign="bottom">
 							 				&nbsp;<span title="tvgmst" >Godk.plats</span>
 							 			</td>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 											&nbsp;<span title="tvgmss" >Språkkod</span>
 											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
@@ -558,18 +564,18 @@
 									</tr>
 									<tr>
 										<td>
-							 				<select name="tvgmlk" id="tvgmlk">
+							 				<select class="selectMediumBlueE2" name="tvgmlk" id="tvgmlk">
 								            		<option value="">-Välj-</option>
 							 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 			                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvgmlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 												</c:forEach> 
 											</select>
 						 				</td>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 								            <input type="text" class="inputText" name="tvgmst" id="tvgmst" size="35" maxlength="35" value="${model.record.tvgmst}">
 							            </td>
 							            <td >
-											<select name="tvgmss" id="tvgmss">
+											<select class="selectMediumBlueE2" name="tvgmss" id="tvgmss">
 							            			<option value="">-Välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvgmss == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -581,18 +587,18 @@
 					        </td>
 				        </tr>
 				        <tr height="10"><td></td></tr>
-				        <tr><td class="text12"><b>&nbsp;&nbsp;Förseglingar</b></td></tr>
+				        <tr><td class="text14"><b>&nbsp;&nbsp;Förseglingar</b></td></tr>
 				        <tr>
 				        		<td >
 					        		<table width="80%" align="left" border="0" cellspacing="0" cellpadding="0">
 					        			<tr>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;&nbsp;<span title="tvdant" >Antal</span>
 							 			</td>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;&nbsp;<span title="tvdfkd" >Kod</span>
 							 			</td>
-							 			<td class="text12" align="left" valign="bottom">
+							 			<td class="text14" align="left" valign="bottom">
 											&nbsp;<span title="tvdfsk" >Språkkod</span>
 											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
@@ -600,14 +606,14 @@
 										</td>
 									</tr>
 						        		<tr>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 								            &nbsp;<input type="text" class="inputText" name="tvdant" id="tvdant" size="3" maxlength="3" value="${model.record.tvdant}">
 							            </td>
-										<td class="text12" align="left">
+										<td class="text14" align="left">
 								            <input type="text" class="inputText" name="tvdfkd" id="tvdfkd" size="20" maxlength="20" value="${model.record.tvdfkd}">
 							            </td>
 							            <td >
-											<select name="tvdfsk" id="tvdfsk">
+											<select class="selectMediumBlueE2" name="tvdfsk" id="tvdfsk">
 							            			<option value="">-Välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdfsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -644,7 +650,7 @@
 					        <td colspan="3">
 							<table width="99%" align="center" class="formFrameHeaderBlueWithBorder" border="0" cellspacing="0" cellpadding="0">
 						 		<tr height="15">
-						 			<td class="text12White">
+						 			<td class="text14White">
 						 				&nbsp;&nbsp;<b>Omlastning</b>&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 					 				</td>
 				 				</tr>
@@ -658,13 +664,13 @@
 							 		<td valign="top" width="50%">
 								 		<table width="85%" border="0" cellspacing="1" cellpadding="0">
 							 			<tr>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 								 				&nbsp;&nbsp;<span title="tvtaid" >Transportmedel</span>
 								 			</td>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvtalk" >Landkod</span>
 								 			</td>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 												&nbsp;<span title="tvtask" >Språkkod</span>
 												<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
@@ -672,11 +678,11 @@
 											</td>
 										</tr>
 										<tr>	
-								 			<td class="text12" align="left">
+								 			<td class="text14" align="left">
 									            &nbsp;<input type="text" class="inputText" name="tvtaid" id="tvtaid" size="25" maxlength="27" value="${model.record.tvtaid}">
 								            </td>
 											<td>
-								 				<select name="tvtalk" id="tvtalk">
+								 				<select class="selectMediumBlueE2" name="tvtalk" id="tvtalk">
 									            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvtalk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -684,7 +690,7 @@
 												</select>
 							 				</td>
 								            <td >
-												<select name="tvtask" id="tvtask">
+												<select class="selectMediumBlueE2" name="tvtask" id="tvtask">
 								            			<option value="">-Välj-</option>
 							 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvtask == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -697,13 +703,13 @@
 						 			<td valign="top" width="50%">
 							 			<table width="100%" border="0" cellspacing="1" cellpadding="0"> 
 							 			<tr>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvgodt" >Godk.datum</span>
 								 			</td>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvom" >Myndighet</span>
 								 			</td>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 												&nbsp;<span title="tvomsk" >Språkkod</span>
 												<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
@@ -711,14 +717,14 @@
 											</td>
 										</tr>
 										<tr>	
-								 			<td class="text12" align="left">
+								 			<td class="text14" align="left">
 									            <input type="text" class="inputText" name="tvgodt" id="tvgodt" size="9" maxlength="8" value="${model.record.tvgodt}">
 								            </td>
-								            <td class="text12" align="left">
+								            <td class="text14" align="left">
 									            <input type="text" class="inputText" name="tvom" id="tvom" size="35" maxlength="35" value="${model.record.tvom}">
 								            </td>
 								            <td >
-												<select name="tvomsk" id="tvomsk">
+												<select class="selectMediumBlueE2" name="tvomsk" id="tvomsk">
 								            			<option value="">-Välj-</option>
 							 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvomsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -727,16 +733,16 @@
 											</td>
 							            </tr>
 							            <tr>
-								            <td class="text12" align="left" valign="bottom">
+								            <td class="text14" align="left" valign="bottom">
 												&nbsp;<span title="tvomlk" >Godk.landkod</span>
 							 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
 								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
 								            		</a>
 											</td>
-											<td class="text12" align="left" valign="bottom">
+											<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvomst" >Godk.plats</span>
 								 			</td>
-								 			<td class="text12" align="left" valign="bottom">
+								 			<td class="text14" align="left" valign="bottom">
 												&nbsp;<span title="tvomss" >Språkkod</span>
 												<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
 								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
@@ -745,18 +751,18 @@
 										</tr>
 										<tr>
 											<td>
-								 				<select name="tvomlk" id="tvomlk">
+								 				<select class="selectMediumBlueE2" name="tvomlk" id="tvomlk">
 									            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvomlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
 							 				</td>
-											<td class="text12" align="left">
+											<td class="text14" align="left">
 									            <input type="text" class="inputText" name="tvomst" id="tvomst" size="35" maxlength="35" value="${model.record.tvomst}">
 								            </td>
 								            <td >
-												<select name="tvomss" id="tvomss">
+												<select class="selectMediumBlueE2" name="tvomss" id="tvomss">
 								            			<option value="">-Välj-</option>
 							 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvomss == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
@@ -766,38 +772,38 @@
 										</tr>
 										<tr height="10"><td>&nbsp;</td></tr>
 										<tr>
-											<td class="text12" align="right">
+											<td class="text14" align="right">
 								 				<span title="tvcnr">Container&nbsp;&nbsp;</span>
 							 				</td>
-											<td colspan="4" class="text12" align="left">
+											<td colspan="4" class="text14" align="left">
 									            <input type="text" class="inputText" name="tvcnr" id="tvcnr" size="20" maxlength="17" value="${model.record.tvcnr}">
 								            		&nbsp;<button name="containerNrButton" class="buttonGray" type="button" onClick="showPop('containerNrInfo');" >Lägg till flera</button> 
 							           		<span style="position:absolute; left:480px; top:650px; width:680px; height:120px;" id="containerNrInfo" class="popupWithInputText"  >
 								           		<div class="text10" align="left">
 								           			<table>
 									           			<tr>
-										           			<td class="text11" colspan="5">
+										           			<td class="text12" colspan="5">
 										           				<b><span title="tvcnr/tvcnr2/tvcnr3.../tvcnr5">Container nr</span></b>
 										           			</td>
 										        			</tr>
 									           			<tr>
-										           			<td class="text11">
+										           			<td class="text12">
 																&nbsp;2.<input type="text" class="inputText" name="tvcnr2" id="tvcnr2" size="17" maxlength="17" value="${model.record.tvcnr2}">
 															</td>
-															<td class="text11">
+															<td class="text12">
 																&nbsp;3.<input type="text" class="inputText" name="tvcnr3" id="tvcnr3" size="17" maxlength="17" value="${model.record.tvcnr3}">
 															</td>
-															<td class="text11">
+															<td class="text12">
 										           				&nbsp;4.<input type="text" class="inputText" name="tvcnr4" id="tvcnr4" size="17" maxlength="17" value="${model.record.tvcnr4}">
 										           			</td>
-										           			<td class="text11">
+										           			<td class="text12">
 										           				&nbsp;5.<input type="text" class="inputText" name="tvcnr5" id="tvcnr5" size="17" maxlength="17" value="${model.record.tvcnr5}">
 										           			</td>
 														</tr>
 													</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text12" ><button name="containerNrButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('containerNrInfo');">&nbsp;Ok</button> 
+															<td class="text14" ><button name="containerNrButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('containerNrInfo');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
