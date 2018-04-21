@@ -71,17 +71,17 @@
 						
 					<table id="angivelseList" class="display compact cell-border" width="100%" >
 						<thead>
-						<tr style="background-color:#EEEEEE">
-							<th class="text12">&nbsp;Välg&nbsp;</th>
-							<th class="text11" title="avd">&nbsp;Avd&nbsp;</th>
-		                    <th class="text11" title="sign">&nbsp;Sign&nbsp;</th>
-		                    <th class="text11" title="opd">&nbsp;Ärende&nbsp;</th>
-		                    <th class="text11" title="tullid">&nbsp;Tullid&nbsp;</th>
-		                    <th class="text11" title="mtyp">&nbsp;Medd.typ&nbsp;</th>
-		                    <th class="text11" title="datum">&nbsp;Datum&nbsp;</th>
-		                    <th class="text11" title="status">&nbsp;Status&nbsp;</th>
-		                    <th class="text11" title="avsNavn">&nbsp;Avs&nbsp;</th>
-		                    <th class="text11" title="motNavn">&nbsp;Mot&nbsp;</th>
+						<tr class="tableHeaderField" >
+							<th class="text14">&nbsp;Välg&nbsp;</th>
+							<th class="text14" title="avd">&nbsp;Avd&nbsp;</th>
+		                    <th class="text14" title="sign">&nbsp;Sign&nbsp;</th>
+		                    <th class="text14" title="opd">&nbsp;Ärende&nbsp;</th>
+		                    <th class="text14" title="tullid">&nbsp;Tullid&nbsp;</th>
+		                    <th class="text14" title="mtyp">&nbsp;Medd.typ&nbsp;</th>
+		                    <th class="text14" title="datum">&nbsp;Datum&nbsp;</th>
+		                    <th class="text14" title="status">&nbsp;Status&nbsp;</th>
+		                    <th class="text14" title="avsNavn">&nbsp;Avs&nbsp;</th>
+		                    <th class="text14" title="motNavn">&nbsp;Mot&nbsp;</th>
 		                </tr> 
 		                </thead>
 		                
@@ -89,27 +89,27 @@
 		                <c:forEach var="record" items="${model.angivelseList}" varStatus="counter">    
 			               <c:choose>           
 			                   <c:when test="${counter.count%2==0}">
-			                       <tr class="text11">
+			                       <tr class="text14">
 			                   </c:when>
 			                   <c:otherwise>   
-			                       <tr class="text11">
+			                       <tr class="text14">
 			                   </c:otherwise>
 			               </c:choose>
-			               <td align="center" class="text11" >
+			               <td align="center" class="text14" >
 			               		<input class="clazzEksportAware" type="checkbox" value="J" id="syav${record.avd}_syop${record.opd}" name="syav${record.avd}_syop${record.opd}" >
 			               </td>
-			               <td class="text11">&nbsp;${record.avd}</td>
-			               <td class="text11">&nbsp;${record.sign}</td>
+			               <td class="text14">&nbsp;${record.avd}</td>
+			               <td class="text14">&nbsp;${record.sign}</td>
 			               <%-- <td nowrap style="cursor:pointer;" class="text11MediumBlue" id="avd${record.avd}@opd${record.opd}@xref${record.xref}@refnr${record.refnr}@mrn${record.dkeh_mrn}@valuta${record.dkeh_221}@blp${record.dkeh_222}" >  --%>
-			               <td nowrap style="cursor:pointer;" class="text11MediumBlue" id="avd${record.avd}@opd${record.opd}@tullid${record.tullId}" >
+			               <td nowrap style="cursor:pointer;" class="text14MediumBlue" id="avd${record.avd}@opd${record.opd}@tullid${record.tullId}" >
 			               		<img title="select" style="vertical-align:top;" src="resources/images/bebullet.gif" border="0" alt="edit">&nbsp;${record.opd}
 			               	</td>
-		               	   <td class="text11">&nbsp;${record.tullid}</td>
-		               	   <td class="text11">&nbsp;${record.mtyp}</td>
-		               	   <td class="text11">&nbsp;${record.datum}</td>
-		               	   <td class="text11">&nbsp;${record.status}</td>
-		               	   <td class="text11">&nbsp;${record.avsNavn}</td>
-		               	   <td class="text11">&nbsp;${record.motNavn}</td>
+		               	   <td class="text14">&nbsp;${record.tullid}</td>
+		               	   <td class="text14">&nbsp;${record.mtyp}</td>
+		               	   <td class="text14">&nbsp;${record.datum}</td>
+		               	   <td class="text14">&nbsp;${record.status}</td>
+		               	   <td class="text14">&nbsp;${record.avsNavn}</td>
+		               	   <td class="text14">&nbsp;${record.motNavn}</td>
 			            </tr> 
 			            </c:forEach>
 			            </tbody>
