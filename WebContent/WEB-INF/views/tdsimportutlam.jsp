@@ -124,15 +124,18 @@
 			<tr>
 				<td>
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
+					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
-	                    <td class="tableHeaderFieldFirst" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.tullid"/>&nbsp;</td>
-	                    <td class="tableHeaderField" nowrap>&nbsp;Datum&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.typ"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.avsandare"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.mottagare"/>&nbsp;</td>
-	                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.utlam.arkivpdfh"/>&nbsp;</td>
+	                    <th class="tableHeaderFieldFirst" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.tullid"/>&nbsp;</th>
+	                    <th class="tableHeaderField" nowrap>&nbsp;Datum&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.typ"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.avsandare"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.import.list.search.label.utlam.mottagare"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.utlam.arkivpdfh"/>&nbsp;</th>
 	                   
-	                </tr>     
+	                </tr>   
+	                </thead>
+	                <tbody>  
 		            <c:forEach items="${list}" var="record" varStatus="counter">    
 		               <c:choose>           
 		                   <c:when test="${counter.count%2==0}">
@@ -158,6 +161,7 @@
 		               </td>
 		            </tr> 
 		            </c:forEach>
+		            </tbody>
 	            </table>
 			</td>	
 			</tr>

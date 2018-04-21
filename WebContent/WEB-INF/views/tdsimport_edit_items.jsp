@@ -111,26 +111,26 @@
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
 							            <td width="30%" class="text11Bold" align="left" >Exportör</td>
-							            <td class="text11" align="left" >&nbsp;&nbsp;</td>
+							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">EORI-nr&nbsp;</td>
+							            <td width="30%" class="text12" align="left">EORI-nr&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_aveo}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avna}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avpa}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Landkod&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Landkod&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avlk}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">&nbsp;</td>
+							            <td width="30%" class="text12" align="left">&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left"></td>
 							        </tr>							        
 							        
@@ -140,26 +140,26 @@
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
 							            <td width="30%" class="text11Bold" align="left" >Mottagare</td>
-							            <td class="text11" align="left" >&nbsp;&nbsp;</td>
+							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">EORI-nr&nbsp;</td>
+							            <td width="30%" class="text12" align="left">EORI-nr&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moeo}</td>
 							        </tr>
 							        <tr>
-							            <td width="30%" class="text11" align="left">Namn&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_mona}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Postadress&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_mopa}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Landkod&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Landkod&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_molk}</td>
 							        </tr>
 									<tr>
-							            <td width="30%" class="text11" align="left">Handläggare&nbsp;</td>
+							            <td width="30%" class="text12" align="left">Handläggare&nbsp;</td>
 							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moha}</td>
 							        </tr>
 							        
@@ -206,9 +206,9 @@
 											           		</tr>
 												           	<tr>	
 																<td class="text14" width="95%" >
-																<table id="tblItemLinesAll" class="display compact cell-border" width="95%" >
+																<table id="tblItemLinesAll" class="display compact cell-border" width="100%" >
 																	<thead> 
-																	<tr style="background-color:#DDDDDD">
+																	<tr class="tableHeaderField" >
 																	    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vano.varupostNr"/>&nbsp;</th>   
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ulkd.urspLand"/>&nbsp;</th>
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vata.varukod"/><font class="text9">Taric.nr</font>&nbsp;</th>
@@ -233,23 +233,23 @@
 																	<tbody>
 														           <c:forEach items="${model.list}" var="record" varStatus="counter">    
 													               	 <tr class="tableRow" >
-														               <td class="text11" >&nbsp;${record.sviv_vano}</td>
-														               <td class="text11" >&nbsp;${record.sviv_ulkd}</td>
-														               <td class="text11" >&nbsp;${record.sviv_vata}</td>
-														               <%--<td class="text11" >&nbsp;${record.sviv_vati}</td> --%>
-														               <td class="text11" >&nbsp;${record.sviv_fokd}</td>
-														               <td class="text11" >&nbsp;${record.sviv_eup1}</td>
-														               <td class="text11" >&nbsp;${record.sviv_brut}</td>
-														               <td class="text11" >&nbsp;${record.sviv_neto}</td>
-														               <td class="text11" >&nbsp;${record.sviv_ankv}</td>
-														               <td class="text11" >&nbsp;${record.sum_of_sviv_kotas}</td>
-														               <td class="text11" >&nbsp;${record.sviv_vasl}</td>
-														               <td class="text11" align="center">
+														               <td class="text12" >&nbsp;${record.sviv_vano}</td>
+														               <td class="text12" >&nbsp;${record.sviv_ulkd}</td>
+														               <td class="text12" >&nbsp;${record.sviv_vata}</td>
+														               <%--<td class="text12" >&nbsp;${record.sviv_vati}</td> --%>
+														               <td class="text12" >&nbsp;${record.sviv_fokd}</td>
+														               <td class="text12" >&nbsp;${record.sviv_eup1}</td>
+														               <td class="text12" >&nbsp;${record.sviv_brut}</td>
+														               <td class="text12" >&nbsp;${record.sviv_neto}</td>
+														               <td class="text12" >&nbsp;${record.sviv_ankv}</td>
+														               <td class="text12" >&nbsp;${record.sum_of_sviv_kotas}</td>
+														               <td class="text12" >&nbsp;${record.sviv_vasl}</td>
+														               <td class="text12" align="center">
 														               		<font class="text14OrangeBold" onMouseOver="showPop('avgifterReadOnly_all_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_all_info_${record.sviv_syli}');" alt="info">
 														               		 <img valign="bottom" src="resources/images/infoOrange.png" width="12px" height="12px" border="0" alt="avg.info">&nbsp;
 														               		</font>
 														               		
-														               		<div class="text11" style="position: relative;display:inline" align="left" >
+														               		<div class="text12" style="position: relative;display:inline" align="left" >
 														               		<span class="popupWithInputTextGrayBg" style="position:absolute; top:2px; width:300px;" id="avgifterReadOnly_all_info_${record.sviv_syli}" >
 													
 													           				<table class="noBg" >
@@ -312,16 +312,16 @@
 													           			</div>
 														               		
 														               </td>
-														               <td align="center" class="text11">&nbsp;
+														               <td align="center" class="text12">&nbsp;
 														               		<c:if test="${not empty record.sviv_err}">
 														               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">
 														               		</c:if>
 														               	</td>	
-														               <td class="text11">${record.sviv_fabl}</td>
-														               <td class="text11">${record.sviv_stva}</td>
+														               <td class="text12">${record.sviv_fabl}</td>
+														               <td class="text12">${record.sviv_stva}</td>
 														               
 														               <c:if test="${model.status == 'M' || empty model.status}">	
-															               <td class="text11" align="center" nowrap>&nbsp;
+															               <td class="text12" align="center" nowrap>&nbsp;
 															               	<a onclick="javascript:return confirm('Är du säker på att du vill radera raden?')" tabindex=-1 href="tdsimport_edit_items.do?action=doDelete&avd=${model.avd}&opd=${model.opd}&lin=${record.sviv_syli}&fabl=${recordTopic.svih_fabl}">
 															               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 															               	</a>	
@@ -343,7 +343,7 @@
 														        <table>
 																	<%-- OK BUTTON --%>
 											           				<tr align="left" >
-																		<td class="text11"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
+																		<td class="text12"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
 																		<td class="text14">&nbsp;&nbsp;&nbsp;
 															 	        		<a href="tdsImportItemListExcelView.do" target="_new">
 														                 		<img valign="bottom" id="itemListExcel" src="resources/images/excel.png" border="0" alt="excel">&nbsp;Excel
@@ -356,27 +356,27 @@
 															</span>
 							   						
 									   			<c:if test="${model.status == 'M' || empty model.status}">		
-													&nbsp;<button tabindex=-1 title="Kontrollera varuposter" name="itemListControlButton" id="itemListControlButton" class="buttonGrayWithGreenFrame11" type="button" >Varupostkontroll</button>
+													&nbsp;<button tabindex=-1 title="Kontrollera varuposter" name="itemListControlButton" id="itemListControlButton" class="buttonGrayWithGreenFrame" type="button" >Varupostkontroll</button>
 												</c:if>			
 										</td>
 										<td width="5%" class="text14">&nbsp;</td>
-										<td align="right" class="text11">Fakturabelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value='${recordTopic.svih_fabl}'>
+										<td align="right" class="text12">Fakturabelopp:&nbsp;
+											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="16" maxlength="20" value='${recordTopic.svih_fabl}'>
 										</td>
-										<td align="right" class="text11">Varulinjebelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
+										<td align="right" class="text12">Varulinjebelopp:&nbsp;
+											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="16" maxlength="20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
 										</td>
-										<td align="right" class="text11">Differans:&nbsp;
+										<td align="right" class="text12">Differans:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly
 												<c:choose>
 												<c:when test="${fn:contains(model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
-													class="inputText11RedBoldReadOnly" 
+													class="inputText12RedBoldReadOnly" 
 												</c:when>
 												<c:otherwise>
-													class="inputText11BlueBoldReadOnly"
+													class="inputText12BlueBoldReadOnly"
 												</c:otherwise>
 												</c:choose>
-												size="12" maxlength=20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
+												size="16" maxlength="20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
 										</td>
 									</tr>
 									<tr height="2"><td></td></tr>
@@ -393,11 +393,11 @@
 				 				
 				 				<table width="100%" id="containerdatatableTable" cellspacing="2" align="left" >
 								<tr>
-								<td class="text11">	
+								<td class="text12">	
 							
 								<table id="tblItemLines" class="display compact cell-border" >
 									<thead>
-									<tr style="background-color:#DDDDDD">
+									<tr class="tableHeaderField" >
 										<th width="2%" class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.update"/>&nbsp;</th>   
 					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vano.varupostNr"/>&nbsp;</th>   
 					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ulkd.urspLand"/>&nbsp;</th>
@@ -421,29 +421,29 @@
 					               <tbody>	 
 							           <c:forEach items="${model.list}" var="record" varStatus="counter">    
 							               <tr class="tableRow" >
-							               <td width="2%" class="text11" align="center">
+							               <td width="2%" class="text14" align="center">
 					               				<a tabindex=-1 id="recordUpdate_${record.sviv_syli}_${record.sviv_vano}" href="#" onClick="getItemData(this);">
 					               					<img src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 						               			</a>
 							               </td>
-							               <td width="4%" class="text11" align="center">${record.sviv_vano}</td>
-							               <td class="text11" >&nbsp;${record.sviv_ulkd}</td>
-							               <td class="text11" >&nbsp;${record.sviv_vata}&nbsp;&nbsp;
+							               <td width="4%" class="text14" align="center">${record.sviv_vano}</td>
+							               <td class="text14" >&nbsp;${record.sviv_ulkd}</td>
+							               <td class="text14" >&nbsp;${record.sviv_vata}&nbsp;&nbsp;
 							               	  <img id="recordUpdate_${record.sviv_syli}_${record.sviv_vano}" onClick="updateKundensVarReg(this);" src="resources/images/addOrder.png" width="12px" height="12px" border="0" title="Lägg till i kundensvarureg.">
 							               </td>
-							               <td class="text11" >&nbsp;${record.sviv_fokd}</td>
-							               <td class="text11" >&nbsp;${record.sviv_eup1}</td>
-							               <td class="text11" >${record.sviv_brut}</td>
-							               <td class="text11" >${record.sviv_neto}</td>
-							               <td class="text11" >${record.sviv_ankv}</td>
-							               <td class="text11" >${record.sum_of_sviv_kotas}</td>
-							               <td class="text11" >&nbsp;${record.sviv_vasl}</td>
-							               <td class="text11" align="center">
+							               <td class="text14" >&nbsp;${record.sviv_fokd}</td>
+							               <td class="text14" >&nbsp;${record.sviv_eup1}</td>
+							               <td class="text14" >${record.sviv_brut}</td>
+							               <td class="text14" >${record.sviv_neto}</td>
+							               <td class="text14" >${record.sviv_ankv}</td>
+							               <td class="text14" >${record.sum_of_sviv_kotas}</td>
+							               <td class="text14" >&nbsp;${record.sviv_vasl}</td>
+							               <td class="text14" align="center">
 							               		<font class="text14OrangeBold" onMouseOver="showPop('avgifterReadOnly_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_info_${record.sviv_syli}');" alt="info">
 							               		 <img valign="bottom" src="resources/images/infoOrange.png" width="12px" height="12px" border="0" alt="avg.info">&nbsp;
 							               		</font>
 							               
-							               <div class="text11" style="position: relative;display:inline" align="left" >
+							               <div class="text14" style="position: relative;display:inline" align="left" >
 							               <span class="popupWithInputTextGrayBg" style="position:absolute; top:2px; width:300px;" id="avgifterReadOnly_info_${record.sviv_syli}" >
 						
 						           				<table class="noBg" >
@@ -505,16 +505,16 @@
 						           			</span>
 						           			</div>	
 							               	</td>
-							               <td align="center" class="text11">&nbsp;
+							               <td align="center" class="text14">&nbsp;
 							               		<c:if test="${not empty record.sviv_err}">
 							               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">
 							               		</c:if>
 						               		</td>		
-							               <td class="text11">${record.sviv_fabl}</td>
-							               <td class="text11">${record.sviv_stva}</td>
+							               <td class="text14">${record.sviv_fabl}</td>
+							               <td class="text14">${record.sviv_stva}</td>
 							              
 							               <c:if test="${model.status == 'M' || empty model.status}">	
-								               <td class="text11" align="center" nowrap>&nbsp;
+								               <td class="text14" align="center" nowrap>&nbsp;
 								               	<a onclick="javascript:return confirm('Är du säker på att du vill radera raden?')" tabindex=-1 href="tdsimport_edit_items.do?action=doDelete&avd=${model.avd}&opd=${model.opd}&lin=${record.sviv_syli}&fabl=${recordTopic.svih_fabl}">
 								               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	
@@ -582,7 +582,7 @@
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;</b>
 								<img onClick="showPop('updateInfo');" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
-					           		<div class="text11" align="left">
+					           		<div class="text14" align="left">
 					           			<br/>${activeUrlRPGUpdate}<br/><br/>
 					           			<button name="updateInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('updateInfo');">Close</button> 
 					           		</div>
@@ -891,7 +891,7 @@
 					            			</a>	
 						 				</td>
 						 				<td align="left">	
-						 					<select name="sviv_eup2" id="sviv_eup2">
+						 					<select class="selectMediumBlueE2" name="sviv_eup2" id="sviv_eup2">
 						 						<option value="">-Välj-</option>
 							 				  	<c:forEach var="code" items="${model.forfarande02CodeList}" >
 							 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_eup2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1024,7 +1024,7 @@
 							        
 									<tr>
 										<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_ankv" id="sviv_ankv" size="10" maxlength="10" value="${model.record.sviv_ankv}"></td>
-					           			<td class="text11" valign="bottom">
+					           			<td class="text14" valign="bottom">
 											&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kota" id="sviv_kota" size="5" maxlength="5" value="${model.record.sviv_kota}">
 										</td>
 										<td align="left">
@@ -1052,22 +1052,22 @@
 														</tr>
 														
 									           			<tr>
-										           			<td class="text11">
+										           			<td class="text12">
 																&nbsp;31.2 Varubeskrivning<input type="text" class="inputText" name="sviv_vas2" id="sviv_vas2" size="35" maxlength="70" value="${model.record.sviv_vas2}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
+										           			<td class="text12">
 																&nbsp;31.3 Varubeskrivning<input type="text" class="inputText" name="sviv_vas3" id="sviv_vas3" size="35" maxlength="70" value="${model.record.sviv_vas3}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
+										           			<td class="text12">
 																&nbsp;31.4 Varubeskrivning<input type="text" class="inputText" name="sviv_vas4" id="sviv_vas4" size="35" maxlength="70" value="${model.record.sviv_vas4}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
+										           			<td class="text12">
 																&nbsp;31.5 Varubeskrivning<input type="text" class="inputText" name="sviv_vas5" id="sviv_vas5" size="35" maxlength="70" value="${model.record.sviv_vas5}">
 															</td>
 														</tr>
@@ -1075,7 +1075,7 @@
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text11"><button name="itemDescriptionExtraInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('itemDescriptionExtraInformation');">&nbsp;Ok</button> 
+															<td class="text12"><button name="itemDescriptionExtraInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('itemDescriptionExtraInformation');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -1127,7 +1127,7 @@
 										        		&nbsp;<img onMouseOver="showPop('47_info');" onMouseOut="hidePop('47_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 										        		<b>47.</b>Avgifts<label onClick="showPop('debugPrintlnAjaxAdmin');" >b</label>eräkningar
 														<span style="position:absolute; left:200px; top:500px; width:600px; height:180px;" id="debugPrintlnAjaxAdmin" class="popupWithInputText"  >
-										           		<div class="text11" align="left">
+										           		<div class="text12" align="left">
 										           			<label id="debugPrintlnAjaxInfo"></label>
 										           			&nbsp;&nbsp;&nbsp;&nbsp;<button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('debugPrintlnAjaxAdmin');">Close</button> 
 										           		</div>
@@ -1214,7 +1214,7 @@
 			                						</tr>
 			 									<tr>
 													<td class="text14MediumBlue">
-														<select name="sviva_abk1" id="sviva_abk1">
+														<select class="selectMediumBlueE2" name="sviva_abk1" id="sviva_abk1">
 											            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.chaCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abk1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1228,7 +1228,7 @@
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs1" id="sviva_abs1" size="10" maxlength="9" value="${model.record.sviva_abs1}">
 													</td>
 													<td class="text14MediumBlue">
-														<select name="sviva_abx1" id="sviva_abx1">
+														<select class="selectMediumBlueE2" name="sviva_abx1" id="sviva_abx1">
 											            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abx1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1242,7 +1242,7 @@
 												</tr>
 			 									<tr>
 													<td class="text14MediumBlue">
-														<select name="sviva_abk2" id="sviva_abk2">
+														<select class="selectMediumBlueE2" name="sviva_abk2" id="sviva_abk2">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abk2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1256,7 +1256,7 @@
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs2" id="sviva_abs2" size="10" maxlength="9" value="${model.record.sviva_abs2}">
 													</td>
 													<td class="text14MediumBlue">
-														<select name="sviva_abx2" id="sviva_abx2">
+														<select class="selectMediumBlueE2" name="sviva_abx2" id="sviva_abx2">
 											            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abx2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1269,7 +1269,7 @@
 												</tr>
 			 									<tr>
 													<td class="text14MediumBlue">
-														<select name="sviva_abk3" id="sviva_abk3">
+														<select class="selectMediumBlueE2" name="sviva_abk3" id="sviva_abk3">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
 					                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abk3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1283,7 +1283,7 @@
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs3" id="sviva_abs3" size="10" maxlength="9" value="${model.record.sviva_abs3}">
 													</td>
 													<td class="text14MediumBlue">
-														<select name="sviva_abx3" id="sviva_abx3">
+														<select class="selectMediumBlueE2" name="sviva_abx3" id="sviva_abx3">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abx3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1296,7 +1296,7 @@
 												</tr>
 			 									<tr>
 													<td class="text14MediumBlue">
-														<select name="sviva_abk4" id="sviva_abk4">
+														<select class="selectMediumBlueE2" name="sviva_abk4" id="sviva_abk4">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abk4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1310,7 +1310,7 @@
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs4" id="sviva_abs4" size="10" maxlength="9" value="${model.record.sviva_abs4}">
 													</td>
 													<td class="text14MediumBlue">
-														<select name="sviva_abx4" id="sviva_abx4">
+														<select class="selectMediumBlueE2" name="sviva_abx4" id="sviva_abx4">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abx4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1323,7 +1323,7 @@
 												</tr>
 			 									<tr>
 													<td class="text14MediumBlue">
-														<select name="sviva_abk5" id="sviva_abk5">
+														<select class="selectMediumBlueE2" name="sviva_abk5" id="sviva_abk5">
 											            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.chaCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abk5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1337,7 +1337,7 @@
 														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs5" id="sviva_abs5" size="10" maxlength="9" value="${model.record.sviva_abs5}">
 													</td>
 													<td class="text14MediumBlue">
-														<select name="sviva_abx5" id="sviva_abx5">
+														<select class="selectMediumBlueE2" name="sviva_abx5" id="sviva_abx5">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="code" items="${model.mdmCodeList}" >
 						                                	 		<option value="${code.svkd_kd}"<c:if test="${model.record.sviva_abx5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1376,8 +1376,7 @@
  							    		
  							    		<td valign="top" colspan="6" >&nbsp;&nbsp;
 										<table >
-										<tr height="1"><td></td></tr>
-								 		<tr>
+										<tr>
 								            <td colspan="2" class="text14Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;
 								            		<%--<input class="inputFormSubmitStd" type="button" id="calcOnlyStatisticValueAjax" value='Beräkna'>--%>
 								            </td>
@@ -1504,7 +1503,7 @@
 				        <tr height="10"><td class="text" align="left" colspan="12"><hr></td></tr>
 				        <tr>
 							<td>
-							<table width="80%" class="tableBorderWithRoundCornersGray">
+							<table width="60%" class="tableBorderWithRoundCornersGray">
 							        <tr >
 						            <td colspan="10" class="text14">
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -1533,7 +1532,7 @@
 							            <td valign="top" class="text14" align="left">
 						           			<table >
 						           				<tr>
-								           			<td class="text11" colspan="3">
+								           			<td class="text14" colspan="3">
 								           				<span title="sviv_bit1/sviv_bii1/..."><b>Bilagda handlingar</b></span>
 								           				<a tabindex="-1" id="bilagdaHandIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1541,9 +1540,9 @@
 								           			</td>
 								        			</tr>	
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;1.Kod
-								           				<select name="sviv_bit1" id="sviv_bit1">
+								           				<select class="selectMediumBlueE2" name="sviv_bit1" id="sviv_bit1">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<c:choose>
@@ -1557,7 +1556,7 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 														&nbsp;Identitet
 															<c:choose>
 																<c:when test="${not empty model.record.sviv_bii1}">
@@ -1570,114 +1569,114 @@
 													</td>
 												</tr>
 												<tr>	
-								           			<td class="text11">
+								           			<td class="text14">
 														&nbsp;2.Kod
-								           				<select name="sviv_bit2" id="sviv_bit2">
+								           				<select class="selectMediumBlueE2" name="sviv_bit2" id="sviv_bit2">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 													</td>
-													<td class="text11">
+													<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii2" id="sviv_bii2" size="35" maxlength="35" value="${model.record.sviv_bii2}">
 								           			</td>
 												</tr>
 												<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;3.Kod
-								           				<select name="sviv_bit3" id="sviv_bit3">
+								           				<select class="selectMediumBlueE2" name="sviv_bit3" id="sviv_bit3">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii3" id="sviv_bii3" size="35" maxlength="35" value="${model.record.sviv_bii3}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-							           				<td class="text11">
+							           				<td class="text14">
 								           				&nbsp;4.Kod
-								           				<select name="sviv_bit4" id="sviv_bit4">
+								           				<select class="selectMediumBlueE2" name="sviv_bit4" id="sviv_bit4">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii4" id="sviv_bii4" size="35" maxlength="35" value="${model.record.sviv_bii4}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;5.Kod
-								           				<select name="sviv_bit5" id="sviv_bit5">
+								           				<select class="selectMediumBlueE2" name="sviv_bit5" id="sviv_bit5">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii5" id="sviv_bii5" size="35" maxlength="35" value="${model.record.sviv_bii5}">
 								           			</td>
 							           			</tr>
 							           			<tr>										           			
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;6.Kod
-								           				<select name="sviv_bit6" id="sviv_bit6">
+								           				<select class="selectMediumBlueE2" name="sviv_bit6" id="sviv_bit6">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii6" id="sviv_bii6" size="35" maxlength="35" value="${model.record.sviv_bii6}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;7.Kod
-								           				<select name="sviv_bit7" id="sviv_bit7">
+								           				<select class="selectMediumBlueE2" name="sviv_bit7" id="sviv_bit7">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit7 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii7" id="sviv_bii7" size="35" maxlength="35" value="${model.record.sviv_bii7}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;8.Kod
-								           				<select name="sviv_bit8" id="sviv_bit8">
+								           				<select class="selectMediumBlueE2" name="sviv_bit8" id="sviv_bit8">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit8 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii8" id="sviv_bii8" size="35" maxlength="35" value="${model.record.sviv_bii8}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;9.Kod
-								           				<select name="sviv_bit9" id="sviv_bit9">
+								           				<select class="selectMediumBlueE2" name="sviv_bit9" id="sviv_bit9">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit9 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii9" id="sviv_bii9" size="35" maxlength="35" value="${model.record.sviv_bii9}">
 								           			</td>
 							           			</tr>
@@ -1686,7 +1685,7 @@
 							            <td valign="top">
 						           			<table>
 						           				<tr>
-								           			<td class="text11" colspan="2">
+								           			<td class="text14" colspan="2">
 								           				<b>Särskilda upplysningar</b>
 								           				<a tabindex="-1" id="sarskildaUppIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1695,41 +1694,41 @@
 								           			</td>
 								        			</tr>
 							           			<tr>
-								           			<td class="text11" >
+								           			<td class="text14" >
 								           				&nbsp;<span title="sviv_suko">1.Kod</span>
-								           				<select name="sviv_suko" id="sviv_suko">
+								           				<select class="selectMediumBlueE2" name="sviv_suko" id="sviv_suko">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.salCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_suko == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11" >
+								           			<td class="text14" >
 								           				&nbsp;
 								           			</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="sviv_sutx">1.Text</span><input type="text" class="inputText" name="sviv_sutx" id="sviv_sutx" size="35" maxlength="70" value="${model.record.sviv_sutx}">
 													</td>
 												</tr>
 												<tr>	
-								           			<td colspan="2" class="text11">
+								           			<td colspan="2" class="text14">
 														&nbsp;<span title="sviv_sut2">2.Text</span><input type="text" class="inputText" name="sviv_sut2" id="sviv_sut2" size="35" maxlength="70" value="${model.record.sviv_sut2}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="sviv_sut3">3.Text</span><input type="text" class="inputText" name="sviv_sut3" id="sviv_sut3" size="35" maxlength="70" value="${model.record.sviv_sut3}">
 													</td>
 												</tr>
 												<tr>	
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="sviv_sut4">4.Text</span><input type="text" class="inputText" name="sviv_sut4" id="sviv_sut4" size="35" maxlength="70" value="${model.record.sviv_sut4}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="sviv_sut5">5.Text</span><input type="text" class="inputText" name="sviv_sut5" id="sviv_sut5" size="35" maxlength="70" value="${model.record.sviv_sut5}">
 														
 													</td>
@@ -1798,7 +1797,7 @@
 								           		<div class="text10" align="left">
 								           			<table>
 								           				<tr>
-										           			<td class="text11" colspan="2">
+										           			<td class="text14" colspan="2">
 										           				<b>Särskilda upplysningar</b>
 										           				<a tabindex="-1" id="sarskildaUppIdLink2">
 		            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1806,82 +1805,82 @@
 										           			</td>
 										        			</tr>
 														<tr>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;<span title="sviv_suk6">2.Kod</span>
-										           				<select name="sviv_suk6" id="sviv_suk6">
+										           				<select class="selectMediumBlueE2" name="sviv_suk6" id="sviv_suk6">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.salCodeList}" >
 												 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_suk6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach>  
 																</select>
 										           			</td>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;
 										           			</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sut6">1.Text</span><input type="text" class="inputText" name="sviv_sut6" id="sviv_sut6" size="35" maxlength="70" value="${model.record.sviv_sut6}">
 															</td>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sut7">2.Text</span><input type="text" class="inputText" name="sviv_sut7" id="sviv_sut7" size="35" maxlength="70" value="${model.record.sviv_sut7}">
 															</td>
 														</tr>
 										           		<tr>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sut8">3.Text</span><input type="text" class="inputText" name="sviv_sut8" id="sviv_sut8" size="35" maxlength="70" value="${model.record.sviv_sut8}">
 															</td>
-															<td class="text11">
+															<td class="text14">
 																&nbsp;<span title="sviv_sut9">4.Text</span><input type="text" class="inputText" name="sviv_sut9" id="sviv_sut9" size="35" maxlength="70" value="${model.record.sviv_sut9}">
 															</td>
 														</tr>
 														<tr >
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_suta">5.Text</span><input type="text" class="inputText" name="sviv_suta" id="sviv_suta" size="35" maxlength="70" value="${model.record.sviv_suta}">
 															</td>
-															<td class="text11" >
+															<td class="text14" >
 										           				&nbsp;
 										           			</td>
 										           			
 														</tr>
-														<tr><td class="text11" height="10"/></tr>
+														<tr><td class="text14" height="10"/></tr>
 														
 														<tr>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;<span title="sviv_sukb">3.Kod</span>
-										           				<select name="sviv_sukb" id="sviv_sukb">
+										           				<select class="selectMediumBlueE2" name="sviv_sukb" id="sviv_sukb">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.salCodeList}" >
 												 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_sukb == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach>  
 																</select>
 										           			</td>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;
 										           			</td>
 										           			
 														</tr>
 														<tr>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sutb">1.Text</span><input type="text" class="inputText" name="sviv_sutb" id="sviv_sutb" size="35" maxlength="70" value="${model.record.sviv_sutb}">
 															</td>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sutc">2.Text</span><input type="text" class="inputText" name="sviv_sutc" id="sviv_sutc" size="35" maxlength="70" value="${model.record.sviv_sutc}">
 															</td>
 														</tr>
 										           		<tr>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sutd">3.Text</span><input type="text" class="inputText" name="sviv_sutd" id="sviv_sutd" size="35" maxlength="70" value="${model.record.sviv_sutd}">
 															</td>
-															<td class="text11">
+															<td class="text14">
 																&nbsp;<span title="sviv_sute">4.Text</span><input type="text" class="inputText" name="sviv_sute" id="sviv_sute" size="35" maxlength="70" value="${model.record.sviv_sute}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;<span title="sviv_sutf">5.Text</span><input type="text" class="inputText" name="sviv_sutf" id="sviv_sutf" size="35" maxlength="70" value="${model.record.sviv_sutf}">
 															</td>
-															<td class="text11" >
+															<td class="text14" >
 										           				&nbsp;
 										           			</td>
 										           			
@@ -1889,7 +1888,7 @@
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text11"><button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('specialInformationCode');">&nbsp;Ok</button> 
+															<td class="text14"><button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('specialInformationCode');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -1937,7 +1936,7 @@
 								           		<div class="text10" align="left">
 								           			<table width="100%">
 								           				<tr>
-										           			<td class="text11" colspan="3">
+										           			<td class="text12" colspan="3">
 										           				<b>Tidigare handlingar</b>
 										           				<a tabindex="-1" id="tidigareHandlingarIdLink">
 		            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1945,76 +1944,76 @@
 										           			</td>
 										        		</tr>	
 								           				<tr>
-										           			<td class="text11">&nbsp;Kategori</td>
-										           			<td class="text11">&nbsp;Typ</td>
-															<td class="text11">&nbsp;Identitet</td>
+										           			<td class="text12">&nbsp;Kategori</td>
+										           			<td class="text12">&nbsp;Typ</td>
+															<td class="text12">&nbsp;Identitet</td>
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;1.
-										           				<select name="sviv_tik1" id="sviv_tik1" >
+										           			<td class="text12" nowrap >&nbsp;1.
+										           				<select class="selectMediumBlueE2" name="sviv_tik1" id="sviv_tik1" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.sviv_tik1 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.sviv_tik1 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.sviv_tik1 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>										           			
 										           			</td>
-										           			<td class="text11" nowrap >
-																<select name="sviv_tit1" id="sviv_tit1">
+										           			<td class="text12" nowrap >
+																<select class="selectMediumBlueE2" name="sviv_tit1" id="sviv_tit1">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_tit1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>										           				
 															</td>
-															<td class="text11" nowrap >
+															<td class="text12" nowrap >
 																&nbsp;<input type="text" class="inputText" name="sviv_tix1" id="sviv_tix1" size="35" maxlength="35" value="${model.record.sviv_tix1}">
 															</td>
 										           		</tr>
 										           		<tr>
-										           			<td class="text11" nowrap >&nbsp;2.
-										           				<select name="sviv_tik2" id="sviv_tik2" >
+										           			<td class="text12" nowrap >&nbsp;2.
+										           				<select class="selectMediumBlueE2" name="sviv_tik2" id="sviv_tik2" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.sviv_tik2 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.sviv_tik2 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.sviv_tik2 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>	
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="sviv_tit2" id="sviv_tit2">
+										           			<td class="text12" nowrap >
+										           				<select class="selectMediumBlueE2" name="sviv_tit2" id="sviv_tit2">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_tit2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
+															<td class="text12" nowrap >
 																&nbsp;<input type="text" class="inputText" name="sviv_tix2" id="sviv_tix2" size="35" maxlength="35" value="${model.record.sviv_tix2}">
 															</td>
 										           		</tr>
 														<tr>
-										           			<td class="text11" nowrap >&nbsp;3.
-										           				<select name="sviv_tik3" id="sviv_tik3" >
+										           			<td class="text12" nowrap >&nbsp;3.
+										           				<select class="selectMediumBlueE2" name="sviv_tik3" id="sviv_tik3" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.sviv_tik3 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.sviv_tik3 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.sviv_tik3 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>
 									           				</td>
-										           			<td class="text11" nowrap >
-										           				<select name="sviv_tit3" id="sviv_tit3">
+										           			<td class="text12" nowrap >
+										           				<select class="selectMediumBlueE2" name="sviv_tit3" id="sviv_tit3">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_tit3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
+															<td class="text12" nowrap >
 																&nbsp;<input type="text" class="inputText" name="sviv_tix3" id="sviv_tix3" size="35" maxlength="35" value="${model.record.sviv_tix3}">
 															</td>
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;4.
-										           				<select name="sviv_tik4" id="sviv_tik4" >
+										           			<td class="text12" nowrap >&nbsp;4.
+										           				<select class="selectMediumBlueE2" name="sviv_tik4" id="sviv_tik4" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.sviv_tik4 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.sviv_tik4 == 'Y'}"> selected </c:if> >Y</option>
@@ -2022,8 +2021,8 @@
 															  	</select>
 										           				
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="sviv_tit4" id="sviv_tit4">
+										           			<td class="text12" nowrap >
+										           				<select class="selectMediumBlueE2" name="sviv_tit4" id="sviv_tit4">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_tit4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -2031,50 +2030,50 @@
 																</select>
 																
 															</td>
-															<td class="text11">
+															<td class="text12">
 																&nbsp;<input type="text" class="inputText" name="sviv_tix4" id="sviv_tix4" size="35" maxlength="35" value="${model.record.sviv_tix4}">
 															</td>
 															
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;5.
-										           				<select name="sviv_tik5" id="sviv_tik5" >
+										           			<td class="text12" nowrap >&nbsp;5.
+										           				<select class="selectMediumBlueE2" name="sviv_tik5" id="sviv_tik5" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.sviv_tik5 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.sviv_tik5 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.sviv_tik5 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="sviv_tit5" id="sviv_tit5">
+										           			<td class="text12" nowrap >
+										           				<select class="selectMediumBlueE2" name="sviv_tit5" id="sviv_tit5">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_tit5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
+															<td class="text12" nowrap >
 																&nbsp;<input type="text" class="inputText" name="sviv_tix5" id="sviv_tix5" size="35" maxlength="35" value="${model.record.sviv_tix5}">
 															</td>
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;6.
-										           				<select name="sviv_tik6" id="sviv_tik6" >
+										           			<td class="text12" nowrap >&nbsp;6.
+										           				<select class="selectMediumBlueE2" name="sviv_tik6" id="sviv_tik6" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.sviv_tik6 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.sviv_tik6 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.sviv_tik6 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="sviv_tit6" id="sviv_tit6">
+										           			<td class="text12" nowrap >
+										           				<select class="selectMediumBlueE2" name="sviv_tit6" id="sviv_tit6">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_tit6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
+															<td class="text12" nowrap >
 																&nbsp;<input type="text" class="inputText" name="sviv_tix6" id="sviv_tix6" size="35" maxlength="35" value="${model.record.sviv_tix6}">
 															</td>
 										           		</tr>
@@ -2108,25 +2107,25 @@
 								           		<div class="text10" align="left" valign="top">
 								           			<table>
 								           				<tr>
-										           			<td class="text11">
+										           			<td class="text12">
 										           				&nbsp;Godsmärkning [max 42 tecken]:
 										           			</td>
-										           			<td class="text11">
+										           			<td class="text12">
 																&nbsp;Kolli antal:
 															</td>
-															<td class="text11">
+															<td class="text12">
 																&nbsp;Kolli slag [kod]
 															</td>
 														</tr>
 									           			<tr>
-										           			<td valign="top" class="text11">
+										           			<td valign="top" class="text12">
 										           				&nbsp;2.<textarea rows="2" cols="15" class="inputText" name="sviv_god2" id="sviv_god2" maxlength="42">${model.record.sviv_god2}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
+										           			<td valign="bottom" class="text12">
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot2" id="sviv_kot2" size="5" maxlength="5" value="${model.record.sviv_kot2}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="sviv_kos2" id="sviv_kos2">
+										            			<select class="selectMediumBlueE2" name="sviv_kos2" id="sviv_kos2">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_kos2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -2137,14 +2136,14 @@
 															
 										           		</tr>
 														<tr>
-										           			<td valign="top" class="text11">
+										           			<td valign="top" class="text12">
 										           				&nbsp;3.<textarea rows="2" cols="15" class="inputText" name="sviv_god3" id="sviv_god3" maxlength="42">${model.record.sviv_god3}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
+										           			<td valign="bottom" class="text12">
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot3" id="sviv_kot3" size="5" maxlength="5" value="${model.record.sviv_kot3}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="sviv_kos3" id="sviv_kos3">
+										            			<select class="selectMediumBlueE2" name="sviv_kos3" id="sviv_kos3">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_kos3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -2155,14 +2154,14 @@
 															
 										           		</tr>
 									           			<tr>
-										           			<td valign="top" class="text11">
+										           			<td valign="top" class="text12">
 										           				&nbsp;4.<textarea rows="2" cols="15" class="inputText" name="sviv_god4" maxlength="42">${model.record.sviv_god4}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
+										           			<td valign="bottom" class="text12">
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot4" id="sviv_kot4" size="5" maxlength="5" value="${model.record.sviv_kot4}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="sviv_kos4" id="sviv_kos4">
+										            			<select class="selectMediumBlueE2" name="sviv_kos4" id="sviv_kos4">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_kos4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -2172,14 +2171,14 @@
 															
 										           		</tr>
 									           			<tr>
-										           			<td valign="top" class="text11">
+										           			<td valign="top" class="text12">
 										           				&nbsp;5.<textarea rows="2" cols="15" class="inputText" name="sviv_god5" id="sviv_god5" maxlength="42">${model.record.sviv_god5}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
+										           			<td valign="bottom" class="text12">
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot5" id="sviv_kot5" size="5" maxlength="5" value="${model.record.sviv_kot5}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="sviv_kos5" id="sviv_kos5">
+										            			<select class="selectMediumBlueE2" name="sviv_kos5" id="sviv_kos5">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_kos5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -2208,77 +2207,77 @@
 								           		<div class="text10" align="left">
 								           			<table>
 								           			<tr>
-									           			<td class="text11" colspan="5">
+									           			<td class="text12" colspan="5">
 									           				<b>Container nr</b>
 									           			</td>
 									        		</tr>
 								           			<tr>
-									           			<td class="text11">
+									           			<td class="text12">
 									           				&nbsp;1.<input type="text" class="inputText" name="sviv_co01" id="sviv_co01" size="12" maxlength="17" value="${model.record.sviv_co01}">
 									           			</td>
-														<td class="text11">
+														<td class="text12">
 															&nbsp;2.<input type="text" class="inputText" name="sviv_co02" id="sviv_co02" size="12" maxlength="17" value="${model.record.sviv_co02}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 															&nbsp;3.<input type="text" class="inputText" name="sviv_co03" id="sviv_co03" size="12" maxlength="17" value="${model.record.sviv_co03}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 									           				&nbsp;4.<input type="text" class="inputText" name="sviv_co04" id="sviv_co04" size="12" maxlength="17" value="${model.record.sviv_co04}">
 									           			</td>
 													</tr>
 													<tr>
-									           			<td class="text11">
+									           			<td class="text12">
 									           				&nbsp;5.<input type="text" class="inputText" name="sviv_co05" id="sviv_co05" size="12" maxlength="17" value="${model.record.sviv_co05}">
 									           			</td>
-														<td class="text11">
+														<td class="text12">
 															&nbsp;6.<input type="text" class="inputText" name="sviv_co06" id="sviv_co06" size="12" maxlength="17" value="${model.record.sviv_co06}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 															&nbsp;7.<input type="text" class="inputText" name="sviv_co07" id="sviv_co07" size="12" maxlength="17" value="${model.record.sviv_co07}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 									           				&nbsp;8.<input type="text" class="inputText" name="sviv_co08" id="sviv_co08" size="12" maxlength="17" value="${model.record.sviv_co08}">
 									           			</td>
 													</tr>
 													<tr>
-									           			<td class="text11">
+									           			<td class="text12">
 									           				&nbsp;9.<input type="text" class="inputText" name="sviv_co09" id="sviv_co09" size="12" maxlength="17" value="${model.record.sviv_co09}">
 									           			</td>
-														<td class="text11">
+														<td class="text12">
 															10.<input type="text" class="inputText" name="sviv_co10" id="sviv_co10" size="12" maxlength="17" value="${model.record.sviv_co10}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 															11.<input type="text" class="inputText" name="sviv_co11" id="sviv_co11"  size="12" maxlength="17" value="${model.record.sviv_co11}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 									           				12.<input type="text" class="inputText" name="sviv_co12" id="sviv_co12" size="12" maxlength="17" value="${model.record.sviv_co12}">
 									           			</td>
 													</tr>
 													<tr>
-									           			<td class="text11">
+									           			<td class="text12">
 									           				13.<input type="text" class="inputText" name="sviv_co13" id="sviv_co13" size="12" maxlength="17" value="${model.record.sviv_co13}">
 									           			</td>
-														<td class="text11">
+														<td class="text12">
 															14.<input type="text" class="inputText" name="sviv_co14" id="sviv_co14" size="12" maxlength="17" value="${model.record.sviv_co14}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 															15.<input type="text" class="inputText" name="sviv_co15" id="sviv_co15" size="12" maxlength="17" value="${model.record.sviv_co15}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 									           				16.<input type="text" class="inputText" name="sviv_co16" id="sviv_co16" size="12" maxlength="17" value="${model.record.sviv_co16}">
 									           			</td>
 													</tr>
 													<tr>
-									           			<td class="text11">
+									           			<td class="text12">
 									           				17.<input type="text" class="inputText" name="sviv_co17" id="sviv_co17" size="12" maxlength="17" value="${model.record.sviv_co17}">
 									           			</td>
-														<td class="text11">
+														<td class="text12">
 															18.<input type="text" class="inputText" name="sviv_co18" id="sviv_co18" size="12" maxlength="17" value="${model.record.sviv_co18}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 															19.<input type="text" class="inputText" name="sviv_co19" id="sviv_co19" size="12" maxlength="17" value="${model.record.sviv_co19}">
 														</td>
-														<td class="text11">
+														<td class="text12">
 									           				20.<input type="text" class="inputText" name="sviv_co20" id="sviv_co20" size="12" maxlength="17" value="${model.record.sviv_co20}">
 									           			</td>
 													</tr>
@@ -2310,7 +2309,7 @@
 							            <span title="sviv_lagt">Identifiering av lager:&nbsp;</span>
 							            
 							            <div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px; width:250px;" id="49_info" class="popupWithInputText text11"  >
+							            <span style="position:absolute;top:2px; width:250px;" id="49_info" class="popupWithInputText text12"  >
 							           		<div class="text11" align="left">
 						           			<br/>
 						           			<b>Identifiering av lager</b>
@@ -2334,7 +2333,7 @@
 							            </td>
 							            
 							            <td class="text14" align="left" >
-							            	<select name="sviv_lagt" id="sviv_lagt">
+							            	<select class="selectMediumBlueE2" name="sviv_lagt" id="sviv_lagt">
 				 								<option selected value="">-Välj-</option>
 				 								<c:choose>
 				 									<%-- only when new record and header value exists --%>
@@ -2369,7 +2368,7 @@
 										</td>
 							           	<td class="text14" align="left">&nbsp;
 							           	<span title="sviv_lagl">Landkod&nbsp;</span>
-							            	<select name="sviv_lagl" id="sviv_lagl">
+							            	<select class="selectMediumBlueE2" name="sviv_lagl" id="sviv_lagl">
 						 						<option value="">-Välj-</option>
 						 						<c:choose>
 				 									<%-- only when new record and header value exists --%>

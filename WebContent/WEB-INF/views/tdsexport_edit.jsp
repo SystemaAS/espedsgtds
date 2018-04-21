@@ -1803,16 +1803,16 @@
 									        	<td>
 										        	<table width="80%" border="0" cellspacing="0" cellpadding="0">
 											        	<tr>
-												            <td class="text11" align="left">&nbsp;&nbsp;Land 1&nbsp;
+												            <td class="text14" align="left">&nbsp;&nbsp;Land 1&nbsp;
 													            
 												            </td>
-												            <td class="text11" align="left">&nbsp;&nbsp;Land 2&nbsp;
+												            <td class="text14" align="left">&nbsp;&nbsp;Land 2&nbsp;
 													            	
 												            </td>
-												            <td class="text11" align="left">&nbsp;&nbsp;Land 3&nbsp;
+												            <td class="text14" align="left">&nbsp;&nbsp;Land 3&nbsp;
 													            
 												            </td>
-												            <td class="text11" align="left">&nbsp;&nbsp;Land 4&nbsp;
+												            <td class="text14" align="left">&nbsp;&nbsp;Land 4&nbsp;
 													            	
 												            </td>
 												        </tr>

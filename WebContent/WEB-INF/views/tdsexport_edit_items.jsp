@@ -283,27 +283,27 @@
 											   				</div>
 									   					</span>	
 									   		<c:if test="${model.status == 'M' || empty model.status}">		
-												&nbsp;<button tabindex=-1 title="Kontrollera varuposter" name="itemListControlButton" id="itemListControlButton" class="buttonGrayWithGreenFrame11" type="button" >Varupostkontroll</button>
+												&nbsp;<button tabindex=-1 title="Kontrollera varuposter" name="itemListControlButton" id="itemListControlButton" class="buttonGrayWithGreenFrame" type="button" >Varupostkontroll</button>
 											</c:if>
 										</td>
 										<td width="5%" class="text14">&nbsp;</td>
 										<td align="right" class="text12">Fakturabelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value='${recordTopic.sveh_fabl}'>
+											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="16" maxlength="20" value='${recordTopic.sveh_fabl}'>
 										</td>
 										<td align="right" class="text12">Varulinjebelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
+											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="16" maxlength="20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
 										</td>
 										<td align="right" class="text12">Differans:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly
 												<c:choose>
 												<c:when test="${fn:contains(model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
-													class="inputText11RedBoldReadOnly" 
+													class="inputText12RedBoldReadOnly" 
 												</c:when>
 												<c:otherwise>
-													class="inputText11BlueBoldReadOnly"
+													class="inputText12BlueBoldReadOnly"
 												</c:otherwise>
 												</c:choose>
-												size="12" maxlength=20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
+												size="16" maxlength="20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
 										</td>
 									</tr>
 									<tr height="2"><td></td></tr>
@@ -618,7 +618,56 @@
 										</td>
 										
 										<td class="text14" align="left"><b>&nbsp;38.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svev_neto">Net.vikt(kg)</span></td>
+										<td class="text14" align="left">
+											<img onMouseOver="showPop('41_xmenheter_info');" onMouseOut="hidePop('41_xmenheter_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+												
+											<b>41.</b><span title="svev_ankv">Extra mängd:&nbsp;</span>
+											<div class="text11" style="position: relative;" align="left">
+								            <span style="position:absolute;top:2px; width:250px;" id="41_xmenheter_info" class="popupWithInputText text11"  >
+								           		<br/>
+							           			<b>41. Extra mängdenheter</b>
+												<br/>
+							           			Detta fält fyller du bara i för vissa varukoder. Det är varukoden i fält 33 som styr om fältet ska fyllas i eller inte. I Tulltaxan ser du om uppgiften ska deklareras samt vilken mängdenhet du ska ange. Mängdenheten kan exempelvis vara styck, liter eller kubikmeter. Du anger uppgiften i heltal men ska inte ange enheten.
+							           			
+											</span>
+								            </div>
+										</td>
+										<td class="text14">
+										<img onMouseOver="showPop('31_kantal_info');" onMouseOut="hidePop('31_kantal_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+										<span id="kotaRubrik">
+				 							<b>31.</b>
+				 						</span>
+										<span title="svev_kota">Kolli antal</span>
 										
+										<div class="text11" style="position: relative;" align="left">
+										<span style="position:absolute;top:2px; width:250px;" id="31_kantal_info" class="popupWithInputText text11"  >
+							           		<b>Kolliantal</b>
+						           			<br/>
+						           			Antal kolli/delar 
+											<br/>
+						           			Ange antal kolli för emballerade varor och antal delar för oemballerade varor. 
+						           			<br/>Antal delar för oemballerat gods kan aldrig vara noll. 
+						           			<br/>Om kollislag avser bulkvaror anges inget kollital. Om kod för bulk (kollislag kod VR, VY, VO, VL, VG OCH VQ) anges på varupost/varuposter i fält 31, ska varje bulkkod räknas som ett kolli när du summerar uppgiften totalt antal kollin på huvudnivå, fält 6. 
+						           			<br/><br/>
+						           			<b>OBS</b>&nbsp;Om nr <b><font style="color:green;">31.</font></b>Kolli antal lyser grönt indikerar det för mera kolli antal under extraordinära uppgifter nedan i samma bild (under rubrik 31).
+										</span>
+							            </div>
+							            </td>
+							            <td class="text14">
+										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_kosl">Kolli slag</span>
+										
+										<div class="text11" style="position: relative;" align="left">
+										<span style="position:absolute;top:2px; width:250px;" id="31_kslag_info" class="popupWithInputText text11"  >
+							           		<br/>
+						           			<b>Kollislag</b>
+											<br/>
+						           			Här anger du kod för hur godset är förpackat, exempelvis kartonger. Om en vara är förpackad i flera olika kollislag kan du ange flera kollislag i samma varupost. Till detta hör även antal kolli och godsmärkning.
+					           				
+										</span>
+										</div>
+										</td>
+							            
 							        </tr>
 							        <tr>
 							        	<td align="left" >&nbsp;<button tabIndex=-1 title="Kundens vareregister" name="kundensVaruregisterControlButton" id="kundensVaruregisterControlButton" class="buttonGrayWithGreenFrame" type="button" >Sök i kund.varureg.</button></td>
@@ -667,62 +716,31 @@
 						 				</td>
 						 				<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_brut" id="svev_brut" size="10" maxlength="11" value='${model.record.svev_brut}'></td>
 										<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_neto" id="svev_neto" size="10" maxlength="11" value='${model.record.svev_neto}'></td>
-										
+										<td class="text14" align="left">&nbsp;
+											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
+											
+										</td>
+										<td class="text14" valign="bottom">
+											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kota" id="svev_kota" size="5" maxlength="5" value="${model.record.svev_kota}">
+										</td>
+										<td align="left">
+					            			<select class="inputTextMediumBlueMandatoryField" name="svev_kosl" id="svev_kosl">
+							            		<option value="">-Välj-</option>
+							 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
+			                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kosl == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+												</c:forEach> 
+											</select>
+											<a tabindex="-1" id="svev_koslIdLink">
+						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+					            			</a>
+										</td> 	
 							        </tr>
-							        <tr height="10"><td class="text" align="left" colspan="9"><hr></td></tr>
+							        <tr height="10"><td class="text" align="left" colspan="15"><hr></td></tr>
 							        
 									<tr>
-										<td class="text14" align="left">
-											<img onMouseOver="showPop('41_xmenheter_info');" onMouseOut="hidePop('41_xmenheter_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-												
-											<b>41.</b><span title="svev_ankv">Extra mängd:&nbsp;</span>
-											<div class="text11" style="position: relative;" align="left">
-								            <span style="position:absolute;top:2px; width:250px;" id="41_xmenheter_info" class="popupWithInputText text11"  >
-								           		<br/>
-							           			<b>41. Extra mängdenheter</b>
-												<br/>
-							           			Detta fält fyller du bara i för vissa varukoder. Det är varukoden i fält 33 som styr om fältet ska fyllas i eller inte. I Tulltaxan ser du om uppgiften ska deklareras samt vilken mängdenhet du ska ange. Mängdenheten kan exempelvis vara styck, liter eller kubikmeter. Du anger uppgiften i heltal men ska inte ange enheten.
-							           			
-											</span>
-								            </div>
-										</td>
-										<td class="text14">
-										<img onMouseOver="showPop('31_kantal_info');" onMouseOut="hidePop('31_kantal_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-										<span id="kotaRubrik">
-				 							<b>31.</b>
-				 						</span>
-										<span title="svev_kota">Kolli antal</span>
 										
-										<div class="text11" style="position: relative;" align="left">
-										<span style="position:absolute;top:2px; width:250px;" id="31_kantal_info" class="popupWithInputText text11"  >
-							           		<b>Kolliantal</b>
-						           			<br/>
-						           			Antal kolli/delar 
-											<br/>
-						           			Ange antal kolli för emballerade varor och antal delar för oemballerade varor. 
-						           			<br/>Antal delar för oemballerat gods kan aldrig vara noll. 
-						           			<br/>Om kollislag avser bulkvaror anges inget kollital. Om kod för bulk (kollislag kod VR, VY, VO, VL, VG OCH VQ) anges på varupost/varuposter i fält 31, ska varje bulkkod räknas som ett kolli när du summerar uppgiften totalt antal kollin på huvudnivå, fält 6. 
-						           			<br/><br/>
-						           			<b>OBS</b>&nbsp;Om nr <b><font style="color:green;">31.</font></b>Kolli antal lyser grönt indikerar det för mera kolli antal under extraordinära uppgifter nedan i samma bild (under rubrik 31).
-										</span>
-							            </div>
-							            </td>
 							            
-										<td class="text14">
-										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_kosl">Kolli slag</span>
 										
-										<div class="text11" style="position: relative;" align="left">
-										<span style="position:absolute;top:2px; width:250px;" id="31_kslag_info" class="popupWithInputText text11"  >
-							           		<br/>
-						           			<b>Kollislag</b>
-											<br/>
-						           			Här anger du kod för hur godset är förpackat, exempelvis kartonger. Om en vara är förpackad i flera olika kollislag kan du ange flera kollislag i samma varupost. Till detta hör även antal kolli och godsmärkning.
-					           				
-										</span>
-										</div>
-										</td>
-							            
 										<td class="text14" align="left" colspan="2">
 										<img onMouseOver="showPop('31_varubesk_info');" onMouseOut="hidePop('31_varubesk_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_vasl / svev_vas2...svev_vas5">Varubeskrivning&nbsp;</span>
@@ -781,25 +799,8 @@
 							        
 							        
 									<tr>
-										<td class="text14" align="left">&nbsp;
-											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
-											
-										</td>
-										<td class="text11" valign="bottom">
-											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kota" id="svev_kota" size="5" maxlength="5" value="${model.record.svev_kota}">
-										</td>
-										<td align="left">
-					            			<select class="inputTextMediumBlueMandatoryField" name="svev_kosl" id="svev_kosl">
-							            		<option value="">-Välj-</option>
-							 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
-			                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kosl == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
-												</c:forEach> 
-											</select>
-											<a tabindex="-1" id="svev_koslIdLink">
-						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
-					            			</a>
-											
-				            				</td> 										
+										
+																			
 										<td class="text14" align="left" colspan="2">
 											<input type="text" class="inputTextMediumBlueMandatoryField" name="svev_vasl" id="svev_vasl" size="25" maxlength="70" value="${model.record.svev_vasl}">
 										</td>
@@ -847,13 +848,43 @@
 										</td>
 										<td class="text14" align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svev_godm" id="svev_godm" size="25" maxlength="42" value="${model.record.svev_godm}"></td>
 							            <td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_fabl" id="svev_fabl" size="11" maxlength="11" value="${model.record.svev_fabl}"></td>
-							            <td></td>
+							            
+							            <td class="text14Bold" align="left" colspan="8" >
+						 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+						 						<font class="text16RedBold" >*</font><span title="svev_call">Call me:&nbsp;</span>
+									            <select class="inputTextMediumBlueMandatoryField" name="svev_call" id="svev_call">
+					 								<option value="00" <c:if test="${model.record.svev_call == '00' || empty model.record.svev_call}"> selected </c:if> >00-CM Inga exportrestr.</option>
+									  				<option value="01" <c:if test="${model.record.svev_call == '01'}"> selected </c:if> >01-CM Exportrestr. villkor uppfyllda</option>
+									  				<option value="10" <c:if test="${model.record.svev_call == '10'}"> selected </c:if> >10-CM Inga exportrestr. Call me</option>
+									  				<option value="11" <c:if test="${model.record.svev_call == '11'}"> selected </c:if> >11-CM Exportrestr. villkor uppfyllda Call me</option>
+									  				<option value="12" <c:if test="${model.record.svev_call == '12'}"> selected </c:if> >12-CM Exportrestr. villkor ej uppfyllda</option>
+									  				<option value="13" <c:if test="${model.record.svev_call == '13'}"> selected </c:if> >13-CM Exportlicens</option>
+									  				<option value="14" <c:if test="${model.record.svev_call == '14'}"> selected </c:if> >14-CM Exportlicens Call me</option>
+									  				<option value="15" <c:if test="${model.record.svev_call == '15'}"> selected </c:if> >15-CM Ansökan om vissa Tullverkets tillstånd</option>
+									  				<option value="16" <c:if test="${model.record.svev_call == '16'}"> selected </c:if> >16-CM Exp.bidragsärende som ska kompletteras. Kontakta exp.bidragsgrp. för klarering</option>
+												</select>
+												
+												<div class="text11" style="position: relative;" align="left">
+									            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text11"  >
+									           		<br/>
+								           			<b>Åtgärdsindikator (Call me-kod)</b>
+													<br/>
+								           			Fält 44 består av två delfält, ett fritextfält och ett kodfält. Vissa uppgifter ska du alltid fylla i då du deklarerar enligt godkänd exportör, medan ytterligare upplysningar lämnar du vid behov. Det kan exempelvis vara ett tillståndsnummer eller ett licensnummer för exportreglerade varor.
+													<br/><br/>
+													Call me är en funktion som används för att upplysa om en sändning omfattas av export/importrestriktioner eller inte. 
+													Uppgift om en vara omfattas av export- eller importrestriktioner finns i EU-lagstiftning eller i nationell lagstiftning. 
+													I många fall hittar du information om restriktioner i Taric Söksystem för aktuell varukod. 
+													Call me-koden kan också användas för att påkalla en tulltjänstemans uppmärksamhet i samband med klareringen.
+													
+												</span>
+												</div>	
+											</td>
  							        </tr>
  							        
-									<tr height="25"><td></td></tr>
+ 							        <tr height="25"><td></td></tr>
 									
 									<tr>
-									<td colspan="3">
+									<td colspan="2">
 										<table class="tableBorderWithRoundCornersGray">
 								 		<tr>
 								            <td class="text14Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;</td>
@@ -914,70 +945,24 @@
 										</table>
 									</td>
 									
-							 		<td valign="top" colspan="5">
-								 		<table border="0" cellspacing="0" cellpadding="0">
-											<tr>
-												<td class="text14Bold" align="left" >
-						 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-						 						<font class="text16RedBold" >*</font><span title="svev_call">Call me:&nbsp;</span>
-									            
-									            <div class="text11" style="position: relative;" align="left">
-									            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text11"  >
-									           		<br/>
-								           			<b>Åtgärdsindikator (Call me-kod)</b>
-													<br/>
-								           			Fält 44 består av två delfält, ett fritextfält och ett kodfält. Vissa uppgifter ska du alltid fylla i då du deklarerar enligt godkänd exportör, medan ytterligare upplysningar lämnar du vid behov. Det kan exempelvis vara ett tillståndsnummer eller ett licensnummer för exportreglerade varor.
-													<br/><br/>
-													Call me är en funktion som används för att upplysa om en sändning omfattas av export/importrestriktioner eller inte. 
-													Uppgift om en vara omfattas av export- eller importrestriktioner finns i EU-lagstiftning eller i nationell lagstiftning. 
-													I många fall hittar du information om restriktioner i Taric Söksystem för aktuell varukod. 
-													Call me-koden kan också användas för att påkalla en tulltjänstemans uppmärksamhet i samband med klareringen.
-													
-												</span>
+							 		<td align="left" valign="bottom" colspan="5">
+										<c:choose>	
+											<c:when test="${model.status == 'M' || empty model.status}">
+												<div style="float:right;" id="warningCodesFlagDiv" >
+													<a id="warningCodesLink" style="cursor:pointer;">
+														<img width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="warning">
+														<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
+													</a>
 												</div>
-												</td>
-									            
-									            <td class="text14" align="left" >
-									            	<select class="inputTextMediumBlueMandatoryField" name="svev_call" id="svev_call">
-						 								<option value="00" <c:if test="${model.record.svev_call == '00' || empty model.record.svev_call}"> selected </c:if> >00-CM Inga exportrestr.</option>
-										  				<option value="01" <c:if test="${model.record.svev_call == '01'}"> selected </c:if> >01-CM Exportrestr. villkor uppfyllda</option>
-										  				<option value="10" <c:if test="${model.record.svev_call == '10'}"> selected </c:if> >10-CM Inga exportrestr. Call me</option>
-										  				<option value="11" <c:if test="${model.record.svev_call == '11'}"> selected </c:if> >11-CM Exportrestr. villkor uppfyllda Call me</option>
-										  				<option value="12" <c:if test="${model.record.svev_call == '12'}"> selected </c:if> >12-CM Exportrestr. villkor ej uppfyllda</option>
-										  				<option value="13" <c:if test="${model.record.svev_call == '13'}"> selected </c:if> >13-CM Exportlicens</option>
-										  				<option value="14" <c:if test="${model.record.svev_call == '14'}"> selected </c:if> >14-CM Exportlicens Call me</option>
-										  				<option value="15" <c:if test="${model.record.svev_call == '15'}"> selected </c:if> >15-CM Ansökan om vissa Tullverkets tillstånd</option>
-										  				<option value="16" <c:if test="${model.record.svev_call == '16'}"> selected </c:if> >16-CM Exp.bidragsärende som ska kompletteras. Kontakta exp.bidragsgrp. för klarering</option>
-													</select>
-												</td>
-									        </tr>
-									        <tr height="10"><td></td></tr>
-									        <tr>
-										        <td colspan="2" align="right">
-												<c:choose>	
-													<c:when test="${model.status == 'M' || empty model.status}">
-														<div style="float:right;" id="warningCodesFlagDiv" >
-															<a id="warningCodesLink" style="cursor:pointer;">
-																<img width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="warning">
-																<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
-															</a>
-														</div>
-														<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
-													</c:when>
-													<c:otherwise>
-							 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
-							 				    	</c:otherwise>	
-							 				    	</c:choose>	
-												</td>
-											</tr>
-										</table>
+												<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
+											</c:when>
+											<c:otherwise>
+					 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+					 				    	</c:otherwise>	
+				 				    	</c:choose>	
 									</td>
 									</tr>
 									<tr height="5"><td></td></tr>
-									
-									
-									
-									
  			        	        </table>
 					        </td>
 					        
@@ -986,7 +971,7 @@
 				        
 				        <tr>
 							<td>
-							<table width="80%" class="tableBorderWithRoundCornersGray">
+							<table width="60%" class="tableBorderWithRoundCornersGray">
 							        <tr >
 						            <td colspan="10" class="text14">
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -1018,7 +1003,7 @@
 							            <td valign="top" class="text14" align="left">
 						           			<table >
 						           				<tr>
-								           			<td class="text11" colspan="3">
+								           			<td class="text14" colspan="3">
 								           				<span title="svev_bit1-svev_bii1 / svev_bit2-svev_bii2 / etc"><b>Bilagda handlingar</b></span>
 								           				<a tabindex="-1" id="bilagdaHandIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1026,7 +1011,7 @@
 								           			</td>
 								        			</tr>	
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;1.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit1" id="svev_bit1">
 									 						<option value="">-Välj-</option>
@@ -1042,7 +1027,7 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">&nbsp;<span title="svev_bii1">Identitet</span>
+								           			<td class="text14">&nbsp;<span title="svev_bii1">Identitet</span>
 														<c:choose>
 															<c:when test="${not empty model.record.svev_bii1}">
 																<input type="text" class="inputText" name="svev_bii1" id="svev_bii1" size="35" maxlength="35" value="${model.record.svev_bii1}">
@@ -1054,7 +1039,7 @@
 													</td>
 												</tr>
 												<tr>	
-								           			<td class="text11">
+								           			<td class="text14">
 														&nbsp;2.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit2" id="svev_bit2">
 									 						<option value="">-Välj-</option>
@@ -1063,12 +1048,12 @@
 															</c:forEach>  
 														</select>
 													</td>
-													<td class="text11">
+													<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii2" id="svev_bii2" size="35" maxlength="35" value="${model.record.svev_bii2}">
 								           			</td>
 												</tr>
 												<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;3.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit3" id="svev_bit3">
 									 						<option value="">-Välj-</option>
@@ -1077,12 +1062,12 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii3" id="svev_bii3" size="35" maxlength="35" value="${model.record.svev_bii3}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-							           				<td class="text11">
+							           				<td class="text14">
 								           				&nbsp;4.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit4" id="svev_bit4">
 									 						<option value="">-Välj-</option>
@@ -1091,12 +1076,12 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii4" id="svev_bii4" size="35" maxlength="35" value="${model.record.svev_bii4}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;5.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit5" id="svev_bit5">
 									 						<option value="">-Välj-</option>
@@ -1105,12 +1090,12 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii5" id="svev_bii5" size="35" maxlength="35" value="${model.record.svev_bii5}">
 								           			</td>
 							           			</tr>
 							           			<tr>										           			
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;6.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit6" id="svev_bit6">
 									 						<option value="">-Välj-</option>
@@ -1119,12 +1104,12 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii6" id="svev_bii6" size="35" maxlength="35" value="${model.record.svev_bii6}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;7.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit7" id="svev_bit7">
 									 						<option value="">-Välj-</option>
@@ -1133,12 +1118,12 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii7" id="svev_bii7" size="35" maxlength="35" value="${model.record.svev_bii7}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;8.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit8" id="svev_bit8">
 									 						<option value="">-Välj-</option>
@@ -1147,12 +1132,12 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii8" id="svev_bii8" size="35" maxlength="35" value="${model.record.svev_bii8}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;9.Kod
 								           				<select class="selectMediumBlueE2" name="svev_bit9" id="svev_bit9">
 									 						<option value="">-Välj-</option>
@@ -1161,7 +1146,7 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii9" id="svev_bii9" size="35" maxlength="35" value="${model.record.svev_bii9}">
 								           			</td>
 							           			</tr>
@@ -1170,7 +1155,7 @@
 							            <td valign="top">
 						           			<table>
 						           				<tr>
-								           			<td class="text11" colspan="2">
+								           			<td class="text14" colspan="2">
 								           				<b>Särskilda upplysningar</b>
 								           				<a tabindex="-1" id="sarskildaUppIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1178,7 +1163,7 @@
 								           			</td>
 								        			</tr>
 							           			<tr>
-								           			<td class="text11" >
+								           			<td class="text14" >
 								           				&nbsp;<span title="svev_suko">1.Kod</span>
 								           				<select class="selectMediumBlueE2" name="svev_suko" id="svev_suko">
 									 						<option value="">-Välj-</option>
@@ -1187,32 +1172,32 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11" >
+								           			<td class="text14" >
 								           				&nbsp;
 								           			</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="svev_sutx">1.Text</span><input type="text" class="inputText" name="svev_sutx" id="svev_sutx" size="35" maxlength="70" value="${model.record.svev_sutx}">
 													</td>
 												</tr>
 												<tr>	
-								           			<td colspan="2" class="text11">
+								           			<td colspan="2" class="text14">
 														&nbsp;<span title="svev_sut2">2.Text</span><input type="text" class="inputText" name="svev_sut2" id="svev_sut2" size="35" maxlength="70" value="${Xmodel.record.svev_sut2}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="svev_sut3">3.Text</span><input type="text" class="inputText" name="svev_sut3" id="svev_sut3" size="35" maxlength="70" value="${Xmodel.record.svev_sut3}">
 													</td>
 												</tr>
 												<tr>	
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="svev_sut4">4.Text</span><input type="text" class="inputText" name="svev_sut4" id="svev_sut4" size="35" maxlength="70" value="${Xmodel.record.svev_sut4}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
+													<td colspan="2" class="text14">
 														&nbsp;<span title="svev_sut5">5.Text</span><input type="text" class="inputText" name="svev_sut5" id="svev_sut5" size="35" maxlength="70" value="${Xmodel.record.svev_sut5}">
 														
 													</td>
@@ -1254,8 +1239,8 @@
 							            &nbsp;<img onMouseOver="showPop('44_info');" onMouseOut="hidePop('44_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Särskilda upplysningar</b>
 											<br/>

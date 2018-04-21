@@ -153,7 +153,7 @@
             		<c:choose>
 	 				    <c:when test="${model.record.svih_syst == 'M' || empty model.record.svih_syst}">																	 			
 							&nbsp;&nbsp;Sign:&nbsp;
-		           			<select name="svih_sysg" id="svih_sysg">
+		           			<select class="selectMediumBlueE2" name="svih_sysg" id="svih_sysg">
 			            		<option value="">-Välj-</option>
 			 				  	<c:forEach var="record" items="${model.signList}" >
                              	 	<option value="${record.sign}"<c:if test="${model.record.svih_sysg == record.sign}"> selected </c:if> >${record.sign}</option>
@@ -241,7 +241,7 @@
 			<tr >
 				<td align="left" class="text14MediumBlue">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;
-           			<select name="avd" id="avd">
+           			<select class="selectMediumBlueE2" name="avd" id="avd">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.avdList}" >
                        	 	<option value="${record.avd}"<c:if test="${model.record.svih_syav == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
@@ -249,7 +249,7 @@
 					</select>
 					
 					&nbsp;Sign:&nbsp;
-           			<select name="sign" id="sign">
+           			<select class="selectMediumBlueE2" name="sign" id="sign">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.signList}" >
                              	 	<option value="${record.sign}"<c:if test="${model.record.svih_sysg == record.sign}"> selected </c:if> >${record.sign}</option>
@@ -471,7 +471,7 @@
 				 				
 			 				</td>
 			 				<td>
-				 				<select name="svih_tart" id="svih_tart" TABINDEX=6>
+				 				<select class="selectMediumBlueE2" name="svih_tart" id="svih_tart" TABINDEX=6>
 				 				  <option selected value="">-Välj-</option>
 								  <option value="1"<c:if test="${model.record.svih_tart == 1}"> selected </c:if> >1</option>
 								  <option value="2"<c:if test="${model.record.svih_tart == 2}"> selected </c:if> >2</option>
@@ -1144,7 +1144,7 @@
 								</td>	
 								
 								<td>
-				            		<select name="svih_tral" id="svih_tral">
+				            		<select class="selectMediumBlueE2" name="svih_tral" id="svih_tral">
 				 						<option value="">-Välj-</option>
 					 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 					 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.svih_tral == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1316,7 +1316,7 @@
 								</div>	
 					            </td>
 		 						<td class="text14">
-		 							<select name="svih_lekd" id="svih_lekd">
+		 							<select class="selectMediumBlueE2" name="svih_lekd" id="svih_lekd">
 		 							<option value="">-Välj-</option>
 								  		<option value="EXW"<c:if test="${model.record.svih_lekd == 'EXW'}"> selected </c:if> >EXW</option>
 								  		<option value="FCA"<c:if test="${model.record.svih_lekd == 'FCA'}"> selected </c:if> >FCA</option>
@@ -1563,7 +1563,7 @@
 										        		<tr >
 										        			<td align="left"><input type="text" class="inputTextMediumBlue" name="svih_dkpn" id="svih_dkpn" size="10" maxlength="9" value="${model.record.svih_dkpn}"></td> 
 										            		<td align="left">
-										            			<select name="svih_dklk" id="svih_dklk">
+										            			<select class="selectMediumBlueE2" name="svih_dklk" id="svih_dklk">
 												            		<option value="">-Välj-</option>
 											 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 											 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.svih_dklk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -1703,7 +1703,7 @@
 								 					<span title="svih_kvsa">Kvalitetssäkring tillämpas</span>&nbsp;
 								 				</td>
 								 				<td align="right" class="text14">
-								 					<select name="svih_kvsa" id="svih_kvsa">
+								 					<select class="selectMediumBlueE2" name="svih_kvsa" id="svih_kvsa">
 							 						<option value="">-Välj-</option>
 											  		<option value="J"<c:if test="${model.record.svih_kvsa == 'J'}"> selected </c:if> >Ja</option>
 											  		<option value="N"<c:if test="${model.record.svih_kvsa == 'N'}"> selected </c:if> >Nej</option>
@@ -1868,7 +1868,7 @@
 					<tr>
 						<td class="text14" align="left" >&nbsp;Status</td>
 						<td class="text14MediumBlue">
-							<select name="selectedStatus" id="selectedStatus">
+							<select class="selectMediumBlueE2" name="selectedStatus" id="selectedStatus">
 			            		<option value=" ">-vælg-</option>
 			            		<option value="M">M</option>
 			            		<option value="G">G</option>

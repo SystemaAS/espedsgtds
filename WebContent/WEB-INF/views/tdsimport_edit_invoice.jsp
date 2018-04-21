@@ -237,9 +237,9 @@
 								<tr>
 								<td>
 								<%-- this is the datatables grid (content) --%>
-								<table id="tblInvoices" class="display compact cell-border" >
+								<table id="tblInvoices" class="display compact cell-border" width="100%">
 									<thead>
-									<tr style="background-color:#DDDDDD">
+									<tr class="tableHeaderField" >
 										<th width="2%" class="text14">&nbsp;Uppd.&nbsp;</th> 
 									    <th class="text14"><span title="svif_fatx">&nbsp;Fakturanr.&nbsp;</span></th>   
 					                    <th class="text14" ><span title="svif_faty">&nbsp;Typ&nbsp;</span></th>

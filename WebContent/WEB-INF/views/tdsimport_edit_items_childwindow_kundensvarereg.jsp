@@ -46,7 +46,7 @@
 					<%-- this is the datatables grid (content)--%>
 					<table id="kundensVareRegList" class="display compact cell-border" width="100%" >
 						<thead>
-						<tr style="background-color:#EEEEEE">
+						<tr class="tableHeaderField" >
 							<th class="text14" title="adunnr">&nbsp;Varunr&nbsp;</th>
 		                    <th class="text14" title="adunnr">&nbsp;Varukod/Tulltaxa&nbsp;</th>
 		                    <th class="text14" title="adembg">&nbsp;Beskrivning&nbsp;</th>
