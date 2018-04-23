@@ -126,7 +126,7 @@
  	   	 	<tr> <!-- Second tab row... -->
  	   	 		<td>&nbsp;</td>
  	   	 	    <td>
- 					<table class="formFrameHeaderTransparent" style="width:1000px" cellspacing="0" border="0" cellpadding="0">
+ 					<table class="formFrameHeaderTransparent" style="width:100%" cellspacing="0" border="0" cellpadding="0">
 						<tr height="20"> 
 								<td width="110" valign="bottom" class="tabSub" align="center" nowrap>
 									<font class="tabLinkMinor">&nbsp;
@@ -176,7 +176,7 @@
 <!--  
 								<td width="40" class="tabDisabledTrailingEnd"  align="center" nowrap></td>
 -->
-							 	<td width="540" class="tabFantomSpace" align="center" nowrap></td>
+							 	<td width="100%" class="tabFantomSpace" align="center" nowrap></td>
 
 
 						</tr>
