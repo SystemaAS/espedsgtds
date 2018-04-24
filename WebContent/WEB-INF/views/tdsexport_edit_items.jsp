@@ -111,24 +111,24 @@
 					 		<td width="50%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Exportör</td>
+							            <td width="30%" class="text12Bold" align="left" >Exportör</td>
 							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">EORI-nr&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_aveo}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_aveo}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_avna}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_avna}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Handläggare&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_avha}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_avha}</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">Landkod&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_avlk}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_avlk}</td>
 							        </tr>
 							        
 			        	        </table>
@@ -136,24 +136,24 @@
 					        <td width="50%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Mottagare</td>
+							            <td width="30%" class="text12Bold" align="left" >Mottagare</td>
 							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">EORI-nr&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_moeo}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_moeo}</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_mona}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_mona}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_mopa}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_mopa}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Landkod&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.sveh_molk}</td>
+							           	<td class="text12MediumBlue" align="left">${recordTopic.sveh_molk}</td>
 							        </tr>
 			        	        </table>
 					        </td>
@@ -187,7 +187,7 @@
 				 							
 								<table width="100%" cellspacing="0" border="0" cellpadding="0">
 									<tr>
-										<td class="text11Bold">&nbsp;Varuposter&nbsp;&nbsp;
+										<td class="text12Bold">&nbsp;Varuposter&nbsp;&nbsp;
 											<c:if test="${model.status == 'M' || empty model.status}">
 												<input tabindex=-1  class="inputFormSubmitStd" type="submit" name="submitSkapaNy" value='Skapa ny'>
 											</c:if>
@@ -199,10 +199,10 @@
 											           			<td colspan="3" class="text14"><b>Varuposter</b></td>
 											           		</tr>
 												           	<tr>	
-																<td class="text14" >
-																<table id="tblItemLinesAll" class="display compact cell-border" width="100%" >
+																<td class="text14" width="95%" >
+																<table id="tblItemLinesAll" class="display compact cell-border" width="95%" >
 																	<thead> 
-																	<tr class="tableHeaderField" >
+																	<tr class="tableHeaderField">
 																	    
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_vano.varupostNr"/>&nbsp;</th>   
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_ulkd.urspLand"/>&nbsp;</th>
@@ -232,26 +232,26 @@
 														                       <tr class="tableOddRow" >
 														                   </c:otherwise>
 														               </c:choose>
-														               <td class="text14" >${record.svev_vano}</td>
-														               <td class="text14" >${record.svev_ulkd}</td>
-														               <td class="text14" >${record.svev_vata}</td>
-														               <td class="text14" >${record.svev_eup1}</td>
-														               <td class="text14" >${record.svev_brut}</td>
-														               <td class="text14" >${record.svev_neto}</td>
-														               <td class="text14" >${record.svev_ankv}</td>
-														               <td class="text14" >${record.sum_of_svev_kotas}</td>
+														               <td class="text12" >${record.svev_vano}</td>
+														               <td class="text12" >${record.svev_ulkd}</td>
+														               <td class="text12" >${record.svev_vata}</td>
+														               <td class="text12" >${record.svev_eup1}</td>
+														               <td class="text12" >${record.svev_brut}</td>
+														               <td class="text12" >${record.svev_neto}</td>
+														               <td class="text12" >${record.svev_ankv}</td>
+														               <td class="text12" >${record.sum_of_svev_kotas}</td>
 														               
-														               <td class="text14" >${record.svev_vasl}</td>
-														               <td align="center" class="text14">&nbsp;
+														               <td class="text12" >${record.svev_vasl}</td>
+														               <td align="center" class="text12">&nbsp;
 														               		<c:if test="${not empty record.svev_err}">
 														               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">
 														               		</c:if>
 														               	</td>	
-														               <td class="text14">${record.svev_fabl}</td>
-														               <td class="text14">${record.svev_stva}</td>
+														               <td class="text12">${record.svev_fabl}</td>
+														               <td class="text12">${record.svev_stva}</td>
 														               
 														               <c:if test="${model.status == 'M' || empty model.status}">	
-															               <td class="text14" align="center" nowrap>&nbsp;
+															               <td class="text12" align="center" nowrap>&nbsp;
 															               	<a onclick="javascript:return confirm('Är du säker på att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_items.do?action=doDelete&avd=${model.avd}&opd=${model.opd}&lin=${record.svev_syli}">
 															               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 															               	</a>	
@@ -271,7 +271,7 @@
 													         <table>
 													         	<%-- OK BUTTON --%>
 										           				<tr align="left" >
-																	<td class="text14"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
+																	<td class="text12"><button name="allItemsButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('allItems');">&nbsp;Ok</button></td>
 																	<td class="text14">&nbsp;&nbsp;&nbsp;
 														 	        		<a href="tdsExportItemListExcelView.do" target="_new">
 													                 		<img valign="bottom" id="itemListExcel" src="resources/images/excel.png" border="0" alt="excel">&nbsp;Excel
@@ -288,22 +288,22 @@
 										</td>
 										<td width="5%" class="text14">&nbsp;</td>
 										<td align="right" class="text12">Fakturabelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="16" maxlength="20" value='${recordTopic.sveh_fabl}'>
+											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="12" maxlength="20" value='${recordTopic.sveh_fabl}'>
 										</td>
 										<td align="right" class="text12">Varulinjebelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="16" maxlength="20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
+											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="12" maxlength="20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
 										</td>
 										<td align="right" class="text12">Differans:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly
 												<c:choose>
 												<c:when test="${fn:contains(model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
-													class="inputText12RedBoldReadOnly" 
+													class="inputText11RedBoldReadOnly" 
 												</c:when>
 												<c:otherwise>
-													class="inputText12BlueBoldReadOnly"
+													class="inputText11BlueBoldReadOnly"
 												</c:otherwise>
 												</c:choose>
-												size="16" maxlength="20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
+												size="12" maxlength=20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
 										</td>
 									</tr>
 									<tr height="2"><td></td></tr>
@@ -321,11 +321,11 @@
 				 						
 								<table width="100%" id="containerdatatableTable" cellspacing="2" align="left" >
 								<tr>
-								<td class="text12">	
+								<td class="text11">	
 							
-								<table id="tblItemLines" class="display compact cell-border" width="100%" >
+								<table id="tblItemLines" class="display compact cell-border" >
 									<thead>
-									<tr class="tableHeaderField" >
+									<tr class="tableHeaderField">
 									    <%-- 
 									    <td class="text14">&nbsp;<spring:message code="systema.tds.export.item.list.label.svev_syli.linjeNr"/>&nbsp;</td> 
 									    --%>
@@ -360,35 +360,35 @@
 							               </c:choose>
 							               
 							               <%-- Internal to CB. Does not have to bee visible to the end user 
-							               <td class="text14" align="center">${record.svev_syli}</td> 
+							               <td class="text11" align="center">${record.svev_syli}</td> 
 							               --%>
-						               	   <td width="2%" class="text14" align="center">&nbsp;
+						               	   <td width="2%" class="text11" align="center">&nbsp;
 							               		<a tabindex=-1 id="recordUpdate_${record.svev_syli}_${record.svev_vano}" href="#" onClick="getItemData(this);">
 							               			<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 						               	   </td>
-   							               <td width="4%" class="text14" >${record.svev_vano}</td>
-							               <td class="text14" >${record.svev_ulkd}</td>
-							               <td class="text14" >${record.svev_vata}&nbsp;&nbsp;
+   							               <td width="4%" class="text11" >${record.svev_vano}</td>
+							               <td class="text11" >${record.svev_ulkd}</td>
+							               <td class="text11" >${record.svev_vata}&nbsp;&nbsp;
 							               	  <img id="recordUpdate_${record.svev_syli}_${record.svev_vano}" onClick="updateKundensVarReg(this);" src="resources/images/addOrder.png" width="12px" height="12px" border="0" title="Lägg till i kundensvarureg.">
 							               </td>	  
-							               <td class="text14" >${record.svev_eup1}</td>
-							               <td class="text14" >${record.svev_brut}</td>
-							               <td class="text14" >${record.svev_neto}</td>
-							               <td class="text14" >${record.svev_ankv}</td>
-							               <td class="text14" >${record.sum_of_svev_kotas}</td>
+							               <td class="text11" >${record.svev_eup1}</td>
+							               <td class="text11" >${record.svev_brut}</td>
+							               <td class="text11" >${record.svev_neto}</td>
+							               <td class="text11" >${record.svev_ankv}</td>
+							               <td class="text11" >${record.sum_of_svev_kotas}</td>
 							               
-							               <td class="text14" >${record.svev_vasl}</td>
-							               <td align="center" class="text14">&nbsp;
+							               <td class="text11" >${record.svev_vasl}</td>
+							               <td align="center" class="text11">&nbsp;
 							               		<c:if test="${not empty record.svev_err}">
 							               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">
 							               		</c:if>
 							               	</td>	
-							               <td class="text14">${record.svev_fabl}</td>
-							               <td class="text14">${record.svev_stva}</td>
+							               <td class="text11">${record.svev_fabl}</td>
+							               <td class="text11">${record.svev_stva}</td>
 							               
 							               <c:if test="${model.status == 'M' || empty model.status}">	
-								               <td class="text14" align="center" nowrap>&nbsp;
+								               <td class="text11" align="center" nowrap>&nbsp;
 								               	<a onclick="javascript:return confirm('Är du säker på att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_items.do?action=doDelete&avd=${model.avd}&opd=${model.opd}&lin=${record.svev_syli}">
 								               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	
@@ -469,7 +469,7 @@
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;</b>
 								<img onClick="showPop('updateInfo');" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
-					           		<div class="text14" align="left">
+					           		<div class="text11" align="left">
 					           			<br/>${activeUrlRPGUpdate}<br/><br/>
 					           			<button name="updateInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('updateInfo');">Close</button> 
 					           		</div>
@@ -618,6 +618,60 @@
 										</td>
 										
 										<td class="text14" align="left"><b>&nbsp;38.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svev_neto">Net.vikt(kg)</span></td>
+										
+							        </tr>
+							        <tr>
+							        	<td align="left" >&nbsp;<button tabIndex=-1 title="Kundens vareregister" name="kundensVaruregisterControlButton" id="kundensVaruregisterControlButton" class="buttonGrayWithGreenFrame" type="button" >Sök i kund.varureg.</button></td>
+							        	<td align="left">
+							            	<select tabindex="0" class="inputTextMediumBlue" name="svev_ulkd" id="svev_ulkd">
+						 						<option value="">-Välj-</option>
+							 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
+							 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.svev_ulkd == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+												</c:forEach>  
+											</select>
+											<a tabindex="-1" id="svev_ulkdIdLink" >
+						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+						            		</a>
+										</td>
+							            <td class="text14" align="left">
+							            	<a id="tillaggskoderLink"></a>
+							            	<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_vata" id="svev_vata" size="10" maxlength="10" value='${model.record.svev_vata}'>
+							            	<a tabindex="-1" id="svev_vataIdLink">
+           										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+           									</a>
+						            	</td>
+										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vati" id="svev_vati" size="8" maxlength="4" value='${model.record.svev_vati}'></td>
+										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vat4" id="svev_vat4" size="8" maxlength="4" value='${model.record.svev_vat4}'></td>
+										<td align="left">	
+						 					<select class="inputTextMediumBlueMandatoryField" name="svev_eup1" id="svev_eup1" >
+							 					<option value="">-Välj-</option>
+											  	<c:forEach var="code" items="${model.forfarande01CodeList}" >
+							 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_eup1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+												</c:forEach>
+											</select>
+											<a tabindex="-1" id="svev_eup1IdLink" >
+						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+					            			</a>
+											
+						 				</td>
+						 				<td align="left">	
+						 					<select name="svev_eup2" id="svev_eup2" >
+							 				  <option value="">-Välj-</option>
+											  <c:forEach var="code" items="${model.forfarande02CodeList}" >
+			 				  					 <option value="${code.svkd_kd}"<c:if test="${model.record.svev_eup2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+											  </c:forEach> 
+											</select>
+											<a tabindex="-1" id="svev_eup2IdLink" >
+						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+					            			</a>
+						 				</td>
+						 				<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_brut" id="svev_brut" size="10" maxlength="11" value='${model.record.svev_brut}'></td>
+										<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_neto" id="svev_neto" size="10" maxlength="11" value='${model.record.svev_neto}'></td>
+										
+							        </tr>
+							        <tr height="10"><td class="text" align="left" colspan="9"><hr></td></tr>
+							        
+									<tr>
 										<td class="text14" align="left">
 											<img onMouseOver="showPop('41_xmenheter_info');" onMouseOut="hidePop('41_xmenheter_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 												
@@ -653,7 +707,8 @@
 										</span>
 							            </div>
 							            </td>
-							            <td class="text14">
+							            
+										<td class="text14">
 										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_kosl">Kolli slag</span>
 										
@@ -668,79 +723,6 @@
 										</div>
 										</td>
 							            
-							        </tr>
-							        <tr>
-							        	<td align="left" >&nbsp;<button tabIndex=-1 title="Kundens vareregister" name="kundensVaruregisterControlButton" id="kundensVaruregisterControlButton" class="buttonGrayWithGreenFrame" type="button" >Sök i kund.varureg.</button></td>
-							        	<td align="left">
-							            	<select tabindex="0" class="selectMediumBlueE2" name="svev_ulkd" id="svev_ulkd">
-						 						<option value="">-Välj-</option>
-							 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
-							 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.svev_ulkd == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
-												</c:forEach>  
-											</select>
-											<a tabindex="-1" id="svev_ulkdIdLink" >
-						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
-						            		</a>
-										</td>
-							            <td class="text14" align="left">
-							            	<a id="tillaggskoderLink"></a>
-							            	<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_vata" id="svev_vata" size="10" maxlength="10" value='${model.record.svev_vata}'>
-							            	<a tabindex="-1" id="svev_vataIdLink">
-           										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
-           									</a>
-						            	</td>
-										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vati" id="svev_vati" size="8" maxlength="4" value='${model.record.svev_vati}'></td>
-										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vat4" id="svev_vat4" size="8" maxlength="4" value='${model.record.svev_vat4}'></td>
-										<td align="left">	
-						 					<select class="inputTextMediumBlueMandatoryField" name="svev_eup1" id="svev_eup1" >
-							 					<option value="">-Välj-</option>
-											  	<c:forEach var="code" items="${model.forfarande01CodeList}" >
-							 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_eup1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
-												</c:forEach>
-											</select>
-											<a tabindex="-1" id="svev_eup1IdLink" >
-						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
-					            			</a>
-											
-						 				</td>
-						 				<td align="left">	
-						 					<select class="selectMediumBlueE2" name="svev_eup2" id="svev_eup2" >
-							 				  <option value="">-Välj-</option>
-											  <c:forEach var="code" items="${model.forfarande02CodeList}" >
-			 				  					 <option value="${code.svkd_kd}"<c:if test="${model.record.svev_eup2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
-											  </c:forEach> 
-											</select>
-											<a tabindex="-1" id="svev_eup2IdLink" >
-						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
-					            			</a>
-						 				</td>
-						 				<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_brut" id="svev_brut" size="10" maxlength="11" value='${model.record.svev_brut}'></td>
-										<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_neto" id="svev_neto" size="10" maxlength="11" value='${model.record.svev_neto}'></td>
-										<td class="text14" align="left">&nbsp;
-											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
-											
-										</td>
-										<td class="text14" valign="bottom">
-											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kota" id="svev_kota" size="5" maxlength="5" value="${model.record.svev_kota}">
-										</td>
-										<td align="left">
-					            			<select class="inputTextMediumBlueMandatoryField" name="svev_kosl" id="svev_kosl">
-							            		<option value="">-Välj-</option>
-							 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
-			                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kosl == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
-												</c:forEach> 
-											</select>
-											<a tabindex="-1" id="svev_koslIdLink">
-						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
-					            			</a>
-										</td> 	
-							        </tr>
-							        <tr height="10"><td class="text" align="left" colspan="15"><hr></td></tr>
-							        
-									<tr>
-										
-							            
-										
 										<td class="text14" align="left" colspan="2">
 										<img onMouseOver="showPop('31_varubesk_info');" onMouseOut="hidePop('31_varubesk_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_vasl / svev_vas2...svev_vas5">Varubeskrivning&nbsp;</span>
@@ -799,8 +781,25 @@
 							        
 							        
 									<tr>
-										
-																			
+										<td class="text14" align="left">&nbsp;
+											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
+											
+										</td>
+										<td class="text11" valign="bottom">
+											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kota" id="svev_kota" size="5" maxlength="5" value="${model.record.svev_kota}">
+										</td>
+										<td align="left">
+					            			<select class="inputTextMediumBlueMandatoryField" name="svev_kosl" id="svev_kosl">
+							            		<option value="">-Välj-</option>
+							 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
+			                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kosl == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+												</c:forEach> 
+											</select>
+											<a tabindex="-1" id="svev_koslIdLink">
+						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+					            			</a>
+											
+				            				</td> 										
 										<td class="text14" align="left" colspan="2">
 											<input type="text" class="inputTextMediumBlueMandatoryField" name="svev_vasl" id="svev_vasl" size="25" maxlength="70" value="${model.record.svev_vasl}">
 										</td>
@@ -848,43 +847,13 @@
 										</td>
 										<td class="text14" align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svev_godm" id="svev_godm" size="25" maxlength="42" value="${model.record.svev_godm}"></td>
 							            <td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_fabl" id="svev_fabl" size="11" maxlength="11" value="${model.record.svev_fabl}"></td>
-							            
-							            <td class="text14Bold" align="left" colspan="8" >
-						 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-						 						<font class="text16RedBold" >*</font><span title="svev_call">Call me:&nbsp;</span>
-									            <select class="inputTextMediumBlueMandatoryField" name="svev_call" id="svev_call">
-					 								<option value="00" <c:if test="${model.record.svev_call == '00' || empty model.record.svev_call}"> selected </c:if> >00-CM Inga exportrestr.</option>
-									  				<option value="01" <c:if test="${model.record.svev_call == '01'}"> selected </c:if> >01-CM Exportrestr. villkor uppfyllda</option>
-									  				<option value="10" <c:if test="${model.record.svev_call == '10'}"> selected </c:if> >10-CM Inga exportrestr. Call me</option>
-									  				<option value="11" <c:if test="${model.record.svev_call == '11'}"> selected </c:if> >11-CM Exportrestr. villkor uppfyllda Call me</option>
-									  				<option value="12" <c:if test="${model.record.svev_call == '12'}"> selected </c:if> >12-CM Exportrestr. villkor ej uppfyllda</option>
-									  				<option value="13" <c:if test="${model.record.svev_call == '13'}"> selected </c:if> >13-CM Exportlicens</option>
-									  				<option value="14" <c:if test="${model.record.svev_call == '14'}"> selected </c:if> >14-CM Exportlicens Call me</option>
-									  				<option value="15" <c:if test="${model.record.svev_call == '15'}"> selected </c:if> >15-CM Ansökan om vissa Tullverkets tillstånd</option>
-									  				<option value="16" <c:if test="${model.record.svev_call == '16'}"> selected </c:if> >16-CM Exp.bidragsärende som ska kompletteras. Kontakta exp.bidragsgrp. för klarering</option>
-												</select>
-												
-												<div class="text11" style="position: relative;" align="left">
-									            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text11"  >
-									           		<br/>
-								           			<b>Åtgärdsindikator (Call me-kod)</b>
-													<br/>
-								           			Fält 44 består av två delfält, ett fritextfält och ett kodfält. Vissa uppgifter ska du alltid fylla i då du deklarerar enligt godkänd exportör, medan ytterligare upplysningar lämnar du vid behov. Det kan exempelvis vara ett tillståndsnummer eller ett licensnummer för exportreglerade varor.
-													<br/><br/>
-													Call me är en funktion som används för att upplysa om en sändning omfattas av export/importrestriktioner eller inte. 
-													Uppgift om en vara omfattas av export- eller importrestriktioner finns i EU-lagstiftning eller i nationell lagstiftning. 
-													I många fall hittar du information om restriktioner i Taric Söksystem för aktuell varukod. 
-													Call me-koden kan också användas för att påkalla en tulltjänstemans uppmärksamhet i samband med klareringen.
-													
-												</span>
-												</div>	
-											</td>
+							            <td></td>
  							        </tr>
  							        
- 							        <tr height="25"><td></td></tr>
+									<tr height="25"><td></td></tr>
 									
 									<tr>
-									<td colspan="2">
+									<td colspan="3">
 										<table class="tableBorderWithRoundCornersGray">
 								 		<tr>
 								            <td class="text14Bold" align="left" >&nbsp;Statistiska uppgifter&nbsp;</td>
@@ -945,24 +914,70 @@
 										</table>
 									</td>
 									
-							 		<td align="left" valign="bottom" colspan="5">
-										<c:choose>	
-											<c:when test="${model.status == 'M' || empty model.status}">
-												<div style="float:right;" id="warningCodesFlagDiv" >
-													<a id="warningCodesLink" style="cursor:pointer;">
-														<img width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="warning">
-														<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
-													</a>
+							 		<td valign="top" colspan="5">
+								 		<table border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="text14Bold" align="left" >
+						 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+						 						<font class="text16RedBold" >*</font><span title="svev_call">Call me:&nbsp;</span>
+									            
+									            <div class="text11" style="position: relative;" align="left">
+									            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text11"  >
+									           		<br/>
+								           			<b>Åtgärdsindikator (Call me-kod)</b>
+													<br/>
+								           			Fält 44 består av två delfält, ett fritextfält och ett kodfält. Vissa uppgifter ska du alltid fylla i då du deklarerar enligt godkänd exportör, medan ytterligare upplysningar lämnar du vid behov. Det kan exempelvis vara ett tillståndsnummer eller ett licensnummer för exportreglerade varor.
+													<br/><br/>
+													Call me är en funktion som används för att upplysa om en sändning omfattas av export/importrestriktioner eller inte. 
+													Uppgift om en vara omfattas av export- eller importrestriktioner finns i EU-lagstiftning eller i nationell lagstiftning. 
+													I många fall hittar du information om restriktioner i Taric Söksystem för aktuell varukod. 
+													Call me-koden kan också användas för att påkalla en tulltjänstemans uppmärksamhet i samband med klareringen.
+													
+												</span>
 												</div>
-												<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
-											</c:when>
-											<c:otherwise>
-					 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
-					 				    	</c:otherwise>	
-				 				    	</c:choose>	
+												</td>
+									            
+									            <td class="text14" align="left" >
+									            	<select class="inputTextMediumBlueMandatoryField" name="svev_call" id="svev_call">
+						 								<option value="00" <c:if test="${model.record.svev_call == '00' || empty model.record.svev_call}"> selected </c:if> >00-CM Inga exportrestr.</option>
+										  				<option value="01" <c:if test="${model.record.svev_call == '01'}"> selected </c:if> >01-CM Exportrestr. villkor uppfyllda</option>
+										  				<option value="10" <c:if test="${model.record.svev_call == '10'}"> selected </c:if> >10-CM Inga exportrestr. Call me</option>
+										  				<option value="11" <c:if test="${model.record.svev_call == '11'}"> selected </c:if> >11-CM Exportrestr. villkor uppfyllda Call me</option>
+										  				<option value="12" <c:if test="${model.record.svev_call == '12'}"> selected </c:if> >12-CM Exportrestr. villkor ej uppfyllda</option>
+										  				<option value="13" <c:if test="${model.record.svev_call == '13'}"> selected </c:if> >13-CM Exportlicens</option>
+										  				<option value="14" <c:if test="${model.record.svev_call == '14'}"> selected </c:if> >14-CM Exportlicens Call me</option>
+										  				<option value="15" <c:if test="${model.record.svev_call == '15'}"> selected </c:if> >15-CM Ansökan om vissa Tullverkets tillstånd</option>
+										  				<option value="16" <c:if test="${model.record.svev_call == '16'}"> selected </c:if> >16-CM Exp.bidragsärende som ska kompletteras. Kontakta exp.bidragsgrp. för klarering</option>
+													</select>
+												</td>
+									        </tr>
+									        <tr height="10"><td></td></tr>
+									        <tr>
+										        <td colspan="2" align="right">
+												<c:choose>	
+													<c:when test="${model.status == 'M' || empty model.status}">
+														<div style="float:right;" id="warningCodesFlagDiv" >
+															<a id="warningCodesLink" style="cursor:pointer;">
+																<img width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="warning">
+																<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
+															</a>
+														</div>
+														<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
+													</c:when>
+													<c:otherwise>
+							 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+							 				    	</c:otherwise>	
+							 				    	</c:choose>	
+												</td>
+											</tr>
+										</table>
 									</td>
 									</tr>
 									<tr height="5"><td></td></tr>
+									
+									
+									
+									
  			        	        </table>
 					        </td>
 					        
@@ -971,7 +986,7 @@
 				        
 				        <tr>
 							<td>
-							<table width="60%" class="tableBorderWithRoundCornersGray">
+							<table width="80%" class="tableBorderWithRoundCornersGray">
 							        <tr >
 						            <td colspan="10" class="text14">
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -1003,7 +1018,7 @@
 							            <td valign="top" class="text14" align="left">
 						           			<table >
 						           				<tr>
-								           			<td class="text14" colspan="3">
+								           			<td class="text11" colspan="3">
 								           				<span title="svev_bit1-svev_bii1 / svev_bit2-svev_bii2 / etc"><b>Bilagda handlingar</b></span>
 								           				<a tabindex="-1" id="bilagdaHandIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1011,9 +1026,9 @@
 								           			</td>
 								        			</tr>	
 							           			<tr>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;1.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit1" id="svev_bit1">
+								           				<select name="svev_bit1" id="svev_bit1">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<c:choose>
@@ -1027,7 +1042,7 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">&nbsp;<span title="svev_bii1">Identitet</span>
+								           			<td class="text11">&nbsp;<span title="svev_bii1">Identitet</span>
 														<c:choose>
 															<c:when test="${not empty model.record.svev_bii1}">
 																<input type="text" class="inputText" name="svev_bii1" id="svev_bii1" size="35" maxlength="35" value="${model.record.svev_bii1}">
@@ -1039,114 +1054,114 @@
 													</td>
 												</tr>
 												<tr>	
-								           			<td class="text14">
+								           			<td class="text11">
 														&nbsp;2.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit2" id="svev_bit2">
+								           				<select name="svev_bit2" id="svev_bit2">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 													</td>
-													<td class="text14">
+													<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii2" id="svev_bii2" size="35" maxlength="35" value="${model.record.svev_bii2}">
 								           			</td>
 												</tr>
 												<tr>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;3.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit3" id="svev_bit3">
+								           				<select name="svev_bit3" id="svev_bit3">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii3" id="svev_bii3" size="35" maxlength="35" value="${model.record.svev_bii3}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-							           				<td class="text14">
+							           				<td class="text11">
 								           				&nbsp;4.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit4" id="svev_bit4">
+								           				<select name="svev_bit4" id="svev_bit4">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii4" id="svev_bii4" size="35" maxlength="35" value="${model.record.svev_bii4}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;5.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit5" id="svev_bit5">
+								           				<select name="svev_bit5" id="svev_bit5">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii5" id="svev_bii5" size="35" maxlength="35" value="${model.record.svev_bii5}">
 								           			</td>
 							           			</tr>
 							           			<tr>										           			
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;6.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit6" id="svev_bit6">
+								           				<select name="svev_bit6" id="svev_bit6">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii6" id="svev_bii6" size="35" maxlength="35" value="${model.record.svev_bii6}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;7.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit7" id="svev_bit7">
+								           				<select name="svev_bit7" id="svev_bit7">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit7 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii7" id="svev_bii7" size="35" maxlength="35" value="${model.record.svev_bii7}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;8.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit8" id="svev_bit8">
+								           				<select name="svev_bit8" id="svev_bit8">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit8 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii8" id="svev_bii8" size="35" maxlength="35" value="${model.record.svev_bii8}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;9.Kod
-								           				<select class="selectMediumBlueE2" name="svev_bit9" id="svev_bit9">
+								           				<select name="svev_bit9" id="svev_bit9">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit9 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14">
+								           			<td class="text11">
 								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii9" id="svev_bii9" size="35" maxlength="35" value="${model.record.svev_bii9}">
 								           			</td>
 							           			</tr>
@@ -1155,7 +1170,7 @@
 							            <td valign="top">
 						           			<table>
 						           				<tr>
-								           			<td class="text14" colspan="2">
+								           			<td class="text11" colspan="2">
 								           				<b>Särskilda upplysningar</b>
 								           				<a tabindex="-1" id="sarskildaUppIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1163,41 +1178,41 @@
 								           			</td>
 								        			</tr>
 							           			<tr>
-								           			<td class="text14" >
+								           			<td class="text11" >
 								           				&nbsp;<span title="svev_suko">1.Kod</span>
-								           				<select class="selectMediumBlueE2" name="svev_suko" id="svev_suko">
+								           				<select name="svev_suko" id="svev_suko">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.salCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_suko == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text14" >
+								           			<td class="text11" >
 								           				&nbsp;
 								           			</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text14">
+													<td colspan="2" class="text11">
 														&nbsp;<span title="svev_sutx">1.Text</span><input type="text" class="inputText" name="svev_sutx" id="svev_sutx" size="35" maxlength="70" value="${model.record.svev_sutx}">
 													</td>
 												</tr>
 												<tr>	
-								           			<td colspan="2" class="text14">
+								           			<td colspan="2" class="text11">
 														&nbsp;<span title="svev_sut2">2.Text</span><input type="text" class="inputText" name="svev_sut2" id="svev_sut2" size="35" maxlength="70" value="${Xmodel.record.svev_sut2}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text14">
+													<td colspan="2" class="text11">
 														&nbsp;<span title="svev_sut3">3.Text</span><input type="text" class="inputText" name="svev_sut3" id="svev_sut3" size="35" maxlength="70" value="${Xmodel.record.svev_sut3}">
 													</td>
 												</tr>
 												<tr>	
-													<td colspan="2" class="text14">
+													<td colspan="2" class="text11">
 														&nbsp;<span title="svev_sut4">4.Text</span><input type="text" class="inputText" name="svev_sut4" id="svev_sut4" size="35" maxlength="70" value="${Xmodel.record.svev_sut4}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text14">
+													<td colspan="2" class="text11">
 														&nbsp;<span title="svev_sut5">5.Text</span><input type="text" class="inputText" name="svev_sut5" id="svev_sut5" size="35" maxlength="70" value="${Xmodel.record.svev_sut5}">
 														
 													</td>
@@ -1239,8 +1254,8 @@
 							            &nbsp;<img onMouseOver="showPop('44_info');" onMouseOut="hidePop('44_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 							            
-							            <div class="text14" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text14"  >
+							            <div class="text11" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text11"  >
 							           		<br/>
 						           			<b>Särskilda upplysningar</b>
 											<br/>
@@ -1281,7 +1296,7 @@
 									           			<tr>
 										           			<td class="text11" >
 										           				&nbsp;<span title="svev_suk6">2.Kod</span>
-										           				<select class="selectMediumBlueE2" name="svev_suk6" id="svev_suk6">
+										           				<select name="svev_suk6" id="svev_suk6">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.salCodeList}" >
 												 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_suk6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1321,7 +1336,7 @@
 														<tr>
 										           			<td class="text11" >
 										           				&nbsp;<span title="svev_sukb">3.Kod</span>
-										           				<select class="selectMediumBlueE2" name="svev_sukb" id="svev_sukb">
+										           				<select name="svev_sukb" id="svev_sukb">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.salCodeList}" >
 												 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_sukb == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1422,7 +1437,7 @@
 										           		</tr>
 									           			<tr>
 										           			<td class="text11" nowrap >&nbsp;1.
-										           				<select class="selectMediumBlueE2" name="svev_tik1" id="svev_tik1" >
+										           				<select name="svev_tik1" id="svev_tik1" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik1 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik1 == 'Y'}"> selected </c:if> >Y</option>
@@ -1430,7 +1445,7 @@
 															  	</select>										           			
 										           			</td>
 										           			<td class="text11" nowrap >
-																<select class="selectMediumBlueE2" name="svev_tit1" id="svev_tit1">
+																<select name="svev_tit1" id="svev_tit1">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1443,7 +1458,7 @@
 										           		</tr>
 										           		<tr>
 										           			<td class="text11" nowrap >&nbsp;2.
-										           				<select class="selectMediumBlueE2" name="svev_tik2" id="svev_tik2" >
+										           				<select name="svev_tik2" id="svev_tik2" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik2 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik2 == 'Y'}"> selected </c:if> >Y</option>
@@ -1451,7 +1466,7 @@
 															  	</select>	
 										           			</td>
 										           			<td class="text11" nowrap >
-										           				<select class="selectMediumBlueE2" name="svev_tit2" id="svev_tit2">
+										           				<select name="svev_tit2" id="svev_tit2">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1464,7 +1479,7 @@
 										           		</tr>
 														<tr>
 										           			<td class="text11" nowrap >&nbsp;3.
-										           				<select class="selectMediumBlueE2" name="svev_tik3" id="svev_tik3" >
+										           				<select name="svev_tik3" id="svev_tik3" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik3 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik3 == 'Y'}"> selected </c:if> >Y</option>
@@ -1472,7 +1487,7 @@
 															  	</select>
 									           				</td>
 										           			<td class="text11" nowrap >
-										           				<select class="selectMediumBlueE2" name="svev_tit3" id="svev_tit3">
+										           				<select name="svev_tit3" id="svev_tit3">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1485,7 +1500,7 @@
 										           		</tr>
 									           			<tr>
 										           			<td class="text11" nowrap >&nbsp;4.
-										           				<select class="selectMediumBlueE2" name="svev_tik4" id="svev_tik4" >
+										           				<select name="svev_tik4" id="svev_tik4" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik4 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik4 == 'Y'}"> selected </c:if> >Y</option>
@@ -1494,7 +1509,7 @@
 										           				
 										           			</td>
 										           			<td class="text11" nowrap >
-										           				<select class="selectMediumBlueE2" name="svev_tit4" id="svev_tit4">
+										           				<select name="svev_tit4" id="svev_tit4">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1509,7 +1524,7 @@
 										           		</tr>
 									           			<tr>
 										           			<td class="text11" nowrap >&nbsp;5.
-										           				<select class="selectMediumBlueE2" name="svev_tik5" id="svev_tik5" >
+										           				<select name="svev_tik5" id="svev_tik5" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik5 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik5 == 'Y'}"> selected </c:if> >Y</option>
@@ -1517,7 +1532,7 @@
 															  	</select>
 										           			</td>
 										           			<td class="text11" nowrap >
-										           				<select class="selectMediumBlueE2" name="svev_tit5" id="svev_tit5">
+										           				<select name="svev_tit5" id="svev_tit5">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1530,7 +1545,7 @@
 										           		</tr>
 									           			<tr>
 										           			<td class="text11" nowrap >&nbsp;6.
-										           				<select class="selectMediumBlueE2" name="svev_tik6" id="svev_tik6" >
+										           				<select name="svev_tik6" id="svev_tik6" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik6 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik6 == 'Y'}"> selected </c:if> >Y</option>
@@ -1538,7 +1553,7 @@
 															  	</select>
 										           			</td>
 										           			<td class="text11" nowrap >
-										           				<select class="selectMediumBlueE2" name="svev_tit6" id="svev_tit6">
+										           				<select name="svev_tit6" id="svev_tit6">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1596,7 +1611,7 @@
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot2" id="svev_kot2" size="5" maxlength="5" value="${model.record.svev_kot2}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select class="selectMediumBlueE2" name="svev_kos2" id="svev_kos2">
+										            			<select name="svev_kos2" id="svev_kos2">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1614,7 +1629,7 @@
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot3" id="svev_kot3" size="5" maxlength="5" value="${model.record.svev_kot3}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select class="selectMediumBlueE2" name="svev_kos3" id="svev_kos3">
+										            			<select name="svev_kos3" id="svev_kos3">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1632,7 +1647,7 @@
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot4" id="svev_kot4" size="5" maxlength="5" value="${model.record.svev_kot4}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select class="selectMediumBlueE2" name="svev_kos4" id="svev_kos4">
+										            			<select name="svev_kos4" id="svev_kos4">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1649,7 +1664,7 @@
 																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot5" id="svev_kot5" size="5" maxlength="5" value="${model.record.svev_kot5}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select class="selectMediumBlueE2" name="svev_kos5" id="svev_kos5">
+										            			<select name="svev_kos5" id="svev_kos5">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1797,7 +1812,7 @@
 							            </td>
 							            
 							            <td class="text14" align="left" >
-							            	<select class="selectMediumBlueE2" name="svev_lagt" id="svev_lagt">
+							            	<select name="svev_lagt" id="svev_lagt">
 				 								<option selected value="">-Välj-</option>
 												<c:choose>
 				 									<%-- only when new record and header value exists --%>
@@ -1830,7 +1845,7 @@
 											</c:choose>
 										</td>
 							           	<td class="text14" align="left">&nbsp;<span title="svev_lagl">Landkod&nbsp;</span>
-							            	<select class="selectMediumBlueE2" name="svev_lagl" id="svev_lagl">
+							            	<select name="svev_lagl" id="svev_lagl">
 						 						<option value="">-Välj-</option>
 						 						<c:choose>
 				 									<%-- only when new record and header value exists --%>
@@ -1951,7 +1966,7 @@
 										</td>
 										
 						 				<td>
-							 				<select class="selectMediumBlueE2" name="svev_betk" id="svev_betk" >
+							 				<select name="svev_betk" id="svev_betk" >
 							 				  <option value="">-Välj-</option>
 											  <option value="A"<c:if test="${model.record.svev_betk == 'A'}"> selected </c:if> >A</option>
 											  <option value="B"<c:if test="${model.record.svev_betk == 'B'}"> selected </c:if> >B</option>
@@ -2018,11 +2033,11 @@
           					<td class="tableHeaderField" align="left" >&nbsp;Kundnr.</td>
           				</tr>
 						<tr>
-							<td class="tableCellFirst"><input class="inputTextReadOnly" type="text" id="svew_ulkd" name="svew_ulkd" size="10px" value=""></input></td>
-							<td class="tableCell"><input readonly class="inputTextReadOnly" type="text"  id="svew_vata" name="svew_vata" size="10px" value=""></input></td>
-							<td class="tableCell"><input readonly class="inputTextReadOnly" type="text"  id="svew_eup1" name="svew_eup1" size="10px" value=""></input></td>
-							<td class="tableCell"><input  class="inputTextMediumBlue" type="text"  id="svew_knso" name="svew_knso" size="10px" value=""></input></td>
-							<td class="tableCell"><input  class="inputTextMediumBlue" type="text"  id="svew_knnr" name="svew_knnr" size="10px" value=""></input></td>
+							<td class="tableCellFirst11"><input class="inputTextReadOnly" type="text" id="svew_ulkd" name="svew_ulkd" size="10px" value=""></input></td>
+							<td class="tableCell11"><input readonly class="inputTextReadOnly" type="text"  id="svew_vata" name="svew_vata" size="10px" value=""></input></td>
+							<td class="tableCell11"><input readonly class="inputTextReadOnly" type="text"  id="svew_eup1" name="svew_eup1" size="10px" value=""></input></td>
+							<td class="tableCell11"><input  class="inputTextMediumBlue" type="text"  id="svew_knso" name="svew_knso" size="10px" value=""></input></td>
+							<td class="tableCell11"><input  class="inputTextMediumBlue" type="text"  id="svew_knnr" name="svew_knnr" size="10px" value=""></input></td>
 						</tr>
 						
 					</table>
