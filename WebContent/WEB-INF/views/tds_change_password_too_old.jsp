@@ -10,7 +10,7 @@ It has been a design decision in order to keep this function explicitly separate
  
 <html>
 	<head>
-		<link href="resources/${user.cssEspedsg}" rel="stylesheet" type="text/css"/>
+		<link href="/espedsg2/resources/${user.cssEspedsg}?ver=${user.versionEspedsg}" rel="stylesheet" type="text/css"/>
 		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/overcast/jquery-ui.css" rel="stylesheet">
 		<link rel="SHORTCUT ICON" type="image/png" href="resources/images/systema_logo.png"></link>
 		<%-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> --%>
@@ -30,7 +30,7 @@ It has been a design decision in order to keep this function explicitly separate
 	 	<tr>
 	 		 <%-- class="grayTitanBg" --%>
     		<td height="60" class="headerTdsBannerAreaBg" width="100%" align="left" colspan="3"> 
-    			 <table width="1100" border="0" cellspacing="0" cellpadding="0">
+    			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     			 	<tr>
 			        	<td>&nbsp;</td>
 			        	<td>&nbsp;</td>
@@ -38,7 +38,7 @@ It has been a design decision in order to keep this function explicitly separate
 			        </tr>
 				 	<tr>
 				 		<td class="text14white" width="10%" align=left valign="bottom" >&nbsp;</td>
-				 		<td class="text22Bold" width="80%" align="middle" valign="middle" > Systema - TDS</td>
+				 		<td class="text32Bold" width="80%" align="middle" valign="middle" > Systema - TDS</td>
 			    		<td class="text14" width="10%" align="center" valign="middle" ><img src="resources/images/systema_logo.png" border="0" width=90px height=60px ></td>
 			      		<%-- <td class="text14white" width="10%" align=right valign="bottom" >&nbsp;</td>--%>
 			        </tr>
@@ -52,11 +52,11 @@ It has been a design decision in order to keep this function explicitly separate
 			</td>
 		</tr>
     		<tr>
-			<td height="23" class="tabThinBorderLightSlateGray" width="100%" align="left" colspan="3"> 
-    			 <table width="1100" border="0" cellspacing="1" cellpadding="1">
+			<td height="23" class="tabThinBorderLightGreenLogoutE2" width="100%" align="left" colspan="3"> 
+    			 <table width="100%" border="0" cellspacing="1" cellpadding="1">
 				 	<tr >
-			    		<td class="text11" width="50%" align="left" >&nbsp;&nbsp;</td>
-      				<td class="text11" width="50%" align="right">
+			    		<td class="text14" width="50%" align="left" >&nbsp;&nbsp;</td>
+      				<td class="text14" width="50%" align="right">
       					<font class="headerMenuGreen">
 			    				<img src="resources/images/appUser.gif" border="0" > 
 							<font style="color:#000000" >${user.user}&nbsp;</font>${user.usrLang}
@@ -111,21 +111,21 @@ It has been a design decision in order to keep this function explicitly separate
 			 	        <form name="tdsChangePasswordForm" id="tdsChangePasswordForm" action="tds_change_password_too_old_submit.do" method="post" >
 			 	        <table  align="left" border="0" cellspacing="1" cellpadding="0">
 					 		<tr >
-						    		<td class="text14Gray" >Användarid</td>
-			      				<td class="text14Gray" >
+					    		<td class="text14" >Användarid</td>
+			      				<td class="text14" >
 			      					<input readonly type="text" class="inputTextReadOnly" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 						    		</td>
 			      	        </tr>
 			      	        <tr height="15"><td></td></tr>
 			      	        <tr >
-						    		<td class="text14" >Nytt lösenord:</td>
-			      				<td class="text" >
+					    		<td class="text14" >Nytt lösenord:</td>
+			      				<td class="text14" >
 			      					<input type="password" class="inputText" name="pwAS400N1" id="pwAS400N1" size="10" maxlength="20" value=''>	
 						    		</td>
 			      	        </tr>
 			      	        <tr >
-						    		<td class="text14" >Repetera lösenord:</td>
-			      				<td class="text" >
+					    		<td class="text14" >Repetera lösenord:</td>
+			      				<td class="text14" >
 			      					<input type="password" class="inputText" name="pwAS400N2" id="pwAS400N2" size="10" maxlength="20" value=''>	
 						    		</td>
 			      	        </tr>
