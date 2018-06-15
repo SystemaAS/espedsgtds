@@ -783,9 +783,7 @@
 		                	<c:when test="${ empty model.record.invoiceListTotSum}">
 						 		<tr>
 						 			<td class="text14">
-						 				<b>&nbsp;22.</b>
-						 				<font class="text16RedBold" >*</font>
-						 				<span title="sveh_fabl">Fakt.total&nbsp;</span>
+						 				<b>&nbsp;22.</b><font class="text16RedBold" >*</font><span title="sveh_fabl">Fakt.total&nbsp;</span>
 						 			</td>
 						 			<td align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_fabl" id="sveh_fabl" size="20" maxlength="20" value="${model.record.sveh_fabl}"></td>
 						 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
