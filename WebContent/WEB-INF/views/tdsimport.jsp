@@ -437,7 +437,7 @@
 	                						</tr>
 	 									<tr>
 											<td class="text14MediumBlue">
-												<select class="selectMediumBlueE2" class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
+												<select class="newAvd" name="newAvd${counter.count}" id="newAvd${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.avdList}" >
 							                             	 	<option value="${record.avd}">${record.avd}</option>
@@ -445,7 +445,7 @@
 												</select>
 											</td>
 											<td class="text14MediumBlue">
-												<select class="selectMediumBlueE2" class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
+												<select class="newSign" name="newSign${counter.count}" id="newSign${counter.count}">
 								            		<option value="">-Välj-</option>
 								 				  	<c:forEach var="record" items="${model.signList}" >
 							                            <option value="${record.sign}" <c:if test="${searchFilterTdsImport.sign == record.sign}"> selected </c:if> > ${record.sign}</option> 

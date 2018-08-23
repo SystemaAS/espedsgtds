@@ -79,6 +79,7 @@
   //Events for the drop downs (some kind of "implicit validation" since all drop downs are mandatory)
   jq(function() {
 	  jq(".newAvd").change(function() {
+		  //console.log("newAvd CHANGE !!!!!");
 		  if(jq("#dialog"+counterIndex).find('.newAvd').val()!='' && jq("#dialog"+counterIndex).find('.newSign').val()!=''){
 			  jq("#dialogSave"+counterIndex).button("option", "disabled", false);
 			  
@@ -87,6 +88,7 @@
 		  }
 	  });
 	  jq(".newSign").change(function() {
+		  //console.log("newSign CHANGE !!!!");
 		  if(jq("#dialog"+counterIndex).find('.newAvd').val()!='' && jq("#dialog"+counterIndex).find('.newSign').val()!=''){
 			  jq("#dialogSave"+counterIndex).button("option", "disabled", false);
 			  
