@@ -41,8 +41,9 @@
   	//General functions
   	jq(function() {
   		jq( "#submit" ).click(function( event ) {
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT });
-	  	});
+  			jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT });
+  			jq("#sumOfInvoiceAmountInItemLines").val(jq("#sumOfInvoiceAmountInItemLines").val().replace(',', '.'));
+  		});
   		
   		//=====================================
 	  	//START Child window for general codes
