@@ -94,7 +94,15 @@
   	  			jq("#svef_vaku").val(data[i].svef_vaku);
   	  			jq("#svef_faty").val(data[i].svef_faty);
   	  		}
-  	  		jq("#svef_fatx").focus();
+  	  		
+  	  		jq("#svef_fabl").focus();
+	  		//read only
+	  		jq("#svef_faty").addClass("inputTextReadOnly");
+	  		jq('#svef_faty').find(':not(:selected)').prop('disabled',true);
+	  		//read only
+	  		jq("#svef_fatx").addClass("inputTextReadOnly");
+	  		jq("#svef_fatx").prop("readonly", true);
+  	  		
   	  	  },
 	  	  error: function() {
   	  	    alert('Error loading ...');

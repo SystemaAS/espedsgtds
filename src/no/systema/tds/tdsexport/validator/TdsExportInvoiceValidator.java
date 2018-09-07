@@ -29,11 +29,11 @@ public class TdsExportInvoiceValidator implements Validator {
 	public void validate(Object obj, Errors errors) { 
 		JsonTdsExportTopicInvoiceRecord record = (JsonTdsExportTopicInvoiceRecord)obj;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_fatx", "systema.tds.export.header.error.null.invoice.invnr.svef_fatx");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_faty", "systema.tds.export.header.error.null.invoice.typ.svef_faty"); 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_fabl", "systema.tds.export.header.error.null.invoice.belopp.svef_fabl"); 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_vakd", "systema.tds.export.header.error.null.invoice.valuta.svef_vakd"); 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_vaku", "systema.tds.export.header.error.null.invoice.valutaKurs.svef_vaku"); 
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_fatx", "systema.tds.export.header.error.null.invoice.invnr.svef_fatx");
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_fabl", "systema.tds.export.header.error.null.invoice.belopp.svef_fabl"); 
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_vakd", "systema.tds.export.header.error.null.invoice.valuta.svef_vakd"); 
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svef_vaku", "systema.tds.export.header.error.null.invoice.valutaKurs.svef_vaku"); 
 		
 		
 		/*

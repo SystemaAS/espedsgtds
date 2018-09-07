@@ -494,7 +494,7 @@
 				 			<td class="textError">
 				 				<ul>
                                     <li>
-                                      	Fel vid uppdatering. [ERROR:${model.errorMessage}]  
+                                      	${model.errorMessage}]  
                                     </li>
                                 </ul>
 				 			</td>

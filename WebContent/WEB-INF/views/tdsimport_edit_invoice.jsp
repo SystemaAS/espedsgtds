@@ -246,7 +246,7 @@
 									    <th class="text14" ><span title="svif_faty">&nbsp;Typ&nbsp;</span></th>
 					                    <th class="text14"><span title="svif_fatx">&nbsp;Identitet&nbsp;</span></th>   
 					                    <th align="right" class="text14" ><span title="svif_fabl">&nbsp;Belopp&nbsp;</span></th>
-					                    <th class="text14" ><span title="svif_vakd">&nbsp;Valuta&nbsp;</span></th>
+					                    <th align="center" class="text14" ><span title="svif_vakd">Valuta</span></th>
 					                    <th align="right" class="text14" ><span title="svif_vaku">&nbsp;Kurs&nbsp;</span></th>
 					                    <th class="text14" align="left"><span title="svif_omr">Faktor&nbsp;</span></th> 
 					                    <c:if test="${model.status == 'M' || empty model.status}">
@@ -273,7 +273,7 @@
 							               <td class="text14" >&nbsp;${record.svif_faty}</td>
 							               <td width="10%" class="text14" >${record.svif_fatx}</td>
 							               <td align="right" class="text14" >&nbsp;${record.svif_fabl}&nbsp;</td>
-							               <td class="text14" >&nbsp;${record.svif_vakd}</td>
+							               <td align="center" class="text14" >${record.svif_vakd}</td>
 							               <td align="right" class="text14" >&nbsp;${record.svif_vaku}&nbsp;</td>
 							               <td class="text14" >&nbsp;${record.svif_omr}</td>
 							               <c:if test="${model.status == 'M' || empty model.status}">	
@@ -395,20 +395,8 @@
 	 				<table width="80%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
 				 			<td class="text14White" align="left" >
-				 				<b>&nbsp;&nbsp;F<label onClick="showPop('debugPrintlnAjaxItemFetchAdmin');" >a</label>ktura&nbsp;</b>
-				 				
-		 									<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="debugPrintlnAjaxItemFetchAdmin" class="popupWithInputText"  >
-								           		<div class="text14" align="left">
-								           			<label id="debugPrintlnAjaxItemFetchInfo"></label>
-								           			<br/>
-								           			&nbsp;&nbsp;
-								           			<button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('debugPrintlnAjaxItemFetchAdmin');">
-								           			Close
-								           			</button> 
-								           		</div>
-								        		</span>
-		 				
-				 				
+				 				<b>&nbsp;&nbsp;B.handlingar&nbsp;</b>
+
 				 				<img onClick="showPop('updateInfo');" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
 		           		   			<div class="text14" align="left" style="display:block;width:700px;word-break:break-all;">
@@ -432,11 +420,10 @@
 							            <td class="text14" align="left"><span title="svif_vakd">&nbsp;Valuta</span></td>
 					            		<td class="text14" align="left"><span title="svif_vaku">&nbsp;Kurs</span></td>
 					            		<td class="text14" align="left"><span title="factor">Faktor&nbsp;</span></td>
-					            		
 							        </tr>
 							        <tr>
 						        		<td>
-											<select class="inputTextMediumBlueMandatoryField" name="svif_faty" id="svif_faty">
+											<select autofocus="autofocus" class="inputTextMediumBlueMandatoryField" name="svif_faty" id="svif_faty">
 						 						<option value="">-Välj-</option>
 						 						
 							 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -456,7 +443,7 @@
            									</a>
 			 							</td>
 			 							<td align="left">
-						        			<input autofocus="autofocus" type="text" class="inputTextMediumBlue" name="svif_fatx" id="svif_fatx" size="20" maxlength="17" value="${model.record.svif_fatx}">
+						        			<input type="text" class="inputTextMediumBlue" name="svif_fatx" id="svif_fatx" size="20" maxlength="17" value="${model.record.svif_fatx}">
 										</td>
 										
 										<td class="text14" align="left">
@@ -488,7 +475,7 @@
 					    <tr height="10"><td colspan="2" ></td></tr>
 					    <tr>	
 						    <td align="left" colspan="5">
-								<input class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='tdsimport_edit_invoice.do';" value='Spara faktura'>
+								<input class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='tdsimport_edit_invoice.do';" value='Spara'>
 							</td>							        	
 				        </tr>
         	        </table>

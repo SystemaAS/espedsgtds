@@ -48,8 +48,8 @@
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
 				<a id="alinkItemLines" tabindex=-1 style="display:block;" href="tdsexport_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
-											&opd=${model.opd}&tullId=${model.tullId}
-											&status=${model.status}&datum=${model.datum}&fabl=${recordTopic.sveh_fabl}">
+							&opd=${model.opd}&tullId=${model.tullId}
+							&status=${model.status}&datum=${model.datum}&fabl=${recordTopic.sveh_fabl}">
 					<font class="tabDisabledLink">
 						&nbsp;<spring:message code="systema.tds.export.item.createnew.tab"/>
 					</font>
@@ -192,8 +192,11 @@
 							<td>
 								<table width="80%" cellspacing="0" border="0" cellpadding="0">
 									<tr>
-										<td class="text14Bold">&nbsp;Antal fakturor&nbsp;&nbsp;<font class="text14MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
-						            		</td>
+										<td class="text14Bold">&nbsp;</td>
+										<%--
+						            	<td class="text14Bold">&nbsp;Antal fakturor&nbsp;&nbsp;<font class="text14MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
+						            	</td>
+						            	--%>
 										<td align="right" class="text12">Fsum:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" maxlength=20" value="${recordTopic.sveh_fabl}">
 											<font class="inputText11BlueBoldReadOnly">${recordTopic.sveh_vakd}</font>
@@ -235,11 +238,11 @@
 								<table id="tblInvoices" class="display compact cell-border" >
 									<thead>
 									<tr style="background-color:#DDDDDD">
-										<th class="text14">&nbsp;Uppd.&nbsp;</th>
-									    <th class="text14"><span title="svef_fatx">&nbsp;Fakturanr.&nbsp;</span></th>   
-					                    <th class="text14" ><span title="svef_faty">&nbsp;Typ&nbsp;</span></th>
+										<th width="2%" class="text14">&nbsp;Uppd.&nbsp;</th>
+									    <th class="text14" ><span title="svef_faty">&nbsp;Typ&nbsp;</span></th>
+					                    <th class="text14"><span title="svef_fatx">&nbsp;Identitet&nbsp;</span></th>   
 					                    <th align="right" class="text14" ><span title="svef_fabl">&nbsp;Belopp&nbsp;</span></th>
-					                    <th class="text14" ><span title="svef_vakd">&nbsp;Valuta&nbsp;</span></th>
+					                    <th align="center" class="text14" ><span title="svef_vakd">Valuta</span></th>
 					                    <th align="right" class="text14" ><span title="svef_vaku">&nbsp;Kurs&nbsp;</span></th>
 					                    <th class="text14" align="left"><span title="svef_omr">Faktor&nbsp;</span></th>
 					                    <c:if test="${model.status == 'M' || empty model.status}">
@@ -257,17 +260,15 @@
 							                       <tr class="tableOddRow" height="20" >
 							                   </c:otherwise>
 							               </c:choose>
-							               <td width="2%" class="text14" >
+							               <td align="center" width="2%" class="text14" >
 							               		<a tabindex=-1 id="recordUpdate_${record.svef_fatx}" href="#" onClick="getItemData(this);">
 							               			&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
-							               <td width="20%" class="text14" >
-							               		<a tabindex=-1 id="recordUpdate_${record.svef_fatx}" href="#" onClick="getItemData(this);">${record.svef_fatx}</a>
-							               </td>
 							               <td class="text14" >&nbsp;${record.svef_faty}</td>
+							               <td width="20%" class="text14" >${record.svef_fatx}</a></td>
 							               <td align="right" class="text14" >&nbsp;${record.svef_fabl}&nbsp;</td>
-							               <td class="text14" >&nbsp;${record.svef_vakd}</td>
+							               <td align="center" class="text14" >${record.svef_vakd}</td>
 							               <td align="right" class="text14" >&nbsp;${record.svef_vaku}&nbsp;</td>
 							               <td class="text14" >&nbsp;${record.svef_omr}</td>
 							               <c:if test="${model.status == 'M' || empty model.status}">	
@@ -389,19 +390,7 @@
 	 				<table width="80%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
 				 			<td class="text14White" align="left" >
-				 				<b>&nbsp;&nbsp;F<label onClick="showPop('debugPrintlnAjaxItemFetchAdmin');" >a</label>ktura&nbsp;</b>
-				 				
-									<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="debugPrintlnAjaxItemFetchAdmin" class="popupWithInputText"  >
-					           		<div class="text11" align="left">
-					           			<label id="debugPrintlnAjaxItemFetchInfo"></label>
-					           			<br/>
-					           			&nbsp;&nbsp;
-					           			<button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('debugPrintlnAjaxItemFetchAdmin');">
-					           			Close
-					           			</button> 
-					           		</div>
-					        		</span>
-		 				
+				 				<b>&nbsp;&nbsp;B.handlingar&nbsp;</b>
 				 				
 				 				<img onClick="showPop('updateInfo');" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
@@ -419,24 +408,16 @@
 					 		<td>
 						 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
-							 			<td class="text14" align="left"><span title="svef_fatx">
-							 			<font class="text16RedBold" >*</font>Fakturanr.</span>
-										</td>
-							            <td class="text14" align="left"><span title="svef_faty">&nbsp;<font class="text16RedBold" >*</font>Typ</span></td>
-							            <td class="text14" align="left"><span title="svef_fabl">&nbsp;<font class="text16RedBold" >*</font>Belopp</span></td>
-							            <td class="text14" align="left"><span title="svef_vakd">&nbsp;<font class="text16RedBold" >*</font>Valuta</span></td>
-					            		<td class="text14" align="left"><span title="svef_vaku">&nbsp;<font class="text16RedBold" >*</font>Kurs</span></td>
+							 			<td class="text14" align="left"><span title="svef_faty">&nbsp;<font class="text16RedBold" >*</font>Typ</span></td>
+							            <td class="text14" align="left"><span title="svef_fatx">Identitet</span></td>
+							            <td class="text14" align="left"><span title="svef_fabl">&nbsp;Belopp</span></td>
+							            <td class="text14" align="left"><span title="svef_vakd">&nbsp;Valuta</span></td>
+					            		<td class="text14" align="left"><span title="svef_vaku">&nbsp;Kurs</span></td>
 					            		<td class="text14" align="left"><span title="factor">Faktor&nbsp;</span></td>
 							        </tr>
 							        <tr>
-						        		<td align="left">
-						        			<input autofocus="autofocus" type="text" class="inputTextMediumBlueMandatoryField" name="svef_fatx" id="svef_fatx" size="20" maxlength="17" value="${model.record.svef_fatx}">
-										</td>
-										<td>
-											<%--
-											<input type="text" class="inputText" name="svef_faty" id="svef_faty" size="5" maxlength="5" value="${model.record.svef_faty}">
-							 				 --%>
-											<select class="inputTextMediumBlueMandatoryField" name="svef_faty" id="svef_faty">
+						        		<td>
+											<select autofocus="autofocus" class="inputTextMediumBlueMandatoryField" name="svef_faty" id="svef_faty">
 						 						<option value="">-Välj-</option>
 							 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 							 				  		<c:choose>
@@ -454,11 +435,15 @@
            									</a>
 											
 			 							</td>
+			 							<td align="left">
+						        			<input type="text" class="inputTextMediumBlue" name="svef_fatx" id="svef_fatx" size="20" maxlength="17" value="${model.record.svef_fatx}">
+										</td>
+										
 										<td class="text14" align="left">
-							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svef_fabl" id="svef_fabl" size="13" maxlength="12" value="${model.record.svef_fabl}">
+							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svef_fabl" id="svef_fabl" size="13" maxlength="12" value="${model.record.svef_fabl}">
 							            </td>
 										<td align="left" nowrap>
-								            	<select class="inputTextMediumBlueMandatoryField" name="svef_vakd" id="svef_vakd">
+								            	<select class="inputTextMediumBlue" name="svef_vakd" id="svef_vakd">
 						 						<option value="">-välj-</option>
 							 				  	<c:forEach var="currency" items="${model.mdxCodeList}" >
 							 				  		<option value="${currency.svkd_kd}"<c:if test="${model.record.svef_vakd == currency.svkd_kd}"> selected </c:if> >${currency.svkd_kd}</option>
@@ -469,7 +454,7 @@
            									</a>
 										</td>
 							        		<td class="text14" align="left">
-							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svef_vaku" id="svef_vaku" size="10" maxlength="8" value="${model.record.svef_vaku}">
+							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svef_vaku" id="svef_vaku" size="10" maxlength="8" value="${model.record.svef_vaku}">
 							            </td>
 							            <%-- this field is only used via Ajax since there is no database field. It is used to disclosed a factor when changing the currency --%>
 							 			<td class="text14Grey" align="left" ><input readonly type="text" class="inputTextReadOnly" name="factor" id="factor" size="6" value=""></td>
@@ -482,15 +467,8 @@
 					    <tr height="10"><td colspan="2" ></td></tr>
 					    <tr>	
 						    <td align="left" colspan="5">
-									<c:choose>	
-										<c:when test="${model.status == 'M' || empty model.status || model.status == '1'}">
-											<input class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='tdsexport_edit_invoice.do';" value='Spara faktura'>
-											&nbsp;&nbsp;
-										</c:when>
-										<c:otherwise>
-				 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
-				 				    	</c:otherwise>	
-			 				    	</c:choose>	
+									<input class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='tdsexport_edit_invoice.do';" value='Spara'>
+											
 							</td>							        	
 				        </tr>
         	        </table>

@@ -167,7 +167,7 @@ public class TdsExportHeaderInvoiceController {
 						logger.info("UPDATE(only) ITEM (existent invoice) on process...");
 					}else{
 						//Minimum
-						if(recordToValidate.getSvef_fatx()!=null && !"".equals(recordToValidate.getSvef_fatx())){
+						if(recordToValidate.getSvef_faty()!=null && !"".equals(recordToValidate.getSvef_faty())){
 							//-------
 							//CREATE
 							//-------
