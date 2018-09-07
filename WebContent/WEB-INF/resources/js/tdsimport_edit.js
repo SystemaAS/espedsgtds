@@ -42,6 +42,7 @@
   	jq(function() {
   		jq( "#submit" ).click(function( event ) {
 		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT });
+		  jq("#sumOfInvoiceAmountInItemLines").val(jq("#sumOfInvoiceAmountInItemLines").val().replace(',', '.'));
 	  	});
   		
   		//=====================================
@@ -441,7 +442,7 @@
 					customer.adr1 = data[i].adr1;
 					customer.adr2 = data[i].adr2;
 					customer.adr3 = data[i].adr3;
-					customer.postnr = data[i].postnr;
+					customer.postnr = data[i].sypoge;
 					customer.kpers = data[i].kpers;
 					customer.tlf = data[i].tlf;
 					customer.syland = data[i].syland;
@@ -542,7 +543,7 @@
 						customer.adr1 = data[i].adr1;
 						customer.adr2 = data[i].adr2;
 						customer.adr3 = data[i].adr3;
-						customer.postnr = data[i].postnr;
+						customer.postnr = data[i].sypoge;
 						customer.kpers = data[i].kpers;
 						customer.tlf = data[i].tlf;
 						customer.syland = data[i].syland;
