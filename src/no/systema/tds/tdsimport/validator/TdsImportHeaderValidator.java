@@ -83,6 +83,8 @@ public class TdsImportHeaderValidator implements Validator {
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_dek2", "systema.tds.import.header.error.null.svih_dek2"); 
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_mtyp", "systema.tds.import.header.error.null.svih_mtyp");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_eup1", "systema.tds.import.header.error.null.svih_eup1");
+		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_fatx", "systema.tds.import.header.error.null.svih_fatx");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_faty", "systema.tds.import.header.error.null.svih_faty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_avut", "systema.tds.import.header.error.null.svih_avut");

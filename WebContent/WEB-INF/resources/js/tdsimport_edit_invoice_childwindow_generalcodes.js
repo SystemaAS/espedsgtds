@@ -15,7 +15,7 @@
 			  if(callerType == 'svif_faty'){
 				  //Typ	
 				  opener.jq('#svif_faty').val(kod);
-				  opener.jq('#svif_fabl').focus();
+				  opener.jq('#svif_fatx').focus();
 				  
 			  }else if(callerType == 'svif_vakd'){
 				  //Valuta

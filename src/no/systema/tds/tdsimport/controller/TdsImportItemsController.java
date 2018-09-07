@@ -753,7 +753,7 @@ public class TdsImportItemsController {
 		List list = new ArrayList();
 		if(container!=null){
 			for (JsonTdsImportSpecificTopicItemRecord record : container.getOrderList()){
-				list.add(record);
+				list.add(record); 
 				//DEBUG -- logger.info(record.getSviv_vasl());
 			}
 		}

@@ -192,9 +192,11 @@
 							<td>
 								<table width="80%" cellspacing="0" border="0" cellpadding="0">
 									<tr>
-										<td class="text14Bold">&nbsp;Antal fakturor&nbsp;&nbsp;<font class="text14MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
+										<%--
+										<td class="text14Bold">&nbsp;Antal handlingar&nbsp;&nbsp;<font class="text14MediumBlue"><b>${model.recordItemContainerInvoiceTopic.totalNumberOfItemLines}</b></font>
 						            	</td>
-						            	
+						            	--%>
+						            	<td align="right" class="text14">&nbsp;</td> 
 										<td align="right" class="text14">Fsum:&nbsp;
 											<input tabindex=-1 align="right" type="text" readonly class="inputText11BlueBoldReadOnly" size="12" value="${recordTopic.svih_fabl}">
 											<font class="inputText11BlueBoldReadOnly">${recordTopic.svih_vakd}</font>
@@ -241,8 +243,8 @@
 									<thead>
 									<tr class="tableHeaderField" >
 										<th width="2%" class="text14">&nbsp;Uppd.&nbsp;</th> 
-									    <th class="text14"><span title="svif_fatx">&nbsp;Fakturanr.&nbsp;</span></th>   
-					                    <th class="text14" ><span title="svif_faty">&nbsp;Typ&nbsp;</span></th>
+									    <th class="text14" ><span title="svif_faty">&nbsp;Typ&nbsp;</span></th>
+					                    <th class="text14"><span title="svif_fatx">&nbsp;Identitet&nbsp;</span></th>   
 					                    <th align="right" class="text14" ><span title="svif_fabl">&nbsp;Belopp&nbsp;</span></th>
 					                    <th class="text14" ><span title="svif_vakd">&nbsp;Valuta&nbsp;</span></th>
 					                    <th align="right" class="text14" ><span title="svif_vaku">&nbsp;Kurs&nbsp;</span></th>
@@ -263,15 +265,13 @@
 							                       <tr class="tableOddRow" height="20" >
 							                   </c:otherwise>
 							               </c:choose>
-							               <td width="2%" class="text14" >
+							               <td align="center" width="2%" class="text14" >
 							               		<a tabindex=-1 id="recordUpdate_${record.svif_fatx}" href="#" onClick="getItemData(this);">
-							               			&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
+							               			&nbsp;<img src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
-							               <td width="10%" class="text14" >
-							               		<a tabindex=-1 id="recordUpdate_${record.svif_fatx}" href="#" onClick="getItemData(this);">&nbsp;${record.svif_fatx}</a>
-							               </td>
 							               <td class="text14" >&nbsp;${record.svif_faty}</td>
+							               <td width="10%" class="text14" >${record.svif_fatx}</td>
 							               <td align="right" class="text14" >&nbsp;${record.svif_fabl}&nbsp;</td>
 							               <td class="text14" >&nbsp;${record.svif_vakd}</td>
 							               <td align="right" class="text14" >&nbsp;${record.svif_vaku}&nbsp;</td>
@@ -426,19 +426,16 @@
 					 		<td>
 						 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							 		<tr>
-							 			<td class="text14" align="left"><span title="svif_fatx"><font class="text16RedBold" >*</font>Fakturanr.</span></td>
-							            <td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_faty">&nbsp;Typ</span></td>
-							            <td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_fabl">&nbsp;Belopp</span></td>
-							            <td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_vakd">&nbsp;Valuta</span></td>
-					            		<td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_vaku">&nbsp;Kurs</span></td>
+							 			<td class="text14" align="left"><font class="text16RedBold" >*</font><span title="svif_faty">&nbsp;Typ</span></td>
+							            <td class="text14" align="left"><span title="svif_fatx">Identitet</span></td>
+							            <td class="text14" align="left"><span title="svif_fabl">&nbsp;Belopp</span></td>
+							            <td class="text14" align="left"><span title="svif_vakd">&nbsp;Valuta</span></td>
+					            		<td class="text14" align="left"><span title="svif_vaku">&nbsp;Kurs</span></td>
 					            		<td class="text14" align="left"><span title="factor">Faktor&nbsp;</span></td>
 					            		
 							        </tr>
 							        <tr>
-						        		<td align="left">
-						        			<input autofocus="autofocus" type="text" class="inputTextMediumBlueMandatoryField" name="svif_fatx" id="svif_fatx" size="20" maxlength="17" value="${model.record.svif_fatx}">
-										</td>
-										<td>
+						        		<td>
 											<select class="inputTextMediumBlueMandatoryField" name="svif_faty" id="svif_faty">
 						 						<option value="">-Välj-</option>
 						 						
@@ -458,11 +455,15 @@
            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            									</a>
 			 							</td>
+			 							<td align="left">
+						        			<input autofocus="autofocus" type="text" class="inputTextMediumBlue" name="svif_fatx" id="svif_fatx" size="20" maxlength="17" value="${model.record.svif_fatx}">
+										</td>
+										
 										<td class="text14" align="left">
-							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svif_fabl" id="svif_fabl" size="13" maxlength="12" value="${model.record.svif_fabl}">
+							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svif_fabl" id="svif_fabl" size="13" maxlength="12" value="${model.record.svif_fabl}">
 							            </td>
 										<td align="left" nowrap>
-							            	<select class="inputTextMediumBlueMandatoryField" name="svif_vakd" id="svif_vakd">
+							            	<select class="inputTextMediumBlue" name="svif_vakd" id="svif_vakd">
 						 						<option value="">-välj-</option>
 						 						 
 							 				  	<c:forEach var="currency" items="${model.mdxCodeList}" >
@@ -475,7 +476,7 @@
            									</a>
 										</td>
 						        		<td class="text14" align="left">
-						            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svif_vaku" id="svif_vaku" size="10" maxlength="8" value="${model.record.svif_vaku}">
+						            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svif_vaku" id="svif_vaku" size="10" maxlength="8" value="${model.record.svif_vaku}">
 							            </td>
 							            <%-- this field is only used via Ajax since there is no database field. It is used to disclosed a factor when changing the currency --%>
 							 			<td class="text14Grey" align="left" ><input readonly type="text" class="inputTextReadOnly" name="factor" id="factor" size="6" value=""></td>
@@ -487,15 +488,7 @@
 					    <tr height="10"><td colspan="2" ></td></tr>
 					    <tr>	
 						    <td align="left" colspan="5">
-									<c:choose>	
-										<c:when test="${model.status == 'M' || empty model.status || model.status == '1'}">
-											<input class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='tdsimport_edit_invoice.do';" value='Spara faktura'>
-											&nbsp;&nbsp;
-										</c:when>
-										<c:otherwise>
-				 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
-				 				    	</c:otherwise>	
-			 				    	</c:choose>	
+								<input class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='tdsimport_edit_invoice.do';" value='Spara faktura'>
 							</td>							        	
 				        </tr>
         	        </table>

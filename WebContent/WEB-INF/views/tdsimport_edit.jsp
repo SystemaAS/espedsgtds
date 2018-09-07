@@ -335,8 +335,9 @@
 								  
 						  		</select>
 			 				</td>
-			 				<td class="text14">&nbsp;&nbsp;
+			 				<td class="text14">
 			 				<img onMouseOver="showPop('meddTyp_info');" onMouseOut="hidePop('meddTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+			 				<font class="text16RedBold" >*</font><span title="svih_mtyp">Medd.typ&nbsp;</span>
 			 				<div class="text11" style="position: relative;display:inline;" align="left">
 			 				<span style="position:absolute; top:2px; width:250px;" id="meddTyp_info" class="popupWithInputText text11"  >
 				           			<ul>
@@ -357,7 +358,7 @@
 					           		</ul>
 							</span>
 							</div>
-							<font class="text16RedBold" >*</font><span title="svih_mtyp">Medd.typ&nbsp;</span>
+							
 			 				</td>
 				 			<td>
 				 				<select class="inputTextMediumBlueMandatoryField" name="svih_mtyp" id="svih_mtyp" TABINDEX=10>
@@ -484,8 +485,42 @@
 								  <option value="9"<c:if test="${model.record.svih_tart == 9}"> selected </c:if> >9</option>
 								</select>
 			 				</td>
-			 				<td class="text14">&nbsp;</td>
-			 				<td class="text14">&nbsp;</td>
+			 				<td class="text14">
+				 				<img onMouseOver="showPop('37_1_info');" onMouseOut="hidePop('37_1_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+					 			<b>37.</b><font class="text16RedBold" >*</font><span title="svih_eup1">Förf.</span>
+				 				<div class="text11" style="position: relative;" align="left" >
+					            <span style="position:absolute;top:2px;width:250px;" id="37_1_info" class="popupWithInputText text11"  >
+					           		<br>
+				           			<b>Förfarande - Första delfältet</b>
+				           			<br/>
+				           			Här ska du ange en fyrställig kod som består av två tvåställiga koder. Koden visar vilket importförfarande som avses. De två första siffrorna anger det förfarande som begärs och de två sista siffrorna det föregående förfarandet.
+				           			<br/><br/>
+				           			Exempel kod 4000<br/>
+				           			De två första siffrorna i koden visar det tullförfarande som du anmäler varorna till. 
+				           			40 står övergång till fri konsumtion med samtidig övergång till fri omsättning av varor som inte är föremål
+				           			för momsbefriad leverans.. De två sista siffrorna i koden visar om varorna tidigare varit föremål för ett tullförfarande. 
+				           			00 innebär att det inte finns något föregående tullförfarande.   
+				           			<br/><br/>
+									En förteckning över de 2- och 6-ställiga koderna finns i Tulltaxa Söksystem.
+				           			<br/><br/>
+					           		
+								</span>
+					            </div>
+			 				</td>
+			 				<td class="text14">
+			 					<select class="inputTextMediumBlueMandatoryField" name="svih_eup1" id="svih_eup1">
+			 						<option value="">-Välj-</option>
+				 				  	<c:forEach var="code" items="${model.forfarande01CodeList}" >
+				 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svih_eup1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+									</c:forEach>  
+								</select>
+								<%--COVI TODO	
+								<a tabindex="-1" id="svih_eup1IdLink" >
+			            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+		            			</a>	
+		            			 --%>
+			 				</td>
+			 				
 		 				</tr>
 		 				<tr height="5"><td></td></tr>
 		 				<tr>
@@ -531,7 +566,7 @@
 				 			<td class="textError">
 				 				<ul>
                                     <li>
-                                    		Fel vid uppdatering/kopiering. [ERROR/WARN] ${model.errorMessage} 
+                                    	${model.errorMessage} 
                                     </li>
                                 </ul>
 				 			</td>

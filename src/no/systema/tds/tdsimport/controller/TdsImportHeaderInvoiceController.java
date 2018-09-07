@@ -166,7 +166,7 @@ public class TdsImportHeaderInvoiceController {
 			            
 					}else{
 						//Minimum
-						if(recordToValidate.getSvif_fatx()!=null && !"".equals(recordToValidate.getSvif_fatx())){
+						if(recordToValidate.getSvif_faty()!=null && !"".equals(recordToValidate.getSvif_faty())){
 							//-------
 							//CREATE
 							//-------

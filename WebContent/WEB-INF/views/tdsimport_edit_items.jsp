@@ -883,9 +883,16 @@
 											<select class="inputTextMediumBlueMandatoryField" name="sviv_eup1" id="sviv_eup1">
 						 						<option value="">-Välj-</option>
 							 				  	<c:forEach var="code" items="${model.forfarande01CodeList}" >
-							 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_eup1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+							 				  		<c:choose>
+														<c:when test="${not empty model.record.sviv_eup1}">
+								 				  			<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_eup1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+								 				  		</c:when>
+								 				  		<c:otherwise>
+								 				  			<option value="${code.svkd_kd}"<c:if test="${recordTopic.svih_eup1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+								 				  		</c:otherwise>
+							 				  		</c:choose>
 												</c:forEach>  
-											</select>	
+											</select>
 											<a tabindex="-1" id="sviv_eup1IdLink" >
 						            			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 					            			</a>	

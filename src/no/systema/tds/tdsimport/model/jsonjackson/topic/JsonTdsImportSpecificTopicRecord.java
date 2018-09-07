@@ -115,6 +115,7 @@ public class JsonTdsImportSpecificTopicRecord extends JsonAbstractGrandFatherRec
 	public void setSvih_mtyp(String value) {  this.svih_mtyp = value; }
 	public String getSvih_mtyp() {return this.svih_mtyp;}
 	
+	
 	private String svih_sydt = null;
 	public void setSvih_sydt(String value) {  this.svih_sydt = value; }
 	public String getSvih_sydt() {return this.svih_sydt;}

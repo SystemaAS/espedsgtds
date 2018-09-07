@@ -124,7 +124,7 @@ public class TdsImportHeaderController {
 			//add gui lists here
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDX");
-	    
+    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"I","FF1");
     		//domain
     		model.put("sign", sign);
     		successView.addObject("model", model);
@@ -216,6 +216,7 @@ public class TdsImportHeaderController {
 			    		//add gui lists here
 			    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
 		    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDX");
+		    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"I","FF1");
 		    			this.taricDirectAccessorMgr.askTullid(model);
 		    			
 			    		this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicContainer, sumTopicRecord, sumFaktTotalRecord);
@@ -362,6 +363,7 @@ public class TdsImportHeaderController {
 					    		this.setFatalError(model, rpgReturnResponseHandler, jsonTdsImportSpecificTopicRecord);
 					    		isValidCreatedRecordTransactionOnRPG = false;
 					    	}else{
+					    		
 					    		if(this.validateItemLines(appUser, avd, opd)){
 					    			//Update succefully done!
 					    			logger.info("[INFO] Record successfully updated, OK ");
@@ -369,7 +371,7 @@ public class TdsImportHeaderController {
 					    			this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicRecord, sumTopicRecord );
 					    			this.adjustValidUpdateFlag(model, jsonTdsImportSpecificTopicRecord);
 					    		}else{
-					    			rpgReturnResponseHandler.setErrorMessage(" FATAL on UPDATE: " + "Det finns varuposter med felstatus...");
+					    			rpgReturnResponseHandler.setErrorMessage("Varning: Ärendet är sparad. Det finns varuposter med felstatus som måste korrigeras.  ");
 						    		this.setFatalError(model, rpgReturnResponseHandler, jsonTdsImportSpecificTopicRecord);
 						    		isValidCreatedRecordTransactionOnRPG = false;
 					    		}
@@ -384,6 +386,7 @@ public class TdsImportHeaderController {
 					//add gui lists here
 	    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","GCY");
 	    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","MDX");
+	    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"I","FF1");
 	    			this.taricDirectAccessorMgr.askTullid(model);
 	    			
 	    			successView.addObject("model" , model);
