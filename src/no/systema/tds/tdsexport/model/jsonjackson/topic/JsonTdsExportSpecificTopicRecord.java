@@ -47,7 +47,7 @@ public class JsonTdsExportSpecificTopicRecord extends JsonAbstractGrandFatherRec
 	
 	private String sumOfInvoiceAmountInItemLinesStr = null;
 	public String getSumOfInvoiceAmountInItemLinesStr() {
-		this.sumOfInvoiceAmountInItemLinesStr = String.valueOf(this.sumOfInvoiceAmountInItemLines);
+		this.sumOfInvoiceAmountInItemLinesStr = this.numberFormatter.getDoubleToPlainString(this.sumOfInvoiceAmountInItemLines, 3);//String.valueOf(this.sumOfInvoiceAmountInItemLines);
 		return this.sumOfInvoiceAmountInItemLinesStr;
 	}
 	

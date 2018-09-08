@@ -371,7 +371,7 @@ public class TdsImportHeaderController {
 					    			this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicRecord, sumTopicRecord );
 					    			this.adjustValidUpdateFlag(model, jsonTdsImportSpecificTopicRecord);
 					    		}else{
-					    			rpgReturnResponseHandler.setErrorMessage("Varning: Ärendet är sparad. Det finns varuposter med felstatus som måste korrigeras.  ");
+					    			rpgReturnResponseHandler.setErrorMessage("Varning: Ärendet har sparats. Det finns varuposter med felstatus som måste korrigeras.  ");
 						    		this.setFatalError(model, rpgReturnResponseHandler, jsonTdsImportSpecificTopicRecord);
 						    		isValidCreatedRecordTransactionOnRPG = false;
 					    		}
