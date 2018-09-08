@@ -271,8 +271,8 @@
 		<%-- LEFT SIDE CELL --%>
 		<%-- --------------- --%>
 		<tr>
-		<td width="50%">
-		<table border="0" cellspacing="0" cellpadding="0">
+		<td width="50%" align="left">
+		<table width="80%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 	            <td width="5">&nbsp;</td>
 	            <td >
@@ -811,11 +811,11 @@
 			 					<tr>
 						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
-						 				<font class="text16RedBold" >*</font>
-						 				<span title="sveh_fabl">Fakt.total&nbsp;</span>
+						 				<font class="text16RedBold" >*</font><span title="sveh_fabl">Fakt.total&nbsp;</span>
 						 			</td>
 						 			<td align="left" ><input readonly type="text" class="inputTextReadOnly" name="sveh_fabl" id="sveh_fabl" size="20" maxlength="20" value="${model.record.invoiceListTotSum}"></td>
-						 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
+						 			<td class="text14"><font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>&nbsp;</td>
+						 			<td class="text14">
 						 				<input readonly type="text" class="inputTextReadOnly" name="sveh_vakd" id="sveh_vakd" size="4" maxlength="3" value="${model.record.invoiceListTotValidCurrency}">						 												
 					 				</td>
 				 				</tr>
@@ -824,19 +824,22 @@
 						 				<b>&nbsp;23.</b>&nbsp;<span title="sveh_vaku"><font class="text16RedBold" >*</font>Kurs&nbsp;</span>
 						 			</td>
 						 			<td class="text14" align="left" ><input readonly type="text" class="inputTextReadOnly" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.invoiceListTotKurs}"></td>
-						 			<td class="text14" align="left" ><span title="sveh_vaom">Faktor</span><input readonly type="text" class="inputTextReadOnly" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'></td>
+						 			<td class="text14" align="left" >&nbsp;<span title="sveh_vaom">Faktor</span>&nbsp;</td>
+						 			<td class="text14">
+						 				<input readonly type="text" class="inputTextReadOnly" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'>
+						 			</td>
+						 			
 				 				</tr>
 			 				</c:otherwise>
 		 				</c:choose>
 		 				
 		 				<tr height="10"><td></td></tr>
 		 				<tr>
-		 					<td class="text14Gray" align="right">
+		 					<td class="text14Gray" align="left">
 				 				<span title="invoiceListTotSum/invoiceListTotValidCurrency"></span>Fakt.total (fakt.lista)&nbsp;</span>
 				 			</td>
 				            <td colspan="2" class="text14" align="left" >
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotSum" id="invoiceListTotSum" size="15" value='${ model.record.invoiceListTotSum}'>
-				            &nbsp;&nbsp;
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotValidCurrency" id="invoiceListTotValidCurrency" size="5" value='${ model.record.invoiceListTotValidCurrency}'>
 				            
 				            <%-- Removed 2.feb.2018 (CB/DHL requirement. Should be automatic and the button should not be used manually ...
@@ -937,7 +940,7 @@
 		<%-- --------------- --%>
 		<%-- RIGHT SIDE CELL --%>
 		<%-- --------------- --%>
-		<td width="50%" align="center" valign="top">
+		<td width="50%" align="left" valign="top">
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="2">&nbsp;</td>
@@ -1570,7 +1573,7 @@
 				<tr height="10"><td colspan="2"></td></tr>
 				<tr>
 				<td width="50%" valign="top">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table width="80%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 			 			<td width="5">&nbsp;</td>
 			            <td >		
@@ -2054,7 +2057,7 @@
 				<%-- --------------- --%>
 				<%-- RIGHT SIDE CELL --%>
 				<%-- --------------- --%>
-				<td width="45%" align="center" valign="top">
+				<td width="50%" align="left" valign="top">
 					<table border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="2">&nbsp;</td>

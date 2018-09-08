@@ -266,8 +266,8 @@
 		<%-- LEFT SIDE CELL --%>
 		<%-- --------------- --%>
 		<tr>
-		<td width="55%">
-		<table border="0" cellspacing="0" cellpadding="0">
+		<td width="50%" align="left">
+		<table width="80%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 	            <td width="5">&nbsp;</td>
 	            <td >
@@ -874,6 +874,8 @@
 						 		<tr>
 						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
+						 			</td>	
+						 			<td class="text14">
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="svih_fabl">Fakt.total&nbsp;</span>
 						 			</td>
@@ -883,6 +885,8 @@
 						 			<td class="text14">&nbsp;
 						 				<font class="text16RedBold" >*</font>
 						 				<span title="svih_vakd">Valuta</span>
+						 			</td>
+						 			<td class="text14">	
 						 				<%-- Note: onChange event in jQuery for this currency list --%>
 						 				<select class="inputTextMediumBlueMandatoryField" name="svih_vakd" id="svih_vakd" >
 						 				  <option value="">-Välj-</option>	
@@ -897,21 +901,27 @@
 					 				</td>
 				 				</tr>
 				 				<tr>
-					 				<td class="text14" align="right">
+				 					<td>&nbsp;</td>
+					 				<td class="text14" align="left">
 					 					<font class="text16RedBold" >*</font>
 						 				<span title="svih_vaku">Kurs&nbsp;</span>
 						 			</td>
 						 			<td class="text14" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svih_vaku" id="svih_vaku" size="20" maxlength="20" value="${model.record.svih_vaku}"></td>
 						 			<td class="text14" align="left" >&nbsp;
 						 			<span title="svih_vaom">Faktor</span>
-						 			<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svih_vaom" id="svih_vaom" size="10" maxlength="10" value="${model.record.svih_vaom}"></td>
+						 			</td>
+						 			<td class="text14">
+						 				<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="svih_vaom" id="svih_vaom" size="10" maxlength="10" value="${model.record.svih_vaom}">
+						 			</td>
 				 				</tr>
 			 				</c:when>
 			 				<c:otherwise> <%-- otherwise READ ONLY --%>
 			 					<tr>
 						 			<td class="text14">
 						 				<b>&nbsp;22.</b>
-						 				<font class="text16RedBold" >*</font>
+						 			</td>
+						 			<td class="text14">
+						 				<font class="text16RedBold" >*</font>	
 						 				<span title="svih_fabl">Fakt.total&nbsp;</span>
 						 			</td>
 						 			<td align="left" >
@@ -919,30 +929,38 @@
 						 			</td>
 						 			<td class="text14">&nbsp;
 						 				<font class="text16RedBold" >*</font>
-						 				<span title="svih_vakd">Valuta</span>
+						 			</td>
+						 			<td class="text14">	
+						 				<span title="svih_vakd">Valuta&nbsp;</span>
+						 			</td>
+						 			<td class="text14">	
 						 				<input readonly type="text" class="inputTextReadOnly" name="svih_vakd" id="svih_vakd" size="4" maxlength="3" value="${model.record.invoiceListTotValidCurrency}">
 					 				</td>
 				 				</tr>
 				 				<tr>
-					 				<td class="text14" align="right">
+					 				<td>&nbsp;</td>
+					 				<td class="text14" >
 					 					<font class="text16RedBold" >*</font>
-						 				<span title="svih_vaku">Kurs&nbsp;</span>
+					 					<span title="svih_vaku">Kurs&nbsp;</span>
 						 			</td>
 						 			<td class="text14" align="left" ><input readonly type="text" class="inputTextReadOnly" name="svih_vaku" id="svih_vaku" size="20" maxlength="20" value="${model.record.invoiceListTotKurs}"></td>
-						 			<td class="text14" align="left" >&nbsp;
-						 			<span title="svih_vaom">Faktor</span>
-						 			<input readonly type="text" class="inputTextReadOnly" name="svih_vaom" id="svih_vaom" size="10" maxlength="10" value="${model.record.svih_vaom}"></td>
+						 			<td>&nbsp;</td>
+						 			<td class="text14" align="left" >
+						 				<span title="svih_vaom">Faktor&nbsp;</span>
+						 			</td>
+						 			<td class="text14" align="left" >
+						 				<input readonly type="text" class="inputTextReadOnly" name="svih_vaom" id="svih_vaom" size="10" maxlength="10" value="${model.record.svih_vaom}">
+						 			</td>
 				 				</tr>
 			 				</c:otherwise>
 		 				</c:choose>
 		 				<tr height="10"><td></td></tr>
 		 				<tr>
-		 					<td class="text14Gray" align="right">
+		 					<td class="text14Gray" align="left" colspan="2">
 				 				<span title="invoiceListTotSum/invoiceListTotValidCurrency"></span>Fakt.total (fakt.lista)&nbsp;</span>
 				 			</td>
 				            <td colspan="2" class="text14" align="left" >
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotSum" id="invoiceListTotSum" size="15" value='${ model.record.invoiceListTotSum}'>
-				            &nbsp;&nbsp;
 				            <input readonly type="text" class="inputTextReadOnly"  name="invoiceListTotValidCurrency" id="invoiceListTotValidCurrency" size="5" value='${ model.record.invoiceListTotValidCurrency}'>
 				            
 				            <%-- Removed 2.feb.2018 (CB/DHL requirement. Should be automatic and the button should not be used manually ...
@@ -954,7 +972,7 @@
 				        </tr>
 				        <tr height="2"><td></td></tr>
 				        <tr>
-			 				<td class="text14Gray" align="right">
+			 				<td class="text14Gray" align="left" colspan="2">
 				 				<span title="sumOfItemAmounts">Fakt.total (Varuposter)&nbsp;</span>
 				 			</td>
 				 			<td colspan="2" class="text14" align="left" >
@@ -1044,7 +1062,7 @@
 		<%-- --------------- --%>
 		<%-- RIGHT SIDE CELL --%>
 		<%-- --------------- --%>
-		<td width="45%" align="center" valign="top">
+		<td width="50%" align="left" valign="top">
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="2">&nbsp;</td>
@@ -1478,7 +1496,7 @@
 				<tr height="10"><td colspan="2"></td></tr>
 				<tr>
 				<td width="50%" valign="top">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table width="80%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 			 			<td width="5">&nbsp;</td>
 			            <td >		
@@ -1723,7 +1741,7 @@
 				<%-- --------------- --%>
 				<%-- RIGHT SIDE CELL --%>
 				<%-- --------------- --%>
-				<td width="45%" align="center" valign="top">
+				<td width="50%" align="left" valign="top">
 					<table border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="2">&nbsp;</td>
