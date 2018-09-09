@@ -307,13 +307,14 @@ public class TdsExportAjaxHandlerController {
 	   */
 	  @RequestMapping(value = "getInvoiceLine_TdsExport.do", method = RequestMethod.GET)
 	  public @ResponseBody List<JsonTdsExportTopicInvoiceRecord> getInvoiceLine(@RequestParam String applicationUser, 
-								@RequestParam String avd,	@RequestParam String opd, @RequestParam String invoiceNr) {
+								@RequestParam String avd,@RequestParam String opd, @RequestParam String idFak, @RequestParam String idTyp) {
 		  logger.info("Inside: getInvoiceLine()");
-		  logger.info("InvoiceNr:" + invoiceNr);
+		  logger.info("idFak:" + idFak);
+		  logger.info("idTyp:" + idTyp);
 		  List<JsonTdsExportTopicInvoiceRecord> list = new ArrayList<JsonTdsExportTopicInvoiceRecord>();
 		  try{
 			  String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_FETCH_SPECIFIC_TOPIC_INVOICE_URL;
-			  String urlRequestParams = "user=" + applicationUser + "&avd=" + avd +   "&opd=" + opd + "&fak=" + invoiceNr;
+			  String urlRequestParams = "user=" + applicationUser + "&avd=" + avd + "&opd=" + opd + "&fak=" + idFak + "&typ=" + idTyp;
 			  
 			  logger.info(BASE_URL);
 			  logger.info(urlRequestParams);

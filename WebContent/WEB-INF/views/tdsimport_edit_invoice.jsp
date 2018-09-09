@@ -266,7 +266,7 @@
 							                   </c:otherwise>
 							               </c:choose>
 							               <td align="center" width="2%" class="text14" >
-							               		<a tabindex=-1 id="recordUpdate_${record.svif_fatx}" href="#" onClick="getItemData(this);">
+							               		<a tabindex=-1 id="recordUpdate_${record.svif_fatx}_${record.svif_faty}" href="#" onClick="getItemData(this);">
 							               			&nbsp;<img src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
@@ -278,7 +278,7 @@
 							               <td class="text14" >&nbsp;${record.svif_omr}</td>
 							               <c:if test="${model.status == 'M' || empty model.status}">	
 								               <td width="4%" class="text14" align="center" nowrap>
-								               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsimport_edit_invoice.do?action=doDelete&sign=${model.sign}&avd=${model.avd}&opd=${model.opd}&status=${model.status}&fak=${record.svif_fatx}">
+								               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsimport_edit_invoice.do?action=doDelete&sign=${model.sign}&avd=${model.avd}&opd=${model.opd}&status=${model.status}&fak=${record.svif_fatx}&typ=${record.svif_faty}">
 								               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	&nbsp;
 								               </td>

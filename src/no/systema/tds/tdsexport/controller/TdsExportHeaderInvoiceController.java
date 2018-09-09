@@ -205,7 +205,7 @@ public class TdsExportHeaderInvoiceController {
 						//get BASE URL = RPG-PROGRAM
 			            //---------------------------
 						String BASE_URL_UPDATE = TdsExportUrlDataStore.TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_INVOICE_URL;
-						urlRequestParamsKeys = this.getRequestUrlKeyParametersUpdate(jsonTdsExportTopicInvoiceRecord.getSvef_fatx(), avd, opd, appUser, TdsConstants.MODE_UPDATE);
+						urlRequestParamsKeys = this.getRequestUrlKeyParametersUpdate(jsonTdsExportTopicInvoiceRecord.getSvef_fatx(), jsonTdsExportTopicInvoiceRecord.getSvef_faty(), avd, opd, appUser, TdsConstants.MODE_UPDATE);
 						String urlRequestParamsTopicItem = this.urlRequestParameterMapper.getUrlParameterValidString((jsonTdsExportTopicInvoiceRecord));
 						//put the final valid param. string
 						String urlRequestParams = urlRequestParamsKeys + urlRequestParamsTopicItem;
@@ -244,13 +244,14 @@ public class TdsExportHeaderInvoiceController {
 			}else if(TdsConstants.ACTION_DELETE.equals(action)){
 				
 				logger.info("[INFO] Delete record start process... ");
-				String lineIdToDelete = request.getParameter("fak");
+				String idFak = request.getParameter("fak");
+				String idTyp = request.getParameter("typ");
 				
 				//---------------------------
 				//get BASE URL = RPG-PROGRAM
 	            //---------------------------
 				String BASE_URL_DELETE = TdsExportUrlDataStore.TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_INVOICE_URL;
-				String urlRequestParams = this.getRequestUrlKeyParametersUpdate(lineIdToDelete, avd, opd, appUser,TdsConstants.MODE_DELETE );
+				String urlRequestParams = this.getRequestUrlKeyParametersUpdate(idFak, idTyp, avd, opd, appUser,TdsConstants.MODE_DELETE );
 				
 				logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
 		    	logger.info("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL_DELETE));
@@ -531,21 +532,22 @@ public class TdsExportHeaderInvoiceController {
 	}
 	/**
 	 * 
-	 * Parameters for a creation of a "next" item line
-	 * 
-	 * @param lineId
+	 * @param idFak
+	 * @param idTyp
 	 * @param avd
 	 * @param opd
 	 * @param appUser
+	 * @param mode
 	 * @return
 	 */
-	private String getRequestUrlKeyParametersUpdate(String invoiceId, String avd, String opd, SystemaWebUser appUser, String mode){
+	private String getRequestUrlKeyParametersUpdate(String idFak, String idTyp, String avd, String opd, SystemaWebUser appUser, String mode){
 		StringBuffer urlRequestParamsKeys = new StringBuffer();
 		
 		urlRequestParamsKeys.append("user=" + appUser.getUser());
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + avd);
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
-		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "fak=" + invoiceId);
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "fak=" + idFak);
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "typ=" + idTyp);
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "mode=" + mode);
 		
 		return urlRequestParamsKeys.toString();

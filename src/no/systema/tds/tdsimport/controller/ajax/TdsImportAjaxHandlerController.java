@@ -471,13 +471,15 @@ public class TdsImportAjaxHandlerController {
 	   */
 	  @RequestMapping(value = "getInvoiceLine_TdsImport.do", method = RequestMethod.GET)
 	  public @ResponseBody List<JsonTdsImportTopicInvoiceRecord> getInvoiceLine(@RequestParam String applicationUser, 
-								@RequestParam String avd,	@RequestParam String opd, @RequestParam String invoiceNr) {
+								@RequestParam String avd,@RequestParam String opd, @RequestParam String idFak, @RequestParam String idTyp) {
 		  logger.info("Inside: getInvoiceLine()");
-		  logger.info("InvoiceNr:" + invoiceNr);
+		  logger.info("idFak:" + idFak);
+		  logger.info("idTyp:" + idTyp);
+		  
 		  List<JsonTdsImportTopicInvoiceRecord> list = new ArrayList<JsonTdsImportTopicInvoiceRecord>();
 		  try{
 			  String BASE_URL = TdsImportUrlDataStore.TDS_IMPORT_BASE_FETCH_SPECIFIC_TOPIC_INVOICE_URL;
-			  String urlRequestParams = "user=" + applicationUser + "&avd=" + avd +   "&opd=" + opd + "&fak=" + invoiceNr;
+			  String urlRequestParams = "user=" + applicationUser + "&avd=" + avd +   "&opd=" + opd + "&fak=" + idFak + "&typ=" + idTyp;
 			  
 			  logger.info(BASE_URL);
 			  logger.info(urlRequestParams);

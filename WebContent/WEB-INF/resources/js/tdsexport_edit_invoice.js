@@ -74,7 +74,8 @@
   	function getItemData(element) {
   	  var id = element.id;
   	  var record = id.split('_');
-  	  var invoiceNr = record[1];
+  	  var idFak = record[1];
+  	  var idTyp = record[2];
   	  
   	  jq.ajax({
   	  	  type: 'GET',
@@ -82,7 +83,8 @@
   	  	  data: { applicationUser : jq('#applicationUser').val(),
   		  		  avd : jq('#avd').val(),
   		  		  opd : jq('#opd').val(),
-  		  		  invoiceNr : invoiceNr },
+  		  		  idFak : idFak,
+  		  		  idTyp : idTyp },
   	  	  dataType: 'json',
   	  	  cache: false,
   	  	  contentType: 'application/json',
