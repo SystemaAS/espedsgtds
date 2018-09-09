@@ -287,7 +287,7 @@
 		               <td nowrap class="tableCell" align="center" >&nbsp;
 		               		<c:choose>
 		               	   		<c:when test="${empty topic.status || topic.status=='M'}">
-			               	   		<a id="alinkCurrentHeaderId_${counter.count}" onClick="setBlockUI(this);" href="tdsexport_edit.do?action=doFetch&avd=${topic.avd}&opd=${topic.opd}&sysg=${topic.sign}&tuid=${topic.tullid}&syst=${topic.status}&sydt=${topic.datum}">
+			               	   		<a id="alinkCurrentHeaderId_${counter.count}" onClick="setBlockUI();" href="tdsexport_edit.do?action=doFetch&avd=${topic.avd}&opd=${topic.opd}&sysg=${topic.sign}&tuid=${topic.tullid}&syst=${topic.status}&sydt=${topic.datum}">
 			               				<img title="Uppdatera ärende" src="resources/images/update.gif" border="0" alt="edit">
 		            				</a>
 		               			</c:when>
@@ -365,7 +365,7 @@
 						</div>
 
                		   <td class="tableCell" >&nbsp;
-               		   		<a id="alinkCurrentHeaderOpdId_${counter.count}" onClick="setBlockUI(this);" href="tdsexport_edit.do?action=doFetch&avd=${topic.avd}&opd=${topic.opd}&sysg=${topic.sign}&tuid=${topic.tullid}&syst=${topic.status}&sydt=${topic.datum}">
+               		   		<a id="alinkCurrentHeaderOpdId_${counter.count}" onClick="setBlockUI();" href="tdsexport_edit.do?action=doFetch&avd=${topic.avd}&opd=${topic.opd}&sysg=${topic.sign}&tuid=${topic.tullid}&syst=${topic.status}&sydt=${topic.datum}">
 	               				&nbsp;${topic.opd}
 		               		</a>
 		               </td>

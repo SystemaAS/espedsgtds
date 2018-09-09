@@ -4,17 +4,20 @@
     
   	//Overlay on tab (to mark visually a delay...)
     jq(function() {
+    	jq('#alinkMainList').click(function() { 
+      		setBlockUI();
+      	  });	
   	  jq('#alinkHeader').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  jq('#alinkInvoices').click(function() { 
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
 	  });
   	  jq('#alinkLogging').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  jq('#alinkArchive').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  
     });
@@ -67,7 +70,7 @@
   	//General events
   	jq(function() {
 	  	jq( "#submit" ).click(function( event ) {
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT });
+	  		setBlockUI();
 	  	});
 	  	//Show child window (if applicable)
   		jq('#warningCodesLink').click(function() {
@@ -687,7 +690,7 @@
 						 id: "dialogSaveTU",	
 						 text: "Spara",
 						 click: function(){
-			            			jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+							 		setBlockUI();
 			 		 		 		jq('#updateKundensVaruregisterForm').submit();
 						 		}
 					 	 },
@@ -747,7 +750,7 @@
   				 text: "Gå vidare",
   				 click: function(){
   					 		jq('#varupostkontrollForm').submit();
-  					 		jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  					 		setBlockUI();
   				 		}
   			 	 },
   	 	 		{

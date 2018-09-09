@@ -1,7 +1,6 @@
 	//this variable is a global jQuery var instead of using "$" all the time. Very handy
   	var jq = jQuery.noConflict();
-  	var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Please wait...";
-    
+  	
   	jq(document).ready(function() {
   		jq('#warningCodesFlagDiv').hide();
   		
@@ -21,17 +20,20 @@
   	
   	//Overlay on tab (to mark visually a delay...)
     jq(function() {
+	  jq('#alinkMainList').click(function() { 
+  		setBlockUI();
+  	  });    	
   	  jq('#alinkInvoices').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  jq('#alinkHeader').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  jq('#alinkLogging').click(function() { 
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
 	  });
   	  jq('#alinkArchive').click(function() { 
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
 	  });
   	  
     });
@@ -117,7 +119,7 @@
   	//General events
   	jq(function() {
 	  	jq( "#submit" ).click(function( event ) {
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT });
+	  		setBlockUI();
 	  	});
 	  	//Show child window (if applicable)
   		jq('#warningCodesLink').click(function() {
@@ -127,7 +129,7 @@
   		});
   		//Auto control - autoförtullning
 	  	jq('#itemListControlButton').click(function() {
-  			jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT });
+	  		setBlockUI();
 			window.location = 'tdsimport_edit_items_autocontrol.do?sviv_syav='+ jq('#avd').val() + '&sviv_syop=' + jq('#opd').val() + '&fablAutoControl=' + jq('#fablAutoControl').val();
   		});
 	  	
@@ -968,7 +970,7 @@
 						 id: "dialogSaveTU",	
 						 text: "Spara",
 						 click: function(){
-			            			jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+							 		setBlockUI();
 			 		 		 		jq('#updateKundensVaruregisterForm').submit();
 						 		}
 					 	 },

@@ -22,13 +22,13 @@
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
 				<c:choose>
 					<c:when test="${not empty model.record.sveh_sysg}">
-						<a tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.record.sveh_sysg}">
+						<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.record.sveh_sysg}">
 							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.list.tab"/></font>
 						</a>
 					</c:when>
 					<c:otherwise>
-						<a tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.sign}">
+						<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.sign}">
 							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.list.tab"/></font>
 						</a>	

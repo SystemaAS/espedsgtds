@@ -24,7 +24,7 @@
 		<tr height="2"><td></td></tr>
 		<tr height="25"> 
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-				<a tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.sign}">
+				<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.sign}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.list.tab"/></font>
 					<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 					
@@ -368,27 +368,27 @@
 							               		</a>
 						               	   </td>
    							               <td width="4%" class="text11" >${record.svev_vano}</td>
-							               <td class="text11" >${record.svev_ulkd}</td>
-							               <td class="text11" >${record.svev_vata}&nbsp;&nbsp;
+							               <td class="text14" >${record.svev_ulkd}</td>
+							               <td class="text14" >${record.svev_vata}&nbsp;&nbsp;
 							               	  <img id="recordUpdate_${record.svev_syli}_${record.svev_vano}" onClick="updateKundensVarReg(this);" src="resources/images/addOrder.png" width="12px" height="12px" border="0" title="Lägg till i kundensvarureg.">
 							               </td>	  
-							               <td class="text11" >${record.svev_eup1}</td>
-							               <td class="text11" >${record.svev_brut}</td>
-							               <td class="text11" >${record.svev_neto}</td>
-							               <td class="text11" >${record.svev_ankv}</td>
-							               <td class="text11" >${record.sum_of_svev_kotas}</td>
+							               <td class="text14" >${record.svev_eup1}</td>
+							               <td class="text14" >${record.svev_brut}</td>
+							               <td class="text14" >${record.svev_neto}</td>
+							               <td class="text14" >${record.svev_ankv}</td>
+							               <td class="text14" >${record.sum_of_svev_kotas}</td>
 							               
-							               <td class="text11" >${record.svev_vasl}</td>
-							               <td align="center" class="text11">&nbsp;
+							               <td class="text14" >${record.svev_vasl}</td>
+							               <td align="center" class="text14">&nbsp;
 							               		<c:if test="${not empty record.svev_err}">
 							               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">
 							               		</c:if>
 							               	</td>	
-							               <td class="text11">${record.svev_fabl}</td>
-							               <td class="text11">${record.svev_stva}</td>
+							               <td class="text14">${record.svev_fabl}</td>
+							               <td class="text14">${record.svev_stva}</td>
 							               
 							               <c:if test="${model.status == 'M' || empty model.status}">	
-								               <td class="text11" align="center" nowrap>&nbsp;
+								               <td class="text14" align="center" nowrap>&nbsp;
 								               	<a onclick="javascript:return confirm('Är du säker på att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_items.do?action=doDelete&avd=${model.avd}&opd=${model.opd}&lin=${record.svev_syli}">
 								               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	

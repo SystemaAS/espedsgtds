@@ -8,17 +8,20 @@
   	
   	//Overlay on tab (to mark visually a delay...)
     jq(function() {
+    	jq('#alinkMainList').click(function() { 
+      		setBlockUI();
+      	  });	
   	  jq('#alinkHeader').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  jq('#alinkInvoices').click(function() { 
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
 	  });
   	  jq('#alinkItemLines').click(function() { 
-  		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   	  });
   	  jq('#alinkLogging').click(function() { 
-		  jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
 	  });
     });
   	

@@ -23,13 +23,13 @@
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
 				<c:choose>
 					<c:when test="${not empty model.record.svih_sysg}">
-						<a tabindex=-1 style="display:block;" href="tdsimport.do?action=doFind&sign=${model.record.svih_sysg}">
+						<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsimport.do?action=doFind&sign=${model.record.svih_sysg}">
 							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.list.tab"/></font>
 						</a>
 					</c:when>
 					<c:otherwise>
-						<a tabindex=-1 style="display:block;" href="tdsimport.do?action=doFind&sign=${model.sign}">
+						<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsimport.do?action=doFind&sign=${model.sign}">
 							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.list.tab"/></font>
 						</a>
