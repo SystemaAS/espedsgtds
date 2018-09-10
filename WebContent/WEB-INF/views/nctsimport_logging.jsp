@@ -5,6 +5,9 @@
 <jsp:include page="/WEB-INF/views/headerTds.jsp" />
 <!-- =====================end header ==========================-->
 
+	<SCRIPT type="text/javascript" src="resources/js/tdsglobal_edit.js?ver=${user.versionEspedsg}"></SCRIPT>		
+	<SCRIPT type="text/javascript" src="resources/js/nctsimport_logging.js?ver=${user.versionEspedsg}"></SCRIPT>
+	
 <table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
 	<tr>
 		<td>
@@ -13,7 +16,7 @@
 			<tr height="2"><td></td></tr>
 			<tr height="25"> 
 				<td width="12%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsimport.do?action=doFind&sign=${model.sign}">
+					<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsimport.do?action=doFind&sign=${model.sign}">
 						<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.list.tab"/></font>
 						<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 						
@@ -21,10 +24,10 @@
 				</td>
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsimport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
+					<a id="alinkHeader" tabindex=-1 style="display:block;" href="nctsimport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
 							&sysg=${model.sign}&syst=${model.status}&sydt=${model.datum}">
 						<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.created.mastertopic.tab"/></font>
-						<font class="text12MediumBlue">[${model.opd}]</font>
+						<font class="text14MediumBlue">[${model.opd}]</font>
 						<c:if test="${ model.status == 'F' || model.status == 'M' || empty model.status}">
 							<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						</c:if>
@@ -32,7 +35,7 @@
 				</td>
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="12%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsimport_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
+					<a id="alinkItemLines" tabindex=-1 style="display:block;" href="nctsimport_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
 												&opd=${model.opd}&mrnNr=${model.mrnNr}&godsNr=${model.godsNr}
 												&status=${model.status}&datum=${model.datum}">
 						<font class="tabDisabledLink">
@@ -46,7 +49,7 @@
 				</td>
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="12%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsimport_unloading_edit.do?avd=${model.avd}&sign=${model.sign}
+					<a id="alinkUnloading" tabindex=-1 style="display:block;" href="nctsimport_unloading_edit.do?avd=${model.avd}&sign=${model.sign}
 												&opd=${model.opd}&mrnNr=${model.mrnNr}&godsNr=${model.godsNr}
 												&status=${model.status}&datum=${model.datum}">
 						<font class="tabDisabledLink">
@@ -57,7 +60,7 @@
 				</td>
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="12%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsimport_unloading_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
+					<a id="alinkUnloadingItemLines" tabindex=-1 style="display:block;" href="nctsimport_unloading_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
 										&opd=${model.opd}&mrnNr=${model.mrnNr}&godsNr=${model.godsNr}
 										&status=${model.status}&datum=${model.datum}">
 						<font class="tabDisabledLink">
@@ -77,7 +80,7 @@
 				
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="12%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsimport_archive.do?avd=${model.avd}&sign=${model.sign}
+					<a id="alinkArchive" tabindex=-1 style="display:block;" href="nctsimport_archive.do?avd=${model.avd}&sign=${model.sign}
 										&opd=${model.opd}&mrnNr=${model.mrnNr}&godsNr=${model.godsNr}
 										&status=${model.status}&datum=${model.datum}">
 						<font class="tabDisabledLink">

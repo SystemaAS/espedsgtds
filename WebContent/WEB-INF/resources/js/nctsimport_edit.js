@@ -6,6 +6,27 @@
   	var jq = jQuery.noConflict();
   	var map = {};
   	
+  	jq(function() {
+        jq('#alinkMainList').click(function() { 
+    		setBlockUI();
+    	  });	
+    	  jq('#alinkUnloading').click(function() { 
+    		setBlockUI();
+    	  });
+    	  jq('#alinkUnloadingItemLines').click(function() { 
+      		setBlockUI();
+      	  });
+    	  jq('#alinkItemLines').click(function() { 
+    		setBlockUI();
+    	  });
+    	  jq('#alinkLogging').click(function() { 
+    		setBlockUI();
+    	  });
+    	  jq('#alinkArchive').click(function() { 
+    		setBlockUI();
+    	  });
+  	});
+  	
   	//init the customer object in javascript (will be put into a map)
   	var customer = new Object();
   	//fields
