@@ -10,7 +10,8 @@
 	<SCRIPT type="text/javascript" src="resources/js/tdsexport.js?ver=${user.versionEspedsg}"></SCRIPT>	
 		
 	<style type = "text/css">
-	.ui-datepicker { font-size:9pt;}
+		.ui-dialog{font-size:10pt;}
+		.ui-datepicker { font-size:9pt;}
 	</style>
 
 
