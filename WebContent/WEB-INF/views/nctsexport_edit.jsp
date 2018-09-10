@@ -25,10 +25,20 @@
 		<tr height="2"><td></td></tr>
 		<tr height="25"> 
 			<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-				<a tabindex=-1 style="display:block;" href="nctsexport.do?action=doFind&sign=${model.record.thsg}">
-					<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
-					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.list.tab"/></font>
-				</a>
+				<c:choose>
+					<c:when test="${not empty model.record.thsg}">
+						<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsexport.do?action=doFind&sign=${model.record.thsg}">
+							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
+							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.list.tab"/></font>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsexport.do?action=doFind&sign=${model.sign}">
+							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
+							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.list.tab"/></font>
+						</a>	
+					</c:otherwise>
+				</c:choose>
 			</td>
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 			<c:choose> 
@@ -45,7 +55,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-						<a tabindex=-1 style="display:block;" href="nctsexport_edit_items.do?action=doFetch&avd=${model.record.thavd}&sign=${model.record.thsg}
+						<a id="alinkItemLines" tabindex=-1 style="display:block;" href="nctsexport_edit_items.do?action=doFetch&avd=${model.record.thavd}&sign=${model.record.thsg}
 													&opd=${model.record.thtdn}&tullId=${model.record.thtuid}&mrnNr=${model.record.thtrnr}
 													&status=${model.record.thst}&datum=${model.record.thdt}">
 							<font class="tabDisabledLink">
@@ -59,7 +69,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-						<a tabindex=-1 style="display:block;" href="nctsexport_logging.do?avd=${model.record.thavd}&sign=${model.record.thsg}
+						<a id="alinkLogging" tabindex=-1 style="display:block;" href="nctsexport_logging.do?avd=${model.record.thavd}&sign=${model.record.thsg}
 													&opd=${model.record.thtdn}&tullId=${model.record.thtuid}&mrnNr=${model.record.thtrnr}
 													&status=${model.record.thst}&datum=${model.record.thdt}">
 							<font class="tabDisabledLink">
@@ -70,7 +80,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-						<a tabindex=-1 style="display:block;" href="nctsexport_archive.do?avd=${model.record.thavd}&sign=${model.record.thsg}
+						<a id="alinkArchive" tabindex=-1 style="display:block;" href="nctsexport_archive.do?avd=${model.record.thavd}&sign=${model.record.thsg}
 													&opd=${model.record.thtdn}&tullId=${model.record.thtuid}&mrnNr=${model.record.thtrnr}
 													&status=${model.record.thst}&datum=${model.record.thdt}">
 							<font class="tabDisabledLink">
@@ -244,7 +254,7 @@
 		<%-- LEFT SIDE CELL --%>
 		<%-- --------------- --%>
 		<tr>
-		<td width="55%">
+		<td width="50%">
 		<table border="0" cellspacing="1" cellpadding="0">
 			<tr>
 	            <td width="5">&nbsp;</td>
@@ -1413,7 +1423,7 @@
 		<%-- --------------- --%>
 		<%-- RIGHT SIDE CELL --%>
 		<%-- --------------- --%>
-		<td width="45%" align="center" valign="top">
+		<td width="50%" align="left" valign="top">
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="2">&nbsp;</td>
@@ -2189,7 +2199,7 @@
 				<tr height="10"><td colspan="2"></td></tr>
 				<tr>
 				<td width="50%" valign="top">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
 			 			<td width="5">&nbsp;</td>
 			            <td >		
@@ -2632,7 +2642,7 @@
 				<%-- RIGHT SIDE CELL --%>
 				<%-- --------------- --%>
 				
-				<td width="50%" align="center" valign="top">
+				<td width="50%" align="left" valign="top">
 					<table border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="2">&nbsp;</td>

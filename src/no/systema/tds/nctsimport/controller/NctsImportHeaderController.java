@@ -91,6 +91,7 @@ public class NctsImportHeaderController {
 	public ModelAndView doPrepareCreate(HttpSession session, HttpServletRequest request){
 		
 		Map model = new HashMap();
+		String sign = request.getParameter("sign");
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		//String messageFromContext = this.context.getMessage("user.label",new Object[0], request.getLocale());
 		ModelAndView successView = new ModelAndView("nctsimport_edit");
@@ -104,10 +105,11 @@ public class NctsImportHeaderController {
             
 			this.setCodeDropDownMgr(appUser, model);
 			this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
-	    		this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
-	    		//domain
-	    		successView.addObject("model", model);
-	    		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
+    		this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
+    		//domain
+    		model.put("sign", sign);
+    		successView.addObject("model", model);
+    		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 
 		}
 		

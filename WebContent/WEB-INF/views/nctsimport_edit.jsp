@@ -19,16 +19,26 @@
 	<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
 		<tr height="2"><td></td></tr>
 		<tr height="25"> 
-			<c:choose> 
-			    <c:when test="${editActionOnTopic=='doUpdate' or editActionOnTopic=='doFetch'}">
-					<td width="12%" valign="bottom" class="tabDisabled" align="center" nowrap>
-						<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsimport.do?action=doFind&sign=${model.record.tisg}">
-							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.list.tab"/></font>
-							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
-						</a>
-					</td>
-					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
-			
+				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
+					<c:choose>
+						<c:when test="${not empty model.record.tisg}">
+							<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsimport.do?action=doFind&sign=${model.record.tisg}">
+								<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.list.tab"/></font>
+								<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
+							</a>
+						</c:when>
+						<c:otherwise>
+							<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsimport.do?action=doFind&sign=${model.sign}">
+								<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.list.tab"/></font>
+								<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
+							</a>	
+						</c:otherwise>
+					</c:choose>
+				</td>
+				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
+				
+				<c:choose> 
+			    	<c:when test="${editActionOnTopic=='doUpdate' or editActionOnTopic=='doFetch'}">
 					<td width="15%" valign="bottom" class="tab" align="center" nowrap>
 						<font class="tabLink">
 							&nbsp;<spring:message code="systema.ncts.import.created.mastertopic.tab"/>
@@ -102,20 +112,12 @@
 					<td width="13%" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				</c:when>
 				<c:otherwise>
-					<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-						<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsimport.do?action=doFind&sign=${model.record.tisg}">
-							<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.import.list.tab"/></font>
-							<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
-						</a>
-					</td>
-
-					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
-					<td width="20%" valign="bottom" class="tab" align="center" nowrap>
+					<td width="15%" valign="bottom" class="tab" align="center" nowrap>
 						<font class="tabLink">&nbsp;<spring:message code="systema.ncts.import.createnew.tab"/></font>
 						<img valign="bottom" src="resources/images/add.png" width="12" hight="12" border="0" alt="create new">
 						
 					</td>
-					<td width="60%" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
+					<td width="80%" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				</c:otherwise>
 			</c:choose>
 		</tr>

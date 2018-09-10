@@ -27,7 +27,7 @@
 			</td>
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 			<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-				<a style="display:block;" href="nctsexport_edit.do?action=doPrepareCreate&user=${user.user}">
+				<a style="display:block;" href="nctsexport_edit.do?action=doPrepareCreate&user=${user.user}&sign=${searchFilterTdsExportNcts.sign}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.createnew.tab"/></font>
 					<img valign="bottom" src="resources/images/add.png" width="12" hight="12" border="0" alt="create new">
 					

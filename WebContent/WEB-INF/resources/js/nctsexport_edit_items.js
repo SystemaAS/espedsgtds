@@ -1,9 +1,26 @@
 	//this variable is a global jQuery var instead of using "$" all the time. Very handy
   	var jq = jQuery.noConflict();
-  	var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Please wait...";
+  	
+  	jq(function() {
+        jq('#alinkMainList').click(function() { 
+    		setBlockUI();
+    	  });	
+          jq('#alinkHeader').click(function() { 
+    		setBlockUI();
+    	  });
+    	  jq('#alinkItemLines').click(function() { 
+    		setBlockUI();
+    	  });
+    	  jq('#alinkLogging').click(function() { 
+    		setBlockUI();
+    	  });
+    	  jq('#alinkArchive').click(function() { 
+    		setBlockUI();
+    	  });
+  	});
   	
   	function reloadThis() {
-  		jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+  		setBlockUI();
   		window.location = 'nctsexport_edit_items.do?action=doFetch&avd='+ jq('#avd').val() + '&sign=' + jq('#sign').val() +'&opd=' + jq('#opd').val();
   	}
   	

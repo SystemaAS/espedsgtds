@@ -4,7 +4,9 @@
 <!-- ======================= header ===========================-->
 <jsp:include page="/WEB-INF/views/headerTds.jsp" />
 <!-- =====================end header ==========================-->
-
+	<SCRIPT type="text/javascript" src="resources/js/tdsglobal_edit.js?ver=${user.versionEspedsg}"></SCRIPT>	
+	<SCRIPT type="text/javascript" src="resources/js/nctsexport_logging.js?ver=${user.versionEspedsg}"></SCRIPT>
+ 	
 <table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
 	<tr>
 		<td>
@@ -13,17 +15,17 @@
 			<tr height="2"><td></td></tr>
 			<tr height="25"> 
 				<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsexport.do?action=doFind&sign=${model.sign}">
+					<a id="alinkMainList" tabindex=-1 style="display:block;" href="nctsexport.do?action=doFind&sign=${model.sign}">
 						<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.list.tab"/></font>
 						<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
 					</a>
 				</td>
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsexport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
+					<a id="alinkHeader" tabindex=-1 style="display:block;" href="nctsexport_edit.do?action=doFetch&avd=${model.avd}&opd=${model.opd}
 							&sysg=${model.sign}&tuid=${model.tullId}&syst=${model.status}&sydt=${model.datum}">
 						<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.created.mastertopic.tab"/></font>
-						<font class="text12MediumBlue">[${model.opd}]</font>
+						<font class="text14MediumBlue">[${model.opd}]</font>
 						<c:if test="${model.status == 'G' || model.status == 'F' || model.status == 'M' || empty model.status}">
 							<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
 						</c:if>
@@ -31,7 +33,7 @@
 				</td>				
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsexport_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
+					<a id="alinkItemLines" tabindex=-1 style="display:block;" href="nctsexport_edit_items.do?action=doFetch&avd=${model.avd}&sign=${model.sign}
 												&opd=${model.opd}&tullId=${model.tullId}&mrnNr=${model.mrnNr}
 												&status=${model.status}&datum=${model.datum}">
 						<font class="tabDisabledLink">
@@ -50,7 +52,7 @@
 				</td>
 				<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 				<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
-					<a tabindex=-1 style="display:block;" href="nctsexport_archive.do?avd=${model.avd}&sign=${model.sign}
+					<a id="alinkArchive" tabindex=-1 style="display:block;" href="nctsexport_archive.do?avd=${model.avd}&sign=${model.sign}
 												&opd=${model.opd}&tullId=${model.tullId}&mrnNr=${model.mrnNr}
 												&status=${model.status}&datum=${model.datum}">
 						<font class="tabDisabledLink">
