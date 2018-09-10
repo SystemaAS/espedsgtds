@@ -35,7 +35,7 @@
 			</td>
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 			<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-          		<a style="display:block;" href="tdsimportutlam.do?action=doFind&sign=${searchFilterTdsImport.sign}">
+          		<a id="alinkUtlamning" style="display:block;" href="tdsimportutlam.do?action=doFind&sign=${searchFilterTdsImport.sign}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.list.utlam.tab"/></font>
 				</a>					 
 			</td>

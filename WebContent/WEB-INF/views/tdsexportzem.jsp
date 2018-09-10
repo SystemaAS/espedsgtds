@@ -25,7 +25,6 @@
 				<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${searchFilter.sign}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.list.tab"/></font>
 					<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
-					
 				</a>
 			</td>
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>

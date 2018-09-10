@@ -3,6 +3,12 @@
   var counterIndex = 0;
    
   jq(function() {
+	  jq('#alinkUtlamning').click(function() { 
+  		setBlockUI();
+  	  });	
+  });
+  
+  jq(function() {
 	  jq("#opd").focus();
   });
   

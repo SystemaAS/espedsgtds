@@ -3,6 +3,12 @@
   var counterIndex = 0;
   
   jq(function() {
+	  jq('#alinkZem').click(function() { 
+  		setBlockUI();
+  	  });	
+  });
+  
+  jq(function() {
 	  jq("#opd").focus();
   });
   

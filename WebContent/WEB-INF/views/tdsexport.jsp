@@ -36,7 +36,7 @@
 			</td>
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 			<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-          		<a style="display:block;" href="tdsexportzem.do?action=doFind&sign=${searchFilterTdsExport.sign}">
+          		<a id="alinkZem" style="display:block;" href="tdsexportzem.do?action=doFind&sign=${searchFilterTdsExport.sign}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.list.zem.tab"/></font>
 				</a>					 
 			</td>
