@@ -10,7 +10,7 @@
 	<SCRIPT type="text/javascript" src="resources/js/nctsimport.js?ver=${user.versionEspedsg}"></SCRIPT>	
 	
 	<style type = "text/css">
-	.ui-datepicker { font-size:9pt;}
+		.ui-datepicker { font-size:9pt;}
 	</style>
 	
 <table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">

@@ -24,6 +24,9 @@
   });
   
   
+  
+  
+  
   //-----------------------------------
   //START Model dialog "Kopiera Ärende
   //-----------------------------------
@@ -114,9 +117,9 @@
 	  jq("#dialogCopyFromTransportUppdrag").dialog({
 		  autoOpen: false,
 		  maxWidth:500,
-          maxHeight: 400,
+          maxHeight: 600,
           width: 500,
-          height: 400,
+          height: 500,
 		  modal: true
 	  });
   });
@@ -335,4 +338,40 @@
   //--------------------------------------------------
   
 
+  //---------------------------------------
+  //DELETE Order
+  //This is done in order to present a jquery
+  //Alert modal pop-up
+  //----------------------------------------
+  function doPermanentlyDeleteOrder(element){
+	  //start
+	  var record = element.id.split('@');
+	  var avd = record[0];
+	  var opd = record[1];
+	  avd= avd.replace("avd_","");
+	  opd= opd.replace("opd_","");
+	  	//Start dialog
+	  	jq('<div></div>').dialog({
+	        modal: true,
+	        title: "Ta bort ärende " + opd,
+	        buttons: {
+		        Fortsett: function() {
+	        		jq( this ).dialog( "close" );
+		            //do delete
+		            jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+		            window.location = "tdsexport.do?action=doDelete" + "&avd=" + avd + "&opd=" + opd;
+		        },
+		        Avbryt: function() {
+		            jq( this ).dialog( "close" );
+		        }
+	        },
+	        open: function() {
+		  		  var markup = "Är du säkert på att du vill radera denna?";
+		          jq(this).html(markup);
+		          //make Cancel the default button
+		          jq(this).siblings('.ui-dialog-buttonpane').find('button:eq(1)').focus();
+		     }
+		});  //end dialog
+  }
+  
   

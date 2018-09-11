@@ -10,7 +10,6 @@
 	<SCRIPT type="text/javascript" src="resources/js/tdsexport.js?ver=${user.versionEspedsg}"></SCRIPT>	
 		
 	<style type = "text/css">
-		.ui-dialog{font-size:10pt;}
 		.ui-datepicker { font-size:9pt;}
 	</style>
 
@@ -374,7 +373,7 @@
 		               <td class="tableCell" >&nbsp;${topic.tullid}</td>
 		               <td class="tableCell" >&nbsp;${topic.mtyp}</td>
 		               <td class="tableCell" >&nbsp;${topic.datum}</td>
-		               <td class="tableCell" >&nbsp;<b>${topic.status}</b></td>
+		               <td align="center" class="tableCell" >&nbsp;<b>${topic.status}</b></td>
 		               <td class="tableCell" >&nbsp;${topic.avsNavn}</td>
 		               <td class="tableCell" >&nbsp;${topic.motNavn}</td>
 		               
@@ -461,8 +460,8 @@
 		               <c:choose>
 			               <c:when test="${topic.status == 'M' || empty topic.status}">	
 				               <td class="tableCell" align="center" nowrap>&nbsp;
-				               	<a onclick="javascript:return confirm('Är du säkert på att du vill radera denna?')"  tabindex=-1 href="tdsexport.do?action=doDelete&avd=${topic.avd}&opd=${topic.opd}">
-				               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
+				               	<a sytle="cursor:pointer;" id="avd_${topic.avd}@opd_${topic.opd}" onclick="doPermanentlyDeleteOrder(this)" tabindex=-1 >
+				               		<img src="resources/images/delete.gif" border="0" alt="remove">
 				               	</a>	
 				               </td>
 	    		               </c:when>
