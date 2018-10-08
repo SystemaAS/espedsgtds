@@ -175,6 +175,7 @@ public class TdsExportHeaderController {
 		logger.info("Action:" + action);
 		logger.info("Opd:" + opd);
 		Map model = new HashMap();
+		model.put("sign", sign);
 		
 		
 		if(appUser==null){
@@ -749,6 +750,7 @@ public class TdsExportHeaderController {
 		String action=request.getParameter("actionGS");;
 		String avd=request.getParameter("selectedAvd");
 		String opd=request.getParameter("selectedOpd");
+		String extRefNr=request.getParameter("selectedExtRefNr"); //Domino ref in Dachser Norway AS
 		String sign = request.getParameter("sign");
 		
 		ModelAndView successView = new ModelAndView("tdsexport_edit");
@@ -758,13 +760,13 @@ public class TdsExportHeaderController {
 		if(appUser==null){
 			return loginView;
 		}else{
-			if( (opd!=null && !"".equals(opd)) && (avd!=null && !"".equals(avd))){
+			if( (extRefNr!=null && !"".equals(extRefNr)) || ( (opd!=null && !"".equals(opd)) && (avd!=null && !"".equals(avd))) ){
 				//--------------------
 				//STEP 1: COPY record
 				//--------------------
 				logger.info("starting PROCESS record transaction...");
 				String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_URL;
-				String urlRequestParamsKeys = this.getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(avd, opd, appUser);
+				String urlRequestParamsKeys = this.getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(avd, opd, extRefNr, appUser);
 				//for debug purposes in GUI
 				session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
 				
@@ -1493,14 +1495,18 @@ public class TdsExportHeaderController {
 	 * @param appUser
 	 * @return
 	 */
-	private String getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(String avd, String opd, SystemaWebUser appUser){
+	private String getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(String avd, String opd, String extRefNr, SystemaWebUser appUser){
 		//user=OSCAR&avd=1&opd=53452&sign=CB&mode=GS 
 		final String MODE = "GS";
 		StringBuffer urlRequestParamsKeys = new StringBuffer();
 		
 		urlRequestParamsKeys.append("user=" + appUser.getUser());
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + avd);
-		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
+		if(opd!=null && !"".equals(opd)){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
+		}else if (extRefNr!=null && !"".equals(extRefNr)){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sveh_xref=" + extRefNr);
+		}
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sign=" + appUser.getTdsSign());
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "mode=" + MODE);
 		

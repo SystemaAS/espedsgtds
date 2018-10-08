@@ -169,6 +169,7 @@ public class TdsImportHeaderController {
 		logger.info("FABL:" + recordToValidate.getSvih_fabl());
 		
 		Map model = new HashMap();
+		model.put("sign", sign);
 		
 		
 		if(appUser==null){
@@ -749,19 +750,20 @@ public class TdsImportHeaderController {
 		String action=request.getParameter("actionGS");;
 		String avd=request.getParameter("selectedAvd");
 		String opd=request.getParameter("selectedOpd");
+		String extRefNr=request.getParameter("selectedExtRefNr"); //Domino ref in Dachser Norway AS
 		String sign = request.getParameter("sign");
 		
 		//check user (should be in session already)
 		if(appUser==null){
 			return loginView;
 		}else{
-			if( (opd!=null && !"".equals(opd)) && (avd!=null && !"".equals(avd))){
+			if( (extRefNr!=null && !"".equals(extRefNr)) || ( (opd!=null && !"".equals(opd)) && (avd!=null && !"".equals(avd))) ){
 				//--------------------
 				//STEP 1: COPY record
 				//--------------------
 				logger.info("starting PROCESS record transaction...");
 				String BASE_URL = TdsImportUrlDataStore.TDS_IMPORT_BASE_UPDATE_SPECIFIC_TOPIC_URL;
-				String urlRequestParamsKeys = this.getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(avd, opd, appUser);
+				String urlRequestParamsKeys = this.getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(avd, opd, extRefNr, appUser);
 				//for debug purposes in GUI
 				session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
 				
@@ -788,6 +790,7 @@ public class TdsImportHeaderController {
 		    				model.put(TdsConstants.ASPECT_ERROR_MESSAGE, jsonContainer.getErrMsg());
 		    				model.put(TdsConstants.ASPECT_ERROR_META_INFO, "Vid kopiering av TransportUppdrag...");
 		    				fallbackView.addObject(TdsConstants.DOMAIN_MODEL, model);
+		    				//
 		    				
 		    				return fallbackView;
 		    			}
@@ -1490,14 +1493,18 @@ public class TdsImportHeaderController {
 	 * @param appUser
 	 * @return
 	 */
-	private String getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(String avd, String opd, SystemaWebUser appUser){
+	private String getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(String avd, String opd, String extRefNr, SystemaWebUser appUser){
 		//user=OSCAR&avd=1&opd=53452&sign=CB&mode=GS 
 		final String MODE = "GS";
 		StringBuffer urlRequestParamsKeys = new StringBuffer();
 		
 		urlRequestParamsKeys.append("user=" + appUser.getUser());
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + avd);
+		if(opd!=null && !"".equals(opd)){
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
+		}else if (extRefNr!=null && !"".equals(extRefNr)){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "svih_xref=" + extRefNr);
+		}
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sign=" + appUser.getTdsSign());
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "mode=" + MODE);
 		

@@ -4,6 +4,8 @@
 package no.systema.tds.tdsexport.service;
 
 import no.systema.tds.tdsexport.mapper.jsonjackson.TdsExportTopicListMapper;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListExternalRefContainer;
+import no.systema.tds.tdsexport.mapper.jsonjackson.TdsExportTopicListMapper;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListContainer;
 import no.systema.tds.tdsexport.mapper.jsonjackson.TdsExportTopicZemListMapper;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicZemListContainer;
@@ -40,6 +42,21 @@ public class TdsExportTopicListServiceImpl implements TdsExportTopicListService 
 		
 		return container;
 		
+	}
+	
+	/**
+	 * 
+	 */
+	public JsonTdsExportTopicListExternalRefContainer getTdsExportTopicListExternalRefContainer(String utfPayload){
+		JsonTdsExportTopicListExternalRefContainer container = null;
+		try{
+			TdsExportTopicListMapper mapper = new TdsExportTopicListMapper();
+			container = mapper.getContainerExternalRef(utfPayload);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return container;
 	}
 
 }

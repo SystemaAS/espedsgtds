@@ -6,7 +6,11 @@ package no.systema.tds.tdsimport.mapper.jsonjackson;
 //jackson library
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import no.systema.main.mapper.jsonjackson.general.ObjectMapperAbstractGrandFather;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListExternalRefContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListContainer;
 
 /**
@@ -35,4 +39,15 @@ public class TdsImportTopicListMapper extends ObjectMapperAbstractGrandFather{
 		
 		return topicListContainer;
 	}
+	public JsonTdsImportTopicListExternalRefContainer getContainerExternalRef(String utfPayload) throws Exception{
+		ObjectMapper mapper = new ObjectMapper();  
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+		//At this point we now have an UTF-8 payload
+		JsonTdsImportTopicListExternalRefContainer container = mapper.readValue(utfPayload.getBytes(), JsonTdsImportTopicListExternalRefContainer.class); 
+		//logger.info(mapper.writeValueAsString(topicListContainer));
+		logger.info("[JSON-String payload status=OK]  " + container.getUser());
+		
+		return container;
+	}
+	
 }

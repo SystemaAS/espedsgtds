@@ -20,6 +20,11 @@ public final class TdsExportUrlDataStore {
 	//http://10.13.3.22/sycgip/tsvz000r.pgm?user=CB&datum=20011001
 	static public String TDS_EXPORT_BASE_TOPICLIST_ZEM_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVZ000R.pgm";
 	
+	//fetch external references
+	//http://10.13.1.22/sycgip/tdke004r.pgm?user=A25DEMO
+	static public String TDS_EXPORT_BASE_FETCH_TOPIC_LIST_EXTERNAL_REFERENCES_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE004R.pgm";
+		
+	
 	//----------------------------
 	//[2] FETCH A SPECIFIC ARENDE
 	//----------------------------

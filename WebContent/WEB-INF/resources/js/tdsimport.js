@@ -10,6 +10,17 @@
   
   jq(function() {
 	  jq("#opd").focus();
+	  
+	  //External references in model Dialog
+	  	jq('#extRefIdLink').click(function() {
+	    	jq('#extRefIdLink').attr('target','_blank');
+	    	window.open('tdsimport_childwindow_external_references.do?avd=' + jq("#selectedAvd").val(), "codeWin", "top=300px,left=750px,height=500px,width=800px,scrollbars=no,status=no,location=no");
+	    });
+	    jq('#extRefIdLink').keypress(function(e){ //extra feature for the end user
+			if(e.which == 13) {
+				jq('#extRefIdLink').click();
+			}
+	    });
   });
   
   jq(function() {
@@ -136,18 +147,20 @@
 					 		//back to initial state of form elements on modal dialog
 					 		jq("#dialogSaveSU").button("option", "disabled", true);
 					 		jq("#selectedAvd").val("");
-					 		jq("#selectedSign").val("");
+					 		jq("#selectedOpd").val("");
+					 		jq("#selectedExtRefNr").val("");
 							jq( this ).dialog( "close" ); 
 				 		} 
 	 	 		 } ] 
 		  });
 		  //init values
-		  jq("#dialogSaveSU").button("option", "disabled", true);
+		  jq("#dialogSaveSU").button("option", "disabled", false);
 		  //open now
 		  jq('#dialogCopyFromTransportUppdrag').dialog('open');
 	  });
   });
   //Events for the drop downs (some kind of "implicit validation" since all drop downs are mandatory)
+  /*
   jq(function() {
 	  jq("#selectedAvd").change(function() {
 		  if(jq("#dialog").find('#selectedAvd').val()!='' && jq("#dialog").find('#selectedSign').val()!=''){
@@ -165,6 +178,21 @@
 	  });
 	  
   });
+  */
+  function applyRuleOnDialogTranspUppdragNullAvd(){
+	  if(jq('#selectedOpd').val()=='' && jq('#selectedExtRefNr').val()==''){
+		  jq("#dialogSaveTU").button("option", "disabled", false);
+	  }else{
+		  jq("#dialogSaveTU").button("option", "disabled", true);
+	  }
+  }
+  function applyRuleOnDialogTranspUppdragExtRef(){
+	  if(jq('#selectedExtRefNr').val()!=''){
+		  jq("#dialogSaveTU").button("option", "disabled", false);
+	  }else{
+		  jq("#dialogSaveTU").button("option", "disabled", true);
+	  }
+  }
   //-----------------------------------------------
   //END Model dialog "Kopiera Ärende from template
   //-----------------------------------------------

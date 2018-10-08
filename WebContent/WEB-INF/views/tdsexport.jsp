@@ -513,8 +513,9 @@
 					<table>
 						<tr>
 							<td class="text14" align="left" >&nbsp;Avdelning</td>
-          							<td class="text14" align="left" >&nbsp;Ärendenr.</td>
-          						</tr>
+  							<td class="text14" align="left" >&nbsp;Ärendenr.</td>
+  							<td class="text14" align="left" >&nbsp;Ext.refnr.</td>
+  						</tr>	
 						<tr>
 							<td class="text14MediumBlue">
 								<select class="selectMediumBlueE2" name="selectedAvd" id="selectedAvd">
@@ -526,6 +527,12 @@
 							</td>
 							<td class="text14MediumBlue">
 								<input type="text" class="inputText" id="selectedOpd" name="selectedOpd" size="10" maxlength="35" value=''>&nbsp;
+							</td>
+							<td class="text14MediumBlue">
+								<input type="text" class="inputText" id="selectedExtRefNr" name="selectedExtRefNr" size="25" maxlength="35" value=''>&nbsp;
+								<a tabindex="-1" id="extRefIdLink">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+								</a>
 							</td>
 						</tr>
 					</table>

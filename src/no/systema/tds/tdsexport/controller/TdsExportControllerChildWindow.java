@@ -10,6 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javawebparts.core.org.apache.commons.lang.StringUtils;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +37,10 @@ import no.systema.main.context.TdsAppContext;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.validator.LoginValidator;
+import no.systema.tds.tdsexport.service.TdsExportTopicListService;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicInvoiceExternalRecord;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListExternalRefContainer;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListExternalRefRecord;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.DateTimeManager;
 import no.systema.main.util.EncodingTransformer;
@@ -243,6 +250,80 @@ public class TdsExportControllerChildWindow {
 	}
 	/**
 	 * 
+	 * @param recordToValidate
+	 * @param bindingResult
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsexport_childwindow_external_references.do",  method={RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView tdsExportExternalReferences(@ModelAttribute ("record") JsonTdsExportTopicListExternalRefContainer recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
+		logger.info("Inside: tdsExportExternalReferences");
+		
+		ModelAndView successView = new ModelAndView("tdsexport_childwindow_external_references");
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
+		Map model = new HashMap();
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		//Catch required action (doFetch or doUpdate)
+		
+		if(appUser==null){
+			return this.loginView;
+		}else{
+			
+			//---------------------------
+			//get BASE URL = RPG-PROGRAM
+            //---------------------------
+			String avd = request.getParameter("avd");
+			//logger.info("AVD:" + avd);
+			String BASE_URL_FETCH = TdsExportUrlDataStore.TDS_EXPORT_BASE_FETCH_TOPIC_LIST_EXTERNAL_REFERENCES_URL;
+			urlRequestParamsKeys.append("user=" + appUser.getUser());
+			if(StringUtils.isNotEmpty(avd)){
+				urlRequestParamsKeys.append("&avd=" + avd);
+			}
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+			logger.info("FETCH av list... ");
+	    	logger.info("URL: " + BASE_URL_FETCH);
+	    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+	    	//--------------------------------------
+	    	//EXECUTE the FETCH (RPG program) here
+	    	//--------------------------------------
+			String jsonPayloadFetch = this.urlCgiProxyService.getJsonContent(BASE_URL_FETCH, urlRequestParamsKeys.toString());
+			
+			//Debug --> 
+	    	//logger.info(jsonPayloadFetch);
+	    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+	    	JsonTdsExportTopicListExternalRefContainer container = this.tdsExportTopicListService.getTdsExportTopicListExternalRefContainer(jsonPayloadFetch);
+	    	//drop downs populated from back-end
+	    	this.setDomainObjectsForListExternalRefInView(model, container);
+			
+	    	successView.addObject("model",model);
+			
+	    	logger.info("END of method");
+	    	return successView;
+		}
+		
+	}
+	/**
+	 * 
+	 * @param model
+	 * @param container
+	 */
+	private void setDomainObjectsForListExternalRefInView(Map model, JsonTdsExportTopicListExternalRefContainer container){
+		List list = new ArrayList();
+		if(container!=null){
+			for (JsonTdsExportTopicListExternalRefRecord record : container.getExtList()){
+				//this.adjustDatesOnFetch(record);
+				list.add(record);
+			}
+		}
+		model.put(TdsConstants.DOMAIN_LIST_EXTERNAL_REF, list);
+		
+	}
+	
+	/**
+	 * 
 	 * @param appUser
 	 * @param countryCode
 	 * @param itemCode
@@ -377,6 +458,14 @@ public class TdsExportControllerChildWindow {
 	@Required
 	public void setTdsExportSpecificTopicService (TdsExportSpecificTopicService value){ this.tdsExportSpecificTopicService = value; }
 	public TdsExportSpecificTopicService getTdsExportSpecificTopicService(){ return this.tdsExportSpecificTopicService; }
+	
+	
+	@Qualifier ("tdsExportTopicListService")
+	private TdsExportTopicListService tdsExportTopicListService;
+	@Autowired
+	@Required
+	public void setTdsExportTopicListService (TdsExportTopicListService value){ this.tdsExportTopicListService = value; }
+	public TdsExportTopicListService getTdsExportTopicListService(){ return this.tdsExportTopicListService; }
 	
 	
 }

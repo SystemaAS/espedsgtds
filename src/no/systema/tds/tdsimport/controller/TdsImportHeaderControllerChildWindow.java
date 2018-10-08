@@ -10,6 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javawebparts.core.org.apache.commons.lang.StringUtils;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,7 +51,10 @@ import no.systema.tds.model.jsonjackson.codes.JsonTdsTaricVarukodRecord;
 import no.systema.tds.service.TdsGeneralCodesChildWindowService;
 import no.systema.tds.service.TdsTaricVarukodService;
 import no.systema.tds.service.TdsTaricVarukodServiceImpl;
-
+import no.systema.tds.tdsimport.service.TdsImportTopicListService;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListExternalRefContainer;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListExternalRefRecord;
+import no.systema.tds.tdsimport.url.store.TdsImportUrlDataStore;
 import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.util.TdsConstants;
 
@@ -157,7 +163,71 @@ public class TdsImportHeaderControllerChildWindow {
 		}
 	}
 	
-	
+	@RequestMapping(value="tdsimport_childwindow_external_references.do",  method={RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView tdsImportExternalReferences(@ModelAttribute ("record") JsonTdsImportTopicListExternalRefContainer recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
+		logger.info("Inside: tdsImportExternalReferences");
+		
+		ModelAndView successView = new ModelAndView("tdsimport_childwindow_external_references");
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
+		Map model = new HashMap();
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		//Catch required action (doFetch or doUpdate)
+		
+		if(appUser==null){
+			return this.loginView;
+		}else{
+			
+			//---------------------------
+			//get BASE URL = RPG-PROGRAM
+            //---------------------------
+			String avd = request.getParameter("avd");
+			//logger.info("AVD:" + avd);
+			String BASE_URL_FETCH = TdsImportUrlDataStore.TDS_IMPORT_BASE_FETCH_TOPIC_LIST_EXTERNAL_REFERENCES_URL;
+			urlRequestParamsKeys.append("user=" + appUser.getUser());
+			if(StringUtils.isNotEmpty(avd)){
+				urlRequestParamsKeys.append("&avd=" + avd);
+			}
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+			logger.info("FETCH av list... ");
+	    	logger.info("URL: " + BASE_URL_FETCH);
+	    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+	    	//--------------------------------------
+	    	//EXECUTE the FETCH (RPG program) here
+	    	//--------------------------------------
+			String jsonPayloadFetch = this.urlCgiProxyService.getJsonContent(BASE_URL_FETCH, urlRequestParamsKeys.toString());
+			
+			//Debug --> 
+	    	//logger.info(jsonPayloadFetch);
+	    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+	    	JsonTdsImportTopicListExternalRefContainer container = this.tdsImportTopicListService.getTdsImportTopicListExternalRefContainer(jsonPayloadFetch);
+	    	//drop downs populated from back-end
+	    	this.setDomainObjectsForListExternalRefInView(model, container);
+			
+	    	successView.addObject("model",model);
+			
+	    	logger.info("END of method");
+	    	return successView;
+		}
+		
+	}
+	/**
+	 * 
+	 * @param model
+	 * @param container
+	 */
+	private void setDomainObjectsForListExternalRefInView(Map model, JsonTdsImportTopicListExternalRefContainer container){
+		List list = new ArrayList();
+		if(container!=null){
+			for (JsonTdsImportTopicListExternalRefRecord record : container.getExtList()){
+				//this.adjustDatesOnFetch(record);
+				list.add(record);
+			}
+		}
+		model.put(TdsConstants.DOMAIN_LIST_EXTERNAL_REF, list);
+		
+	}
 	
 	/**
 	 * 
@@ -253,6 +323,14 @@ public class TdsImportHeaderControllerChildWindow {
 	@Required	
 	public void setTdsTaricVarukodService(TdsTaricVarukodService value){this.tdsTaricVarukodService = value;}
 	public TdsTaricVarukodService getTdsTaricVarukodService(){ return this.tdsTaricVarukodService; }
+	
+	
+	@Qualifier ("tdsImportTopicListService")
+	private TdsImportTopicListService tdsImportTopicListService;
+	@Autowired
+	@Required
+	public void setTdsImportTopicListService (TdsImportTopicListService value){ this.tdsImportTopicListService = value; }
+	public TdsImportTopicListService getTdsImportTopicListService(){ return this.tdsImportTopicListService; }
 	
 	
 }

@@ -4,6 +4,8 @@
 package no.systema.tds.tdsimport.service;
 
 import no.systema.tds.tdsimport.mapper.jsonjackson.TdsImportTopicListMapper;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListExternalRefContainer;
+import no.systema.tds.tdsimport.mapper.jsonjackson.TdsImportTopicListMapper;
 import no.systema.tds.tdsimport.mapper.jsonjackson.TdsImportTopicUtlamListMapper;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicUtlamListContainer;
@@ -40,6 +42,21 @@ public class TdsImportTopicListServiceImpl implements TdsImportTopicListService 
 		
 		return listContainer;
 		
+	}
+	
+	/**
+	 * 
+	 */
+	public JsonTdsImportTopicListExternalRefContainer getTdsImportTopicListExternalRefContainer(String utfPayload){
+		JsonTdsImportTopicListExternalRefContainer container = null;
+		try{
+			TdsImportTopicListMapper mapper = new TdsImportTopicListMapper();
+			container = mapper.getContainerExternalRef(utfPayload);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return container;
 	}
 
 }
