@@ -153,14 +153,14 @@
 			<input type="hidden" name="sign" id="sign" value='${model.record.sveh_sysg}'>
 			<tr >
 				<td align="left" class="text14MediumBlue" >
-					&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.sveh_syav}&nbsp;&nbsp;Ärende:&nbsp;<b>${model.record.sveh_syop}</b>
-					&nbsp;&nbsp;Tullid:&nbsp;<b>${model.record.sveh_tuid}</b>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span title="sveh_syav">Avd:</span>&nbsp;${model.record.sveh_syav}&nbsp;&nbsp;<span title="sveh_syop">Ärende:</span>&nbsp;<b>${model.record.sveh_syop}</b>
+					&nbsp;&nbsp;<span title="sveh_tuid">Tullid:</span>&nbsp;<b>${model.record.sveh_tuid}</b>
 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricFragaTullidURL.value}" onclick="${model.taricFragaTullidURL.windowOpenDimensions}" >
             			<img title="Fråga Tullid (hos Tullverket)" style="vertical-align:bottom;" width="14px" height="16px" src="resources/images/help.png" border="0" alt="question">                		
             		</a>
             		<c:choose>
 	 				    <c:when test="${model.record.sveh_syst == 'M' || empty model.record.sveh_syst}">																	 			
-							&nbsp;&nbsp;Sign:&nbsp;
+							&nbsp;&nbsp;<span title="sveh_sysg">Sign:</span>&nbsp;
 		           			<select class="selectMediumBlueE2" name="sveh_sysg" id="sveh_sysg">
 			            		<option value="">-Välj-</option>
 			 				  	<c:forEach var="record" items="${model.signList}" >
@@ -169,13 +169,13 @@
 							</select>
 						</c:when>
 						<c:otherwise>
-							&nbsp;&nbsp;Sign:&nbsp;<b>${model.record.sveh_sysg}</b>
+							&nbsp;&nbsp;<span title="sveh_sysg">Sign:</span>&nbsp;<b>${model.record.sveh_sysg}</b>
 							<input type="hidden" name="sveh_sysg" id="sveh_sysg" value='${model.record.sveh_sysg}'>
 						</c:otherwise>
 					</c:choose>	
             		&nbsp;&nbsp;
 					<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text14MediumBlue">u</font></a>s:
+					<span title="sveh_syst">Stat</span><a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text14MediumBlue">u</font></a>s:
 					<b>
 						<c:choose>
 							<c:when test="${empty model.record.sveh_syst}">
@@ -186,7 +186,7 @@
 							</c:otherwise>
 						</c:choose>
 					</b>
-					&nbsp;&nbsp;Datum:&nbsp;${model.record.sveh_sydt}
+					&nbsp;&nbsp;<span title="sveh_sydt">Datum:</span>&nbsp;${model.record.sveh_sydt}
 					<div class="text11" style="position: relative;" align="left" >
 					<span style="position:absolute;left:350px;top:2px;width:250px;" id="status_info" class="popupWithInputText text11"  >
 		           		Endast <b>M</b> och <b>' '</b> kan editeras. Alla andra kan man bara titta på

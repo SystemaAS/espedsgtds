@@ -223,41 +223,41 @@
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
 					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
-	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.export.list.search.label.avd"/>&nbsp;</th>   
-	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.signatur"/>&nbsp;</th>
-	                    <th class="tableHeaderField" nowrap>
+	                    <th class="tableHeaderFieldFirst" width="2%">&nbsp;<spring:message code="systema.tds.export.list.search.label.avd"/>&nbsp;</th>   
+	                    <th class="tableHeaderField" width="2%">&nbsp;<spring:message code="systema.tds.export.list.search.label.signatur"/>&nbsp;</th>
+	                    <th class="tableHeaderField" width="4%" nowrap>
 							<img onMouseOver="showPop('update_info');" onMouseOut="hidePop('update_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 		 					<spring:message code="systema.tds.export.list.search.label.update"/>
-		 				</th>	
-						<span style="position:absolute; left:1020px; top:150px; width:250px; height:400px;" id="update_info" class="popupWithInputText"  >
-			           		<div class="text11" align="left">
-			           			<img title="Rättelse" style="vertical-align:bottom;" src="resources/images/request.gif" width="14px" height="12px" border="0">
-			           			<b>Rättelse av ej klarerat ärende</b><br/>
-				           		<ul>
-				           			<li>&nbsp;Status=O och meddelandetyp=[UNU] </li>
-				           		</ul>
-				           		
-				           		<img title="Omprövning" style="vertical-align:bottom;" src="resources/images/lightbulb.png" width="14px" height="12px" border="0">
-				           		<b>Omprövning</b><br/>
-				           		<ul>
-				           			<li>&nbsp;Status=G och meddelandetyp=[UGE] </li>
-				           		</ul>
-				           		
-				           		<img title="Kompletterande" style="vertical-align:bottom;" src="resources/images/complete-icon.png" width="14px" height="12px" border="0">
-				           		<b>Kompletterande av tulldeklaration</b><br/>
-				           		<ul>
-				           			<li>&nbsp;Status=O och meddelandetyp=[UNU eller URT]</li>
-				           			<li>&nbsp;Status=G och meddelandetyp=[UGE]</li>
-				           		</ul>
-				           		
-				           		<img title="Uppdatera ärende" style="vertical-align:bottom;" src="resources/images/update.gif" border="0">
-				           		<b>Uppdatera</b><br/>
-				           		<ul>
-				           			<li>&nbsp;Status=tomt eller M</li>
-				           		</ul>
-							</div>
-						</span>	
-					
+		 					
+			 				<div class="text11" style="position: relative;" align="left" >
+	                		<span style="position:absolute;top:2px; width:250px;" id="update_info" class="popupWithInputText text11"  >
+			        				<img title="Rättelse" style="vertical-align:bottom;" src="resources/images/request.gif" width="14px" height="12px" border="0">
+				           			<b>Rättelse av ej klarerat ärende</b><br/>
+					           		<ul>
+					           			<li>&nbsp;Status=O och meddelandetyp=[UNU] </li>
+					           		</ul>
+					           		
+					           		<img title="Omprövning" style="vertical-align:bottom;" src="resources/images/lightbulb.png" width="14px" height="12px" border="0">
+					           		<b>Omprövning</b><br/>
+					           		<ul>
+					           			<li>&nbsp;Status=G och meddelandetyp=[UGE] </li>
+					           		</ul>
+					           		
+					           		<img title="Kompletterande" style="vertical-align:bottom;" src="resources/images/complete-icon.png" width="14px" height="12px" border="0">
+					           		<b>Kompletterande av tulldeklaration</b><br/>
+					           		<ul>
+					           			<li>&nbsp;Status=O och meddelandetyp=[UNU eller URT]</li>
+					           			<li>&nbsp;Status=G och meddelandetyp=[UGE]</li>
+					           		</ul>
+					           		
+					           		<img title="Uppdatera ärende" style="vertical-align:middle;" src="resources/images/update.gif" border="0">
+					           		<b>Uppdatera</b><br/>
+					           		<ul>
+					           			<li>&nbsp;Status=tomt eller M</li>
+					           		</ul>
+							</span>
+							</div>	
+						</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.arende"/>&nbsp;</th>
 	                    <th class="tableHeaderField" >&nbsp;<spring:message code="systema.tds.export.list.search.label.extRef"/></th>
 	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.tullid"/>&nbsp;</th>
@@ -282,9 +282,9 @@
 		                       <tr class="tableOddRow" height="20" >
 		                   </c:otherwise>
 		               </c:choose>
-		               <td class="tableCellFirst" width="5%">&nbsp;${topic.avd}</td>
-		               <td class="tableCell" >&nbsp;${topic.sign}</td>
-		               <td nowrap class="tableCell" align="center" >&nbsp;
+		               <td class="tableCellFirst" width="2%">&nbsp;${topic.avd}</td>
+		               <td class="tableCell" width="2%">&nbsp;${topic.sign}</td>
+		               <td width="2%" class="tableCell" align="center" >&nbsp;
 		               		<c:choose>
 		               	   		<c:when test="${empty topic.status || topic.status=='M'}">
 			               	   		<a id="alinkCurrentHeaderId_${counter.count}" onClick="setBlockUI();" href="tdsexport_edit.do?action=doFetch&avd=${topic.avd}&opd=${topic.opd}&sysg=${topic.sign}&tuid=${topic.tullid}&syst=${topic.status}&sydt=${topic.datum}">
@@ -296,16 +296,16 @@
 			               				<c:when test="${ topic.status=='O'}">
 				               				<c:if test="${ topic.mtyp=='UNU' }" >
 						               	   		<a class="correctionOnNonClearedLink" id="correctionOnNonClearedLink${counter.count}" runat="server" href="#"">
-						               				<img title="Rättelse av ej klarerat ärende" src="resources/images/request.gif" width="14px" height="12px" border="0" alt="request">
+						               				<img style="vertical-align:middle;" title="Rättelse av ej klarerat ärende" src="resources/images/request.gif" width="14px" height="12px" border="0" alt="request">
 					            					</a>
 					            					&nbsp;|&nbsp;
 					            					<a class="completionLink" id="completionLink${counter.count}" runat="server" href="#"">
-						               				<img title="Kompletterande tulldeklaration" src="resources/images/complete-icon.png" width="14px" height="12px" border="0" alt="completion">
+						               				<img style="vertical-align:middle;" title="Kompletterande tulldeklaration" src="resources/images/complete-icon.png" width="14px" height="12px" border="0" alt="completion">
 					            					</a>
 				               				</c:if>
 				               				<c:if test="${ topic.mtyp=='URT' }" >
 						               	   		<a class="completionLink" id="completionLink${counter.count}" runat="server" href="#"">
-						               				<img title="Kompletterande tulldeklaration" src="resources/images/complete-icon.png" width="14px" height="12px" border="0" alt="completion">
+						               				<img style="vertical-align:middle;" title="Kompletterande tulldeklaration" src="resources/images/complete-icon.png" width="14px" height="12px" border="0" alt="completion">
 					            					</a>
 				               				</c:if>
 			               				</c:when>
@@ -313,7 +313,7 @@
 				               				<c:if test="${ topic.status=='G'}">
 					               				<c:if test="${ topic.mtyp=='UGE' }" >
 							               	   		<a class="completionLink" id="completionLink${counter.count}" runat="server" href="#"">
-							               				<img title="Kompletterande tulldeklaration" src="resources/images/complete-icon.png" width="14px" height="12px" border="0" alt="completion">
+							               				<img style="vertical-align:middle;" title="Kompletterande tulldeklaration" src="resources/images/complete-icon.png" width="14px" height="12px" border="0" alt="completion">
 						            					</a>
 					               				</c:if>
 				               				</c:if>

@@ -26,7 +26,7 @@
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
 				<a id="alinkMainList" tabindex=-1 style="display:block;" href="tdsexport.do?action=doFind&sign=${model.sign}">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.list.tab"/></font>
-					<img valign="bottom" src="resources/images/list.gif" border="0" alt="general list">
+					<img src="resources/images/list.gif" border="0" alt="general list">
 					
 				</a>
 			</td>
@@ -38,7 +38,7 @@
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.export.created.mastertopic.tab"/></font>
 					<font class="text14MediumBlue">[${model.opd}]</font>
 					<c:if test="${model.status == 'M' || empty model.status}">
-						<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+						<img src="resources/images/update.gif" border="0" alt="edit">
 					</c:if>
 				</a>
 			</td>
@@ -363,11 +363,11 @@
 							               <td class="text11" align="center">${record.svev_syli}</td> 
 							               --%>
 						               	   <td width="2%" class="text11" align="center">&nbsp;
-							               		<a tabindex=-1 id="recordUpdate_${record.svev_syli}_${record.svev_vano}" href="#" onClick="getItemData(this);">
-							               			<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
+							               		<a tabindex=-1 style="display:block;" id="recordUpdate_${record.svev_syli}_${record.svev_vano}" href="#" onClick="getItemData(this);">
+							               			<img src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 						               	   </td>
-   							               <td width="4%" class="text11" >${record.svev_vano}</td>
+   							               <td align="center" width="4%" class="text14" >${record.svev_vano}</td>
 							               <td class="text14" >${record.svev_ulkd}</td>
 							               <td class="text14" >${record.svev_vata}&nbsp;&nbsp;
 							               	  <img id="recordUpdate_${record.svev_syli}_${record.svev_vano}" onClick="updateKundensVarReg(this);" src="resources/images/addOrder.png" width="12px" height="12px" border="0" title="Lägg till i kundensvarureg.">
@@ -467,7 +467,7 @@
 				 		<tr height="15">
 				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;</b>
-								<img onClick="showPop('updateInfo');" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+								<img onClick="showPop('updateInfo');" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
 					           		<div class="text11" align="left">
 					           			<br/>${activeUrlRPGUpdate}<br/><br/>
@@ -1238,7 +1238,7 @@
 				 		<tr height="15">
 				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extraordinära uppgifter&nbsp;</b>
-				 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+				 				<img src="resources/images/update.gif" border="0" alt="edit">
 				 				
 			 				</td>
 		 				</tr>
@@ -1879,7 +1879,7 @@
 							 		<tr height="15">
 							 			<td class="text14">
 							 				&nbsp;&nbsp;<b>Ytterligare säkerhetsuppgifter&nbsp;</b>
-							 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+							 				<img src="resources/images/update.gif" border="0" alt="edit">
 							 				
 						 				</td>
 					 				</tr>

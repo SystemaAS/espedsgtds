@@ -145,14 +145,14 @@
 			<input type="hidden" name="sign" id="sign" value='${model.record.svih_sysg}'>
 			<tr >
 				<td align="left" class="text14MediumBlue" >
-					&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.svih_syav}&nbsp;&nbsp;Ärende:&nbsp;<b>${model.record.svih_syop}</b>
-					&nbsp;&nbsp;Tullid:&nbsp;<b>${model.record.svih_tuid}</b>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span title="svih_syav">Avd:</span>&nbsp;${model.record.svih_syav}&nbsp;&nbsp;<span title="svih_syop">Ärende:&nbsp;</span><b>${model.record.svih_syop}</b>
+					&nbsp;&nbsp;<span title="svih_tuid">Tullid:</span>&nbsp;<b>${model.record.svih_tuid}</b>
 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricFragaTullidURL.value}" onclick="${model.taricFragaTullidURL.windowOpenDimensions}" >
             			<img title="Fråga Tullid (hos Tullverket)" style="vertical-align:bottom;" width="14px" height="16px" src="resources/images/help.png" border="0" alt="question">                		
             		</a>
             		<c:choose>
 	 				    <c:when test="${model.record.svih_syst == 'M' || empty model.record.svih_syst}">																	 			
-							&nbsp;&nbsp;Sign:&nbsp;
+							&nbsp;&nbsp;<span title="svih_sysg">Sign:</span>&nbsp;
 		           			<select class="selectMediumBlueE2" name="svih_sysg" id="svih_sysg">
 			            		<option value="">-Välj-</option>
 			 				  	<c:forEach var="record" items="${model.signList}" >
@@ -161,13 +161,13 @@
 							</select>
 						</c:when>
 						<c:otherwise>
-							&nbsp;&nbsp;Sign:&nbsp;<b>${model.record.svih_sysg}</b>
+							&nbsp;&nbsp;<span title="svih_sysg">Sign:</span>&nbsp;<b>${model.record.svih_sysg}</b>
 							<input type="hidden" name="svih_sysg" id="svih_sysg" value='${model.record.svih_sysg}'>
 						</c:otherwise>
 					</c:choose>	
 					&nbsp;&nbsp;
 					<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text14MediumBlue">u</font></a>s:
+					<span title="svih_syst">Stat</span><a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text14MediumBlue">u</font></a>s:
 					<b>
 						<c:choose>
 							<c:when test="${empty model.record.svih_syst}">
@@ -178,7 +178,7 @@
 							</c:otherwise>
 						</c:choose>
 					</b>
-					&nbsp;&nbsp;Datum:&nbsp;${model.record.svih_sydt}
+					&nbsp;&nbsp;<span title="svih_sydt">Datum:</span>&nbsp;${model.record.svih_sydt}
 				</td>
 				<td align="right" valign="top">
 					<c:if test="${'1' != isTestAvd}">

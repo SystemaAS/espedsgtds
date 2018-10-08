@@ -228,10 +228,10 @@
 				<table width="100%" cellspacing="0" border="0" cellpadding="0">
 					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
-	                    <th class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.tds.import.list.search.label.avd"/>&nbsp;</th>   
-	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.signatur"/>&nbsp;</th>
-	                    <th class="tableHeaderField" nowrap>
-	                    		<img onMouseOver="showPop('update_info');" onMouseOut="hidePop('update_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+	                    <th class="tableHeaderFieldFirst" width="2%">&nbsp;<spring:message code="systema.tds.import.list.search.label.avd"/>&nbsp;</th>   
+	                    <th class="tableHeaderField" width="2%" nowrap>&nbsp;<spring:message code="systema.tds.import.list.search.label.signatur"/>&nbsp;</th>
+	                    <th class="tableHeaderField" width="4%" nowrap>
+	                    	<img onMouseOver="showPop('update_info');" onMouseOut="hidePop('update_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 		 					<spring:message code="systema.tds.import.list.search.label.update"/>
 	 					
 	 					<div class="text11" style="position: relative;" align="left" >
@@ -279,13 +279,13 @@
 		                       <tr class="tableOddRow" height="20" >
 		                   </c:otherwise>
 		               </c:choose>
-		               <td class="tableCellFirst" width="5%">&nbsp;${topic.avd}</td>
-		               <td class="tableCell" >&nbsp;${topic.sign}</td>
-		               <td nowrap class="tableCell" align="center">
+		               <td class="tableCellFirst" width="2%">&nbsp;${topic.avd}</td>
+		               <td class="tableCell" width="2%" >&nbsp;${topic.sign}</td>
+		               <td nowrap class="tableCell" width="4%" align="center">
 		               		<c:choose>
 		               	   		<c:when test="${empty topic.status || topic.status=='M'}">
 			               	   		<a id="alinkCurrentHeaderId_${counter.count}" onClick="setBlockUI();" href="tdsimport_edit.do?action=doFetch&avd=${topic.avd}&opd=${topic.opd}&sysg=${topic.sign}&tuid=${topic.tullid}&syst=${topic.status}&sydt=${topic.datum}">
-			               				<img title="Uppdatera ärende" valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+			               				<img title="Uppdatera ärende" src="resources/images/update.gif" border="0" alt="edit">
 		            					</a>
 		               			</c:when>
 		               			<c:otherwise>

@@ -36,7 +36,7 @@
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.tds.import.created.mastertopic.tab"/></font>
 					<font class="text14MediumBlue">[${model.opd}]</font>
 					<c:if test="${model.status == 'M' || empty model.status}">
-						<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+						<img src="resources/images/update.gif" border="0" alt="edit">
 					</c:if>
 				</a>
 			</td>
@@ -422,7 +422,7 @@
 							           <c:forEach items="${model.list}" var="record" varStatus="counter">    
 							               <tr class="tableRow" >
 							               <td width="2%" class="text14" align="center">
-					               				<a tabindex=-1 id="recordUpdate_${record.sviv_syli}_${record.sviv_vano}" href="#" onClick="getItemData(this);">
+					               				<a style="display:block;" tabindex=-1 id="recordUpdate_${record.sviv_syli}_${record.sviv_vano}" href="#" onClick="getItemData(this);">
 					               					<img src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 						               			</a>
 							               </td>
@@ -1757,7 +1757,7 @@
 				 		<tr height="15">
 				 			<td class="text14White">
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extraordinära uppgifter&nbsp;</b>
-				 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+				 				<img src="resources/images/update.gif" border="0" alt="edit">
 				 				
 			 				</td>
 		 				</tr>
