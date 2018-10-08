@@ -47,6 +47,10 @@
   		  setBlockUI();
 		  jq("#sumOfInvoiceAmountInItemLines").val(jq("#sumOfInvoiceAmountInItemLines").val().replace(',', '.'));
 	  	});
+  		jq( "#submit2" ).click(function( event ) {
+    		  setBlockUI();
+  		  jq("#sumOfInvoiceAmountInItemLines").val(jq("#sumOfInvoiceAmountInItemLines").val().replace(',', '.'));
+  	  	});
   		
   		//=====================================
 	  	//START Child window for general codes

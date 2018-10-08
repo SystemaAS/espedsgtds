@@ -1068,6 +1068,24 @@
 					<td width="2">&nbsp;</td>
 					<td valign="top">
 			 			<table border="0" cellspacing="0" cellpadding="0">
+			 				<tr >	
+			            		<td colspan="4" class="text9BlueGreen" valign="bottom" align="left" >
+				 				<%-- only status = M or emtpy status is allowed --%>
+			 				    <c:choose>
+				 				    <c:when test="${model.record.svih_syst == 'M' || empty model.record.svih_syst}">
+				 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" id="submit" onclick="javascript: form.action='tdsimport_edit.do';" value='<spring:message code="systema.tds.import.createnew.submit"/>'/>
+				 				    	&nbsp;&nbsp;
+				 				    	<c:if test="${not empty model.record.svih_syop && model.record.validUpdate}">
+				 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='tdsimport_send.do';" value='<spring:message code="systema.tds.import.createnew.send"/>'/>
+				 				    	</c:if>
+				 				    </c:when>
+				 				    <c:otherwise>
+				 				    	<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+				 				    </c:otherwise>	
+			 				    </c:choose>
+			 				    </td>
+		 				    </tr>
+		 				    <tr height="5"><td class="text">&nbsp;</td> </tr>
 					 		<tr>
 					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('15_a_info');" onMouseOut="hidePop('15_a_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -1450,14 +1468,14 @@
 			 				    <%-- only status = M or emtpy status is allowed --%>
 			 				    <c:choose>
 				 				    <c:when test="${model.record.svih_syst == 'M' || empty model.record.svih_syst}">
-				 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" id="submit" onclick="javascript: form.action='tdsimport_edit.do';" value='<spring:message code="systema.tds.import.createnew.submit"/>'/>
+				 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='tdsimport_edit.do';" value='<spring:message code="systema.tds.import.createnew.submit"/>'/>
 				 				    	&nbsp;&nbsp;
 				 				    	<c:if test="${not empty model.record.svih_syop && model.record.validUpdate}">
-				 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='tdsimport_send.do';" value='<spring:message code="systema.tds.import.createnew.send"/>'/>
+				 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='tdsimport_send.do';" value='<spring:message code="systema.tds.import.createnew.send"/>'/>
 				 				    	</c:if>
 				 				    </c:when>
 				 				    <c:otherwise>
-				 				    	<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+				 				    	<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit2" value='Ej uppdaterbart'/>
 				 				    </c:otherwise>	
 			 				    </c:choose>
 		 				    
