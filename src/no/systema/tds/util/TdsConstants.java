@@ -54,7 +54,7 @@ public final class TdsConstants {
 	public static final String RESOURCE_MODEL_KEY_CODE_MCF_LIST = "mcfCodeList"; //Bilagdahandlingarkoder
 	public static final String RESOURCE_MODEL_KEY_CODE_SAL_LIST = "salCodeList"; //Särskilda upplysningar
 	public static final String RESOURCE_MODEL_KEY_CODE_MDM_LIST = "mdmCodeList"; //Enhetslist (beräkning)
-	
+	public static final String RESOURCE_MODEL_KEY_CODE_ARCHIVE_CODE_LIST = "typeArchiveCodeList";
 	
 	public static final String RESOURCE_MODEL_KEY_CODE_FORMAN_LIST = "formanCodeList"; //förmånskoder
 	public static final String RESOURCE_MODEL_KEY_CODE_FORFARANDE01_LIST = "forfarande01CodeList"; //förfarande 1

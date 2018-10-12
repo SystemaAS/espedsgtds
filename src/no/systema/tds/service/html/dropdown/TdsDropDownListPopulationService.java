@@ -10,6 +10,7 @@ import no.systema.tds.mapper.jsonjackson.avdsignature.TdsSignatureMapper;
 
 import no.systema.tds.model.jsonjackson.codes.JsonTdsCodeContainer;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
+import no.systema.tds.model.jsonjackson.codes.JsonTdsCode2Container;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureContainer;
 
@@ -40,6 +41,9 @@ public class TdsDropDownListPopulationService {
 	
 	public JsonTdsNctsCodeContainer getNctsCodeContainer(String utfPayload) throws Exception{
 		return this.codeMapper.getNctsContainer(utfPayload);
+	}
+	public JsonTdsCode2Container getCodeContainer2(String utfPayload) throws Exception{
+		return this.codeMapper.getContainer2(utfPayload);
 	}
 	/**
 	 * 

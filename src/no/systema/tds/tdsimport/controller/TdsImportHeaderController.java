@@ -121,6 +121,8 @@ public class TdsImportHeaderController {
 			
     		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
     		this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
+    		//drop down to print skilleark (must be Z type)
+			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString2(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model, appUser, "Z");
 			//add gui lists here
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDX");
@@ -187,6 +189,8 @@ public class TdsImportHeaderController {
 				//add gui lists here (common for FETCH, UPDATE, etc)
 	    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
 				this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
+				//drop down to print skilleark (must be Z type)
+				this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString2(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model, appUser, "Z");
 				
 				//-------------
 				//FETCH RECORD
@@ -588,6 +592,53 @@ public class TdsImportHeaderController {
 		return successView;
 	}
 	
+	
+	/**
+	 * 
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsimport_edit_printSkilleArkTopic.do",  method={RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView doTdsImportEditPrintSkilleArkTopic(HttpSession session, HttpServletRequest request){
+		Map model = new HashMap();
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		ModelAndView successView = new ModelAndView("redirect:tdsimport.do?action=doFind&sign=" + appUser.getTdsSign());
+		
+		String method = "doTdsImportEditPrintSkilleArkTopic [RequestMapping-->tdsimport_edit_printSkilleArkTopic.do]";
+		logger.info("Method: " + method);
+		String opd = request.getParameter("currentOpd");
+		String avd = request.getParameter("currentAvd");
+		String archiveType = request.getParameter("selectedType");
+		
+		//check user (should be in session already)
+		if(appUser==null){
+			return loginView;
+		}else{
+			//-------------------------------------
+			//get BASE URL = RPG-PROGRAM for PRINT
+            //-------------------------------------
+			String BASE_URL = TdsUrlDataStore.TDS_BASE_PRINT_FORSATTSBLAD_FOR_SPECIFIC_TOPIC_URL;
+			//url params
+			String urlRequestParamsKeys = this.getRequestUrlKeyParametersForPrintSkilleArk( avd, opd, appUser, archiveType);
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+	    	logger.info("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+	    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+	    	//--------------------------------------
+	    	//EXECUTE the Print (RPG program) here
+	    	//--------------------------------------
+	    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+			//Debug --> 
+	    	logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
+	    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		    //END of PRINT here and now
+	    	logger.info("Method PRINT END - " + method);	
+		}
+		
+		return successView;
+	}
+
 
 	/**
 	 * Copies one topic(ärende) to a new one (clones the source topic)
@@ -703,6 +754,8 @@ public class TdsImportHeaderController {
 	    		//add gui lists here (common for FETCH, UPDATE, etc)
 	    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
 				this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
+				//drop down to print skilleark (must be Z type)
+				this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString2(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model, appUser, "Z");
 				
 	    		//add gui lists here
 	    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","GCY");
@@ -831,6 +884,8 @@ public class TdsImportHeaderController {
 	    		//add gui lists here (common for FETCH, UPDATE, etc)
 	    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
 				this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
+				//drop down to print skilleark (must be Z type)
+				this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString2(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model, appUser, "Z");
 				//land and currency codes
 	    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","GCY");
     			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","MDX");
@@ -1117,6 +1172,8 @@ public class TdsImportHeaderController {
 		    		//add gui lists here (common for FETCH, UPDATE, etc)
 		    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
 					this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
+					//drop down to print skilleark (must be Z type)
+					this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString2(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model, appUser, "Z");
 					
 		    		//add gui lists here
 		    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
@@ -1774,7 +1831,24 @@ public class TdsImportHeaderController {
 		}
 		
 	}	
-	
+	/**
+	 * 
+	 * @param avd
+	 * @param opd
+	 * @param appUser
+	 * @param type
+	 * @return
+	 */
+	private String getRequestUrlKeyParametersForPrintSkilleArk(String avd, String opd, SystemaWebUser appUser, String type){
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		
+		urlRequestParamsKeys.append("user=" + appUser.getUser());
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + avd);
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "type=" + type);
+		
+		return urlRequestParamsKeys.toString();	
+	}
 	
 	
 	//SERVICES

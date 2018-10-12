@@ -125,5 +125,13 @@ public final class TdsUrlDataStore {
 	//http://gw.systema.no/sycgip/tsvg022r.pgm?user=OSCAR&ie=I&vata=8708299000&lk=NO
 	static public String TDS_FETCH_TILLAGSKODER_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVG022R.pgm";
 	
+	//--------------
+	//PRINT special
+	//--------------
+	//http://gw.systema.no/sycgip/TARC000R.pgm?user=OSCAR&avd=1&opd=218&type=Z
+	static public String TDS_BASE_PRINT_FORSATTSBLAD_FOR_SPECIFIC_TOPIC_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TARC000R.pgm";	
+	//http://gw.systema.no/sycgip/TARC001R.pgm?user=OSCAR&type=Z..
+	static public String TDS_CODES2_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TARC001R.pgm"; 
+	
 
 }

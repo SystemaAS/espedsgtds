@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.service.UrlCgiProxyService;
+import no.systema.tds.model.jsonjackson.codes.JsonTdsCode2Container;
+import no.systema.tds.model.jsonjackson.codes.JsonTdsCode2Record;
 import no.systema.tds.model.external.url.*;
 
 import no.systema.tds.model.jsonjackson.codes.JsonTdsCodeContainer;
@@ -135,6 +137,48 @@ public class CodeDropDownMgr {
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * 
+	 * @param urlCgiProxyService
+	 * @param tdsDropDownListPopulationService
+	 * @param model
+	 * @param appUser
+	 * @param paramTYP
+	 */
+	public void populateCodesHtmlDropDownsFromJsonString2(UrlCgiProxyService urlCgiProxyService, TdsDropDownListPopulationService tdsDropDownListPopulationService,
+			Map model, SystemaWebUser appUser, String paramTYP){
+			//fill in html lists here
+			try{
+			
+			String CODES_URL = TdsUrlDataStore.TDS_CODES2_URL;
+			StringBuffer urlRequestParamsKeys = new StringBuffer();
+			urlRequestParamsKeys.append("user=" + appUser.getUser());
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "type=" + paramTYP);
+			//logger.info("CODES_URL:" + CODES_URL);
+			//logger.info("CODES PARAMS:" + urlRequestParamsKeys.toString());
+			String utfPayload = urlCgiProxyService.getJsonContent(CODES_URL, urlRequestParamsKeys.toString());
+			//debug
+			//logger.info(utfPayload);
+			
+			JsonTdsCode2Container codeContainer = tdsDropDownListPopulationService.getCodeContainer2(utfPayload);
+			List<JsonTdsCode2Record> list = new ArrayList();
+			
+			//Take some exception into consideration here or run the default to populate the final list
+			for(JsonTdsCode2Record codeRecord: codeContainer.getArkivkodelist()){
+				//default
+				list.add(codeRecord);
+				//logger.info("CODE_RECORD: " + codeRecord.getArtype());
+			}
+			model.put(TdsConstants.RESOURCE_MODEL_KEY_CODE_ARCHIVE_CODE_LIST,list);
+			
+			//we put tolltariffen here since there is no other related list on ITEMS jsp
+			//model.put(SadImportConstants.URL_EXTERNAL_TOLLTARIFFEN, new UrlTvinnSadTolltariffenObject() );
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
 	}
 	
 }
