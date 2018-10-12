@@ -45,6 +45,11 @@ public class SearchFilterTdsExportTopicList {
 	public void setDatum(String value) {  this.datum = value; }
 	public String getDatum() { return this.datum;}
 	
+	//Till och med
+	private String datumt = null;
+	public void setDatumt(String value) {  this.datumt = value; }
+	public String getDatumt() { return this.datumt;}
+		
 	private String status = null;
 	public void setStatus(String value) {  this.status = value; }
 	public String getStatus() { return this.status;}

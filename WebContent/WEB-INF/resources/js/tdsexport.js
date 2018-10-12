@@ -17,6 +17,9 @@
 		  dateFormat: 'yymmdd', 
 		  defaultDate: "-6m"	  
 	  });
+	  jq("#datumt").datepicker({ 
+		  dateFormat: 'yymmdd'  
+	  });
 	  jq( "#submit" ).click(function( event ) {
 		  setBlockUI();
   	  });

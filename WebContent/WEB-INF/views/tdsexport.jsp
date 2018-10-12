@@ -87,7 +87,7 @@
                 
                 <td class="text14" align="left" >
                 	<img onMouseOver="showPop('datum_info');" onMouseOut="hidePop('datum_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-                	<spring:message code="systema.tds.export.list.search.label.datum"/>
+                	F.o.m.&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/>
                 	<div class="text11" style="position: relative;" align="left" >
 	                <span style="position:absolute;top:2px; width:250px;" id="datum_info" class="popupWithInputText text11"  >
 		           		
@@ -97,7 +97,8 @@
 		           		
 					</span>
 					</div>	
-                	</td>
+               	</td>
+                <td class="text14" align="left" >T.o.m&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/></td>	
                 
                 <td class="text14" align="left" >
                 <img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -161,12 +162,13 @@
 				</td>
 				<td align="left" ><input type="text" class="inputText" name="opd" id="opd" size="10" maxlength="10" value='${searchFilterTdsExport.opd}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="xref" id="xref" size="10" maxlength="20" value='${searchFilterTdsExport.xref}'>&nbsp;</td>
-				<td align="left" ><input type="text" class="inputText" name="tullId" id="tullId" size="14" maxlength="35" value='${searchFilterTdsExport.tullId}'>&nbsp;</td>
+				<td align="left" ><input type="text" class="inputText" name="tullId" id="tullId" size="15" maxlength="35" value='${searchFilterTdsExport.tullId}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="mtyp" id="mtyp" size="3" maxlength="3" value='${searchFilterTdsExport.mtyp}'>&nbsp;</td>
-				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="10" maxlength="8" value='${searchFilterTdsExport.datum}'>&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="8" maxlength="8" value='${searchFilterTdsExport.datum}'>&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datumt" id="datumt" size="8" maxlength="8" value='${searchFilterTdsExport.datumt}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="status" id="status" size="2" maxlength="1" value='${searchFilterTdsExport.status}'>&nbsp;</td>
-				<td align="left" ><input type="text" class="inputText" name="avsNavn" id="avsNavn" size="10" maxlength="50" value='${searchFilterTdsExport.avsNavn}'>&nbsp;</td>
-				<td align="left" ><input type="text" class="inputText" name="motNavn" id="motNavn" size="10" maxlength="50" value='${searchFilterTdsExport.motNavn}'>&nbsp;</td>
+				<td align="left" ><input type="text" class="inputText" name="avsNavn" id="avsNavn" size="8" maxlength="50" value='${searchFilterTdsExport.avsNavn}'>&nbsp;</td>
+				<td align="left" ><input type="text" class="inputText" name="motNavn" id="motNavn" size="8" maxlength="50" value='${searchFilterTdsExport.motNavn}'>&nbsp;</td>
 				<td valign="top" align="left" >
                    &nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="search.label"/>'>
                    <img src="resources/images/find.png" border="0" alt="">
