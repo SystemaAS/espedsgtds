@@ -170,8 +170,8 @@
 				<td align="left" ><input type="text" class="inputText" name="xref" id="xref" size="10" maxlength="20" value='${searchFilterTdsImport.xref}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="tullId" id="tullId"size="15" maxlength="35" value='${searchFilterTdsImport.tullId}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="mtyp" id="mtyp"size="3" maxlength="3" value='${searchFilterTdsImport.mtyp}'>&nbsp;</td>
-				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="8" maxlength="8" value='${searchFilterTdsImport.datum}'>&nbsp;</td>
-				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datumt" id="datumt" size="8" maxlength="8" value='${searchFilterTdsImport.datumt}'>&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="9" maxlength="8" value='${searchFilterTdsImport.datum}'>&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datumt" id="datumt" size="9" maxlength="8" value='${searchFilterTdsImport.datumt}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="status" id="status" size="1" maxlength="1" value='${searchFilterTdsImport.status}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="avsNavn" id="avsNavn" size="10" maxlength="50" value='${searchFilterTdsImport.avsNavn}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="motNavn" id="motNavn" size="10" maxlength="50" value='${searchFilterTdsImport.motNavn}'>&nbsp;</td>

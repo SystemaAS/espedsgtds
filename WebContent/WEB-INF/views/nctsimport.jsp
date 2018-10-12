@@ -61,6 +61,8 @@
 				</span>	
 				</div>
                 </td>
+                <td class="text14" align="left" >F.o.m.&nbsp;<spring:message code="systema.ncts.import.list.search.label.datum"/></td>
+                
                 <td class="text14" align="left" >
 				<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
                 <spring:message code="systema.ncts.import.list.search.label.status"/>
@@ -97,7 +99,19 @@
                 <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.import.list.search.label.type"/></td>
                 <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.import.list.search.label.ansvarig"/></td>
                 <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.import.list.search.label.godsnr"/></td>
-                <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.import.list.search.label.frigivningsDatum"/></td>
+                <td class="text14" align="left" ><img onMouseOver="showPop('datumFr_info');" onMouseOut="hidePop('datumFr_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+	                <spring:message code="systema.ncts.import.list.search.label.frigivningsDatum"/>
+	               	<div class="text11" style="position: relative;" align="left">
+	                <span style="position:absolute;top:2px; width:250px;" id="datum_info" class="popupWithInputText text11"  >
+		           		Frigivningsdatum - Kommer från Tullverket (read-only)<br/> 
+					</span>	
+					</div>
+               	</td>
+               	
+               	
+  
+               	
+                
                 
                 <td>&nbsp;</td>
 			</tr>
@@ -121,6 +135,7 @@
 				<td align="left" ><input type="text" class="inputText" name="opd" id="opd" size="10" maxlength="10" value="${searchFilterTdsImportNcts.opd}">&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="mrnNr" id="mrnNr" size="15" maxlength="18" value="${searchFilterTdsImportNcts.mrnNr}">&nbsp;</td>
 				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="9" maxlength="8" value="${searchFilterTdsImportNcts.datum}">&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datumt" id="datumt" size="9" maxlength="8" value="${searchFilterTdsImportNcts.datumt}">&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="status" id="status" size="2" maxlength="1" value="${searchFilterTdsImportNcts.status}">&nbsp;</td>
 				<td align="left" >
 					<select class="selectMediumBlueE2" name="forenklad" id="forenklad">
@@ -130,7 +145,7 @@
 					</select>
 				</td>
 				<td align="left" ><input type="text" class="inputText" name="ansNavn" id="ansNavn" size="12" maxlength="50" value="${searchFilterTdsImportNcts.ansNavn}">&nbsp;</td>
-				<td align="left" ><input type="text" class="inputText" name="godsNr" id="godsNr" size="12" maxlength="35" value="${searchFilterTdsImportNcts.godsNr}">&nbsp;</td>
+				<td align="left" ><input type="text" class="inputText" name="godsNr" id="godsNr" size="15" maxlength="35" value="${searchFilterTdsImportNcts.godsNr}">&nbsp;</td>
 				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datumFr" id="datumFr" size="9" maxlength="8" value="${searchFilterTdsImportNcts.datumFr}">&nbsp;</td>
 
 				

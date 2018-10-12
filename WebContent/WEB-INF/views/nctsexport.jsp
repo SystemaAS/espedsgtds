@@ -54,7 +54,7 @@
                 <td class="text14" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mrnNr"/></td>
                 <td class="text14" align="left" >
 				<img onMouseOver="showPop('datum_info');" onMouseOut="hidePop('datum_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-                <spring:message code="systema.ncts.export.list.search.label.datum"/>
+                F.o.m&nbsp;<spring:message code="systema.ncts.export.list.search.label.datum"/>
                 <div class="text11" style="position: relative;" align="left">
                 <span style="position:absolute;top:2px; width:250px;" id="datum_info" class="popupWithInputText text11"  >
 	           		Standardsök (tomt datum) gäller <b>15 dagar bakåt</b> i tiden.<br/><br/> 
@@ -63,6 +63,8 @@
 				</span>	
 				</div>
                 </td>
+                <td class="text14" align="left" >T.o.m&nbsp;<spring:message code="systema.ncts.export.list.search.label.datum"/></td>	
+                
                 <td class="text14" align="left" >
 				<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
                 <spring:message code="systema.ncts.export.list.search.label.status"/>
@@ -124,8 +126,9 @@
 				</td>
 				<td align="left" ><input type="text" class="inputText" name="opd" id="opd" size="10" maxlength="10" value='${searchFilterTdsExportNcts.opd}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="lrnNr" id="lrnNr" size="14" maxlength="35" value='${searchFilterTdsExportNcts.lrnNr}'>&nbsp;</td>
-				<td align="left" ><input type="text" class="inputText" name="mrnNr" id="mrnNr" size="14" maxlength="35" value='${searchFilterTdsExportNcts.mrnNr}'>&nbsp;</td>
-				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="10" maxlength="8" value='${searchFilterTdsExportNcts.datum}'>&nbsp;</td>
+				<td align="left" ><input type="text" class="inputText" name="mrnNr" id="mrnNr" size="15" maxlength="35" value='${searchFilterTdsExportNcts.mrnNr}'>&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datum" id="datum" size="9" maxlength="8" value='${searchFilterTdsExportNcts.datum}'>&nbsp;</td>
+				<td align="left" ><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="datumt" id="datumt" size="9" maxlength="8" value='${searchFilterTdsExportNcts.datumt}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="status" id="status" size="2" maxlength="1" value='${searchFilterTdsExportNcts.status}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="motNavn" id="motNavn" size="10" maxlength="50" value='${searchFilterTdsExportNcts.motNavn}'>&nbsp;</td>
 				<td align="left" ><input type="text" class="inputText" name="bruttoVikt" id="bruttoVikt" size="10" maxlength="50" value='${searchFilterTdsExportNcts.bruttoVikt}'>&nbsp;</td>

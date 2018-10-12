@@ -38,6 +38,10 @@ public class SearchFilterNctsImportTopicList {
 	public void setDatum(String value) {  this.datum = value; }
 	public String getDatum() { return this.datum;}
 
+	private String datumt = null;
+	public void setDatumt(String value) {  this.datumt = value; }
+	public String getDatumt() { return this.datumt;}
+
 	private String mrnNr = null;
 	public void setMrnNr(String value) {  this.mrnNr = value; }
 	public String getMrnNr() { return this.mrnNr;}
