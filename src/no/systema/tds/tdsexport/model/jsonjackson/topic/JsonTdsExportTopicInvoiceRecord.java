@@ -96,6 +96,11 @@ public class JsonTdsExportTopicInvoiceRecord extends JsonAbstractGrandFatherReco
 		return this.svef_omrInt;
 	}
 	
+	//Tuid for Proforma
+	private String svef_tuid = null;
+	public void setSvef_tuid(String value) {  this.svef_tuid = value; }
+	public String getSvef_tuid() { return this.svef_tuid;}
+		
 	/**
 	 * 
 	 * @return

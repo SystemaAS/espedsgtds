@@ -1239,6 +1239,100 @@ public class TdsExportHeaderController {
 	
 	/**
 	 * 
+	 * @param recordToUpdate
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsexport_updateProforma.do")
+	public ModelAndView doUpdateProforma(JsonTdsExportSpecificTopicRecord recordToUpdate, HttpSession session, HttpServletRequest request){
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_EXPORT);
+		
+		RpgReturnResponseHandler rpgReturnResponseHandler = new RpgReturnResponseHandler();
+		
+		//---------------------------------
+		//Crucial request parameters (Keys
+		//---------------------------------
+		String action = TdsConstants.ACTION_SEND;
+		String opd = request.getParameter("currentOpd");
+		String avd = request.getParameter("currentAvd");
+		String sign = request.getParameter("currentSign");
+		String cbProforma = request.getParameter("currentCheckboxProforma");
+		if(strMgr.isNotNull(cbProforma)){
+			recordToUpdate.setSveh_prof(cbProforma);
+		}
+		
+		ModelAndView successView = new ModelAndView("redirect:tdsexport_edit.do?action=doFetch&avd=" + avd + "&opd=" + opd + "&sysg=" + sign);
+		
+		//Action (doFetch, doUpdate, doCreate)
+		logger.info("Action:" + action);
+		Map model = new HashMap();
+		
+		if( appUser==null || "".equals(appUser) ){
+			return this.loginView;
+		}else{
+			
+			//---------------------------
+			//get BASE URL = RPG-PROGRAM
+            //---------------------------
+			String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_UPDATE_PROFORMA_URL;
+			
+			//-------------------
+			//add URL-parameter 
+			//-------------------
+			String urlRequestParamsKeys = this.getRequestUrlKeyParametersForUpdateProforma(avd, opd, recordToUpdate, appUser);
+			//there are only key parameters in doSend. No other topic (record) specific parameters from GUI or such
+			String urlRequestParams = urlRequestParamsKeys;
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		    	logger.info("URL: " + BASE_URL);
+		    	logger.info("URL PARAMS: " + urlRequestParams);
+		    	//----------------------------------------------------------------------------
+		    	//EXECUTE the UPDATE (RPG program) here (STEP [2] when creating a new record)
+		    	//----------------------------------------------------------------------------
+		    	String rpgReturnPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
+			//Debug --> 
+		    	logger.info("Checking errMsg in rpgReturnPayload" + rpgReturnPayload);
+		    	//we must evaluate a return RPG code in order to know if the Update was OK or not
+		    	rpgReturnResponseHandler.evaluateRpgResponseOnTopicUpdate(rpgReturnPayload);
+		    	if(rpgReturnResponseHandler.getErrorMessage()!=null && !"".equals(rpgReturnResponseHandler.getErrorMessage())){
+		    		rpgReturnResponseHandler.setErrorMessage("[ERROR] FATAL on UPDATE: " + rpgReturnResponseHandler.getErrorMessage());
+		    		//TODO ERROR HANDLING HERE... stay in the same page ?
+		    	}else{
+		    		//Update succefully done!
+		    		logger.info("[INFO] Status successfully updated [changed status], OK ");
+		    		//put domain objects
+		    		//this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicRecord);
+		    		//TODO SUCCESS should stay at the same side or not? Right now we go to the list of topics
+		    	}
+			
+				
+		}
+		return successView;
+	}
+	/**
+	 * 
+	 * @param avd
+	 * @param opd
+	 * @param recordToUpdate
+	 * @param appUser
+	 * @return
+	 */
+	private String getRequestUrlKeyParametersForUpdateProforma(String avd, String opd, JsonTdsExportSpecificTopicRecord recordToUpdate, SystemaWebUser appUser){
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		
+		urlRequestParamsKeys.append("user=" + appUser.getUser());
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + avd);
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sveh_tuid=" + recordToUpdate.getSveh_tuid());
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sveh_prof=" + recordToUpdate.getSveh_prof());
+		
+		return urlRequestParamsKeys.toString();
+	}
+	
+	/**
+	 * 
 	 * @param avd
 	 * @param opd
 	 * @param mtyp
@@ -1413,7 +1507,7 @@ public class TdsExportHeaderController {
     	logger.info("Fakt.belopp(sum): " + invoiceAmount);
     	*/
     	topicRecord.setSumOfAntalKolliInItemLines(antalKolli);
-    	topicRecord.setSumOfGrossWeightInItemLines(grossWeight);
+    	topicRecord.setSumOfGrossWeightInItemLines(this.numberFormatter.getDouble(grossWeight, 3));
     	topicRecord.setSumOfInvoiceAmountInItemLines(this.numberFormatter.getDouble(invoiceAmount, 3));
     	
     	return topicRecord;

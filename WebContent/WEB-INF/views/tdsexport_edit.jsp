@@ -275,7 +275,7 @@
 		<%-- --------------- --%>
 		<tr>
 		<td width="50%" align="left">
-		<table width="80%" border="0" cellspacing="0" cellpadding="0">
+		<table style="width:90%;" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 	            <td width="5">&nbsp;</td>
 	            <td >
@@ -358,6 +358,7 @@
 							</span>
 							</div>
 			 				</td>
+			 				
 				 			<td>
 				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_mtyp" id="sveh_mtyp" TABINDEX=10>
 				 				  <option selected value="">-Välj-</option>
@@ -370,6 +371,7 @@
 								  <option value="UFF"<c:if test="${model.record.sveh_mtyp == 'UFF'}"> selected </c:if> >UFF</option>
 								</select>
 				 			</td>
+				 			
 		 				</tr>
 		 				<tr>
 		 					<td class="text14">
@@ -377,11 +379,10 @@
 				 				<b>1.2</b><font class="text16RedBold" >*</font><span title="sveh_dek2">Dekl.typ&nbsp;</span>
 				 				<div class="text11" style="position: relative;" align="left" >
 				 				<span style="position:absolute;top:2px; width:250px;" id="1_2_info" class="popupWithInputText text11"  >
+				 					<p>Här talar du om vilken typ av deklaration de handlar om.</p>
 					           		<ul>
-					           			<li>
-					           			Här talar du om vilken typ av deklaration de handlar om. Du anger detta med koden A for en deklaration enligt
-					           			normalförfarandet (meddelande UNU).
-					           			</li>
+					           			<li><b>A</b>&nbsp;=&nbsp;Meddelande:DNU, DRT, DNK, UNU, URT</li>
+					           			<li><b>Z</b>&nbsp;=&nbsp;Meddelande:TQN, TQR, UFF2, UGE</li>
 					           		</ul>
 								</span>
 				 				</div>
@@ -450,15 +451,22 @@
 								  <option value="9"<c:if test="${model.record.sveh_tart == 9}"> selected </c:if> >9</option>
 								</select>
 			 				</td>
-			 				<td class="text14">&nbsp;</td>
-			 				<td class="text14">&nbsp;</td>
+			 				
 		 				</tr>
 		 				<tr height="5"><td></td></tr>
 		 				<tr>
 				 			<td class="text14"><span title="h_xref">&nbsp;&nbsp;&nbsp;&nbsp;Ext.ref.&nbsp;</span></td>
-				 			<td colspan="3">
+				 			<td colspan="2">
 				 				<input type="text" class="inputText" name="h_xref" id="h_xref" size="20" maxlength="35" value='${model.record.h_xref}'>
 			 				</td>
+			 				<td colspan="3" class="text14">
+				 				<input id="updateProformaCheckbox" type="checkbox" name="sveh_prof" id="sveh_prof" value="1" <c:if test="${not empty model.record.sveh_prof}"> checked </c:if> ><span title="sveh_prof"><font class="text14MediumBlue">Proformaärende</font></span>
+								<div id=updateProformaIcon style="display:inline;">
+									<a tabindex=-1 id="updateProformaLink" runat="server" href="#">
+										<img src="resources/images/update.gif" border="0" alt="edit">
+									</a>
+								</div>
+							</td>
 				 		</tr>	
 		 				<tr height="10"><td></td></tr>
 	 				</table>
@@ -1392,7 +1400,7 @@
 						        <td colspan="2">
 				            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfGrossWeightInItemLinesStr" id="sumOfGrossWeightInItemLinesStr" size="13" maxlength="13" value="${model.record.sumOfGrossWeightInItemLinesStr}">
 				            		<c:if test="${not empty (model.record.sumOfGrossWeightInItemLinesStr && model.record.sveh_brut)}">
-				            			<c:if test="${model.record.sumOfGrossWeightInItemLinesStr != model.record.sveh_brut}">
+				            			<c:if test="${model.record.sumOfGrossWeightInItemLines != model.record.sveh_brut_dbl}">
 							            	<img onMouseOver="showPop('itemsSumGrossweight_info');" onMouseOut="hidePop('itemsSumGrossweight_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
 					            		</c:if>
 					            	</c:if>
@@ -1596,7 +1604,7 @@
 				<tr height="10"><td colspan="2"></td></tr>
 				<tr>
 				<td width="50%" valign="top">
-				<table width="80%" border="0" cellspacing="0" cellpadding="0">
+				<table style="width:90%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 			 			<td width="5">&nbsp;</td>
 			            <td >		
@@ -2243,6 +2251,46 @@
 		</div>
 	</td>
 	</tr> 
+	
+<%-- proforma dialog --%>	
+ <tr>
+	<td >
+		<div id="dialogUpdateProforma" title="Dialog">
+			 	<form action="tdsexport_updateProforma.do" name="updateProformaForm" id="updateProformaForm" >
+			 	<input type="hidden" name="currentAvd" id="currentAvd" value='${model.record.sveh_syav}'>
+			 	<input type="hidden" name="currentOpd" id="currentOpd" value='${model.record.sveh_syop}'>
+			 	<input type="hidden" name="currentOpd" id="currentSign" value='${model.record.sveh_sysg}'>
+			 	<c:choose>
+				 	<c:when test="${not empty model.record.sveh_prof}">
+				 		<input type="hidden" name="currentCheckboxProforma" id="currentCheckboxProforma" value='1'>
+				 	</c:when>
+				 	<c:otherwise>
+				 		<input type="hidden" name="currentCheckboxProforma" id="currentCheckboxProforma" value=''>
+				 	</c:otherwise>
+			 	</c:choose> 
+			 	<p class="text14" >Proformaärendes-fält</p>
+				<table >
+					<tr>
+					<td >
+						<table border="0">
+						<tr>
+							<td class="text14" align="left" title="sveh_tuid" ><b>Tullid</b></td>
+							<td class="text14MediumBlue">
+								<input type="text" class="inputText" name="sveh_tuid" id="sveh_tuid" size="20" maxlength="20" value="${model.record.sveh_tuid}">
+							</td>
+						</tr>
+						
+						</table>
+					</td>
+					</tr>
+					<tr height="10"><td></td></tr> 
+					
+					</table>
+				</form>				
+		</div>
+	</td>
+</tr>
+	
 	
 	<%-- -------------------------- --%>	
  <%-- print skilleark dialog    --%>	

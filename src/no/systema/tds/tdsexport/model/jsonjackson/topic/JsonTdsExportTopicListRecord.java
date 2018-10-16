@@ -60,6 +60,10 @@ public class JsonTdsExportTopicListRecord extends JsonAbstractGrandFatherRecord 
 	public void setMtyp(String value) {  this.mtyp = value; }
 	public String getMtyp() { return this.mtyp;}
 	
+	private String sveh_prof = null;
+	public void setSveh_prof(String value) {  this.sveh_prof = value; }
+	public String getSveh_prof() {return this.sveh_prof;}
+	
 	/**
 	 * 
 	 * @return

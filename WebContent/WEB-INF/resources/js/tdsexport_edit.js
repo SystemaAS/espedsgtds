@@ -912,6 +912,59 @@
 			  jq('#dialogUpdateStatus').dialog('open');
 		  });
 	  });
+	  
+	  
+	//-------------------------------------------
+	  //START Model dialog: "Update proforma"
+	  //-------------------------------------------
+	  //Initialize <div> here
+	  jq(function() { 
+		  jq("#dialogUpdateProforma").dialog({
+			  autoOpen: false,
+			  maxWidth:5500,
+	          maxHeight: 500,
+	          width: 400,
+	          height: 300,
+			  modal: true
+		  });
+	  });
+	  //Present dialog box onClick (href in parent JSP)
+	  jq(function() {
+		  jq("#updateProformaLink").click(function() {
+			  //setters (add more if needed)
+			  jq('#dialogUpdateProforma').dialog( "option", "title", "Uppdatera ärende" );
+			  
+			  //deal with buttons for this modal window
+			  jq('#dialogUpdateProforma').dialog({
+				 buttons: [ 
+		            {
+					 id: "dialogSaveTU",	
+					 text: "Ok",
+					 click: function(){
+						 		jq('#updateProformaForm').submit();
+					 		}
+				 	 },
+		 	 		{
+				 	 id: "dialogCancelTU",
+				 	 text: "Cancel", 
+					 click: function(){
+						 		//back to initial state of form elements on modal dialog
+						 		//jq("#dialogSaveTU").button("option", "disabled", true);
+						 		jq( this ).dialog( "close" ); 
+					 		} 
+		 	 		 } ] 
+			  });
+			  //init values
+			  //jq("#dialogSaveTU").button("option", "disabled", true);
+			  //open now
+			  jq('#dialogUpdateProforma').dialog('open');
+		  });
+	  });
+	  //-------------------------------------------
+	  //END Model dialog: "Update proforma"
+	  //-------------------------------------------
+	
+	    
 
 	//----------------------------------------------
 	  //START Model dialog: "Print delere (skilleark)"
@@ -1104,7 +1157,36 @@
 	  //-------------------------------------------
 	  //END Model dialog: "File upload"
 	  //-------------------------------------------
-	  	
+	  
+	  
+	  jq(document).ready(function(){
+	  	    jq(this).scrollTop(0); //needed for Chrome (bug)
+	  	    //checkbox proforma
+	  	    if (jq("#updateProformaCheckbox").is(':checked')){
+		        jq("#updateProformaIcon").show();
+		    }else{
+		    	jq("#updateProformaIcon").hide();
+		    }
+	  	    
+	  	});
+	  	//checkbox proforma
+	  	jq(function() {
+	  		jq('#updateProformaCheckbox').change(function() {
+		    	if (jq(this).prop('checked')){
+		    		jq('#updateProformaIcon').show();
+		    		jq('#currentCheckboxProforma').val("1");
+	    		}else{
+	    			jq('#updateProformaIcon').hide();
+	    			//set fallbacks back
+	    			/*
+	    			jq('#dkeh_godt').val(jq('#dkeh_godt_dummy').val());
+	    			*/
+	    		}
+		    });
+		    
+		    
+		    
+		});
 	
 	
 	

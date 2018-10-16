@@ -13,7 +13,7 @@
 		<tr>
 			<td colspan="3" class="text14Bold">&nbsp;&nbsp;&nbsp;
 			<img title="search" valign="bottom" src="resources/images/search.gif" width="24px" height="24px" border="0" alt="search">
-			Søg kode</td>
+			Sök kod</td>
 		</tr>
 		<tr>
 		<td valign="top">
@@ -27,10 +27,10 @@
 						<form name="tdsExportTullkontorForm" id="tdsExportTullkontorForm" action="tdsexport_edit_childwindow_tullkontor.do?action=doInit" method="post">
 							<input type="hidden" name="ctype" id="ctype" value="${model.callerType}">
 						<tr>
-							<td class="text14">&nbsp;Kode</td>
+							<td class="text14">&nbsp;Kod</td>
 							<td class="text14">&nbsp;<input type="text" class="inputText" name="tkkode" id="tkkode" size="10" maxlength="10" value="${model.tkkode}"></td>
 						
-							<td class="text14">&nbsp;Tollsted</td>
+							<td class="text14">&nbsp;Tullkontor</td>
 							<td class="text14">&nbsp;<input type="text" class="inputText" name="tktxtn" id="tktxtn" size="30" maxlength="50" value="${model.tktxtn}"></td>
 							
 							<td class="text14">&nbsp;</td>
@@ -50,7 +50,7 @@
 					<table id="tullkontorList" class="display compact cell-border" width="100%" >
 						<thead>
 						<tr class="tableHeaderField" >
-							<th class="text14" title="tkkode">&nbsp;Kode&nbsp;</th>
+							<th class="text14" title="tkkode">&nbsp;Kod&nbsp;</th>
 		                    <th class="text14" title="tktxtn">&nbsp;Tullkontor&nbsp;</th>
 		                    <th class="text14" title="tkavg">&nbsp;Avg.&nbsp;</th>
 		                    <th class="text14" title="tkank">&nbsp;Ank.&nbsp;</th>

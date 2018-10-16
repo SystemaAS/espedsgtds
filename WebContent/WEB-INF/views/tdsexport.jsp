@@ -266,6 +266,7 @@
 	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.mtyp"/>&nbsp;</th>
 	                    <th class="tableHeaderField" nowrap>&nbsp;<spring:message code="systema.tds.export.list.search.label.datum"/>&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.status"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.proforma"/>&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.avsandare"/>&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.mottagare"/>&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.list.search.label.begaranOmKlarering"/></th>
@@ -277,11 +278,11 @@
 	                <tbody>     
 		            <c:forEach items="${list}" var="topic" varStatus="counter">    
 		               <c:choose>           
-		                   <c:when test="${counter.count%2==0}">
-		                       <tr class="tableRow" height="20" >
+		                   <c:when test="${not empty topic.sveh_prof}">
+		                       <tr class="tableProformaAngivelseRow" height="20" >
 		                   </c:when>
 		                   <c:otherwise>   
-		                       <tr class="tableOddRow" height="20" >
+		                       <tr class="tableRow" height="20" >
 		                   </c:otherwise>
 		               </c:choose>
 		               <td class="tableCellFirst" width="2%">&nbsp;${topic.avd}</td>
@@ -376,6 +377,12 @@
 		               <td class="tableCell" >&nbsp;${topic.mtyp}</td>
 		               <td class="tableCell" >&nbsp;${topic.datum}</td>
 		               <td align="center" class="tableCell" >&nbsp;<b>${topic.status}</b></td>
+		               <td width="2%" align="center" class="tableCell" >
+		               	<c:choose>
+		               		<c:when test="${not empty topic.sveh_prof}">Ja</c:when>
+		               		<c:otherwise>&nbsp;</c:otherwise>
+						</c:choose>		               		
+		               </td>
 		               <td class="tableCell" >&nbsp;${topic.avsNavn}</td>
 		               <td class="tableCell" >&nbsp;${topic.motNavn}</td>
 		               

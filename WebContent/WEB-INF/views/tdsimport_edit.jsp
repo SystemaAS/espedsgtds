@@ -270,7 +270,7 @@
 		<%-- --------------- --%>
 		<tr>
 		<td width="50%" align="left">
-		<table width="80%" border="0" cellspacing="0" cellpadding="0">
+		<table width="90%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 	            <td width="5">&nbsp;</td>
 	            <td >
@@ -1517,7 +1517,7 @@
 				<tr height="10"><td colspan="2"></td></tr>
 				<tr>
 				<td width="50%" valign="top">
-				<table width="80%" border="0" cellspacing="0" cellpadding="0">
+				<table width="90%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 			 			<td width="5">&nbsp;</td>
 			            <td >		

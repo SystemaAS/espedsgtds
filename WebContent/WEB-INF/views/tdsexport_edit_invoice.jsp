@@ -245,6 +245,7 @@
 					                    <th align="center" class="text14" ><span title="svef_vakd">Valuta</span></th>
 					                    <th align="right" class="text14" ><span title="svef_vaku">&nbsp;Kurs&nbsp;</span></th>
 					                    <th class="text14" align="left"><span title="svef_omr">Faktor&nbsp;</span></th>
+					                    <th class="text14" align="left"><span title="svef_tuid">Tullid&nbsp;</span></th>
 					                    <c:if test="${model.status == 'M' || empty model.status}">
 					                    	<th align="center" class="text14" nowrap>Radera</th>
 					                    </c:if>
@@ -271,6 +272,8 @@
 							               <td align="center" class="text14" >${record.svef_vakd}</td>
 							               <td align="right" class="text14" >&nbsp;${record.svef_vaku}&nbsp;</td>
 							               <td class="text14" >&nbsp;${record.svef_omr}</td>
+							               <td class="text14" >&nbsp;${record.svef_tuid}</td>
+							               
 							               <c:if test="${model.status == 'M' || empty model.status}">	
 								               <td width="4%" class="text14" align="center" nowrap>
 								               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_invoice.do?action=doDelete&sign=${model.sign}&avd=${model.avd}&opd=${model.opd}&status=${model.status}&fak=${record.svef_fatx}&typ=${record.svef_faty}">

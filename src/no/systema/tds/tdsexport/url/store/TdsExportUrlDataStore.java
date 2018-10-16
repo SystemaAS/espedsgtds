@@ -156,4 +156,9 @@ public final class TdsExportUrlDataStore {
 	//-----------------------------
 	static public String TDS_EXPORT_BASE_UPDATE_STATUS_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE051R.pgm";
 		
+	//-----------------------------
+	// Update proformaärende
+	//-----------------------------
+	static public String TDS_EXPORT_BASE_UPDATE_PROFORMA_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE053R.pgm";
+		
 }

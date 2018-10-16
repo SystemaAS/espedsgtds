@@ -70,6 +70,11 @@ public class JsonTdsExportTopicInvoiceExternalRecord extends JsonAbstractGrandFa
 	public void setSvef_reff(String value) {  this.svef_reff = value; }
 	public String getSvef_reff() { return this.svef_reff;}
 	
+	//Tuid for Proforma
+	private String svef_tuid = null;
+	public void setSvef_tuid(String value) {  this.svef_tuid = value; }
+	public String getSvef_tuid() { return this.svef_tuid;}
+		
 	
 	
 	/**
