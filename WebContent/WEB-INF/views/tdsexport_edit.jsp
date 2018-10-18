@@ -2276,7 +2276,7 @@
 						<tr>
 							<td class="text14" align="left" title="sveh_tuid" ><b>Tullid</b></td>
 							<td class="text14MediumBlue">
-								<input type="text" class="inputText" name="sveh_tuid" id="sveh_tuid" size="20" maxlength="20" value="${model.record.sveh_tuid}">
+								<input type="text" class="inputText" name="sveh_tuid" id="sveh_tuid" size="15" maxlength="10" value="${model.record.sveh_tuid}">
 							</td>
 						</tr>
 						
