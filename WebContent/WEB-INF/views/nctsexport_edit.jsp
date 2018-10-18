@@ -113,7 +113,6 @@
 	<form name="nctsExportSaveNewTopicForm" id="nctsExportSaveNewTopicForm" method="post">
 	
 	<table width="100%" class="tabThinBorderWhite" border="0" cellspacing="0" cellpadding="0">
- 		<tr height="3"><td colspan="2">&nbsp;</td></tr>
  		<%-- GENERAL HIDDEN --%> 
 	    <input type="hidden" name="thmf" id="thmf" value="015">
 		
@@ -151,8 +150,7 @@
 			
 			<tr >
 				<td align="left" class="text14MediumBlue">
-					&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.thavd}&nbsp;&nbsp;<span title="thtdn">Uppd:</span>&nbsp;<b>${model.record.thtdn}</b>
-					&nbsp;&nbsp;<span title="thtuid">LRN-nr:</span>&nbsp;<b>${model.record.thtuid}</b>&nbsp;&nbsp;&nbsp;<span title="thtrnr">MRN-nr:</span>&nbsp;<b>${model.record.thtrnr}</b>&nbsp;&nbsp;
+					&nbsp;&nbsp;Avd:&nbsp;${model.record.thavd}&nbsp;&nbsp;<span title="thtdn">Ärende</span>&nbsp;<b>${model.record.thtdn}</b>
 				</td>
 				<td align="right" >
 					<c:if test="${'1' != isTestAvd}">
@@ -165,17 +163,15 @@
 					</a>
 				</td>
 			</tr>
-			<%-- test indicator /per avdelning --%> 
-			<c:if test="${'1' == isTestAvd}">
-				<tr>
-					<td align="left" class="text14Red" >
-						&nbsp;&nbsp;<b>[TEST Avdelning]</b>
-					</td>
-				</tr>
-			</c:if>
 			<tr >
 				<td align="left" class="text14MediumBlue">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="thsg">Sign:</span>&nbsp;<b>${model.record.thsg}</b>,&nbsp;&nbsp;<span title="thdt">Datum:</span>&nbsp;<b>${model.record.thdt}</b>,
+					&nbsp;&nbsp;<span title="thtuid">LRN-nr:</span>&nbsp;<b>${model.record.thtuid}</b>&nbsp;&nbsp;<span title="thtrnr">MRN-nr:</span>&nbsp;<b>${model.record.thtrnr}</b>&nbsp;&nbsp;
+				</td>
+			</tr>
+			
+			<tr >
+				<td align="left" class="text14MediumBlue">
+					&nbsp;&nbsp;<span title="thsg">Sign:</span>&nbsp;<b>${model.record.thsg}</b>,&nbsp;&nbsp;<span title="thdt">Datum:</span>&nbsp;<b>${model.record.thdt}</b>,
 					&nbsp;&nbsp;<span title="thst">Stat<a id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;${model.record.thst}
 					&nbsp;&nbsp;
 					<font class="text16RedBold" >*</font><span title="thenkl">Typ av förfarande</span>&nbsp;
@@ -185,22 +181,19 @@
 					  	<option value="N"<c:if test="${model.record.thenkl == 'N'}"> selected </c:if> >Normal</option>
 								   
 					</select>
-					 
-					<%--
-					&nbsp;&nbsp;Typ:
-					<c:choose>
-					    <c:when test="${model.record.thenkl=='J'}">
-					    	&nbsp;<b>Förenklad</b>
-					    </c:when>
-					    <c:otherwise>
-					    	&nbsp;<b>Normal</b>
-					    </c:otherwise>
-				    </c:choose>
-				    &nbsp;]
-				     --%>
+					
 				</td>
 				<td align="left" class="text14MediumBlue">&nbsp;</td>
-			</tr>	
+			</tr>
+			<%-- test indicator /per avdelning --%> 
+			<c:if test="${'1' == isTestAvd}">
+				<tr height="5"><td colspan="2">&nbsp;</td></tr>
+				<tr>
+					<td colspan="3" align="left" class="text14Red" >
+						&nbsp;&nbsp;<b>[TEST Avdelning]</b>
+					</td>
+				</tr>
+			</c:if>	
 		</c:when>
 		<%-- CREATE MODE --%> 
 		<c:otherwise>
@@ -249,13 +242,13 @@
 		</c:otherwise>
 		</c:choose>
 
-		<tr height="10"><td colspan="2">&nbsp;</td></tr>
+		<tr height="5"><td colspan="2">&nbsp;</td></tr>
 		<%-- --------------- --%>
 		<%-- LEFT SIDE CELL --%>
 		<%-- --------------- --%>
 		<tr>
 		<td width="50%">
-		<table border="0" cellspacing="1" cellpadding="0">
+		<table style="width:90%;" border="0" cellspacing="1" cellpadding="0">
 			<tr>
 	            <td width="5">&nbsp;</td>
 	            <td >
@@ -264,7 +257,7 @@
 				 		<tr>
 				 			<td class="text14">
 				 				<img onMouseOver="showPop('deklTyp_info');" onMouseOut="hidePop('deklTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-			 					<b>1</b><font class="text16RedBold" >&nbsp;*</font><span title="thdk">Deklaration&nbsp;</span>
+			 					<b>1</b><font class="text16RedBold" >&nbsp;*</font><span title="thdk">Procedur&nbsp;</span>
 			 					<div class="text12" style="position: relative;" align="left">
 			 					<span style="position:absolute;top:2px; width:250px;" id="deklTyp_info" class="popupWithInputText text12"  > 
 					           			<ul>
@@ -1429,6 +1422,24 @@
 					<td width="2">&nbsp;</td>
 					<td valign="top">
 			 			<table border="0" cellspacing="0" cellpadding="0">
+			 				<tr >	
+			            		<td class="text9BlueGreen" valign="bottom" align="right" >
+			 				    	<%-- only status = M or emtpy status is allowed --%>
+				 				    <c:choose>
+					 				    <c:when test="${ model.record.thst == 'G' ||  model.status=='F' || model.record.thst == 'M' || empty model.record.thst}">
+						 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" id="submit" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
+						 				    	&nbsp;&nbsp;
+						 				    	<c:if test="${not empty model.record.thtdn}">
+						 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+						 				    	</c:if>
+					 				    </c:when>
+					 				    <c:otherwise>
+					 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+					 				    </c:otherwise>	
+				 				    </c:choose>
+	                				</td>
+					        </tr>
+					        <tr height="5"><td colspan="2">&nbsp;</td></tr>
 					 		<tr>
 					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('15_info');" onMouseOut="hidePop('15_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -1877,9 +1888,8 @@
 	        				</tr>
 	        				
 			 				<tr>
-					            <td class="text14" align="left">
-					            <img onMouseOver="showPop('tullkontor_info');" onMouseOut="hidePop('tullkontor_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
-					            <font class="text16RedBold" >*</font><span title="thcats">Avgångstullkontor&nbsp;</span>
+					            <td class="text14" align="left"><img onMouseOver="showPop('tullkontor_info');" onMouseOut="hidePop('tullkontor_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">	
+					            <b>C.</b><font class="text16RedBold" >*</font><span title="thcats">Avgångstullkontor&nbsp;</span>
 					            <div class="text12" style="position: relative;" align="left">
 					            <span style="position:absolute;top:2px; width:250px;" id="tullkontor_info" class="popupWithInputText text12"  >
 					           			<ul>
@@ -2100,19 +2110,18 @@
 			 				</tr>
 
 				            <tr >	
-				            		<td class="text">&nbsp;</td> 
-			 				    <td class="text9BlueGreen" valign="bottom" align="right" >
+			            		<td class="text9BlueGreen" valign="bottom" align="left" >
 			 				    	<%-- only status = M or emtpy status is allowed --%>
 				 				    <c:choose>
 					 				    <c:when test="${ model.record.thst == 'G' ||  model.status=='F' || model.record.thst == 'M' || empty model.record.thst}">
-						 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
+						 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
 						 				    	&nbsp;&nbsp;
 						 				    	<c:if test="${not empty model.record.thtdn}">
-						 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+						 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
 						 				    	</c:if>
 					 				    </c:when>
 					 				    <c:otherwise>
-					 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+					 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit2" value='Ej uppdaterbart'/>
 					 				    </c:otherwise>	
 				 				    </c:choose>
 	                				</td>

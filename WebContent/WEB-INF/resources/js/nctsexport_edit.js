@@ -33,6 +33,14 @@
   	  });
   	  
     });
+    jq(function() {
+  		jq( "#submit" ).click(function( event ) {
+  			setBlockUI();
+	  	});
+  		jq( "#submit2" ).click(function( event ) {
+  			setBlockUI();
+  	  	});
+    });
 	
 	
 	
