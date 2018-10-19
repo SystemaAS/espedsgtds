@@ -109,7 +109,88 @@
 				  opener.jq('#svih_dktl').val(tlf);
 				  //focus
 				  opener.jq('#svih_dkna').focus();
+			  //=========================
+			  //NCTS Export Module 
+			  //=========================
+		      //AVS		  
+			  }else if(callerType == 'thnas'){
+				  opener.jq('#thkns').val(knr);
+				  opener.jq('#thnas').val(knavn);
+				  opener.jq('#thtins').val(eori);
+				  opener.jq('#thads1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#thpss').val(adr3);
+				  opener.jq('#thpns').val(postnr);
+				  opener.jq('#thlks').val(land);
+				  //focus
+				  opener.jq('#thnas').focus();
+				  
+			  //MOTTAGARE		 
+			  }else if(callerType == 'thnak'){
+				  opener.jq('#thknk').val(knr);
+				  opener.jq('#thnak').val(knavn);
+				  opener.jq('#thtink').val(eori);
+				  opener.jq('#thadk1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#thpsk').val(adr3);
+				  opener.jq('#thpnk').val(postnr);
+				  opener.jq('#thlkk').val(land);
+				  //focus
+				  opener.jq('#thnak').focus();
+				  
+			  //Ansvarig
+			  }else if(callerType == 'thnaa'){
+				  //opener.jq('#th...').val(knr);
+				  opener.jq('#thnaa').val(knavn);
+				  opener.jq('#thtina').val(eori);
+				  opener.jq('#thada1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#thpsa').val(adr3);
+				  opener.jq('#thpna').val(postnr);
+				  opener.jq('#thlka').val(land);
+				  //focus
+				  opener.jq('#thnaa').focus();
+	  
+				//AVS - SÄKERHET	  
+			  }else if(callerType == 'thnass'){
+				  opener.jq('#thknss').val(knr);
+				  opener.jq('#thnass').val(knavn);
+				  opener.jq('#thtinss').val(eori);
+				  opener.jq('#thadss1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#thpsss').val(adr3);
+				  opener.jq('#thpnss').val(postnr);
+				  opener.jq('#thlkss').val(land);
+				  //focus
+				  opener.jq('#thnass').focus();
+				  
+			  //MOTTAGARE - SÄKERHET		 
+			  }else if(callerType == 'thnaks'){
+				  opener.jq('#thknks').val(knr);
+				  opener.jq('#thnaks').val(knavn);
+				  opener.jq('#thtinks').val(eori);
+				  opener.jq('#thadks1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#thpsks').val(adr3);
+				  opener.jq('#thpnks').val(postnr);
+				  opener.jq('#thlkks').val(land);
+				  //focus
+				  opener.jq('#thnaks').focus();
+				  
+			  //Transportör - SÄKERHET
+			  }else if(callerType == 'thnat'){
+				  opener.jq('#thknt').val(knr);
+				  opener.jq('#thnat').val(knavn);
+				  opener.jq('#thtint').val(eori);
+				  opener.jq('#thadt1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#thpst').val(adr3);
+				  opener.jq('#thpnt').val(postnr);
+				  opener.jq('#thlkt').val(land);
+				  //focus
+				  opener.jq('#thnat').focus();
 			  }	  
+			  
 			  //close child window
 			  window.close();
 		  });

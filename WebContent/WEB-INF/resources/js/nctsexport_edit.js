@@ -42,331 +42,77 @@
   	  	});
     });
 	
-	
-	
-	var map = {};
-  	
-  	//init the customer object in javascript (will be put into a map)
-  	var customer = new Object();
-  	//fields
-  	customer.kundnr = "";customer.knavn = "";customer.eori = "";customer.adr1 = "";
-  	customer.adr2 = "";customer.adr3 = "";customer.postnr = "";customer.syland = "";
-  	customer.kpers = "";customer.tlf = "";
-  	//---------------------------------------------------------
-  	//FETCH CUSTOMER from SENDER [AVSÄNDARE] html area
-  	// [Same as TDS-EXPORT but with GUI fields for NCTS]
-  	//---------------------------------------------------------
-	function searchSenderOwnWindow() {
-		jq(function() {
-			jq.getJSON('searchCustomer.do', {
-				applicationUser : jq('#applicationUser').val(),
-				customerName : jq('#search_sveh_avna').val(),
-				customerNumber : jq('#search_sveh_avkn').val(),
-				ajax : 'true'
-			}, function(data) {
-				//alert("Hello");
-				var html = '<option selected value="">-Select-</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].kundnr + '">' + data[i].knavn + '</option>';
-					customer = new Object();
-					customer.kundnr = data[i].kundnr;
-					customer.knavn = data[i].knavn;
-					customer.eori = data[i].eori;
-					customer.adr1 = data[i].adr1;
-					customer.adr2 = data[i].adr2;
-					customer.adr3 = data[i].adr3;
-					customer.postnr = data[i].postnr;
-					customer.kpers = data[i].kpers;
-					customer.tlf = data[i].tlf;
-					customer.syland = data[i].syland;
-				  	
-					//put the object in map now with customerNumber as key
-					map[customer.kundnr] = customer;
-				}
-				//now that we have our options, give them to our select
-				jq('#senderList').html(html);
-			});
-		});
-	}
-	//onChange sender list
-	jq(function() { 
-	    jq('#senderList').change(function() {
-	      //init fields
-		  jq('#thnas').val("");
-		  jq('#thtins').val("");
-		  jq('#thads1').val("");
-		  jq('#thpns').val("");
-		  jq('#thpss').val("");
-		  jq('#thlks').val("");
-		  jq('#thsks').val("");
-		  
-		  //now populate (if applicable)
-		  var key = jq('#senderList').val();
-		  jq('#thkns').val(key);
-		  customer = map[key];
-		  jq('#thnas').val(customer.knavn);
-		  jq('#thtins').val(customer.eori);
-		  jq('#thads1').val(customer.adr1);
-		  jq('#thpns').val(customer.postnr);
-		  jq('#thpss').val(customer.adr3);
-		  jq('#thlks').val(customer.syland);
-		  jq('#thsks').val("");
-	    });
-	});
-	
-	//onClick for Sender dialog
-	jq(function() { 
-	    jq('#searchCustomerCloseCancel').click(function() {
-	      //rescue the original fields
-	      jq('#thkns').val(jq("#orig_thkns").val());	
-		  jq('#thnas').val(jq("#orig_thnas").val());
-		  jq('#thtins').val(jq("#orig_thtins").val());
-		  jq('#thads1').val(jq("#orig_thads1").val());
-		  jq('#thpns').val(jq("#orig_thpns").val());
-		  jq('#thpss').val(jq("#orig_thpss").val());
-		  jq('#thlks').val(jq("#orig_thlks").val());
-		  jq('#thsks').val(jq("#orig_thsks").val());
-	    });
-	});
-	
-	//----------------------------------
-	//Events Sender (SEARCH window)
-	//----------------------------------
-	//img click
-	jq(function() {	    
-		jq('#imgCustomerSearch').click(function(){
-    			jq("#search_sveh_avkn").focus();
-    		});
-	});
-	
-	jq(function() {	    
-		jq('#search_sveh_avkn').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchSenderOwnWindow);
-			}			
-    		});
-		jq('#search_sveh_avna').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchSenderOwnWindow);
-			}			
-    		});
-	});
-
-
-  	//---------------------------------------------------------
-	//FETCH CUSTOMER from RECEIVER [MOTTAGARE] html area
-  	//---------------------------------------------------------
-	function searchReceiverOwnWindow() {
-		jq(function() {
-			jq.getJSON('searchCustomer.do', {
-				applicationUser : jq('#applicationUser').val(),
-				customerName : jq('#search_sveh_mona').val(),
-				customerNumber : jq('#search_sveh_mokn').val(),
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option selected value="">-Select-</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].kundnr + '">' + data[i].knavn + '</option>';
-					customer = new Object();
-					customer.kundnr = data[i].kundnr;
-					customer.knavn = data[i].knavn;
-					customer.eori = data[i].eori;
-					customer.adr1 = data[i].adr1;
-					customer.adr2 = data[i].adr2;
-					customer.adr3 = data[i].adr3;
-					customer.postnr = data[i].postnr;
-					customer.kpers = data[i].kpers;
-					customer.tlf = data[i].tlf;
-					customer.syland = data[i].syland;
-				  	
-					//put the object in map now with customerNumber as key
-					map[customer.kundnr] = customer;
-				}
-				//now that we have our options, give them to our select
-				jq('#receiverList').html(html);
-			});
-		});
-	}
-	//Sets receiver values after user selection
-	jq(function() { 
-	    jq('#receiverList').change(function() {
-		  //init all fields
-		  jq('#thnak').val("");
-		  jq('#thtink').val("");
-		  jq('#thadk1').val("");
-		  jq('#thpnk').val("");
-		  jq('#thpsk').val("");
-		  jq('#thlkk').val("");	
-		  jq('#thskk').val("");	
-		  
-		  //now populate (if applicable)
-		  var key = jq('#receiverList').val();
-		  jq('#thknk').val(key);
-		  customer = map[key];
-		  jq('#thtink').val(customer.eori);
-		  jq('#thnak').val(customer.knavn);
-		  jq('#thadk1').val(customer.adr1);
-		  jq('#thpnk').val(customer.postnr);
-		  jq('#thpsk').val(customer.adr3);
-		  jq('#thlkk').val(customer.syland);
-		  jq('#thskk').val("");			  
-		});
-	});
-	//onClick for Receiver(Mottagare) dialog
-	jq(function() { 
-	    jq('#searchCustomer10CloseCancel').click(function() {
-	      //rescue the original fields
-	      jq('#thknk').val(jq("#orig_thknk").val());	
-		  jq('#thnak').val(jq("#orig_thnak").val());
-		  jq('#thtink').val(jq("#orig_thtink").val());
-		  jq('#thadk1').val(jq("#orig_thadk1").val());
-		  jq('#thpnk').val(jq("#orig_thpnk").val());
-		  jq('#thpsk').val(jq("#orig_thpsk").val());
-		  jq('#thlkk').val(jq("#orig_thlkk").val());
-		  jq('#thskk').val(jq("#orig_thskk").val());
-		  
-	    });
-	});
-
-	//----------------------------------
-	//Events Receiver (SEARCH window)
-	//----------------------------------
-	//img click
-	jq(function() {	    
-		jq('#imgReceiverSearch').click(function(){
-    			jq("#search_sveh_mokn").focus();
-    		});
-	});
-	
-	jq(function() {	    
-		jq('#search_sveh_mokn').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchReceiverOwnWindow);
-			}			
-    		});
-		jq('#search_sveh_mona').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchReceiverOwnWindow);
-			}			
-    		});
-	});
-
-	
-	
-	
-	
-	
-	
-  	//-----------------------------------------
-	//FETCH CUSTOMER from ANSVARIG html area
-  	//-----------------------------------------
-	function searchAnsvarigOwnWindow() {
-		jq(function() {
-			jq.getJSON('searchCustomer.do', {
-				applicationUser : jq('#applicationUser').val(),
-				customerName : jq('#search_sveh_dkna').val(),
-				customerNumber : jq('#search_sveh_dkkn').val(),
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option selected value="">-Select-</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].kundnr + '">' + data[i].knavn + '</option>';
-					customer = new Object();
-					customer.kundnr = data[i].kundnr;
-					customer.knavn = data[i].knavn;
-					customer.adr1 = data[i].adr1;
-					customer.adr2 = data[i].adr2;
-					customer.adr3 = data[i].adr3;
-					customer.postnr = data[i].postnr;
-					customer.kpers = data[i].kpers;
-					customer.tlf = data[i].tlf;
-					customer.syland = data[i].syland;
-					
-					//put the object in map now with customerNumber as key
-					map[customer.kundnr] = customer;
-				}
-				//now that we have our options, give them to our select
-				jq('#ansvarigList').html(html);
-			});
-		});
-	}
-	//Sets ansvarig values after user selection
-	jq(function() { 
-	    jq('#ansvarigList').change(function() {
-	      //init fields
-		  jq('#thnaa').val("");
-		  jq('#thtina').val("");
-		  jq('#thada1').val("");
-		  jq('#thpna').val("");
-		  jq('#thpsa').val("");
-		  jq('#thlka').val("");
-		  jq('#thska').val("");
-		  
-		  //now populate (if applicable)
-		  var key = jq('#ansvarigList').val();
-		  jq('#sveh_dkkn').val(key);
-		  customer = map[key];
-		  jq('#thnaa').val(customer.knavn);
-		  jq('#thtina').val(customer.eori);
-		  jq('#thada1').val(customer.adr1);
-		  jq('#thpna').val(customer.postnr);
-		  jq('#thpsa').val(customer.adr3);
-		  jq('#thlka').val(customer.syland);
-		  jq('#thska').val("");			  
-		});
-	});
-	//onClick for Ansvarig dialog
-	jq(function() { 
-	    jq('#searchCustomer20CloseCancel').click(function() {
-	      //rescue the original fields
-	      jq('#sveh_dkkn').val(jq("#orig_sveh_dkkn").val());	
-		  jq('#thnaa').val(jq("#orig_thnaa").val());
-		  jq('#thtina').val(jq("#orig_thtina").val());
-		  jq('#thada1').val(jq("#orig_thada1").val());
-		  jq('#thpna').val(jq("#orig_thpna").val());
-		  jq('#thpsa').val(jq("#orig_thpsa").val());
-		  jq('#thlka').val(jq("#orig_thlka").val());
-		  jq('#thska').val(jq("#orig_thska").val());
-		  
-	    });
-	});
-	
-	//----------------------------------
-	//Events Ansvarig (SEARCH window)
-	//----------------------------------
-	//img click
-	jq(function() {	    
-		jq('#imgAnsvarigSearch').click(function(){
-    			jq("#search_sveh_dkkn").focus();
-    		});
-	});
-	
-	jq(function() {	    
-		jq('#search_sveh_dkkn').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchAnsvarigOwnWindow);
-			}			
-    		});
-		jq('#search_sveh_dkna').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchAnsvarigOwnWindow);
-			}			
-    		});
-	});
-
-
-	
-	
-	
+    
+    jq(function() {
+    	//Customer SENDER
+	  	jq('#thnasIdLink').click(function() {
+	  		jq('#thnasIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#thnas').val() + '&ctype=thnas', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#thnasIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#thnasIdLink').click();
+	  		}
+	  	});
+	  	
+	  	//Customer RECEIVER
+	  	jq('#thnakIdLink').click(function() {
+	  		jq('#thnakIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#thnak').val() + '&ctype=thnak', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#thnakIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#thnakIdLink').click();
+	  		}
+	  	});
+	  	//Customer ANSVARIG
+	  	jq('#thnaaIdLink').click(function() {
+	  		jq('#thnaaIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#thnaa').val() + '&ctype=thnaa', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#thnaaIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#thnaaIdLink').click();
+	  		}
+	  	});
+    });
+    
+    jq(function() {
+    	//Customer SENDER - SÄKERHET
+	  	jq('#thnassIdLink').click(function() {
+	  		jq('#thnassIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#thnass').val() + '&ctype=thnass', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#thnassIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#thnassIdLink').click();
+	  		}
+	  	});
+	  	
+	  	//Customer RECEIVER - SÄKERHET
+	  	jq('#thnaksIdLink').click(function() {
+	  		jq('#thnaksIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#thnaks').val() + '&ctype=thnaks', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#thnaksIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#thnaksIdLink').click();
+	  		}
+	  	});
+	  	//Customer TRANSPORTÖR - SÄKERHET
+	  	jq('#thnatIdLink').click(function() {
+	  		jq('#thnatIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#thnat').val() + '&ctype=thnat', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#thnatIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#thnatIdLink').click();
+	  		}
+	  	});
+    });
+    
+    
+ 
 		
 	//Currency AJAX fetch
 	jq(function() { 

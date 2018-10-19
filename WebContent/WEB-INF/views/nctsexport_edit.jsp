@@ -457,49 +457,9 @@
 							        	
 							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thkns">Kundnummer</span></td>
 							            <td class="text14" align="left" >&nbsp;<font class="text16RedBold" >*</font><span title="thnas">Namn&nbsp;</span>
-							            	<img id="imgCustomerSearch" style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" onClick="showPop('searchCustomerDialog');">
-							            	<%-- =====================================================  --%>
-							            	<%-- Here we have the search Sender [Customer] popup window --%>
-							            	<%-- =====================================================  --%>
-							            	<span style="position:absolute; left:500px; top:280px; width:300px; height:212px;" id="searchCustomerDialog" class="popupWithInputText"  >
-								           		<div class="text12" align="left">
-								           			<table>
-								           				<tr>
-															<td class="text12">&nbsp;Kundnummer</td>
-															<td class="text12">&nbsp;<input type="text" class="inputText" name="search_sveh_avkn" id="search_sveh_avkn" size="18" maxlength="8" value=""></td>
-														</tr>
-									           			<tr>
-															<td class="text12">&nbsp;Namn</td>
-															<td class="text12">&nbsp;<input type="text" class="inputText" name="search_sveh_avna" id="search_sveh_avna" size="18" maxlength="35" value=""></td>
-														</tr>
-									           			<tr>
-									           				<td class="text12">&nbsp;</td>
-										           			<td align="right">&nbsp;<button name="searchCustomer" class="buttonGray" type="button" onClick="searchSenderOwnWindow()">Sök</button></td>
-										           		</tr>
-										           		<tr height="4"><td ></td></tr>
-										           		<tr>
-									           				<td class="text12">&nbsp;Urval</td>
-										           			<td>&nbsp;</td>
-										           		</tr>
-										           		<tr>
-															<td colspan="2">&nbsp;
-																<%-- check jQuery events (onChange) for this list --%>
-																<select class="selectMediumBlueE2"  id="senderList" name="senderList" size="3" onDblClick="hidePop('searchCustomerDialog');">
-				 													<option value="">-Välj-</option>
-				 							 					</select>
-															</td>
-															
-															<%-- <input type="hidden" name="hidden_sveh_avkn" id="hidden_sveh_avkn" value=''> --%>
-														</tr>
-								           			</table>
-													<table width="30%" align="left" border="0">
-														<tr align="left" >
-															<td >&nbsp;<button name="searchCustomerCloseOk" id="searchCustomerCloseOk" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog');">Ok</button></td>
-															<td >&nbsp;<button name="searchCustomerCloseCancel" id="searchCustomerCloseCancel" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog');">Avbryt</button></td>
-														</tr>
-													</table>
-												</div>
-											</span>				
+							            	<a tabindex="-1" id="thnasIdLink">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>				
 							            </td>
 							        </tr>
 							        <tr>
@@ -642,48 +602,9 @@
 							        	
 							            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thknk">Kundnummer</span></td>
 							            <td class="text14" align="left" >&nbsp;<font class="text16RedBold" >*</font><span title="thnak">Namn&nbsp;</span>
-							            <img id="imgReceiverSearch" style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" onClick="showPop('searchCustomerDialog10');">
-							            	<%-- ======================================================== --%>
-							            	<%-- Here we have the search Receiver [Customer] popup window --%>
-							            	<%-- ======================================================== --%>
-							            	<span style="position:absolute; left:500px; top:550px; width:300px; height:212px;" id="searchCustomerDialog10" class="popupWithInputText"  >
-								           		<div class="text10" align="left">
-								           			<table>
-								           				<tr>
-															<td class="text12">&nbsp;Kundnummer</td>
-															<td class="text12">&nbsp;<input type="text" class="inputText" name="search_sveh_mokn" id="search_sveh_mokn" size="18" maxlength="8" value=""></td>
-														</tr>
-									           			<tr>
-															<td class="text12">&nbsp;Namn</td>
-															<td class="text12">&nbsp;<input type="text" class="inputText" name="search_sveh_mona" id="search_sveh_mona" size="18" maxlength="35" value=""></td>
-														</tr>
-									           			<tr>
-									           				<td class="text12">&nbsp;</td>
-										           			<td align="right">&nbsp;<button name="searchCustomer10" class="buttonGray" type="button" onClick="searchReceiverOwnWindow()">Sök</button></td>
-										           		</tr>
-										           		<tr height="4"><td ></td></tr>
-										           		<tr>
-									           				<td class="text12">&nbsp;Urval</td>
-										           			<td>&nbsp;</td>
-										           		</tr>
-										           		<tr>
-															<td colspan="2">&nbsp;
-																<select class="selectMediumBlueE2"  id="receiverList" name="receiverList" size="3" onChange="setReceiver();" onDblClick="hidePop('searchCustomerDialog10');">
-				 													<option selected value="">-Välj-</option>
-				 							 					</select>
-															</td>
-															
-															<%-- <input type="hidden" name="hidden_sveh_avkn" id="hidden_sveh_avkn" value=''> --%>
-														</tr>
-								           			</table>
-													<table width="30%" align="left" border="0">
-														<tr align="left" >
-															<td >&nbsp;<button name="searchCustomer10CloseOk" id="searchCustomer10CloseOk" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog10');">Ok</button></td>
-															<td >&nbsp;<button name="searchCustomer10CloseCancel" id="searchCustomer10CloseCancel" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog10');">Avbryt</button></td>
-														</tr>
-													</table>
-												</div>
-											</span>	
+							            	<a tabindex="-1" id="thnakIdLink">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>	
 										</td>
 							        </tr>
 							        <tr>
@@ -1872,7 +1793,7 @@
 				<tr height="10"><td colspan="2"></td></tr>
 				<tr>
 				<td width="50%" valign="top">
-				<table border="0" cellspacing="0" cellpadding="0">
+				<table style="width:90%;" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 			 			<td width="5">&nbsp;</td>
 			            <td >		
@@ -1933,50 +1854,11 @@
 									        	<input type="hidden" name="orig_thpsa" id="orig_thpsa" value='${model.record.thpsa}'>
 									        	<input type="hidden" name="orig_thlka" id="orig_thlka" value='${model.record.thlka}'>
 									        	<input type="hidden" name="orig_thska" id="orig_thska" value='${model.record.thska}'>
-							        				<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="thtina">TIN</span></td>
+						        				<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="thtina">TIN</span></td>
 									            <td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="thnaa">Namn</span>
-									            <img id="imgAnsvarigSearch" style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" onClick="showPop('searchCustomerDialog20');">
-									            	<%-- ======================================================== --%>
-									            	<%-- Here we have the search Ansvarig [Customer] popup window --%>
-									            	<%-- ======================================================== --%>
-									            	<span style="position:absolute; left:500px; top:1200px; width:300px; height:212px;" id="searchCustomerDialog20" class="popupWithInputText"  >
-										           		<div class="text10" align="left">
-										           			<table>
-										           				<tr>
-																	<td class="text12">&nbsp;Kundnummer</td>
-																	<td class="text12">&nbsp;<input type="text" class="inputText" name="search_sveh_dkkn" id="search_sveh_dkkn" size="18" maxlength="8" value=""></td>
-																</tr>
-											           			<tr>
-																	<td class="text12">&nbsp;Namn</td>
-																	<td class="text12">&nbsp;<input type="text" class="inputText" name="search_sveh_dkna" id="search_sveh_dkna" size="18" maxlength="35" value=""></td>
-																</tr>
-											           			<tr>
-											           				<td class="text12">&nbsp;</td>
-												           			<td align="right">&nbsp;<button name="searchCustomer20" class="buttonGray" type="button" onClick="searchAnsvarigOwnWindow()">Sök</button></td>
-												           		</tr>
-												           		<tr height="4"><td ></td></tr>
-												           		<tr>
-											           				<td class="text12">&nbsp;Urval</td>
-												           			<td>&nbsp;</td>
-												           		</tr>
-												           		<tr>
-																	<td colspan="2">&nbsp;
-																		<select class="selectMediumBlueE2"  id="ansvarigList" name="ansvarigList" size="3" onDblClick="hidePop('searchCustomerDialog20');">
-						 													<option selected value="">-Välj-</option>
-						 							 					</select>
-																	</td>
-																	
-																	<%-- <input type="hidden" name="hidden_sveh_avkn" id="hidden_sveh_avkn" value=''> --%>
-																</tr>
-										           			</table>
-															<table width="30%" align="left" border="0">
-																<tr align="left" >
-																	<td >&nbsp;<button name="searchCustomer20CloseOk" id="searchCustomer20CloseOk" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog20');">Ok</button></td>
-																	<td >&nbsp;<button name="searchCustomer20CloseCancel" id="searchCustomer20CloseCancel" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog20');">Avbryt</button></td>
-																</tr>
-															</table>
-														</div>
-													</span>	
+										            <a tabindex="-1" id="thnaaIdLink">
+														<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+													</a>
 									            </td>
 									            
 									        </tr>
@@ -2057,16 +1939,25 @@
 		           	</tr> 
 		           	<tr height="10"><td></td></tr>
 		           	
-		           	<tr>
-			 			<td width="5">&nbsp;</td>
-			            <td >	
-							<%-- create record --%>
-						 	<table width="100%" align="left" border="0" cellspacing="0" cellpadding="0">
-						 		<tr>
-						            <td width="5">&nbsp;</td>
-						            <td >
-						                <table align="left" border="0" cellspacing="1" cellpadding="0">
-						                	<tr>
+		      
+						 	
+					</table>
+				</td>
+				<%-- --------------- --%>
+				<%-- RIGHT SIDE CELL --%>
+				<%-- --------------- --%>
+				
+				<td width="50%" align="left" valign="top">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="2">&nbsp;</td>
+							<td valign="top">
+					 			<table border="0" cellspacing="0" cellpadding="0">
+			                	<tr>
+						 			<td class="text14" >
+						 				<table align="left" border="0" cellspacing="2" cellpadding="0">
+						 				
+						 					<tr>
 									            <td class="text14" align="left">
 									            <img onMouseOver="showPop('kontrollresultat_info');" onMouseOut="hidePop('kontrollresultat_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								&nbsp;<span title="thdkr">Kontrollresultat.&nbsp;</span>
@@ -2088,8 +1979,7 @@
 													</select>
 									           		
 									           	</td>
-								           	</tr>
-								           	<tr>
+
 									            <td class="text14" align="left">
 									            <img onMouseOver="showPop('frist_info');" onMouseOut="hidePop('frist_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								&nbsp;<span title="thddt">Frist&nbsp;</span>
@@ -2107,8 +1997,9 @@
 									           		&nbsp;
 									           	</td>
 								           	</tr>
-								           	<tr height="10"><td></td></tr>
-								           	<tr>
+								           	<tr height="5"><td></td></tr>
+
+						 					<tr>
 									            <td class="text14" align="left">
 									            <img onMouseOver="showPop('forsegling_info');" onMouseOut="hidePop('forsegling_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								&nbsp;<span title="thdfkd">Förseglingsid&nbsp;</span>
@@ -2163,164 +2054,7 @@
 									           		&nbsp;
 									           	</td>
 								           	</tr>
-								           	
-							           	</table>
-						           	</td>
-					           	</tr>
-						 		<tr height="20"><td></td></tr>
-						 		
-								<%-- EXTRA INFORMATION fields 
-								<tr>
-						 			<td colspan="2">		
-						 				<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-									 		<tr height="15">
-									 			<td class="text14">
-									 				&nbsp;&nbsp;<b>Ytterligare säkerhetsuppgifter&nbsp;</b>
-									 				<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
-									 				
-								 				</td>
-							 				</tr>
-						 				</table>
-					 				</td>
-								</tr>
-								<tr height="8"><td></td></tr>
-					            <tr>
-						            <td width="5">&nbsp;</td>
-						            <td >
-						                <table align="left" border="0" cellspacing="1" cellpadding="0">
-						                	<tr>
-									            <td class="text14" align="left">
-									            <img onMouseOver="showPop('S02_info');" onMouseOut="hidePop('S02_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 								<b>S02.</b>&nbsp;Kommersiellt referensnr.&nbsp;</td>
-				 								<span style="position:absolute; left:1020px; top:1000px; width:250px; height:500px;" id="S02_info" class="popupWithInputText"  >
-									           		<div class="text12" align="left">
-								           			<br>
-								           			Här anger du ditt egna referensnummer för sändningen (UCR) - ett unikt nummer som tilldelas varor i samband med export.
-													Ett unikt referensnummer är ett nummer som gör det möjligt att spåra en sändning eller en artikel i ditt affärssystem. Det kan till exempel vara ett ordernummer, sändningsnummer eller kollinummer. Referensnumret är knutet till ett antal uppgifter om sändningen/artikeln i ditt affärssystem.
-													Världstullorganisationens (WCO) standard (ISO 15459) eller motsvarande kan användas.
-													Om samma kommersiella referensnummer gäller för alla varuposter eller om exportdeklarationen bara omfattar en varupost, anger du uppgiften på huvudnivå. I annat fall anger du uppgiften på varupostnivå. Kommersiellt referensnummer behöver inte anges i följande fall
-								           			<br/>
-								           			<ul>
-									           			<li>Om du angett koden "A" (Post- och expressförsändelser) i fältet S32, "Särskild omständighet, kod", behöver du inte ange denna uppgift.</li>
-									           			<li>Kommersiellt referensnummer kan också utelämnas vid utförsel till ett område inom gemenskapens tullområde som inte tillhör skatteområdet, exempelvis Åland.</li>
-									           			<li>Om du angett ett transportdokument i fält 44, "Bilagda handlingar", på minst en varupost, behöver du inte lämna kommersiellt referensnummer.</li>
-									           		</ul>
-									           		</div>
-												</span>
-									           	<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="sveh_komr" id="sveh_komr" size="25" maxlength="70" value='${komr}'></td>
-								           	</tr>
-						                	<tr>
-									 			<td class="text14" align="left" >
-									 			<img onMouseOver="showPop('S28_info');" onMouseOut="hidePop('S28_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 								<b>S28.</b>&nbsp;Förseglingsid&nbsp;</td>
-				 								<span style="position:absolute; left:1020px; top:1000px; width:250px; height:500px;" id="S28_info" class="popupWithInputText"  >
-									           		<div class="text12" align="left">
-								           			<br>
-								           			Antal förseglingar
-								           			<br/>
-								           			<ul>
-									           			<li>Uppgiften lämnas för närvarande inte i Sverige i UNU.</li>
-									           			<li>I dagsläget finns inga tillstånd till förenklat förfarande på export i Sverige där det är föreskrivet att en sändning ska förseglas, och därmed kan uppgiften utelämnas.</li>
-									           			<li>Förseglingsidentitet<br/>
-														Uppgiften lämnas för närvarande inte i Sverige i UNU.</li>
-									           		</ul>
-									           		</div>
-												</span>
-									 			<td class="text14" align="left" >&nbsp;&nbsp;Id(1)&nbsp;<input type="text" class="inputTextMediumBlue" name="sveh_sel1" id="sveh_sel1" size="20" maxlength="70" value='${sel1}'></td>
-									 		</tr>
-									 		<tr>
-									 			<td class="text14">&nbsp;</td>
-									 			<td class="text14" align="left" >&nbsp;&nbsp;Id(2)&nbsp;<input type="text" class="inputTextMediumBlue" name="sveh_sel2" id="sveh_sel2" size="20" maxlength="70" value='${sel2}'></td>
-									 			
-							 				</tr>
-									 		<tr>
-								 				<td nowrap class="text14">
-								 				<img onMouseOver="showPop('S29_info');" onMouseOut="hidePop('S29_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 								<b>S29.&nbsp;</b>Betalningssätt&nbsp;</td>
-								 				<span style="position:absolute; left:1020px; top:1000px; width:250px; height:500px;" id="S29_info" class="popupWithInputText"  >
-									           		<div class="text12" align="left">
-								           			<br>
-								           			Här anger du den kod som motsvarar hur du betalat transportkostnaderna. Uppgiften ska lämnas så långt den är känd, antingen på huvudnivå eller på varupostnivå. Om exportdeklarationen endast innehåller en varupost ska uppgiften anges på huvudnivå.
-								           			<br/>
-								           			<ul>
-									           			<li><b>A</b> Kontantbetalning</li>
-									           			<li><b>B</b> Betalning med kreditkort</li>
-									           			<li><b>C</b> Betalning med check</li>
-									           			<li><b>D</b> Övrigt (om ingen av de andra koderna är tillämplig, kan t.ex. vara direktdebitering av konto dvs. kunden har ett konto hos fraktföraren där pengar är inbetalade i förväg och varifrån det dras pengar varje gång frakten utförs)</li>
-									           			<li><b>H</b> Elektronisk betalning (t.ex. betalning över internet till bankgiro/plusgiro eller betalning med kort över internet)</li>
-									           			<li><b>Y</b> Konto hos fraktföraren (dvs. kunden har ett kreditkonto hos fraktföraren där frakten debiteras och som sedan faktureras kunden t.ex. en gång i månaden)</li>
-									           			<li><b>Z</b> Inte förhandsbetalat (dvs. frakten skickas på mottagarens bekostnad och kunden/mottagaren löser frakten innan frakthandlingar för godset kan disponeras. Detta förekommer t.ex. vid flygfrakt)</li>
-									           		</ul>
-									           		</div>
-												</span>
-								 				<td>
-									 				<select name="sveh_betk" id="sveh_betk" >
-									 				  <option value="">-Välj-</option>
-													  <option value="A"<c:if test="${betk == 'A'}"> selected </c:if> >A</option>
-													  <option value="B"<c:if test="${betk == 'B'}"> selected </c:if> >B</option>
-													  <option value="C"<c:if test="${betk == 'C'}"> selected </c:if> >C</option>
-													  <option value="D"<c:if test="${betk == 'D'}"> selected </c:if> >D</option>
-													  <option value="H"<c:if test="${betk == 'H'}"> selected </c:if> >H</option>
-													  <option value="Y"<c:if test="${betk == 'Y'}"> selected </c:if> >Y</option>
-													  <option value="Z"<c:if test="${betk == 'Z'}"> selected </c:if> >Z</option>
-													</select>
-								 				</td>
-							 				</tr>
-							 				<tr>
-								 				<td nowrap class="text14">
-								 				<img onMouseOver="showPop('S32_info');" onMouseOut="hidePop('S32_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 								<b>S32.&nbsp;</b>Särsk.omständ&nbsp;</td>
-								 				<span style="position:absolute; left:1020px; top:1000px; width:250px; height:500px;" id="S32_info" class="popupWithInputText"  >
-									           		<div class="text12" align="left">
-								           			<br>
-								           			I de fall du deklarerar "A", "B" eller "E" enligt kodtabellen nedan, har du möjlighet att lämna färre uppgifter i deklarationen.
-								           			<br/>
-								           			<ul>
-									           			<li><b>A</b> Post- och expressförsändelser</li>
-									           			<li><b>B</b> Proviant och delar till fartyg och luftfartyg</li>
-									           			<li><b>E</b> Godkända ekonomiska aktörer</li>
-									           		</ul>
-									           		Koden "E" (Godkända ekonomiska aktörer) kan bara anges om deklarant, exportör/avsändare samt eventuellt ombud har giltiga AEO-certifikat av typen AEOS (AEO-certifikat Säkerhet och skydd) eller AEOF (AEO-certifikat Tullförenklingar/Säkerhet och skydd). 
-									           		<br/>
-									           		Uppgiften kan också utelämnas vid utförsel till ett område inom gemenskapens tullområde som inte tillhör skatteområdet, exempelvis Åland. 
-									           		</div>
-												</span>
-								 				<td>
-									 				<select name="sveh_saom" id="sveh_saom" >
-									 				  <option value="">-Välj-</option>
-													  <option value="A"<c:if test="${saom == 'A'}"> selected </c:if> >A</option>
-													  <option value="B"<c:if test="${saom == 'B'}"> selected </c:if> >B</option>
-													  <option value="E"<c:if test="${saom == 'E'}"> selected </c:if> >E</option>
-												    </select>
-								 				</td>			 				
-							 				</tr>
-							 				
-							 			
-							 				<tr height="15"><td></td></tr>
-										</table>
-									</td>
-									
-								</tr>
-								--%>				 	
-						 	</table>
-					 	</td>
-				 	</tr>
-						 	
-					</table>
-				</td>
-				<%-- --------------- --%>
-				<%-- RIGHT SIDE CELL --%>
-				<%-- --------------- --%>
-				
-				<td width="50%" align="left" valign="top">
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td width="2">&nbsp;</td>
-							<td valign="top">
-					 			<table border="0" cellspacing="0" cellpadding="0">
-			                	<tr>
-						 			<td class="text14" >
-						 				<table align="left" border="0" cellspacing="2" cellpadding="0">
+						 				
 							 				<tr>
 								 				<td nowrap class="text14">
 								 				<img onMouseOver="showPop('returadress_info');" onMouseOut="hidePop('returadress_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
@@ -2357,6 +2091,601 @@
 					</table>
 				 </td>
 			</tr>
+			
+			<tr>
+				<td colspan="2">&nbsp;&nbsp;
+		            	<table width="99%" align="center" class="tableBorderWithRoundCornersDarkRed" border="0" cellspacing="2" cellpadding="0">
+		            		<tr>
+							<td width="50%" align="left" valign="top" class="text14" align="left" >
+								<table width="99%" align="left" border="0" cellspacing="0" cellpadding="0">
+							 		<tr height="18px">
+							 			<td class="text14">
+							 				&nbsp;<img onMouseOver="showPop('sikkerhed_info');" onMouseOut="hidePop('sikkerhed_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+									        	<b>Säkerhet</b>&nbsp;
+									        <div class="text11" style="position: relative;" align="left">
+												<span style="position:absolute;top:2px; width:250px;" id="sikkerhed_info" class="popupWithInputText text11"  >
+													TODO
+												</span>
+											</div>
+						 				</td>
+					 				</tr>
+					 				<tr>
+					 					
+					            			<td class="text14">&nbsp;<span title="thsik">
+					            				<img onMouseOver="showPop('sikkerhedIndicator_info');" onMouseOut="hidePop('sikkerhedIndicator_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+					            				Säkerhetsindikator</span>&nbsp;
+					            				
+											
+					            				<select class="selectMediumBlueE2" name="thsik" id="thsik" >
+							 				  <option value=""<c:if test="${model.record.thsik == '0' || empty model.record.thsik }"> selected </c:if> >0</option>
+											  <option value="1"<c:if test="${model.record.thsik == '1'}"> selected </c:if> >1</option>
+											</select>
+											&nbsp;&nbsp;<span title="thdta">Ank.dato</span>&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="thdta" id="thdta" size="9" maxlength="8" value="${model.record.thdta}">
+											&nbsp;<span title="thtma">Tid</span>&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="thtma" id="thtma" size="5" maxlength="4" value="${model.record.thtma}">
+											
+											<div class="text11" style="position: relative;" align="left">
+											<span style="position:absolute;top:2px; width:250px;" id="sikkerhedIndicator_info" class="popupWithInputText text11"  >
+												Indikator for specifik omständighet (0 eller 1)	
+											</span>
+											</div>	
+										</td>
+					            		</tr>
+					            		<tr>
+					            			<td class="text14">&nbsp;<span title="thkref">Kommersiellt ref.nr</span></td>
+					            		</tr>
+					            		<tr>
+					            			<td><input type="text" class="inputTextMediumBlue" name="thkref" id="thkref" size="70" maxlength="70" value="${model.record.thkref}"></td>
+					            		</tr>
+					            		<tr>
+					            			<td class="text14">&nbsp;<span title="thtref">Transportör ref.nr</span></td>
+					            		</tr>
+					            		<tr>
+										<td><input type="text" class="inputTextMediumBlue" name="thtref" id="thtref" size="70" maxlength="35" value="${model.record.thtref}"></td>
+					            		</tr>
+					        		</table>
+					        </td>
+				            <td width="50%" align="left" valign="top" class="text14" align="left" >   
+				            		<table width="99%" align="left" border="0" cellspacing="0" cellpadding="0">
+				            			<tr height="18px">
+					            			<td class="text14">&nbsp;</td>
+					            		</tr>
+		            					<tr>
+					            			<td class="text14">
+					            				<img onMouseOver="showPop('spesOmstand_info');" onMouseOut="hidePop('spesOmstand_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+					            				<span title="thspom">Spes.omständighet</span>&nbsp;
+					            				<select class="selectMediumBlueE2" name="thspom" id="thspom">
+					            				<option value="">-välj-</option>
+					 				  			<c:forEach var="code" items="${model.ncts096_SpecOmst_CodeList}" >
+	                             	 				<option value="${code.tkkode}"<c:if test="${model.record.thspom == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+												</c:forEach> 
+											</select>
+											<div class="text11" style="position: relative;" align="left">
+											<span style="position:absolute;top:2px; width:250px;" id="spesOmstand_info" class="popupWithInputText text11"  >
+								           			<ul>
+								           				<c:forEach var="code" items="${model.ncts096_SpecOmst_CodeList}" >
+									 				  		<li><b>${code.tkkode}</b>&nbsp;${code.tktxtn}</li>
+								 				  		</c:forEach>	
+								           			</ul>
+											</span>
+											</div>
+				            				</td>
+					            			<td class="text14">
+					            				<img onMouseOver="showPop('betalmade_info');" onMouseOut="hidePop('betalmade_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+					            				<span title="thtkbm">Transp.kost/Betal.sätt</span>&nbsp;
+					            				<select class="selectMediumBlueE2" name="thtkbm" id="thtkbm">
+					            				<option value="">-välj-</option>
+					 				  			<c:forEach var="code" items="${model.ncts116_BetalningTransport_CodeList}" >
+	                             	 				<option value="${code.tkkode}"<c:if test="${model.record.thtkbm == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+												</c:forEach> 
+											</select>
+											<div class="text11" style="position: relative;" align="left">
+											<span style="position:absolute;top:2px; width:250px;" id="betalmade_info" class="popupWithInputText text11"  >
+								           			<ul>
+								           				<c:forEach var="code" items="${model.ncts116_BetalningTransport_CodeList}" >
+									 				  		<li><b>${code.tkkode}</b>&nbsp;${code.tktxtn}</li>
+								 				  		</c:forEach>	
+								           			</ul>
+											</span>
+											</div>
+					            			</td>
+					            		</tr>
+					            		<tr>
+					            			<td class="text14">&nbsp;&nbsp;<span title="thlosd">Lossplats</span>
+					            				<input type="text" class="inputTextMediumBlue" name="thlosd" id="thlosd" size="30" maxlength="35" value="${model.record.thlosd}">
+					            			</td>
+					            			<td class="text14">&nbsp;&nbsp;<span title="thlosdsk">Lossplats spåkkod</span>
+					            				<select class="selectMediumBlueE2" name="thlosdsk" id="thlosdsk">
+					            				<option value="">-välj-</option>
+					 				  			<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
+				                             	 			<option value="${code.tkkode}"<c:if test="${model.record.thlosdsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+												</c:forEach> 
+											</select>
+											<a tabindex="-1" id="thlosdskIdLink"  OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
+					            			</td>
+					            		</tr>
+					            		<tr>
+					            			<td class="text14">&nbsp;
+					            				<table>
+					            				<tr>
+					            					<td colspan="4" class="text14">&nbsp;
+					            					<span title="thlkr1-8">Landkod för resplan</span>
+					            					<a tabindex="-1" id="thlkr1-8"  OnClick="triggerChildWindowCountryCodes(this)">
+														<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+													</a>
+					            					</td>
+					            				</tr>
+					            				<tr>
+						            				<td>
+						            				<select class="selectMediumBlueE2" name="thlkr1" id="thlkr1">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr1 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+												</td>
+												<td>
+						            				<select class="selectMediumBlueE2" name="thlkr2" id="thlkr2">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr2 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+												</td>
+												<td>
+						            				<select class="selectMediumBlueE2" name="thlkr3" id="thlkr3">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr3 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</c:forEach> 
+												</select>
+												</td>
+												<td>
+												<select class="selectMediumBlueE2" name="thlkr4" id="thlkr4">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr4 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+						            				</td>
+					            				</tr>
+					            				<tr>	
+						            				<td>
+						            				<select class="selectMediumBlueE2" name="thlkr5" id="thlkr5">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr5 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+						            				</td>
+						            				<td>
+						            				<select class="selectMediumBlueE2" name="thlkr6" id="thlkr6">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr6 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+						            				</td>
+						            				<td>
+						            				<select class="selectMediumBlueE2" name="thlkr7" id="thlkr7">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr7 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+												</td>
+												<td>
+						            				<select class="selectMediumBlueE2" name="thlkr8" id="thlkr8">
+									            		<option value="">-välj-</option>
+								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr8 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+													</c:forEach> 
+												</select>
+												</td>
+											</tr>
+											</table>
+					            			</td>
+					            		</tr>
+			 					</table>
+							</td>
+						</tr>
+		            		<tr height="3"><td>&nbsp;</td></tr>
+				        	<tr>
+				        		<td width="50%" align="center" valign="top">
+								<table width="99%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
+							 		<tr height="18px">
+							 			<td class="text14White">
+							 				&nbsp;
+					 						&nbsp;Avsändare - Säkerhet&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+						 				</td>
+					 				</tr>
+			 					</table>
+			 					<table width="99%" align="center" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+							 		<tr>	
+							 			<td width="5">&nbsp;</td>
+							            <td >	
+											<%-- create record --%>
+										 	<table width="100%" align="left" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+										 		<tr>
+											 		<td>
+												 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											 				<%-- ================================================================================== --%>
+													        	<%-- This hidden values are used when an AJAX event from within a dialog box is fired.  
+													        		 These original values will be used when the user clicks "Cancel" buttons (puttting
+													        		 back original value)																--%> 
+													        	<%-- ================================================================================== --%>
+													        	<input type="hidden" name="orig_thknss" id="orig_thknss" value='${model.record.thknss}'>
+													        	<input type="hidden" name="orig_thnass" id="orig_thnass" value='${model.record.thnass}'>
+													        	<input type="hidden" name="orig_thtinss" id="orig_thtinss" value='${model.record.thtinss}'>
+													        	<input type="hidden" name="orig_thadss1" id="orig_thadss1" value='${model.record.thadss1}'>
+													        	<input type="hidden" name="orig_thpnss" id="orig_thpnss" value='${model.record.thpnss}'>
+													        	<input type="hidden" name="orig_thpsss" id="orig_thpsss" value='${model.record.thpsss}'>
+													        	<input type="hidden" name="orig_thlkss" id="orig_thlkss" value='${model.record.thlkss}'>
+													        	<input type="hidden" name="orig_thskss" id="orig_thskss" value='${model.record.thskss}'>
+													        	
+													        	<tr height="10">
+													            <td class="text14" align="left">&nbsp;</td> 
+													        </tr>
+													 		<tr height="15">
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thknss">Kundnummer</span></td>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thnass">Namn</span>
+													            	<a tabindex="-1" id="thnassIdLink">
+																		<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																	</a>
+											            		</td>
+													        </tr>
+													        <tr>
+													        		<td align="left"><input type="text" class="inputTextMediumBlue" name="thknss" id="thknss" size="10" maxlength="8" value="${model.record.thknss}"></td>
+													            <td align="left"><input type="text" class="inputTextMediumBlue" name="thnass" id="thnass" size="30" maxlength="35" value="${model.record.thnass}"></td>
+													        </tr>
+													        <tr>
+											        				<td class="text14" align="left" >&nbsp;&nbsp;<span title="thtinss">TIN</span></td>
+													        </tr>
+													        <tr>
+													        		<td align="left"><input type="text" class="inputTextMediumBlue" name="thtinss" id="thtinss" size="20" maxlength="17" value="${model.record.thtinss}"></td>
+													        </tr>
+				
+													        <tr height="4"><td>&nbsp;</td></tr>
+													        <tr>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thadss1">Adress</span></td>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thskss">Språkkod</span>
+												            		
+													            </td>
+													        </tr>
+													        <tr>
+													            <td align="left"><input type="text" class="inputTextMediumBlue" name="thadss1" id="thadss1" size="30" maxlength="30" value="${model.record.thadss1}"></td>
+													            <td class="text14" align="left" >
+													            		&nbsp;<select class="selectMediumBlueE2" name="thskss" id="thskss">
+														            		<option value="">-välj-</option>
+														 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
+										                                	 	<option value="${code.tkkode}"<c:if test="${model.record.thskss == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+																			</c:forEach> 
+																	</select>
+																	<a tabindex="-1" id="thskssIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+																		<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																	</a>
+													            
+																</td>
+													        </tr>
+													        <tr>
+													        		<td>
+														        		<table>
+														        		<tr>
+														            		<td class="text14" align="left" >&nbsp;&nbsp;<span title="thpsss">Postadress</span></td>
+														            		<td align="left">&nbsp;</td>
+														            	</tr>
+														        		<tr>
+														            		<td align="left">
+														       				<input type="text" class="inputTextMediumBlue" name="thpsss" id="thpsss" size="30" maxlength="24" value="${model.record.thpsss}">
+													            			</td> 
+														            		<td align="left">&nbsp;</td>
+														        		</tr>    	
+														            	</table>
+													            </td>
+													            <td >
+														            	<table>
+														        		<tr>
+														        			<td class="text14" align="left" >&nbsp;&nbsp;<span title="thpnss">Postnummer</span></td>
+														            		<td class="text14" align="left" >&nbsp;<span title="thlkss">Land</span>
+														            		
+														            		</td>
+														            	</tr>
+														        		<tr >
+														        			<td align="left"><input type="text" class="inputTextMediumBlue" name="thpnss" id="thpnss" size="10" maxlength="8" value="${model.record.thpnss}"></td> 
+														            		<td align="left">
+														            			<select class="selectMediumBlueE2" name="thlkss" id="thlkss">
+																            		<option value="">-välj-</option>
+															 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+											                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkss == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+																				</c:forEach> 
+																			</select>
+																			<a id="thlkssIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+														            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+														            		</a>
+														            		</td> 
+														        		</tr>  
+														            	</table>
+													            </td>
+												            	</tr>
+													        
+													        <tr height="15">
+											            		<td class="text14Bold" align="left" >&nbsp;</td>
+											            		<td class="text14Bold" align="left" >&nbsp;</td> 
+													        </tr>  
+													        
+												        </table>
+											        </td>
+										        </tr>
+											</table>          
+						            		</td>
+						           	</tr> 
+		 						</table>
+			 					<table width="99%" align="center" border="0" cellspacing="0" cellpadding="0">
+							 		<tr height="5"><td>&nbsp;</td></tr>
+			 					</table>	
+								<table width="99%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
+							 		<tr height="18px">
+							 			<td class="text14White">
+							 				&nbsp;
+					 						&nbsp;Transportör - Säkerhet&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+						 				</td>
+					 				</tr>
+			 					</table>
+			 					<table width="99%" align="center" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+							 		<tr>	
+							 			<td width="5">&nbsp;</td>
+							            <td >	
+											<%-- create record --%>
+										 	<table width="100%" align="left" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+										 		<tr>
+											 		<td>
+												 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											 				<%-- ================================================================================== --%>
+													        	<%-- This hidden values are used when an AJAX event from within a dialog box is fired.  
+													        		 These original values will be used when the user clicks "Cancel" buttons (puttting
+													        		 back original value)																--%> 
+													        	<%-- ================================================================================== --%>
+													        	<input type="hidden" name="orig_thknt" id="orig_thknt" value='${model.record.thknt}'>
+													        	<input type="hidden" name="orig_thnat" id="orig_thnat" value='${model.record.thnat}'>
+													        	<input type="hidden" name="orig_thtint" id="orig_thtint" value='${model.record.thtint}'>
+													        	<input type="hidden" name="orig_thadt1" id="orig_thadt1" value='${model.record.thadt1}'>
+													        	<input type="hidden" name="orig_thpnt" id="orig_thpnt" value='${model.record.thpnt}'>
+													        	<input type="hidden" name="orig_thpst" id="orig_thpst" value='${model.record.thpst}'>
+													        	<input type="hidden" name="orig_thlkt" id="orig_thlkt" value='${model.record.thlkt}'>
+													        	<input type="hidden" name="orig_thskt" id="orig_thskt" value='${model.record.thskt}'>
+													        	
+													        	<tr height="10">
+													            <td class="text14" align="left">&nbsp;</td> 
+													        </tr>
+													 		<tr height="15">
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thknt">Kundnummer</span></td>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thnat">Namn</span>
+													            	<a tabindex="-1" id="thnatIdLink">
+																	<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																	</a>
+											            		</td>
+													        </tr>
+													        <tr>
+													        		<td align="left"><input type="text" class="inputTextMediumBlue" name="thknt" id="thknt" size="10" maxlength="8" value="${model.record.thknt}"></td>
+													            <td align="left"><input type="text" class="inputTextMediumBlue" name="thnat" id="thnat" size="30" maxlength="35" value="${model.record.thnat}"></td>
+													        </tr>
+													        <tr>
+											        				<td class="text14" align="left" >&nbsp;&nbsp;<span title="thtint">TIN</span></td>
+													        </tr>
+													        <tr>
+													        		<td align="left"><input type="text" class="inputTextMediumBlue" name="thtint" id="thtint" size="20" maxlength="17" value="${model.record.thtint}"></td>
+													        </tr>
+				
+													        <tr height="4"><td>&nbsp;</td></tr>
+													        <tr>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thadt1">Adress</span></td>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thskt">Språkkod</span>
+												            		
+													            
+													            </td>
+													        </tr>
+													        <tr>
+													            <td align="left"><input type="text" class="inputTextMediumBlue" name="thadt1" id="thadt1" size="30" maxlength="30" value="${model.record.thadt1}"></td>
+													            <td class="text14" align="left" >
+													            		&nbsp;<select class="selectMediumBlueE2" name="thskt" id="thskt">
+														            		<option value="">-välj-</option>
+														 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
+										                                	 	<option value="${code.tkkode}"<c:if test="${model.record.thskt == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+																			</c:forEach> 
+																	</select>
+																	<a tabindex="-1" id="thsktIdLink"  OnClick="triggerChildWindowLanguageCodes(this)">
+																		<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																	</a>
+																</td>
+													        </tr>
+													        <tr>
+													        		<td>
+														        		<table>
+														        		<tr>
+														            		<td class="text14" align="left" >&nbsp;&nbsp;<span title="thpst">Postadress</span></td>
+														            		<td align="left">&nbsp;</td>
+														            	</tr>
+														        		<tr>
+														            		<td align="left">
+														       				<input type="text" class="inputTextMediumBlue" name="thpst" id="thpst" size="30" maxlength="24" value="${model.record.thpst}">
+													            			</td> 
+														            		<td align="left">&nbsp;</td>
+														        		</tr>    	
+														            	</table>
+													            </td>
+													            <td >
+														            	<table>
+														        		<tr>
+														        			<td class="text14" align="left" >&nbsp;&nbsp;<span title="thpnt">Postnummer</span></td>
+														            		<td class="text14" align="left" >&nbsp;<span title="thlkt">Land</span>
+														            		
+														            		</td>
+														            	</tr>
+														        		<tr >
+														        			<td align="left"><input type="text" class="inputTextMediumBlue" name="thpnt" id="thpnt" size="10" maxlength="8" value="${model.record.thpnt}"></td> 
+														            		<td align="left">
+														            			<select class="selectMediumBlueE2" name="thlkt" id="thlkt">
+																            		<option value="">-välj-</option>
+															 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+											                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkt == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+																				</c:forEach> 
+																			</select>
+																			<a id="thlktIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+															            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+														            		</a>
+														            		</td> 
+														        		</tr>  
+														            	</table>
+													            </td>
+												            	</tr>
+													        
+													        <tr height="15">
+											            		<td class="text14Bold" align="left" >&nbsp;</td>
+											            		<td class="text14Bold" align="left" >&nbsp;</td> 
+													        </tr>  
+													        
+												        </table>
+											        </td>
+										        </tr>
+											</table>          
+						            		</td>
+						           	</tr> 
+		 						</table>
+			        			</td>
+			        			<td width="50%" align="center" valign="top">
+								<table width="99%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
+							 		<tr height="18px">
+							 			<td class="text14White">
+							 				&nbsp;
+					 						&nbsp;Mottagare - Säkerhet&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+						 				</td>
+					 				</tr>
+			 					</table>
+			 					<table width="99%" align="center" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+							 		<tr>	
+							 			<td width="5">&nbsp;</td>
+							            <td >	
+											<%-- create record --%>
+										 	<table width="100%" align="left" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+										 		<tr>
+											 		<td>
+												 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													 		<%-- ================================================================================== --%>
+													        	<%-- This hidden values are used when an AJAX event from within a dialog box is fired.  
+													        		 These original values will be used when the user clicks "Cancel" buttons (puttting
+													        		 back original value)																--%> 
+													        	<%-- ================================================================================== --%>
+													        	<input type="hidden" name="orig_thknks" id="orig_thknks" value='${model.record.thknks}'>
+													        	<input type="hidden" name="orig_thnaks" id="orig_thnaks" value='${model.record.thnaks}'>
+													        	<input type="hidden" name="orig_thtinks" id="orig_thtinks" value='${model.record.thtinks}'>
+													        	<input type="hidden" name="orig_thadks1" id="orig_thadks1" value='${model.record.thadks1}'>
+													        	<input type="hidden" name="orig_thpnks" id="orig_thpnks" value='${model.record.thpnks}'>
+													        	<input type="hidden" name="orig_thpsks" id="orig_thpsks" value='${model.record.thpsks}'>
+													        	<input type="hidden" name="orig_thlkks" id="orig_thlkks" value='${model.record.thlkks}'>
+													        	<input type="hidden" name="orig_thskks" id="orig_thskks" value='${model.record.thskks}'>
+													 		<tr height="10">
+													            <td class="text14" align="left">&nbsp;</td> 
+													        </tr>
+													        <tr height="15">
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thknks">Kundnummer</span></td>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thnaks">Namn</span>
+													            	<a tabindex="-1" id="thnaksIdLink">
+																	<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																	</a>	
+													            </td>
+													        </tr>
+													        <tr>
+													        		<td align="left"><input type="text" class="inputTextMediumBlue" name="thknks" id="thknks" size="10" maxlength="8" value="${model.record.thknks}"></td>
+													            <td align="left"><input type="text" class="inputTextMediumBlue" name="thnaks" id="thnaks" size="30" maxlength="35" value="${model.record.thnaks}"></td>
+													        </tr>
+													        <tr>
+											        				<td class="text14" align="left" >&nbsp;&nbsp;<span title="thtinks">EORI</span></td>
+													        </tr>
+													        <tr>
+													        		<td align="left"><input type="text" class="inputTextMediumBlue" name="thtinks" id="thtinks" size="20" maxlength="17" value="${model.record.thtinks}"></td>
+													        </tr>
+				
+													        <tr height="4"><td>&nbsp;</td></tr>
+													        <tr>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thadks1">Adress</span></td>
+													            <td class="text14" align="left" >&nbsp;&nbsp;<span title="thskks">Språkkod</span>
+												            		
+													            </td>
+													        </tr>
+													        <tr>
+													            <td align="left"><input type="text" class="inputTextMediumBlue" name="thadks1" id="thadks1" size="30" maxlength="30" value="${model.record.thadks1}"></td>
+													            <td class="text14" align="left" >
+													            		&nbsp;<select class="selectMediumBlueE2" name="thskks" id="thskks">
+														            		<option value="">-välj-</option>
+														 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
+										                                	 	<option value="${code.tkkode}"<c:if test="${model.record.thskks == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+																			</c:forEach> 
+																	</select>
+																	<a tabindex="-1" id="thskksIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+																		<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																	</a>
+																</td>
+													        </tr>
+													        <tr>
+													        		<td>
+														        		<table>
+														        		<tr>
+														            		<td class="text14" align="left" >&nbsp;&nbsp;<span title="thpsks">Postadress</span></td>
+														            		<td align="left">&nbsp;</td>
+														            	</tr>
+														        		<tr>
+														            		<td align="left">
+														       				<input type="text" class="inputTextMediumBlue" name="thpsks" id="thpsks" size="30" maxlength="24" value="${model.record.thpsks}">
+													            			</td> 
+														            		<td align="left">&nbsp;</td>
+														        		</tr>    	
+														            	</table>
+													            </td>
+													            <td >
+														            	<table>
+														        		<tr>
+														        			<td class="text14" align="left" >&nbsp;&nbsp;<span title="thpnks">Postnummer</span></td>
+														            		<td class="text14" align="left" >&nbsp;<span title="thlkks">Land</span>
+														            		
+														            		</td>
+														            	</tr>
+														        		<tr >
+														        			<td align="left"><input type="text" class="inputTextMediumBlue" name="thpnks" id="thpnks" size="10" maxlength="8" value="${model.record.thpnks}"></td> 
+														            		<td align="left">
+														            			<select class="selectMediumBlueE2" name="thlkks" id="thlkks">
+																            		<option value="">-välj-</option>
+															 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+											                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkks == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+																				</c:forEach> 
+																			</select>
+																			<a id="thlkksIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+															            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+														            		</a>
+														            		</td> 
+														        		</tr>  
+														            	</table>
+													            </td>
+												            	</tr>
+													        
+													        <tr height="15">
+											            		<td class="text14Bold" align="left" >&nbsp;</td>
+											            		<td class="text14Bold" align="left" >&nbsp;</td> 
+													        </tr>  
+												        </table>
+											        </td>
+										        </tr>
+											</table>          
+						            		</td>
+						           	</tr> 
+		 						</table>
+			        			</td>
+				        	</tr>
+				        	<tr height="10"><td>&nbsp;</td></tr>
+		            	</table>
+		            </td>  
+		            <td>&nbsp;</td>
+		        </tr>
+			
 			</table> <%-- END to the wrapper table for EXTRAORDINARY data --%>	
 			</td>			
 		</tr>		         
@@ -2398,11 +2727,7 @@
 				            		<option value="W">W</option>
 				            		<option value="Y">Y</option>
 				            		<option value="Z">Z</option>
-			            			<%--
-			 				  	<c:forEach var="record" items="${model.statusCodeList}" >
-		                            <option value="${record.dkkd_kd}">${record.dkkd_kd}</option>
-								</c:forEach>
-								 --%> 
+			            			
 							</select>
 							
 						</td>
