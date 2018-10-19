@@ -1413,8 +1413,44 @@
 		  });
 	  });
 
+	  
+	  jq(function() {
+		  //Valuta
+	  	  jq('#thgvkIdLink').click(function() {
+	    	jq('#thgvkIdLink').attr('target','_blank');
+	    	window.open('nctsexport_edit_childwindow_generalcodes.do?action=doInit&type=MDX&ctype=thgvk', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	  });
+	  	  jq('#thgvkIdLink').keypress(function(e){ //extra feature for the end user
+			if(e.which == 13) {
+				jq('#thgvkIdLink').click();
+			}
+	  	  });
+	  });
 	
-	
+	//ChildWindow Country Codes
+	    function triggerChildWindowCountryCodes(record){
+	    	var idLink = record.id;
+	    	var id = idLink.replace("IdLink", "");
+	    	jq(idLink).attr('target','_blank');
+	    	window.open('nctsexport_edit_childwindow_generalcodes.do?action=doInit&type=GCY&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    }
+	    
+	  //ChildWindow Language Codes
+	    function triggerChildWindowLanguageCodes(record){
+	    	var idLink = record.id;
+	    	var id = idLink.replace("IdLink", "");
+	    	jq(idLink).attr('target','_blank');
+	    	window.open('nctsexport_edit_childwindow_generalcodes.do?action=doInit&type=012&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    }
+	  //ChildWindow Tullkontor Codes
+	    function triggerChildWindowTullkontorCodes(record){
+	    	var idLink = record.id;
+	    	var id = idLink.replace("IdLink", "");
+	    	//alert(idLink + "XX" + id);
+	    	//alert(jq("#"+id).val());
+	    	jq(idLink).attr('target','_blank');
+	    	window.open('nctsexport_edit_childwindow_tullkontor.do?action=doInit&tkkode=' + jq("#"+id).val()+ '&ctype=' + id, "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    }
 	
 	
 	

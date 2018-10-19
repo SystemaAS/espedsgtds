@@ -56,20 +56,20 @@ public class NctsExportHeaderValidator implements Validator {
 		//Check for Mandatory fields first
 		
 		//sender
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thnas", "systema.ncts.export.header.error.null.thnas"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thtins", "systema.ncts.export.header.error.null.thtins"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thads1", "systema.ncts.export.header.error.null.thads1"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpns", "systema.ncts.export.header.error.null.thpns"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpss", "systema.ncts.export.header.error.null.thpss"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thlks", "systema.ncts.export.header.error.null.thlks"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thnas", "systema.ncts.export.header.error.null.thnas"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thtins", "systema.ncts.export.header.error.null.thtins"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thads1", "systema.ncts.export.header.error.null.thads1"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpns", "systema.ncts.export.header.error.null.thpns"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpss", "systema.ncts.export.header.error.null.thpss"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thlks", "systema.ncts.export.header.error.null.thlks"); 
 		
 		//receiver (there could be several receivers at an item line level and therefore it should be optional)
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thnak", "systema.ncts.export.header.error.null.thnak"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thnak", "systema.ncts.export.header.error.null.thnak"); 
 		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thtink", "systema.ncts.export.header.error.null.thtink"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thadk1", "systema.ncts.export.header.error.null.thadk1"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpnk", "systema.ncts.export.header.error.null.thpnk"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpsk", "systema.ncts.export.header.error.null.thpsk"); 
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thlkk", "systema.ncts.export.header.error.null.thlkk"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thadk1", "systema.ncts.export.header.error.null.thadk1"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpnk", "systema.ncts.export.header.error.null.thpnk"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thpsk", "systema.ncts.export.header.error.null.thpsk"); 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thlkk", "systema.ncts.export.header.error.null.thlkk"); 
 		
 		//ansvarig
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thnaa", "systema.ncts.export.header.error.null.thnaa"); 
@@ -87,8 +87,8 @@ public class NctsExportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thdst", "systema.ncts.export.header.error.null.thdst");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thdsk", "systema.ncts.export.header.error.null.thdsk");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thtsb", "systema.ncts.export.header.error.null.thtsb");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thalk", "systema.ncts.export.header.error.null.thalk");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thblk", "systema.ncts.export.header.error.null.thblk");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thalk", "systema.ncts.export.header.error.null.thalk");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thblk", "systema.ncts.export.header.error.null.thblk");
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thtrm", "systema.ncts.export.header.error.null.thtrm");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thtrmi", "systema.ncts.export.header.error.null.thtrmi");

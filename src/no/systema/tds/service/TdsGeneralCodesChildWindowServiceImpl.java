@@ -30,9 +30,11 @@ public class TdsGeneralCodesChildWindowServiceImpl implements TdsGeneralCodesChi
 	public JsonTdsCodeContainer getCodeContainer(String utfPayload) throws Exception{
 		return this.codeMapper.getContainer(utfPayload);
 	}
-	/*
+	/**
+	 * 
+	 */
 	public JsonTdsNctsCodeContainer getNctsCodeContainer(String utfPayload) throws Exception{
 		return this.codeMapper.getNctsContainer(utfPayload);
-	}*/
+	}
 	
 }
