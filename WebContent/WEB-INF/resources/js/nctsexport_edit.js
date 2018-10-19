@@ -111,8 +111,7 @@
 	  	});
     });
     
-    
- 
+
 		
 	//Currency AJAX fetch
 	jq(function() { 
