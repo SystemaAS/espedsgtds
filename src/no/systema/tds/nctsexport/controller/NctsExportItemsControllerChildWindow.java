@@ -26,15 +26,19 @@ import javax.servlet.http.HttpSession;
 //application imports
 import no.systema.main.context.TdsAppContext;
 import no.systema.main.service.UrlCgiProxyService;
+import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.validator.LoginValidator;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.DateTimeManager;
 import no.systema.main.util.JsonDebugger;
 import no.systema.main.model.SystemaWebUser;
-
+import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
+import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeRecord;
+import no.systema.tds.service.TdsGeneralCodesChildWindowService;
 import no.systema.tds.tdsexport.filter.SearchFilterTdsExportTopicList;
 import no.systema.tds.tdsexport.service.TdsExportTopicListService;
 import no.systema.tds.tdsexport.url.store.TdsExportUrlDataStore;
+import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListRecord;
 
@@ -110,7 +114,40 @@ public class NctsExportItemsControllerChildWindow {
 	    	return successView;
 		}
 	}
-	
+	/**
+	 * 
+	 * @param recordToValidate
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="nctsexport_edit_items_childwindow_generalcodes.do", params="action=doInit",  method={RequestMethod.GET} )
+	public ModelAndView doInitGeneralCodes(@ModelAttribute ("record") JsonTdsNctsCodeContainer recordToValidate, HttpSession session, HttpServletRequest request){
+		this.context = TdsAppContext.getApplicationContext();
+		logger.info("Inside: doInitGeneralCodes");
+		Map model = new HashMap();
+		String callerType = request.getParameter("ctype");
+		String typeCode = request.getParameter("type");
+		String ie = this.getIeMode(typeCode);
+		
+		ModelAndView successView = new ModelAndView("nctsexport_edit_items_childwindow_generalcodes");
+		SystemaWebUser appUser = this.loginValidator.getValidUser(session);
+		//check user (should be in session already)
+		if(appUser==null){
+			return this.loginView;
+			
+		}else{
+			  
+			List list = this.getCodeList(appUser, typeCode, ie);
+			
+			model.put("generalCodeList", list);
+			model.put("callerType", callerType);
+			
+			successView.addObject(TdsConstants.DOMAIN_MODEL , model);
+			
+	    	return successView;
+		}
+	}
 	
 	/**
 	 * 
@@ -199,6 +236,78 @@ public class NctsExportItemsControllerChildWindow {
 		return urlRequestParamsKeys.toString();
 	}	
 
+	
+	private List<JsonTdsNctsCodeRecord> getCodeList(SystemaWebUser appUser, String typeCode, String ieMode){
+		List<JsonTdsNctsCodeRecord> list = new ArrayList<JsonTdsNctsCodeRecord>();
+		
+		logger.info(Calendar.getInstance().getTime() + " CONTROLLER start - timestamp");
+		//Default
+		String BASE_URL = TdsUrlDataStore.TDS_CODES_URL;
+		StringBuffer urlRequestParams = new StringBuffer();
+		urlRequestParams.append("user=" + appUser.getUser() + "&ie=" + ieMode);
+		urlRequestParams.append("&typ=" + typeCode);
+	
+		if("UNKNOWN".equals(ieMode)){
+			//NCTS-specific URL
+			BASE_URL = TdsUrlDataStore.TDS_NCTS_CODES_URL;
+			urlRequestParams = new StringBuffer();
+			urlRequestParams.append("user=" + appUser.getUser());
+			urlRequestParams.append("&typ=" + typeCode);
+		}
+		logger.info(BASE_URL);
+		logger.info(urlRequestParams);
+		
+		UrlCgiProxyService urlCgiProxyService = new UrlCgiProxyServiceImpl();
+		String jsonPayload = urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams.toString());
+		JsonTdsNctsCodeContainer container = null;
+		try{
+			if(jsonPayload!=null){
+				container = this.tdsGeneralCodesChildWindowService.getNctsCodeContainer(jsonPayload);
+				if(container!=null){
+					for(JsonTdsNctsCodeRecord  record : container.getKodlista()){
+						list.add(record);
+					}
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	/**
+	 * KLI = Kollislag           IE = A
+	 * GCY = Landkod 			 IE = A
+	 * MDX = Valutakod			 IE = A
+	 * MCF = Bilagda Handlingar  IE = A
+	 * ADD = Tilläggskod imp     IE = A
+	 * FFK = Förfarande :2 exp   IE = A
+	 * FF1 = Förfarande :1 imp	 IE = I 
+	 * SAL = Särsk. uppl kod     IE = I,E
+	 * FOR = Förmånskod imp      IE = I
+	 * THO = Tid.handl. TYP       IE = A
+	 * CHN = Avgiftskoder 		 IE = A
+	 * 
+	 * @param typeCode
+	 * @return
+	 */
+	private String getIeMode(String typeCode){
+		final String IE_MODE_A = "A"; //ALL
+		final String IE_MODE = "E"; //Export
+		
+		String retval = "UNKNOWN";
+		if(typeCode!=null){
+			if("KLI".equals(typeCode) || "GCY".equals(typeCode) || "MDX".equals(typeCode) || "MCF".equals(typeCode) || "ADD".equals(typeCode) || "FFK".equals(typeCode) ||  
+				"THO".equals(typeCode) ||	"CHN".equals(typeCode) || "CHA".equals(typeCode)){
+					retval = IE_MODE_A;
+			}else if("FF1".equals(typeCode) || "SAL".equals(typeCode) || "FOR".equals(typeCode)){
+					retval = IE_MODE;
+			}
+		}
+		
+		return  retval;
+	}
+	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")
 	private UrlCgiProxyService urlCgiProxyService;
@@ -214,6 +323,13 @@ public class NctsExportItemsControllerChildWindow {
 	@Required
 	public void setTdsExportTopicListService (TdsExportTopicListService value){ this.tdsExportTopicListService = value; }
 	public TdsExportTopicListService getTdsExportTopicListService(){ return this.tdsExportTopicListService; }
+	
+	@Qualifier 
+	private TdsGeneralCodesChildWindowService tdsGeneralCodesChildWindowService;
+	@Autowired
+	@Required	
+	public void setTdsGeneralCodesChildWindowService(TdsGeneralCodesChildWindowService value){this.tdsGeneralCodesChildWindowService = value;}
+	public TdsGeneralCodesChildWindowService getTdsGeneralCodesChildWindowService(){ return this.tdsGeneralCodesChildWindowService; }
 	
 	
 }

@@ -522,7 +522,69 @@
 
 	});
 	
+	jq(function() {
+    	//Customer SENDER - Item Lines
+	  	jq('#tvnasIdLink').click(function() {
+	  		jq('#tvnasIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#tvnas').val() + '&ctype=tvnas', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#tvnasIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#tvnasIdLink').click();
+	  		}
+	  	});
+	  //Customer RECEIVER - Item Lines
+	  	jq('#tvnakIdLink').click(function() {
+	  		jq('#tvnakIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#tvnak').val() + '&ctype=tvnak', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#tvnakIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#tvnakIdLink').click();
+	  		}
+	  	});
+	  	//Varukod
+	  	
+	  	jq('#tvvntIdLink').click(function() {
+	  		jq('#tvvntIdLink').attr('target','_blank');
+	  		window.open('tdsexport_edit_items_childwindow_tulltaxa.do?action=doInit&vkod=' + jq('#tvvnt').val() + '&caller=tvvnt', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#tvvntIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#tvvntIdLink').click();
+	  		}
+	  	});
+	});
 	
+	//ChildWindow Country Codes
+    function triggerChildWindowCountryCodes(record){
+    	var idLink = record.id;
+    	var id = idLink.replace("IdLink", "");
+    	jq(idLink).attr('target','_blank');
+    	window.open('nctsexport_edit_items_childwindow_generalcodes.do?action=doInit&type=GCY&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+    }
+    
+  //ChildWindow Language Codes
+    function triggerChildWindowLanguageCodes(record){
+    	var idLink = record.id;
+    	var id = idLink.replace("IdLink", "");
+    	jq(idLink).attr('target','_blank');
+    	window.open('nctsexport_edit_items_childwindow_generalcodes.do?action=doInit&type=012&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+    }
+  //ChildWindow DocType Codes
+    function triggerChildWindowDocTypeCodes(record){
+    	var idLink = record.id;
+    	var id = idLink.replace("IdLink", "");
+    	jq(idLink).attr('target','_blank');
+    	window.open('nctsexport_edit_items_childwindow_generalcodes.do?action=doInit&type=013&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+    }
+  //ChildWindow DocType Codes
+    function triggerChildWindowKolliSlagCodes(record){
+    	var idLink = record.id;
+    	var id = idLink.replace("IdLink", "");
+    	jq(idLink).attr('target','_blank');
+    	window.open('nctsexport_edit_items_childwindow_generalcodes.do?action=doInit&type=017&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+    }
 	
 
 		

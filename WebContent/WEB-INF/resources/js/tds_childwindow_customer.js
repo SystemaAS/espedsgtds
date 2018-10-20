@@ -190,7 +190,31 @@
 				  //focus
 				  opener.jq('#thnat').focus();
 			 	 
-			  
+				//ITEM lines  
+			  }else if(callerType == 'tvnas'){
+				  opener.jq('#tvkns').val(knr);
+				  opener.jq('#tvnas').val(knavn);
+				  opener.jq('#tvtins').val(eori);
+				  opener.jq('#tvads1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#tvpss').val(adr3);
+				  opener.jq('#tvpns').val(postnr);
+				  opener.jq('#tvlks').val(land);
+				  //focus
+				  opener.jq('#tvnas').focus();
+			 	 
+			  }else if(callerType == 'tvnak'){
+				  opener.jq('#tvknk').val(knr);
+				  opener.jq('#tvnak').val(knavn);
+				  opener.jq('#tvtink').val(eori);
+				  opener.jq('#tvadk1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#tvpsk').val(adr3);
+				  opener.jq('#tvpnk').val(postnr);
+				  opener.jq('#tvlkk').val(land);
+				  //focus
+				  opener.jq('#tvnak').focus();
+			 	 
 			  //=========================
 			  //NCTS Import Module 
 			  //=========================
