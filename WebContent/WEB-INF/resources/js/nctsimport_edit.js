@@ -27,113 +27,18 @@
     	  });
   	});
   	
-  	//init the customer object in javascript (will be put into a map)
-  	var customer = new Object();
-  	//fields
-  	customer.kundnr = "";customer.knavn = "";customer.eori = "";customer.adr1 = "";
-  	customer.adr2 = "";customer.adr3 = "";customer.postnr = "";customer.syland = "";
-  	customer.kpers = "";customer.tlf = "";
-
-  	//-----------------------------------------
-	//FETCH CUSTOMER from ANSVARIG html area
-  	//-----------------------------------------
-	function searchAnsvarigOwnWindow() {
-		jq(function() {
-			jq.getJSON('searchCustomer.do', {
-				applicationUser : jq('#applicationUser').val(),
-				customerName : jq('#search_sveh_dkna').val(),
-				customerNumber : jq('#search_sveh_dkkn').val(),
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option selected value="">-Select-</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].kundnr + '">' + data[i].knavn + '</option>';
-					customer = new Object();
-					customer.kundnr = data[i].kundnr;
-					customer.knavn = data[i].knavn;
-					customer.adr1 = data[i].adr1;
-					customer.adr2 = data[i].adr2;
-					customer.adr3 = data[i].adr3;
-					customer.postnr = data[i].postnr;
-					customer.kpers = data[i].kpers;
-					customer.tlf = data[i].tlf;
-					customer.syland = data[i].syland;
-					
-					//put the object in map now with customerNumber as key
-					map[customer.kundnr] = customer;
-				}
-				//now that we have our options, give them to our select
-				jq('#ansvarigList').html(html);
-			});
-		});
-	}
-	//Sets ansvarig values after user selection
-	jq(function() { 
-	    jq('#ansvarigList').change(function() {
-	      //init fields
-		  jq('#tikn').val("");
-		  jq('#tina').val("");
-		  jq('#titin').val("");
-		  jq('#tiad1').val("");
-		  jq('#tipn').val("");
-		  jq('#tips').val("");
-		  jq('#tilk').val("");
-		  jq('#tisk').val("");
-		  
-		  //now populate (if applicable)
-		  var key = jq('#ansvarigList').val();
-		  jq('#tikn').val(key);
-		  customer = map[key];
-		  jq('#tina').val(customer.knavn);
-		  jq('#titin').val(customer.eori);
-		  jq('#tiad1').val(customer.adr1);
-		  jq('#tipn').val(customer.postnr);
-		  jq('#tips').val(customer.adr3);
-		  jq('#tilk').val(customer.syland);
-		  jq('#tisk').val("");			  
-		});
-	});
-	//onClick for Ansvarig dialog
-	jq(function() { 
-	    jq('#searchCustomer10CloseCancel').click(function() {
-	      //rescue the original fields
-	      jq('#tikn').val(jq("#orig_tikn").val());	
-		  jq('#tina').val(jq("#orig_tina").val());
-		  jq('#titin').val(jq("#orig_titin").val());
-		  jq('#tiad1').val(jq("#orig_tiad1").val());
-		  jq('#tipn').val(jq("#orig_tipn").val());
-		  jq('#tips').val(jq("#orig_tips").val());
-		  jq('#tilk').val(jq("#orig_tilk").val());
-		  jq('#tisk').val(jq("#orig_tisk").val());
-		  
-	    });
-	});
-	
-	//----------------------------------
-	//Events Ansvarig (SEARCH window)
-	//----------------------------------
-	//img click
-	jq(function() {	    
-		jq('#imgAnsvarigSearch').click(function(){
-    			jq("#tikn").focus();
-    		});
-	});
-	
-	jq(function() {	    
-		jq('#search_sveh_dkkn').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchAnsvarigOwnWindow);
-			}			
-    		});
-		jq('#search_sveh_dkna').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchAnsvarigOwnWindow);
-			}			
-    		});
-	});
+  	jq(function() {
+    	//Customer ANSVARIGE
+	  	jq('#tinaIdLink').click(function() {
+	  		jq('#tinaIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#tina').val() + '&ctype=tina', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#tinaIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#tinaIdLink').click();
+	  		}
+	  	});
+  	});
 
 	
 	//------------------------------------------------------------------------------------------
@@ -190,76 +95,7 @@
 	});
 	
 	
-	//-------------------------------------------
-	//Mellanligande-Tullkontor AJAX [NCTS Import]
-	//-------------------------------------------
-	//FETCH Tullkontor
-	function searchAvgangTullkontorOwnWindow(){
-		//init the tullkontor object in javascript (will be put into a map)
-	  	var tullkontor = new Object();
-	  	//fields
-	  	tullkontor.tkkode = "";tullkontor.tktxtn = "";
-	  	
-		jq(function(){
-			//this parameters must match the AJAX controller parameter names in Spring exactly...
-			jq.getJSON('searchUtfartsTullkontor.do', {
-				applicationUser : jq('#applicationUser').val(),
-				tullkontorName : jq('#search_sveh_utfa').val(),
-				tullkontorCode : jq('#search_sveh_utfa_Code').val(),
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option selected value="">-Select-</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].tkkode + '">' + data[i].tkkode + '&nbsp;&nbsp;' + data[i].tktxtn + '</option>';
-					tullkontor = new Object();
-					tullkontor.tkkode = data[i].tkkode;
-					tullkontor.tktxtn = data[i].tktxtn;
-					//put the object in map now with customerNumber as key
-					map[tullkontor.tkkode] = tullkontor;
-				}
-				//now that we have our options, give them to our select
-				jq('#tullkontorList').html(html);
-			});
-		});
-		
-	}
-	//BestämmelseTullkontor list
-	jq(function() { 
-	    jq('#tullkontorList').change(function() {
-	    	jq('#titsb').val(""); //ncts import
-	    	
-		//now populate (if applicable)
-	    	var key = jq('#tullkontorList').val();
-	    	jq('#titsb').val(key); //ncts import
-	    	
-	    });
-	});
-	//----------------------------------------
-	//Events Avgångstullkontor (SEARCH window)
-	//----------------------------------------
-	//img click
-	jq(function() {	    
-		jq('#imgTullkontor').click(function(){
-    			jq("#search_sveh_utfa").focus();
-    		});
-	});
 	
-	jq(function() {	    
-		jq('#search_sveh_utfa').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchAvgangTullkontorOwnWindow);
-			}			
-    		});
-		jq('#search_sveh_utfa_Code').keypress(function(e){
-			if(e.which == 13) {
-				e.preventDefault();//this is necessary in order to avoid form.action in form submit button (Save)
-				jq(searchAvgangTullkontorOwnWindow);
-			}			
-    		});
-	});
-
 	  //-------------------------------------------
 	  //START Model dialog ADMIN: "Update status"
 	  //-------------------------------------------
@@ -309,7 +145,32 @@
 
 	
 	
+	  //ChildWindow Country Codes
+	    function triggerChildWindowCountryCodes(record){
+	    	var idLink = record.id;
+	    	var id = idLink.replace("IdLink", "");
+	    	jq(idLink).attr('target','_blank');
+	    	window.open('nctsimport_edit_childwindow_generalcodes.do?action=doInit&type=GCY&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    }
+	    
+	  //ChildWindow Language Codes
+	    function triggerChildWindowLanguageCodes(record){
+	    	var idLink = record.id;
+	    	var id = idLink.replace("IdLink", "");
+	    	jq(idLink).attr('target','_blank');
+	    	window.open('nctsimport_edit_childwindow_generalcodes.do?action=doInit&type=012&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    }
+	  //ChildWindow Tullkontor Codes
+	    function triggerChildWindowTullkontorCodes(record){
+	    	var idLink = record.id;
+	    	var id = idLink.replace("IdLink", "");
+	    	//alert(idLink + "XX" + id);
+	    	//alert(jq("#"+id).val());
+	    	jq(idLink).attr('target','_blank');
+	    	window.open('nctsimport_edit_childwindow_tullkontor.do?action=doInit&tkkode=' + jq("#"+id).val()+ '&ctype=' + id, "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    }
 	
+		
 	
 	
 	

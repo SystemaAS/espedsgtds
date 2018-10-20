@@ -1,4 +1,4 @@
-package no.systema.tds.z.maintenance.tdsnctsexport.controller;
+package no.systema.tds.z.maintenance.tdsimport.controller;
 
 import java.util.*;
 
@@ -34,19 +34,19 @@ import no.systema.tds.z.maintenance.main.model.MaintenanceMainListObject;
 import no.systema.tds.z.maintenance.main.util.TdsMaintenanceConstants;
 
 /**
- * TDS Maintenance NCTS Import Topic Controller 
+ * TDS Maintenance Import Topic Controller 
  * 
  * @author oscardelatorre
- * @date Juni 22, 2017
+ * @date Okt 2018
  * 
  */
 
 @Controller
 @SessionAttributes(AppConstants.SYSTEMA_WEB_USER_KEY)
 @Scope("session")
-public class MaintTdsNctsExportController {
+public class MaintTdsImportController {
 	private static final JsonDebugger jsonDebugger = new JsonDebugger();
-	private static final Logger logger = Logger.getLogger(MaintTdsNctsExportController.class.getName());
+	private static final Logger logger = Logger.getLogger(MaintTdsImportController.class.getName());
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private ApplicationContext context;
 	private LoginValidator loginValidator = new LoginValidator();
@@ -58,9 +58,9 @@ public class MaintTdsNctsExportController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value="tdsmaintenancenctsexport.do", method=RequestMethod.GET)
+	@RequestMapping(value="tdsmaintenanceimport.do", method=RequestMethod.GET)
 	public ModelAndView doSkatImportList(HttpSession session, HttpServletRequest request){
-		ModelAndView successView = new ModelAndView("tdsmaintenancenctsexport");
+		ModelAndView successView = new ModelAndView("tdsmaintenanceimport");
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		//SearchFilterSadExportTopicList searchFilter = new SearchFilterSadExportTopicList();
 		
@@ -68,7 +68,7 @@ public class MaintTdsNctsExportController {
 		if(appUser==null){
 			return this.loginView;
 		}else{
-			appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_MAINTENANCE_NCTS_EXPORT);
+			appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_MAINTENANCE_IMPORT);
 			session.setAttribute(TdsMaintenanceConstants.ACTIVE_URL_RPG_TDS_MAINTENANCE, TdsMaintenanceConstants.ACTIVE_URL_RPG_INITVALUE); 
 		
 			//lists
@@ -89,30 +89,11 @@ public class MaintTdsNctsExportController {
 		MaintenanceMainListObject object = new  MaintenanceMainListObject();
 	
 		object.setId("1");
-		object.setSubject("Underhåll av kodregistret");
-		object.setCode("TDS_KODER");
-		//object.setText("DKX001R");
-		object.setDbTable("SVXKODF");
-		object.setStatus("G");
-		object.setPgm("kodergate");
-		listObject.add(object);
-		//
-		object = new  MaintenanceMainListObject();
-		object.setId("2");
-		object.setSubject("Underhåll av garanti");
-		object.setCode("TDS_GARANTI");
-		object.setText("SVXGH / ...");
-		object.setDbTable("SVXGH");
-		object.setStatus("G");
-		object.setPgm("svx030r");
-		listObject.add(object);
-		//
-		object = new  MaintenanceMainListObject();
-		object.setId("3");
-		object.setSubject("Avd.- NCTS Export");
-		object.setCode("AVD_NCTSEX");
+		object.setSubject("Avd.- TDS Import");
+		object.setCode("AVD_TDSEX");
 		object.setStatus("G");
 		listObject.add(object);
+		
 		return listObject;
 	}
 	

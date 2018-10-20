@@ -189,7 +189,26 @@
 				  opener.jq('#thlkt').val(land);
 				  //focus
 				  opener.jq('#thnat').focus();
-			  }	  
+			 	 
+			  
+			  //=========================
+			  //NCTS Import Module 
+			  //=========================
+		      //AVS		  
+			  }else if(callerType == 'tina'){
+				  opener.jq('#tikn').val(knr);
+				  opener.jq('#tina').val(knavn);
+				  opener.jq('#titin').val(eori);
+				  opener.jq('#tiad1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#tips').val(adr3);
+				  opener.jq('#tipn').val(postnr);
+				  opener.jq('#tilk').val(land);
+				  //focus
+				  opener.jq('#tina').focus();
+				  
+			  //MOTTAGARE		 
+			  }
 			  
 			  //close child window
 			  window.close();

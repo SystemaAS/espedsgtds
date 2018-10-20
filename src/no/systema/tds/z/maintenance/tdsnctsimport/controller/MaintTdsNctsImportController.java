@@ -97,6 +97,12 @@ public class MaintTdsNctsImportController {
 		object.setPgm("kodergate");
 		listObject.add(object);
 		//
+		object = new  MaintenanceMainListObject();
+		object.setId("2");
+		object.setSubject("Avd.- NCTS Import");
+		object.setCode("AVD_NCTSIM");
+		object.setStatus("G");
+		listObject.add(object);
 		
 		return listObject;
 	}

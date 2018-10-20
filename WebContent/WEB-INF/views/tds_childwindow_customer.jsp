@@ -13,7 +13,7 @@
 		<tr>
 			<td colspan="3" class="text14Bold">&nbsp;&nbsp;&nbsp;
 			<img title="search" valign="bottom" src="resources/images/search.gif" width="24px" height="24px" border="0" alt="search">
-			Søg Kunde
+			Sök Kund
 			</td>
 		</tr>
 		<tr>
@@ -28,10 +28,10 @@
 						<form name="tdsCustomerForm" id="tdsCustomerForm" action="tds_childwindow_customer.do?action=doFind" method="post">
 						<input type="hidden" name="ctype" id="ctype" value="${model.ctype}">
 						<tr>
-							<td class="text14">&nbsp;Kundenr.</td>
+							<td class="text14">&nbsp;Kundnr.</td>
 							<td class="text14">&nbsp;<input type="text" class="inputText" name="knr" id="knr" size="10" maxlength="10" value="${model.knr}"></td>
 							<td class="text14">&nbsp;</td>
-							<td class="text14">&nbsp;Navn</td>
+							<td class="text14">&nbsp;Namn</td>
 							<td class="text14">&nbsp;<input type="text" class="inputText" name="sonavn" id="sonavn" size="30" maxlength="50" value="${model.sonavn}"></td>
 							
 							<td class="text14">&nbsp;</td>
@@ -51,7 +51,7 @@
 					<table id="customerList" class="display compact cell-border" width="100%" >
 						<thead>
 						<tr class="tableHeaderField" >
-							<th class="text14" >&nbsp;Kundenr.&nbsp;</th>
+							<th class="text14" >&nbsp;Kundnr.&nbsp;</th>
 		                    <th class="text14" >&nbsp;Namn&nbsp;</th>
 		                    <th class="text14" >&nbsp;EORI&nbsp;</th>
 		                    <th class="text14" >&nbsp;Adress&nbsp;</th>

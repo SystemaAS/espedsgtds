@@ -97,6 +97,12 @@ public class MaintTdsExportController {
 		object.setPgm("tillGeneralKundersvareregExport_SE_GUI");
 		listObject.add(object);
 		//
+		object = new  MaintenanceMainListObject();
+		object.setId("2");
+		object.setSubject("Avd.- TDS Export");
+		object.setCode("AVD_TDSEX");
+		object.setStatus("G");
+		listObject.add(object);
 		
 		return listObject;
 	}

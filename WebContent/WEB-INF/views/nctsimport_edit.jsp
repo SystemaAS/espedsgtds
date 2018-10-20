@@ -168,7 +168,7 @@
 			
 			<tr >
 				<td colspan="3" align="left" class="text14MediumBlue">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.tiavd}&nbsp;&nbsp;<span title="titdn">Ärende:</span>&nbsp;<b>${model.record.titdn}</b>
+					&nbsp;&nbsp;&nbsp;&nbsp;Avd:&nbsp;${model.record.tiavd}&nbsp;&nbsp;<span title="titdn">Ärende:</span>&nbsp;<b>${model.record.titdn}</b>
 					&nbsp;&nbsp;&nbsp;<span title="titrnr">MRN-nr:</span>&nbsp;<b>${model.record.titrnr}</b>&nbsp;&nbsp;Gods-nr:&nbsp;<b>${model.record.tign}</b>
 				</td>
 				<td align="right" >
@@ -178,24 +178,17 @@
 					</c:if>
 				</td>
 			</tr>
-			<%-- test indicator /per avdelning --%> 
-			<c:if test="${'1' == isTestAvd}">
-				<tr>
-					<td align="left" class="text14Red" >
-						&nbsp;&nbsp;<b>[TEST Avdelning]</b>
-					</td>
-				</tr>
-			</c:if>
+			<tr height="2"><td colspan="2">&nbsp;</td></tr>
 			<tr >
 				<td align="left" class="text14MediumBlue">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span title="tisg">Sign:</span>&nbsp;<b>${model.record.tisg}</b>,&nbsp;&nbsp;<span title="tidt">Datum:</span>&nbsp;<b>${model.record.tidt}</b>,
+					&nbsp;&nbsp;&nbsp;&nbsp;<span title="tisg">Sign:</span>&nbsp;<b>${model.record.tisg}</b>,&nbsp;&nbsp;<span title="tidt">Datum:</span>&nbsp;<b>${model.record.tidt}</b>,
 					&nbsp;
 					<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
            			<span title="tist">Stat<a id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;<b>${model.record.tist}</b>
 					&nbsp;&nbsp;
 					<font class="text16RedBold" >*</font><span title="tienkl">Typ av förfarande</span>&nbsp;
 					<%-- Must be model attribute in order to validate towards the filter (thsg) --%>
-           			<select class="selectMediumBlueE2" name="tienkl" id="tienkl">
+           			<select class="inputTextMediumBlueMandatoryField" name="tienkl" id="tienkl">
 	            			<option value="J"<c:if test="${model.record.tienkl == 'J'}"> selected </c:if> >Förenklad</option>
 					  	<option value="N"<c:if test="${model.record.tienkl == 'N'}"> selected </c:if> >Normal</option>
 					</select>
@@ -231,7 +224,15 @@
 						</div>
 					</span>	                
 				
-			</tr>	
+			</tr>
+			<%-- test indicator /per avdelning --%> 
+			<c:if test="${'1' == isTestAvd}">
+				<tr>
+					<td align="left" class="text14Red" >
+						&nbsp;&nbsp;&nbsp;&nbsp;<b>[TEST Avdelning]</b>
+					</td>
+				</tr>
+			</c:if>	
 		</c:when>
 		<%-- CREATE MODE --%> 
 		<c:otherwise>
@@ -274,7 +275,7 @@
 					</select>
 					<font class="text16RedBold" >*</font><span title="tienkl">Typ av förfarande</span>&nbsp;
 					<%-- Must be model attribute in order to validate towards the filter (thsg) --%>
-           			<select class="selectMediumBlueE2" name="tienkl" id="tienkl">
+           			<select class="inputTextMediumBlueMandatoryField" name="tienkl" id="tienkl">
 	            			<option value="J"<c:if test="${model.record.tienkl == 'J'}"> selected </c:if> >Förenklad</option>
 					  	<option value="N"<c:if test="${model.record.tienkl == 'N'}"> selected </c:if> >Normal</option>
 					</select>
@@ -377,59 +378,18 @@
 			 				
 					 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="titin">TIN</span></td>
 					 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="tina">Namn</span>
-						            <img id="imgAnsvarigSearch" style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" onClick="showPop('searchCustomerDialog10');">
-						            	<%-- ======================================================== --%>
-						            	<%-- Here we have the search Ansvarig [Customer] popup window --%>
-						            	<%-- ======================================================== --%>
-						            	<span style="position:absolute; left:500px; top:250px; width:300px; height:212px;" id="searchCustomerDialog10" class="popupWithInputText"  >
-						           		<div class="text10" align="left">
-						           			<table>
-						           				<tr>
-													<td class="text11">&nbsp;Kundnummer</td>
-													<td class="text11">&nbsp;<input type="text" class="inputText" name="search_sveh_dkkn" id="search_sveh_dkkn" size="18" maxlength="8" value=""></td>
-												</tr>
-							           			<tr>
-													<td class="text11">&nbsp;Namn</td>
-													<td class="text11">&nbsp;<input type="text" class="inputText" name="search_sveh_dkna" id="search_sveh_dkna" size="18" maxlength="35" value=""></td>
-												</tr>
-							           			<tr>
-							           				<td class="text11">&nbsp;</td>
-								           			<td align="right">&nbsp;<button name="searchCustomer20" class="buttonGray" type="button" onClick="searchAnsvarigOwnWindow()">Sök</button></td>
-								           		</tr>
-								           		<tr height="4"><td ></td></tr>
-								           		<tr>
-							           				<td class="text11">&nbsp;Urval</td>
-								           			<td>&nbsp;</td>
-								           		</tr>
-								           		<tr>
-													<td colspan="2">&nbsp;
-														<select class="selectMediumBlueE2"  id="ansvarigList" name="ansvarigList" size="3" onDblClick="hidePop('searchCustomerDialog10');">
-		 													<option selected value="">-Välj-</option>
-		 							 					</select>
-													</td>
-												</tr>
-						           			</table>
-											<table width="30%" align="left" border="0">
-												<tr align="left" >
-													<td >&nbsp;<button name="searchCustomer10CloseOk" id="searchCustomer10CloseOk" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog10');">Ok</button></td>
-													<td >&nbsp;<button name="searchCustomer10CloseCancel" id="searchCustomer10CloseCancel" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchCustomerDialog10');">Avbryt</button></td>
-												</tr>
-											</table>
-										</div>
-									</span>	
+						            <a tabindex="-1" id="tinaIdLink">
+										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+									</a>
 					 			</td>
 			 				</tr>
 			 				<tr >
-					 			<td class="text14"><input type="text" class="inputTextMediumBlue" name="titin" id="titin" size="17" maxlength="17" value="${model.record.titin}"></td>
-					 			<td class="text14"><input type="text" class="inputTextMediumBlue" name="tina" id="tina" size="20" maxlength="30" value="${model.record.tina}"></td>
+					 			<td class="text14"><input type="text" class="inputTextMediumBlueMandatoryField" name="titin" id="titin" size="17" maxlength="17" value="${model.record.titin}"></td>
+					 			<td class="text14"><input type="text" class="inputTextMediumBlueMandatoryField" name="tina" id="tina" size="20" maxlength="30" value="${model.record.tina}"></td>
 			 				</tr>
 			 				<tr >
 					 			<td class="text14">&nbsp;<span title="tiad1">Adress</span></td>
-					 			<td class="text14">&nbsp;<span title="tisk">Språkkod</span>
-					 				<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-					            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-					            		</a>
-					 			</td>
+					 			<td class="text14">&nbsp;<span title="tisk">Språkkod</span></td>
 			 				</tr>
 			 				<tr >
 					 			<td class="text14"><input type="text" class="inputTextMediumBlue" name="tiad1" id="tiad1" size="30" maxlength="30" value="${model.record.tiad1}"></td>
@@ -440,6 +400,9 @@
 					                             <option value="${code.tkkode}"<c:if test="${model.record.tisk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 											</c:forEach> 
 									</select>
+									<a tabindex="-1" id="tiskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+									</a>
 					 			</td>
 			 				</tr>
 			 				<tr >
@@ -451,11 +414,7 @@
 					 			<td class="text14"><input type="text" class="inputTextMediumBlue" name="tipn" id="tipn" size="9" maxlength="9" value="${model.record.tipn}"></td>
 			 				</tr>
 			 				<tr >
-					 			<td class="text14">&nbsp;<span title="tilk">Landkod</span>
-						 			<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
-					            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-					            		</a>
-					 			</td>
+					 			<td class="text14">&nbsp;<span title="tilk">Landkod</span></td>
 					 			<td class="text14">&nbsp</td>
 			 				</tr>
 			 				<tr >
@@ -466,6 +425,9 @@
 	                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tilk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 										</c:forEach> 
 									</select>
+									<a tabindex="-1" id="tilkIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+									</a>
 				 				</td>
 					 			<td class="text14">
 					 				&nbsp;
@@ -486,41 +448,41 @@
 						<tr>
 				            <td >&nbsp;</td>
 				            <td ><font class="text16RedBold" >*</font><span title="tign">Godsnr</span></td>
-				            <td colspan="3" ><input type="text" class="inputText" name="tign" id="tign" size="36" maxlength="35" value="${model.record.tign}"></td>
+				            <td colspan="3" ><input type="text" class="inputTextMediumBlueMandatoryField" name="tign" id="tign" size="36" maxlength="35" value="${model.record.tign}"></td>
 			            </tr>
 						<tr>
 				            <td >&nbsp;</td>
 				            <td ><font class="text16RedBold" >*</font><span title="tignsk">Språkkod</span>&nbsp;</td>
 				            <td >
-					            <select class="selectMediumBlueE2" name="tignsk" id="tignsk">
+					            <select class="inputTextMediumBlueMandatoryField" name="tignsk" id="tignsk">
 					            		<option value="">-Välj-</option>
 					 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 				                             <option value="${code.tkkode}"<c:if test="${model.record.tignsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 										</c:forEach> 
 								</select>
-				 				<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-				            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-				            		</a>
+				 				<a tabindex="-1" id="tignskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+								</a>
 				            </td>
 			            </tr>
 			            <tr>
 				            <td >&nbsp;</td>
 				            <td ><font class="text16RedBold" >*</font><span title="titrnr">MRN-nr</span></td>
-				            <td colspan="3" ><input type="text" class="inputText" name="titrnr" id="titrnr" size="36" maxlength="18" value="${model.record.titrnr}"></td>
+				            <td colspan="3" ><input type="text" class="inputTextMediumBlueMandatoryField" name="titrnr" id="titrnr" size="36" maxlength="18" value="${model.record.titrnr}"></td>
 			            </tr>
 			            <tr>
 				            <td >&nbsp;</td>
 				            <td ><font class="text16RedBold" >*</font><span title="tialk">Avs.land</span>&nbsp;</td>
 				            <td >
-					            <select class="selectMediumBlueE2" name="tialk" id="tialk">
-					            		<option value="">-Välj-</option>
+					            <select class="inputTextMediumBlueMandatoryField" name="tialk" id="tialk">
+				            		<option value="">-Välj-</option>
 				 				  	<c:forEach var="country" items="${model.countryCodeList}" >
-		                              	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tialk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+	                              	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tialk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 									</c:forEach> 
 								</select>
-					 			<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
-				            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-				            		</a>							
+					 			<a tabindex="-1" id="tialkIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+								</a>							
 				            </td>
 			            </tr>
 			            <tr height="10"><td>&nbsp;</td></tr>
@@ -536,9 +498,9 @@
 				                             <option value="${code.tkkode}"<c:if test="${model.record.tialss == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 										</c:forEach> 
 								</select>
-								<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-				            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-				            		</a>
+								<a tabindex="-1" id="tialssIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+								</a>
 				            </td>
 			            </tr>
 			            <tr>
@@ -561,46 +523,10 @@
 			            <tr>
 				            <td >&nbsp;</td>
 				            <td ><font class="text16RedBold" >*</font><span title="titsb">Best.tullkontor</span></td>
-				            <td ><input type="text" class="inputText" name="titsb" id="titsb" size="9" maxlength="8" value="${model.record.titsb}">
-					            	<img id="imgTullkontor" style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" onClick="showPop('searchTullkontor_Dialog');">
-		            				<%-- ============================================================= --%>
-					            	<%-- Here we have the search Transittullkontor 01 popup window   --%>
-					            	<%-- ============================================================= --%>
-					            	<span style="position:absolute; left:800px; top:250px; width:300px; height:212px;" id="searchTullkontor_Dialog" class="popupWithInputText"  >
-					           		<div class="text10" align="left">
-					           			<table>
-					           				<tr>
-												<td class="text11">&nbsp;Tullkontor</td>
-												<td class="text11">&nbsp;<input type="text" class="inputText" name="search_sveh_utfa" id="search_sveh_utfa" size="18" maxlength="8" value=""></td>
-											</tr>
-						           			<tr>
-												<td class="text11">&nbsp;Kod</td>
-												<td class="text11">&nbsp;<input type="text" class="inputText" name="search_sveh_utfa_Code" id="search_sveh_utfa_Code" size="18" maxlength="35" value=""></td>
-											</tr>
-						           			<tr>
-						           				<td class="text11">&nbsp;</td>
-							           			<td align="right">&nbsp;<button name="searchTullkontor" class="buttonGray" type="button" onClick="searchTullkontor_OwnWindow()">Sök</button></td>
-							           		</tr>
-							           		<tr height="4"><td ></td></tr>
-							           		<tr>
-						           				<td class="text11">&nbsp;Urval</td>
-							           			<td>&nbsp;</td>
-							           		</tr>
-							           		<tr>
-												<td colspan="2">&nbsp;
-													<select class="text11" id="tullkontorList" name="tullkontorList" size="3" onDblClick="hidePop('searchTullkontor_Dialog');">
-	 													<option selected value="">-Välj-</option>
-	 							 					</select>
-												</td>
-											</tr>
-					           			</table>
-										<table width="100%" align="left" border="0">
-											<tr align="left" >
-												<td >&nbsp;<button name="searchTullkontor_Close" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchTullkontor_Dialog');">Ok</button></td>
-											</tr>
-										</table>
-									</div>
-								</span>
+				            <td ><input type="text" class="inputTextMediumBlueMandatoryField" name="titsb" id="titsb" size="9" maxlength="8" value="${model.record.titsb}">
+				            	<a id="titsbIdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
+			            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+			            		</a>
 				            </td>
 				            <td ><span title="tiskb">Språkkod</span>&nbsp;</td>
 				            <td >
@@ -610,9 +536,9 @@
 				                             <option value="${code.tkkode}"<c:if test="${model.record.tiskb == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 										</c:forEach> 
 								</select>
-				 				<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-				            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-				            		</a>
+				 				<a tabindex="-1" id="tiskbIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
+								</a>
 				            </td>
 			            </tr>
 			            <tr>
