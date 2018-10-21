@@ -543,6 +543,32 @@
 	  			jq('#tvnakIdLink').click();
 	  		}
 	  	});
+	  	
+	  	
+    	//Customer SENDER - SÄKERHET
+	  	jq('#tvnassIdLink').click(function() {
+	  		jq('#tvnassIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#tvnass').val() + '&ctype=tvnass', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#tvnassIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#tvnassIdLink').click();
+	  		}
+	  	});
+	  	
+	  	//Customer RECEIVER - SÄKERHET
+	  	jq('#tvnaksIdLink').click(function() {
+	  		jq('#tvnaksIdLink').attr('target','_blank');
+	  		window.open('tds_childwindow_customer.do?action=doFind&sonavn=' + jq('#tvnaks').val() + '&ctype=tvnaks', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	  	});
+	  	jq('#tvnaksIdLink').keypress(function(e){ //extra feature for the end user
+	  		if(e.which == 13) {
+	  			jq('#tvnaksIdLink').click();
+	  		}
+	  	});
+	  	
+	  	
+	  	
 	  	//Varukod
 	  	
 	  	jq('#tvvntIdLink').click(function() {

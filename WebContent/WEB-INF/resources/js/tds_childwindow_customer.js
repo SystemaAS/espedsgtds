@@ -214,7 +214,33 @@
 				  opener.jq('#tvlkk').val(land);
 				  //focus
 				  opener.jq('#tvnak').focus();
+			 
+			//ITEM lines - SÄKERHET 
+			  }else if(callerType == 'tvnass'){
+				  opener.jq('#tvknss').val(knr);
+				  opener.jq('#tvnass').val(knavn);
+				  opener.jq('#tvtinss').val(eori);
+				  opener.jq('#tvadss1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#tvpsss').val(adr3);
+				  opener.jq('#tvpnss').val(postnr);
+				  opener.jq('#tvlkss').val(land);
+				  //focus
+				  opener.jq('#tvnass').focus();
 			 	 
+			  }else if(callerType == 'tvnaks'){
+				  opener.jq('#tvknks').val(knr);
+				  opener.jq('#tvnaks').val(knavn);
+				  opener.jq('#tvtinks').val(eori);
+				  opener.jq('#tvadks1').val(adr1);
+				  //opener.jq('#?').val(adr2);
+				  opener.jq('#tvpsks').val(adr3);
+				  opener.jq('#tvpnks').val(postnr);
+				  opener.jq('#tvlkks').val(land);
+				  //focus
+				  opener.jq('#tvnaks').focus();
+			 	 	  
+				  
 			  //=========================
 			  //NCTS Import Module 
 			  //=========================

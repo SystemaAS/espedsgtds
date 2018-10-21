@@ -546,7 +546,7 @@
 							            
 							            <td>&nbsp;
 							 				<select class="selectMediumBlueE2" name="tvdk" id="tvdk">
-							            		<option value="">-Välj-</option>
+							            		<option value="">-välj-</option>
 							 				  	<c:forEach var="code" items="${model.ncts031_DeklType_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
@@ -554,7 +554,7 @@
 						 				</td>
 										<td align="left">&nbsp;
 					            			<select class="selectMediumBlueE2" name="tvalk" id="tvalk">
-							            		<option value="">-Välj-</option>
+							            		<option value="">-välj-</option>
 						 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 		                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvalk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 											</c:forEach> 
@@ -563,7 +563,7 @@
 										
 										<td align="left">&nbsp;
 					            			<select class="selectMediumBlueE2" name="tvblk" id="tvblk">
-							            		<option value="">-Välj-</option>
+							            		<option value="">-välj-</option>
 						 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 		                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvblk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 											</c:forEach> 
@@ -575,7 +575,7 @@
 										<%-- Doc.Type --%>
 										<td >
 											<select class="selectMediumBlueE2" name="tvdty" id="tvdty">
-							            		<option value="">-Välj-</option>
+							            		<option value="">-välj-</option>
 							 				  	<c:forEach var="code" items="${model.ncts013_DocType_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdty == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
@@ -671,7 +671,7 @@
 									<tr>
 										<td >
 											<select class="selectMediumBlueE2" name="tvdsk" id="tvdsk">
-							            			<option value="">-Välj-</option>
+							            			<option value="">-välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
@@ -712,7 +712,7 @@
 								           			</td>
 					            			   			<td class="text14" nowrap >&nbsp;
 									            			<select class="selectMediumBlueE2" name="tvdosk" id="tvdosk">
-											            		<option value="">-Välj-</option>
+											            		<option value="">-välj-</option>
 										 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 						                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdosk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 															</c:forEach> 
@@ -731,7 +731,7 @@
 							           			<tr>
 								           			<td class="text14" colspan="2" >
 														<select class="selectMediumBlueE2" name="tvtlo" id="tvtlo">
-										 				  <option selected value="">-Välj-</option>
+										 				  <option selected value="">-välj-</option>
 														  <option value="CAL"<c:if test="${model.record.tvtlo == 'CAL'}"> selected </c:if> >CAL [Skuldbelopp]</option>
 														  <option value="DG0"<c:if test="${model.record.tvtlo == 'DG0'}"> selected </c:if> >DG0 [Export med restriktioner]</option>
 														  <option value="DG1"<c:if test="${model.record.tvtlo == 'DG1'}"> selected </c:if> >DG1 [Export med avgift]</option>
@@ -747,7 +747,7 @@
 								           			
 					            			   			<td class="text14" nowrap >&nbsp;
 									            			<select class="selectMediumBlueE2" name="tvexlk" id="tvexlk">
-									 						<option value="">-Välj-</option>
+									 						<option value="">-välj-</option>
 										 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 						                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvexlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 															</c:forEach> 
@@ -767,7 +767,7 @@
 								           			</td>
 								           			<td class="text14" nowrap >&nbsp;
 									            			<select class="selectMediumBlueE2" name="tvmsk" id="tvmsk">
-											            		<option value="">-Välj-</option>
+											            		<option value="">-välj-</option>
 										 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 						                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvmsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 															</c:forEach> 
@@ -795,7 +795,7 @@
 										
 					           			<td align="left">
 					            			<select class="inputTextMediumBlueMandatoryField" name="tveh" id="tveh">
-							            		<option value="">-Välj-</option>
+							            		<option value="">-välj-</option>
 							 				  	<c:forEach var="code" items="${model.ncts017_Kolli_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tveh == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
@@ -857,7 +857,7 @@
 										
 										<td class="text14" align="left" colspan="2">
 											<select class="selectMediumBlueE2" name="tvvtsk" id="tvvtsk">
-								            		<option value="">-Välj-</option>
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvvtsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 													</c:forEach>
@@ -894,7 +894,7 @@
 										</td>
 										<td >
 											<select class="selectMediumBlueE2" name="tvmnsk" id="tvmnsk">
-							            			<option value="">-Välj-</option>
+							            			<option value="">-välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvmnsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
@@ -1063,7 +1063,7 @@
 							        		<tr>
 							            		<td align="left">
 							            			<select class="selectMediumBlueE2" name="tvlks" id="tvlks">
-									            		<option value="">-Välj-</option>
+									            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvlks == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
@@ -1074,7 +1074,7 @@
 							            		</td> 
 							            		<td align="left">
 							            			<select class="selectMediumBlueE2" name="tvsks" id="tvsks">
-									            		<option value="">-Välj-</option>
+									            		<option value="">-välj-</option>
 									 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 					                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvsks == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 														</c:forEach> 
@@ -1161,7 +1161,7 @@
 							        		<tr>
 							            		<td align="left">
 							            			<select class="selectMediumBlueE2" name="tvlkk" id="tvlkk">
-									            		<option value="">-Välj-</option>
+									            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvlkk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
@@ -1172,7 +1172,7 @@
 							            		</td> 
 							            		<td align="left">
 							            			<select class="selectMediumBlueE2" name="tvskk" id="tvskk">
-									            		<option value="">-Välj-</option>
+									            		<option value="">-välj-</option>
 									 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 					                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvskk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 														</c:forEach> 
@@ -1248,7 +1248,7 @@
 									           			<tr>
 										           			<td class="text14" nowrap >
 																<select class="selectMediumBlueE2" name="tvdty2" id="tvdty2">
-												            		<option value="">-Välj-</option>
+												            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts013_DocType_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdty2 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1258,7 +1258,7 @@
 										           			
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvdsk2" id="tvdsk2">
-												            			<option value="">-Välj-</option>
+												            			<option value="">-välj-</option>
 											 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdsk2 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach>
@@ -1270,7 +1270,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvdosk2" id="tvdosk2">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdosk2 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1289,7 +1289,7 @@
 									           			<tr>
 										           			<td class="text14" colspan="2" >
 																<select class="selectMediumBlueE2" name="tvtlo2" id="tvtlo2">
-												 				  <option selected value="">-Välj-</option>
+												 				  <option selected value="">-välj-</option>
 																  <option value="CAL"<c:if test="${model.record.tvtlo2 == 'CAL'}"> selected </c:if> >CAL [Skuldbelopp]</option>
 																  <option value="DG0"<c:if test="${model.record.tvtlo2 == 'DG0'}"> selected </c:if> >DG0 [Export med restriktioner]</option>
 																  <option value="DG1"<c:if test="${model.record.tvtlo2 == 'DG1'}"> selected </c:if> >DG1 [Export med avgift]</option>
@@ -1305,7 +1305,7 @@
 										           			
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvexlk2" id="tvexlk2">
-											 						<option value="">-Välj-</option>
+											 						<option value="">-välj-</option>
 												 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 								                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvexlk2 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 																	</c:forEach> 
@@ -1326,7 +1326,7 @@
 										           			</td>
 										           			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvmsk2" id="tvmsk2">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvmsk2 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1359,7 +1359,7 @@
 									           			<tr>
 										           			<td class="text14" nowrap>
 																<select class="selectMediumBlueE2" name="tvdty3" id="tvdty3">
-												            		<option value="">-Välj-</option>
+												            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts013_DocType_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdty3 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1369,7 +1369,7 @@
 										           			
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvdsk3" id="tvdsk3">
-												            			<option value="">-Välj-</option>
+												            			<option value="">-välj-</option>
 											 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdsk3 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach>
@@ -1381,7 +1381,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvdosk3" id="tvdosk3">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdosk3 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1400,7 +1400,7 @@
 									           			<tr>
 										           			<td class="text14" colspan="2" >
 																<select class="selectMediumBlueE2" name="tvtlo3" id="tvtlo3">
-												 				  <option selected value="">-Välj-</option>
+												 				  <option selected value="">-välj-</option>
 																  <option value="CAL"<c:if test="${model.record.tvtlo3 == 'CAL'}"> selected </c:if> >CAL [Skuldbelopp]</option>
 																  <option value="DG0"<c:if test="${model.record.tvtlo3 == 'DG0'}"> selected </c:if> >DG0 [Export med restriktioner]</option>
 																  <option value="DG1"<c:if test="${model.record.tvtlo3 == 'DG1'}"> selected </c:if> >DG1 [Export med avgift]</option>
@@ -1416,7 +1416,7 @@
 										           			
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvexlk3" id="tvexlk3">
-											 						<option value="">-Välj-</option>
+											 						<option value="">-välj-</option>
 												 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 								                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvexlk3 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 																	</c:forEach> 
@@ -1435,7 +1435,7 @@
 										           			</td>
 										           			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvmsk3" id="tvmsk3">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvmsk3 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1468,7 +1468,7 @@
 									           			<tr>
 										           			<td class="text14" nowrap>
 																<select class="selectMediumBlueE2" name="tvdty4" id="tvdty4">
-												            		<option value="">-Välj-</option>
+												            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts013_DocType_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdty4 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1478,7 +1478,7 @@
 										           			
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvdsk4" id="tvdsk4">
-												            			<option value="">-Välj-</option>
+												            			<option value="">-välj-</option>
 											 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdsk4 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach>
@@ -1490,7 +1490,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvdosk4" id="tvdosk4">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdosk4 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1509,7 +1509,7 @@
 									           			<tr>
 										           			<td class="text14" colspan="2" >
 																<select class="selectMediumBlueE2" name="tvtlo4" id="tvtlo4">
-												 				  <option selected value="">-Välj-</option>
+												 				  <option selected value="">-välj-</option>
 																  <option value="CAL"<c:if test="${model.record.tvtlo4 == 'CAL'}"> selected </c:if> >CAL [Skuldbelopp]</option>
 																  <option value="DG0"<c:if test="${model.record.tvtlo4 == 'DG0'}"> selected </c:if> >DG0 [Export med restriktioner]</option>
 																  <option value="DG1"<c:if test="${model.record.tvtlo4 == 'DG1'}"> selected </c:if> >DG1 [Export med avgift]</option>
@@ -1525,7 +1525,7 @@
 										           			
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvexlk4" id="tvexlk4">
-											 						<option value="">-Välj-</option>
+											 						<option value="">-välj-</option>
 												 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 								                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvexlk4 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 																	</c:forEach> 
@@ -1544,7 +1544,7 @@
 										           			</td>
 										           			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvmsk4" id="tvmsk4">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvmsk4 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1606,7 +1606,7 @@
 									           			<tr>
 										           			<td class="text14" nowrap >&nbsp;1.
 										           				<select class="selectMediumBlueE2" name="tvtdt" id="tvtdt">
-												 				  <option selected value="">-Välj-</option>
+												 				  <option selected value="">-välj-</option>
 																  <option value="CO"<c:if test="${model.record.tvtdt == 'CO'}"> selected </c:if> >CO</option>
 																  <option value="EU"<c:if test="${model.record.tvtdt == 'EU'}"> selected </c:if> >EU</option>
 																  <option value="EX"<c:if test="${model.record.tvtdt == 'EX'}"> selected </c:if> >EX</option>
@@ -1627,7 +1627,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvtdsk" id="tvtdsk">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvtdsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1639,7 +1639,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" name="tvtdos" id="tvtdos">
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvtdos == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																	</c:forEach> 
@@ -1653,7 +1653,7 @@
 										           			<tr>
 										           			<td class="text14" nowrap >&nbsp;2.
 										           				<select class="selectMediumBlueE2" name="tvtdtTODO" id="tvtdtTODO">
-												 				  <option selected value="">-Välj-</option>
+												 				  <option selected value="">-välj-</option>
 																  <option value="CO"<c:if test="${model.record.tvtdt == 'CO'}"> selected </c:if> >CO</option>
 																  <option value="EU"<c:if test="${model.record.tvtdt == 'EU'}"> selected </c:if> >EU</option>
 																  <option value="EX"<c:if test="${model.record.tvtdt == 'EX'}"> selected </c:if> >EX</option>
@@ -1674,7 +1674,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" >
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}">${code.tkkode}</option>
 																	</c:forEach> 
@@ -1685,7 +1685,7 @@
 										           			</td>
 							            			   			<td class="text14" nowrap >&nbsp;
 											            			<select class="selectMediumBlueE2" >
-													            		<option value="">-Välj-</option>
+													            		<option value="">-välj-</option>
 												 				  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
 								                                	 	<option value="${code.tkkode}">${code.tkkode}</option>
 																	</c:forEach> 
@@ -1740,7 +1740,7 @@
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh2" id="tveh2">
-											            		<option value="">-Välj-</option>
+											            		<option value="">-välj-</option>
 											 				  	<c:forEach var="code" items="${model.ncts017_Kolli_CodeList}" >
 							                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tveh2 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																</c:forEach> 
@@ -1759,7 +1759,7 @@
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh3" id="tveh3">
-											            		<option value="">-Välj-</option>
+											            		<option value="">-välj-</option>
 											 				  	<c:forEach var="code" items="${model.ncts017_Kolli_CodeList}" >
 							                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tveh3 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																</c:forEach> 
@@ -1778,7 +1778,7 @@
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh4" id="tveh4">
-											            		<option value="">-Välj-</option>
+											            		<option value="">-välj-</option>
 											 				  	<c:forEach var="code" items="${model.ncts017_Kolli_CodeList}" >
 							                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tveh4 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																</c:forEach> 
@@ -1798,7 +1798,7 @@
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh5" id="tveh5">
-											            		<option value="">-Välj-</option>
+											            		<option value="">-välj-</option>
 											 				  	<c:forEach var="code" items="${model.ncts017_Kolli_CodeList}">
 							                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tveh5 == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 																</c:forEach> 
@@ -1905,9 +1905,330 @@
 							        </tr>
 							             
 							        <tr height="10"><td></td></tr>
+							        
+							        
 							</table>
 					        </td>
 				        </tr>
+				        
+				        
+				        
+				        <%-- SÄKERHET HERE --%>
+				        <tr>
+								<td colspan="2">&nbsp;&nbsp;
+						            <table width="90%" align="center" class="tableBorderWithRoundCornersDarkRed" border="0" cellspacing="2" cellpadding="0">
+						            		<tr>
+											<td colspan="2" width="100%" align="left" valign="top" class="text14" >
+												<table width="90%" align="left" border="0" cellspacing="0" cellpadding="0">
+											 		<tr height="18px">
+											 			<td class="text14">
+											 				&nbsp;<img onMouseOver="showPop('sikkerhet_info');" onMouseOut="hidePop('sikkerhet_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+													        	<b>Säkerhet</b>&nbsp;Arbeta med (forhåndsvarsling)
+													        <div class="text12" style="position: relative;" align="left">
+															<span style="position:absolute;top:2px; width:250px;" id="sikkerhet_info" class="popupWithInputText text12"  >
+									           					TODO
+															</span>
+															</div>	
+										 				</td>
+									 				</tr>
+									 				<tr>
+								            			<td class="text14">
+								            				<img onMouseOver="showPop('betalmade_info');" onMouseOut="hidePop('betalmade_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+								            				<span title="tvtkbm">Transp.kost/Betal.sätt</span>&nbsp;
+								            				<select class="selectMediumBlueE2" name="tvtkbm" id="tvtkbm">
+								            				<option value="">-välj-</option>
+								 				  			<c:forEach var="code" items="${model.ncts116_BetalningTransport_CodeList}" >
+				                             	 				<option value="${code.tkkode}"<c:if test="${model.record.tvtkbm == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
+															</c:forEach> 
+														</select>
+														<div class="text12" style="position: relative;" align="left">
+															<span style="position:absolute;top:2px; width:250px;" id="betalmade_info" class="popupWithInputText text12"  >
+											           			<ul>
+											           				<c:forEach var="code" items="${model.ncts116_BetalningTransport_CodeList}" >
+												 				  		<li><b>${code.tkkode}</b>&nbsp;${code.tktxtn}</li>
+											 				  		</c:forEach>	
+											           			</ul>
+														</span>
+														</div>
+								            			</td>
+								            			<td class="text14" nowrap>
+								            				<img onMouseOver="showPop('farliggods_info');" onMouseOut="hidePop('farliggods_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+								            				<span title="tvfgkd">Farliggods KD</span>&nbsp;
+								            				<input type="text" class="inputTextMediumBlue" name="tvfgkd" id="tvfgkd" size="5" maxlength="4" value="${model.record.tvfgkd}">
+															<a title="UN-Dangerous Goods List" tabindex=-1 href="renderLocalPdf.do?fn=UN_dangerousGoods.pdf" target="_blank">
+				 												<img style="vertical-align:middle;" width="16px" height="16px" src="resources/images/pdf.png" border="0" alt="pdf">
+				 											</a>
+														
+														<div class="text12" style="position: relative;" align="left">
+														<span style="position:absolute;top:2px; width:250px;" id="farliggods_info" class="popupWithInputText text12"  >
+											           			Refer to UN-list of dangerous goods
+														</span>
+														</div>
+														
+														</td>
+								            		</tr>
+								            		<tr height="5"><td></td></tr>
+								 					<tr>
+								            			<td class="text14">&nbsp;<span title="tvkref">Kommersiellt ref.nr</span></td>
+								            		</tr>
+								            		<tr>
+								            			<td colspan="2"><input type="text" class="inputTextMediumBlue" name="tvkref" id="tvkref" size="70" maxlength="70" value="${model.record.tvkref}"></td>
+								            		</tr>
+								        		</table>
+									        </td>
+								            </tr>
+						            		
+						            		<tr height="3"><td>&nbsp;</td></tr>
+								        	<tr>
+								        		<td width="50%" valign="top">
+								        		<table width="90%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
+											 		<tr height="18px">
+											 			<td class="text14White">
+											 				&nbsp;
+									 						&nbsp;Avsändare - Säkerhet&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+										 				</td>
+									 				</tr>
+							 					</table>
+							 					</td>
+							 					<td width="50%" valign="top">
+													<table width="90%" align="left" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
+												 		<tr height="18px">
+												 			<td class="text14White">
+												 				&nbsp;
+										 						&nbsp;Mottagare - Säkerhet&nbsp;<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">
+											 				</td>
+										 				</tr>
+								 					</table>
+							 					</td>
+							 				</tr>	
+							 				<tr>
+							 					<td width="50%" valign="top">
+							 					<table width="90%" align="left" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+								 			 		<tr>
+												 		<td>
+													 		<table border="0" cellspacing="0" cellpadding="0">
+													 		
+												 				<%-- ================================================================================== --%>
+														        	<%-- This hidden values are used when an AJAX event from within a dialog box is fired.  
+														        		 These original values will be used when the user clicks "Cancel" buttons (puttting
+														        		 back original value)																--%> 
+														        	<%-- ================================================================================== --%>
+														        	<input type="hidden" name="orig_tvknss" id="orig_tvknss" value='${model.record.tvknss}'>
+														        	<input type="hidden" name="orig_tvnass" id="orig_tvnass" value='${model.record.tvnass}'>
+														        	<input type="hidden" name="orig_tvtinss" id="orig_tvtinss" value='${model.record.tvtinss}'>
+														        	<input type="hidden" name="orig_tvadss1" id="orig_tvadss1" value='${model.record.tvadss1}'>
+														        	<input type="hidden" name="orig_tvpnss" id="orig_tvpnss" value='${model.record.tvpnss}'>
+														        	<input type="hidden" name="orig_tvpsss" id="orig_tvpsss" value='${model.record.tvpsss}'>
+														        	<input type="hidden" name="orig_tvlkss" id="orig_tvlkss" value='${model.record.tvlkss}'>
+														        	<input type="hidden" name="orig_tvskss" id="orig_tvskss" value='${model.record.tvskss}'>
+														        	
+														        	<tr height="10">
+														            <td class="text14" align="left">&nbsp;</td> 
+														        </tr>
+														 		<tr height="15">
+														            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvknss">Kundnummer</span></td>
+														            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvnass">Namn</span>
+														            	<a tabindex="-1" id="tvnassIdLink">
+																			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																		</a>
+												            		</td>
+														        </tr>
+														        <tr>
+														        		<td align="left"><input type="text" class="inputTextMediumBlue" name="tvknss" id="tvknss" size="10" maxlength="8" value="${model.record.tvknss}"></td>
+														            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvnass" id="tvnass" size="30" maxlength="35" value="${model.record.tvnass}"></td>
+														        </tr>
+														        <tr>
+												        				<td class="text14" align="left" >&nbsp;&nbsp;<span title="tvtinss">TIN</span></td>
+														        </tr>
+														        <tr>
+														        		<td align="left"><input type="text" class="inputTextMediumBlue" name="tvtinss" id="tvtinss" size="20" maxlength="17" value="${model.record.tvtinss}"></td>
+														        </tr>
+					
+														        <tr height="4"><td>&nbsp;</td></tr>
+														        <tr>
+														            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvadss1">Adress</span></td>
+														            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvskss">Språkkod</span></td>
+														        </tr>
+														        <tr>
+														            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvadss1" id="tvadss1" size="30" maxlength="30" value="${model.record.tvadss1}"></td>
+														            <td class="text14" align="left" >
+														            		&nbsp;<select class="selectMediumBlueE2" name="tvskss" id="tvskss">
+															            		<option value="">-välj-</option>
+															 				  	<c:forEach var="record" items="${model.ncts012_Sprak_CodeList}" >
+										                                	 	<option value="${record.tkkode}"<c:if test="${model.record.tvskss == record.tkkode}"> selected </c:if> >${record.tkkode}</option>
+										                                	 	</c:forEach> 
+																		</select>
+																		<a tabindex="-1" id="tvskssIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+																			<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																		</a>
+																	</td>
+														        </tr>
+														        <tr>
+														        		<td>
+															        		<table>
+															        		<tr>
+															            		<td class="text14" align="left" >&nbsp;&nbsp;<span title="tvpsss">Postadress</span></td>
+															            		<td align="left">&nbsp;</td>
+															            	</tr>
+															        		<tr>
+															            		<td align="left">
+															       				<input type="text" class="inputTextMediumBlue" name="tvpsss" id="tvpsss" size="30" maxlength="24" value="${model.record.tvpsss}">
+														            			</td> 
+															            		<td align="left">&nbsp;</td>
+															        		</tr>    	
+															            	</table>
+														            </td>
+														            <td >
+															            	<table>
+															        		<tr>
+															        			<td class="text14" align="left" >&nbsp;&nbsp;<span title="tvpnss">Postnummer</span></td>
+															            		<td class="text14" align="left" >&nbsp;<span title="tvlkss">Land</span></td>
+															            	</tr>
+															        		<tr >
+															        			<td align="left"><input type="text" class="inputTextMediumBlue" name="tvpnss" id="tvpnss" size="10" maxlength="8" value="${model.record.tvpnss}"></td> 
+															            		<td align="left">
+															            			<select class="selectMediumBlueE2" name="tvlkss" id="tvlkss">
+																	            		<option value="">-välj-</option>
+																	            	<c:forEach var="country" items="${model.countryCodeList}" >
+												                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvlkss == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+																					</c:forEach> 
+																				</select>
+																				<a tabindex="-1" id="tvlkssIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+																					<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																				</a>
+															            		</td> 
+															        		</tr>  
+															            	</table>
+														            </td>
+													            	</tr>
+														        
+														        <tr height="15">
+												            		<td class="text14Bold" align="left" >&nbsp;</td>
+												            		<td class="text14Bold" align="left" >&nbsp;</td> 
+														        </tr>  
+														        
+													        </table>
+												        </td>
+												   </tr>
+												   </table>
+												</td>
+												        
+							            		<td width="50%" valign="top" align="left">
+						 						<table width="90%" align="left" class="formFrame" border="0" cellspacing="0" cellpadding="0">
+											 		<tr>
+												 		<td>
+													 		<table border="0" cellspacing="0" cellpadding="0">
+															 		<%-- ================================================================================== --%>
+															        	<%-- This hidden values are used when an AJAX event from within a dialog box is fired.  
+															        		 These original values will be used when the user clicks "Cancel" buttons (puttting
+															        		 back original value)																--%> 
+															        	<%-- ================================================================================== --%>
+															        	<input type="hidden" name="orig_tvknks" id="orig_tvknks" value='${model.record.tvknks}'>
+															        	<input type="hidden" name="orig_tvnaks" id="orig_tvnaks" value='${model.record.tvnaks}'>
+															        	<input type="hidden" name="orig_tvtinks" id="orig_tvtinks" value='${model.record.tvtinks}'>
+															        	<input type="hidden" name="orig_tvadks1" id="orig_tvadks1" value='${model.record.tvadks1}'>
+															        	<input type="hidden" name="orig_tvpnks" id="orig_tvpnks" value='${model.record.tvpnks}'>
+															        	<input type="hidden" name="orig_tvpsks" id="orig_tvpsks" value='${model.record.tvpsks}'>
+															        	<input type="hidden" name="orig_tvlkks" id="orig_tvlkks" value='${model.record.tvlkks}'>
+															        	<input type="hidden" name="orig_tvskks" id="orig_tvskks" value='${model.record.tvskks}'>
+															 		<tr height="10">
+															            <td class="text14" align="left">&nbsp;</td> 
+															        </tr>
+															        <tr height="15">
+															            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvknks">Kundnummer</span></td>
+															            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvnaks">Namn</span>
+															            	<a tabindex="-1" id="tvnaksIdLink">
+																				<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																			</a>	
+															            </td>
+															        </tr>
+															        <tr>
+															        		<td align="left"><input type="text" class="inputTextMediumBlue" name="tvknks" id="tvknks" size="10" maxlength="8" value="${model.record.tvknks}"></td>
+															            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvnaks" id="tvnaks" size="30" maxlength="35" value="${model.record.tvnaks}"></td>
+															        </tr>
+															        <tr>
+													        				<td class="text14" align="left" >&nbsp;&nbsp;<span title="tvtinks">EORI</span></td>
+															        </tr>
+															        <tr>
+															        		<td align="left"><input type="text" class="inputTextMediumBlue" name="tvtinks" id="tvtinks" size="20" maxlength="17" value="${model.record.tvtinks}"></td>
+															        </tr>
+						
+															        <tr height="4"><td>&nbsp;</td></tr>
+															        <tr>
+															            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvadks1">Adress</span></td>
+															            <td class="text14" align="left" >&nbsp;&nbsp;<span title="tvskks">Språkkod</span></td>
+															        </tr>
+															        <tr>
+															            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvadks1" id="tvadks1" size="30" maxlength="30" value="${model.record.tvadks1}"></td>
+															            <td class="text14" align="left" >
+															            		&nbsp;<select class="selectMediumBlueE2" name="tvskks" id="tvskks">
+																            		<option value="">-välj-</option>
+																 				  	<c:forEach var="record" items="${model.ncts012_Sprak_CodeList}" >
+											                                	 	<option value="${record.tkkode}"<c:if test="${model.record.tvskks == record.tkkode}"> selected </c:if> >${record.tkkode}</option>
+											                                	 	</c:forEach>
+																			</select>
+																			<a tabindex="-1" id="tvskksIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+																				<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																			</a>
+																		</td>
+															        </tr>
+															        <tr>
+															        		<td>
+																        		<table>
+																        		<tr>
+																            		<td class="text14" align="left" >&nbsp;&nbsp;<span title="tvpsks">Postadress</span></td>
+																            		<td align="left">&nbsp;</td>
+																            	</tr>
+																        		<tr>
+																            		<td align="left">
+																       				<input type="text" class="inputTextMediumBlue" name="tvpsks" id="tvpsks" size="30" maxlength="24" value="${model.record.tvpsks}">
+															            			</td> 
+																            		<td align="left">&nbsp;</td>
+																        		</tr>    	
+																            	</table>
+															            </td>
+															            <td >
+																            	<table>
+																        		<tr>
+																        			<td class="text14" align="left" >&nbsp;&nbsp;<span title="tvpnks">Postnummer</span></td>
+																            		<td class="text14" align="left" >&nbsp;<span title="tvlkks">Land</span></td>
+																            	</tr>
+																        		<tr >
+																        			<td align="left"><input type="text" class="inputTextMediumBlue" name="tvpnks" id="tvpnks" size="10" maxlength="8" value="${model.record.tvpnks}"></td> 
+																            		<td align="left">
+																            			<select class="selectMediumBlueE2" name="tvlkks" id="tvlkks">
+																		            		<option value="">-välj-</option>
+																	 				  	<c:forEach var="country" items="${model.countryCodeList}" >
+													                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvlkks == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
+																						</c:forEach>
+																						
+																					</select>
+																					<a tabindex="-1" id="tvlkksIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+																						<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+																					</a>
+																            		</td> 
+																        		</tr>  
+																            	</table>
+															            </td>
+													            	</tr>
+															        
+															        <tr height="15">
+													            		<td class="text14Bold" align="left" >&nbsp;</td>
+													            		<td class="text14Bold" align="left" >&nbsp;</td> 
+															        </tr>  
+														        </table>
+													        </td>
+												        </tr>
+													</table>          
+							            		</td>
+								        	</tr>
+								        	<tr height="10"><td>&nbsp;</td></tr>
+						            	</table>
+						            </td>  
+						            <td>&nbsp;</td>
+						        </tr>
+				        
+				        
 						<tr height="25"><td></td></tr>
 				</table>
             	</td>

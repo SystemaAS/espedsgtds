@@ -31,6 +31,22 @@
 				  opener.jq('#tveh').val(kod);
 				  opener.jq('#tveh').focus();
 				  
+			  }else if(callerType == 'tvskss'){
+				  opener.jq('#tvskss').val(kod);
+				  opener.jq('#tvskss').focus();
+				  
+			  }else if(callerType == 'tvlkss'){
+				  opener.jq('#tvlkss').val(kod);
+				  opener.jq('#tvlkss').focus();
+				  
+			  }else if(callerType == 'tvskks'){
+				  opener.jq('#tvskks').val(kod);
+				  opener.jq('#tvskks').focus();
+				  
+			  }else if(callerType == 'tvlkks'){
+				  opener.jq('#tvlkks').val(kod);
+				  opener.jq('#tvlkks').focus();
+				  
 			  }
 			  
 			  //close child window
