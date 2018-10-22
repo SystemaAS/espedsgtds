@@ -436,17 +436,8 @@
 							            		&nbsp;&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="tvst" >Plats</span>
 							            </td>
 							            <td class="text14" align="left" valign="bottom">
-										<font class="text16RedBold" >*</font><span title="tvstlk" >Landkod</span>
-						 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
-										<td class="text14" align="left" valign="bottom">
-											&nbsp;<span title="tvstsk" >Språkkod</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+										<font class="text16RedBold" >*</font><span title="tvstlk" >Landkod</span></td>
+										<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvstsk" >Språkkod</span></td>
 										<td class="text14" align="left" valign="bottom">
 											<img onMouseOver="showPop('kontroll_info');" onMouseOut="hidePop('kontroll_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 							                <span style="position:absolute; left:1020px; top:300px; width:250px; height:150px;" id="kontroll_info" class="popupWithInputText"  >
@@ -462,15 +453,18 @@
 							        </tr>
 							        <tr>
 							        		<td class="text14" align="left" >
-							        			&nbsp;&nbsp;<input type="text" class="inputText" name="tvst" id="tvst" size="35" maxlength="35" value="${model.record.tvst}">
+							        			&nbsp;&nbsp;<input type="text" class="inputTextMediumBlueMandatoryField" name="tvst" id="tvst" size="35" maxlength="35" value="${model.record.tvst}">
 			 			            		</td>
 			 			            		<td>
-							 				<select class="selectMediumBlueE2" name="tvstlk" id="tvstlk">
+							 				<select class="inputTextMediumBlueMandatoryField" name="tvstlk" id="tvstlk">
 								            		<option value="">-Välj-</option>
 							 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 			                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvstlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 												</c:forEach> 
 											</select>
+											<a tabindex="-1" id="tvstlkIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 						 				</td>
 										<td >
 											<select class="selectMediumBlueE2" name="tvstsk" id="tvstsk">
@@ -479,6 +473,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvstsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="tvstskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 										<td >
 											<select class="selectMediumBlueE2" name="tvctl" id="tvctl">
@@ -522,12 +519,7 @@
 							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;<span title="tvgm" >Myndighet</span>
 							 			</td>
-							 			<td class="text14" align="left" valign="bottom">
-											&nbsp;<span title="tvgmsk" >Språkkod</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+							 			<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvgmsk" >Språkkod</span></td>
 									</tr>
 									<tr>	
 							 			<td class="text14" align="left">
@@ -543,24 +535,17 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvgmsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="tvgmskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 						            </tr>
 						            <tr>
-							            <td class="text14" align="left" valign="bottom">
-											&nbsp;<span title="tvgmlk" >Godk.landkod</span>
-							 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
-								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-								            		</a>
-										</td>
+							            <td class="text14" align="left" valign="bottom">&nbsp;<span title="tvgmlk" >Godk.landkod</span></td>
 										<td class="text14" align="left" valign="bottom">
 							 				&nbsp;<span title="tvgmst" >Godk.plats</span>
 							 			</td>
-							 			<td class="text14" align="left" valign="bottom">
-											&nbsp;<span title="tvgmss" >Språkkod</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+							 			<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvgmss" >Språkkod</span></td>
 									</tr>
 									<tr>
 										<td>
@@ -570,6 +555,9 @@
 			                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvgmlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 												</c:forEach> 
 											</select>
+											<a tabindex="-1" id="tvgmlkIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 						 				</td>
 										<td class="text14" align="left">
 								            <input type="text" class="inputText" name="tvgmst" id="tvgmst" size="35" maxlength="35" value="${model.record.tvgmst}">
@@ -581,6 +569,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvgmss == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="tvgmssIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>	
 									</tr>
 			        	        		</table>
@@ -598,12 +589,7 @@
 							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;&nbsp;<span title="tvdfkd" >Kod</span>
 							 			</td>
-							 			<td class="text14" align="left" valign="bottom">
-											&nbsp;<span title="tvdfsk" >Språkkod</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+							 			<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvdfsk" >Språkkod</span></td>
 									</tr>
 						        		<tr>
 										<td class="text14" align="left">
@@ -619,6 +605,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvdfsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="tvdfskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 									</tr>
 								</table>
@@ -670,12 +659,7 @@
 								 			<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvtalk" >Landkod</span>
 								 			</td>
-								 			<td class="text14" align="left" valign="bottom">
-												&nbsp;<span title="tvtask" >Språkkod</span>
-												<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-								            		</a>
-											</td>
+								 			<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvtask" >Språkkod</span></td>
 										</tr>
 										<tr>	
 								 			<td class="text14" align="left">
@@ -696,6 +680,9 @@
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvtask == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 													</c:forEach>
 												</select>
+												<a tabindex="-1" id="tvtaskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+													<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+												</a>
 											</td>
 							            </tr>
 							 			</table>
@@ -709,12 +696,7 @@
 								 			<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvom" >Myndighet</span>
 								 			</td>
-								 			<td class="text14" align="left" valign="bottom">
-												&nbsp;<span title="tvomsk" >Språkkod</span>
-												<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-								            		</a>
-											</td>
+								 			<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvomsk" >Språkkod</span></td>
 										</tr>
 										<tr>	
 								 			<td class="text14" align="left">
@@ -730,24 +712,17 @@
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvomsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 													</c:forEach>
 												</select>
+												<a tabindex="-1" id="tvomskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+													<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+												</a>
 											</td>
 							            </tr>
 							            <tr>
-								            <td class="text14" align="left" valign="bottom">
-												&nbsp;<span title="tvomlk" >Godk.landkod</span>
-							 					<a tabindex="-1" class="text14" target="_blank" href="${model.taricLandCodesURL.value}" onclick="${model.taricLandCodesURL.windowOpenDimensions}" >
-								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-								            		</a>
-											</td>
+								            <td class="text14" align="left" valign="bottom">&nbsp;<span title="tvomlk" >Godk.landkod</span></td>
 											<td class="text14" align="left" valign="bottom">
 								 				&nbsp;<span title="tvomst" >Godk.plats</span>
 								 			</td>
-								 			<td class="text14" align="left" valign="bottom">
-												&nbsp;<span title="tvomss" >Språkkod</span>
-												<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-								            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-								            		</a>
-											</td>
+								 			<td class="text14" align="left" valign="bottom">&nbsp;<span title="tvomss" >Språkkod</span></td>
 										</tr>
 										<tr>
 											<td>
@@ -757,6 +732,9 @@
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.tvomlk == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
+												<a tabindex="-1" id="tvomlkIdLink" OnClick="triggerChildWindowCountryCodes(this)">
+													<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+												</a>
 							 				</td>
 											<td class="text14" align="left">
 									            <input type="text" class="inputText" name="tvomst" id="tvomst" size="35" maxlength="35" value="${model.record.tvomst}">
@@ -768,6 +746,9 @@
 				                                	 	<option value="${code.tkkode}"<c:if test="${model.record.tvomss == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 													</c:forEach>
 												</select>
+												<a tabindex="-1" id="tvomssIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+													<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+												</a>
 											</td>	
 										</tr>
 										<tr height="10"><td>&nbsp;</td></tr>
