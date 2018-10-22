@@ -29,7 +29,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="25%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Handläggare</font>&nbsp;<font class="text14">SVT056 / SVTHA</font>&nbsp;
+						<font class="tabLink">Handläggare</font>
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_svt056r.do?id=${model.dbTable}">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -141,7 +141,7 @@
 					<table width="95%" cellspacing="1" border="0" align="left">
 						<tr height="5"><td></td></tr>
 						<tr >
-							<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" ><spring:message code="systema.new"/></button></td>
+							<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Skapa ny</button></td>
 						</tr>
 						<tr height="20"><td></td></tr>
 						<tr>
@@ -163,7 +163,7 @@
  	    						&nbsp;&nbsp;&nbsp;<font class="text14RedBold" >*</font><span title="syuser">Userid</span>
  	    						<input type="text" class="inputTextMediumBlueMandatoryField" name="svth_usid" id="svth_usid" size="11" maxlength="10" value="${model.record.svth_usid}" />
  	    						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 	    						<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.save"/>' onClick="setBlockUI(this);"/>
+ 	    						<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='Spara' onClick="setBlockUI(this);"/>
 								
  	    					</td>
 		    	    	</tr>

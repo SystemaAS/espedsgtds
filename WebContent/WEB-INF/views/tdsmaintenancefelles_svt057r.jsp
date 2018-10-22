@@ -29,7 +29,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="20%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Valutakurser</font>&nbsp;<font class="text14">SVT057 / SVTVK</font>&nbsp;
+						<font class="tabLink">Valutakurser</font>
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_svt057r.do?id=${model.dbTable}">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -152,7 +152,7 @@
 			</tr>
 			<tr >
 				<td width="5%">&nbsp;</td>
-				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Opret	 ny</button></td>
+				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Skapa	ny</button></td>
 			</tr>
 	 	    <tr >
 	 	    	<td width="5%">&nbsp;</td>

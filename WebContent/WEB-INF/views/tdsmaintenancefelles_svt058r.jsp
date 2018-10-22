@@ -29,7 +29,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="25%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Leveransvillkor</font>&nbsp;<font class="text14">SVT058 / SVTLV</font>&nbsp;
+						<font class="tabLink">Leveransvillkor</font>
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_svt058r.do?id=${model.dbTable}">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -70,7 +70,7 @@
 									<th rowspan="2" align="center" width="2%" class="tableHeaderField" >&nbsp;Ändra&nbsp;</th>
 									<th rowspan="2" class="tableHeaderField" >&nbsp;Kod&nbsp;</th>
 				                    <th colspan="2" class="tableHeaderField" >&nbsp;Transport&nbsp;</th>
-									<th colspan="2" class="tableHeaderField" >&nbsp;Fösäkring&nbsp;</th>
+									<th colspan="2" class="tableHeaderField" >&nbsp;Försäkring&nbsp;</th>
 									<th rowspan="2" class="tableHeaderField" >&nbsp;Övr.kost.&nbsp;</th>
 									<th rowspan="2" class="tableHeaderField" >&nbsp;Kassarab.&nbsp;</th>
 									<th rowspan="2" class="tableHeaderField" >&nbsp;Annan rab.&nbsp;</th>
@@ -173,7 +173,7 @@
 			</tr>
 			<tr >
 				<td width="5%">&nbsp;</td>
-				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Opret	 ny</button></td>
+				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Skapa ny</button></td>
 			</tr>
 	 	    <tr >
 	 	    	<td width="5%">&nbsp;</td>

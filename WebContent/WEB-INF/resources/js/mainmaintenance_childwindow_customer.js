@@ -236,8 +236,6 @@
 		  });
 	});
 	
-
-	
 	//======================
     //Datatables jquery 
     //======================
@@ -249,14 +247,16 @@
     } 
 	//Init datatables
     jq(document).ready(function() {
-  	  //-----------------------
-      //table [General Code List]
-  	  //-----------------------
-    	  jq('#customerList').dataTable( {
+    	var lang = jq('#language').val();
+    	jq('#customerList').dataTable( {
     		  "dom": '<"top"fli>rt<"bottom"p><"clear">',
-    		  "lengthMenu": [ 75, 100, 200, 500]
-    	  });
-      //event on input field for search
+    		  "lengthMenu": [ 75, 100, 200, 500],
+    		  "language": {
+    				"url": getLanguage(lang)
+    	      }
+    	});
+
+    	//event on input field for search
       jq('input.customerList_filter').on( 'keyup click', function () {
       		filterGeneralCode();
       });

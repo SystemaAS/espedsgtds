@@ -27,6 +27,7 @@
 
 	<%--datatables grid --%>
 	<script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<input type="hidden" name="language" id=language value="${user.usrLang}">
 	
     <table class="noBg" width="100%" border="0" cellspacing="0" cellpadding="0">
 		<%--Banner --%>

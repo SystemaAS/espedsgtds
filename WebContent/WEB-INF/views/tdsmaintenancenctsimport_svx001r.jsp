@@ -160,7 +160,7 @@
 			</tr>
 			<tr >
 				<td width="5%">&nbsp;</td>
-				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Opret	 ny</button></td>
+				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Skapa	ny</button></td>
 			</tr>
 	 	    <tr >
 	 	    	<td width="5%">&nbsp;</td>
@@ -183,7 +183,7 @@
 						<td ><input type="text" required oninvalid="this.setCustomValidity('Obligatoriskt')" oninput="setCustomValidity('')" class="inputTextMediumBlueMandatoryField" name="tktxtn" id="tktxtn" size="36" maxlength="35" value='${model.record.tktxtn}'></td>
 						<td ><input type="text" class="inputTextMediumBlue" name="tktxte" id="tktxte" size="36" maxlength="35" value='${model.record.tktxte}'></td>
 						<td>
-							<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='Spare'/>
+							<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='Spara'/>
 						</td>
 						</tr>
 						<tr height="3"><td></td>

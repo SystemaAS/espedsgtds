@@ -1,5 +1,5 @@
 	var jq = jQuery.noConflict();
-  	var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Please wait...";
+  	var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Vänligen vänta...";
   	
 	function setBlockUI(){
     	  jq.blockUI({ css: { fontSize: '22px' }, message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
