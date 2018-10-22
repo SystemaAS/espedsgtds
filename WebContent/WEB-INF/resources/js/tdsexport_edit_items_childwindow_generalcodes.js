@@ -11,33 +11,10 @@
 			  var text = record[1].replace("text", "");
 			  var callerType = record[2].replace("ctype", "");
 			  //alert(kod + " " + text + " " + callerType);
+			  callerType = "#" + callerType;
+			  opener.jq(callerType).val(kod);
+			  opener.jq(callerType).focus();
 			  
-			  //addressing a parent field from this child window
-			  if(callerType == 'svev_ulkd'){
-				  //Ursp.land 	
-				  opener.jq('#svev_ulkd').val(kod);
-				  opener.jq('#svev_vata').focus();
-			  
-			  }else if(callerType == 'svev_eup1'){
-				  //Ursp.land 	
-				  opener.jq('#svev_eup1').val(kod);
-				  opener.jq('#svev_eup2').focus();
-			  
-			  }else if(callerType == 'svev_eup2'){
-				  //Ursp.land 	
-				  opener.jq('#svev_eup2').val(kod);
-				  opener.jq('#svev_brut').focus();
-				  
-			  }else if(callerType == 'svev_kosl'){
-				  //Ursp.land 	
-				  opener.jq('#svev_kosl').val(kod);
-				  opener.jq('#svev_vasl').focus();
-			  
-			  }else if(callerType == 'svev_lagl'){
-				  //Ursp.land 	
-				  opener.jq('#svev_lagl').val(kod);
-				  opener.jq('#svev_lagl').focus();
-			  }
 			  
 			  //close child window
 			  window.close();

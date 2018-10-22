@@ -10,44 +10,9 @@
 			  var kod = record[0].replace("kod", "");
 			  var callerType = record[1].replace("ctype", "");
 			  //alert(kod + " " + callerType);
-			  
-			  if(callerType == 'tvdsk'){
-				  opener.jq('#tvdsk').val(kod);
-				  opener.jq('#tvdsk').focus();
-				  
-			  }else if(callerType == 'tvvtsk'){
-				  opener.jq('#tvvtsk').val(kod);
-				  opener.jq('#tvvtsk').focus();
-				  
-			  }else if(callerType == 'tvmnsk'){
-				  opener.jq('#tvmnsk').val(kod);
-				  opener.jq('#tvmnsk').focus();
-				  
-			  }else if(callerType == 'tvdty'){
-				  opener.jq('#tvdty').val(kod);
-				  opener.jq('#tvdty').focus();
-				  
-			  }else if(callerType == 'tveh'){
-				  opener.jq('#tveh').val(kod);
-				  opener.jq('#tveh').focus();
-				  
-			  }else if(callerType == 'tvskss'){
-				  opener.jq('#tvskss').val(kod);
-				  opener.jq('#tvskss').focus();
-				  
-			  }else if(callerType == 'tvlkss'){
-				  opener.jq('#tvlkss').val(kod);
-				  opener.jq('#tvlkss').focus();
-				  
-			  }else if(callerType == 'tvskks'){
-				  opener.jq('#tvskks').val(kod);
-				  opener.jq('#tvskks').focus();
-				  
-			  }else if(callerType == 'tvlkks'){
-				  opener.jq('#tvlkks').val(kod);
-				  opener.jq('#tvlkks').focus();
-				  
-			  }
+			  callerType = "#" + callerType;
+			  opener.jq(callerType).val(kod);
+			  opener.jq(callerType).focus();
 			  
 			  //close child window
 			  window.close();

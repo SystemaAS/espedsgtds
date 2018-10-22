@@ -7,15 +7,15 @@
 		jq('#tullkontorList').on('click', 'td', function(){
 			  var id = this.id;
 			  var record = id.split('@');
-			  var tkkode = record[0].replace("tkkode", "");
-			  var tktxtn = record[1].replace("tktxtn", "");
+			  var kod = record[0].replace("tkkode", "");
+			  var txt = record[1].replace("tktxtn", "");
 			  var callerType = record[2].replace("ctype", "");
 			  
-			  if(callerType == 'titsb'){  
-				  opener.jq('#titsb').val(tkkode);
-				  opener.jq('#titsb').focus();
-				  
-			  }
+			  callerType = "#" + callerType;
+			  opener.jq(callerType).val(kod);
+			  opener.jq(callerType).focus();
+			  
+			  
 			  //close child window
 			  window.close();
 			  

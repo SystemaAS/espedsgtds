@@ -10,33 +10,10 @@
 			  var kod = record[0].replace("kod", "");
 			  var callerType = record[1].replace("ctype", "");
 			  //alert(kod + " " + callerType);
-			  
-			  if(callerType == 'tisk'){
-				  opener.jq('#tisk').val(kod);
-				  opener.jq('#tisk').focus();
-				  
-			  }else if(callerType == 'tilk'){
-				  opener.jq('#tilk').val(kod);
-				  opener.jq('#tilk').focus();
-				  
-			  }else if(callerType == 'tignsk'){
-				  opener.jq('#tignsk').val(kod);
-				  opener.jq('#tignsk').focus();
-				  
-			  }else if(callerType == 'tialk'){
-				  opener.jq('#tialk').val(kod);
-				  opener.jq('#tialk').focus();
-				  
-			  }else if(callerType == 'tialss'){
-				  opener.jq('#tialss').val(kod);
-				  opener.jq('#tialss').focus();
-				  
-			  }else if(callerType == 'tiskb'){
-				  opener.jq('#tiskb').val(kod);
-				  opener.jq('#tiskb').focus();
-				  
-			  }
-			  
+			  callerType = "#" + callerType;
+			  opener.jq(callerType).val(kod);
+			  opener.jq(callerType).focus();
+			   
 			  //close child window
 			  window.close();
 		  });

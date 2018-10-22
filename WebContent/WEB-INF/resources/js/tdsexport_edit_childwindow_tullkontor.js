@@ -7,19 +7,15 @@
 		jq('#tullkontorList').on('click', 'td', function(){
 			  var id = this.id;
 			  var record = id.split('@');
-			  var tkkode = record[0].replace("tkkode", "");
-			  var tktxtn = record[1].replace("tktxtn", "");
+			  var kod = record[0].replace("tkkode", "");
+			  var txt = record[1].replace("tktxtn", "");
 			  var callerType = record[2].replace("ctype", "");
 			  
-			  //Tullkontor - thcats
-			  if(callerType == 'sveh_utfa'){  
-				  opener.jq('#sveh_utfa').val(tkkode);
-				  opener.jq('#sveh_utfa').focus();
-				  
-			  }else if(callerType == 'TODOdkeh_ind'){  
-				  opener.jq('#TODOdkeh_ind').val(tkkode);
-				  opener.jq('#TODOdkeh_ind').focus();
-			  }
+			  callerType = "#" + callerType;
+			  opener.jq(callerType).val(kod);
+			  opener.jq(callerType).focus();
+			  
+			  
 			  //close child window
 			  window.close();
 			  
