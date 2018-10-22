@@ -8,9 +8,11 @@
 		specified in servlet.xml as static <mvc:resources mapping="/resources/**" location="WEB-INF/resources/" order="1"/> --%>
 	<SCRIPT type="text/javascript" src="resources/js/tdsmaintenanceexport.js?ver=${user.versionEspedsg}"></SCRIPT>	
 	
-	<style type = "text/css">
-	.ui-datepicker { font-size:9pt;}
-	</style>
+<style type = "text/css">
+
+.ui-datepicker { font-size:9pt;}
+
+</style>
 
 
 <table width="100%" class="text11" cellspacing="0" border="0" cellpadding="0">
@@ -47,7 +49,6 @@
 						<table id="mainList" class="display compact cell-border" >
 							<thead>
 							<tr>
-								<th width="2%" class="tableHeaderFieldFirst" align="center" >&nbsp;Id&nbsp;</th>
 								<th width="2%" class="tableHeaderField" align="center" >&nbsp;Uppd.</th>
 			                    <th width="80%" class="tableHeaderField" align="left" >&nbsp;Beskrivning&nbsp;</th>
 			                    <%--
@@ -61,7 +62,6 @@
 				            <c:forEach var="record" items="${model.list}" varStatus="counter">   
 				               <tr class="tableRow" height="20" >
 				              
-				               <td width="2%" class="tableCellFirst" style="border-style: solid;border-width: 0px 1px 1px 1px;border-color:#FAEBD7;" align="center" ><font class="text14">&nbsp;${record.id}&nbsp;</font></td>
 				               <td width="2%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" align="center">
 				               	<c:choose>
 				               		<c:when test="${record.status == 'G' && not empty record.pgm}">
@@ -91,21 +91,6 @@
 					               		</c:otherwise>
 				               		</c:choose>
 				               </td>
-				               <%--
-		                       <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.code}&nbsp;</font></td>
-				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.text}&nbsp;</font></td>
-		                       <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;"align="center">
-		                       		<c:if test="${empty record.status}">
-	                       				<img src="resources/images/bulletRed.png" width="12px" height="12px" border="0">
-		                       		</c:if>
-		                       		<c:if test="${record.status == 'G'}">
-		                       			<img src="resources/images/bulletGreen.png" width="12px" height="12px" border="0">
-		                       		</c:if>
-		                       		<c:if test="${record.status == 'Y'}">
-		                       			<img src="resources/images/bulletYellowModern.png" width="11px" height="11px" border="0">
-		                       		</c:if>
-				               </td>
-				               --%>
 				            </tr> 
 				            </c:forEach>
 				            </tbody>
