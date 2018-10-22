@@ -493,9 +493,9 @@
 						                             <option value="${code.tkkode}"<c:if test="${model.record.nictsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
 										</select>
-										<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-						            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-						            		</a>
+										<a tabindex="-1" id="nictskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 					            		</td>					 			
 						 		</tr>
 						 		<tr>	
@@ -591,9 +591,10 @@
 						                             <option value="${code.tkkode}"<c:if test="${model.record.nidfsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
 										</select>
-										<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-						            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-						            		</a>
+										<a tabindex="-1" id="nidfskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+										</a>
+					            		
 						 			</td>
 						 		</tr>
 						 		<tr height="5"><td></td></tr>
@@ -620,9 +621,10 @@
 						                             <option value="${code.tkkode}"<c:if test="${model.record.nimnsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
 										</select>
-										<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-						            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-						            		</a>
+										<a tabindex="-1" id="nimnskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
+					            		</td>
 					            		</td>		
 								</tr>
 								<tr>	

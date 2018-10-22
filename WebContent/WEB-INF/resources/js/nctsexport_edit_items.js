@@ -570,7 +570,6 @@
 	  	
 	  	
 	  	//Varukod
-	  	
 	  	jq('#tvvntIdLink').click(function() {
 	  		jq('#tvvntIdLink').attr('target','_blank');
 	  		window.open('tdsexport_edit_items_childwindow_tulltaxa.do?action=doInit&vkod=' + jq('#tvvnt').val() + '&caller=tvvnt', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");

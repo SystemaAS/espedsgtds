@@ -207,7 +207,6 @@
 												<table width="95%" cellspacing="0" border="0" cellpadding="0">
 													<tr class="tableHeaderField" height="20" valign="left">
 													    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.tvli.linjeNr"/>&nbsp;</td>   
-									                    <td align="center" class="tableHeaderField" nowrap>Ta bort</td>
 									                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvvnt.varukod"/>&nbsp;</td>   
 									                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvdty.dokTyp"/>&nbsp;</td>
 									                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvdref.dokRef"/>&nbsp;</td>
@@ -216,6 +215,8 @@
 									                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nveh.kolliSlag"/></td>
 									                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvnt.kolliAnt"/></td>
 									                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvvt.varuBeskrivning"/>&nbsp;</td>
+									                    <td width="2%" align="center" class="tableHeaderField" nowrap>Ta bort</td>
+									                    
 									               </tr>  
 										           <c:forEach items="${model.list}" var="record" varStatus="counter">    
 										               <c:choose>           
@@ -228,11 +229,7 @@
 										               </c:choose>
 										               <%-- <td class="tableCellFirst" width="2%">&nbsp;${counter.count}</td> --%>
 										               <td width="2%" class="tableCellFirst" align="center">&nbsp;${record.tvli}</td>
-										               <td class="tableCell" align="center" nowrap>&nbsp;
-										               	<a onclick="javascript:return confirm('Är du säker på att du vill ta bort raden?')" tabindex=-1 href="nctsimport_unloading_edit_items.do?action=doDelete&avd=${record.tvavd}&opd=${record.tvtdn}&lin=${record.tvli}">
-										               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
-										               	</a>	
-										               </td>
+										               
 										               <td class="tableCell" >&nbsp;${record.nvvnt}</td>
 										               <td class="tableCell" >&nbsp;${record.nvdty}</td>
 										               <td class="tableCell" >&nbsp;${record.nvdref}</td>
@@ -241,7 +238,11 @@
 										               <td class="tableCell" >&nbsp;${record.nveh}</td>
 										               <td class="tableCell" >&nbsp;${record.nvnt}</td>
 										               <td width="40%" class="tableCell" width="100" >&nbsp;${record.nvvt}</td>
-										               
+										               <td width="2%" class="tableCell" align="center" nowrap>&nbsp;
+										               	<a onclick="javascript:return confirm('Är du säker på att du vill ta bort raden?')" tabindex=-1 href="nctsimport_unloading_edit_items.do?action=doDelete&avd=${record.tvavd}&opd=${record.tvtdn}&lin=${record.tvli}">
+										               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
+										               	</a>	
+										               </td>
 											           </tr>
 											        <%-- <c:set var="numberOfItemLinesInTopic" value="${counter.count}" scope="request" /> --%>
 											        <c:set var="numberOfItemLinesInTopic" value="${record.tvli}" scope="request" />
@@ -276,7 +277,6 @@
 								<table width="100%" cellspacing="0" border="0" cellpadding="0">
 									<tr class="tableHeaderField" height="20" valign="left">
 									    <td class="tableHeaderFieldFirst">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.tvli.linjeNr"/>&nbsp;</td>   
-					                    <td align="center" class="tableHeaderField" nowrap>Ta bort</td>
 					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvvnt.varukod"/>&nbsp;</td>   
 					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvdty.dokTyp"/>&nbsp;</td>
 					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvdref.dokRef"/>&nbsp;</td>
@@ -285,6 +285,7 @@
 					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nveh.kolliSlag"/></td>
 					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvnt.kolliAnt"/></td>
 					                    <td class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.unloading.item.list.label.nvvt.varuBeskrivning"/>&nbsp;</td>
+					                    <td width="2%" align="center" class="tableHeaderField" nowrap>Ta bort</td>
 					               </tr> 
 					               
 					               <form name="formItemList" id="formItemList" method="POST" >
@@ -308,11 +309,7 @@
 							               		</a>
 								               	
 							               </td>
-							               <td class="tableCell" align="center" nowrap>&nbsp;
-							               	<a onclick="javascript:return confirm('Är du säker på att du vill ta bort raden?')" tabindex=-1 href="nctsimport_unloading_edit_items.do?action=doDelete&avd=${record.tvavd}&opd=${record.tvtdn}&lin=${record.tvli}">
-							               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
-							               	</a>	
-							               </td>
+							               
 							               
 							               <td class="tableCell" >&nbsp;${record.nvvnt}</td>
 							               <td class="tableCell" >&nbsp;${record.nvdty}</td>
@@ -323,7 +320,11 @@
 							               <td class="tableCell" >&nbsp;${record.nvnt}</td>
 							               
 							               <td width="40%" class="tableCell" width="100" >&nbsp;${record.nvvt}</td>
-							               	
+							               <td width="2%" class="tableCell" align="center" nowrap>&nbsp;
+							               	<a onclick="javascript:return confirm('Är du säker på att du vill ta bort raden?')" tabindex=-1 href="nctsimport_unloading_edit_items.do?action=doDelete&avd=${record.tvavd}&opd=${record.tvtdn}&lin=${record.tvli}">
+							               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
+							               	</a>	
+							               </td>	
 							               
 								           </tr>
 								        <%-- <c:set var="numberOfItemLinesInTopic" value="${counter.count}" scope="request" /> --%>
@@ -433,9 +434,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nvctsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
+											<a tabindex="-1" id="nvctskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 										<td colspan="4" class="text14" align="left" >
 							        			<input type="text" class="inputText" name="nvctb" id="nvctb" size="71" maxlength="70" value="${model.record.nvctb}">
@@ -448,70 +449,9 @@
 							 			<td class="text14" align="left" valign="bottom">
 							 				&nbsp;&nbsp;<span title="tvli" >Linjenr.</span>
 							 			</td>
-							 			<td class="text14" align="left">
-							            		&nbsp;&nbsp;<span title="nvvnt" >Varukod</span>
-							            		<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" onClick="showPop('searchTaricCodesDialog');">
-								            <%-- ======================================================== --%>
-							            		<%-- Here we have the search Taric codes popup window --%>
-							            		<%-- ======================================================== --%>
-							            		<span style="position:absolute; left:300px; top:450px; width:500px; height:210px;" id="searchTaricCodesDialog" class="popupWithInputText"  >
-								           		<div class="text10" align="left">
-								           			<table>
-									           			<tr>
-									           			<td>
-										           			<table>
-										           				<tr>
-																	<td class="text11">&nbsp;Varukod</td>
-																	<td class="text11">&nbsp;<input type="text" class="inputText" name="search_svvs_vata" id="search_svvs_vata" size="10" maxlength="8" value=''></td>
-																</tr>
-											           			<tr>
-											           				<td align="right">&nbsp;<button name="searchTaricCode" class="buttonGray" type="button" onClick="searchTaricVarukod();">Sök</button></td>
-											           				<td class="text11">&nbsp;</td>
-												           			
-												           		</tr>
-												           		<tr height="4"><td ></td></tr>
-											           		</table>
-										           		</td>
-										           		</tr>
-														
-														<tr>
-									           			<td>
-										           			<table>							           		
-												           		<tr>
-											           				<td class="text11">&nbsp;Lista</td>
-												           			<td>&nbsp;</td>
-												           		</tr>
-												           		<tr>
-																	<td colspan="2">&nbsp;
-																		<select class="selectMediumBlueE2"  id="taricVarukodList" name="taricVarukodList" size="5" onDblClick="hidePop('searchTaricCodesDialog');">
-						 													<option selected value="">-vælg-</option>
-						 							 					</select>
-																	</td>
-																</tr>
-										           			</table>
-									           			</td>
-									           			</tr>
-															
-														<tr>
-									           			<td>								           			
-															<table width="100%" align="left" border="0">
-																<tr align="left" >
-																	<td >&nbsp;<button name="searchTaricCodesClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('searchTaricCodesDialog');">Ok</button></td>
-																</tr>
-															</table>
-														</td>
-														</tr>
-													</table>
-												</div>
-											</span>
-							            </td>
+							 			<td class="text14" align="left">&nbsp;&nbsp;<span title="nvvnt" >Varukod</span></td>
 							            
-							            <td nowrap class="text14" align="left" valign="bottom">
-											&nbsp;<span title="nvvtsk" >Språkkod</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+							            <td nowrap class="text14" align="left" valign="bottom">&nbsp;<span title="nvvtsk" >Språkkod</span></td>
 										<td class="text14" align="left">
 							            		&nbsp;&nbsp;<span title="nvvktb" >Brut.vikt(kg)</span>
 							            </td>
@@ -527,7 +467,10 @@
 							        			&nbsp;<input tabindex=-1 readonly type="text" class="inputTextReadOnly" name="tvli" id="tvli" size="4" maxlength="5" value="${model.record.tvli}">
 			 			            		</td>
 							        		<td class="text14" align="left" >
-							        			<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="nvvnt" id="nvvnt" size="6" maxlength="6" value="${model.record.nvvnt}">
+							        			<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="nvvnt" id="nvvnt" size="8" maxlength="6" value="${model.record.nvvnt}">
+							        			<a tabindex="-1" id="nvvntIdLink" >
+													<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+												</a>
 			 			            		</td>
 			 			            		<td >
 											<select class="selectMediumBlueE2" name="nvvtsk" id="nvvtsk">
@@ -536,6 +479,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nvvtsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="nvvtskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 										<td class="text14" align="left" >
 							        			<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="nvvktb" id="nvvktb" size="9" maxlength="9" value="${model.record.nvvktb}">
@@ -544,7 +490,7 @@
 							        			<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="nvvktn" id="nvvktn" size="9" maxlength="9" value="${model.record.nvvktn}">
 			 			            		</td>
 			 			            		<td colspan="3" class="text14" align="left" >
-							        			<input type="text" class="inputText" name="nvvt" id="nvvt" size="60" maxlength="70" value="${model.record.nvvt}">
+							        			<input type="text" class="inputTextMediumBlueMandatoryField" name="nvvt" id="nvvt" size="60" maxlength="70" value="${model.record.nvvt}">
 			 			            		</td>
 			 			            					 			            		
 							        </tr>
@@ -560,11 +506,7 @@
 							            		&nbsp;<b>44.</b>&nbsp;<span title="nvdref" >Dok.ref.</span>
 							            </td>
 										<td class="text14" align="left" valign="bottom">
-											<b>44.</b>&nbsp;<span title="nvdsk" >Dok.språk</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+											<b>44.</b>&nbsp;<span title="nvdsk" >Dok.språk</span></td>
 										
 										<td class="text14" align="left">
 							            		&nbsp;<b>44.</b>&nbsp;<span title="nvdo" >Uppfyllt upplysningar</span>
@@ -584,7 +526,10 @@
 							 				  	<c:forEach var="code" items="${model.ncts013_DocType_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nvdty == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
-											</select>										           				
+											</select>	
+											<a tabindex="-1" id="nvvtskIdLink" OnClick="triggerChildWindowDocTypeCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>									           				
 										</td>							        
 							        		<td colspan="3" class="text14" align="left" >
 							        			<input type="text" class="inputText" name="nvdref" id="nvdref" size="35" maxlength="35" value="${model.record.nvdref}">
@@ -596,6 +541,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nvdsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="nvdskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 										<td class="text14" align="left" >
 							        			<input type="text" class="inputText" name="nvdo" id="nvdo" size="26" maxlength="26" value="${model.record.nvdo}">
@@ -608,6 +556,9 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nvdosk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="nvdoskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 							        </tr>
 							        
@@ -615,12 +566,7 @@
 							 			<td colspan="4" class="text14" align="left" valign="bottom">
 							 				&nbsp;<b>31.</b>&nbsp;<font class="text16RedBold" >*</font><span title="nvmn" >Godsmärkning</span>
 							 			</td>
-							 			<td nowrap class="text14" align="left" valign="bottom">
-											<b>31.</b>&nbsp;<span title="nvmnsk" >Godsm.språk</span>
-											<a tabindex="-1" class="text14" target="_blank" href="${model.isoLanguageCodesURL.value}" onclick="${model.isoLanguageCodesURL.windowOpenDimensions}" >
-							            			<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-							            		</a>
-										</td>
+							 			<td nowrap class="text14" align="left" valign="bottom"><b>31.</b>&nbsp;<span title="nvmnsk" >Godsm.språk</span></td>
 										<td class="text14" align="left">
 							            		&nbsp;<b>31.</b>&nbsp;<span title="nvcnr" >Container</span>
 							            </td>
@@ -636,7 +582,7 @@
 							        </tr>
 							        <tr>
 							        		<td colspan="4" class="text14" align="left">
-							        			<input type="text" class="inputText" name="nvmn" id="nvmn" size="35" maxlength="42" value="${model.record.nvmn}">
+							        			<input type="text" class="inputTextMediumBlueMandatoryField" name="nvmn" id="nvmn" size="35" maxlength="42" value="${model.record.nvmn}">
 			 			            		</td>
 							        		<td >
 											<select class="selectMediumBlueE2" name="nvmnsk" id="nvmnsk">
@@ -645,21 +591,24 @@
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nvmnsk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach>
 											</select>
+											<a tabindex="-1" id="nvmnskIdLink" OnClick="triggerChildWindowLanguageCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>
 										</td>
 										<td class="text14" align="left" >
 							        			<input type="text" class="inputText" name="nvcnr" id="nvcnr" size="20" maxlength="17" value="${model.record.nvcnr}">
 			 			            		</td>
 			 			            		
 			 			            		<td class="text14" align="left" >
-							        			<select class="selectMediumBlueE2" name="nveh" id="nveh">
+							        			<select class="inputTextMediumBlueMandatoryField" name="nveh" id="nveh">
 							            		<option value="">-Välj-</option>
 							 				  	<c:forEach var="code" items="${model.ncts017_Kolli_CodeList}" >
 			                                	 	<option value="${code.tkkode}"<c:if test="${model.record.nveh == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
 												</c:forEach> 
 											</select>
-											<a tabindex=-1 href="renderLocalPdf.do?fn=TDS_EDI_NCTS_forpackningskoder_fn_rekomendationer_ncts.pdf" target="_blank">
-		 										<img style="cursor:pointer;" src="resources/images/find.png" border="0" alt="search" >
-		 									</a>		
+											<a tabindex="-1" id="nvehIdLink" OnClick="triggerChildWindowKolliSlagCodes(this)">
+												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+											</a>		
 			 			            		</td>
 			 			            		<td class="text14" align="left" >
 							        			<input onKeyPress="return numberKey(event)" align="right" type="text" class="inputText" name="nvnt" id="nvnt" size="6" maxlength="5" value="${model.record.nvnt}">

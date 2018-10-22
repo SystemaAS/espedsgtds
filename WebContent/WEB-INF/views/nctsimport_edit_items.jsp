@@ -464,7 +464,7 @@
 											</select>
 											<a tabindex="-1" id="tvstlkIdLink" OnClick="triggerChildWindowCountryCodes(this)">
 												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
-											</a>
+											</a>	
 						 				</td>
 										<td >
 											<select class="selectMediumBlueE2" name="tvstsk" id="tvstsk">
