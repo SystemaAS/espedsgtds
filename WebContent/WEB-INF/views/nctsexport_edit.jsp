@@ -1053,7 +1053,7 @@
 							<tr>
 					            <td class="text14" align="left" >
 					            <img onMouseOver="showPop('17_info');" onMouseOut="hidePop('17_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					            <b>17.</b><font class="text16RedBold" >*</font><span title="thblk">Bestämmelseland, kod&nbsp;</span>
+					            <b>17.</b><font class="text16RedBold" >*</font><span title="thblk">Bestämmelseland&nbsp;</span>
 					            <div class="text12" style="position: relative;" align="left">
 					            <span style="position:absolute;top:2px; width:250px;" id="17_info" class="popupWithInputText text12"  >
 				           			<ul>
@@ -1092,7 +1092,7 @@
 			 				<tr>
 					            <td class="text14" align="left" colspan="2" >
 					            <img onMouseOver="showPop('18_info');" onMouseOut="hidePop('18_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					            <b>18.</b><font class="text16RedBold" >*</font><span title="thtaid">Transportmedlets identitet och nationalitet vid avgången</span>
+					            <b>18.</b><font class="text16RedBold" >*</font><span title="thtaid">Transportmedlets identitet och nationalitet vid avgång</span>
 					            
 					            <div class="text12" style="position: relative;" align="left">
 					            <span style="position:absolute;top:2px; width:250px;" id="18_info" class="popupWithInputText text12"  >
@@ -1178,19 +1178,19 @@
 				            		<font class="text16RedBold" >*</font><span title="thtrmi">Transportsätt vid avgången&nbsp;</span>
 				            		<select class="inputTextMediumBlueMandatoryField" name="thtrmi" id="thtrmi">
 				 						<option value="">-Välj-</option>
-					 				  	<option value="10"<c:if test="${model.record.thtrmi == '10'}"> selected </c:if> >10</option>
-					 				  	<option value="12"<c:if test="${model.record.thtrmi == '12'}"> selected </c:if> >12</option>
-					 				  	<option value="16"<c:if test="${model.record.thtrmi == '16'}"> selected </c:if> >16</option>
-					 				  	<option value="17"<c:if test="${model.record.thtrmi == '17'}"> selected </c:if> >17</option>
-					 				  	<option value="18"<c:if test="${model.record.thtrmi == '18'}"> selected </c:if> >18</option>
-					 				  	<option value="20"<c:if test="${model.record.thtrmi == '20'}"> selected </c:if> >20</option>
-					 				  	<option value="23"<c:if test="${model.record.thtrmi == '23'}"> selected </c:if> >23</option>
-					 				  	<option value="30"<c:if test="${model.record.thtrmi == '30'}"> selected </c:if> >30</option>
-					 				  	<option value="40"<c:if test="${model.record.thtrmi == '40'}"> selected </c:if> >40</option>
-					 				  	<option value="50"<c:if test="${model.record.thtrmi == '50'}"> selected </c:if> >50</option>
-					 				  	<option value="70"<c:if test="${model.record.thtrmi == '70'}"> selected </c:if> >70</option>
-					 				  	<option value="80"<c:if test="${model.record.thtrmi == '80'}"> selected </c:if> >80</option>
-					 				  	<option value="90"<c:if test="${model.record.thtrmi == '90'}"> selected </c:if> >90</option>
+					 				  	<option title="Sjötransport" value="10"<c:if test="${model.record.thtrmi == '10'}"> selected </c:if> >10</option>
+					 				  	<option title="Järnvägsvagn på sjögående fartyg" value="12"<c:if test="${model.record.thtrmi == '12'}"> selected </c:if> >12</option>
+					 				  	<option title="Vägmotorfordon på sjögående fartyg" value="16"<c:if test="${model.record.thtrmi == '16'}"> selected </c:if> >16</option>
+					 				  	<option title="Släpvagn eller påhängsvagn på sjögående fartyg" value="17"<c:if test="${model.record.thtrmi == '17'}"> selected </c:if> >17</option>
+					 				  	<option title="Fartyg för inre vattenvägar på sjögående fartyg" value="18"<c:if test="${model.record.thtrmi == '18'}"> selected </c:if> >18</option>
+					 				  	<option title="Järnvägstransport" value="20"<c:if test="${model.record.thtrmi == '20'}"> selected </c:if> >20</option>
+					 				  	<option title="Vägfordon på järnvägsvagn" value="23"<c:if test="${model.record.thtrmi == '23'}"> selected </c:if> >23</option>
+					 				  	<option title="Landsvägstransport" value="30"<c:if test="${model.record.thtrmi == '30'}"> selected </c:if> >30</option>
+					 				  	<option title="Flygtransport" value="40"<c:if test="${model.record.thtrmi == '40'}"> selected </c:if> >40</option>
+					 				  	<option title="Postförsändelse" value="50"<c:if test="${model.record.thtrmi == '50'}"> selected </c:if> >50</option>
+					 				  	<option title="Transport vid fasta installationer" value="70"<c:if test="${model.record.thtrmi == '70'}"> selected </c:if> >70</option>
+					 				  	<option title="Transport på inre vattenvägar" value="80"<c:if test="${model.record.thtrmi == '80'}"> selected </c:if> >80</option>
+					 				  	<option title="Egen framdrivning" value="90"<c:if test="${model.record.thtrmi == '90'}"> selected </c:if> >90</option>
 					 				  	
 									</select>
 				            	
@@ -1258,7 +1258,7 @@
 					            <td class="text14" align="left">
 					            <img onMouseOver="showPop('21_info');" onMouseOut="hidePop('21_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					            <b>21.</b>
-					            <font class="text16RedBold" >*</font><span title="thtgid">Transportmedlets identitet och nationalitet vid gränspassagen</span>
+					            <font class="text16RedBold" >*</font><span title="thtgid">Transportmedlets identitet och nationalitet vid gränspassage</span>
 					            <div class="text12" style="position: relative;" align="left">
 					            <span style="position:absolute;top:2px; width:250px;" id="21_info" class="popupWithInputText text12"  >
 					           			Enter the appropriate code for the type (lorry, ship, railway wagon, aircraft, etc.) and
@@ -1319,19 +1319,19 @@
 				            		<font class="text16RedBold" >*</font><span title="thtrm">Transportsätt vid gränsen&nbsp;</span>
 				            		<select class="inputTextMediumBlueMandatoryField" name="thtrm" id="thtrm">
 				 						<option value="">-Välj-</option>
-					 				  	<option value="10"<c:if test="${model.record.thtrm == '10'}"> selected </c:if> >10</option>
-					 				  	<option value="12"<c:if test="${model.record.thtrm == '12'}"> selected </c:if> >12</option>
-					 				  	<option value="16"<c:if test="${model.record.thtrm == '16'}"> selected </c:if> >16</option>
-					 				  	<option value="17"<c:if test="${model.record.thtrm == '17'}"> selected </c:if> >17</option>
-					 				  	<option value="18"<c:if test="${model.record.thtrm == '18'}"> selected </c:if> >18</option>
-					 				  	<option value="20"<c:if test="${model.record.thtrm == '20'}"> selected </c:if> >20</option>
-					 				  	<option value="23"<c:if test="${model.record.thtrm == '23'}"> selected </c:if> >23</option>
-					 				  	<option value="30"<c:if test="${model.record.thtrm == '30'}"> selected </c:if> >30</option>
-					 				  	<option value="40"<c:if test="${model.record.thtrm == '40'}"> selected </c:if> >40</option>
-					 				  	<option value="50"<c:if test="${model.record.thtrm == '50'}"> selected </c:if> >50</option>
-					 				  	<option value="70"<c:if test="${model.record.thtrm == '70'}"> selected </c:if> >70</option>
-					 				  	<option value="80"<c:if test="${model.record.thtrm == '80'}"> selected </c:if> >80</option>
-					 				  	<option value="90"<c:if test="${model.record.thtrm == '90'}"> selected </c:if> >90</option>
+					 				  	<option title="Sjötransport" value="10"<c:if test="${model.record.thtrm == '10'}"> selected </c:if> >10</option>
+					 				  	<option title="Järnvägsvagn på sjögående fartyg" value="12"<c:if test="${model.record.thtrm == '12'}"> selected </c:if> >12</option>
+					 				  	<option title="Vägmotorfordon på sjögående fartyg" value="16"<c:if test="${model.record.thtrm == '16'}"> selected </c:if> >16</option>
+					 				  	<option title="Släpvagn eller påhängsvagn på sjögående fartyg" value="17"<c:if test="${model.record.thtrm == '17'}"> selected </c:if> >17</option>
+					 				  	<option title="Fartyg för inre vattenvägar på sjögående fartyg" value="18"<c:if test="${model.record.thtrm == '18'}"> selected </c:if> >18</option>
+					 				  	<option title="Järnvägstransport" value="20"<c:if test="${model.record.thtrm == '20'}"> selected </c:if> >20</option>
+					 				  	<option title="Vägfordon på järnvägsvagn" value="23"<c:if test="${model.record.thtrm == '23'}"> selected </c:if> >23</option>
+					 				  	<option title="Landsvägstransport" value="30"<c:if test="${model.record.thtrm == '30'}"> selected </c:if> >30</option>
+					 				  	<option title="Flygtransport" value="40"<c:if test="${model.record.thtrm == '40'}"> selected </c:if> >40</option>
+					 				  	<option title="Postförsändelse" value="50"<c:if test="${model.record.thtrm == '50'}"> selected </c:if> >50</option>
+					 				  	<option title="Transport vid fasta installationer" value="70"<c:if test="${model.record.thtrm == '70'}"> selected </c:if> >70</option>
+					 				  	<option title="Transport på inre vattenvägar" value="80"<c:if test="${model.record.thtrm == '80'}"> selected </c:if> >80</option>
+					 				  	<option title="Egen framdrivning" value="90"<c:if test="${model.record.thtrm == '90'}"> selected </c:if> >90</option>
 					 				  	
 									</select>
 				            	
@@ -1656,7 +1656,7 @@
 								</span>	
 								</div>
 								</td>
-					            <td ><input readonly onKeyPress="return numberKey(event)" style="text-align: right" type="text" class="inputTextReadOnly" name="thntk" id="thntk" size="8" maxlength="7" value="${model.record.thntk}"></td>
+					            <td ><input onKeyPress="return numberKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="thntk" id="thntk" size="8" maxlength="7" value="${model.record.thntk}"></td>
 					        </tr>
 				            <tr>
 					            <td class="text14" align="left" >
@@ -1674,9 +1674,54 @@
 								</span>	
 					            </div>
 					            </td>
-					            <td ><input readonly onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextReadOnly" name="thvkb" id="thvkb" size="10" maxlength="9" value="${model.record.thvkb}"></td>
+					            <td ><input onKeyPress="return amountKey(event)" style="text-align: right" type="text" class="inputTextMediumBlue" name="thvkb" id="thvkb" size="10" maxlength="9" value="${model.record.thvkb}"></td>
 					        </tr>
-					     	<tr height="5"><td>&nbsp;</td></tr>
+					     	<tr height="2"><td>&nbsp;</td></tr>
+					     	
+					     	<tr>
+					        		<td class="text14Gray" align="left" >
+					        			Antal kolli (i varuposterna)&nbsp;
+					        		</td>
+						        	<td >
+					            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfAntalKolliInItemLines" id="sumOfAntalKolliInItemLines" size="8" maxlength="7" value="${ model.record.sumOfAntalKolliInItemLinesStr}">
+					            		<c:if test="${not empty ( model.record.sumOfAntalKolliInItemLinesStr &&  model.record.thntk)}">
+						            		<c:if test="${ model.record.thntk !=  model.record.sumOfAntalKolliInItemLinesStr}">
+								            <img onMouseOver="showPop('itemsSumKolli_info');" onMouseOut="hidePop('itemsSumKolli_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
+								            <div class="text11" style="position: relative;" align="left">
+									            <span style="position:absolute; left:10px; top:0px;" id="itemsSumKolli_info" class="popupWithInputText"  >
+								           			<font class="text11">
+								           			<p>
+								           			Summan av antal paket på varulinjenivå stämmer inte med det angivna summan antal paket per huvudpost.
+								           			Kontrollera varulinjerna.
+													</p>
+								           			<p>
+								           			Om nummret till vänster är = <b>-1</b> betyder det att det är mer än 0-varulinjer, och summan av varelinjer kolliantal är = 0 (som inte är korrekt).
+								           			</p>
+								           			</font>
+												</span>	
+											</div>
+						            		</c:if>
+					            		</c:if>
+					            </td>
+					        </tr>
+					         
+					        <tr>
+				        		<td class="text14Gray" align="left" >Antal varuposter &nbsp;</td>
+						        	<td >
+					            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfAntalItemLines" id="sumOfAntalItemLines" size="8" value="${ model.record.sumOfAntalItemLinesStr}">
+					            		<c:if test="${not empty ( model.record.sumOfAntalItemLinesStr)}">
+						            		<c:if test="${ model.record.sumOfAntalItemLines <= 0 }">
+								            <img onMouseOver="showPop('itemsSumAntalLines_info');" onMouseOut="hidePop('itemsSumAntalLines_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="varelinjerantal warning">	
+								            <div class="text11" style="position: relative;" align="left">
+									            <span style="position:absolute; left:10px; top:0px;" id="itemsSumAntalLines_info" class="popupWithInputText"  >
+								           			<font class="text11" >Summan av ​​antal varulinjer måste vara > 0</font>
+												</span>
+											</div>	
+						            		</c:if>
+					            		</c:if>
+					            </td>
+					        </tr>
+					     	<tr height="10"><td>&nbsp;</td></tr>
 					     	
 						</table>
 					</td>
@@ -2152,7 +2197,7 @@
 		            					<tr>
 					            			<td class="text14">
 					            				<img onMouseOver="showPop('spesOmstand_info');" onMouseOut="hidePop('spesOmstand_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-					            				<span title="thspom">Spes.omständighet</span>&nbsp;
+					            				<span title="thspom">Spec.omständighet</span>&nbsp;
 					            				<select class="selectMediumBlueE2" name="thspom" id="thspom">
 					            				<option value="">-välj-</option>
 					 				  			<c:forEach var="code" items="${model.ncts096_SpecOmst_CodeList}" >

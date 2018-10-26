@@ -24,6 +24,25 @@ public class JsonNctsExportSpecificTopicRecord extends JsonAbstractGrandFatherRe
 	public void setApplicationUser(String value) {  this.applicationUser = value; }
 	public String getApplicationUser() {return this.applicationUser;}
 	
+	private Integer sumOfAntalKolliInItemLines = 0;
+	public void setSumOfAntalKolliInItemLines(Integer value) {  this.sumOfAntalKolliInItemLines = value; }
+	public Integer getSumOfAntalKolliInItemLines() {return this.sumOfAntalKolliInItemLines;}
+	
+	private String sumOfAntalKolliInItemLinesStr = null;
+	public String getSumOfAntalKolliInItemLinesStr() {
+		this.sumOfAntalKolliInItemLinesStr = String.valueOf(this.sumOfAntalKolliInItemLines);
+		return this.sumOfAntalKolliInItemLinesStr;
+	}
+	
+	private Integer sumOfAntalItemLines = 0;
+	public void setSumOfAntalItemLines(Integer value) {  this.sumOfAntalItemLines = value; }
+	public Integer getSumOfAntalItemLines() {return this.sumOfAntalItemLines;}
+	
+	private String sumOfAntalItemLinesStr = null;
+	public String getSumOfAntalItemLinesStr() {
+		this.sumOfAntalItemLinesStr = String.valueOf(this.sumOfAntalItemLines);
+		return this.sumOfAntalItemLinesStr;
+	}
 	//thavd Avdeling 
 	private String thavd = null;
 	public void setThavd(String value) {  this.thavd = value; }

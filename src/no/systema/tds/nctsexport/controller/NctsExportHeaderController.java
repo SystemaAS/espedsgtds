@@ -29,6 +29,9 @@ import org.springframework.web.bind.WebDataBinder;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
+import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemContainer;
+import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemRecord;
+import no.systema.tds.nctsexport.model.topic.NctsExportSpecificTopicTotalItemLinesObject;
 import no.systema.tds.model.external.url.UrlISOLanguageObject;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningRecord;
@@ -45,6 +48,7 @@ import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportSpecificT
 import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportTopicCopiedContainer;
 
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicService;
+import no.systema.tds.nctsexport.service.NctsExportSpecificTopicItemService;
 import no.systema.tds.nctsexport.service.html.dropdown.DropDownListPopulationService;
 import no.systema.tds.nctsexport.url.store.UrlDataStore;
 import no.systema.tds.nctsexport.util.RpgReturnResponseHandler;
@@ -140,6 +144,8 @@ public class NctsExportHeaderController {
 		RpgReturnResponseHandler rpgReturnResponseHandler = new RpgReturnResponseHandler();
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		logger.info("Method: " + method);
+		NctsExportSpecificTopicTotalItemLinesObject totalItemLinesObject = new NctsExportSpecificTopicTotalItemLinesObject();
+		
 		//---------------------------------
 		//Crucial request parameters (Keys
 		//---------------------------------
@@ -160,6 +166,8 @@ public class NctsExportHeaderController {
 			return this.loginView;
 		}else{
 			if(action!=null){
+				//get some item lines total fields (∑)
+				totalItemLinesObject = this.getRequiredSumsInItemLines(avd, opd, appUser);
 				//-------------
 				//FETCH RECORD
 				//-------------
@@ -188,11 +196,11 @@ public class NctsExportHeaderController {
 				    		JsonNctsExportSpecificTopicContainer jsonNctsExportSpecificTopicContainer = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
 				    		//add gui lists here
 				    		this.setCodeDropDownMgr(appUser, model);
-				    		this.setDomainObjectsInView(session, model, jsonNctsExportSpecificTopicContainer);
+				    		this.setDomainObjectsInView(session, model, jsonNctsExportSpecificTopicContainer, totalItemLinesObject);
 				    		
 				    		successView.addObject(TdsConstants.DOMAIN_MODEL, model);
-						//put the doUpdate action since we are preparing the record for an update (when saving)
-						successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_UPDATE);
+				    		//put the doUpdate action since we are preparing the record for an update (when saving)
+				    		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_UPDATE);
 				    		
 				    	}else{
 						logger.fatal("NO CONTENT on jsonPayload from URL... ??? <Null>");
@@ -611,7 +619,7 @@ public class NctsExportHeaderController {
 		    		JsonNctsExportSpecificTopicContainer jsonNctsExportSpecificTopicContainer = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
 		    		//add gui lists here
 		    		this.setCodeDropDownMgr(appUser, model);
-		    		this.setDomainObjectsInView(session, model, jsonNctsExportSpecificTopicContainer);
+		    		this.setDomainObjectsInView(session, model, jsonNctsExportSpecificTopicContainer, null);
 		    		successView.addObject(TdsConstants.DOMAIN_MODEL, model);
 				//put the doUpdate action since we are preparing the record for an update (when saving)
 				successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_UPDATE);
@@ -885,9 +893,13 @@ public class NctsExportHeaderController {
 	 * @param jsonNctsExportSpecificTopicContainer
 	 * @return
 	 */
-	private void setDomainObjectsInView(HttpSession session, Map model, JsonNctsExportSpecificTopicContainer jsonNctsExportSpecificTopicContainer){
+	private void setDomainObjectsInView(HttpSession session, Map model, JsonNctsExportSpecificTopicContainer jsonNctsExportSpecificTopicContainer, NctsExportSpecificTopicTotalItemLinesObject totalItemLinesObject){
 		//SET HEADER RECORDS  (from RPG)
 		for (JsonNctsExportSpecificTopicRecord record : jsonNctsExportSpecificTopicContainer.getOneorder()){
+			if(totalItemLinesObject!=null){
+				record.setSumOfAntalKolliInItemLines(totalItemLinesObject.getSumOfAntalKolliInItemLines());
+				record.setSumOfAntalItemLines(totalItemLinesObject.getSumOfAntalItemLines());
+			}
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines
 			session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC, record);
@@ -996,7 +1008,105 @@ public class NctsExportHeaderController {
 			e.printStackTrace();
 		}
 		
-	}	
+	}
+	/**
+	 * 
+	 * @param avd
+	 * @param opd
+	 * @param appUser
+	 * @return
+	 */
+	private NctsExportSpecificTopicTotalItemLinesObject getRequiredSumsInItemLines(String avd, String opd, SystemaWebUser appUser){
+		NctsExportSpecificTopicTotalItemLinesObject totalItemLinesObject = new NctsExportSpecificTopicTotalItemLinesObject();
+		//-----------------------------------------------------
+		//FETCH the ITEM LIST of existent ITEMs for this TOPIC
+		//-----------------------------------------------------
+		//get BASE URL = RPG-PROGRAM
+        //---------------------------
+		String BASE_URL_FETCH = UrlDataStore.NCTS_EXPORT_BASE_FETCH_TOPIC_ITEMLIST_URL;
+		String urlRequestParamsKeys = "user=" + appUser.getUser() + "&avd=" + avd + "&opd=" + opd;
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		logger.info("FETCH av item list... ");
+	    	logger.info("URL: " + BASE_URL_FETCH);
+	    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+	    	//--------------------------------------
+	    	//EXECUTE the FETCH (RPG program) here
+	    	//--------------------------------------
+		String jsonPayloadFetch = this.urlCgiProxyService.getJsonContent(BASE_URL_FETCH, urlRequestParamsKeys);
+		//Debug --> 
+		logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayloadFetch));
+	    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+	    	JsonNctsExportSpecificTopicItemContainer jsonNctsExportSpecificTopicItemContainer = this.getNctsExportSpecificTopicItemService().getNctsExportSpecificTopicItemContainer(jsonPayloadFetch);
+	    	//now to the real logic
+	    	int antalKolli = 0;
+	    	double grossWeight = 0.0D;
+	    	int numberOfItemLines = 0;
+	    	
+	    	if(jsonNctsExportSpecificTopicItemContainer!=null){
+		    	for(JsonNctsExportSpecificTopicItemRecord record : jsonNctsExportSpecificTopicItemContainer.getOrderList()){
+		    		numberOfItemLines++;
+		    		
+		    		if(record.getTvnt()!=null && !"".equals(record.getTvnt())){
+		    			try{
+		    				antalKolli += Integer.parseInt(record.getTvnt());
+		    			}catch(Exception e){
+		    				//logger.info("[ERROR] on ANTAL KOLLI CATCH");
+		    			}
+		    		}
+		    		if(record.getTvnt2()!=null && !"".equals(record.getTvnt2())){
+		    			try{
+		    				antalKolli += Integer.parseInt(record.getTvnt2());
+		    			}catch(Exception e){
+		    				//logger.info("[ERROR] on ANTAL KOLLI CATCH");
+		    			}
+		    		}
+		    		if(record.getTvnt3()!=null && !"".equals(record.getTvnt3())){
+		    			try{
+		    				antalKolli += Integer.parseInt(record.getTvnt3());
+		    			}catch(Exception e){
+		    				//logger.info("[ERROR] on ANTAL KOLLI CATCH");
+		    			}
+		    		}
+		    		if(record.getTvnt4()!=null && !"".equals(record.getTvnt4())){
+		    			try{
+		    				antalKolli += Integer.parseInt(record.getTvnt4());
+		    			}catch(Exception e){
+		    				//logger.info("[ERROR] on ANTAL KOLLI CATCH");
+		    			}
+		    		}
+		    		if(record.getTvnt5()!=null && !"".equals(record.getTvnt5())){
+		    			try{
+		    				antalKolli += Integer.parseInt(record.getTvnt5());
+		    			}catch(Exception e){
+		    				//logger.info("[ERROR] on ANTAL KOLLI CATCH");
+		    			}
+		    		}
+		    		//bruttovikt
+		    		if(record.getTvvktb()!=null && !"".equals(record.getTvvktb())){
+		    			try{
+		    				grossWeight += Double.parseDouble(record.getTvvktb());
+		    			}catch(Exception e){
+		    				//logger.info("[ERROR] on ANTAL KOLLI CATCH");
+		    			}
+		    		}
+		    	}
+	    	}
+	    	//This is to flag the fact that no antal kolli exist DESPITE the fact that there is 1 or more item lines
+	    	//to be used in validation...
+	    	if(numberOfItemLines>0 && antalKolli==0){
+	    		antalKolli = -1;
+	    	}
+	    	totalItemLinesObject.setSumOfAntalItemLines(numberOfItemLines);
+	    	totalItemLinesObject.setSumOfAntalKolliInItemLines(antalKolli);
+	    	
+	    	//DEBUG
+	    	logger.info("AntalKolli: " + totalItemLinesObject.getSumOfAntalKolliInItemLines());
+	    	logger.info("AntalItems: " + totalItemLinesObject.getSumOfAntalItemLines());
+	    	
+	    
+	    	return totalItemLinesObject;
+	}
 	
 	/**
 	 * 
@@ -1029,6 +1139,14 @@ public class NctsExportHeaderController {
 	@Required
 	public void setNctsExportSpecificTopicService (NctsExportSpecificTopicService value){ this.nctsExportSpecificTopicService = value; }
 	public NctsExportSpecificTopicService getNctsExportSpecificTopicService(){ return this.nctsExportSpecificTopicService; }
+	
+	@Qualifier ("nctsExportSpecificTopicItemService")
+	private NctsExportSpecificTopicItemService nctsExportSpecificTopicItemService;
+	@Autowired
+	@Required
+	public void setNctsExportSpecificTopicItemService (NctsExportSpecificTopicItemService value){ this.nctsExportSpecificTopicItemService = value; }
+	public NctsExportSpecificTopicItemService getNctsExportSpecificTopicItemService(){ return this.nctsExportSpecificTopicItemService; }
+	
 	
 	
 	@Qualifier ("dropDownPopulationService")
