@@ -871,7 +871,7 @@
  							        
  							        <tr height="10"><td class="text" align="left" colspan="9"><hr></td></tr>
 									<tr>
-										<td class="text14" align="left" colspan="2">
+										<td class="text14" align="left">
 							            <img onMouseOver="showPop('31_gods_info');" onMouseOut="hidePop('31_gods_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><span title="tvmn" >Godsmärkning&nbsp;</span>
 				 						<div class="text14" style="position: relative;" align="left">
@@ -889,10 +889,10 @@
 										
 							        </tr>
 							        <tr>
-							        		<td class="text14" colspan="2">
+						        		<td valign="top" class="text14">
 											&nbsp;<input type="text" class="inputText" name="tvmn" id="tvmn" size="17" maxlength="17" value='${model.record.tvmn}'>
 										</td>
-										<td >
+										<td valign="top" class="text14" >
 											<select class="selectMediumBlueE2" name="tvmnsk" id="tvmnsk">
 							            			<option value="">-välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
@@ -904,20 +904,70 @@
 											</a>
 											
 										</td>
-										
-					           			<td>&nbsp;</td>
-										
-							            <td align="left">
-											<c:choose>	
+					           			<td colspan="4">
+					           				<input  type="hidden" name="ownToldsats" id="ownToldsats" size="9" value=''>
+							            	<table cellspacing="0" border="0" cellpadding="0">
+							            		
+							            		<tr class="tableHeaderField10" height="20" valign="left">
+												 	<td align="center" class="tableHeaderFieldFirst11" title="svxv_222">&nbsp;Fakt.belopp&nbsp;</td> 
+								                    <td align="center" class="tableHeaderField11" title="svxv_221">&nbsp;Fakt.valuta&nbsp;</td> 
+								                    <td align="center" class="tableHeaderField11" title="svxv_221b">&nbsp;Kurs&nbsp;</td>
+								                    <td align="center" class="tableHeaderField11" title="svxv_221c">&nbsp;Faktor&nbsp;</td>
+								                    <td align="center" class="tableHeaderField11">&nbsp;Belopp&nbsp;SEK</td> 
+									             </tr> 
+									             <tr class="tableRow">
+									              	<td class="tableCellFirst" align="right" >&nbsp;<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue10MandatoryField"  style="text-align: right" name="svxv_222" id="svxv_222" size="16" maxlength="16" value='${model.record.svxv_222}'>&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;
+							               				<select class="inputTextMediumBlueMandatoryField" name="svxv_221" id="svxv_221" >
+										 				  <option value="">-vælg-</option>	
+										 				  	<c:forEach var="code" items="${model.currencyCodeList}" >
+						                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svxv_221 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+															</c:forEach> 
+														</select>
+														<a tabindex="-1" id="svxv_221IdLink" >
+															<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find2.png" width="10px" height="10px" border="0" alt="search" >
+														</a>
+							               				</td>
+							               			<td class="tableCell" align="right" >&nbsp;<input readonly type="text" class="inputText10ReadOnly"  style="text-align: right" name="svxv_221b" id="svxv_221b" size="16" maxlength="8" value='${model.record.svxv_221b}'>&nbsp;</td>
+						               				<td class="tableCell" align="right" >&nbsp;<input readonly type="text" class="inputText10ReadOnly"  style="text-align: right" name="svxv_221c" id="svxv_221c" size="16" maxlength="7" value='${model.record.svxv_221c}'>&nbsp;</td>
+						               				<td class="tableCell" align="right" ><span title="svxv_222b">&nbsp;Fakt.blp&nbsp;</span><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue10MandatoryField"  style="text-align: right" name="svxv_222b" id="svxv_222b" size="16" maxlength="16" value='${model.record.svxv_222b}'>&nbsp;</td>
+							               		 </tr>
+									             <tr class="tableRow">
+									              	<td class="tableCellFirst" align="right" >&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;</td>
+						               				<td class="tableCell" align="right" >&nbsp;</td>
+						               				<td class="tableCell" align="right" ><span title="svxv_46">&nbsp;Tollv.&nbsp;</span><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue10MandatoryField" style="text-align: right" name="svxv_46" id="svxv_46" size="16" maxlength="10" value='${model.record.svxv_46}'>&nbsp;</td>
+							               		 </tr>
+							               		 <tr class="tableRow">
+									              	<td class="tableCellFirst" align="right" >&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;</td>
+						               				<td class="tableCell" align="right" >&nbsp;</td>
+						               				<td class="tableCell" align="right" ><span title="svxv_42b">&nbsp;Moms&nbsp;</span><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue10MandatoryField" style="text-align: right"  name="svxv_42b" id="svxv_42b" size="16" maxlength="10" value='${model.record.svxv_42b}'>&nbsp;</td>
+							               		 </tr>	
+							               		 <tr class="tableRow">
+									              	<td class="tableCellFirst" align="right" >&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;</td>
+							               			<td class="tableCell" align="right" >&nbsp;</td>
+						               				<td class="tableCell" align="right" ><span title="svxv_42c">&nbsp;<b>TOTAL</b>&nbsp;</span></td>
+						               				<td class="tableCell" align="right" >&nbsp;<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue10MandatoryField" style="text-align: right" name="svxv_42c" id="svxv_42c" size="16" maxlength="12" value='${model.record.svxv_42c}'>&nbsp;</td>
+							               		 </tr>	
+							            	</table>
+							            	
+											
+							            </td>
+							            <td valign="top">
+							            	<c:choose>	
 												<c:when test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
 													<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="systema.ncts.export.item.createnew.submit"/>'>
 												</c:when>
 												<c:otherwise>
 						 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
-						 				    		</c:otherwise>	
-					 				    		</c:choose>	
-											
+					 				    		</c:otherwise>	
+				 				    		</c:choose>	
 							            </td>
+							            
  							        </tr>
 			        	        </table>
 					        </td>

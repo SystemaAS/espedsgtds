@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import no.systema.main.model.jsonjackson.general.JsonCurrencyRateContainer;
+import no.systema.main.model.jsonjackson.general.JsonCurrencyRateRecord;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.service.UrlCgiProxyServiceImpl;
 
 import no.systema.main.service.general.CurrencyRateService;
+import no.systema.main.util.NumberFormatterLocaleAware;
 import no.systema.tds.nctsexport.url.store.UrlDataStore;
 import no.systema.tds.tdsexport.model.jsonjackson.customer.JsonTdsExportCustomerRecord;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemContainer;
@@ -54,7 +57,7 @@ import no.systema.tds.util.TdsConstants;
 @Controller
 public class NctsExportAjaxHandlerController {
 	private static final Logger logger = Logger.getLogger(NctsExportAjaxHandlerController.class.getName());
-	 
+	private NumberFormatterLocaleAware numberFormatter = new NumberFormatterLocaleAware(); 
 	 /**
 	  * 
 	  * @param applicationUser
@@ -111,6 +114,97 @@ public class NctsExportAjaxHandlerController {
 		 
 		 return result;
 	 }
+	 /**
+	  * 
+	  * @param applicationUser
+	  * @param currencyCode
+	  * @param isoDate
+	  * @param invoiceAmount
+	  * @param toldsats
+	  * @return
+	  */
+	 @RequestMapping(value = "getCurrencyRate_NctsExport.do", method = RequestMethod.GET)
+	  public @ResponseBody Set getCurrencyRate(@RequestParam String applicationUser, @RequestParam String currencyCode, 
+			  @RequestParam String isoDate, @RequestParam String invoiceAmount, @RequestParam String toldsats) {
+		  final String METHOD = "[DEBUG] getCurrencyRate_NctsExport.do "; 
+		  logger.info("Inside " + METHOD);
+		  Set result = new HashSet();
+		  //String validDate = this.getValidCurrencyDate(isoDate);
+		  String validDate = isoDate;
+		  if(toldsats==null || "".equals(toldsats)){
+			  toldsats = "0.00";
+		  }
+		  //build
+		  String BASE_URL_CURRENCY_RATE = TdsUrlDataStore.TDS_FETCH_CURRENCY_RATE_URL;
+		  StringBuffer urlRequestParamsCurrencyRate = new StringBuffer();
+		  urlRequestParamsCurrencyRate.append("user=" + applicationUser);
+		  urlRequestParamsCurrencyRate.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "kod=" + currencyCode);
+		  urlRequestParamsCurrencyRate.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "datum=" + validDate);
+		  //execute
+		  String jsonPayloadCurrencyRate = this.urlCgiProxyService.getJsonContent(BASE_URL_CURRENCY_RATE, urlRequestParamsCurrencyRate.toString());
+		  logger.info(METHOD + "CURRENCY URL:" + BASE_URL_CURRENCY_RATE);
+		  logger.info(METHOD + "CURRENCY PARAMS:" + urlRequestParamsCurrencyRate.toString());
+		  logger.info(METHOD + jsonPayloadCurrencyRate);
+		  //now map and process json
+		  if(jsonPayloadCurrencyRate!=null){
+			  JsonCurrencyRateContainer jsonCurrencyRateContainer = this.currencyRateService.getCurrencyRateContainer(jsonPayloadCurrencyRate);
+			  for(JsonCurrencyRateRecord record : jsonCurrencyRateContainer.getValutakurs()){
+				  //Debug
+				  logger.info(METHOD + "Currency RATE: " + record.getSvvk_krs());
+				  logger.info(METHOD + "Currency FACTOR: " + record.getSvvs_omr());
+				  //extra fields
+				  logger.info("InvoiceAmount:" + invoiceAmount);
+				  if(invoiceAmount!=null && !"".equals(invoiceAmount)){
+					  logger.info(METHOD + "Inside... ");
+					  Double dblAmount = Double.parseDouble(invoiceAmount.replace(",", "."));
+					  Double dblToldsats = Double.parseDouble(toldsats.replace(",", "."));
+					  Double dblKurs = Double.parseDouble(record.getSvvk_krs().replace(",", "."));
+					  Integer intFactor = Integer.parseInt(record.getSvvs_omr());
+					  logger.info(METHOD + "Before math... ");
+					  //(1) do the math
+					  Double dblAmountSEK = (dblAmount * dblKurs) / intFactor;
+					  Double dblTollvSEK = (dblAmountSEK * dblToldsats);
+					  Double dblSubTotalExklMoms = (dblAmountSEK + dblTollvSEK);
+					  Double dblMomsSEK = (dblSubTotalExklMoms) * 0.25;
+					  Double dblGrandTotalSEK = dblSubTotalExklMoms + dblMomsSEK;
+					  logger.info(METHOD + "After math... " + dblAmountSEK + "-"+dblTollvSEK + "-" + dblSubTotalExklMoms + "-" + dblMomsSEK + "-" + dblGrandTotalSEK);
+					  //format decimals numbers
+					  //dblAmountDKK = this.numberFormatter.getDouble(dblAmountDKK, 2);
+					  //dblTollvDKK = this.numberFormatter.getDouble(dblTollvDKK, 2);
+					  //dblSubTotalExklMoms = this.numberFormatter.getDouble(dblSubTotalExklMoms, 2);
+					  //dblMomsDKK = this.numberFormatter.getDouble(dblMomsDKK, 2);
+					  //dblGrandTotalDKK = this.numberFormatter.getDouble(dblGrandTotalDKK, 2);
+					  //logger.info(METHOD + "After format... " + dblAmountDKK + "-"+dblTollvDKK + "-" + dblSubTotalExklMoms + "-" + dblMomsDKK + "-" + dblGrandTotalDKK);
+					  ///(2) setters
+					  //--String strAmountDKK = String.valueOf(dblAmountDKK);
+					  //--String strAmountDKK = this.numberFormatter.getDoubleEuropeanFormat(dblAmountDKK, 2);
+					  String strAmountSEK = String.valueOf(this.numberFormatter.getDoubleEuropeanFormat(dblAmountSEK, 2, false));
+					  record.setOwn_blpSEK(strAmountSEK);
+					  //Tollverdi
+					  //--String strTollvDKK = String.valueOf(dblTollvDKK);
+					  //--record.setOwn_tollvDKK(strTollvDKK.replace(".", ","));
+					  String strTollvSEK = String.valueOf(this.numberFormatter.getDoubleEuropeanFormat(dblTollvSEK, 2, false));
+					  record.setOwn_tollvSEK(strTollvSEK);
+					  //Moms
+					  //--String strMomsDKK = String.valueOf(dblMomsDKK);
+					  //--record.setOwn_momsDKK(strMomsDKK.replace(".", ","));
+					  String strMomsDKK = String.valueOf(this.numberFormatter.getDoubleEuropeanFormat(dblMomsSEK, 2, false));
+					  record.setOwn_momsSEK(strMomsDKK);
+					  //Grand total
+					  //--String strGrandTotalDKK = String.valueOf(dblGrandTotalDKK);
+					  //--record.setOwn_grandTotalDKK(strGrandTotalDKK.replace(".", ","));
+					  String setOwn_grandTotalSEK = String.valueOf(this.numberFormatter.getDoubleEuropeanFormat(dblGrandTotalSEK, 2, false));
+					  record.setOwn_grandTotalSEK(setOwn_grandTotalSEK);
+					  logger.info(METHOD + "Grand Total: " + record.getOwn_grandTotalSEK());
+					  
+				  }
+				  result.add(record);
+			  }
+		  } 
+		  return result;
+	  }
+	  
+	 
 	 /**
 	  * The method is used for fetching default values on "Create new"
 	  * It is triggered when the end user chooses a department (Avdelning)

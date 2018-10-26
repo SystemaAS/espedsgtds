@@ -115,8 +115,15 @@
 				jq('#tvnt5').val(data[i].tvnt5);jq('#tvnteh5').val(data[i].tvnteh5);
 				//end rubrik 31
 
-				
-				
+				//Matrix dkxv
+				jq('#svxv_222').val(data[i].svxv_222); //Fakt.b VAL
+				jq('#svxv_221').val(data[i].svxv_221); //VALUTA
+				jq('#svxv_221b').val(data[i].svxv_221b); //KURS
+				jq('#svxv_221c').val(data[i].svxv_221c); //Faktor
+				jq('#svxv_222b').val(data[i].svxv_222b); //Fakt.b DKK
+				jq('#svxv_46').val(data[i].svxv_46);//Tollverdi
+				jq('#svxv_42b').val(data[i].svxv_42b);//Moms
+				jq('#svxv_42c').val(data[i].svxv_42c);//Grand total (ink moms)
 				
 				//rubrik 44 (Särskilda- Tilläggsupplysningar) - Multilines
 				jq('#tvdty2').val(data[i].tvdty2);jq('#tvdref2').val(data[i].tvdref2);
@@ -488,6 +495,112 @@
     		});
 	});
 
+	
+	//============================
+	//START - Currency AJAX fetch
+	//============================
+  	jq(function() { 
+	    jq('#svxv_222').blur(function() {
+	    	//only when currency and rate are already in place
+	    	if(jq('#svxv_221').val()!='' && jq('#svxv_221b').val()!=''){
+		    	//alert('Hej');
+		    	//this parameters must match the AJAX controller parameter names in Spring exactly...
+	    		var isoDate = "";
+	    		var faktisktAnkDato = jq('#datum').val();
+	    		var forventatAnkDato = jq('#datum').val();
+	    		if(faktisktAnkDato!=""){
+	    			isoDate =faktisktAnkDato; 
+	    		}else{
+	    			isoDate =forventatAnkDato;
+	    		}
+	    		getCurrencyData(isoDate);
+	    	}
+	    });
+	});
+	jq(function() { 
+	    jq('#svxv_221').blur(function() {
+	    	//alert('Hej');
+	    	//this parameters must match the AJAX controller parameter names in Spring exactly...
+    		var isoDate = "";
+    		var faktisktAnkDato = jq('#datum').val();
+    		var forventatAnkDato = jq('#datum').val();
+    		if(faktisktAnkDato!=""){
+    			isoDate =faktisktAnkDato; 
+    		}else{
+    			isoDate =forventatAnkDato;
+    		}
+    		getCurrencyData(isoDate);
+	    });
+	});
+	jq(function() { 
+	    jq('#svxv_221b').blur(function() {
+    		//alert('Hej');
+    		//this parameters must match the AJAX controller parameter names in Spring exactly...
+    		var svxv_221b = jq('#svxv_221b').val();
+    		var isoDate = "";
+    		var faktisktAnkDato = jq('#datum').val();
+    		var forventatAnkDato = jq('#datum').val();
+    		if(faktisktAnkDato!=""){
+    			isoDate =faktisktAnkDato; 
+    		}else{
+    			isoDate =forventatAnkDato;
+    		}
+    		if(svxv_221b==null || svxv_221b==""){
+    			getCurrencyData(isoDate);
+    		}	
+	    });
+	});
+	jq(function() { 
+	    jq('#svxv_221c').blur(function() {
+    		//alert('Hej');
+    		//this parameters must match the AJAX controller parameter names in Spring exactly...
+    		var svxv_221c = jq('#svxv_221c').val();
+    		var isoDate = "";
+    		var faktisktAnkDato = jq('#datum').val();
+    		var forventatAnkDato = jq('#datum').val();
+    		if(faktisktAnkDato!=""){
+    			isoDate =faktisktAnkDato; 
+    		}else{
+    			isoDate =forventatAnkDato;
+    		}
+    		if(svxv_221c==null || svxv_221c==""){
+    			getCurrencyData(isoDate);
+    		}	
+	    });
+	});
+	//private function
+	function getCurrencyData(isoDate) {
+		console.log("here");
+		jq.ajax({
+			type: 'GET',
+			url: 'getCurrencyRate_NctsExport.do',
+			data: { applicationUser : jq('#applicationUser').val(),
+					currencyCode : jq('#svxv_221').val(),
+					isoDate : isoDate,
+					invoiceAmount : jq('#svxv_222').val(),
+					toldsats : jq('#ownToldsats').val()},
+			dataType: 'json',
+			success: function(data) {
+				var len = data.length;
+				console.log("B");
+				for ( var i = 0; i < len; i++) {
+					jq('#svxv_221b').val(data[i].svvk_krs);
+					jq('#svxv_221c').val(data[i].svvs_omr);
+					//own field NOT comming from JSON but from Ajax-method
+					jq('#svxv_222b').val(data[i].own_blpSEK);
+					jq('#svxv_46').val(data[i].own_tollvSEK);
+					jq('#svxv_42b').val(data[i].own_momsSEK);
+					jq('#svxv_42c').val(data[i].own_grandTotalSEK);
+
+				}
+			}
+		});
+	}
+	//============================
+	//END - Currency AJAX fetch
+	//============================
+	
+  	
 	
 	jq(document).ready(function() {
 	      //init table (no ajax, no columns since the payload is already there by means of HTML produced on the back-end)

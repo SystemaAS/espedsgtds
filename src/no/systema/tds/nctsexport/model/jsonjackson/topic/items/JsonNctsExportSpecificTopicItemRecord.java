@@ -589,6 +589,40 @@ public class JsonNctsExportSpecificTopicItemRecord extends JsonAbstractGrandFath
 		private String tvtinks = null;
 		public void setTvtinks(String value) {  this.tvtinks = value; }
 		public String getTvtinks() { return this.tvtinks;}
+	
+		//Internal use. Not applicable to EDIFACT to TDS.Only for internal use.
+		private String svxv_222 = null;
+		public void setSvxv_222(String value) {  this.svxv_222 = value; }
+		public String getSvxv_222() { return this.svxv_222;}
+		
+		private String svxv_221 = null;
+		public void setSvxv_221(String value) {  this.svxv_221 = value; }
+		public String getSvxv_221() { return this.svxv_221;}
+		
+		private String svxv_221b = null;
+		public void setSvxv_221b(String value) {  this.svxv_221b = value; }
+		public String getSvxv_221b() { return this.svxv_221b;}
+		
+		private String svxv_221c = null;
+		public void setSvxv_221c(String value) {  this.svxv_221c = value; }
+		public String getSvxv_221c() { return this.svxv_221c;}
+		
+		private String svxv_222b = null;
+		public void setSvxv_222b(String value) {  this.svxv_222b = value; }
+		public String getSvxv_222b() { return this.svxv_222b;}
+		
+		private String svxv_46 = null;
+		public void setSvxv_46(String value) {  this.svxv_46 = value; }
+		public String getSvxv_46() { return this.svxv_46;}
+		
+		private String svxv_42b = null;
+		public void setSvxv_42b(String value) {  this.svxv_42b = value; }
+		public String getSvxv_42b() { return this.svxv_42b;}
+		
+		private String svxv_42c = null;
+		public void setSvxv_42c(String value) {  this.svxv_42c = value; }
+		public String getSvxv_42c() { return this.svxv_42c;}
+			
 		
 	/**
 	 * 
