@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.service.general.CurrencyRateService;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicContainer;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
+import no.systema.tds.tdsexport.url.store.TdsExportUrlDataStore;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemStatisticalValueRecord;
@@ -409,6 +412,46 @@ public class TdsExportAjaxHandlerController {
 		  
 		  return result;
 	  }
+	  
+	  /**
+	   * 
+	   * @param applicationUser
+	   * @param avd
+	   * @param opd
+	   * @param xref
+	   * @return
+	   */
+	  @RequestMapping(value = "getSpecificTopic_TdsExport.do", method = RequestMethod.GET)
+	  public @ResponseBody Set<JsonTdsExportSpecificTopicRecord> getSpecificTopic (@RequestParam String applicationUser, @RequestParam String avd, @RequestParam String opd, @RequestParam String xref) {
+		 logger.info("Inside: getSpecificTopic_TdsExport.do");
+		 Set result = new HashSet();
+		 String BASE_URL =TdsExportUrlDataStore.TDS_EXPORT_BASE_FETCH_SPECIFIC_TOPIC_URL;
+		 //url params
+	 	 String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + avd + "&opd=" + opd + "&xref=" + xref;
+		 //for debug purposes in GUI
+		 
+		 logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	 logger.info("URL: " + BASE_URL);
+    	 logger.info("URL PARAMS: " + urlRequestParamsKeys);
+    	 //--------------------------------------
+    	 //EXECUTE the FETCH (RPG program) here
+    	 //--------------------------------------
+    	 String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		 //Debug --> 
+    	 logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+    	 if(jsonPayload!=null){
+    		 JsonTdsExportSpecificTopicContainer container = this.tdsExportSpecificTopicService.getTdsExportSpecificTopicContainer(jsonPayload);
+    		if(container!=null && container.getOneorder()!=null){
+    			for(JsonTdsExportSpecificTopicRecord record : container.getOneorder()){
+  				  //Debug
+  				  logger.info("Avs:" + record.getSveh_avna());
+  				  //logger.info(record.getDkeh_08b());
+  				  result.add(record);
+  			  	}
+    		}
+    	 }
+		 return result;
+	 }
 	  
 	  /**
 	   * Forms the correct parameter list according to a correct html POST

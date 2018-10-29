@@ -998,6 +998,33 @@
 				 		<tr height="10"><td class="text" align="left"></td></tr>
 				 		
 				 		<tr>
+		            		<td class="text14" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;
+		            		<img onMouseOver="showPop('tvtdn2_info');" onMouseOut="hidePop('tvtdn2_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+		            		<span title="tvavd2/tvtdn2" >Ärendenr.</span>&nbsp;&nbsp;
+		            			<input type="text" class="inputTextMediumBlue" style="background-color:#FFFF99;" name="tvavd2" id="tvavd2" size="4" maxlength="4" value="">
+		            			<input type="text" class="inputTextMediumBlue" style="background-color:#FFFF99;" name="tvtdn2" id="tvtdn2" size="8" maxlength="7" value="">
+		            			<a tabindex="-1" id="tvtdn2IdLink">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" border="0" alt="search" >
+								</a>
+		            			&nbsp;&nbsp;<span title="xref" >Exst.ref.nr.</span>	
+		            			<input type="text" class="inputTextMediumBlue" style="background-color:#FFFF99;"  name="xref" id="xref" size="8" maxlength="7" value="">
+		            			<a tabindex="-1" id="xrefIdLink">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" border="0" alt="search" >
+								</a>
+							
+		            		<div class="text12" style="position: relative;" align="left">
+							<span style="position:absolute;top:2px; width:250px;" id="tvtdn2_info" class="popupWithInputText text12"  >
+								<b>Avd/Angiv.nr</b><br/>
+			           			Hvis deklarasjonen er basert på et eksport angivelse, vises avd./angiv.nr. her.
+ 							</span>
+							</div>	
+		            			
+		            		</td>
+		            	</tr>
+		            	 
+		        		<tr height="5"><td class="text" align="left"></td></tr>
+				 		
+				 		<tr>
 			 				<%-- SENDER --%>
 				 			<td >		
 				 				<table width="95%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
@@ -1071,7 +1098,7 @@
 										</td>
 							        </tr>
 							        <tr>
-							            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvkns" id="tvkns" size="8" maxlength="8" value="${model.record.tvkns}"></td>
+							            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvkns" id="tvkns" size="9" maxlength="8" value="${model.record.tvkns}"></td>
 							            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvnas" id="tvnas" size="20" maxlength="35" value="${model.record.tvnas}"></td>
 							        </tr>
 							        <tr>
@@ -1169,7 +1196,7 @@
 										</td>
 							        </tr>
 							        <tr>
-							            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvknk" id="tvknk" size="8" maxlength="8" value="${model.record.tvknk}"></td>
+							            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvknk" id="tvknk" size="9" maxlength="8" value="${model.record.tvknk}"></td>
 							            <td align="left"><input type="text" class="inputTextMediumBlue" name="tvnak" id="tvnak" size="20" maxlength="35" value="${model.record.tvnak}"></td>
 							        </tr>
 							        <tr>

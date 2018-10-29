@@ -725,6 +725,105 @@
     }
 	
 
+    jq(function() {
+  		jq('#tvtdn2').blur(function() {
+  		  if(jq('#tvtdn2').val()!='' ){
+  			 //only with create new line 
+  			 if(jq('#tvli').val()==''){
+  				getDefaultValuesFromTdsExportHeader();
+  			 }else if(jq('#tvnas').val()=='' && jq('#tvnak').val()==''){
+  				getDefaultValuesFromTdsExportHeader(); 
+  			 } 
+  		  }			  
+  		});
+  		//same as above but with xref
+  		jq('#xref').blur(function() {
+		  if(jq('#xref').val()!='' ){
+			 //only with create new line 
+			 if(jq('#tvli').val()==''){
+				 getDefaultValuesFromTdsExportHeader();
+			 }else if(jq('#tvnas').val()=='' && jq('#tvnak').val()==''){
+				 getDefaultValuesFromTdsExportHeader(); 
+			 } 
+		  }			  
+		});
+  	});
+  	//populate GUI fields (when applicable)
+  	function getDefaultValuesFromTdsExportHeader(){
+  		jq.ajax({
+  	  	  type: 'GET',
+  	  	  url: 'getSpecificTopic_TdsExport.do',
+  	  	  data: { applicationUser : jq('#applicationUser').val(), 
+  	  		  	  avd : jq('#tvavd2').val(), 
+  	  		  	  opd : jq('#tvtdn2').val(),
+  	  		  	  xref: jq('#xref').val() },
+  	  	  dataType: 'json',
+  	  	  cache: false,
+  	  	  contentType: 'application/json',
+  	  	  success: function(data) {
+  	  		var len = data.length;
+  	  		//CLEAN all fields
+  	  		//Avsender
+			jq('#tvkns').val("");jq('#tvnas').val("");jq('#tvtins').val("");jq('#tvads1').val(""); 
+			jq('#tvpns').val("");jq('#tvpss').val(""); jq('#tvlks').val(""); 
+			//Mottaker
+			jq('#tvknk').val("");jq('#tvnak').val("");jq('#tvtink').val("");jq('#tvadk1').val(""); 
+			jq('#tvpnk').val("");jq('#tvpsk').val("");jq('#tvlkk').val("");
+			
+  			for ( var i = 0; i < len; i++) {
+  				//Avsender
+  				jq('#tvkns').val(data[i].sveh_avkn);
+  				jq('#tvnas').val(data[i].sveh_avna);
+  				jq('#tvtins').val(data[i].sveh_aveo);
+  				jq('#tvads1').val(data[i].sveh_ava1);
+  				jq('#tvpns').val(data[i].sveh_avpn);
+  				jq('#tvpss').val(data[i].sveh_avpa);
+  				jq('#tvlks').val(data[i].sveh_avlk);
+  				//Mottaker
+  				jq('#tvknk').val(data[i].sveh_mokn);
+  				jq('#tvnak').val(data[i].sveh_mona);
+  				jq('#tvtink').val(data[i].sveh_moeo);
+  				jq('#tvasv1').val(data[i].sveh_moa1);
+  				jq('#tvpnk').val(data[i].sveh_mopn);
+  				jq('#tvpsk').val(data[i].sveh_mopa);
+  				jq('#tvlkk').val(data[i].sveh_molk);
+  				//other header fields
+  				if(jq('#tvalk').val()==''){
+  					jq('#tvalk').val("SE");
+  				}
+  				if(jq('#tvdty').val()==''){
+  					//jq('#tvdty').val("830");
+  				}
+  				if(jq('#tvblk').val()==''){
+  					jq('#tvblk').val(data[i].sveh_aube);
+  				}
+  				//get some values from SKAT Eksport Item lines
+  				//TODO --> check SKAT .js -->getDefaultValuesFromSkatExportItemLines();
+  			}
+	  	  }
+  		});		
+  	}
+  	
+  	jq(function() {
+	  	jq('#tvtdn2IdLink').click(function() {
+	    	jq('#tvtdn2IdLink').attr('target','_blank');
+	    	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#tvavd2').val() + '&opd=' + jq('#tvtdn2').val() + '&xref=' + jq('#xref').val(), "codeWin", "top=300px,left=500px,height=600px,width=900px,scrollbars=no,status=no,location=no");
+	    });
+	    jq('#tvtdn2IdLink').keypress(function(e){ //extra feature for the end user
+			if(e.which == 13) {
+				jq('#tvtdn2IdLink').click();
+			}
+	    });
+	    jq('#xrefIdLink').click(function() {
+	    	jq('#xrefIdLink').attr('target','_blank');
+	    	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#tvavd2').val() + '&opd=' + jq('#tvtdn2').val() + '&xref=' + jq('#xref').val(), "codeWin", "top=300px,left=500px,height=600px,width=900px,scrollbars=no,status=no,location=no");
+	    });
+	    jq('#xrefIdLink').keypress(function(e){ //extra feature for the end user
+			if(e.which == 13) {
+				jq('#xrefIdLink').click();
+			}
+	    });
+  	});
 		
 
 

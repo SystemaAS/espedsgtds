@@ -116,6 +116,40 @@ public class NctsExportItemsControllerChildWindow {
 	}
 	/**
 	 * 
+	 * @param searchFilter
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="nctsexport_edit_items_childwindow_uppdragslist.do", params="action=doFind",  method={RequestMethod.GET, RequestMethod.POST } )
+	public ModelAndView doFindUppdragsListToChildwindow(@ModelAttribute ("record") SearchFilterTdsExportTopicList searchFilter, HttpSession session, HttpServletRequest request){
+		this.context = TdsAppContext.getApplicationContext();
+		logger.info("Inside: doFindUppdragsListToChildwindow");
+		Map model = new HashMap();
+		String avdNcts = request.getParameter("avdNcts");
+		String opdNcts = request.getParameter("opdNcts");
+		
+		ModelAndView successView = new ModelAndView("nctsexport_edit_items_childwindow_uppdragslist");
+		SystemaWebUser appUser = this.loginValidator.getValidUser(session);
+		//check user (should be in session already)
+		if(appUser==null){
+			return this.loginView;
+			
+		}else{
+			
+			List<JsonTdsExportTopicListRecord> list = (List)this.getArendeList(appUser, searchFilter);
+			model.put("angivelseList", list);
+			model.put("avdNcts", avdNcts);
+			model.put("opdNcts", opdNcts);
+			
+			successView.addObject(TdsConstants.DOMAIN_SEARCH_FILTER , searchFilter);
+			successView.addObject(TdsConstants.DOMAIN_MODEL , model);
+			
+	    	return successView;
+		}
+	}
+	/**
+	 * 
 	 * @param recordToValidate
 	 * @param session
 	 * @param request
