@@ -190,16 +190,16 @@
 																<tr class="tableHeaderField" >	
 																    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvli.linjeNr"/>&nbsp;</th>   
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvnt.varukod"/>&nbsp;</th>   
+												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvt.varuBeskrivning"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdk.deklTyp"/>&nbsp;</th>
-												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvalk.avsLand"/>&nbsp;</th>
-												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvblk.bestLand"/>&nbsp;</th>
+												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvnas.avsNamn"/>&nbsp;</th>
+												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvnak.motNamn"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdty.dokTyp"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktb.bruttoVikt"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktn.nettoVikt"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.sum_of_tvnt.kolliAnt"/>(&Sigma;) / Stk</th>
-												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvt.varuBeskrivning"/>&nbsp;</th>
 												                    <c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
-											                    			<th align="center" class="text14" nowrap>Ta bort</th>
+											                    			<th align="center" class="text14" nowrap>Radera</th>
 												                    </c:if>
 												                    
 											               		</tr>
@@ -215,18 +215,18 @@
 														                   </c:otherwise>
 														               </c:choose>
 				               							               <td width="2%" class="text14" align="center">&nbsp;${record.tvli}</td>
-														               <td class="text14" >&nbsp;${record.tvvnt}</td>
-														               <td class="text14" >&nbsp;${record.tvdk}</td>
-														               <td class="text14" >&nbsp;${record.tvalk}</td>
-														               <td class="text14" >&nbsp;${record.tvblk}</td>
-														               <td class="text14" >&nbsp;${record.tvdty}</td>
-														               <td class="text14" align="right" >&nbsp;${record.tvvktb}&nbsp;</td>
-														               <td class="text14" align="right" >&nbsp;${record.tvvktn}&nbsp;</td>
-														               <td class="text14" >&nbsp;${record.sum_of_tvnt}</td>
+														               <td width="2%" class="text14" >&nbsp;${record.tvvnt}</td>
+														               <td class="text14" >&nbsp;${record.tvvt}</td>
+														               <td width="2%" class="text14" >&nbsp;${record.tvdk}</td>
+														               <td class="text14" >&nbsp;${record.tvnas}</td>
+														               <td class="text14" >&nbsp;${record.tvnak}</td>
+														               <td width="2%" class="text14" >&nbsp;${record.tvdty}</td>
+														               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktb}&nbsp;</td>
+														               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktn}&nbsp;</td>
+														               <td width="2%" class="text14" >&nbsp;${record.sum_of_tvnt}</td>
 														               
-														               <td class="text14" width="40%" >&nbsp;${record.tvvt}</td>
 														               <c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">	
-															               <td class="text14" align="center" nowrap>&nbsp;
+															               <td width="2%" class="text14" align="center" nowrap>
 															               	<a onclick="javascript:return confirm('Är du säker på att du vill ta bort raden?')" tabindex=-1 href="nctsexport_edit_items.do?action=doDelete&avd=${record.tvavd}&opd=${record.tvtdn}&lin=${record.tvli}">
 															               		<img src="resources/images/delete.gif" border="0" alt="remove">
 															               	</a>	
@@ -288,16 +288,16 @@
 									    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvli.linjeNr"/>&nbsp;</th>   
 					                    <th class="text14">&nbsp;Uppdat.&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvnt.varukod"/>&nbsp;</th>   
+					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvt.varuBeskrivning"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdk.deklTyp"/>&nbsp;</th>
-					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvalk.avsLand"/>&nbsp;</th>
-					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvblk.bestLand"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvnas.avsNamn"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvnak.motNamn"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdty.dokTyp"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktb.bruttoVikt"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktn.nettoVikt"/>&nbsp;</th>
-					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.sum_of_tvnt.kolliAnt"/>(&Sigma;) / Stk</th>
-					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvt.varuBeskrivning"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.sum_of_tvnt.kolliAnt"/>(&Sigma;)</th>
 					                    <c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
-					                    	<th align="center" class="text14" nowrap>Ta bort</th>
+					                    	<th align="center" class="text14" nowrap>Radera</th>
 					                    </c:if>
 					               </tr>
 					               </thead>
@@ -311,24 +311,24 @@
 							                       <tr class="tableOddRow" height="20" >
 							                   </c:otherwise>
 							               </c:choose>
-							               <td width="4%" class="text14" align="center">${record.tvli}</td>
-							               <td width="4%" class="text14" align="center">&nbsp;
+							               <td width="2%" class="text14" align="center">${record.tvli}</td>
+							               <td width="2%" class="text14" align="center">&nbsp;
 							               		<a tabindex=-1 id="recordUpdate_${counter.count}_${record.tvli}" href="#" onClick="getItemData(this);">
 							               			<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
-							               <td class="text14" >&nbsp;${record.tvvnt}</td>
-							               <td class="text14" >&nbsp;${record.tvdk}</td>
-							               <td class="text14" >&nbsp;${record.tvalk}</td>
-							               <td class="text14" >&nbsp;${record.tvblk}</td>
-							               <td class="text14" >&nbsp;${record.tvdty}</td>
-							               <td class="text14" align="right" >&nbsp;${record.tvvktb}&nbsp;</td>
-							               <td class="text14" align="right" >&nbsp;${record.tvvktn}&nbsp;</td>
-							               <td class="text14" >&nbsp;${record.sum_of_tvnt}</td>
+							               <td width="2%" class="text14" >&nbsp;${record.tvvnt}</td>
+							               <td class="text14">&nbsp;${record.tvvt}</td>
+							               <td width="2%" class="text14" >&nbsp;${record.tvdk}</td>
+							               <td class="text14" >&nbsp;${record.tvnas}</td>
+							               <td class="text14" >&nbsp;${record.tvnak}</td>
+							               <td width="2%" class="text14" >&nbsp;${record.tvdty}</td>
+							               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktb}&nbsp;</td>
+							               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktn}&nbsp;</td>
+							               <td width="2%" class="text14" >&nbsp;${record.sum_of_tvnt}</td>
 							               
-							               <td class="text14" width="100" >&nbsp;${record.tvvt}</td>
 							               	<c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">	
-								               <td class="text14" align="center" nowrap>&nbsp;
+								               <td width="2%" class="text14" align="center" nowrap>
 								               	<a onclick="javascript:return confirm('Är du säker på att du vill ta bort raden?')" tabindex=-1 href="nctsexport_edit_items.do?action=doDelete&avd=${record.tvavd}&opd=${record.tvtdn}&lin=${record.tvli}">
 								               		<img src="resources/images/delete.gif" border="0" alt="remove">
 								               	</a>	
@@ -2000,7 +2000,7 @@
 											 		<tr height="18px">
 											 			<td class="text14">
 											 				&nbsp;<img onMouseOver="showPop('sikkerhet_info');" onMouseOut="hidePop('sikkerhet_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-													        	<b>Säkerhet</b>&nbsp;Arbeta med (forhåndsvarsling)
+													        	<b>Säkerhet</b>&nbsp;Arbeta med (förhandsanmälan)
 													        <div class="text12" style="position: relative;" align="left">
 															<span style="position:absolute;top:2px; width:250px;" id="sikkerhet_info" class="popupWithInputText text12"  >
 									           					TODO
