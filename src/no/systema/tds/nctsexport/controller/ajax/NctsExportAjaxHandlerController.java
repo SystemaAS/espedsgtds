@@ -412,8 +412,6 @@ public class NctsExportAjaxHandlerController {
 					//--------------------------------------
 					//EXECUTE RPG program here
 					//--------------------------------------
-					logger.info("CB/OT todo TDS-implementations pgm!!!");
-					/*
 					String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
 					//Debug --> 
 					logger.info(method + " --> jsonPayload:" + jsonPayload);
@@ -427,7 +425,7 @@ public class NctsExportAjaxHandlerController {
 			    					result.add(container);
 			    		}
 			    	}
-			    	*/
+			    	
 			 	}
 		 	}
 		return result;  

@@ -28,7 +28,6 @@
 				  var syav = record[0].replace("syav", "");
 				  var syop = record[1].replace("syop", "");
 				  var counter = i + 1;
-				  //alert(requestParams);
 				  
 				  if(jq('#syav' + syav + '_' + 'syop' + syop ).prop('checked')){
 					  var str = "&avd=" + jq('#avdNcts').val() + "&opd=" + jq('#opdNcts').val() + "&sveh_syav=" + syav +  "&sveh_syop=" + syop ;
