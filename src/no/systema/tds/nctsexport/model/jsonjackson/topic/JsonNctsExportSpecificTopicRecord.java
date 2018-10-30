@@ -467,6 +467,11 @@ public class JsonNctsExportSpecificTopicRecord extends JsonAbstractGrandFatherRe
 	public void setThkdv(String value) {  this.thkdv = value; }
 	public String getThkdv() { return this.thkdv;}
 	
+	//in order to validate before a "send topic"
+	private boolean validUpdate = false;
+	public void setValidUpdate(boolean value) {  this.validUpdate = value; }
+	public boolean isValidUpdate() {return this.validUpdate;}
+
 	private String th0035 = null;
 	public void setTh0035(String value) {  this.th0035 = value; }
 	public String getTh0035() { return this.th0035;}

@@ -144,10 +144,14 @@ public class JsonNctsImportSpecificTopicRecord extends JsonAbstractGrandFatherRe
 	public void setTikdv(String value) {  this.tikdv = value; }
 	public String getTikdv() { return this.tikdv;}
 	
+	//in order to validate before a "send topic"
+	private boolean validUpdate = false;
+	public void setValidUpdate(boolean value) {  this.validUpdate = value; }
+	public boolean isValidUpdate() {return this.validUpdate;}
+	
 	private String ti0035 = null;
 	public void setTi0035(String value) {  this.ti0035 = value; }
 	public String getTi0035() { return this.ti0035;}
-	
 	
 	private String tialk = null;
 	public void setTialk(String value) {  this.tialk = value; }

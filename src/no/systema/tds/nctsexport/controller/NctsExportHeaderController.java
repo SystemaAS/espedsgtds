@@ -40,6 +40,7 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeRecord;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 import no.systema.tds.nctsexport.validator.NctsExportHeaderValidator;
 
 import no.systema.main.model.SystemaWebUser;
@@ -335,6 +336,7 @@ public class NctsExportHeaderController {
 						    		logger.info("[INFO] Record successfully updated, OK ");
 						    		//put domain objects
 						    		this.setDomainObjectsInView(session, model, jsonNctsExportSpecificTopicRecord);
+						    		this.adjustValidUpdateFlag(model, jsonNctsExportSpecificTopicRecord);
 						    	}
 							}else{
 								rpgReturnResponseHandler.setErrorMessage("[ERROR] FATAL on CREATE, at tuid, syop generation : " + rpgReturnResponseHandler.getErrorMessage());
@@ -379,7 +381,18 @@ public class NctsExportHeaderController {
 	    	return successView;
 		}
 	}
-	
+	/**
+	 * 
+	 * Aux method to prevent an end-user for sending the declaration without having saved it first.
+	 * The end-user must save a topic before issuing a further "send". Sort of a validation routine to ensure validity of all fields.
+	 * 
+	 * @param model
+	 * @param record
+	 */
+	private void adjustValidUpdateFlag(Map model, JsonNctsExportSpecificTopicRecord record){
+		record.setValidUpdate(true);
+		model.put(TdsConstants.DOMAIN_RECORD, record);
+	}
 	/**
 	 * 
 	 * @param session

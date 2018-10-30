@@ -38,6 +38,7 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningRecord;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicContainer;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicRecord;
 import no.systema.tds.nctsimport.validator.NctsImportHeaderValidator;
@@ -325,6 +326,7 @@ public class NctsImportHeaderController {
 						    		jsonNctsImportSpecificTopicRecord.setTign(rpgReturnResponseHandler.getTign());
 						    		//put domain objects
 						    		this.setDomainObjectsInView(session, model, jsonNctsImportSpecificTopicRecord);
+						    		this.adjustValidUpdateFlag(model, jsonNctsImportSpecificTopicRecord);
 						    	}
 							}else{
 								rpgReturnResponseHandler.setErrorMessage("[ERROR] FATAL on CREATE, at tuid, syop generation : " + rpgReturnResponseHandler.getErrorMessage());
@@ -369,6 +371,12 @@ public class NctsImportHeaderController {
 			
 	    	return successView;
 		}
+	}
+	
+	
+	private void adjustValidUpdateFlag(Map model, JsonNctsImportSpecificTopicRecord record){
+		record.setValidUpdate(true);
+		model.put(TdsConstants.DOMAIN_RECORD, record);
 	}
 	
 	/**

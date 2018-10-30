@@ -559,7 +559,7 @@
 				 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='nctsimport_edit.do';" value='<spring:message code="systema.ncts.import.createnew.submit"/>'/>
 				 				</td>    	
 				 				    	&nbsp;&nbsp;
-				 				    	<c:if test="${not empty model.record.titdn}">
+				 				    	<c:if test="${not empty model.record.titdn && model.record.validUpdate}">
 					 				    	<td colspan="2" class="text9BlueGreen" valign="bottom"  >
 					 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" onclick="javascript: form.action='nctsimport_send.do';" value='<spring:message code="systema.ncts.import.createnew.send"/>'/>
 					 				    	</td>	
