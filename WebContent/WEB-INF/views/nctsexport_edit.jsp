@@ -741,25 +741,19 @@
 							            	<table align="left" border="0" cellspacing="0" cellpadding="0">
 							            		<tr>
 							            			
-						            			<td>
+						            			<td class="text14">1.
 						            			<input type="text" class="inputTextMediumBlue" name="thtsd1" id="thtsd1" size="10" maxlength="8" value="${model.record.thtsd1}">
 							            		<a id="thtsd1IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 							            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 							            		</a>
 												</td>
-													
-														
-							            			<td>
-							            			&nbsp;
-							            			&nbsp;
+												<td class="text14">&nbsp;&nbsp;2.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd2" id="thtsd2" size="10" maxlength="8" value='${model.record.thtsd2}'>
 								            		<a id="thtsd2IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 								            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 								            		</a>
-							            			</td>
-							            			<td>
-							            			&nbsp;
-							            			&nbsp;
+						            			</td>
+						            			<td class="text14">&nbsp;&nbsp;3.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd3" id="thtsd3" size="10" maxlength="8" value='${model.record.thtsd3}'>
 							            			<a id="thtsd3IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 							            				<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -767,27 +761,22 @@
 							            			</td>
 							            		</tr>
 							            		
-							            		
 							            		<tr>
-							            			<td>
+							            			<td class="text14">4.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd4" id="thtsd4" size="10" maxlength="8" value='${model.record.thtsd4}'>
 							            			<a id="thtsd4IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 								            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 								            		</a>
 							            			</td>
 							            			
-							            			<td>
-							            			&nbsp;
-							            			&nbsp;
+							            			<td class="text14">&nbsp;&nbsp;5.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd5" id="thtsd5" size="10" maxlength="8" value='${model.record.thtsd5}'>
 							            			<a id="thtsd5IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 								            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 								            		</a>
 							            			</td>
 							            			
-							            			<td>
-							            			&nbsp;
-							            			&nbsp;
+							            			<td class="text14">&nbsp;&nbsp;6.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd6" id="thtsd6" size="10" maxlength="8" value='${model.record.thtsd6}'>
 							            			<a id="thtsd6IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 								            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -795,7 +784,7 @@
 							            			</td>					            			
 							            		</tr>
 							            		<tr>
-							            			<td>
+							            			<td class="text14">7.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd7" id="thtsd7" size="10" maxlength="8" value='${model.record.thtsd7}'>
 							            			<a id="thtsd7IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 								            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -803,9 +792,7 @@
 							            			</td>
 							            			
 							            			
-							            			<td>
-							            			&nbsp;
-							            			&nbsp;
+							            			<td class="text14">&nbsp;&nbsp;8.
 							            			<input type="text" class="inputTextMediumBlue" name="thtsd8" id="thtsd8" size="10" maxlength="8" value='${model.record.thtsd8}'>
 							            			<a id="thtsd8IdLink" OnClick="triggerChildWindowTullkontorCodes(this)">
 								            			<img style="cursor:pointer;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1722,7 +1709,48 @@
 					            </td>
 					        </tr>
 					     	<tr height="10"><td>&nbsp;</td></tr>
-					     	
+					     	<tr>
+					            <td class="text14" align="left">
+					            <img onMouseOver="showPop('kontrollresultat_info');" onMouseOut="hidePop('kontrollresultat_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+ 								<b>D.</b>&nbsp;<span title="thdkr">Kontrollresultat.&nbsp;</span>
+ 								<div class="text12" style="position: relative;" align="left">
+ 								<span style="position:absolute;top:2px; width:250px;" id="kontrollresultat_info" class="popupWithInputText text12"  >
+				           			Förenklad förfarande
+				           			<ul>
+					           			<li><b>A3</b>&nbsp; för förenklad förfarande</li>
+					           		</ul>
+					           		<br>
+					           		För normal förfarandet lämnas detta blankt.
+					           	</span>
+					           	</div>
+								</td>
+					           	<td class="text14" align="left">
+					           		<select class="selectMediumBlueE2" name="thdkr" id="thdkr" >
+					 				  <option value="">-Välj-</option>
+									  <option value="A3"<c:if test="${model.record.thdkr == 'A3'}"> selected </c:if> >A3</option>													  
+									</select>
+					           		
+					           	</td>
+				           	</tr>
+				           	<tr>
+					            <td class="text14" align="left">
+					            <img onMouseOver="showPop('frist_info');" onMouseOut="hidePop('frist_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+ 								<b>D.</b>&nbsp;<span title="thddt">Frist&nbsp;</span>
+ 								<div class="text11" style="position: relative;" align="left">
+								<span style="position:absolute;top:2px; width:250px;" id="frist_info" class="popupWithInputText text11"  >
+				           				Frist	
+				           			<br/>
+				           			<ul>
+					           			<li>...</li>
+					           		</ul>
+								</span>
+								</div>
+								</td>
+					           	<td class="text14" align="left">
+					           		<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="thddt" id="thddt" size="10" maxlength="8" value="${model.record.thddt}">
+					           		&nbsp;
+					           	</td>
+				           	</tr>
 						</table>
 					</td>
 				</tr>
@@ -2004,48 +2032,6 @@
 						 				
 						 					<tr>
 									            <td class="text14" align="left">
-									            <img onMouseOver="showPop('kontrollresultat_info');" onMouseOut="hidePop('kontrollresultat_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 								&nbsp;<span title="thdkr">Kontrollresultat.&nbsp;</span>
-				 								<div class="text12" style="position: relative;" align="left">
-				 								<span style="position:absolute;top:2px; width:250px;" id="kontrollresultat_info" class="popupWithInputText text12"  >
-								           			Förenklad förfarande
-								           			<ul>
-									           			<li><b>A3</b>&nbsp; för förenklad förfarande</li>
-									           		</ul>
-									           		<br>
-									           		För normal förfarandet lämnas detta blankt.
-									           	</span>
-									           	</div>
-									           	</td>
-									           	<td class="text14" align="left">
-									           		<select class="selectMediumBlueE2" name="thdkr" id="thdkr" >
-									 				  <option value="">-Välj-</option>
-													  <option value="A3"<c:if test="${model.record.thdkr == 'A3'}"> selected </c:if> >A3</option>													  
-													</select>
-									           		
-									           	</td>
-
-									            <td class="text14" align="left">
-									            <img onMouseOver="showPop('frist_info');" onMouseOut="hidePop('frist_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 								&nbsp;<span title="thddt">Frist&nbsp;</span>
-				 								<div class="text12" style="position: relative;" align="left">
-				 								<span style="position:absolute;top:2px; width:250px;" id="frist_info" class="popupWithInputText text12"  >
-								           			Tidsfrist
-								           			<ul>
-									           			<li>...</li>
-									           		</ul>
-												</span>
-												</div>
-												</td>
-									           	<td class="text14" align="left">
-									           		<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="thddt" id="thddt" size="10" maxlength="8" value="${model.record.thddt}">
-									           		&nbsp;
-									           	</td>
-								           	</tr>
-								           	<tr height="5"><td></td></tr>
-
-						 					<tr>
-									            <td class="text14" align="left">
 									            <img onMouseOver="showPop('forsegling_info');" onMouseOut="hidePop('forsegling_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 								&nbsp;<span title="thdfkd">Förseglingsid&nbsp;</span>
 				 								<div class="text12" style="position: relative;" align="left">
@@ -2262,66 +2248,66 @@
 					            					</td>
 					            				</tr>
 					            				<tr>
-						            				<td>
-						            				<select class="selectMediumBlueE2" name="thlkr1" id="thlkr1">
-									            		<option value="">-välj-</option>
+					            				<td class="text14">1.
+					            				<select class="selectMediumBlueE2" name="thlkr1" id="thlkr1">
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr1 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
 												</td>
-												<td>
-						            				<select class="selectMediumBlueE2" name="thlkr2" id="thlkr2">
-									            		<option value="">-välj-</option>
+												<td class="text14">&nbsp;&nbsp;2.
+					            				<select class="selectMediumBlueE2" name="thlkr2" id="thlkr2">
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr2 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
 												</td>
-												<td>
-						            				<select class="selectMediumBlueE2" name="thlkr3" id="thlkr3">
-									            		<option value="">-välj-</option>
+												<td class="text14">&nbsp;&nbsp;3.
+					            				<select class="selectMediumBlueE2" name="thlkr3" id="thlkr3">
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr3 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</c:forEach> 
 												</select>
 												</td>
-												<td>
+												<td class="text14">&nbsp;&nbsp;4.
 												<select class="selectMediumBlueE2" name="thlkr4" id="thlkr4">
-									            		<option value="">-välj-</option>
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr4 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
-						            				</td>
+					            				</td>
 					            				</tr>
 					            				<tr>	
-						            				<td>
+					            				<td class="text14">5.
 						            				<select class="selectMediumBlueE2" name="thlkr5" id="thlkr5">
-									            		<option value="">-välj-</option>
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr5 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
-						            				</td>
-						            				<td>
-						            				<select class="selectMediumBlueE2" name="thlkr6" id="thlkr6">
-									            		<option value="">-välj-</option>
+					            				</td>
+					            				<td class="text14">&nbsp;&nbsp;6.
+					            				<select class="selectMediumBlueE2" name="thlkr6" id="thlkr6">
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr6 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
 						            				</td>
-						            				<td>
-						            				<select class="selectMediumBlueE2" name="thlkr7" id="thlkr7">
-									            		<option value="">-välj-</option>
+					            				<td class="text14">&nbsp;&nbsp;7.
+					            				<select class="selectMediumBlueE2" name="thlkr7" id="thlkr7">
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr7 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 
 												</select>
 												</td>
-												<td>
-						            				<select class="selectMediumBlueE2" name="thlkr8" id="thlkr8">
-									            		<option value="">-välj-</option>
+												<td class="text14">&nbsp;&nbsp;8.
+					            				<select class="selectMediumBlueE2" name="thlkr8" id="thlkr8">
+								            		<option value="">-välj-</option>
 								 				  	<c:forEach var="country" items="${model.countryCodeList}" >
 				                                	 	<option value="${country.svkd_kd}"<c:if test="${model.record.thlkr8 == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
 													</c:forEach> 

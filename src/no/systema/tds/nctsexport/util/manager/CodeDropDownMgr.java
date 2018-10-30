@@ -170,20 +170,16 @@ public class CodeDropDownMgr {
 			
 			}else if(CodeDropDownMgr.CODE_096_SPEC_OMST.equalsIgnoreCase(paramTYP)){
 				model.put(NctsExportConstants.RESOURCE_MODEL_KEY_CODE_NCTSEX_096_SPEC_OMST_LIST, list);
-				//model.put(NctsExportConstants.URL_EXTERNAL_TRANSPORT_SUMMARISKA_DOKUMENTCODES_40_SKAT_CODE, new UrlSkatTransportSummariskaDokumentObject() );
-			
+				
 			}else if(CodeDropDownMgr.CODE_105_TILLGANGSKOD_GARANTI.equalsIgnoreCase(paramTYP)){
 				model.put(NctsExportConstants.RESOURCE_MODEL_KEY_CODE_NCTSEX_105_TILLGANGASKOD_GARANTI_LIST, list);
-				//model.put(NctsExportConstants.URL_EXTERNAL_TRANSPORT_SUMMARISKA_DOKUMENTCODES_40_SKAT_CODE, new UrlSkatTransportSummariskaDokumentObject() );
-			
+				
 			}else if(CodeDropDownMgr.CODE_106_TULLKONTOR_REF.equalsIgnoreCase(paramTYP)){
 				model.put(NctsExportConstants.RESOURCE_MODEL_KEY_CODE_NCTSEX_106_TULLKONTOR_REF_LIST, list);
-				//model.put(NctsExportConstants.URL_EXTERNAL_TRANSPORT_SUMMARISKA_DOKUMENTCODES_40_SKAT_CODE, new UrlSkatTransportSummariskaDokumentObject() );
-			
+				
 			}else if(CodeDropDownMgr.CODE_116_BETALNING_TRANSPORT.equalsIgnoreCase(paramTYP)){
 				model.put(NctsExportConstants.RESOURCE_MODEL_KEY_CODE_NCTSEX_116_BETALNINGSSATT_TRANSPORTKOSTNAD_LIST, list);
-				//model.put(NctsExportConstants.URL_EXTERNAL_TRANSPORT_SUMMARISKA_DOKUMENTCODES_40_SKAT_CODE, new UrlSkatTransportSummariskaDokumentObject() );
-			
+				
 			}
 		
 		

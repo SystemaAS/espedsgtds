@@ -1136,6 +1136,11 @@ public class NctsExportHeaderController {
 				 model,appUser,CodeDropDownMgr.CODE_012_SPRAK, null, null);
 		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,
 				 model,appUser,CodeDropDownMgr.CODE_031_DEKLTYPE, null, null);
+		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,
+				 model,appUser,CodeDropDownMgr.CODE_096_SPEC_OMST, null, null);
+		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,
+				 model,appUser,CodeDropDownMgr.CODE_116_BETALNING_TRANSPORT, null, null);
+		
 	}
 	
 	//SERVICES
