@@ -29,6 +29,12 @@ import org.springframework.web.bind.WebDataBinder;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
+import no.systema.tds.tdsexport.url.store.TdsExportUrlDataStore;
+import no.systema.tds.tdsexport.service.TdsExportSpecificTopicService;
+import no.systema.tds.tdsexport.service.TdsExportSpecificTopicItemService;
+
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemRecord;
 import no.systema.tds.nctsexport.model.topic.NctsExportSpecificTopicTotalItemLinesObject;
@@ -40,13 +46,16 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeRecord;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
+
 import no.systema.tds.nctsexport.validator.NctsExportHeaderValidator;
 
 import no.systema.main.model.SystemaWebUser;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportSpecificTopicContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportSpecificTopicRecord;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportTopicCopiedContainer;
+import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportTopicCopiedFromTransportUppdragContainer;
 
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicService;
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicItemService;
@@ -103,6 +112,8 @@ public class NctsExportHeaderController {
 		
 		Map model = new HashMap();
 		String sign = request.getParameter("sign");
+		//logger.info("sign:" + sign);
+		
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		//String messageFromContext = this.context.getMessage("user.label",new Object[0], request.getLocale());
 		ModelAndView successView = new ModelAndView("nctsexport_edit");
@@ -119,7 +130,7 @@ public class NctsExportHeaderController {
 			this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
     		//domain
 			model.put("sign", sign);
-    		successView.addObject("model", model);
+			successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 
 		}
@@ -604,8 +615,8 @@ public class NctsExportHeaderController {
 			}
 		    
 			
-		    	//At this point we do now have a cloned record with its own data. The only thing left is to present it in edit mode
-		    	//--------------------
+	    	//At this point we do now have a cloned record with its own data. The only thing left is to present it in edit mode
+	    	//--------------------
 			//STEP 2: FETCH record
 			//--------------------
 			logger.info("starting FETCH record transaction...");
@@ -646,6 +657,127 @@ public class NctsExportHeaderController {
 			return successView;
 		}
 		
+	}
+	
+	@RequestMapping(value="nctsexport_doFetchTopicFromTransportUppdrag.do", method={RequestMethod.POST} )
+	public ModelAndView doFetchTopicFromTransportUppdrag( HttpSession session, HttpServletRequest request){
+		JsonNctsExportTopicCopiedFromTransportUppdragContainer jsonContainer = null;
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
+		//We must get all parameters from the enumeration since all have sequence counter number
+		String action=request.getParameter("actionGS");
+		String sign=request.getParameter("sign");
+		String avd=request.getParameter("selectedAvd");
+		String opd=request.getParameter("selectedOpd");
+		String extRefNr=request.getParameter("selectedExtRefNr"); //Domino ref in Dachser DK AS				
+		
+		ModelAndView successView = new ModelAndView("nctsexport_edit");
+		//fallback view (usually on errors)
+		ModelAndView fallbackView = new ModelAndView("nctsexport_edit");
+		fallbackView.addObject("action", "doPrepareCreate");
+		//this view is when the end user choose not to copy at all. He/She will start from scratch (empty form (header))
+		ModelAndView cleanNewView = new ModelAndView("redirect:nctsexport_edit.do?action=doPrepareCreate&sign=" + sign );
+		
+		String method = "[RequestMapping-->nctsexport_doFetchTopicFromTransportUppdrag.do]";
+		logger.info("Method: " + method);
+		Map model = new HashMap();
+		
+		
+		//check user (should be in session already)
+		if(appUser==null){
+			return loginView;
+		}else{
+			
+			if( (extRefNr!=null && !"".equals(extRefNr)) || ( (opd!=null && !"".equals(opd)) && (avd!=null && !"".equals(avd))) ){
+				//--------------------
+				//STEP 1: CLONE record
+				//--------------------
+				logger.info("starting PROCESS record transaction...");
+				String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_URL;
+				String urlRequestParamsKeys = this.getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(avd, opd, extRefNr, appUser);
+				//for debug purposes in GUI
+				session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
+				
+				logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		    	logger.info("URL: " + BASE_URL);
+		    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+		    	//--------------------------------------
+		    	//EXECUTE (RPG program) here
+		    	//--------------------------------------
+		    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		    	//Debug --> 
+		    	logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
+		    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		    	if(jsonPayload!=null){
+		    		jsonContainer = this.nctsExportSpecificTopicService.getNctsExportTopicCopiedFromTransportUppdragContainer(jsonPayload);
+		    		if(jsonContainer!=null){
+		    			//Check for errors
+		    			if(jsonContainer.getErrMsg()!=null && !"".equals(jsonContainer.getErrMsg())){
+		    				logger.info("[WARN] errMsg containing: " + jsonContainer.getErrMsg());
+		    				logger.info("[WARN] redirecting to doPrepareCreate");
+		    				//Send the error message to the redirect view.
+		    				//request.setAttribute("errorMessageOnCopyFromTransportOppdrag", jsonContainer.getErrMsg());
+		    				model.put(TdsConstants.ASPECT_ERROR_MESSAGE, jsonContainer.getErrMsg());
+		    				model.put(TdsConstants.ASPECT_ERROR_META_INFO, "Vid kopiering av TransportUppdrag...");
+		    				fallbackView.addObject(TdsConstants.DOMAIN_MODEL, model);
+		    				
+		    				return fallbackView;
+		    			}else{
+		    				//At this point we do have a cloned record ready to be presented.
+		    				//Before we do present this record, we must create a default-item line such as the requirement demands
+		    				JsonNctsExportSpecificTopicItemRecord nctsExportTargetItemRecord = new JsonNctsExportSpecificTopicItemRecord();
+		    				this.initDefaultFirstItemLine(nctsExportTargetItemRecord, appUser.getUser(),jsonContainer.getThavd(), jsonContainer.getThtdn());
+		    				this.createDefaultFirstItemLine(nctsExportTargetItemRecord, appUser.getUser(),jsonContainer.getThavd(), jsonContainer.getThtdn());
+		    			}
+		    		}
+		    	}else{
+		    		logger.fatal("NO CONTENT on jsonPayload from URL... ??? <Null>");
+					return loginView;
+				}    
+				
+		    	//At this point we do now have a cloned record with its own data. The only thing left is to present it in edit mode
+		    	//--------------------
+				//STEP 2: FETCH record
+				//--------------------
+				logger.info("starting FETCH record transaction...");
+				//---------------------------
+				//get BASE URL = RPG-PROGRAM
+	            //---------------------------
+				BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_FETCH_SPECIFIC_TOPIC_URL;
+				//url params
+				urlRequestParamsKeys = this.getRequestUrlKeyParameters(action, jsonContainer.getThavd(), jsonContainer.getThtdn(), jsonContainer.getThsg(), appUser);
+				//for debug purposes in GUI
+				session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
+				
+				logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		    	logger.info("URL: " + BASE_URL);
+		    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+		    	//--------------------------------------
+		    	//EXECUTE the FETCH (RPG program) here
+		    	//--------------------------------------
+		    	jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+				//Debug --> 
+		    	logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
+		    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		    	if(jsonPayload!=null){
+		    		JsonNctsExportSpecificTopicContainer jsonSpecificTopicContainer = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
+	    			//populate gui
+		    		this.setCodeDropDownMgr(appUser, model);	
+		    		this.setDomainObjectsInView(session, model, jsonSpecificTopicContainer);
+		    		successView.addObject(TdsConstants.DOMAIN_MODEL, model);
+		    		//put the doUpdate action since we are preparing the record for an update (when saving)
+		    		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_UPDATE);	
+		    	}else{
+		    		logger.fatal("[ERROR fatal] NO CONTENT on jsonPayload from URL... ??? <Null>");
+		    		return loginView;
+		    	}
+			}else{
+				logger.warn("[INFO] Opdnr is NULL. Redirecting to: skatnctsexport_edit.do?action=doPrepareCreate... ");
+				//return new ModelAndView("redirect:tdsimport_edit.do?action=doPrepareCreate");
+				return cleanNewView;
+			}			
+			return successView;
+		}
 	}
 	 
 	/**
@@ -716,6 +848,249 @@ public class NctsExportHeaderController {
 		}
 		return successView;
 	}
+	/**
+	 * 
+	 * @param avd
+	 * @param opd
+	 * @param extRefNr
+	 * @param appUser
+	 * @return
+	 */
+	private String getRequestUrlKeyParametersForCopyTopicFromTransportUppdrag(String avd, String opd, String extRefNr, SystemaWebUser appUser){
+		final String MODE = "GS";
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		
+		urlRequestParamsKeys.append("user=" + appUser.getUser());
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "thavd=" + avd);
+		if(opd!=null && !"".equals(opd)){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "thtdn=" + opd);
+		}else if (extRefNr!=null && !"".equals(extRefNr)){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "thxref=" + extRefNr);
+		}
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sign=" + appUser.getTdsSign());
+		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "mode=" + MODE);
+		
+		return urlRequestParamsKeys.toString();	
+	}
+	/**
+	 * 
+	 * @param nctsExportTargetItemRecord
+	 * @param applicationUser
+	 * @param avd
+	 * @param opd
+	 */
+	private void initDefaultFirstItemLine(JsonNctsExportSpecificTopicItemRecord nctsExportTargetItemRecord, String applicationUser, String avd, String opd){
+		//------------------------
+		//STEP(1) - Header values
+		//------------------------
+		String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_FETCH_SPECIFIC_TOPIC_URL;
+		//url params
+		String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + avd + "&opd=" + opd; // + "&xref=" + xref;
+		//for debug purposes in GUI
+		 
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		logger.info("URL: " + BASE_URL);
+		logger.info("URL PARAMS: " + urlRequestParamsKeys);
+   	 	
+		String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		//Debug --> 
+		logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		if(jsonPayload!=null){
+			JsonTdsExportSpecificTopicContainer container = this.tdsExportSpecificTopicService.getTdsExportSpecificTopicContainer(jsonPayload);
+			if(container!=null && container.getOneorder()!=null){
+				for(JsonTdsExportSpecificTopicRecord record : container.getOneorder()){
+					//Debug
+					//logger.info(record.getDkeh_17a());
+					nctsExportTargetItemRecord.setTvalk("SE");
+					nctsExportTargetItemRecord.setTvdty("830");
+					nctsExportTargetItemRecord.setTvblk(record.getSveh_aube());
+					
+ 			  	}
+	   		}
+	   	 }
+		//---------------------------
+		//STEP(2) - Item line values
+		//---------------------------
+		BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_FETCH_TOPIC_ITEMLIST_URL;
+			
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		logger.info("FETCH av item list... ");
+		logger.info("URL: " + BASE_URL);
+		logger.info("URL PARAMS: " + urlRequestParamsKeys);
+		//--------------------------------------
+		//EXECUTE the FETCH (RPG program) here
+		//--------------------------------------
+		String jsonPayloadFetch = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		 //Debug --> 
+		 //logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayloadFetch));
+		 logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		 if(jsonPayloadFetch!=null){
+			 JsonTdsExportSpecificTopicItemContainer container = this.tdsExportSpecificTopicItemService.getTdsExportSpecificTopicItemContainer(jsonPayloadFetch);
+			 if(container!=null){
+				 for(JsonTdsExportSpecificTopicItemRecord record : container.getOrderList()){
+					 //Debug
+					 nctsExportTargetItemRecord.setTvvnt(record.getSvev_vata());
+					 nctsExportTargetItemRecord.setTvvt(record.getSvev_vasl());
+					 //logger.info("Varenr:" + nctsExportTargetItemRecord.getTvvnt());
+					 //logger.info("Varebesk.:" + nctsExportTargetItemRecord.getTvvt());
+					 nctsExportTargetItemRecord.setTvvktb(record.getSvev_brut());
+					 nctsExportTargetItemRecord.setTvvktn(record.getSvev_neto());
+					 break; //only the first item line (if any)
+				 }
+			 }
+		 }	
+	}
+	/**
+	 * 
+	 * @param nctsExportTargetItemRecord
+	 * @param applicationUser
+	 * @param avd
+	 * @param opd
+	 */
+	private void createDefaultFirstItemLine(JsonNctsExportSpecificTopicItemRecord nctsExportTargetItemRecord, String applicationUser, String avd, String opd){
+		
+		JsonNctsExportSpecificTopicItemRecord tmpRecord  = this.createNewItemKeySeeds(applicationUser, avd, opd);
+		if(tmpRecord!=null){
+			String newLineNr = tmpRecord.getTvli();
+			logger.info("[INFO] New LineNr:" + newLineNr);
+			
+			//take the rest from GUI.
+			nctsExportTargetItemRecord.setTvli(newLineNr);
+			nctsExportTargetItemRecord.setTvtdn(opd);
+			nctsExportTargetItemRecord.setTvavd(avd);
+			logger.info("[INFO] New line number (on item record):" + nctsExportTargetItemRecord.getTvli());
+            //some mandatory validation
+			this.validateDefaultNctsItemNr(nctsExportTargetItemRecord);
+            logger.info("[INFO] Varubeskrivning (on item record):" + nctsExportTargetItemRecord.getTvvt());
+            logger.info("[INFO] Varekode (on item record):" + nctsExportTargetItemRecord.getTvvnt());
+            logger.info("[INFO] Bruttov. (on item record):" + nctsExportTargetItemRecord.getTvvktb());
+			logger.info("[INFO] Nettov. (on item record):" + nctsExportTargetItemRecord.getTvvktn());
+			logger.info("[INFO] Avs.land (on item record):" + nctsExportTargetItemRecord.getTvalk());
+			logger.info("[INFO] Best.land (on item record):" + nctsExportTargetItemRecord.getTvblk());
+			logger.info("[INFO] 44.Doc.type (on item record):" + nctsExportTargetItemRecord.getTvdty());
+			//
+			String BASE_URL_UPDATE = UrlDataStore.NCTS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_ITEM_URL;
+			StringBuffer urlRequestParamsKeys = new StringBuffer();
+			urlRequestParamsKeys.append("user=" + applicationUser);
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + nctsExportTargetItemRecord.getTvavd().trim());
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + nctsExportTargetItemRecord.getTvtdn().trim());
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "lin=" + nctsExportTargetItemRecord.getTvli().trim());
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "mode=" + TdsConstants.MODE_UPDATE);
+			//execute
+			String urlRequestParamsTopicItem = this.urlRequestParameterMapper.getUrlParameterValidString((nctsExportTargetItemRecord));
+			//put the final valid param. string
+			String urlRequestParams = urlRequestParamsKeys + urlRequestParamsTopicItem;
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+	    	logger.info("URL: " + BASE_URL_UPDATE);
+	    	logger.info("URL PARAMS: " + urlRequestParams);
+	    	//----------------------------------------------------------------------------
+	    	//EXECUTE the UPDATE (RPG program) here (STEP [2] when creating a new record)
+	    	//----------------------------------------------------------------------------
+			String rpgReturnPayload = this.urlCgiProxyService.getJsonContent(BASE_URL_UPDATE, urlRequestParams);
+			//Debug --> 
+	    	logger.info("Checking errMsg in rpgReturnPayload" + rpgReturnPayload);
+	    	//we must evaluate a return RPG code in order to know if the Update was OK or not
+	    	RpgReturnResponseHandler rpgReturnResponseHandler = new RpgReturnResponseHandler();
+	    	rpgReturnResponseHandler.evaluateRpgResponseOnTopicItemCreateOrUpdate(rpgReturnPayload);
+	    	if(rpgReturnResponseHandler.getErrorMessage()!=null && !"".equals(rpgReturnResponseHandler.getErrorMessage())){
+	    		rpgReturnResponseHandler.setErrorMessage("[ERROR] FATAL on UPDATE: " + rpgReturnResponseHandler.getErrorMessage());
+	    		//this.setFatalError(modelTODO, rpgReturnResponseHandler, nctsExportTargetItemRecord);
+	    		
+	    	}else{
+	    		//Update succefully done!
+	    		logger.info("[INFO] Valid default Item Line CREATE -- Record successfully updated, OK ");
+	    	}
+			
+		}else{
+			//Error here
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @param nctsExportTargetItemRecord
+	 */
+	private void validateDefaultNctsItemNr(JsonNctsExportSpecificTopicItemRecord nctsExportTargetItemRecord){
+		//Commodity code
+		if(nctsExportTargetItemRecord.getTvvnt()!=null && !"".equals(nctsExportTargetItemRecord.getTvvnt())){
+			String tmp = nctsExportTargetItemRecord.getTvvnt();
+			if(tmp.length()>6){
+				nctsExportTargetItemRecord.setTvvnt(tmp.substring(0,6));
+			}
+			//Description
+			if(nctsExportTargetItemRecord.getTvvt()!=null && !"".equals(nctsExportTargetItemRecord.getTvvt())){
+				//OK
+			}else{
+				nctsExportTargetItemRecord.setTvvt("CLONE DEFAULT");
+			}
+		}else{
+			nctsExportTargetItemRecord.setTvvnt("660000");
+			nctsExportTargetItemRecord.setTvvt("CLONE DEFAULT");
+		}
+		
+	}
+    
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @param opd
+	 * @return
+	 */
+	private JsonNctsExportSpecificTopicItemRecord createNewItemKeySeeds(String applicationUser, String avd, String opd){
+		
+		RpgReturnResponseHandler rpgReturnResponseHandler = new RpgReturnResponseHandler();
+		//request variables
+		JsonNctsExportSpecificTopicItemRecord jsonSkatNctsExportSpecificTopicItemRecord = new JsonNctsExportSpecificTopicItemRecord();
+		
+		try{
+			//---------------------------
+			//get BASE URL = RPG-PROGRAM
+	        //---------------------------
+			String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_ITEM_URL;
+			
+			//-------------------------------------------------------------------------------------------
+			// STEP[PREPARE CREATION] --> generate new opd and tuid (if applicable) in order to be able to Add (Create)
+			//-------------------------------------------------------------------------------------------
+			logger.info("STEP[1] GET SEEDS and CREATE RECORD...");
+			String numberOfItemLinesInTopicStr = "1";
+			StringBuffer urlRequestParamsForSeed = new StringBuffer();
+			//
+			urlRequestParamsForSeed.append("user=" + applicationUser);
+			urlRequestParamsForSeed.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "avd=" + avd);
+			urlRequestParamsForSeed.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + opd);
+			urlRequestParamsForSeed.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "lin=" + numberOfItemLinesInTopicStr);
+			urlRequestParamsForSeed.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "mode=" + TdsConstants.MODE_ADD);
+			logger.info("New SEEDs URL: " + BASE_URL);
+			logger.info("PARAMS for SEED: " + urlRequestParamsForSeed.toString());
+					
+			//Get the counter from RPG (new opd Id)
+			String rpgSeedNumberPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsForSeed.toString());
+			// Map the JSON response to the new seeds (thtdn,tvli)
+			// We are not using std JSON conversion since the RPGs strings are not the same. Should be the same as
+			// the header fields. The RPG output should be changed in order to comply to the field specification...
+			rpgReturnResponseHandler.evaluateRpgResponseOnTopicItemCreateOrUpdate(rpgSeedNumberPayload);
+			
+			//we must complete the GUI-json with the value from a line nr seed here
+			if(rpgReturnResponseHandler.getErrorMessage()!=null && !"".equals(rpgReturnResponseHandler.getErrorMessage()) ){
+				logger.info("[ERROR] No mandatory seeds (tvli, opd) were generated correctly)! look at std output log. [errMsg]" + rpgReturnResponseHandler.getErrorMessage());
+				jsonSkatNctsExportSpecificTopicItemRecord = null;
+				
+			}else{
+				jsonSkatNctsExportSpecificTopicItemRecord.setTvtdn(rpgReturnResponseHandler.getThtdn());
+				jsonSkatNctsExportSpecificTopicItemRecord.setTvli(rpgReturnResponseHandler.getTvli());
+			}
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	
+		return jsonSkatNctsExportSpecificTopicItemRecord;
+	}
+	
+	
+	
 	
 	/**
 	 * Generates key seeds for an upcoming update (the generation of this keys creates also a new record ready to be updated)
@@ -916,6 +1291,21 @@ public class NctsExportHeaderController {
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines
 			session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC, record);
+		}
+
+	}
+	/**
+	 * 
+	 * @param session
+	 * @param model
+	 * @param jsonNctsExportSpecificTopicContainer
+	 */
+	private void setDomainObjectsInView(HttpSession session, Map model, JsonNctsExportSpecificTopicContainer jsonNctsExportSpecificTopicContainer){
+		//SET HEADER RECORDS  (from RPG)
+		for (JsonNctsExportSpecificTopicRecord record : jsonNctsExportSpecificTopicContainer.getOneorder()){
+			model.put(TdsConstants.DOMAIN_RECORD, record);
+			//put the header topic in session for the coming item lines
+			session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC_TDS_NCTS_EXPORT, record);
 		}
 
 	}
@@ -1165,6 +1555,21 @@ public class NctsExportHeaderController {
 	public void setNctsExportSpecificTopicItemService (NctsExportSpecificTopicItemService value){ this.nctsExportSpecificTopicItemService = value; }
 	public NctsExportSpecificTopicItemService getNctsExportSpecificTopicItemService(){ return this.nctsExportSpecificTopicItemService; }
 	
+	
+	@Qualifier ("tdsExportSpecificTopicItemService")
+	private TdsExportSpecificTopicItemService tdsExportSpecificTopicItemService;
+	@Autowired
+	@Required
+	public void setTdsExportSpecificTopicItemService (TdsExportSpecificTopicItemService value){ this.tdsExportSpecificTopicItemService = value; }
+	public TdsExportSpecificTopicItemService getTdsExportSpecificTopicItemService(){ return this.tdsExportSpecificTopicItemService; }
+	
+	
+	@Qualifier ("tdsExportSpecificTopicService")
+	private TdsExportSpecificTopicService tdsExportSpecificTopicService;
+	@Autowired
+	@Required
+	public void setTdsExportSpecificTopicService (TdsExportSpecificTopicService value){ this.tdsExportSpecificTopicService = value; }
+	public TdsExportSpecificTopicService getTdsExportSpecificTopicService(){ return this.tdsExportSpecificTopicService; }
 	
 	
 	@Qualifier ("dropDownPopulationService")

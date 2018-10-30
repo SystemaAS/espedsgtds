@@ -3,6 +3,7 @@
  */
 package no.systema.tds.nctsexport.service;
 
+import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportTopicCopiedFromTransportUppdragContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportSpecificTopicContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.archive.JsonNctsExportSpecificTopicArchiveContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.logging.JsonNctsExportSpecificTopicLoggingContainer;
@@ -21,4 +22,5 @@ public interface NctsExportSpecificTopicService {
 	public JsonNctsExportSpecificTopicLoggingLargeTextContainer getNctsExportSpecificTopicLoggingLargeTextContainer(String utfPayload);
 	public JsonNctsExportSpecificTopicGuaranteeValidatorContainer getNctsExportSpecificTopicGuaranteeValidatorContainer(String utfPayload);
 	public JsonNctsExportTopicCopiedContainer getNctsExportTopicCopiedContainer(String utfPayload);
+	public JsonNctsExportTopicCopiedFromTransportUppdragContainer getNctsExportTopicCopiedFromTransportUppdragContainer(String utfPayload);
 }

@@ -99,6 +99,8 @@ public final class TdsConstants {
 	public static final String DOMAIN_SEARCH_FILTER = "searchFilter";
 	public static final String DOMAIN_RECORD_TOPIC = "recordTopic";
 	public static final String DOMAIN_RECORD_TOPIC_UNLOADING = "recordTopicUnloading";
+	public static final String DOMAIN_RECORD_TOPIC_TDS_NCTS_IMPORT = "recordTopicTdsNctsImport";
+	public static final String DOMAIN_RECORD_TOPIC_TDS_NCTS_EXPORT = "recordTopicTdsNctsExport";
 	
 	public static final String DOMAIN_LIST = "list";
 	public static final String DOMAIN_LIST_EXTERNAL_REF = "listExternalRef";

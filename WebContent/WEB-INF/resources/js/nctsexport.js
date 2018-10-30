@@ -95,4 +95,57 @@
   //END Model dialog "Kopiera Ärende
   //---------------------------------
 	  
+  
+  //-----------------------------------------------------------------------------
+  //START Model dialog "Kopiera Ärende från mall (norsk export/transport order)
+  //---------------------------------------------------------------------------
+  //Initialize <div> here
+  jq(function() { 
+	  jq("#dialogCopyFromTransportUppdrag").dialog({
+		  autoOpen: false,
+		  maxWidth:500,
+          maxHeight: 600,
+          width: 500,
+          height: 500,
+		  modal: true
+	  });
+  });
+  //Present dialog box onClick (href in parent JSP)
+  jq(function() {
+	  jq("#copyFromTransportUppdragLink").click(function() {
+		  //setters (add more if needed)
+		  jq('#dialogCopyFromTransportUppdrag').dialog( "option", "title", "Hämta ärende från SYSPED" );
+		  
+		  
+		  //deal with buttons for this modal window
+		  jq('#dialogCopyFromTransportUppdrag').dialog({
+			 buttons: [ 
+	            {
+				 id: "dialogSaveTU",	
+				 text: "Gå vidare",
+				 click: function(){
+					 		jq('#copyFromTransportUppdragForm').submit();
+				 		}
+			 	 },
+	 	 		{
+			 	 id: "dialogCancelTU",
+			 	 text: "Avbryt", 
+				 click: function(){
+					 		//back to initial state of form elements on modal dialog
+					 		jq("#dialogSaveSU").button("option", "disabled", true);
+					 		jq("#selectedAvd").val("");
+					 		jq("#selectedOpd").val("");
+					 		jq("#selectedExtRefNr").val("");
+							jq( this ).dialog( "close" ); 
+					 		
+							jq( this ).dialog( "close" ); 
+				 		} 
+	 	 		 } ] 
+		  });
+		  //init values
+		  jq("#dialogSaveSU").button("option", "disabled", false);
+		  //open now
+		  jq('#dialogCopyFromTransportUppdrag').dialog('open');
+	  });
+  });
  

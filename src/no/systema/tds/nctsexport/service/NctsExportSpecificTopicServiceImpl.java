@@ -10,11 +10,15 @@ import no.systema.tds.nctsexport.mapper.jsonjackson.NctsExportSpecificTopicArchi
 import no.systema.tds.nctsexport.mapper.jsonjackson.NctsExportSpecificTopicLoggingLargeTextMapper;
 import no.systema.tds.nctsexport.mapper.jsonjackson.NctsExportSpecificTopicLoggingMapper;
 import no.systema.tds.nctsexport.mapper.jsonjackson.NctsExportTopicCopiedMapper;
+import no.systema.tds.nctsexport.mapper.jsonjackson.NctsExportTopicCopiedFromTransportUppdragMapper;
+
 import no.systema.tds.nctsexport.model.jsonjackson.topic.archive.JsonNctsExportSpecificTopicArchiveContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.logging.JsonNctsExportSpecificTopicLoggingContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.logging.JsonNctsExportSpecificTopicLoggingLargeTextContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.validation.JsonNctsExportSpecificTopicGuaranteeValidatorContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportTopicCopiedContainer;
+import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportTopicCopiedFromTransportUppdragContainer;
+
 
 /**
  * @author oscardelatorre
@@ -125,6 +129,20 @@ public class NctsExportSpecificTopicServiceImpl implements NctsExportSpecificTop
 		
 		return container;
 	}
+	
+	public JsonNctsExportTopicCopiedFromTransportUppdragContainer getNctsExportTopicCopiedFromTransportUppdragContainer(String utfPayload){
+		JsonNctsExportTopicCopiedFromTransportUppdragContainer container = null;
+		try{
+			NctsExportTopicCopiedFromTransportUppdragMapper mapper = new NctsExportTopicCopiedFromTransportUppdragMapper();
+			container = mapper.getContainer(utfPayload);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return container;
+	}
+	
+	
 	
 	
 }

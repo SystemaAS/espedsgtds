@@ -27,7 +27,7 @@
 			</td>
 			<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 			<td width="20%" valign="bottom" class="tabDisabled" align="center" nowrap>
-				<a style="display:block;" href="nctsexport_edit.do?action=doPrepareCreate&user=${user.user}&sign=${searchFilterTdsExportNcts.sign}">
+				<a style="display:block;" id="copyFromTransportUppdragLink" runat="server" href="#">
 					<font class="tabDisabledLink">&nbsp;<spring:message code="systema.ncts.export.createnew.tab"/></font>
 					<img valign="bottom" src="resources/images/add.png" width="12" hight="12" border="0" alt="create new">
 					
@@ -280,6 +280,66 @@
 		</td>
 		</tr>
     </c:if> 
+    
+    
+    <tr>
+	<td>
+		<div id="dialogCopyFromTransportUppdrag" title="Dialog">
+				<form  action="nctsexport_doFetchTopicFromTransportUppdrag.do" name="copyFromTransportUppdragForm" id="copyFromTransportUppdragForm" method="post">
+				 	<input type="hidden" name="actionGS" id="actionGS" value='doUpdate'/>
+					<input type="hidden" name="sign" id="sign" value='${searchFilterTdsExportNcts.sign}'/>
+						
+					<p class="text14" >Du kan hämta ett nytt ärende från TDS Export eller från ett Transportuppdrag.
+					 	Du måste då välja:&nbsp;<b>Avdelning</b>&nbsp;och&nbsp;<b>Ärendenummer</b>.
+					</p>
+					<p class="text14">Flödet för att hämta är:
+					</p>
+					<ol class="text14" >
+						<li class="text14" >
+							Ett nytt ärende kommer att skapas om det ärendet du matar in finns i antingen 
+							(a)&nbsp;<b>TDS Export</b> eller (b)&nbsp;<b>Transportuppdrag</b>
+						</li>
+						<br/>
+						<li class="text14" >
+							Om ärendet inte finns varken i TDS Export eller i Transportuppdrag måste du skapa ett nytt ärende. Du omdirigeras dit automatiskt.
+						</li>
+					</ol>
+					
+					<p class="text14" >Om du däremot vill mata in ett nytt ärende, utan att köra denna rutinen, lämna Avdelning och Ärendenr. tomma och klicka på "Gå vidare".
+					</p>
+					
+					<table>
+						<tr>
+							<td class="text14" align="left" >&nbsp;Avdelning</td>
+  							<td class="text14" align="left" >&nbsp;Ärendenr.</td>
+  							<td class="text14" align="left" >&nbsp;Ext.refnr.</td>
+  						</tr>	
+						<tr>
+							<td class="text14MediumBlue">
+								<select class="selectMediumBlueE2" name="selectedAvd" id="selectedAvd">
+				            		<option value="">-Välj-</option>
+				 				  	<c:forEach var="record" items="${model.avdList}" >
+			                             	 	<option value="${record.avd}">${record.avd}</option>
+									</c:forEach> 
+								</select>
+							</td>
+							<td class="text14MediumBlue">
+								<input type="text" class="inputText" id="selectedOpd" name="selectedOpd" size="10" maxlength="35" value=''>&nbsp;
+							</td>
+							<td class="text14MediumBlue">
+								<input type="text" class="inputText" id="selectedExtRefNr" name="selectedExtRefNr" size="25" maxlength="35" value=''>&nbsp;
+								<a tabindex="-1" id="extRefIdLink">
+									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
+								</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</td>
+	</tr>
+    
+    
 </table>	
 		
 <!-- ======================= footer ===========================-->
