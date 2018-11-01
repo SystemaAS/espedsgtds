@@ -34,26 +34,28 @@
 							<input type="hidden" name="avdNcts" id="avdNcts" value="${model.avdNcts}">
 							<input type="hidden" name="opdNcts" id="opdNcts" value="${model.opdNcts}">
 						<tr>
-							<td class="text11">&nbsp;&nbsp;Avd</td>
-							<td class="text11">&nbsp;&nbsp;Sign</td>
-							<td class="text11">&nbsp;&nbsp;Ärende</td>
-							<td class="text11">&nbsp;&nbsp;Tullid.</td>
-							<td class="text11">&nbsp;&nbsp;Medd.typ</td>
-							<td class="text11">&nbsp;&nbsp;Datum</td>
-							<td class="text11">&nbsp;&nbsp;Status</td>
-							<td class="text11">&nbsp;&nbsp;Avs.</td>
-							<td class="text11">&nbsp;&nbsp;Mot.</td>
+							<td class="text14">&nbsp;&nbsp;Avd</td>
+							<td class="text14">&nbsp;&nbsp;Sign</td>
+							<td class="text14">&nbsp;&nbsp;Ärende</td>
+							<td class="text14">&nbsp;&nbsp;Ext.ref</td>
+							<td class="text14">&nbsp;&nbsp;Tullid.</td>
+							<td class="text14">&nbsp;&nbsp;Medd.typ</td>
+							<td class="text14">&nbsp;&nbsp;Datum</td>
+							<td class="text14">&nbsp;&nbsp;Status</td>
+							<td class="text14">&nbsp;&nbsp;Avs.</td>
+							<td class="text14">&nbsp;&nbsp;Mot.</td>
 						 </tr>
 						 <tr>	
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="avd" id="avd" size="5" maxlength="4" value="${searchFilter.avd}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="sign" id="sign" size="5" maxlength="3" value="${searchFilter.sign}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="opd" id="opd" size="8" maxlength="7" value="${searchFilter.opd}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="tullId" id="mrn" size="10" maxlength="35" value="${searchFilter.tullId}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="mtyp" id="refnr" size="4" maxlength="3" value="${searchFilter.mtyp}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="datum" id="datum" size="10" maxlength="8" value="${searchFilter.datum}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="status" id="status" size="3" maxlength="1" value="${searchFilter.status}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="avsNavn" id="avsNavn" size="15" maxlength="25" value="${searchFilter.avsNavn}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="motNavn" id="motNavn" size="15" maxlength="25" value="${searchFilter.motNavn}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="avd" id="avd" size="5" maxlength="4" value="${searchFilter.avd}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="sign" id="sign" size="5" maxlength="3" value="${searchFilter.sign}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="opd" id="opd" size="8" maxlength="7" value="${searchFilter.opd}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="xref" id="xref" size="10" maxlength="20" value='${searchFilter.xref}'>&nbsp;</td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="tullId" id="mrn" size="10" maxlength="35" value="${searchFilter.tullId}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="mtyp" id="refnr" size="4" maxlength="3" value="${searchFilter.mtyp}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="datum" id="datum" size="10" maxlength="8" value="${searchFilter.datum}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="status" id="status" size="3" maxlength="1" value="${searchFilter.status}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="avsNavn" id="avsNavn" size="15" maxlength="25" value="${searchFilter.avsNavn}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="motNavn" id="motNavn" size="15" maxlength="25" value="${searchFilter.motNavn}"></td>
 							<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="search.label"/>'>
 		           		</tr>
 		           		</form>
@@ -75,6 +77,7 @@
 							<th class="text14" title="avd">&nbsp;Avd&nbsp;</th>
 		                    <th class="text14" title="sign">&nbsp;Sign&nbsp;</th>
 		                    <th class="text14" title="opd">&nbsp;Ärende&nbsp;</th>
+		                    <th class="text14" title="opd">&nbsp;Ext.ref.&nbsp;</th>
 		                    <th class="text14" title="tullid">&nbsp;Tullid&nbsp;</th>
 		                    <th class="text14" title="mtyp">&nbsp;Medd.typ&nbsp;</th>
 		                    <th class="text14" title="datum">&nbsp;Datum&nbsp;</th>
@@ -97,9 +100,10 @@
 			               <td class="text14">&nbsp;${record.avd}</td>
 			               <td class="text14">&nbsp;${record.sign}</td>
 			               <%-- <td nowrap style="cursor:pointer;" class="text11MediumBlue" id="avd${record.avd}@opd${record.opd}@xref${record.xref}@refnr${record.refnr}@mrn${record.dkeh_mrn}@valuta${record.dkeh_221}@blp${record.dkeh_222}" >  --%>
-			               <td nowrap style="cursor:pointer;" class="text14MediumBlue" id="avd${record.avd}@opd${record.opd}@tullid${record.tullId}@valuta${Xrecord.dkeh_221}@blp${Xrecord.dkeh_222}" >
+			               <td nowrap style="cursor:pointer;" class="text14MediumBlue" id="avd${record.avd}@opd${record.opd}@tullid${record.tullId}@valuta${Xrecord.dkeh_221}@blp${Xrecord.dkeh_222}@xref${record.h_xref}" >
 			               		<img title="select" style="vertical-align:top;" src="resources/images/bebullet.gif" border="0" alt="edit">&nbsp;${record.opd}
 			               	</td>
+			               <td class="text14">&nbsp;${record.h_xref}</td>
 		               	   <td class="text14">&nbsp;${record.tullid}</td>
 		               	   <td class="text14">&nbsp;${record.mtyp}</td>
 		               	   <td class="text14">&nbsp;${record.datum}</td>

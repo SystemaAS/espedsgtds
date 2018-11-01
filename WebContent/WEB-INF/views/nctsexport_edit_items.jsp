@@ -1007,7 +1007,7 @@
 									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" border="0" alt="search" >
 								</a>
 		            			&nbsp;&nbsp;<span title="xref" >Exst.ref.nr.</span>	
-		            			<input type="text" class="inputTextMediumBlue" style="background-color:#FFFF99;"  name="xref" id="xref" size="8" maxlength="7" value="">
+		            			<input type="text" class="inputTextMediumBlue" style="background-color:#FFFF99;"  name="xref" id="xref" size="25" maxlength="35" value="">
 		            			<a tabindex="-1" id="xrefIdLink">
 									<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" border="0" alt="search" >
 								</a>

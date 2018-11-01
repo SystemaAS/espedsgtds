@@ -658,7 +658,12 @@ public class NctsExportHeaderController {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @param session
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="nctsexport_doFetchTopicFromTransportUppdrag.do", method={RequestMethod.POST} )
 	public ModelAndView doFetchTopicFromTransportUppdrag( HttpSession session, HttpServletRequest request){
 		JsonNctsExportTopicCopiedFromTransportUppdragContainer jsonContainer = null;
@@ -669,7 +674,7 @@ public class NctsExportHeaderController {
 		String sign=request.getParameter("sign");
 		String avd=request.getParameter("selectedAvd");
 		String opd=request.getParameter("selectedOpd");
-		String extRefNr=request.getParameter("selectedExtRefNr"); //Domino ref in Dachser DK AS				
+		String extRefNr=request.getParameter("selectedExtRefNr"); //Domino ref in Dachser DK/SE/NO				
 		
 		ModelAndView successView = new ModelAndView("nctsexport_edit");
 		//fallback view (usually on errors)
@@ -719,6 +724,7 @@ public class NctsExportHeaderController {
 		    				//request.setAttribute("errorMessageOnCopyFromTransportOppdrag", jsonContainer.getErrMsg());
 		    				model.put(TdsConstants.ASPECT_ERROR_MESSAGE, jsonContainer.getErrMsg());
 		    				model.put(TdsConstants.ASPECT_ERROR_META_INFO, "Vid kopiering av TransportUppdrag...");
+		    				model.put("sign", sign);
 		    				fallbackView.addObject(TdsConstants.DOMAIN_MODEL, model);
 		    				
 		    				return fallbackView;
@@ -772,7 +778,7 @@ public class NctsExportHeaderController {
 		    		return loginView;
 		    	}
 			}else{
-				logger.warn("[INFO] Opdnr is NULL. Redirecting to: skatnctsexport_edit.do?action=doPrepareCreate... ");
+				logger.warn("[INFO] Opdnr is NULL. Redirecting to: nctsexport_edit.do?action=doPrepareCreate... ");
 				//return new ModelAndView("redirect:tdsimport_edit.do?action=doPrepareCreate");
 				return cleanNewView;
 			}			

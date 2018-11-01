@@ -103,7 +103,7 @@
   jq(function() { 
 	  jq("#dialogCopyFromTransportUppdrag").dialog({
 		  autoOpen: false,
-		  maxWidth:500,
+		  maxWidth:600,
           maxHeight: 600,
           width: 500,
           height: 500,
@@ -146,6 +146,18 @@
 		  jq("#dialogSaveSU").button("option", "disabled", false);
 		  //open now
 		  jq('#dialogCopyFromTransportUppdrag').dialog('open');
+	  });
+  });
+  
+  jq(function() {
+	  jq('#extRefIdLink').click(function() {
+	  	jq('#extRefIdLink').attr('target','_blank');
+	  	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#selectedAvd').val() + '&opd=' + jq('#selectedOpd').val() + '&xref=' + jq('#selectedExtRefNr').val(), "codeWin", "top=300px,left=500px,height=600px,width=1200px,scrollbars=no,status=no,location=no");
+	  });
+	  jq('#extRefIdLink').keypress(function(e){ //extra feature for the end user
+			if(e.which == 13) {
+				jq('#extRefIdLink').click();
+			}
 	  });
   });
  

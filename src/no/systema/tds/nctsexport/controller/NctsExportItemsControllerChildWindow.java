@@ -243,6 +243,9 @@ public class NctsExportItemsControllerChildWindow {
 		if(searchFilter.getOpd()!=null && !"".equals(searchFilter.getOpd())){
 			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "opd=" + searchFilter.getOpd());
 		}
+		if(searchFilter.getXref()!=null && !"".equals(searchFilter.getXref())){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "xref=" + searchFilter.getXref());
+		}
 		if(searchFilter.getSign()!=null && !"".equals(searchFilter.getSign())){
 			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "sign=" + searchFilter.getSign());
 		}

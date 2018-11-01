@@ -807,7 +807,7 @@
   	jq(function() {
 	  	jq('#tvtdn2IdLink').click(function() {
 	    	jq('#tvtdn2IdLink').attr('target','_blank');
-	    	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#tvavd2').val() + '&opd=' + jq('#tvtdn2').val() + '&xref=' + jq('#xref').val(), "codeWin", "top=300px,left=500px,height=600px,width=900px,scrollbars=no,status=no,location=no");
+	    	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#tvavd2').val() + '&opd=' + jq('#tvtdn2').val() + '&xref=' + jq('#xref').val(), "codeWin", "top=300px,left=500px,height=600px,width=1200px,scrollbars=no,status=no,location=no");
 	    });
 	    jq('#tvtdn2IdLink').keypress(function(e){ //extra feature for the end user
 			if(e.which == 13) {
@@ -816,7 +816,7 @@
 	    });
 	    jq('#xrefIdLink').click(function() {
 	    	jq('#xrefIdLink').attr('target','_blank');
-	    	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#tvavd2').val() + '&opd=' + jq('#tvtdn2').val() + '&xref=' + jq('#xref').val(), "codeWin", "top=300px,left=500px,height=600px,width=900px,scrollbars=no,status=no,location=no");
+	    	window.open('nctsexport_edit_items_childwindow_uppdragslist.do?action=doFind&avd=' + jq('#tvavd2').val() + '&opd=' + jq('#tvtdn2').val() + '&xref=' + jq('#xref').val(), "codeWin", "top=300px,left=500px,height=600px,width=1200px,scrollbars=no,status=no,location=no");
 	    });
 	    jq('#xrefIdLink').keypress(function(e){ //extra feature for the end user
 			if(e.which == 13) {
