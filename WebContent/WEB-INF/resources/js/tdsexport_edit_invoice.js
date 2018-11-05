@@ -59,9 +59,14 @@
 				ajax : 'true'
 			}, function(data) {
 				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					jq('#svef_vaku').val(data[i].svvk_krs);
-					jq('#factor').val(data[i].svvs_omr);
+				if(len>0){
+					for ( var i = 0; i < len; i++) {
+						jq('#svef_vaku').val(data[i].svvk_krs);
+						jq('#factor').val(data[i].svvs_omr);
+					}
+				}else{
+					jq('#svef_vaku').val("1");
+					jq('#factor').val("1");
 				}
 				
 			});

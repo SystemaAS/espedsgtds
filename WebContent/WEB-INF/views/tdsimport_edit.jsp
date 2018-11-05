@@ -247,7 +247,14 @@
            			<select class="selectMediumBlueE2" name="avd" id="avd">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.avdList}" >
-                       	 	<option value="${record.avd}"<c:if test="${model.record.svih_syav == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
+                       	 	<c:choose>
+	 				  		 <c:when test="${not empty model.record.svih_syav}">
+                        	 	<option value="${record.avd}"<c:if test="${model.record.svih_syav == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
+                        	 </c:when>
+                       	 	<c:otherwise>
+                        	 	<option value="${record.avd}"<c:if test="${model.avd == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
+                        	 </c:otherwise>
+                        	 </c:choose>
 						</c:forEach> 
 					</select>
 					
@@ -299,7 +306,7 @@
 			 					<span title="svih_dek1">Dekl.&nbsp;</span>
 				 			</td>
 				 			<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="svih_dek1" id="svih_dek1" TABINDEX=1>
+				 				<select class="inputTextMediumBlueMandatoryField" name="svih_dek1" id="svih_dek1" >
 				 				  <option value="">-Välj-</option>
 								  <option value="EU"<c:if test="${model.record.svih_dek1 == 'EU'}"> selected </c:if> >EU</option>
 								  <option value="CO"<c:if test="${model.record.svih_dek1 == 'CO'}"> selected </c:if> >CO</option>
@@ -331,7 +338,7 @@
 								</div>
 				 			</td>
 				 			<td>	
-				 				<select class="inputTextMediumBlueMandatoryField" name="svih_upps" id="svih_upps" TABINDEX=5>
+				 				<select class="inputTextMediumBlueMandatoryField" name="svih_upps" id="svih_upps">
 			 					  <option value="">-Välj-</option>
 								  <option value="O"<c:if test="${model.record.svih_upps == 'O'}"> selected </c:if> >O</option>
 								  <option value="T"<c:if test="${model.record.svih_upps == 'T'}"> selected </c:if> >T</option>
@@ -364,7 +371,7 @@
 							
 			 				</td>
 				 			<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="svih_mtyp" id="svih_mtyp" TABINDEX=10>
+				 				<select class="inputTextMediumBlueMandatoryField" name="svih_mtyp" id="svih_mtyp">
 				 				  <option selected value="">-Välj-</option>
 								  <option value="DNU"<c:if test="${model.record.svih_mtyp == 'DNU'}"> selected </c:if> >DNU</option>
 								  <option value="DNK"<c:if test="${model.record.svih_mtyp == 'DNK'}"> selected </c:if> >DNK</option>
@@ -421,7 +428,7 @@
 				 				</div>
 				 			</td>
 				 			<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="svih_dek2" id="svih_dek2" TABINDEX=2>
+				 				<select class="inputTextMediumBlueMandatoryField" name="svih_dek2" id="svih_dek2">
 				 					<option value="">-Välj-</option>
 								  <option value="A"<c:if test="${model.record.svih_dek2 == 'A'}"> selected </c:if> >A</option>
 								  <option value="B"<c:if test="${model.record.svih_dek2 == 'B'}"> selected </c:if> >B</option>
@@ -475,7 +482,7 @@
 				 				
 			 				</td>
 			 				<td>
-				 				<select class="selectMediumBlueE2" name="svih_tart" id="svih_tart" TABINDEX=6>
+				 				<select class="selectMediumBlueE2" name="svih_tart" id="svih_tart">
 				 				  <option selected value="">-Välj-</option>
 								  <option value="1"<c:if test="${model.record.svih_tart == 1}"> selected </c:if> >1</option>
 								  <option value="2"<c:if test="${model.record.svih_tart == 2}"> selected </c:if> >2</option>

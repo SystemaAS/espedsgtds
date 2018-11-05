@@ -73,10 +73,10 @@
 					
 					jq('#tign').val(data[i].tign);
 					jq('#titrnr').val(data[i].titrnr);
-					//jq('#tignsk').val(data[i].tignsk);
-					//jq('#tialk').val(data[i].tialk);
-					jq('#tignsk').val("SV");//default
-					jq('#tialk').val("SE");//default
+					jq('#tignsk').val(data[i].tignsk);
+					jq('#tialk').val(data[i].tialk);
+					//jq('#tignsk').val("SV");//default
+					//jq('#tialk').val("SE");//default
 					jq('#tialsk').val(data[i].tialsk);
 					
 					jq('#tials').val(data[i].tials);
@@ -170,7 +170,12 @@
 	    	window.open('nctsimport_edit_childwindow_tullkontor.do?action=doInit&tkkode=' + jq("#"+id).val()+ '&ctype=' + id, "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
 	    }
 	
-		
+    jq(document).ready(function(){ 
+  	    //trigger events
+  	    jq("#avd").change();
+  	    jq("#avd").focus();
+		  	    
+  	});		
 	
 	
 	

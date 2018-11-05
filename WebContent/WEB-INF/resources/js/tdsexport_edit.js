@@ -1158,17 +1158,20 @@
 	  //END Model dialog: "File upload"
 	  //-------------------------------------------
 	  
-	  
-	  jq(document).ready(function(){
-	  	    jq(this).scrollTop(0); //needed for Chrome (bug)
-	  	    //checkbox proforma
-	  	    if (jq("#updateProformaCheckbox").is(':checked')){
-		        jq("#updateProformaIcon").show();
-		    }else{
-		    	jq("#updateProformaIcon").hide();
-		    }
+	 
+	 jq(document).ready(function(){
+  	    jq(this).scrollTop(0); //needed for Chrome (bug)
+  	    //checkbox proforma
+  	    if (jq("#updateProformaCheckbox").is(':checked')){
+	        jq("#updateProformaIcon").show();
+	    }else{
+	    	jq("#updateProformaIcon").hide();
+	    }
+  	    jq("#avd").change();
+  	    jq("#avd").focus();
 	  	    
-	  	});
+  	  });
+	  
 	  	//checkbox proforma
 	  	jq(function() {
 	  		jq('#updateProformaCheckbox').change(function() {

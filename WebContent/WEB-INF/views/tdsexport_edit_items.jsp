@@ -885,7 +885,7 @@
 											</div>
 											</td>
 											
-								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_stva" id="svev_stva" size="10" maxlength="10" value="${model.record.svev_stva}"></td>
+								           	<td class="text14" align="left"><input tabindex= -1 readonly type="text" class="inputTextReadOnly" name="svev_stva" id="svev_stva" size="10" value="${model.record.svev_stva}"></td>
 								        </tr>
 								        
 								        <tr>
@@ -908,7 +908,7 @@
 											</div>
 											</td>
 											
-								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_stva2" id="svev_stva2" size="10" maxlength="10" value="${model.record.svev_stva2}"></td>
+								           	<td class="text14" align="left"><input tabindex= -1 readonly type="text" class="inputTextReadOnly" name="svev_stva2" id="svev_stva2" size="10" value="${model.record.svev_stva2}"></td>
 								        </tr>
 								        <tr height="5"><td></td></tr>
 										</table>

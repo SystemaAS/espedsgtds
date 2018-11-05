@@ -112,6 +112,7 @@ public class NctsExportHeaderController {
 		
 		Map model = new HashMap();
 		String sign = request.getParameter("sign");
+		String avd = request.getParameter("avd");
 		//logger.info("sign:" + sign);
 		
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
@@ -130,6 +131,7 @@ public class NctsExportHeaderController {
 			this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
     		//domain
 			model.put("sign", sign);
+			model.put("avd", avd);
 			successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 
@@ -681,7 +683,7 @@ public class NctsExportHeaderController {
 		ModelAndView fallbackView = new ModelAndView("nctsexport_edit");
 		fallbackView.addObject("action", "doPrepareCreate");
 		//this view is when the end user choose not to copy at all. He/She will start from scratch (empty form (header))
-		ModelAndView cleanNewView = new ModelAndView("redirect:nctsexport_edit.do?action=doPrepareCreate&sign=" + sign );
+		ModelAndView cleanNewView = new ModelAndView("redirect:nctsexport_edit.do?action=doPrepareCreate&sign=" + sign + "&avd=" + avd );
 		
 		String method = "[RequestMapping-->nctsexport_doFetchTopicFromTransportUppdrag.do]";
 		logger.info("Method: " + method);

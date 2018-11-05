@@ -254,7 +254,14 @@
            			<select class="selectMediumBlueE2" name="avd" id="avd">
 	            		<option value="">-Välj-</option>
 	 				  	<c:forEach var="record" items="${model.avdList}" >
-                       	 	<option value="${record.avd}"<c:if test="${model.record.tiavd == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
+                       	 	<c:choose>
+	 				  		 <c:when test="${not empty model.record.tiavd}">
+                        	 	<option value="${record.avd}"<c:if test="${model.record.tiavd == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
+                        	 </c:when>
+                        	 <c:otherwise>
+                        	 	<option value="${record.avd}"<c:if test="${model.avd == record.avd}"> selected </c:if> >${record.avd}<c:if test="${record.tst == '1'}">&nbsp;(test)</c:if></option>
+                        	 </c:otherwise>
+                        	 </c:choose>
 						</c:forEach> 
 					</select>
 					&nbsp;

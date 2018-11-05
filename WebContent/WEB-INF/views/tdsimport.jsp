@@ -524,7 +524,7 @@
 								<select class="selectMediumBlueE2" name="selectedAvd" id="selectedAvd">
 				            		<option value="">-Välj-</option>
 				 				  	<c:forEach var="record" items="${model.avdList}" >
-			                             	 	<option value="${record.avd}">${record.avd}</option>
+	                             	 	<option value="${record.avd}" <c:if test="${user.asavd == record.avd}"> selected </c:if> >${record.avd}</option>
 									</c:forEach> 
 								</select>
 							</td>

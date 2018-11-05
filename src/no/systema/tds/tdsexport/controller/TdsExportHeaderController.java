@@ -119,6 +119,7 @@ public class TdsExportHeaderController {
 	public ModelAndView doPrepareCreate(HttpSession session, HttpServletRequest request){
 		Map model = new HashMap();
 		String sign = request.getParameter("sign");
+		String avd = request.getParameter("avd");
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		ModelAndView successView = new ModelAndView("tdsexport_edit");
 		logger.info("Method: doPrepareCreate [RequestMapping-->tdsexport_edit.do]");
@@ -133,10 +134,12 @@ public class TdsExportHeaderController {
     		//land & currency codes
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
 			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDX");
+			
 			//drop down to print skilleark (must be Z type)
 			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString2(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model, appUser, "Z");
 			//domain
 			model.put("sign", sign);
+			model.put("avd", avd);
 			successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 		}
@@ -224,6 +227,7 @@ public class TdsExportHeaderController {
 			    		//land and currency codes
 			    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
 	    				this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDX");
+	    				
 	    				this.taricDirectAccessorMgr.askTullid(model);
 	    				
 			    		this.setDomainObjectsInView(session, model, jsonTdsExportSpecificTopicContainer,sumTopicRecord, sumFaktTotalRecord);
@@ -806,7 +810,7 @@ public class TdsExportHeaderController {
 		String sign = request.getParameter("sign");
 		
 		ModelAndView successView = new ModelAndView("tdsexport_edit");
-		ModelAndView fallbackView = new ModelAndView("redirect:tdsexport_edit.do?action=doPrepareCreate&user="+appUser.getUser()+"&sign=" + sign);
+		ModelAndView fallbackView = new ModelAndView("redirect:tdsexport_edit.do?action=doPrepareCreate&user="+appUser.getUser()+"&sign=" + sign + "&avd=" + avd);
 		
 		//check user (should be in session already)
 		if(appUser==null){

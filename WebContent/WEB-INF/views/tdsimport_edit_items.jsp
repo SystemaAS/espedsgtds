@@ -219,7 +219,6 @@
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ankv.extraMangd"/>&nbsp;</th>
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sum_of_sviv_kotas.kolliAnt"/>(&Sigma;)</th>
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vasl.varuBeskrivning"/>&nbsp;</th>
-													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_unknown.avgifter"/>&nbsp;</th>
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_err.error"/>&nbsp;</th>
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fabl.fbelopp"/>&nbsp;</th>
 													                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_stva.statvarde"/>&nbsp;</th>
@@ -244,74 +243,7 @@
 														               <td class="text12" >&nbsp;${record.sviv_ankv}</td>
 														               <td class="text12" >&nbsp;${record.sum_of_sviv_kotas}</td>
 														               <td class="text12" >&nbsp;${record.sviv_vasl}</td>
-														               <td class="text12" align="center">
-														               		<font class="text14OrangeBold" onMouseOver="showPop('avgifterReadOnly_all_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_all_info_${record.sviv_syli}');" alt="info">
-														               		 <img valign="bottom" src="resources/images/infoOrange.png" width="12px" height="12px" border="0" alt="avg.info">&nbsp;
-														               		</font>
-														               		
-														               		<div class="text12" style="position: relative;display:inline" align="left" >
-														               		<span class="popupWithInputTextGrayBg" style="position:absolute; top:2px; width:300px;" id="avgifterReadOnly_all_info_${record.sviv_syli}" >
-													
-													           				<table class="noBg" >
-													           					<tr>
-													           						<td colspan="5" class="text14OrangeBold">Avgiftsberäkningar</td>
-													           					</tr>
-													           					<tr height="10"><td class="text14"></td></tr>
-													           					<tr>
-													           						<td class="text14" colspan="2" >Linjenr&nbsp;<b>${record.sviv_syli}</b></td>
-													           						<td class="text14" colspan="3" >Varukod&nbsp;<b>${record.sviv_vata}</b></td>
-													           					</tr>
-													           					<tr height="10"><td class="text14"></td></tr>
-													           					<tr class="tableHeaderField" height="20" valign="left">
-																    					<td class="tableHeaderFieldFirst">&nbsp;Slag&nbsp;</td>   
-																    					<td class="tableHeaderField">&nbsp;Grund&nbsp;</td>   
-																    					<td class="tableHeaderField">&nbsp;Sats&nbsp;</td>   
-																    					<td class="tableHeaderField">&nbsp;Enhet&nbsp;</td>   
-																    					<td class="tableHeaderField">&nbsp;Belopp&nbsp;</td>   
-															    				</tr>	
-															    				<tr class="tableRow" >
-													           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk1}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abg1}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abs1}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abx1}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abb1}</td>
-													           					</tr>
-													           					
-																				<tr class="tableRow" >
-													           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk2}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abg2}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abs2}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abx2}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abb2}</td>
-													           					</tr>
-																				<tr class="tableRow" >
-													           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk3}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abg3}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abs3}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abx3}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abb3}</td>
-													           					</tr>
-																				<tr class="tableRow" >
-													           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk4}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abg4}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abs4}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abx4}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abb4}</td>
-													           					</tr>
-																				<tr class="tableRow" >
-													           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk5}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abg5}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abs5}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abx5}</td>
-													           						<td class="tableCell" >&nbsp;${record.sviva_abb5}</td>
-													           					</tr>
-													           					<tr height="10"><td></td></tr>
-													           					
-													           				</table>		 
-													           			</span>
-													           			</div>
-														               		
-														               </td>
+														               
 														               <td align="center" class="text12">&nbsp;
 														               		<c:if test="${not empty record.sviv_err}">
 														               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">
@@ -409,7 +341,6 @@
 					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_ankv.extraMangd"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sum_of_sviv_kotas.kolliAnt"/>(&Sigma;)</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_vasl.varuBeskrivning"/>&nbsp;</th>
-					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_unknown.avgifter"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_err.error"/>&nbsp;</th>
 										<th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_fabl.fbelopp"/>&nbsp;</th>
 										<th class="text14">&nbsp;<spring:message code="systema.tds.import.item.list.label.sviv_stva.statvarde"/>&nbsp;</th>
@@ -438,73 +369,6 @@
 							               <td class="text14" >${record.sviv_ankv}</td>
 							               <td class="text14" >${record.sum_of_sviv_kotas}</td>
 							               <td class="text14" >&nbsp;${record.sviv_vasl}</td>
-							               <td class="text14" align="center">
-							               		<font class="text14OrangeBold" onMouseOver="showPop('avgifterReadOnly_info_${record.sviv_syli}');" onMouseOut="hidePop('avgifterReadOnly_info_${record.sviv_syli}');" alt="info">
-							               		 <img valign="bottom" src="resources/images/infoOrange.png" width="12px" height="12px" border="0" alt="avg.info">&nbsp;
-							               		</font>
-							               
-							               <div class="text14" style="position: relative;display:inline" align="left" >
-							               <span class="popupWithInputTextGrayBg" style="position:absolute; top:2px; width:300px;" id="avgifterReadOnly_info_${record.sviv_syli}" >
-						
-						           				<table class="noBg" >
-						           					<tr>
-						           						<td colspan="5" class="text14OrangeBold">Avgiftsberäkningar</td>
-						           					</tr>
-						           					<tr height="10"><td class="text14"></td></tr>
-						           					<tr>
-						           						<td class="text14" colspan="2" >Linjenr&nbsp;<b>${record.sviv_syli}</b></td>
-						           						<td class="text14" colspan="3" >Varukod&nbsp;<b>${record.sviv_vata}</b></td>
-						           					</tr>
-						           					<tr height="10"><td class="text14"></td></tr>
-						           					<tr class="tableHeaderField" height="20" valign="left">
-									    					<td class="tableHeaderFieldFirst">&nbsp;Slag&nbsp;</td>   
-									    					<td class="tableHeaderField">&nbsp;Grund&nbsp;</td>   
-									    					<td class="tableHeaderField">&nbsp;Sats&nbsp;</td>   
-									    					<td class="tableHeaderField">&nbsp;Enhet&nbsp;</td>   
-									    					<td class="tableHeaderField">&nbsp;Belopp&nbsp;</td>   
-								    				</tr>	
-								    				<tr class="tableRow" >
-						           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk1}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abg1}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abs1}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abx1}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abb1}</td>
-						           					</tr>
-						           					
-													<tr class="tableRow" >
-						           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk2}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abg2}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abs2}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abx2}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abb2}</td>
-						           					</tr>
-													<tr class="tableRow" >
-						           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk3}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abg3}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abs3}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abx3}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abb3}</td>
-						           					</tr>
-													<tr class="tableRow" >
-						           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk4}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abg4}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abs4}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abx4}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abb4}</td>
-						           					</tr>
-													<tr class="tableRow" >
-						           						<td class="tableCellFirst" >&nbsp;${record.sviva_abk5}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abg5}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abs5}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abx5}</td>
-						           						<td class="tableCell" >&nbsp;${record.sviva_abb5}</td>
-						           					</tr>
-						           					<tr height="10"><td></td></tr>
-						           					
-						           				</table>		 
-						           			</span>
-						           			</div>	
-							               	</td>
 							               <td align="center" class="text14">&nbsp;
 							               		<c:if test="${not empty record.sviv_err}">
 							               			<img valign="bottom" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="remove">

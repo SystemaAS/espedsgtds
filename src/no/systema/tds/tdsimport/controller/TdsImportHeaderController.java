@@ -109,6 +109,7 @@ public class TdsImportHeaderController {
 	public ModelAndView doPrepareCreate(HttpSession session, HttpServletRequest request){
 		Map model = new HashMap();
 		String sign = request.getParameter("sign");
+		String avd = request.getParameter("avd");
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		//String messageFromContext = this.context.getMessage("user.label",new Object[0], request.getLocale());
 		ModelAndView successView = new ModelAndView("tdsimport_edit");
@@ -129,6 +130,8 @@ public class TdsImportHeaderController {
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"I","FF1");
     		//domain
     		model.put("sign", sign);
+    		model.put("avd", avd);
+    		
     		successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 		}
@@ -760,6 +763,8 @@ public class TdsImportHeaderController {
 	    		//add gui lists here
 	    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","GCY");
 	    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","MDX");
+	    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"I","FF1");
+	    		
 	    		this.taricDirectAccessorMgr.askTullid(model);
 	    		
 	    		this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicContainer);
@@ -889,6 +894,7 @@ public class TdsImportHeaderController {
 				//land and currency codes
 	    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","GCY");
     			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,model,appUser,"A","MDX");
+    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"I","FF1");
     			this.taricDirectAccessorMgr.askTullid(model);
     			
 	    		this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicContainer);
@@ -902,7 +908,7 @@ public class TdsImportHeaderController {
 			}
 		}else{
 			logger.warn("[INFO] Opdnr is NULL. Redirecting to: tdsimport_edit.do?action=doPrepareCreate... ");
-			return new ModelAndView("redirect:tdsimport_edit.do?action=doPrepareCreate&user=" + appUser.getUser() + "&sign=" + sign);
+			return new ModelAndView("redirect:tdsimport_edit.do?action=doPrepareCreate&user=" + appUser.getUser() + "&sign=" + sign + "&avd=" + avd);
 		}
 		
 		return successView;
@@ -1178,6 +1184,7 @@ public class TdsImportHeaderController {
 		    		//add gui lists here
 		    		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","GCY");
 	    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDX");
+	    			this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"I","FF1");
 	    			this.taricDirectAccessorMgr.askTullid(model);
 	    			
 		    		this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicContainer, sumTopicRecord, sumFaktTotalRecord);

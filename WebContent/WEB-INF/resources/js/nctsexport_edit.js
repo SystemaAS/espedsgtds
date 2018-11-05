@@ -273,7 +273,12 @@
 	    	window.open('nctsexport_edit_childwindow_tullkontor.do?action=doInit&tkkode=' + jq("#"+id).val()+ '&ctype=' + id, "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
 	    }
 	
-	
+	    jq(document).ready(function(){ 
+	  	    //trigger events
+	  	    jq("#avd").change();
+	  	    jq("#avd").focus();
+		  	    
+	  	});	
 	
 	
 	
