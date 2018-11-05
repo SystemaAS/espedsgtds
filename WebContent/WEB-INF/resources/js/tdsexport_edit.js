@@ -238,6 +238,12 @@
 				for ( var i = 0; i < len; i++) {
 					jq('#sveh_omeo').val(data[i].svea_omeo);
 					jq('#sveh_omty').val(data[i].svea_omty);
+					//
+					jq('#sveh_omha').val(data[i].svea_omha);
+					jq('#sveh_dek1').val(data[i].sveh_dek1);
+					jq('#sveh_dek2').val(data[i].sveh_dek2);
+					jq('#sveh_tart').val(data[i].sveh_tart);
+					jq('#sveh_mtyp').val(data[i].sveh_mtyp);
 				}
 			});
 	    });

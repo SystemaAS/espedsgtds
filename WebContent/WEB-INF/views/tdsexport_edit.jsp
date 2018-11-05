@@ -1541,10 +1541,10 @@
 			 				    <%-- only status = M or emtpy status is allowed --%>
 			 				    <c:choose>
 				 				    <c:when test="${model.record.sveh_syst == 'M' || empty model.record.sveh_syst}">
-				 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='tdsexport_edit.do';" value='<spring:message code="systema.tds.export.createnew.submit"/>'/>
+				 				    	<input class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='tdsexport_edit.do';" value='<spring:message code="systema.tds.export.createnew.submit"/>'/>
 				 				    	&nbsp;&nbsp;
 				 				    	<c:if test="${not empty model.record.sveh_syop && model.record.validUpdate}">
-				 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='tdsexport_send.do';" value='<spring:message code="systema.tds.export.createnew.send"/>'/>
+				 				    		<input class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='tdsexport_send.do';" value='<spring:message code="systema.tds.export.createnew.send"/>'/>
 				 				    		
 				 				    	</c:if>
 				 				    </c:when>

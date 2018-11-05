@@ -179,7 +179,23 @@
 					jq('#thdsk').val(data[i].thdsk);
 					jq('#thgadk').val(data[i].thgadk);
 					jq('#thgbl').val(data[i].thgbl);
-
+					//Sender
+					jq('#thkns').val(data[i].thkns);
+					jq('#thtins').val(data[i].thtins);
+					jq('#thnas').val(data[i].thnas);
+					jq('#thads1').val(data[i].thads1);
+					jq('#thpns').val(data[i].thpns);
+					jq('#thpss').val(data[i].thpss);
+					jq('#thlks').val(data[i].thlks);
+					//Receiver
+					jq('#thknk').val(data[i].thknk);
+					jq('#thtink').val(data[i].thtink);
+					jq('#thnak').val(data[i].thnak);
+					jq('#thadk1').val(data[i].thadk1);
+					jq('#thpnk').val(data[i].thpnk);
+					jq('#thpsk').val(data[i].thpsk);
+					jq('#thlkk').val(data[i].thlkk);
+					//...more ?
 				}
 			});
 	    });

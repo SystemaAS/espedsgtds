@@ -200,6 +200,13 @@
 				for ( var i = 0; i < len; i++) {
 					jq('#svih_omeo').val(data[i].svia_omeo);
 					jq('#svih_omty').val(data[i].svia_omty);
+					//
+					jq('#svih_omha').val(data[i].svia_omha);
+					jq('#svih_dek1').val(data[i].svih_dek1);
+					jq('#svih_dek2').val(data[i].svih_dek2);
+					jq('#svih_tart').val(data[i].svih_tart);
+					jq('#svih_mtyp').val(data[i].svih_mtyp);
+					jq('#svih_eup1').val(data[i].svih_eup1);
 				}
 			});
 	    });
