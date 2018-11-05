@@ -302,7 +302,7 @@
 			 					
 				 			</td>
 				 			<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_dek1" id="sveh_dek1" TABINDEX=1>
+				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_dek1" id="sveh_dek1" >
 				 				  <option value="">-Välj-</option>
 								  <option value="EU"<c:if test="${model.record.sveh_dek1 == 'EU'}"> selected </c:if> >EU</option>
 								  <option value="CO"<c:if test="${model.record.sveh_dek1 == 'CO'}"> selected </c:if> >CO</option>
@@ -334,7 +334,7 @@
 								</div>
 				 			</td>
 				 			<td>	
-				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_upps" id="sveh_upps" TABINDEX=5>
+				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_upps" id="sveh_upps" >
 			 					  <option value="">-Välj-</option>
 								  <option value="O"<c:if test="${model.record.sveh_upps == 'O'}"> selected </c:if> >O</option>
 								  <option value="T"<c:if test="${model.record.sveh_upps == 'T'}"> selected </c:if> >T</option>
@@ -360,7 +360,7 @@
 			 				</td>
 			 				
 				 			<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_mtyp" id="sveh_mtyp" TABINDEX=10>
+				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_mtyp" id="sveh_mtyp" >
 				 				  <option selected value="">-Välj-</option>
 								  <option value="UNU"<c:if test="${model.record.sveh_mtyp == 'UNU'}"> selected </c:if> >UNU</option>
 								  <option value="UBK"<c:if test="${model.record.sveh_mtyp == 'UBK'}"> selected </c:if> >UBK</option>
@@ -388,7 +388,7 @@
 				 				</div>
 				 			</td>
 				 			<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_dek2" id="sveh_dek2" TABINDEX=2>
+				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_dek2" id="sveh_dek2" >
 				 					<option value="">-Välj-</option>
 								  <option value="A"<c:if test="${model.record.sveh_dek2 == 'A'}"> selected </c:if> >A</option>
 								  <option value="Z"<c:if test="${model.record.sveh_dek2 == 'Z'}"> selected </c:if> >Z</option>
@@ -438,7 +438,7 @@
 								</div>
 			 				</td>
 			 				<td>
-				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_tart" id="sveh_tart" TABINDEX=6>
+				 				<select class="inputTextMediumBlueMandatoryField" name="sveh_tart" id="sveh_tart" >
 				 				  <option selected value="">-Välj-</option>
 								  <option value="1"<c:if test="${model.record.sveh_tart == 1}"> selected </c:if> >1</option>
 								  <option value="2"<c:if test="${model.record.sveh_tart == 2}"> selected </c:if> >2</option>
