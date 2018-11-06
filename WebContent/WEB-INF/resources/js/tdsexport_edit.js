@@ -1173,9 +1173,7 @@
 	    }else{
 	    	jq("#updateProformaIcon").hide();
 	    }
-  	    jq("#avd").change();
-  	    jq("#avd").focus();
-	  	    
+  	        
   	  });
 	  
 	  	//checkbox proforma

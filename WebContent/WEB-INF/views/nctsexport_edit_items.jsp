@@ -883,16 +883,15 @@
 							            </div>
 							            </td>
 							            
-										<td class="text14" align="left" >
+										<td colspan="2" class="text14" align="left" >
 										<b>31.</b><span title="tvmnsk" >Godsmärk.språk&nbsp;</span></td>
-										<td>&nbsp;</td>
 										
 							        </tr>
 							        <tr>
 						        		<td valign="top" class="text14">
 											&nbsp;<input type="text" class="inputText" name="tvmn" id="tvmn" size="17" maxlength="17" value='${model.record.tvmn}'>
 										</td>
-										<td valign="top" class="text14" >
+										<td colspan="2" valign="top" class="text14" >
 											<select class="selectMediumBlueE2" name="tvmnsk" id="tvmnsk">
 							            			<option value="">-välj-</option>
 						 					  	<c:forEach var="code" items="${model.ncts012_Sprak_CodeList}" >
@@ -957,7 +956,10 @@
 							            	
 											
 							            </td>
-							            <td valign="top">
+							        </tr>
+							        <tr> 
+							        	<td colspan="3" valign="top" class="text14">&nbsp;</td>   
+							            <td colspan="4" valign="top" align="right">
 							            	<c:choose>	
 												<c:when test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
 													<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="systema.ncts.export.item.createnew.submit"/>'>

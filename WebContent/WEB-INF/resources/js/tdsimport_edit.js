@@ -1047,13 +1047,6 @@
 	  //END Model dialog: "File upload"
 	  //-------------------------------------------
 	  	
-	  
-	jq(document).ready(function(){ 
-  	    //trigger events
-  	    jq("#avd").change();
-  	    jq("#avd").focus();
-	  	    
-  	});
 	
 	
 	

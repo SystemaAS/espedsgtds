@@ -195,7 +195,15 @@
 					jq('#thpnk').val(data[i].thpnk);
 					jq('#thpsk').val(data[i].thpsk);
 					jq('#thlkk').val(data[i].thlkk);
-					//...more ?
+					//
+					jq('#thblk').val(data[i].thblk);
+					jq('#thtrmi').val(data[i].thtrmi);
+					jq('#thtsb').val(data[i].thtsb);
+					jq('#thddt').val(data[i].thddt);
+					ijq('#thgbl').val(data[i].thgbl);
+					jq('#thlasd').val(data[i].thlasd);
+					
+					
 				}
 			});
 	    });
@@ -289,14 +297,7 @@
 	    	window.open('nctsexport_edit_childwindow_tullkontor.do?action=doInit&tkkode=' + jq("#"+id).val()+ '&ctype=' + id, "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
 	    }
 	
-	    jq(document).ready(function(){ 
-	  	    //trigger events
-	  	    jq("#avd").change();
-	  	    jq("#avd").focus();
-		  	    
-	  	});	
-	
-	
+	    
 	
 	
 

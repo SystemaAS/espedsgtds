@@ -989,7 +989,7 @@
 				 				<input readonly style="text-align: left" type="text" class="inputTextReadOnly" name="sumOfInvoiceAmountInItemLines" id="sumOfInvoiceAmountInItemLines" size="20" maxlength="20" value="${fn:replace(model.record.sumOfInvoiceAmountInItemLinesStr, '.', ',')}">
 				 				<c:if test="${not empty (sumOfInvoiceAmountInItemLinesStr && model.record.svih_fabl)}">
 			            			<c:if test="${model.record.sumOfInvoiceAmountInItemLines != model.record.svih_fabl_dbl}">
-						            	<img onMouseOver="showPop('itemsSumInvoiceAmount_info');" onMouseOut="hidePop('itemsSumInvoiceAmount_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="invoice amount warning">	
+						            	<img onMouseOver="showPop('itemsSumInvoiceAmount_info');" onMouseOut="hidePop('itemsSumInvoiceAmount_info');" width="18px" height="20px" src="resources/images/red.png" border="0" alt="invoice amount warning">	
 				            		</c:if>
 				            	</c:if>
 				            	<div class="text11" style="position: relative;" align="left">
@@ -1086,7 +1086,6 @@
 			 				    <c:choose>
 				 				    <c:when test="${model.record.svih_syst == 'M' || empty model.record.svih_syst}">
 				 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" id="submit" onclick="javascript: form.action='tdsimport_edit.do';" value='<spring:message code="systema.tds.import.createnew.submit"/>'/>
-				 				    	&nbsp;&nbsp;
 				 				    	<c:if test="${not empty model.record.svih_syop && model.record.validUpdate}">
 				 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='tdsimport_send.do';" value='<spring:message code="systema.tds.import.createnew.send"/>'/>
 				 				    	</c:if>
