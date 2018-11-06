@@ -1045,6 +1045,7 @@
 						           			<ul>
 							           			<li><b>N380</b> handelsfaktura</li>
 							           			<li><b>N325</b> proformafaktura</li>
+							           			<li><b>N935</b> handelsfaktura - ersätter N380 enl. Tullv.</li>
 							           		</ul>
 										</span>
 										</div>							            
@@ -1054,6 +1055,7 @@
 							 				<select class="inputTextMediumBlueMandatoryField" name="svih_faty" id="svih_faty">
 							 					<option value="">-Välj-</option><option value="N380"<c:if test="${model.record.svih_faty == 'N380'}"> selected </c:if> >N380</option>
 											  	<option value="N325"<c:if test="${model.record.svih_faty == 'N325'}"> selected </c:if> >N325</option>
+											  	<option value="N935"<c:if test="${model.record.svih_faty == 'N935'}"> selected </c:if> >N935</option>
 											</select>
 			 							</td>
 							        </tr>
@@ -1149,9 +1151,10 @@
 					            <td >
 					            	<select class="inputTextMediumBlueMandatoryField" name="svih_trin" id="svih_trin">
 				 						<option selected value="">-Välj-</option>
+				 						
 								  		<option value="1"<c:if test="${model.record.svih_trin == 1}"> selected </c:if> >1.Sjötransport</option>
 								  		<option value="2"<c:if test="${model.record.svih_trin == 2}"> selected </c:if> >2.Järnvägstransport</option>
-								  		<option value="3"<c:if test="${model.record.svih_trin == 3}"> selected </c:if> >3.Vägtransport</option>
+								  		<option value="3"<c:if test="${model.record.svih_trin == 3 || empty model.record.svih_trin}"> selected </c:if> >3.Vägtransport</option>
 								  		<option value="4"<c:if test="${model.record.svih_trin == 4}"> selected </c:if> >4.Flygtransport</option>
 								  		<option value="5"<c:if test="${model.record.svih_trgr == 5}"> selected </c:if> >5.Postförsändelse</option>
 								  		<option value="7"<c:if test="${model.record.svih_trgr == 7}"> selected </c:if> >7.Fasta transportinstallationer</option>
@@ -1185,7 +1188,7 @@
 				 						<option value="">-Välj-</option>
 								  		<option value="1"<c:if test="${model.record.svih_trgr == 1}"> selected </c:if> >1.Sjötransport</option>
 								  		<option value="2"<c:if test="${model.record.svih_trgr == 2}"> selected </c:if> >2.Järnvägstransport</option>
-								  		<option value="3"<c:if test="${model.record.svih_trgr == 3}"> selected </c:if> >3.Vägtransport</option>
+								  		<option value="3"<c:if test="${model.record.svih_trgr == 3 || empty model.record.svih_trgr}"> selected </c:if> >3.Vägtransport</option>
 								  		<option value="4"<c:if test="${model.record.svih_trgr == 4}"> selected </c:if> >4.Flygtransport</option>
 								  		<option value="5"<c:if test="${model.record.svih_trgr == 5}"> selected </c:if> >5.Postförsändelse</option>
 								  		<option value="7"<c:if test="${model.record.svih_trgr == 7}"> selected </c:if> >7.Fasta transportinstallationer</option>

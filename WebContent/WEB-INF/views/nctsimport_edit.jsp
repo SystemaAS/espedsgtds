@@ -184,7 +184,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;<span title="tisg">Sign:</span>&nbsp;<b>${model.record.tisg}</b>,&nbsp;&nbsp;<span title="tidt">Datum:</span>&nbsp;<b>${model.record.tidt}</b>,
 					&nbsp;
 					<img onMouseOver="showPop('status_info');" onMouseOut="hidePop('status_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-           			<span title="tist">Stat<a id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;<b>${model.record.tist}</b>
+           			<span title="tist">Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;<b>${model.record.tist}</b>
 					&nbsp;&nbsp;
 					<font class="text16RedBold" >*</font><span title="tienkl">Typ av förfarande</span>&nbsp;
 					<%-- Must be model attribute in order to validate towards the filter (thsg) --%>

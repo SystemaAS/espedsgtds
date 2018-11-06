@@ -931,6 +931,7 @@
 						           			<ul>
 							           			<li><b>N380</b> handelsfaktura</li>
 							           			<li><b>N325</b> proformafaktura</li>
+							           			<li><b>N935</b> handelsfaktura - ersätter N380 enl. Tullv.</li>
 							           		</ul>
 										</span>
 							            </div>
@@ -940,6 +941,7 @@
 							 				<select class="selectMediumBlueE2" name="sveh_faty" id="sveh_faty">
 							 					<option value="">-Välj-</option><option value="N380"<c:if test="${model.record.sveh_faty == 'N380'}"> selected </c:if> >N380</option>
 											  	<option value="N325"<c:if test="${model.record.sveh_faty == 'N325'}"> selected </c:if> >N325</option>
+											  	<option value="N935"<c:if test="${model.record.sveh_faty == 'N935'}"> selected </c:if> >N935</option>
 											</select>
 			 							</td>
 							        </tr>

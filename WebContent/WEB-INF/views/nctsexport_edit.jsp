@@ -172,7 +172,7 @@
 			<tr >
 				<td align="left" class="text14MediumBlue">
 					&nbsp;&nbsp;<span title="thsg">Sign:</span>&nbsp;<b>${model.record.thsg}</b>,&nbsp;&nbsp;<span title="thdt">Datum:</span>&nbsp;<b>${model.record.thdt}</b>,
-					&nbsp;&nbsp;<span title="thst">Stat<a id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;${model.record.thst}
+					&nbsp;&nbsp;<span title="thst">Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;${model.record.thst}
 					&nbsp;&nbsp;
 					<font class="text16RedBold" >*</font><span title="thenkl">Typ av förfarande</span>&nbsp;
 					<%-- Must be model attribute in order to validate towards the filter (thsg) --%>
@@ -313,7 +313,7 @@
 				 				</div>
 				 			</td>	
 				 			<td>
-				 				<select class="selectMediumBlueE2" name="thdk" id="thdk" TABINDEX=1>
+				 				<select class="selectMediumBlueE2" name="thdk" id="thdk">
 				 				  <option value="">-Välj-</option>
 				 				  	<c:forEach var="code" items="${model.ncts031_DeklType_CodeList}" >
                                 	 	<option value="${code.tkkode}"<c:if test="${model.record.thdk == code.tkkode}"> selected </c:if> >${code.tkkode}</option>
