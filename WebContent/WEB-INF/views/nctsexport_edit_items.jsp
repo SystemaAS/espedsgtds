@@ -1016,8 +1016,9 @@
 							
 		            		<div class="text12" style="position: relative;" align="left">
 							<span style="position:absolute;top:2px; width:250px;" id="tvtdn2_info" class="popupWithInputText text12"  >
-								<b>Avd/Angiv.nr</b><br/>
-			           			Hvis deklarasjonen er basert på et eksport angivelse, vises avd./angiv.nr. her.
+								<b>Avd/Ärendenr</b><br/>
+			       
+			           			Om deklarationen är baserad på ett export ärende, visas avd/ärende här.
  							</span>
 							</div>	
 		            			
