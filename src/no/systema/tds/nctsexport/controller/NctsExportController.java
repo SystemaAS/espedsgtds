@@ -33,8 +33,7 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.validator.LoginValidator;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
-import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
-import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeRecord;
+import no.systema.main.util.StringManager;
 
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningRecord;
@@ -42,7 +41,6 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
-import no.systema.tds.tdsexport.filter.SearchFilterTdsExportTopicList;
 import no.systema.tds.nctsexport.validator.NctsExportListValidator;
 
 import no.systema.main.model.SystemaWebUser;
@@ -70,6 +68,7 @@ public class NctsExportController {
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private ApplicationContext context;
 	private LoginValidator loginValidator = new LoginValidator();
+	private StringManager strMgr = new StringManager();
 	
 	@PostConstruct
 	public void initIt() throws Exception {
@@ -177,7 +176,11 @@ public class NctsExportController {
 	            	}
 	            }
 	            //get BASE URL
-	    		final String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_TOPICLIST_URL;
+	    		String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_TOPICLIST_URL;
+	    		//only when docRef exists
+	    		if(searchFilter!=null && strMgr.isNotNull(searchFilter.getDocRef())){
+	    			BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_TOPICLIST_DOCREF_URL;
+	    		}
 	    		//add URL-parameters
 				String urlRequestParams = this.getRequestUrlKeyParameters(searchFilter, appUser);
 				logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
@@ -330,6 +333,9 @@ public class NctsExportController {
 		
 		if(searchFilter.getBruttoVikt()!=null && !"".equals(searchFilter.getBruttoVikt())){
 			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "bvikt=" + searchFilter.getBruttoVikt());
+		}
+		if(searchFilter.getDocRef()!=null && !"".equals(searchFilter.getDocRef())){
+			urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "tvdref=" + searchFilter.getDocRef());
 		}
 		
 		if(searchFilter.getMotNavn()!=null && !"".equals(searchFilter.getMotNavn())){

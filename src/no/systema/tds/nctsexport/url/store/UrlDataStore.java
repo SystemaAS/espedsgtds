@@ -13,8 +13,10 @@ public final class UrlDataStore {
 	//----------------------------
 	//[1] FETCH ARENDE LIST
 	//----------------------------
-	static public String NCTS_EXPORT_BASE_TOPICLIST_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE000R.pgm"; 
 	//http://gw.systema.no/sycgip/TNCE000R.pgm?user=OSCAR&avd=1&sign=CB";
+	static public String NCTS_EXPORT_BASE_TOPICLIST_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE000R.pgm"; 
+	//http://gw.systema.no/sycgip/TNCE000R.pgm?user=OSCAR&tvdref=tarzan
+	static public String NCTS_EXPORT_BASE_TOPICLIST_DOCREF_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE000R2.pgm"; 
 	
 	//---------------------------------------------------------------
 	//[2] FETCH A SPECIFIC ARENDE or Default values for a NEW ARENDE
