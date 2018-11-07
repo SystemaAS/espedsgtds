@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +43,8 @@ import no.systema.tds.tdsimport.url.store.TdsImportUrlDataStore;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicFaktTotalContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicFaktTotalRecord;
-
-
-
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicOmbudContainer;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicOmbudRecord;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicCopiedFromTransportUppdragContainer;
 import no.systema.tds.tdsimport.validator.TdsImportHeaderValidator;
 
@@ -131,14 +132,15 @@ public class TdsImportHeaderController {
     		//domain
     		model.put("sign", sign);
     		model.put("avd", avd);
-    		
+    		JsonTdsImportSpecificTopicRecord record = this.initCreateNewTopic(appUser.getUser(), avd);
+    		model.put("record", record);
     		successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 		}
 		return successView;
 	}
 	
-	
+	  
 	
 	/**
 	 * Creates or Updates a new Topic (Arende)
@@ -429,6 +431,43 @@ public class TdsImportHeaderController {
 	    	return successView;
 		}
 	}
+	
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @return
+	 */
+	public JsonTdsImportSpecificTopicRecord initCreateNewTopic (String applicationUser, String avd) {
+		 logger.info("Inside: initCreateNewTopic.do");
+		 JsonTdsImportSpecificTopicRecord result = new JsonTdsImportSpecificTopicRecord();
+		 //prepare the access CGI with RPG back-end
+		 String BASE_URL = TdsImportUrlDataStore.TDS_IMPORT_BASE_FETCH_OMBUD_DEFAULT_DATA_URL;
+		 String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + avd;
+		 logger.info("URL: " + BASE_URL);
+		 logger.info("PARAMS: " + urlRequestParamsKeys);
+		 logger.info(Calendar.getInstance().getTime() +  " CGI-start timestamp");
+		 String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		 logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		 logger.info(jsonPayload);
+		 if(jsonPayload!=null){
+				 JsonTdsImportSpecificTopicOmbudContainer container = this.tdsImportSpecificTopicService.getTdsImportSpecificTopicOmbudContainer(jsonPayload);
+				 if(container!=null){
+					 for(JsonTdsImportSpecificTopicOmbudRecord  record : container.getGetdepinf()){
+						 result.setSvih_omeo(record.getSvia_omeo());
+						 result.setSvih_omty(record.getSvia_omty());
+						 result.setSvih_omha(record.getSvia_omha());
+						 result.setSvih_dek1(record.getSvih_dek1());
+						 result.setSvih_dek2(record.getSvih_dek2());
+						 result.setSvih_tart(record.getSvih_tart());
+						 result.setSvih_mtyp(record.getSvih_mtyp());
+					 }
+				 }
+			 }
+		 
+		 return result;
+	 }
+	  
 	
 	/**
 	 * Check if item lines = OK

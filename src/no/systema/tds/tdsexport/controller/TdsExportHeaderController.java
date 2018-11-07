@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +53,8 @@ import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicCopied
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicCopiedFromTransportUppdragContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicFaktTotalContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicFaktTotalRecord;
-
-
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicOmbudContainer;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicOmbudRecord;
 import no.systema.tds.tdsexport.service.TdsExportSpecificTopicService;
 import no.systema.tds.tdsexport.service.TdsExportSpecificTopicItemService;
 
@@ -140,6 +142,8 @@ public class TdsExportHeaderController {
 			//domain
 			model.put("sign", sign);
 			model.put("avd", avd);
+			JsonTdsExportSpecificTopicRecord record = this.initCreateNewTopic(appUser.getUser(), avd);
+			model.put("record", record);
 			successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 		}
@@ -148,6 +152,42 @@ public class TdsExportHeaderController {
 	}
 	
 	
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @return
+	 */
+	  public JsonTdsExportSpecificTopicRecord initCreateNewTopic(String applicationUser,String avd){
+		 logger.info("Inside: initCreateNewTopic");
+		 JsonTdsExportSpecificTopicRecord result = new JsonTdsExportSpecificTopicRecord();
+		 //prepare the access CGI with RPG back-end
+		 String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_FETCH_OMBUD_DEFAULT_DATA_URL;
+		 String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + avd;
+		 logger.info("URL: " + BASE_URL);
+		 logger.info("PARAMS: " + urlRequestParamsKeys);
+		 logger.info(Calendar.getInstance().getTime() +  " CGI-start timestamp");
+		 String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		 logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		 logger.info(jsonPayload);
+		 if(jsonPayload!=null){
+				 JsonTdsExportSpecificTopicOmbudContainer container = this.tdsExportSpecificTopicService.getTdsExportSpecificTopicOmbudContainer(jsonPayload);
+				 if(container!=null){
+					 for(JsonTdsExportSpecificTopicOmbudRecord  record : container.getGetdepinf()){
+						 result.setSveh_omeo(record.getSvea_omeo());
+						 result.setSveh_omty(record.getSvea_omty());
+						 result.setSveh_omha(record.getSvea_omha());
+						 result.setSveh_dek1(record.getSveh_dek1());
+						 result.setSveh_dek2(record.getSveh_dek2());
+						 result.setSveh_tart(record.getSveh_tart());
+						 result.setSveh_mtyp(record.getSveh_mtyp());
+					 }
+				 }
+			 }
+		 
+		 return result;
+	 }
+	  
 	
 	/**
 	 * Creates or Updates a new Topic (Arende)

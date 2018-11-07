@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,7 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
+import no.systema.tds.tdsimport.model.jsonjackson.customer.JsonTdsImportCustomerRecord;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicContainer;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicRecord;
 import no.systema.tds.nctsimport.validator.NctsImportHeaderValidator;
@@ -103,14 +106,15 @@ public class NctsImportHeaderController {
 			return loginView;
 			
 		}else{
-			
-            
+
 			this.setCodeDropDownMgr(appUser, model);
 			this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
     		this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
     		//domain
     		model.put("sign", sign);
     		model.put("avd", avd);
+    		JsonNctsImportSpecificTopicRecord record = this.initCreateNewTopic(appUser.getUser(), avd);
+    		model.put("record", record);
     		successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 
@@ -119,6 +123,49 @@ public class NctsImportHeaderController {
 		return successView;
 	}
 	
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @return
+	 */
+	 public JsonNctsImportSpecificTopicRecord initCreateNewTopic(String applicationUser, String avd) {
+		 
+		 	String method = "initCreateNewTopic";
+		 	logger.info("Inside " + method);
+		 	JsonNctsImportSpecificTopicRecord result = new JsonNctsImportSpecificTopicRecord();
+		 	
+		 	logger.info("FETCH record transaction...");
+			//---------------------------
+			//get BASE URL = RPG-PROGRAM
+			//---------------------------
+			String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_FETCH_SPECIFIC_TOPIC_URL;
+			//url params
+			String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + avd;
+			//for debug purposes in GUI
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+			logger.info("URL: " + BASE_URL);
+			logger.info("URL PARAMS: " + urlRequestParamsKeys);
+			//--------------------------------------
+			//EXECUTE the FETCH (RPG program) here
+			//--------------------------------------
+			String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+			//Debug --> 
+			logger.info(method + " --> jsonPayload:" + jsonPayload);
+			logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+
+			if(jsonPayload!=null){
+	    		JsonNctsImportSpecificTopicContainer container = this.nctsImportSpecificTopicService.getNctsImportSpecificTopicContainer(jsonPayload);
+	    		if(container!=null){
+	    			for(JsonNctsImportSpecificTopicRecord  record : container.getOneorder()){
+	    				result = record;
+	    			}
+	    		}
+	    	}
+			return result;
+		  
+	  }
 	/**
 	 * Creates or Updates a new Topic (Arende)
 	 * @param recordToValidate

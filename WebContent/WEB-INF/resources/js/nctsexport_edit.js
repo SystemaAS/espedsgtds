@@ -42,6 +42,18 @@
   	  	});
     });
 	
+    jq(function() {
+  		jq( "#thtaid" ).blur(function(){
+  			if(jq( "#thtgid" ).val()==''){
+  				jq( "#thtgid" ).val(jq( "#thtaid" ).val());
+  			}
+  			if(jq( "#thtrm" ).val()==''){
+  				jq( "#thtrm" ).val(jq( "#thtrmi" ).val());
+  			}
+	  	});
+  		
+    });
+	
     
     jq(function() {
     	//Customer SENDER

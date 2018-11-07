@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,7 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeRecord;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
+import no.systema.tds.tdsexport.model.jsonjackson.customer.JsonTdsExportCustomerRecord;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 
@@ -132,6 +135,9 @@ public class NctsExportHeaderController {
     		//domain
 			model.put("sign", sign);
 			model.put("avd", avd);
+			JsonNctsExportSpecificTopicRecord record = this.initCreateNewTopic(appUser.getUser(),avd);
+			model.put("record", record);
+			
 			successView.addObject("model", model);
     		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_CREATE);
 
@@ -139,6 +145,8 @@ public class NctsExportHeaderController {
 		
 		return successView;
 	}
+	
+	
 	
 	/**
 	 * Creates or Updates a new Topic (Arende)
@@ -394,6 +402,48 @@ public class NctsExportHeaderController {
 	    	return successView;
 		}
 	}
+	
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @return
+	 */
+	public JsonNctsExportSpecificTopicRecord initCreateNewTopic(String applicationUser, String avd) {
+	 	String method = "initCreateNewTopic";
+	 	logger.info("Inside " + method);
+	 	JsonNctsExportSpecificTopicRecord result = new JsonNctsExportSpecificTopicRecord();
+	 	
+	 	logger.info("FETCH record transaction...");
+		//---------------------------
+		//get BASE URL = RPG-PROGRAM
+		//---------------------------
+		String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_FETCH_SPECIFIC_TOPIC_URL;
+		//url params
+		String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + avd;
+		//for debug purposes in GUI
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		logger.info("URL: " + BASE_URL);
+		logger.info("URL PARAMS: " + urlRequestParamsKeys);
+		//--------------------------------------
+		//EXECUTE the FETCH (RPG program) here
+		//--------------------------------------
+		String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		//Debug --> 
+		logger.info(method + " --> jsonPayload:" + jsonPayload);
+		logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+
+		if(jsonPayload!=null){
+    		JsonNctsExportSpecificTopicContainer container = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
+    		if(container!=null){
+    			for(JsonNctsExportSpecificTopicRecord  record : container.getOneorder()){
+    				result = record;
+    			}
+    		}
+    	}
+		return result;
+  }
 	/**
 	 * 
 	 * Aux method to prevent an end-user for sending the declaration without having saved it first.

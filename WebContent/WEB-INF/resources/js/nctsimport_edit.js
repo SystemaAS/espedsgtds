@@ -55,39 +55,69 @@
 			}, 
 			function(data) {
 				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					jq('#tienkl').val(data[i].tienkl);
-					//jq('#sign').val(data[i].tisg);
-					//jq('#tisg').val(data[i].tisg);
-					jq('#tist').val(data[i].tist);
-					jq('#tidt').val(data[i].tidt);
+				if(len > 0 ){
+					for ( var i = 0; i < len; i++) {
+						jq('#tienkl').val(data[i].tienkl);
+						jq('#tist').val(data[i].tist);
+						jq('#tidt').val(data[i].tidt);
+						
+						jq('#tikn').val(data[i].tikn);
+						jq('#tina').val(data[i].tina);
+						jq('#tiad1').val(data[i].tiad1);
+						jq('#tips').val(data[i].tips);
+						jq('#tipn').val(data[i].tipn);
+						jq('#tilk').val(data[i].tilk);
+						jq('#tisk').val(data[i].tisk);
+						jq('#titin').val(data[i].titin);
+						
+						jq('#tign').val(data[i].tign);
+						jq('#titrnr').val(data[i].titrnr);
+						jq('#tignsk').val(data[i].tignsk);
+						jq('#tialk').val(data[i].tialk);
+						//jq('#tignsk').val("SV");//default
+						//jq('#tialk').val("SE");//default
+						jq('#tialsk').val(data[i].tialsk);
+						
+						jq('#tials').val(data[i].tials);
+						jq('#tialss').val(data[i].tialss);
+						
+						jq('#tiglsk').val(data[i].tiglsk);
+						jq('#tiacts').val(data[i].tiacts);
+						jq('#tiskb').val(data[i].tiskb);
+						jq('#titsb').val(data[i].titsb);
+						jq('#tidtf').val(data[i].tidtf);
+						
+					}
+				}else{
+					jq('#tienkl').val("");
+					jq('#tist').val("");
+					jq('#tidt').val("");
 					
-					jq('#tikn').val(data[i].tikn);
-					jq('#tina').val(data[i].tina);
-					jq('#tiad1').val(data[i].tiad1);
-					jq('#tips').val(data[i].tips);
-					jq('#tipn').val(data[i].tipn);
-					jq('#tilk').val(data[i].tilk);
-					jq('#tisk').val(data[i].tisk);
-					jq('#titin').val(data[i].titin);
+					jq('#tikn').val("");
+					jq('#tina').val("");
+					jq('#tiad1').val("");
+					jq('#tips').val("");
+					jq('#tipn').val("");
+					jq('#tilk').val("");
+					jq('#tisk').val("");
+					jq('#titin').val("");
 					
-					jq('#tign').val(data[i].tign);
-					jq('#titrnr').val(data[i].titrnr);
-					jq('#tignsk').val(data[i].tignsk);
-					jq('#tialk').val(data[i].tialk);
+					jq('#tign').val("");
+					jq('#titrnr').val("");
+					jq('#tignsk').val("");
+					jq('#tialk').val("");
 					//jq('#tignsk').val("SV");//default
 					//jq('#tialk').val("SE");//default
-					jq('#tialsk').val(data[i].tialsk);
+					jq('#tialsk').val("");
 					
-					jq('#tials').val(data[i].tials);
-					jq('#tialss').val(data[i].tialss);
+					jq('#tials').val("");
+					jq('#tialss').val("");
 					
-					jq('#tiglsk').val(data[i].tiglsk);
-					jq('#tiacts').val(data[i].tiacts);
-					jq('#tiskb').val(data[i].tiskb);
-					jq('#titsb').val(data[i].titsb);
-					jq('#tidtf').val(data[i].tidtf);
-					
+					jq('#tiglsk').val("");
+					jq('#tiacts').val("");
+					jq('#tiskb').val("");
+					jq('#titsb').val("");
+					jq('#tidtf').val("");
 				}
 				
 			});
