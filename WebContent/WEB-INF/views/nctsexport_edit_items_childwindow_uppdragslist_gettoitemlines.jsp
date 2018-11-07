@@ -34,27 +34,27 @@
 							<input type="hidden" name="avdNcts" id="avdNcts" value="${model.avdNcts}">
 							<input type="hidden" name="opdNcts" id="opdNcts" value="${model.opdNcts}">
 						<tr>
-							<td class="text11">&nbsp;&nbsp;Avd</td>
-							<td class="text11">&nbsp;&nbsp;Sign</td>
-							<td class="text11">&nbsp;&nbsp;Ärende</td>
-							<td class="text11">&nbsp;&nbsp;Tullid.</td>
-							<td class="text11">&nbsp;&nbsp;Medd.typ</td>
-							<td class="text11">&nbsp;&nbsp;Datum</td>
-							<td class="text11">&nbsp;&nbsp;Status</td>
-							<td class="text11">&nbsp;&nbsp;Avs.</td>
-							<td class="text11">&nbsp;&nbsp;Mot.</td>
+							<td class="text14">&nbsp;&nbsp;Avd</td>
+							<td class="text14">&nbsp;&nbsp;Sign</td>
+							<td class="text14">&nbsp;&nbsp;Ärende</td>
+							<td class="text14">&nbsp;&nbsp;Tullid.</td>
+							<td class="text14">&nbsp;&nbsp;Medd.typ</td>
+							<td class="text14">&nbsp;&nbsp;Datum</td>
+							<td class="text14">&nbsp;&nbsp;Status</td>
+							<td class="text14">&nbsp;&nbsp;Avs.</td>
+							<td class="text14">&nbsp;&nbsp;Mot.</td>
 						 </tr>
 						 <tr>	
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="avd" id="avd" size="5" maxlength="4" value="${searchFilter.avd}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="sign" id="sign" size="5" maxlength="3" value="${searchFilter.sign}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="opd" id="opd" size="8" maxlength="7" value="${searchFilter.opd}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="tullId" id="mrn" size="10" maxlength="35" value="${searchFilter.tullId}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="mtyp" id="refnr" size="4" maxlength="3" value="${searchFilter.mtyp}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="datum" id="datum" size="10" maxlength="8" value="${searchFilter.datum}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="status" id="status" size="3" maxlength="1" value="${searchFilter.status}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="avsNavn" id="avsNavn" size="15" maxlength="25" value="${searchFilter.avsNavn}"></td>
-							<td class="text11">&nbsp;<input type="text" class="inputText" name="motNavn" id="motNavn" size="15" maxlength="25" value="${searchFilter.motNavn}"></td>
-							<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" value='<spring:message code="search.label"/>'>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="avd" id="avd" size="5" maxlength="4" value="${searchFilter.avd}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="sign" id="sign" size="5" maxlength="3" value="${searchFilter.sign}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="opd" id="opd" size="8" maxlength="7" value="${searchFilter.opd}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="tullId" id="mrn" size="10" maxlength="35" value="${searchFilter.tullId}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="mtyp" id="refnr" size="4" maxlength="3" value="${searchFilter.mtyp}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="datum" id="datum" size="10" maxlength="8" value="${searchFilter.datum}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="status" id="status" size="3" maxlength="1" value="${searchFilter.status}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="avsNavn" id="avsNavn" size="15" maxlength="25" value="${searchFilter.avsNavn}"></td>
+							<td class="text14">&nbsp;<input type="text" class="inputText" name="motNavn" id="motNavn" size="15" maxlength="25" value="${searchFilter.motNavn}"></td>
+							<td align="right">&nbsp;<input class="inputFormSubmit" type="submit" name="submit" onClick="setBlockUI(this);" value='<spring:message code="search.label"/>'>
 		           		</tr>
 		           		</form>
 		           		</table>
@@ -82,34 +82,41 @@
 		                    <th class="text14" title="status">&nbsp;Status&nbsp;</th>
 		                    <th class="text14" title="avsNavn">&nbsp;Avs&nbsp;</th>
 		                    <th class="text14" title="motNavn">&nbsp;Mot&nbsp;</th>
+		                    <th class="text14" title="dokref">&nbsp;Dok.ref.&nbsp;</th>
+		                    
 		                </tr> 
 		                </thead>
 		                
 		                <tbody>
-		                <c:forEach var="record" items="${model.angivelseList}" varStatus="counter">    
-			               <c:choose>           
-			                   <c:when test="${counter.count%2==0}">
-			                       <tr class="text14">
-			                   </c:when>
-			                   <c:otherwise>   
-			                       <tr class="text14">
-			                   </c:otherwise>
+		                <c:forEach var="record" items="${model.angivelseList}" varStatus="counter">
+		                	<c:choose>
+			                   <c:when test="${empty record.dokref}">    
+				               		<tr style="color: #000000;">
+				               </c:when>
+				               <c:otherwise>
+				               		<tr style="color: #4F8A10;background-color: #DFF2BF;">
+				               </c:otherwise>
 			               </c:choose>
 			               <td align="center" class="text14" >
-			               		<input class="clazzEksportAware" type="checkbox" value="J" id="syav${record.avd}_syop${record.opd}" name="syav${record.avd}_syop${record.opd}" >
+			               		<c:choose>
+				               		<c:when test="${empty record.dokref}">
+				               			<input style="cursor:pointer;" class="clazzEksportAware" type="checkbox" value="J" id="syav${record.avd}_syop${record.opd}" name="syav${record.avd}_syop${record.opd}" >
+				               		</c:when>
+				               		<c:otherwise>
+				               			<img title="redan plockad!" style="cursor:pointer;" src="resources/images/lock.gif" border="0" alt="edit">	
+				               		</c:otherwise>
+			               		</c:choose>
 			               </td>
-			               <td class="text14">&nbsp;${record.avd}</td>
-			               <td class="text14">&nbsp;${record.sign}</td>
-			               <%-- <td nowrap style="cursor:pointer;" class="text11MediumBlue" id="avd${record.avd}@opd${record.opd}@xref${record.xref}@refnr${record.refnr}@mrn${record.dkeh_mrn}@valuta${record.dkeh_221}@blp${record.dkeh_222}" >  --%>
-			               <td nowrap style="cursor:pointer;" class="text14MediumBlue" id="avd${record.avd}@opd${record.opd}@tullid${record.tullId}" >
-			               		<img title="select" style="vertical-align:top;" src="resources/images/bebullet.gif" border="0" alt="edit">&nbsp;${record.opd}
-			               	</td>
-		               	   <td class="text14">&nbsp;${record.tullid}</td>
-		               	   <td class="text14">&nbsp;${record.mtyp}</td>
-		               	   <td class="text14">&nbsp;${record.datum}</td>
-		               	   <td class="text14">&nbsp;${record.status}</td>
-		               	   <td class="text14">&nbsp;${record.avsNavn}</td>
-		               	   <td class="text14">&nbsp;${record.motNavn}</td>
+			               <td width="2%" class="text14NoneColor">&nbsp;${record.avd}</td>
+			               <td width="2%" class="text14NoneColor">&nbsp;${record.sign}</td>
+			               <td width="2%" class="text14MediumBlue" id="avd${record.avd}@opd${record.opd}@tullid${record.tullId}" >&nbsp;${record.opd}</td>
+		               	   <td width="2%" class="text14NoneColor">&nbsp;${record.tullid}</td>
+		               	   <td width="2%" class="text14NoneColor">&nbsp;${record.mtyp}</td>
+		               	   <td width="2%" class="text14NoneColor">&nbsp;${record.datum}</td>
+		               	   <td width="2%" class="text14NoneColor">&nbsp;${record.status}</td>
+		               	   <td class="text14NoneColor">&nbsp;${record.avsNavn}</td>
+		               	   <td class="text14NoneColor">&nbsp;${record.motNavn}</td>
+		               	   <td width="2%" class="text14NoneColor">&nbsp;${record.dokref}</td>
 			            </tr> 
 			            </c:forEach>
 			            </tbody>

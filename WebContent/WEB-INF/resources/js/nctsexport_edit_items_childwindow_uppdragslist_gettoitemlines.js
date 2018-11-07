@@ -1,7 +1,11 @@
 	//this variable is a global jQuery var instead of using "$" all the time. Very handy
   	var jq = jQuery.noConflict();
-  	var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Please wait...";
+  	var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Vänligen vänta...";
   	
+  	function setBlockUI(element){
+  	  jq.blockUI({ css: { fontSize: '22px' }, message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
+    }
+	
   	//--------
   	//Koder
   	//--------
@@ -10,9 +14,7 @@
 			  dateFormat: 'yymmdd' 
 			  //defaultDate: "-6m"	  
 		});
-		
-		
-	});
+			});
 	
 	
 	
@@ -95,7 +97,9 @@
   	  //-----------------------
     	  jq('#angivelseList').dataTable( {
     		  "dom": '<"top"fli>rt<"bottom"p><"clear">',
-    		  "lengthMenu": [ 75, 100, 200, 500]
+    		  "scrollY": "300px",
+    		  "scrollCollapse": true,
+    		  "lengthMenu": [ 75, 100]
     	  });
       //event on input field for search
       jq('input.angivelseList_filter').on( 'keyup click', function () {

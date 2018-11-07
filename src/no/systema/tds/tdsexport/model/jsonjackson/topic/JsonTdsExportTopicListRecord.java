@@ -64,6 +64,10 @@ public class JsonTdsExportTopicListRecord extends JsonAbstractGrandFatherRecord 
 	public void setSveh_prof(String value) {  this.sveh_prof = value; }
 	public String getSveh_prof() {return this.sveh_prof;}
 	
+	private String dokref = null;
+	public void setDokref(String value) {  this.dokref = value; }
+	public String getDokref() {return this.dokref;}
+	
 	/**
 	 * 
 	 * @return
