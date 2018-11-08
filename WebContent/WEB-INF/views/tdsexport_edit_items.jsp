@@ -95,7 +95,7 @@
 	 				<%-- MASTER Topic header --%>
 	 				<table width="100%" align="center" class="formFrameHeaderTransparent" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text11MediumBlue">
+				 			<td class="text14MediumBlue">
 				 				&nbsp;Avd&nbsp;<b>${model.avd}</b>
 				 				&nbsp;Ärende&nbsp;<b>${model.opd}</b>
 				 				&nbsp;Sign&nbsp;<b>${model.sign}</b>
@@ -297,10 +297,10 @@
 											<input tabindex=-1 align="right" type="text" readonly
 												<c:choose>
 												<c:when test="${fn:contains(model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
-													class="inputText11RedBoldReadOnly" 
+													class="inputtext14RedBoldReadOnly" 
 												</c:when>
 												<c:otherwise>
-													class="inputText11BlueBoldReadOnly"
+													class="inputtext14BlueBoldReadOnly"
 												</c:otherwise>
 												</c:choose>
 												size="12" maxlength=20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
@@ -321,7 +321,7 @@
 				 						
 								<table width="100%" id="containerdatatableTable" cellspacing="2" align="left" >
 								<tr>
-								<td class="text11">	
+								<td class="text14">	
 							
 								<table id="tblItemLines" class="display compact cell-border" >
 									<thead>
@@ -360,9 +360,9 @@
 							               </c:choose>
 							               
 							               <%-- Internal to CB. Does not have to bee visible to the end user 
-							               <td class="text11" align="center">${record.svev_syli}</td> 
+							               <td class="text14" align="center">${record.svev_syli}</td> 
 							               --%>
-						               	   <td width="2%" class="text11" align="center">&nbsp;
+						               	   <td width="2%" class="text14" align="center">&nbsp;
 							               		<a tabindex=-1 style="display:block;" id="recordUpdate_${record.svev_syli}_${record.svev_vano}" href="#" onClick="getItemData(this);">
 							               			<img src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
@@ -433,9 +433,9 @@
            	<%-- DETAIL Section - Create Item line PRIMARY SECTION --%>
            	<%-- ------------------------------------------------- --%>
            	<tr>
-	 			<td >
-	 			<form name="tdsExportEditTopicItemForm" id="tdsExportEditTopicItemForm" action="tdsexport_edit_items.do" method="post">
-				 	<%--Required key parameters from the Topic parent --%>
+	 		<td >
+	 		<form name="tdsExportEditTopicItemForm" id="tdsExportEditTopicItemForm" action="tdsexport_edit_items.do" method="post">
+           		<%--Required key parameters from the Topic parent --%>
 				 	<input type="hidden" name="action" id="action" value='doUpdate'/>
 				 	<input type="hidden" name="opd" id="opd" value='${model.opd}'/>
 				 	<input type="hidden" name="avd" id="avd" value='${model.avd}'/>
@@ -462,6 +462,12 @@
 				 	
 				 	<input type="hidden" name="numberOfItemLinesInTopic" id="numberOfItemLinesInTopic" value='${numberOfItemLinesInTopic}' />
 				 	
+	 		<table style="width:100%">
+	 		
+           	<tr>
+	 			<td >
+	 				
+				 	
 				 	<%-- Topic ITEM CREATE --%>
 	 				<table width="100%" align="center" class="formFrameHeader" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
@@ -469,7 +475,7 @@
 				 				<b>&nbsp;&nbsp;Varupost&nbsp;</b>
 								<img onClick="showPop('updateInfo');" src="resources/images/update.gif" border="0" alt="edit">
 				 				<span style="position:absolute; left:150px; top:200px; width:800px; height:400px;" id="updateInfo" class="popupWithInputText"  >
-					           		<div class="text11" align="left">
+					           		<div class="text14" align="left">
 					           			<br/>${activeUrlRPGUpdate}<br/><br/>
 					           			<button name="updateInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('updateInfo');">Close</button> 
 					           		</div>
@@ -511,8 +517,8 @@
 				 						<b>33.</b><font class="text16RedBold" >*</font><span title="svev_vata">Varukod</span>
 							            
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="33_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="33_info" class="popupWithInputText text14"  >
 							           		<b>Varukod</b>
 						           			<br/>
 						           			I första delfältet anger du en varukod (KN-nummer) för varuposten. Koden för export består av åtta siffror. 
@@ -531,8 +537,8 @@
 							            <img onMouseOver="showPop('37_1_info');" onMouseOut="hidePop('37_1_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b>
 							            <font class="text16RedBold" >*</font><span title="svev_eup1">Förf. 1</span>
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;"id="37_1_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;"id="37_1_info" class="popupWithInputText text14"  >
 							           		<br>
 						           			<b>Förfarande - Första delfältet</b>
 						           			<br/>
@@ -566,8 +572,8 @@
 				 						<b>37.</b>
 							            <span title="svev_eup2">Förf. 2</span>
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;"id="37_2_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;"id="37_2_info" class="popupWithInputText text14"  >
 							           		<br>
 						           			<b>Förfarande - Andra delfältet</b>
 						           			Vid vissa förfarande måste du ange ytterligare en kod i 37:2 som komplement till fält 37:1. Vissa koder har fastställts av kommissionen men även nationella koder får förekomma. Koden består av tre tecken. Om ingen lämplig kod finns lämnas fältet tomt.   
@@ -592,9 +598,9 @@
 				 							<b>35.</b>&nbsp;<font class="text16RedBold" >*</font><span title="svev_brut">Brut.vikt(kg)</span>
 				 						
 				 						
-				 						<div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="35_info" class="popupWithInputText text11"  >
-							           		<div class="text11" align="left">
+				 						<div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="35_info" class="popupWithInputText text14"  >
+							           		<div class="text14" align="left">
 						           			<br/>
 						           			<b>Bruttovikt</b><br/>
 						           			Bruttovikten anger du antingen för respektive varupost eller för hela sändningen. Du ska inte ange enheten kg. Bruttovikten är varornas totala vikt inklusive allt emballage, men exklusive containrar och annan transportutrustning.
@@ -623,7 +629,7 @@
 							        <tr>
 							        	<td align="left" >&nbsp;<button tabIndex=-1 title="Kundens vareregister" name="kundensVaruregisterControlButton" id="kundensVaruregisterControlButton" class="buttonGrayWithGreenFrame" type="button" >Sök i kund.varureg.</button></td>
 							        	<td align="left">
-							            	<select tabindex="0" class="inputTextMediumBlue" name="svev_ulkd" id="svev_ulkd">
+							            	<select class="inputTextMediumBlue" name="svev_ulkd" id="svev_ulkd">
 						 						<option value="">-Välj-</option>
 							 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
 							 				  		<option value="${country.svkd_kd}"<c:if test="${model.record.svev_ulkd == country.svkd_kd}"> selected </c:if> >${country.svkd_kd}</option>
@@ -640,8 +646,8 @@
            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            									</a>
 						            	</td>
-										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vati" id="svev_vati" size="8" maxlength="4" value='${model.record.svev_vati}'></td>
-										<td class="text14" align="left"><input type="text" class="inputText" name="svev_vat4" id="svev_vat4" size="8" maxlength="4" value='${model.record.svev_vat4}'></td>
+										<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="svev_vati" id="svev_vati" size="8" maxlength="4" value='${model.record.svev_vati}'></td>
+										<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="svev_vat4" id="svev_vat4" size="8" maxlength="4" value='${model.record.svev_vat4}'></td>
 										<td align="left">	
 						 					<select class="inputTextMediumBlueMandatoryField" name="svev_eup1" id="svev_eup1" >
 							 					<option value="">-Välj-</option>
@@ -655,7 +661,7 @@
 											
 						 				</td>
 						 				<td align="left">	
-						 					<select name="svev_eup2" id="svev_eup2" >
+						 					<select class="inputTextMediumBlue" name="svev_eup2" id="svev_eup2" >
 							 				  <option value="">-Välj-</option>
 											  <c:forEach var="code" items="${model.forfarande02CodeList}" >
 			 				  					 <option value="${code.svkd_kd}"<c:if test="${model.record.svev_eup2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -676,8 +682,8 @@
 											<img onMouseOver="showPop('41_xmenheter_info');" onMouseOut="hidePop('41_xmenheter_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 												
 											<b>41.</b><span title="svev_ankv">Extra mängd:&nbsp;</span>
-											<div class="text11" style="position: relative;" align="left">
-								            <span style="position:absolute;top:2px; width:250px;" id="41_xmenheter_info" class="popupWithInputText text11"  >
+											<div class="text14" style="position: relative;" align="left">
+								            <span style="position:absolute;top:2px; width:250px;" id="41_xmenheter_info" class="popupWithInputText text14"  >
 								           		<br/>
 							           			<b>41. Extra mängdenheter</b>
 												<br/>
@@ -693,8 +699,8 @@
 				 						</span>
 										<span title="svev_kota">Kolli antal</span>
 										
-										<div class="text11" style="position: relative;" align="left">
-										<span style="position:absolute;top:2px; width:250px;" id="31_kantal_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left">
+										<span style="position:absolute;top:2px; width:250px;" id="31_kantal_info" class="popupWithInputText text14"  >
 							           		<b>Kolliantal</b>
 						           			<br/>
 						           			Antal kolli/delar 
@@ -712,8 +718,8 @@
 										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_kosl">Kolli slag</span>
 										
-										<div class="text11" style="position: relative;" align="left">
-										<span style="position:absolute;top:2px; width:250px;" id="31_kslag_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left">
+										<span style="position:absolute;top:2px; width:250px;" id="31_kslag_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Kollislag</b>
 											<br/>
@@ -726,8 +732,8 @@
 										<td class="text14" align="left" colspan="2">
 										<img onMouseOver="showPop('31_varubesk_info');" onMouseOut="hidePop('31_varubesk_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="svev_vasl / svev_vas2...svev_vas5">Varubeskrivning&nbsp;</span>
-										<div class="text11" style="position: relative;" align="left">
-										<span style="position:absolute;top:2px; width:250px;" id="31_varubesk_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left">
+										<span style="position:absolute;top:2px; width:250px;" id="31_varubesk_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Varubeskrivning</b>
 											<br/>
@@ -763,8 +769,8 @@
 				 						<b>31.</b>
 							            <font class="text16RedBold" >*</font><span title="svev_godm">Godsmärkning&nbsp;</span>
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="31_gods_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="31_gods_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Godsmärkning</b>
 											<br/>
@@ -782,11 +788,11 @@
 							        
 									<tr>
 										<td class="text14" align="left">&nbsp;
-											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
+											<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="svev_ankv" id="svev_ankv" size="10" maxlength="10" value='${model.record.svev_ankv}'>
 											
 										</td>
-										<td class="text11" valign="bottom">
-											<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kota" id="svev_kota" size="5" maxlength="5" value="${model.record.svev_kota}">
+										<td class="text14" valign="bottom">
+											<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="svev_kota" id="svev_kota" size="5" maxlength="5" value="${model.record.svev_kota}">
 										</td>
 										<td align="left">
 					            			<select class="inputTextMediumBlueMandatoryField" name="svev_kosl" id="svev_kosl">
@@ -815,37 +821,37 @@
 														</tr>
 														
 									           			<tr>
-										           			<td class="text11">
-																&nbsp;31.2 Varubeskrivning<input type="text" class="inputText" name="svev_vas2" id="svev_vas2" size="35" maxlength="70" value="${model.record.svev_vas2}">
+										           			<td class="text14">
+																&nbsp;31.2 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="svev_vas2" id="svev_vas2" size="35" maxlength="70" value="${model.record.svev_vas2}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
-																&nbsp;31.3 Varubeskrivning<input type="text" class="inputText" name="svev_vas3" id="svev_vas3" size="35" maxlength="70" value="${model.record.svev_vas3}">
+										           			<td class="text14">
+																&nbsp;31.3 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="svev_vas3" id="svev_vas3" size="35" maxlength="70" value="${model.record.svev_vas3}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
-																&nbsp;31.4 Varubeskrivning<input type="text" class="inputText" name="svev_vas4" id="svev_vas4" size="35" maxlength="70" value="${model.record.svev_vas4}">
+										           			<td class="text14">
+																&nbsp;31.4 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="svev_vas4" id="svev_vas4" size="35" maxlength="70" value="${model.record.svev_vas4}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
-																&nbsp;31.5 Varubeskrivning<input type="text" class="inputText" name="svev_vas5" id="svev_vas5" size="35" maxlength="70" value="${model.record.svev_vas5}">
+										           			<td class="text14">
+																&nbsp;31.5 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="svev_vas5" id="svev_vas5" size="35" maxlength="70" value="${model.record.svev_vas5}">
 															</td>
 														</tr>
 														
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text11"><button name="itemDescriptionExtraInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('itemDescriptionExtraInformation');">&nbsp;Ok</button> 
+															<td class="text14"><button name="itemDescriptionExtraInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('itemDescriptionExtraInformation');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
 												</div>
 											</span>
 										</td>
-										<td class="text14" align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svev_godm" id="svev_godm" size="25" maxlength="42" value="${model.record.svev_godm}"></td>
+										<td class="text14" align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryFieldUPPERCASE" name="svev_godm" id="svev_godm" size="25" maxlength="42" value="${model.record.svev_godm}"></td>
 							            <td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_fabl" id="svev_fabl" size="11" maxlength="11" value="${model.record.svev_fabl}"></td>
 							            <td></td>
  							        </tr>
@@ -865,8 +871,8 @@
 					 						<b>46.</b>
 								            <font class="text16RedBold" >*</font><span title="svev_stva">Statistiskt värde:&nbsp;</span>
 								            
-								            <div class="text11" style="position: relative;" align="left">
-								            <span style="position:absolute;top:2px; width:250px;" id="46_info" class="popupWithInputText text11"  >
+								            <div class="text14" style="position: relative;" align="left">
+								            <span style="position:absolute;top:2px; width:250px;" id="46_info" class="popupWithInputText text14"  >
 								           		<br/>
 							           			<b>Statistiskt värde</b>
 												<br/>
@@ -893,8 +899,8 @@
 								            &nbsp;<img onMouseOver="showPop('tullvarde_info');" onMouseOut="hidePop('tullvarde_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<font class="text16RedBold" >*</font><span title="svev_stva2">Tullvärde:&nbsp;</span>
 								            
-								            <div class="text11" style="position: relative;" align="left">
-								            <span style="position:absolute;top:2px; width:250px;" id="tullvarde_info" class="popupWithInputText text11"  >
+								            <div class="text14" style="position: relative;" align="left">
+								            <span style="position:absolute;top:2px; width:250px;" id="tullvarde_info" class="popupWithInputText text14"  >
 								           		<br/>
 							           			<b>Tullvärde</b>
 												<br/>
@@ -921,8 +927,8 @@
 						 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 						 						<font class="text16RedBold" >*</font><span title="svev_call">Call me:&nbsp;</span>
 									            
-									            <div class="text11" style="position: relative;" align="left">
-									            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text11"  >
+									            <div class="text14" style="position: relative;" align="left">
+									            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text14"  >
 									           		<br/>
 								           			<b>Åtgärdsindikator (Call me-kod)</b>
 													<br/>
@@ -992,8 +998,8 @@
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 						            
-						            <div class="text11" style="position: relative;" align="left">
-						            <span style="position:absolute;top:2px; width:250px;" id="44a_info" class="popupWithInputText text11"  >
+						            <div class="text14" style="position: relative;" align="left">
+						            <span style="position:absolute;top:2px; width:250px;" id="44a_info" class="popupWithInputText text14"  >
 						           		<br/>
 					           			<b>Särskilda upplysningar</b>
 										<br/>
@@ -1018,7 +1024,7 @@
 							            <td valign="top" class="text14" align="left">
 						           			<table >
 						           				<tr>
-								           			<td class="text11" colspan="3">
+								           			<td class="text14" colspan="3">
 								           				<span title="svev_bit1-svev_bii1 / svev_bit2-svev_bii2 / etc"><b>Bilagda handlingar</b></span>
 								           				<a tabindex="-1" id="bilagdaHandIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1026,9 +1032,9 @@
 								           			</td>
 								        			</tr>	
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;1.Kod
-								           				<select name="svev_bit1" id="svev_bit1">
+								           				<select class="inputTextMediumBlue" name="svev_bit1" id="svev_bit1">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<c:choose>
@@ -1042,127 +1048,127 @@
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">&nbsp;<span title="svev_bii1">Identitet</span>
+								           			<td class="text14">&nbsp;<span title="svev_bii1">Identitet</span>
 														<c:choose>
 															<c:when test="${not empty model.record.svev_bii1}">
-																<input type="text" class="inputText" name="svev_bii1" id="svev_bii1" size="35" maxlength="35" value="${model.record.svev_bii1}">
+																<input type="text" class="inputTextMediumBlue" name="svev_bii1" id="svev_bii1" size="35" maxlength="35" value="${model.record.svev_bii1}">
 															</c:when>
 															<c:otherwise>
-																<input type="text" class="inputText" name="svev_bii1" id="svev_bii1" size="35" maxlength="35" value="${recordTopic.sveh_fatx}">
+																<input type="text" class="inputTextMediumBlue" name="svev_bii1" id="svev_bii1" size="35" maxlength="35" value="${recordTopic.sveh_fatx}">
 															</c:otherwise>
 														</c:choose>
 													</td>
 												</tr>
 												<tr>	
-								           			<td class="text11">
+								           			<td class="text14">
 														&nbsp;2.Kod
-								           				<select name="svev_bit2" id="svev_bit2">
+								           				<select class="inputTextMediumBlue" name="svev_bit2" id="svev_bit2">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 													</td>
-													<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii2" id="svev_bii2" size="35" maxlength="35" value="${model.record.svev_bii2}">
+													<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii2" id="svev_bii2" size="35" maxlength="35" value="${model.record.svev_bii2}">
 								           			</td>
 												</tr>
 												<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;3.Kod
-								           				<select name="svev_bit3" id="svev_bit3">
+								           				<select class="inputTextMediumBlue" name="svev_bit3" id="svev_bit3">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii3" id="svev_bii3" size="35" maxlength="35" value="${model.record.svev_bii3}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii3" id="svev_bii3" size="35" maxlength="35" value="${model.record.svev_bii3}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-							           				<td class="text11">
+							           				<td class="text14">
 								           				&nbsp;4.Kod
-								           				<select name="svev_bit4" id="svev_bit4">
+								           				<select class="inputTextMediumBlue" name="svev_bit4" id="svev_bit4">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii4" id="svev_bii4" size="35" maxlength="35" value="${model.record.svev_bii4}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii4" id="svev_bii4" size="35" maxlength="35" value="${model.record.svev_bii4}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;5.Kod
-								           				<select name="svev_bit5" id="svev_bit5">
+								           				<select class="inputTextMediumBlue" name="svev_bit5" id="svev_bit5">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii5" id="svev_bii5" size="35" maxlength="35" value="${model.record.svev_bii5}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii5" id="svev_bii5" size="35" maxlength="35" value="${model.record.svev_bii5}">
 								           			</td>
 							           			</tr>
 							           			<tr>										           			
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;6.Kod
-								           				<select name="svev_bit6" id="svev_bit6">
+								           				<select class="inputTextMediumBlue" name="svev_bit6" id="svev_bit6">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii6" id="svev_bii6" size="35" maxlength="35" value="${model.record.svev_bii6}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii6" id="svev_bii6" size="35" maxlength="35" value="${model.record.svev_bii6}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;7.Kod
-								           				<select name="svev_bit7" id="svev_bit7">
+								           				<select class="inputTextMediumBlue" name="svev_bit7" id="svev_bit7">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit7 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii7" id="svev_bii7" size="35" maxlength="35" value="${model.record.svev_bii7}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii7" id="svev_bii7" size="35" maxlength="35" value="${model.record.svev_bii7}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;8.Kod
-								           				<select name="svev_bit8" id="svev_bit8">
+								           				<select class="inputTextMediumBlue" name="svev_bit8" id="svev_bit8">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit8 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii8" id="svev_bii8" size="35" maxlength="35" value="${model.record.svev_bii8}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="svev_bii8" id="svev_bii8" size="35" maxlength="35" value="${model.record.svev_bii8}">
 								           			</td>
 							           			</tr>
 							           			<tr>
-								           			<td class="text11">
+								           			<td class="text14">
 								           				&nbsp;9.Kod
-								           				<select name="svev_bit9" id="svev_bit9">
+								           				<select class="inputTextMediumBlue" name="svev_bit9" id="svev_bit9">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_bit9 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="svev_bii9" id="svev_bii9" size="35" maxlength="35" value="${model.record.svev_bii9}">
+								           			<td class="text14">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue"  name="svev_bii9" id="svev_bii9" size="35" maxlength="35" value="${model.record.svev_bii9}">
 								           			</td>
 							           			</tr>
 						           			</table>
@@ -1170,7 +1176,7 @@
 							            <td valign="top">
 						           			<table>
 						           				<tr>
-								           			<td class="text11" colspan="2">
+								           			<td class="text14" colspan="2">
 								           				<b>Särskilda upplysningar</b>
 								           				<a tabindex="-1" id="sarskildaUppIdLink">
 		            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1178,42 +1184,42 @@
 								           			</td>
 								        			</tr>
 							           			<tr>
-								           			<td class="text11" >
+								           			<td class="text14" >
 								           				&nbsp;<span title="svev_suko">1.Kod</span>
-								           				<select name="svev_suko" id="svev_suko">
+								           				<select class="inputTextMediumBlue" name="svev_suko" id="svev_suko">
 									 						<option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.salCodeList}" >
 										 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_suko == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 															</c:forEach>  
 														</select>
 								           			</td>
-								           			<td class="text11" >
+								           			<td class="text14" >
 								           				&nbsp;
 								           			</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
-														&nbsp;<span title="svev_sutx">1.Text</span><input type="text" class="inputText" name="svev_sutx" id="svev_sutx" size="35" maxlength="70" value="${model.record.svev_sutx}">
+													<td colspan="2" class="text14">
+														&nbsp;<span title="svev_sutx">1.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sutx" id="svev_sutx" size="35" maxlength="70" value="${model.record.svev_sutx}">
 													</td>
 												</tr>
 												<tr>	
-								           			<td colspan="2" class="text11">
-														&nbsp;<span title="svev_sut2">2.Text</span><input type="text" class="inputText" name="svev_sut2" id="svev_sut2" size="35" maxlength="70" value="${Xmodel.record.svev_sut2}">
+								           			<td colspan="2" class="text14">
+														&nbsp;<span title="svev_sut2">2.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut2" id="svev_sut2" size="35" maxlength="70" value="${Xmodel.record.svev_sut2}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
-														&nbsp;<span title="svev_sut3">3.Text</span><input type="text" class="inputText" name="svev_sut3" id="svev_sut3" size="35" maxlength="70" value="${Xmodel.record.svev_sut3}">
+													<td colspan="2" class="text14">
+														&nbsp;<span title="svev_sut3">3.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut3" id="svev_sut3" size="35" maxlength="70" value="${Xmodel.record.svev_sut3}">
 													</td>
 												</tr>
 												<tr>	
-													<td colspan="2" class="text11">
-														&nbsp;<span title="svev_sut4">4.Text</span><input type="text" class="inputText" name="svev_sut4" id="svev_sut4" size="35" maxlength="70" value="${Xmodel.record.svev_sut4}">
+													<td colspan="2" class="text14">
+														&nbsp;<span title="svev_sut4">4.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut4" id="svev_sut4" size="35" maxlength="70" value="${Xmodel.record.svev_sut4}">
 													</td>
 												</tr>
 												<tr>
-													<td colspan="2" class="text11">
-														&nbsp;<span title="svev_sut5">5.Text</span><input type="text" class="inputText" name="svev_sut5" id="svev_sut5" size="35" maxlength="70" value="${Xmodel.record.svev_sut5}">
+													<td colspan="2" class="text14">
+														&nbsp;<span title="svev_sut5">5.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut5" id="svev_sut5" size="35" maxlength="70" value="${Xmodel.record.svev_sut5}">
 														
 													</td>
 												</tr>
@@ -1224,7 +1230,7 @@
 						</td>	
            			</tr>
 					</table> 
-				</form>	         
+				         
             	</td>
            	</tr> 
            	<%-- --------------------------------------------------- --%>
@@ -1254,8 +1260,8 @@
 							            &nbsp;<img onMouseOver="showPop('44_info');" onMouseOut="hidePop('44_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Särskilda upplysningar</b>
 											<br/>
@@ -1285,7 +1291,7 @@
 								           		<div class="text10" align="left">
 								           			<table>
 								           				<tr>
-										           			<td class="text11" colspan="2">
+										           			<td class="text14" colspan="2">
 										           				<b>Särskilda upplysningar</b>
 										           				<a tabindex="-1" id="sarskildaUppIdLink2">
 		            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1294,87 +1300,87 @@
 										        		</tr>
 										        		<tr height="5"><td class="text" align="left"></td></tr>
 									           			<tr>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;<span title="svev_suk6">2.Kod</span>
-										           				<select name="svev_suk6" id="svev_suk6">
+										           				<select class="inputTextMediumBlue" name="svev_suk6" id="svev_suk6">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.salCodeList}" >
 												 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_suk6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach>  
 																</select>
 										           			</td>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;
 										           			</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sut6">1.Text</span><input type="text" class="inputText" name="svev_sut6" id="svev_sut6" size="35" maxlength="70" value="${model.record.svev_sut6}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sut6">1.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut6" id="svev_sut6" size="35" maxlength="70" value="${model.record.svev_sut6}">
 															</td>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sut7">2.Text</span><input type="text" class="inputText" name="svev_sut7" id="svev_sut7" size="35" maxlength="70" value="${model.record.svev_sut7}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sut7">2.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut7" id="svev_sut7" size="35" maxlength="70" value="${model.record.svev_sut7}">
 															</td>
 														</tr>
 										           		<tr>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sut8">3.Text</span><input type="text" class="inputText" name="svev_sut8" id="svev_sut8" size="35" maxlength="70" value="${model.record.svev_sut8}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sut8">3.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut8" id="svev_sut8" size="35" maxlength="70" value="${model.record.svev_sut8}">
 															</td>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sut9">4.Text</span><input type="text" class="inputText" name="svev_sut9" id="svev_sut9" size="35" maxlength="70" value="${model.record.svev_sut9}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sut9">4.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sut9" id="svev_sut9" size="35" maxlength="70" value="${model.record.svev_sut9}">
 															</td>
 														</tr>
 														<tr >
-										           			<td class="text11">
-																&nbsp;<span title="svev_suta">5.Text</span><input type="text" class="inputText" name="svev_suta" id="svev_suta" size="35" maxlength="70" value="${model.record.svev_suta}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_suta">5.Text</span><input type="text" class="inputTextMediumBlue" name="svev_suta" id="svev_suta" size="35" maxlength="70" value="${model.record.svev_suta}">
 															</td>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;
 										           			</td>
 														</tr>
-														<tr><td class="text11" height="8"/></tr>
+														<tr><td class="text14" height="8"/></tr>
 														
 														<tr>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;<span title="svev_sukb">3.Kod</span>
-										           				<select name="svev_sukb" id="svev_sukb">
+										           				<select class="inputTextMediumBlue" name="svev_sukb" id="svev_sukb">
 											 						<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.salCodeList}" >
 												 				  		<option value="${code.svkd_kd}"<c:if test="${model.record.svev_sukb == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach>  
 																</select>
 										           			</td>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;
 										           			</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sutb">1.Text</span><input type="text" class="inputText" name="svev_sutb" id="svev_sutb" size="35" maxlength="70" value="${model.record.svev_sutb}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sutb">1.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sutb" id="svev_sutb" size="35" maxlength="70" value="${model.record.svev_sutb}">
 															</td>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sutc">2.Text</span><input type="text" class="inputText" name="svev_sutc" id="svev_sutc" size="35" maxlength="70" value="${model.record.svev_sutc}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sutc">2.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sutc" id="svev_sutc" size="35" maxlength="70" value="${model.record.svev_sutc}">
 															</td>
 														</tr>
 										           		<tr>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sutd">3.Text</span><input type="text" class="inputText" name="svev_sutd" id="svev_sutd" size="35" maxlength="70" value="${model.record.svev_sutd}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sutd">3.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sutd" id="svev_sutd" size="35" maxlength="70" value="${model.record.svev_sutd}">
 															</td>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sute">4.Text</span><input type="text" class="inputText" name="svev_sute" id="svev_sute" size="35" maxlength="70" value="${model.record.svev_sute}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sute">4.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sute" id="svev_sute" size="35" maxlength="70" value="${model.record.svev_sute}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text11">
-																&nbsp;<span title="svev_sutf">5.Text</span><input type="text" class="inputText" name="svev_sutf" id="svev_sutf" size="35" maxlength="70" value="${model.record.svev_sutf}">
+										           			<td class="text14">
+																&nbsp;<span title="svev_sutf">5.Text</span><input type="text" class="inputTextMediumBlue" name="svev_sutf" id="svev_sutf" size="35" maxlength="70" value="${model.record.svev_sutf}">
 															</td>
-										           			<td class="text11" >
+										           			<td class="text14" >
 										           				&nbsp;
 										           			</td>
 														</tr>
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text11"><button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('specialInformationCode');">&nbsp;Ok</button> 
+															<td class="text14"><button name="specialInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('specialInformationCode');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -1389,8 +1395,8 @@
 							            &nbsp;<img onMouseOver="showPop('40_info');" onMouseOut="hidePop('40_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>40.</b><span title="svev_tik1-svev_tit1-svev_tix1 / svev_tik2-svev_tit2-svev_tix2 ... etc">Tidigare handlingar:</span>
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="40_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="40_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Tidigare handlingar</b>
 											<br/>
@@ -1423,7 +1429,7 @@
 								           		<div class="text10" align="left">
 								           			<table width="100%">
 								           				<tr>
-										           			<td class="text11" colspan="3">
+										           			<td class="text14" colspan="3">
 										           				<b>Tidigare handlingar</b>
 										           				<a tabindex="-1" id="tidigareHandlingarIdLink">
 		            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -1431,76 +1437,76 @@
 										           			</td>
 										        		</tr>	
 								           				<tr>
-										           			<td class="text11">&nbsp;Kategori</td>
-										           			<td class="text11">&nbsp;Typ</td>
-															<td class="text11">&nbsp;Identitet</td>
+										           			<td class="text14">&nbsp;Kategori</td>
+										           			<td class="text14">&nbsp;Typ</td>
+															<td class="text14">&nbsp;Identitet</td>
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;1.
-										           				<select name="svev_tik1" id="svev_tik1" >
+										           			<td class="text14" nowrap >&nbsp;1.
+										           				<select class="inputTextMediumBlue" name="svev_tik1" id="svev_tik1" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik1 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik1 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.svev_tik1 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>										           			
 										           			</td>
-										           			<td class="text11" nowrap >
-																<select name="svev_tit1" id="svev_tit1">
+										           			<td class="text14" nowrap >
+																<select class="inputTextMediumBlue" name="svev_tit1" id="svev_tit1">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>										           				
 															</td>
-															<td class="text11" nowrap >
-																&nbsp;<input type="text" class="inputText" name="svev_tix1" id="svev_tix1" size="35" maxlength="35" value='${model.record.svev_tix1}'>
+															<td class="text14" nowrap >
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="svev_tix1" id="svev_tix1" size="35" maxlength="35" value='${model.record.svev_tix1}'>
 															</td>
 										           		</tr>
 										           		<tr>
-										           			<td class="text11" nowrap >&nbsp;2.
-										           				<select name="svev_tik2" id="svev_tik2" >
+										           			<td class="text14" nowrap >&nbsp;2.
+										           				<select class="inputTextMediumBlue" name="svev_tik2" id="svev_tik2" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik2 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik2 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.svev_tik2 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>	
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="svev_tit2" id="svev_tit2">
+										           			<td class="text14" nowrap >
+										           				<select class="inputTextMediumBlue" name="svev_tit2" id="svev_tit2">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
-																&nbsp;<input type="text" class="inputText" name="svev_tix2" id="svev_tix2" size="35" maxlength="35" value='${model.record.svev_tix2}'>
+															<td class="text14" nowrap >
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="svev_tix2" id="svev_tix2" size="35" maxlength="35" value='${model.record.svev_tix2}'>
 															</td>
 										           		</tr>
 														<tr>
-										           			<td class="text11" nowrap >&nbsp;3.
-										           				<select name="svev_tik3" id="svev_tik3" >
+										           			<td class="text14" nowrap >&nbsp;3.
+										           				<select class="inputTextMediumBlue" name="svev_tik3" id="svev_tik3" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik3 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik3 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.svev_tik3 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>
 									           				</td>
-										           			<td class="text11" nowrap >
-										           				<select name="svev_tit3" id="svev_tit3">
+										           			<td class="text14" nowrap >
+										           				<select class="inputTextMediumBlue" name="svev_tit3" id="svev_tit3">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
-																&nbsp;<input type="text" class="inputText" name="svev_tix3" id="svev_tix3" size="35" maxlength="35" value='${model.record.svev_tix3}'>
+															<td class="text14" nowrap >
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="svev_tix3" id="svev_tix3" size="35" maxlength="35" value='${model.record.svev_tix3}'>
 															</td>
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;4.
-										           				<select name="svev_tik4" id="svev_tik4" >
+										           			<td class="text14" nowrap >&nbsp;4.
+										           				<select class="inputTextMediumBlue" name="svev_tik4" id="svev_tik4" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik4 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik4 == 'Y'}"> selected </c:if> >Y</option>
@@ -1508,8 +1514,8 @@
 															  	</select>
 										           				
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="svev_tit4" id="svev_tit4">
+										           			<td class="text14" nowrap >
+										           				<select class="inputTextMediumBlue" name="svev_tit4" id="svev_tit4">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1517,51 +1523,51 @@
 																</select>
 																
 															</td>
-															<td class="text11">
-																&nbsp;<input type="text" class="inputText" name="svev_tix4" id="svev_tix4" size="35" maxlength="35" value='${model.record.svev_tix4}'>
+															<td class="text14">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="svev_tix4" id="svev_tix4" size="35" maxlength="35" value='${model.record.svev_tix4}'>
 															</td>
 															
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;5.
-										           				<select name="svev_tik5" id="svev_tik5" >
+										           			<td class="text14" nowrap >&nbsp;5.
+										           				<select class="inputTextMediumBlue" name="svev_tik5" id="svev_tik5" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik5 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik5 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.svev_tik5 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="svev_tit5" id="svev_tit5">
+										           			<td class="text14" nowrap >
+										           				<select class="inputTextMediumBlue" name="svev_tit5" id="svev_tit5">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
-																&nbsp;<input type="text" class="inputText" name="svev_tix5" id="svev_tix5" size="35" maxlength="35" value='${model.record.svev_tix5}'>
+															<td class="text14" nowrap >
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="svev_tix5" id="svev_tix5" size="35" maxlength="35" value='${model.record.svev_tix5}'>
 															</td>
 										           		</tr>
 									           			<tr>
-										           			<td class="text11" nowrap >&nbsp;6.
-										           				<select name="svev_tik6" id="svev_tik6" >
+										           			<td class="text14" nowrap >&nbsp;6.
+										           				<select class="inputTextMediumBlue" name="svev_tik6" id="svev_tik6" >
 											 						<option value="">-Välj-</option>
 															  		<option value="X" <c:if test="${model.record.svev_tik6 == 'X'}"> selected </c:if> >X</option>
 															  		<option value="Y" <c:if test="${model.record.svev_tik6 == 'Y'}"> selected </c:if> >Y</option>
 															  		<option value="Z" <c:if test="${model.record.svev_tik6 == 'Z'}"> selected </c:if> >Z</option>
 															  	</select>
 										           			</td>
-										           			<td class="text11" nowrap >
-										           				<select name="svev_tit6" id="svev_tit6">
+										           			<td class="text14" nowrap >
+										           				<select class="inputTextMediumBlue" name="svev_tit6" id="svev_tit6">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.thoCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_tit6 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
 																	</c:forEach> 
 																</select>
 															</td>
-															<td class="text11" nowrap >
-																&nbsp;<input type="text" class="inputText" name="svev_tix6" id="svev_tix6" size="35" maxlength="35" value='${model.record.svev_tix6}'>
+															<td class="text14" nowrap >
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="svev_tix6" id="svev_tix6" size="35" maxlength="35" value='${model.record.svev_tix6}'>
 															</td>
 										           		</tr>
 								           			</table>
@@ -1593,25 +1599,25 @@
 								           		<div class="text10" align="left" valign="top">
 								           			<table>
 								           				<tr>
-										           			<td class="text11">
+										           			<td class="text14">
 										           				&nbsp;Godsmärkning [max 42 tecken]:
 										           			</td>
-										           			<td class="text11">
+										           			<td class="text14">
 																&nbsp;Kolli antal:
 															</td>
-															<td class="text11">
+															<td class="text14">
 																&nbsp;Kolli slag [kod]
 															</td>
 														</tr>
 									           			<tr>
-										           			<td valign="top" class="text11">
-										           				&nbsp;2.<textarea rows="2" cols="15" class="inputText" name="svev_god2" id="svev_god2" maxlength="42">${model.record.svev_god2}</textarea>
+										           			<td valign="top" class="text14">
+										           				&nbsp;2.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="svev_god2" id="svev_god2" maxlength="42">${model.record.svev_god2}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot2" id="svev_kot2" size="5" maxlength="5" value="${model.record.svev_kot2}">
+										           			<td valign="bottom" class="text14">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="svev_kot2" id="svev_kot2" size="5" maxlength="5" value="${model.record.svev_kot2}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="svev_kos2" id="svev_kos2">
+										            			<select class="inputTextMediumBlue" name="svev_kos2" id="svev_kos2">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos2 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1622,14 +1628,14 @@
 															
 										           		</tr>
 														<tr>
-										           			<td valign="top" class="text11">
-										           				&nbsp;3.<textarea rows="2" cols="15" class="inputText" name="svev_god3" id="svev_god3" maxlength="42">${model.record.svev_god3}</textarea>
+										           			<td valign="top" class="text14">
+										           				&nbsp;3.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="svev_god3" id="svev_god3" maxlength="42">${model.record.svev_god3}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot3" id="svev_kot3" size="5" maxlength="5" value="${model.record.svev_kot3}">
+										           			<td valign="bottom" class="text14">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="svev_kot3" id="svev_kot3" size="5" maxlength="5" value="${model.record.svev_kot3}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="svev_kos3" id="svev_kos3">
+										            			<select class="inputTextMediumBlue" name="svev_kos3" id="svev_kos3">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos3 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1640,14 +1646,14 @@
 															
 										           		</tr>
 									           			<tr>
-										           			<td valign="top" class="text11">
-										           				&nbsp;4.<textarea rows="2" cols="15" class="inputText" name="svev_god4" id="svev_god4" maxlength="42">${model.record.svev_god4}</textarea>
+										           			<td valign="top" class="text14">
+										           				&nbsp;4.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="svev_god4" id="svev_god4" maxlength="42">${model.record.svev_god4}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot4" id="svev_kot4" size="5" maxlength="5" value="${model.record.svev_kot4}">
+										           			<td valign="bottom" class="text14">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="svev_kot4" id="svev_kot4" size="5" maxlength="5" value="${model.record.svev_kot4}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="svev_kos4" id="svev_kos4">
+										            			<select class="inputTextMediumBlue" name="svev_kos4" id="svev_kos4">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos4 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1657,14 +1663,14 @@
 															
 										           		</tr>
 									           			<tr>
-										           			<td valign="top" class="text11">
-										           				&nbsp;5.<textarea rows="2" cols="15" class="inputText" name="svev_god5" id="svev_god5" maxlength="42">${model.record.svev_god5}</textarea>
+										           			<td valign="top" class="text14">
+										           				&nbsp;5.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="svev_god5" id="svev_god5" maxlength="42">${model.record.svev_god5}</textarea>
 										           			</td>
-										           			<td valign="bottom" class="text11">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="svev_kot5" id="svev_kot5" size="5" maxlength="5" value="${model.record.svev_kot5}">
+										           			<td valign="bottom" class="text14">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="svev_kot5" id="svev_kot5" size="5" maxlength="5" value="${model.record.svev_kot5}">
 															</td>
 															<td align="left" valign="bottom">
-										            			<select name="svev_kos5" id="svev_kos5">
+										            			<select class="inputTextMediumBlue" name="svev_kos5" id="svev_kos5">
 												            		<option value="">-Välj-</option>
 												 				  	<c:forEach var="code" items="${model.kolliCodeList}" >
 								                                	 	<option value="${code.svkd_kd}"<c:if test="${model.record.svev_kos5 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
@@ -1692,78 +1698,78 @@
 								           		<div class="text10" align="left">
 								           			<table>
 								           			<tr>
-									           			<td class="text11" colspan="5">
+									           			<td class="text14" colspan="5">
 									           				<b>Container nr</b>
 									           			</td>
 									        		</tr>
 								           			<tr>
-									           			<td class="text11">
-									           				&nbsp;1.<input type="text" class="inputText" name="svev_co01" id="svev_co01" size="12" maxlength="17" value="${model.record.svev_co01}">
+									           			<td class="text14">
+									           				&nbsp;1.<input type="text" class="inputTextMediumBlue" name="svev_co01" id="svev_co01" size="12" maxlength="17" value="${model.record.svev_co01}">
 									           			</td>
-														<td class="text11">
-															&nbsp;2.<input type="text" class="inputText" name="svev_co02" id="svev_co02" size="12" maxlength="17" value="${model.record.svev_co02}">
+														<td class="text14">
+															&nbsp;2.<input type="text" class="inputTextMediumBlue" name="svev_co02" id="svev_co02" size="12" maxlength="17" value="${model.record.svev_co02}">
 														</td>
-														<td class="text11">
-															&nbsp;3.<input type="text" class="inputText" name="svev_co03" id="svev_co03" size="12" maxlength="17" value="${model.record.svev_co03}">
+														<td class="text14">
+															&nbsp;3.<input type="text" class="inputTextMediumBlue" name="svev_co03" id="svev_co03" size="12" maxlength="17" value="${model.record.svev_co03}">
 														</td>
-														<td class="text11">
-									           				&nbsp;4.<input type="text" class="inputText" name="svev_co04" id="svev_co04" size="12" maxlength="17" value="${model.record.svev_co04}">
-									           			</td>
-													</tr>
-													<tr>
-									           			<td class="text11">
-									           				&nbsp;5.<input type="text" class="inputText" name="svev_co05" id="svev_co05" size="12" maxlength="17" value="${model.record.svev_co05}">
-									           			</td>
-														<td class="text11">
-															&nbsp;6.<input type="text" class="inputText" name="svev_co06" id="svev_co06" size="12" maxlength="17" value="${model.record.svev_co06}">
-														</td>
-														<td class="text11">
-															&nbsp;7.<input type="text" class="inputText" name="svev_co07" id="svev_co07" size="12" maxlength="17" value="${model.record.svev_co07}">
-														</td>
-														<td class="text11">
-									           				&nbsp;8.<input type="text" class="inputText" name="svev_co08" id="svev_co08" size="12" maxlength="17" value="${model.record.svev_co08}">
+														<td class="text14">
+									           				&nbsp;4.<input type="text" class="inputTextMediumBlue" name="svev_co04" id="svev_co04" size="12" maxlength="17" value="${model.record.svev_co04}">
 									           			</td>
 													</tr>
 													<tr>
-									           			<td class="text11">
-									           				&nbsp;9.<input type="text" class="inputText" name="svev_co09" id="svev_co09" size="12" maxlength="17" value="${model.record.svev_co09}">
+									           			<td class="text14">
+									           				&nbsp;5.<input type="text" class="inputTextMediumBlue" name="svev_co05" id="svev_co05" size="12" maxlength="17" value="${model.record.svev_co05}">
 									           			</td>
-														<td class="text11">
-															10.<input type="text" class="inputText" name="svev_co10" id="svev_co10" size="12" maxlength="17" value="${model.record.svev_co10}">
+														<td class="text14">
+															&nbsp;6.<input type="text" class="inputTextMediumBlue" name="svev_co06" id="svev_co06" size="12" maxlength="17" value="${model.record.svev_co06}">
 														</td>
-														<td class="text11">
-															11.<input type="text" class="inputText" name="svev_co11" id="svev_co11"  size="12" maxlength="17" value="${model.record.svev_co11}">
+														<td class="text14">
+															&nbsp;7.<input type="text" class="inputTextMediumBlue" name="svev_co07" id="svev_co07" size="12" maxlength="17" value="${model.record.svev_co07}">
 														</td>
-														<td class="text11">
-									           				12.<input type="text" class="inputText" name="svev_co12" id="svev_co12" size="12" maxlength="17" value="${model.record.svev_co12}">
-									           			</td>
-													</tr>
-													<tr>
-									           			<td class="text11">
-									           				13.<input type="text" class="inputText" name="svev_co13" id="svev_co13" size="12" maxlength="17" value="${model.record.svev_co13}">
-									           			</td>
-														<td class="text11">
-															14.<input type="text" class="inputText" name="svev_co14" id="svev_co14" size="12" maxlength="17" value="${model.record.svev_co14}">
-														</td>
-														<td class="text11">
-															15.<input type="text" class="inputText" name="svev_co15" id="svev_co15" size="12" maxlength="17" value="${model.record.svev_co15}">
-														</td>
-														<td class="text11">
-									           				16.<input type="text" class="inputText" name="svev_co16" id="svev_co16" size="12" maxlength="17" value="${model.record.svev_co16}">
+														<td class="text14">
+									           				&nbsp;8.<input type="text" class="inputTextMediumBlue" name="svev_co08" id="svev_co08" size="12" maxlength="17" value="${model.record.svev_co08}">
 									           			</td>
 													</tr>
 													<tr>
-									           			<td class="text11">
-									           				17.<input type="text" class="inputText" name="svev_co17" id="svev_co17" size="12" maxlength="17" value="${model.record.svev_co17}">
+									           			<td class="text14">
+									           				&nbsp;9.<input type="text" class="inputTextMediumBlue" name="svev_co09" id="svev_co09" size="12" maxlength="17" value="${model.record.svev_co09}">
 									           			</td>
-														<td class="text11">
-															18.<input type="text" class="inputText" name="svev_co18" id="svev_co18" size="12" maxlength="17" value="${model.record.svev_co18}">
+														<td class="text14">
+															10.<input type="text" class="inputTextMediumBlue" name="svev_co10" id="svev_co10" size="12" maxlength="17" value="${model.record.svev_co10}">
 														</td>
-														<td class="text11">
-															19.<input type="text" class="inputText" name="svev_co19" id="svev_co19" size="12" maxlength="17" value="${model.record.svev_co19}">
+														<td class="text14">
+															11.<input type="text" class="inputTextMediumBlue" name="svev_co11" id="svev_co11"  size="12" maxlength="17" value="${model.record.svev_co11}">
 														</td>
-														<td class="text11">
-									           				20.<input type="text" class="inputText" name="svev_co20" id="svev_co20" size="12" maxlength="17" value="${model.record.svev_co20}">
+														<td class="text14">
+									           				12.<input type="text" class="inputTextMediumBlue" name="svev_co12" id="svev_co12" size="12" maxlength="17" value="${model.record.svev_co12}">
+									           			</td>
+													</tr>
+													<tr>
+									           			<td class="text14">
+									           				13.<input type="text" class="inputTextMediumBlue" name="svev_co13" id="svev_co13" size="12" maxlength="17" value="${model.record.svev_co13}">
+									           			</td>
+														<td class="text14">
+															14.<input type="text" class="inputTextMediumBlue" name="svev_co14" id="svev_co14" size="12" maxlength="17" value="${model.record.svev_co14}">
+														</td>
+														<td class="text14">
+															15.<input type="text" class="inputTextMediumBlue" name="svev_co15" id="svev_co15" size="12" maxlength="17" value="${model.record.svev_co15}">
+														</td>
+														<td class="text14">
+									           				16.<input type="text" class="inputTextMediumBlue" name="svev_co16" id="svev_co16" size="12" maxlength="17" value="${model.record.svev_co16}">
+									           			</td>
+													</tr>
+													<tr>
+									           			<td class="text14">
+									           				17.<input type="text" class="inputTextMediumBlue" name="svev_co17" id="svev_co17" size="12" maxlength="17" value="${model.record.svev_co17}">
+									           			</td>
+														<td class="text14">
+															18.<input type="text" class="inputTextMediumBlue" name="svev_co18" id="svev_co18" size="12" maxlength="17" value="${model.record.svev_co18}">
+														</td>
+														<td class="text14">
+															19.<input type="text" class="inputTextMediumBlue" name="svev_co19" id="svev_co19" size="12" maxlength="17" value="${model.record.svev_co19}">
+														</td>
+														<td class="text14">
+									           				20.<input type="text" class="inputTextMediumBlue" name="svev_co20" id="svev_co20" size="12" maxlength="17" value="${model.record.svev_co20}">
 									           			</td>
 													</tr>
 													</table>
@@ -1791,8 +1797,8 @@
 							            &nbsp;<img onMouseOver="showPop('49_info');" onMouseOut="hidePop('49_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>49.</b><span title="svev_lagt">Identifiering av lager:&nbsp;</span>
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="49_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="49_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Identifiering av lager</b>
 											<br/>
@@ -1812,7 +1818,7 @@
 							            </td>
 							            
 							            <td class="text14" align="left" >
-							            	<select name="svev_lagt" id="svev_lagt">
+							            	<select class="inputTextMediumBlue" name="svev_lagt" id="svev_lagt">
 				 								<option selected value="">-Välj-</option>
 												<c:choose>
 				 									<%-- only when new record and header value exists --%>
@@ -1837,15 +1843,15 @@
 											<c:choose>
 			 									<%-- only when new record and header value exists --%>
 												<c:when test="${recordTopic.sveh_godn!='' && empty model.record.svev_syli}">
-													<input type="text" class="inputText" name="svev_lagi" id="svev_lagi" size="10" maxlength="14" value='${recordTopic.sveh_godn}'>
+													<input type="text" class="inputTextMediumBlue" name="svev_lagi" id="svev_lagi" size="10" maxlength="14" value='${recordTopic.sveh_godn}'>
 												</c:when>
 												<c:otherwise>
-													<input type="text" class="inputText" name="svev_lagi" id="svev_lagi" size="10" maxlength="14" value='${model.record.svev_lagi}'>
+													<input type="text" class="inputTextMediumBlue" name="svev_lagi" id="svev_lagi" size="10" maxlength="14" value='${model.record.svev_lagi}'>
 												</c:otherwise>
 											</c:choose>
 										</td>
 							           	<td class="text14" align="left">&nbsp;<span title="svev_lagl">Landkod&nbsp;</span>
-							            	<select name="svev_lagl" id="svev_lagl">
+							            	<select class="inputTextMediumBlue" name="svev_lagl" id="svev_lagl">
 						 						<option value="">-Välj-</option>
 						 						<c:choose>
 				 									<%-- only when new record and header value exists --%>
@@ -1895,8 +1901,8 @@
 							            &nbsp;<img onMouseOver="showPop('S02_info');" onMouseOut="hidePop('S02_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>S02.</b><span title="svev_komr">Kommersiellt referensnr.&nbsp;</span>
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="S02_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="S02_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Kommersiellt referensnr.</b>
 											<br/>
@@ -1915,15 +1921,15 @@
 										</span>
 										</div>
 										</td>
-							           	<td class="text14" align="left"><input type="text" class="inputText" name="svev_komr" id="svev_komr" size="25" maxlength="70" value="${model.record.svev_komr}"></td>
+							           	<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="svev_komr" id="svev_komr" size="25" maxlength="70" value="${model.record.svev_komr}"></td>
 						           	</tr>
 						           	<tr>
 							            <td class="text14" align="left">
 							            &nbsp;<img onMouseOver="showPop('S27_info');" onMouseOut="hidePop('S27_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>S27.</b><span title="svev_fnkd">FN-kod för farligt gods:&nbsp;</span>
 							            
-							            <div class="text11" style="position: relative;" align="left">
-							            <span style="position:absolute;top:2px; width:250px;" id="S27_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left">
+							            <span style="position:absolute;top:2px; width:250px;" id="S27_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>FN-kod för farligt gods</b>
 											<br/>
@@ -1937,15 +1943,15 @@
 										</span>
 										</div>
 										</td>
-							            <td class="text14" align="left"><input type="text" class="inputText" name="svev_fnkd" id="svev_fnkd" size="4" maxlength="4" value="${model.record.svev_fnkd}"></td>
+							            <td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="svev_fnkd" id="svev_fnkd" size="4" maxlength="4" value="${model.record.svev_fnkd}"></td>
 							        </tr>
 							        <tr>
 						 				<td class="text14">
 						 				&nbsp;<img onMouseOver="showPop('S29_info');" onMouseOut="hidePop('S29_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>S29.</b><span title="svev_betk">Betalningssätt&nbsp;</span>
 						 				
-						 				<div class="text11" style="position: relative;" align="left">
-						 				<span style="position:absolute;top:2px; width:250px;" id="S29_info" class="popupWithInputText text11"  >
+						 				<div class="text14" style="position: relative;" align="left">
+						 				<span style="position:absolute;top:2px; width:250px;" id="S29_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Betalningssätt</b>
 											<br/>
@@ -1966,7 +1972,7 @@
 										</td>
 										
 						 				<td>
-							 				<select name="svev_betk" id="svev_betk" >
+							 				<select class="inputTextMediumBlue" name="svev_betk" id="svev_betk" >
 							 				  <option value="">-Välj-</option>
 											  <option value="A"<c:if test="${model.record.svev_betk == 'A'}"> selected </c:if> >A</option>
 											  <option value="B"<c:if test="${model.record.svev_betk == 'B'}"> selected </c:if> >B</option>
@@ -1985,8 +1991,16 @@
 				</table>
             	</td>
            	</tr>
+     
             <tr height="30"><td></td></tr>
+            </table>
+            </form>
+            </td>
+            </tr>
+
+            
 		</table>
+		
 		</td>
 		</tr>
 		

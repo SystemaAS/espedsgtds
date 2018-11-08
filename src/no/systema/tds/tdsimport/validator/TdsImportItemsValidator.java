@@ -5,6 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
 import no.systema.tds.tdsimport.model.jsonjackson.topic.items.JsonTdsImportSpecificTopicItemRecord;
+import no.systema.main.util.StringManager;
 
 /**
  * 
@@ -14,6 +15,7 @@ import no.systema.tds.tdsimport.model.jsonjackson.topic.items.JsonTdsImportSpeci
  */
 public class TdsImportItemsValidator implements Validator {
 	private final String NOT_FOUND = "NOT FOUND";
+	private StringManager strMgr = new StringManager();
 
 	/**
 	 * 
@@ -116,6 +118,7 @@ public class TdsImportItemsValidator implements Validator {
 						}
 					}
 					
+					
 					//Varukod
 					if(!record.getHeader_svih_mtyp().startsWith("H")){
 						if(record.getSviv_vata()!=null && !"".equals(record.getSviv_vata())){
@@ -128,6 +131,21 @@ public class TdsImportItemsValidator implements Validator {
 									errors.rejectValue("sviv_vata", "systema.tds.import.header.error.rule.item.sviv_vata.tenNumbers");
 								}
 							}
+						}
+					}
+					
+					//Rubrik 36
+					if( strMgr.isNotNull(record.getSviv_fokd()) && "300".equals(record.getSviv_fokd())) {
+						if(this.existsBilagdaHandligarN864(record) ){
+							//ok
+						}else{
+							errors.rejectValue("sviv_fokd", "systema.tds.import.header.error.rule.item.sviv_fokd.N184.mustExists");
+						}
+					}else if( strMgr.isNotNull(record.getSviv_fokd()) && "100".equals(record.getSviv_fokd())) {
+						if(this.existsBilagdaHandligarN864(record) ){
+							errors.rejectValue("sviv_fokd", "systema.tds.import.header.error.rule.item.sviv_fokd.N184.mustNotExists");
+						}else{
+							//ok
 						}
 					}
 					//----------------------------
@@ -656,5 +674,33 @@ public class TdsImportItemsValidator implements Validator {
 		
 		return retval;
 	}
+	
+	/**
+	 * 
+	 * @param record
+	 * @return
+	 */
+	private boolean existsBilagdaHandligarN864(JsonTdsImportSpecificTopicItemRecord record){
+		boolean retval = false;
+		
+		String bit1 = record.getSviv_bit1();
+		String bit2 = record.getSviv_bit2();
+		String bit3 = record.getSviv_bit3();
+		String bit4 = record.getSviv_bit4();
+		String bit5 = record.getSviv_bit5();
+		String bit6 = record.getSviv_bit6();
+		String bit7 = record.getSviv_bit7();
+		String bit8 = record.getSviv_bit8();
+		String bit9 = record.getSviv_bit9();
+
+		if(bit1.equals("N864") || bit2.equals("N864") || bit3.equals("N864") || bit4.equals("N864") ||
+		   bit5.equals("N864") || bit6.equals("N864") || bit7.equals("N864") || bit8.equals("N864") || bit9.equals("N864")){
+			retval = true;
+		}
+
+		
+		return retval;
+	}
+	
 	
 }

@@ -582,7 +582,7 @@
 							        </tr>
 							        <tr>
 							        		<td colspan="4" class="text14" align="left">
-							        			<input type="text" class="inputTextMediumBlueMandatoryField" name="nvmn" id="nvmn" size="35" maxlength="42" value="${model.record.nvmn}">
+							        			<input type="text" class="inputTextMediumBlueMandatoryFieldUPPERCASE" name="nvmn" id="nvmn" size="35" maxlength="42" value="${model.record.nvmn}">
 			 			            		</td>
 							        		<td >
 											<select class="selectMediumBlueE2" name="nvmnsk" id="nvmnsk">

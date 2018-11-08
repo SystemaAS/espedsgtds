@@ -338,6 +338,10 @@ public class TdsImportHeaderController {
 						//At this point we are ready to do an update
 						//--------------------------------------------------
 						if(isValidCreatedRecordTransactionOnRPG){
+							
+							//Last adjustment of some fields
+							this.adjustFields( jsonTdsImportSpecificTopicRecord);
+							
 				            //---------------------------
 							//get BASE URL = RPG-PROGRAM
 				            //---------------------------
@@ -1913,6 +1917,18 @@ public class TdsImportHeaderController {
 		return urlRequestParamsKeys.toString();	
 	}
 	
+	
+	/**
+	 * 
+	 * @param recordToValidate
+	 */
+	private void adjustFields(JsonTdsImportSpecificTopicRecord recordToValidate){
+		//Godsmärkning
+		if(strMgr.isNotNull(recordToValidate.getSvih_golk())){
+			recordToValidate.setSvih_golk(recordToValidate.getSvih_golk().toUpperCase());
+		}
+		
+	}
 	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")

@@ -31,7 +31,7 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
-
+import no.systema.main.util.StringManager;
 import no.systema.tds.nctsimport.validator.NctsImportUnloadingItemsValidator;
 
 
@@ -70,7 +70,8 @@ public class NctsImportUnloadingItemsController {
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
-
+	private StringManager strMgr = new StringManager();
+	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) {
         //binder.setValidator(new TdsExportItemsValidator());
@@ -243,6 +244,9 @@ public class NctsImportUnloadingItemsController {
 					//At this point we are ready to do an update
 					//--------------------------------------------------
 					if(isValidCreatedRecordTransactionOnRPG){
+						
+						//Last adjustment of some fields
+						this.adjustFields( jsonNctsImportSpecificTopicUnloadingItemRecord);
 						
 			            logger.info("[INFO] Valid previous step successfully processed, OK ");
 			            logger.info("[INFO] Ready to move forward to do the UPDATE");
@@ -666,6 +670,17 @@ public class NctsImportUnloadingItemsController {
 		
 	}
 	
+	/**
+	 * 
+	 * @param recordToValidate
+	 */
+	private void adjustFields(JsonNctsImportSpecificTopicUnloadingItemRecord recordToValidate){
+		//Godsmärkning
+		if(strMgr.isNotNull(recordToValidate.getNvmn())){
+			recordToValidate.setTvmn(recordToValidate.getTvmn().toUpperCase());
+		}
+		
+	}
 	
 	//SERVICES
 	

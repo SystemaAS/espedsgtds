@@ -86,8 +86,8 @@ public class TdsCodeMapper extends ObjectMapperAbstractGrandFather{
 			//At this point we now have an UTF-8 payload
 			codeContainer = super.getObjectMapper().readValue(utfPayload.getBytes(), JsonTdsNctsCodeContainer.class); 
 			//logger.info(mapper.writeValueAsString(topicListContainer));
-			logger.info("Mapping Code object from JSON payload...");
-			logger.info("[JSON-String payload status=OK]  " + codeContainer.getUser());
+			//logger.info("Mapping Code object from JSON payload...");
+			//logger.info("[JSON-String payload status=OK]  " + codeContainer.getUser());
 			
 			//DEBUG
 			Collection<JsonTdsNctsCodeRecord> fields = codeContainer.getKodlista();

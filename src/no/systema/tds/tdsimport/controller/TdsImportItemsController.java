@@ -139,7 +139,7 @@ public class TdsImportItemsController {
 			String status = request.getParameter("status");
 			String datum = request.getParameter("datum");
 			String invoiceTotalAmount = request.getParameter("fabl");
-			//this fragment gets some header fields needed for the validator
+			//this fragment gets some header fields needed for the validatorheaderRecord
 			JsonTdsImportSpecificTopicRecord headerRecord = (JsonTdsImportSpecificTopicRecord)session.getAttribute(TdsConstants.DOMAIN_RECORD_TOPIC);
 			String header_svih_cont = null;
 			String header_svih_mtyp = null;
@@ -187,6 +187,7 @@ public class TdsImportItemsController {
 			    validator.validate(recordToValidate, bindingResult);
 			    //check for ERRORS
 				if(bindingResult.hasErrors()){
+						isValidCreatedRecordTransactionOnRPG = false;
 				    	logger.info("[ERROR Validation] Item Record does not validate)");
 				    	logger.info("[INFO lineNr] " + lineNr);
 				    	model.put("sign", sign);
@@ -196,6 +197,7 @@ public class TdsImportItemsController {
 				    		session.setAttribute("sviv_syli_SESSION", lineNr);
 					    	recordToValidate.setSviv_syop(opd);
 				    		recordToValidate.setSviv_syav(avd);
+				    		
 				    	}
 			    }else{
 					if(lineNr!=null && !"".equals(lineNr)){
@@ -273,10 +275,9 @@ public class TdsImportItemsController {
 					//--------------------------------------------------
 					if(isValidCreatedRecordTransactionOnRPG){
 						
-						//Extra check on [Invoice Due Amount (svev_fabl)] vs [Statistiskt varde (svev_stva)]
-			            //if svev_stva = null then copy the svev_fabl (fakturabelopp)
-			            //this.updateStatisticalValue(jsonTdsImportSpecificTopicItemRecord);
-			            //this.updateTullvardeValue(jsonTdsImportSpecificTopicItemRecord);
+						//Last adjustment of some fields
+						this.adjustFields( jsonTdsImportSpecificTopicItemRecord);
+						
 			            
 			            logger.info("[INFO] Valid STEP[1] Add Record successfully created, OK ");
 						//---------------------------
@@ -394,9 +395,15 @@ public class TdsImportItemsController {
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","FFK");
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","MDM");
     		
-    		//drop downs populated from a txt file
+    		//Default values for a new line
+    		if(isValidCreatedRecordTransactionOnRPG){
+    			jsonTdsImportSpecificTopicItemRecord = new JsonTdsImportSpecificTopicItemRecord();
+    			this.setBruttoViktRestValue(jsonTdsImportSpecificTopicItemRecord, model, jsonTdsImportSpecificTopicItemContainer, headerRecord);
+    			this.setDomainObjectsInView(model, jsonTdsImportSpecificTopicItemRecord);
+    		}
+    		
+    		//lists
     		this.setDomainObjectsForListInView(session, model, jsonTdsImportSpecificTopicItemContainer);
-			
     		successView.addObject("model",model);
     		//successView.addObject(Constants.EDIT_ACTION_ON_TOPIC, Constants.ACTION_FETCH);
 	    	return successView;
@@ -774,6 +781,34 @@ public class TdsImportItemsController {
 	/**
 	 * 
 	 * @param model
+	 * @param container
+	 * @param headerRecord
+	 */
+	private void setBruttoViktRestValue(JsonTdsImportSpecificTopicItemRecord jsonTdsImportSpecificTopicItemRecord, Map model, JsonTdsImportSpecificTopicItemContainer container, JsonTdsImportSpecificTopicRecord headerRecord){
+		if(container!=null){
+			try{
+				Double sumBrut = 0.00D;
+				for (JsonTdsImportSpecificTopicItemRecord record : container.getOrderList()){
+					if(strMgr.isNotNull(record.getSviv_brut()) ){
+						sumBrut += Double.parseDouble(record.getSviv_brut().replace(",", "."));
+					}
+				}
+				Double headerBrutVal = headerRecord.getSvih_brut_dbl();
+				Double result = headerBrutVal - sumBrut;
+				String resultStr = String.valueOf(result);
+				jsonTdsImportSpecificTopicItemRecord.setSviv_brut(resultStr.replace(".", ","));
+				logger.info("final rest value:" + jsonTdsImportSpecificTopicItemRecord.getSviv_brut());
+			}catch(Exception e){
+				logger.info("ERROR on default Gross weight:" + e.toString());
+			}
+		}
+		
+		
+	}
+	
+	/**
+	 * 
+	 * @param model
 	 * @param rpgReturnResponseHandler
 	 * @param record
 	 */
@@ -891,6 +926,30 @@ public class TdsImportItemsController {
 		return urlRequestParamsKeys.toString();
 	}
 	
+	/**
+	 * 
+	 * @param recordToValidate
+	 */
+	private void adjustFields(JsonTdsImportSpecificTopicItemRecord recordToValidate){
+		//Godsmärkning
+		if(strMgr.isNotNull(recordToValidate.getSviv_godm())){
+			recordToValidate.setSviv_godm(recordToValidate.getSviv_godm().toUpperCase());
+		}
+		//Godsmärkning - Extraordinära uppg
+		if(strMgr.isNotNull(recordToValidate.getSviv_god2())){
+			recordToValidate.setSviv_god2(recordToValidate.getSviv_god2().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getSviv_god3())){
+			recordToValidate.setSviv_god3(recordToValidate.getSviv_god3().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getSviv_god4())){
+			recordToValidate.setSviv_god4(recordToValidate.getSviv_god4().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getSviv_god5())){
+			recordToValidate.setSviv_god5(recordToValidate.getSviv_god5().toUpperCase());
+		}
+		
+	}
 	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")

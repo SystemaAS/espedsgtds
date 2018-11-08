@@ -18,7 +18,7 @@
 	
 	
 	<%-- tab container component --%>
-	<table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
+	<table width="100%"  class="text14" cellspacing="0" border="0" cellpadding="0">
 		<tr height="2"><td></td></tr>
 		<tr height="25"> 
 			<td width="15%" valign="bottom" class="tabDisabled" align="center" nowrap>
@@ -93,7 +93,7 @@
 	 				<%-- MASTER Topic header --%>
 	 				<table width="100%" align="center" class="formFrameHeaderTransparent" border="0" cellspacing="0" cellpadding="0">
 				 		<tr height="15">
-				 			<td class="text11MediumBlue">
+				 			<td class="text14MediumBlue">
 				 				&nbsp;Avd&nbsp;<b>${model.avd}</b>
 				 				&nbsp;Ärende&nbsp;<b>${model.opd}</b>
 				 				&nbsp;Sign&nbsp;<b>${model.sign}</b>
@@ -110,28 +110,28 @@
 					 		<td width="50%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Exportör</td>
+							            <td width="30%" class="text14Bold" align="left" >Exportör</td>
 							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">EORI-nr&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_aveo}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_aveo}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avna}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_avna}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avpa}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_avpa}</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">Landkod&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_avlk}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_avlk}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left"></td>
+							           	<td class="text14MediumBlue" align="left"></td>
 							        </tr>							        
 							        
 			        	        </table>
@@ -139,28 +139,28 @@
 					        <td width="50%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
-							            <td width="30%" class="text11Bold" align="left" >Mottagare</td>
+							            <td width="30%" class="text14Bold" align="left" >Mottagare</td>
 							            <td class="text12" align="left" >&nbsp;&nbsp;</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">EORI-nr&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moeo}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_moeo}</td>
 							        </tr>
 							        <tr>
 							            <td width="30%" class="text12" align="left">Namn&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_mona}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_mona}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Postadress&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_mopa}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_mopa}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Landkod&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_molk}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_molk}</td>
 							        </tr>
 									<tr>
 							            <td width="30%" class="text12" align="left">Handläggare&nbsp;</td>
-							           	<td class="text11MediumBlue" align="left">${recordTopic.svih_moha}</td>
+							           	<td class="text14MediumBlue" align="left">${recordTopic.svih_moha}</td>
 							        </tr>
 							        
 			        	        </table>
@@ -194,7 +194,7 @@
 				 										
 								<table width="100%" cellspacing="0" border="0" cellpadding="0">
 									<tr>
-										<td class="text11Bold">&nbsp;Varuposter&nbsp;&nbsp;
+										<td class="text14Bold">&nbsp;Varuposter&nbsp;&nbsp;
 											<c:if test="${model.status == 'M' || empty model.status}">
 												<input tabindex=-1 class="inputFormSubmitStd" type="submit" name="submitSkapaNy" value='Skapa ny'>
 											</c:if>
@@ -481,8 +481,8 @@
 							 			<td class="text14" align="left">
 							 			<img onMouseOver="showPop('34a_info');" onMouseOut="hidePop('34a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>34a.</b><font class="text16RedBold" >*</font><span title="sviv_ulkd">Ursp.land</span>
-										<div class="text11" style="position: relative;" align="left" >
-										<span style="position:absolute;top:2px; width:250px;" id="34a_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left" >
+										<span style="position:absolute;top:2px; width:250px;" id="34a_info" class="popupWithInputText text14"  >
 						           			<b>Ursprungslandets kod</b>
 						           			<br/>
 						           			Här anger du landkoden för ursprungslandet för de varor som du har tagit upp i varuposten.
@@ -502,8 +502,8 @@
 							            		<font class="text16RedBold" >*</font>
 							            </c:if>
 							            <span title="sviv_vata">Varukod</span>
-					            		<div class="text11" style="position: relative;" align="left" >
-										<span style="position:absolute;top:2px;width:250px;" id="33_info" class="popupWithInputText text11"  >
+					            		<div class="text14" style="position: relative;" align="left" >
+										<span style="position:absolute;top:2px;width:250px;" id="33_info" class="popupWithInputText text14"  >
 							           		<b>Varukod</b>
 						           			<br/>
 						           			Här fyller du i varukoden för den aktuella varuposten. Koden för import består av tulltaxa-numret (10 siffror) och
@@ -527,8 +527,8 @@
 				 							</c:if>
 				 						<span title="sviv_fokd">Förmåner</span>
 				 						
-				 						<div class="text11" style="position: relative;" align="left" >
-				 						<span style="position:absolute;top:2px; width:250px;"id="36_info" class="popupWithInputText text11"  >
+				 						<div class="text14" style="position: relative;" align="left" >
+				 						<span style="position:absolute;top:2px; width:250px;"id="36_info" class="popupWithInputText text14"  >
 							           		<br>
 						           			<b>Förmåner</b>
 						           			 I det här fältet yrkar du på förmånsbehandling enligt artikel 20.4 i tullkodex. Du måste fylla i fältet även om du inte yrkar på     
@@ -570,8 +570,8 @@
 							            <img onMouseOver="showPop('37_1_info');" onMouseOut="hidePop('37_1_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b><font class="text16RedBold" >*</font><span title="sviv_eup1">Förf. 1</span>
 				 						
-				 						<div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px;width:250px;" id="37_1_info" class="popupWithInputText text11"  >
+				 						<div class="text14" style="position: relative;" align="left" >
+							            <span style="position:absolute;top:2px;width:250px;" id="37_1_info" class="popupWithInputText text14"  >
 							           		<br>
 						           			<b>Förfarande - Första delfältet</b>
 						           			<br/>
@@ -593,8 +593,8 @@
 							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('37_2_info');" onMouseOut="hidePop('37_2_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b><span title="sviv_eup2">Förf. 2</span>
-				 						<div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px; width:250px;"id="37_2_info" class="popupWithInputText text11"  >
+				 						<div class="text14" style="position: relative;" align="left" >
+							            <span style="position:absolute;top:2px; width:250px;"id="37_2_info" class="popupWithInputText text14"  >
 							           		<br>
 						           			<b>Förfarande - Andra delfältet</b>
 						           			Vid vissa förfarande måste du ange ytterligare en kod i 37:2 som komplement till fält 37:1. Vissa koder har fastställts av kommissionen men även nationella koder får förekomma. Koden består av tre tecken. Om ingen lämplig kod finns lämnas fältet tomt.   
@@ -620,8 +620,8 @@
 							            <img onMouseOver="showPop('35_info');" onMouseOut="hidePop('35_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>35.</b><font class="text16RedBold" >*</font><span title="sviv_brut">Brut.vikt(kg)</span>
 							            
-							            <div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px; width:250px;"id="35_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left" >
+							            <span style="position:absolute;top:2px; width:250px;"id="35_info" class="popupWithInputText text14"  >
 							           		<b>Bruttovikt</b><br/>
 						           			Bruttovikten anger du antingen för respektive varupost eller för hela sändningen. Du ska inte ange enheten kg. Bruttovikten är varornas totala vikt inklusive allt emballage, men exklusive containrar och annan transportutrustning.
 											<br/>
@@ -681,12 +681,12 @@
 								           			<td>
 									           			<table>
 									           				<tr>
-																<td class="text11">&nbsp;Varukod</td>
-																<td class="text11">&nbsp;<input type="text" class="inputText" name="search_svvs_vata" id="search_svvs_vata" size="10" maxlength="10" value=""></td>
+																<td class="text14">&nbsp;Varukod</td>
+																<td class="text14">&nbsp;<input type="text" class="inputText" name="search_svvs_vata" id="search_svvs_vata" size="10" maxlength="10" value=""></td>
 															</tr>
 										           			<tr>
 										           				<td align="right">&nbsp;<button name="searchTaricCode" id="searchTaricCode" class="buttonGray" type="button" onClick="searchTaricVarukod();">Sök</button></td>
-										           				<td class="text11">&nbsp;</td>
+										           				<td class="text14">&nbsp;</td>
 											           			
 											           		</tr>
 											           		<tr height="4"><td ></td></tr>
@@ -698,12 +698,12 @@
 								           			<td>
 									           			<table>							           		
 											           		<tr>
-										           				<td class="text11">&nbsp;Lista</td>
+										           				<td class="text14">&nbsp;Lista</td>
 											           			<td>&nbsp;</td>
 											           		</tr>
 											           		<tr>
 																<td colspan="2">&nbsp;
-																	<select class="text11" id="taricVarukodList" name="taricVarukodList" size="5" onDblClick="hidePop('searchTaricCodesDialog');">
+																	<select class="text14" id="taricVarukodList" name="taricVarukodList" size="5" onDblClick="hidePop('searchTaricCodesDialog');">
 					 													<option selected value="">-Välj-</option>
 					 							 					</select>
 																</td>
@@ -727,8 +727,8 @@
 							             --%>
 							            
 										</td>
-										<td class="text14" align="left"><input type="text" class="inputText" name="sviv_vati" id="sviv_vati" size="4" maxlength="4" value="${model.record.sviv_vati}"></td>
-										<td class="text14" align="left"><input type="text" class="inputText" name="sviv_vat4" id="sviv_vat4" size="4" maxlength="4" value="${model.record.sviv_vat4}"></td>
+										<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="sviv_vati" id="sviv_vati" size="4" maxlength="4" value="${model.record.sviv_vati}"></td>
+										<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="sviv_vat4" id="sviv_vat4" size="4" maxlength="4" value="${model.record.sviv_vat4}"></td>
 										
 										<td class="text14" align="left">
 											<a id="bhandlingarYkoderLink"></a>
@@ -783,8 +783,8 @@
 										<td class="text14" align="left">
 										<img onMouseOver="showPop('41_info');" onMouseOut="hidePop('41_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>41.</b><span title="sviv_ankv">Extra mängd:&nbsp;</span>
-										<div class="text11" style="position: relative;" align="left" >
-										<span style="position:absolute; top:2px; width:250px;"id="41_info" class="popupWithInputText text11" >
+										<div class="text14" style="position: relative;" align="left" >
+										<span style="position:absolute; top:2px; width:250px;"id="41_info" class="popupWithInputText text14" >
 											<b>Du anger uppgiften i heltal. Enheten anges inte.</b>
 											<br/><br/>Detta fält fyller du bara i för vissa varor. Det kan exempelvis vara uppgift om styck, liter eller kubikmeter. Det är varukoden i fält 33 som styr om fältet ska fyllas i eller inte.
 											<br/><br/>I Tulltaxa Söksystem ser du om uppgiften ska deklareras samt vilken mängdenhet du ska ange. 
@@ -798,8 +798,8 @@
 											<b>31.</b>
 										</span>
 				 						<span title="sviv_kota">Kolli antal</span>
-										<div class="text11" style="position: relative;" align="left" >
-										<span style="position:absolute;top:2px; width:250px;" id="31_kantal_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left" >
+										<span style="position:absolute;top:2px; width:250px;" id="31_kantal_info" class="popupWithInputText text14"  >
 							           		<b>Kolliantal</b>
 						           			<br/>
 						           			Antal kolli/delar 
@@ -816,8 +816,8 @@
 										<td class="text14">
 										<img onMouseOver="showPop('31_kslag_info');" onMouseOut="hidePop('31_kslag_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="sviv_kosl">Kolli slag</span>
-										<div class="text11" style="position: relative;" align="left" >
-										<span style="position:absolute;top:2px; width:250px;" id="31_kslag_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left" >
+										<span style="position:absolute;top:2px; width:250px;" id="31_kslag_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Kollislag</b>
 											<br/>
@@ -830,8 +830,8 @@
 										<img onMouseOver="showPop('31_varubesk_info');" onMouseOut="hidePop('31_varubesk_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><font class="text16RedBold" >*</font><span title="sviv_vasl">Varubeskrivning&nbsp;</span>
 										
-										<div class="text11" style="position: relative;" align="left" >
-										<span style="position:absolute;top:2px; width:250px;" id="31_varubesk_info" class="popupWithInputText text11"  >
+										<div class="text14" style="position: relative;" align="left" >
+										<span style="position:absolute;top:2px; width:250px;" id="31_varubesk_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Varubeskrivning</b>
 											<br/>
@@ -866,8 +866,8 @@
 										<td class="text14" align="left" colspan="2">
 							            <img onMouseOver="showPop('31_gods_info');" onMouseOut="hidePop('31_gods_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>31.</b><span title="sviv_godm">Godsmärkning&nbsp;</span>
-							            <div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px; width:250px;" id="31_gods_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left" >
+							            <span style="position:absolute;top:2px; width:250px;" id="31_gods_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Godsmärkning</b>
 											<br/>
@@ -894,9 +894,9 @@
 							        
 							        
 									<tr>
-										<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_ankv" id="sviv_ankv" size="10" maxlength="10" value="${model.record.sviv_ankv}"></td>
+										<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_ankv" id="sviv_ankv" size="10" maxlength="10" value="${model.record.sviv_ankv}"></td>
 					           			<td class="text14" valign="bottom">
-											&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kota" id="sviv_kota" size="5" maxlength="5" value="${model.record.sviv_kota}">
+											&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_kota" id="sviv_kota" size="5" maxlength="5" value="${model.record.sviv_kota}">
 										</td>
 										<td align="left">
 					            			<select class="inputTextMediumBlueMandatoryField" name="sviv_kosl" id="sviv_kosl">
@@ -923,30 +923,30 @@
 														</tr>
 														
 									           			<tr>
-										           			<td class="text12">
-																&nbsp;31.2 Varubeskrivning<input type="text" class="inputText" name="sviv_vas2" id="sviv_vas2" size="35" maxlength="70" value="${model.record.sviv_vas2}">
+										           			<td class="text14">
+																&nbsp;31.2 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="sviv_vas2" id="sviv_vas2" size="35" maxlength="70" value="${model.record.sviv_vas2}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text12">
-																&nbsp;31.3 Varubeskrivning<input type="text" class="inputText" name="sviv_vas3" id="sviv_vas3" size="35" maxlength="70" value="${model.record.sviv_vas3}">
+										           			<td class="text14">
+																&nbsp;31.3 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="sviv_vas3" id="sviv_vas3" size="35" maxlength="70" value="${model.record.sviv_vas3}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text12">
-																&nbsp;31.4 Varubeskrivning<input type="text" class="inputText" name="sviv_vas4" id="sviv_vas4" size="35" maxlength="70" value="${model.record.sviv_vas4}">
+										           			<td class="text14">
+																&nbsp;31.4 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="sviv_vas4" id="sviv_vas4" size="35" maxlength="70" value="${model.record.sviv_vas4}">
 															</td>
 														</tr>
 														<tr>
-										           			<td class="text12">
-																&nbsp;31.5 Varubeskrivning<input type="text" class="inputText" name="sviv_vas5" id="sviv_vas5" size="35" maxlength="70" value="${model.record.sviv_vas5}">
+										           			<td class="text14">
+																&nbsp;31.5 Varubeskrivning<input type="text" class="inputTextMediumBlue" name="sviv_vas5" id="sviv_vas5" size="35" maxlength="70" value="${model.record.sviv_vas5}">
 															</td>
 														</tr>
 														
 								           			</table>
 													<table width="100%" align="left" border="0">
 														<tr align="left" >
-															<td class="text12"><button name="itemDescriptionExtraInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('itemDescriptionExtraInformation');">&nbsp;Ok</button> 
+															<td class="text14"><button name="itemDescriptionExtraInformationButtonClose" class="buttonGrayInsideDivPopup" type="button" onClick="hidePop('itemDescriptionExtraInformation');">&nbsp;Ok</button> 
 															</td>
 														</tr>
 													</table>
@@ -954,7 +954,7 @@
 										</span>
 										</td>
 										
-										<td class="text14" align="left" colspan="2"><input type="text" class="inputText" name="sviv_godm" id="sviv_godm" size="25" maxlength="42" value="${model.record.sviv_godm}"></td>
+										<td class="text14" align="left" colspan="2"><input type="text" class="inputTextMediumBlueUPPERCASE" name="sviv_godm" id="sviv_godm" size="25" maxlength="42" value="${model.record.sviv_godm}"></td>
 							            <td colspan="2" class="text14" align="left">
 							            		<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_fabl" id="sviv_fabl" size="11" maxlength="11" value="${model.record.sviv_fabl}">
 							            	</td>
@@ -1008,8 +1008,8 @@
 					            							<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
 					            						</a>	
 										        
-										        <div class="text11" style="position: relative;" align="left" >
-										        <span style="position:absolute;top:2px; width:250px;" id="47_info" class="popupWithInputText text11"  >
+										        <div class="text14" style="position: relative;" align="left" >
+										        <span style="position:absolute;top:2px; width:250px;" id="47_info" class="popupWithInputText text14"  >
 									           		<br/>
 								           			<b>Avgiftsberäkningar</b>
 													<br/>
@@ -1066,8 +1066,8 @@
 			                								<span title="sviva_abx1">Enhet</span>
 			                							
 			                							
-			                						<div class="text11" style="position: relative;" align="left" >	
-			                						<span style="position:absolute;top:2px; width:250px;" id="47_enhet_info" class="popupWithInputText text11"  >
+			                						<div class="text14" style="position: relative;" align="left" >	
+			                						<span style="position:absolute;top:2px; width:250px;" id="47_enhet_info" class="popupWithInputText text14"  >
 										           		<br/>
 									           			<b>Beräkningsenheter Gemensamma registret</b> 
 									           			<ul>
@@ -1093,10 +1093,10 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg1" id="sviva_abg1" size="10" maxlength="11" value="${model.record.sviva_abg1}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abg1" id="sviva_abg1" size="10" maxlength="11" value="${model.record.sviva_abg1}">
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs1" id="sviva_abs1" size="10" maxlength="9" value="${model.record.sviva_abs1}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abs1" id="sviva_abs1" size="10" maxlength="9" value="${model.record.sviva_abs1}">
 													</td>
 													<td class="text14MediumBlue">
 														<select class="selectMediumBlueE2" name="sviva_abx1" id="sviva_abx1">
@@ -1108,7 +1108,7 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb1" id="sviva_abb1" size="10" maxlength="9" value="${model.record.sviva_abb1}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abb1" id="sviva_abb1" size="10" maxlength="9" value="${model.record.sviva_abb1}">
 													</td>
 												</tr>
 			 									<tr>
@@ -1121,10 +1121,10 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg2" id="sviva_abg2" size="10" maxlength="11" value="${model.record.sviva_abg2}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abg2" id="sviva_abg2" size="10" maxlength="11" value="${model.record.sviva_abg2}">
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs2" id="sviva_abs2" size="10" maxlength="9" value="${model.record.sviva_abs2}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abs2" id="sviva_abs2" size="10" maxlength="9" value="${model.record.sviva_abs2}">
 													</td>
 													<td class="text14MediumBlue">
 														<select class="selectMediumBlueE2" name="sviva_abx2" id="sviva_abx2">
@@ -1135,7 +1135,7 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb2" id="sviva_abb2" size="10" maxlength="9" value="${model.record.sviva_abb2}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abb2" id="sviva_abb2" size="10" maxlength="9" value="${model.record.sviva_abb2}">
 													</td>
 												</tr>
 			 									<tr>
@@ -1148,10 +1148,10 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg3" id="sviva_abg3" size="10" maxlength="11" value="${model.record.sviva_abg3}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abg3" id="sviva_abg3" size="10" maxlength="11" value="${model.record.sviva_abg3}">
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs3" id="sviva_abs3" size="10" maxlength="9" value="${model.record.sviva_abs3}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abs3" id="sviva_abs3" size="10" maxlength="9" value="${model.record.sviva_abs3}">
 													</td>
 													<td class="text14MediumBlue">
 														<select class="selectMediumBlueE2" name="sviva_abx3" id="sviva_abx3">
@@ -1162,7 +1162,7 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb3" id="sviva_abb3" size="10" maxlength="9" value="${model.record.sviva_abb3}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abb3" id="sviva_abb3" size="10" maxlength="9" value="${model.record.sviva_abb3}">
 													</td>
 												</tr>
 			 									<tr>
@@ -1175,10 +1175,10 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg4" id="sviva_abg4" size="10" maxlength="11" value="${model.record.sviva_abg4}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abg4" id="sviva_abg4" size="10" maxlength="11" value="${model.record.sviva_abg4}">
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs4" id="sviva_abs4" size="10" maxlength="9" value="${model.record.sviva_abs4}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abs4" id="sviva_abs4" size="10" maxlength="9" value="${model.record.sviva_abs4}">
 													</td>
 													<td class="text14MediumBlue">
 														<select class="selectMediumBlueE2" name="sviva_abx4" id="sviva_abx4">
@@ -1189,7 +1189,7 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb4" id="sviva_abb4" size="10" maxlength="9" value="${model.record.sviva_abb4}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abb4" id="sviva_abb4" size="10" maxlength="9" value="${model.record.sviva_abb4}">
 													</td>
 												</tr>
 			 									<tr>
@@ -1202,10 +1202,10 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abg5" id="sviva_abg5" size="10" maxlength="11" value="${model.record.sviva_abg5}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abg5" id="sviva_abg5" size="10" maxlength="11" value="${model.record.sviva_abg5}">
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abs5" id="sviva_abs5" size="10" maxlength="9" value="${model.record.sviva_abs5}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abs5" id="sviva_abs5" size="10" maxlength="9" value="${model.record.sviva_abs5}">
 													</td>
 													<td class="text14MediumBlue">
 														<select class="selectMediumBlueE2" name="sviva_abx5" id="sviva_abx5">
@@ -1216,7 +1216,7 @@
 														</select>
 													</td>
 													<td class="text14MediumBlue">
-														<input onKeyPress="return amountKey(event)" type="text" class="inputText" name="sviva_abb5" id="sviva_abb5" size="10" maxlength="9" value="${model.record.sviva_abb5}">
+														<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sviva_abb5" id="sviva_abb5" size="10" maxlength="9" value="${model.record.sviva_abb5}">
 													</td>
 												</tr>
 			 									<tr>
@@ -1263,8 +1263,8 @@
 								        		</c:if>	
 								            <span title="sviv_stva">Statistiskt värde:&nbsp;</span>
 								            
-								            <div class="text11" style="position: relative;" align="left" >
-								            <span style="position:absolute; top:2px; width:250px;" id="46_info" class="popupWithInputText text11"  >
+								            <div class="text14" style="position: relative;" align="left" >
+								            <span style="position:absolute; top:2px; width:250px;" id="46_info" class="popupWithInputText text14"  >
 								           		<br/>
 							           			<b>Statistiskt värde</b>
 												<br/>
@@ -1289,8 +1289,8 @@
 								            &nbsp;<img onMouseOver="showPop('tullvarde_info');" onMouseOut="hidePop('tullvarde_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<span title="sviv_stva2">Tullvärde:&nbsp;</span>
 					 						
-					 						<div class="text11" style="position: relative;" align="left" >
-								            <span style="position:absolute; top:2px; width:250px;" id="tullvarde_info" class="popupWithInputText text11"  >
+					 						<div class="text14" style="position: relative;" align="left" >
+								            <span style="position:absolute; top:2px; width:250px;" id="tullvarde_info" class="popupWithInputText text14"  >
 								           		<br/>
 							           			<b>Tullvärde</b>
 												<br/>
@@ -1306,7 +1306,7 @@
 											</div>
 											</td>
 											
-								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_stva2" id="sviv_stva2" size="10" maxlength="10" value="${model.record.sviv_stva2}"></td>
+								           	<td class="text14" align="left"><input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_stva2" id="sviv_stva2" size="10" maxlength="10" value="${model.record.sviv_stva2}"></td>
 								        </tr>
 								        <tr height="10"><td></td></tr>
 										<tr>
@@ -1314,9 +1314,9 @@
 					 						&nbsp;<img onMouseOver="showPop('callme_info');" onMouseOut="hidePop('callme_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					 						<font class="text16RedBold" >*</font><span title="sviv_call">Call me:&nbsp;</span>
 								            
-								            <div class="text11" style="position: relative;" align="left" >
-								            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text11"  >
-								           		<div class="text11" align="left">
+								            <div class="text14" style="position: relative;" align="left" >
+								            <span style="position:absolute;top:2px; width:250px;" id="callme_info" class="popupWithInputText text14"  >
+								           		<div class="text14" align="left">
 							           			<br/>
 							           			<b>Åtgärdsindikator (Call me-kod)</b>
 												<br/><br/>
@@ -1379,8 +1379,8 @@
 						            <td colspan="10" class="text14">
 						            &nbsp;<img onMouseOver="showPop('44a_info');" onMouseOut="hidePop('44a_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 			 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
-						            <div class="text11" style="position: relative;" align="left" >
-						            <span style="position:absolute;top:2px; width:250px;" id="44a_info" class="popupWithInputText text11"  >
+						            <div class="text14" style="position: relative;" align="left" >
+						            <span style="position:absolute;top:2px; width:250px;" id="44a_info" class="popupWithInputText text14"  >
 						           		<br/>
 					           			<b>Särskilda upplysningar</b>
 										<br/>
@@ -1431,10 +1431,10 @@
 														&nbsp;Identitet
 															<c:choose>
 																<c:when test="${not empty model.record.sviv_bii1}">
-																	<input type="text" class="inputText" name="sviv_bii1" id="sviv_bii1" size="35" maxlength="35" value="${model.record.sviv_bii1}">
+																	<input type="text" class="inputTextMediumBlue" name="sviv_bii1" id="sviv_bii1" size="35" maxlength="35" value="${model.record.sviv_bii1}">
 																</c:when>
 																<c:otherwise>
-																	<input type="text" class="inputText" name="sviv_bii1" id="sviv_bii1" size="35" maxlength="35" value="${recordTopic.svih_fatx}">
+																	<input type="text" class="inputTextMediumBlue" name="sviv_bii1" id="sviv_bii1" size="35" maxlength="35" value="${recordTopic.svih_fatx}">
 																</c:otherwise>
 															</c:choose>
 													</td>
@@ -1450,7 +1450,7 @@
 														</select>
 													</td>
 													<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii2" id="sviv_bii2" size="35" maxlength="35" value="${model.record.sviv_bii2}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii2" id="sviv_bii2" size="35" maxlength="35" value="${model.record.sviv_bii2}">
 								           			</td>
 												</tr>
 												<tr>
@@ -1464,7 +1464,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii3" id="sviv_bii3" size="35" maxlength="35" value="${model.record.sviv_bii3}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii3" id="sviv_bii3" size="35" maxlength="35" value="${model.record.sviv_bii3}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
@@ -1478,7 +1478,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii4" id="sviv_bii4" size="35" maxlength="35" value="${model.record.sviv_bii4}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii4" id="sviv_bii4" size="35" maxlength="35" value="${model.record.sviv_bii4}">
 								           			</td>
 							           			</tr>
 							           			<tr>
@@ -1492,7 +1492,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii5" id="sviv_bii5" size="35" maxlength="35" value="${model.record.sviv_bii5}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii5" id="sviv_bii5" size="35" maxlength="35" value="${model.record.sviv_bii5}">
 								           			</td>
 							           			</tr>
 							           			<tr>										           			
@@ -1506,7 +1506,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii6" id="sviv_bii6" size="35" maxlength="35" value="${model.record.sviv_bii6}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii6" id="sviv_bii6" size="35" maxlength="35" value="${model.record.sviv_bii6}">
 								           			</td>
 							           			</tr>
 							           			<tr>
@@ -1520,7 +1520,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii7" id="sviv_bii7" size="35" maxlength="35" value="${model.record.sviv_bii7}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii7" id="sviv_bii7" size="35" maxlength="35" value="${model.record.sviv_bii7}">
 								           			</td>
 								           		</tr>
 								           		<tr>	
@@ -1534,7 +1534,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii8" id="sviv_bii8" size="35" maxlength="35" value="${model.record.sviv_bii8}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii8" id="sviv_bii8" size="35" maxlength="35" value="${model.record.sviv_bii8}">
 								           			</td>
 							           			</tr>
 							           			<tr>
@@ -1548,7 +1548,7 @@
 														</select>
 								           			</td>
 								           			<td class="text14">
-								           				&nbsp;Identitet<input type="text" class="inputText" name="sviv_bii9" id="sviv_bii9" size="35" maxlength="35" value="${model.record.sviv_bii9}">
+								           				&nbsp;Identitet<input type="text" class="inputTextMediumBlue" name="sviv_bii9" id="sviv_bii9" size="35" maxlength="35" value="${model.record.sviv_bii9}">
 								           			</td>
 							           			</tr>
 						           			</table>
@@ -1580,27 +1580,27 @@
 												</tr>
 												<tr>
 													<td colspan="2" class="text14">
-														&nbsp;<span title="sviv_sutx">1.Text</span><input type="text" class="inputText" name="sviv_sutx" id="sviv_sutx" size="35" maxlength="70" value="${model.record.sviv_sutx}">
+														&nbsp;<span title="sviv_sutx">1.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sutx" id="sviv_sutx" size="35" maxlength="70" value="${model.record.sviv_sutx}">
 													</td>
 												</tr>
 												<tr>	
 								           			<td colspan="2" class="text14">
-														&nbsp;<span title="sviv_sut2">2.Text</span><input type="text" class="inputText" name="sviv_sut2" id="sviv_sut2" size="35" maxlength="70" value="${model.record.sviv_sut2}">
+														&nbsp;<span title="sviv_sut2">2.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut2" id="sviv_sut2" size="35" maxlength="70" value="${model.record.sviv_sut2}">
 													</td>
 												</tr>
 												<tr>
 													<td colspan="2" class="text14">
-														&nbsp;<span title="sviv_sut3">3.Text</span><input type="text" class="inputText" name="sviv_sut3" id="sviv_sut3" size="35" maxlength="70" value="${model.record.sviv_sut3}">
+														&nbsp;<span title="sviv_sut3">3.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut3" id="sviv_sut3" size="35" maxlength="70" value="${model.record.sviv_sut3}">
 													</td>
 												</tr>
 												<tr>	
 													<td colspan="2" class="text14">
-														&nbsp;<span title="sviv_sut4">4.Text</span><input type="text" class="inputText" name="sviv_sut4" id="sviv_sut4" size="35" maxlength="70" value="${model.record.sviv_sut4}">
+														&nbsp;<span title="sviv_sut4">4.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut4" id="sviv_sut4" size="35" maxlength="70" value="${model.record.sviv_sut4}">
 													</td>
 												</tr>
 												<tr>
 													<td colspan="2" class="text14">
-														&nbsp;<span title="sviv_sut5">5.Text</span><input type="text" class="inputText" name="sviv_sut5" id="sviv_sut5" size="35" maxlength="70" value="${model.record.sviv_sut5}">
+														&nbsp;<span title="sviv_sut5">5.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut5" id="sviv_sut5" size="35" maxlength="70" value="${model.record.sviv_sut5}">
 														
 													</td>
 												</tr>
@@ -1637,8 +1637,8 @@
 							            &nbsp;<img onMouseOver="showPop('44_info');" onMouseOut="hidePop('44_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>44.</b>Särskilda upplysningar/Bilagda handlingar/Certifikat och tillstånd
 							            
-							            <div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left" >
+							            <span style="position:absolute;top:2px; width:250px;" id="44_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Särskilda upplysningar</b>
 											<br/>
@@ -1691,23 +1691,23 @@
 														</tr>
 														<tr>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sut6">1.Text</span><input type="text" class="inputText" name="sviv_sut6" id="sviv_sut6" size="35" maxlength="70" value="${model.record.sviv_sut6}">
+																&nbsp;<span title="sviv_sut6">1.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut6" id="sviv_sut6" size="35" maxlength="70" value="${model.record.sviv_sut6}">
 															</td>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sut7">2.Text</span><input type="text" class="inputText" name="sviv_sut7" id="sviv_sut7" size="35" maxlength="70" value="${model.record.sviv_sut7}">
+																&nbsp;<span title="sviv_sut7">2.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut7" id="sviv_sut7" size="35" maxlength="70" value="${model.record.sviv_sut7}">
 															</td>
 														</tr>
 										           		<tr>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sut8">3.Text</span><input type="text" class="inputText" name="sviv_sut8" id="sviv_sut8" size="35" maxlength="70" value="${model.record.sviv_sut8}">
+																&nbsp;<span title="sviv_sut8">3.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut8" id="sviv_sut8" size="35" maxlength="70" value="${model.record.sviv_sut8}">
 															</td>
 															<td class="text14">
-																&nbsp;<span title="sviv_sut9">4.Text</span><input type="text" class="inputText" name="sviv_sut9" id="sviv_sut9" size="35" maxlength="70" value="${model.record.sviv_sut9}">
+																&nbsp;<span title="sviv_sut9">4.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sut9" id="sviv_sut9" size="35" maxlength="70" value="${model.record.sviv_sut9}">
 															</td>
 														</tr>
 														<tr >
 										           			<td class="text14">
-																&nbsp;<span title="sviv_suta">5.Text</span><input type="text" class="inputText" name="sviv_suta" id="sviv_suta" size="35" maxlength="70" value="${model.record.sviv_suta}">
+																&nbsp;<span title="sviv_suta">5.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_suta" id="sviv_suta" size="35" maxlength="70" value="${model.record.sviv_suta}">
 															</td>
 															<td class="text14" >
 										           				&nbsp;
@@ -1733,23 +1733,23 @@
 														</tr>
 														<tr>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sutb">1.Text</span><input type="text" class="inputText" name="sviv_sutb" id="sviv_sutb" size="35" maxlength="70" value="${model.record.sviv_sutb}">
+																&nbsp;<span title="sviv_sutb">1.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sutb" id="sviv_sutb" size="35" maxlength="70" value="${model.record.sviv_sutb}">
 															</td>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sutc">2.Text</span><input type="text" class="inputText" name="sviv_sutc" id="sviv_sutc" size="35" maxlength="70" value="${model.record.sviv_sutc}">
+																&nbsp;<span title="sviv_sutc">2.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sutc" id="sviv_sutc" size="35" maxlength="70" value="${model.record.sviv_sutc}">
 															</td>
 														</tr>
 										           		<tr>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sutd">3.Text</span><input type="text" class="inputText" name="sviv_sutd" id="sviv_sutd" size="35" maxlength="70" value="${model.record.sviv_sutd}">
+																&nbsp;<span title="sviv_sutd">3.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sutd" id="sviv_sutd" size="35" maxlength="70" value="${model.record.sviv_sutd}">
 															</td>
 															<td class="text14">
-																&nbsp;<span title="sviv_sute">4.Text</span><input type="text" class="inputText" name="sviv_sute" id="sviv_sute" size="35" maxlength="70" value="${model.record.sviv_sute}">
+																&nbsp;<span title="sviv_sute">4.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sute" id="sviv_sute" size="35" maxlength="70" value="${model.record.sviv_sute}">
 															</td>
 														</tr>
 														<tr>
 										           			<td class="text14">
-																&nbsp;<span title="sviv_sutf">5.Text</span><input type="text" class="inputText" name="sviv_sutf" id="sviv_sutf" size="35" maxlength="70" value="${model.record.sviv_sutf}">
+																&nbsp;<span title="sviv_sutf">5.Text</span><input type="text" class="inputTextMediumBlue" name="sviv_sutf" id="sviv_sutf" size="35" maxlength="70" value="${model.record.sviv_sutf}">
 															</td>
 															<td class="text14" >
 										           				&nbsp;
@@ -1773,8 +1773,8 @@
 							            &nbsp;<img onMouseOver="showPop('40_info');" onMouseOut="hidePop('40_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>40.</b><span title="sviv_tik1/sviv_tit1/sviv_tix1...">Tidigare handlingar:</span>
 							            
-							            <div class="text11" style="position: relative;" align="left" >
-							            <span style="position:absolute;top:2px; width:250px;" id="40_info" class="popupWithInputText text11"  >
+							            <div class="text14" style="position: relative;" align="left" >
+							            <span style="position:absolute;top:2px; width:250px;" id="40_info" class="popupWithInputText text14"  >
 							           		<br/>
 						           			<b>Tidigare handlingar</b>
 											<br/>
@@ -1837,7 +1837,7 @@
 																</select>										           				
 															</td>
 															<td class="text12" nowrap >
-																&nbsp;<input type="text" class="inputText" name="sviv_tix1" id="sviv_tix1" size="35" maxlength="35" value="${model.record.sviv_tix1}">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="sviv_tix1" id="sviv_tix1" size="35" maxlength="35" value="${model.record.sviv_tix1}">
 															</td>
 										           		</tr>
 										           		<tr>
@@ -1858,7 +1858,7 @@
 																</select>
 															</td>
 															<td class="text12" nowrap >
-																&nbsp;<input type="text" class="inputText" name="sviv_tix2" id="sviv_tix2" size="35" maxlength="35" value="${model.record.sviv_tix2}">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="sviv_tix2" id="sviv_tix2" size="35" maxlength="35" value="${model.record.sviv_tix2}">
 															</td>
 										           		</tr>
 														<tr>
@@ -1879,7 +1879,7 @@
 																</select>
 															</td>
 															<td class="text12" nowrap >
-																&nbsp;<input type="text" class="inputText" name="sviv_tix3" id="sviv_tix3" size="35" maxlength="35" value="${model.record.sviv_tix3}">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="sviv_tix3" id="sviv_tix3" size="35" maxlength="35" value="${model.record.sviv_tix3}">
 															</td>
 										           		</tr>
 									           			<tr>
@@ -1902,7 +1902,7 @@
 																
 															</td>
 															<td class="text12">
-																&nbsp;<input type="text" class="inputText" name="sviv_tix4" id="sviv_tix4" size="35" maxlength="35" value="${model.record.sviv_tix4}">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="sviv_tix4" id="sviv_tix4" size="35" maxlength="35" value="${model.record.sviv_tix4}">
 															</td>
 															
 										           		</tr>
@@ -1924,7 +1924,7 @@
 																</select>
 															</td>
 															<td class="text12" nowrap >
-																&nbsp;<input type="text" class="inputText" name="sviv_tix5" id="sviv_tix5" size="35" maxlength="35" value="${model.record.sviv_tix5}">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="sviv_tix5" id="sviv_tix5" size="35" maxlength="35" value="${model.record.sviv_tix5}">
 															</td>
 										           		</tr>
 									           			<tr>
@@ -1945,7 +1945,7 @@
 																</select>
 															</td>
 															<td class="text12" nowrap >
-																&nbsp;<input type="text" class="inputText" name="sviv_tix6" id="sviv_tix6" size="35" maxlength="35" value="${model.record.sviv_tix6}">
+																&nbsp;<input type="text" class="inputTextMediumBlue" name="sviv_tix6" id="sviv_tix6" size="35" maxlength="35" value="${model.record.sviv_tix6}">
 															</td>
 										           		</tr>
 								           			</table>
@@ -1990,10 +1990,10 @@
 														</tr>
 									           			<tr>
 										           			<td valign="top" class="text12">
-										           				&nbsp;2.<textarea rows="2" cols="15" class="inputText" name="sviv_god2" id="sviv_god2" maxlength="42">${model.record.sviv_god2}</textarea>
+										           				&nbsp;2.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="sviv_god2" id="sviv_god2" maxlength="42">${model.record.sviv_god2}</textarea>
 										           			</td>
 										           			<td valign="bottom" class="text12">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot2" id="sviv_kot2" size="5" maxlength="5" value="${model.record.sviv_kot2}">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_kot2" id="sviv_kot2" size="5" maxlength="5" value="${model.record.sviv_kot2}">
 															</td>
 															<td align="left" valign="bottom">
 										            			<select class="selectMediumBlueE2" name="sviv_kos2" id="sviv_kos2">
@@ -2008,10 +2008,10 @@
 										           		</tr>
 														<tr>
 										           			<td valign="top" class="text12">
-										           				&nbsp;3.<textarea rows="2" cols="15" class="inputText" name="sviv_god3" id="sviv_god3" maxlength="42">${model.record.sviv_god3}</textarea>
+										           				&nbsp;3.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="sviv_god3" id="sviv_god3" maxlength="42">${model.record.sviv_god3}</textarea>
 										           			</td>
 										           			<td valign="bottom" class="text12">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot3" id="sviv_kot3" size="5" maxlength="5" value="${model.record.sviv_kot3}">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_kot3" id="sviv_kot3" size="5" maxlength="5" value="${model.record.sviv_kot3}">
 															</td>
 															<td align="left" valign="bottom">
 										            			<select class="selectMediumBlueE2" name="sviv_kos3" id="sviv_kos3">
@@ -2026,10 +2026,10 @@
 										           		</tr>
 									           			<tr>
 										           			<td valign="top" class="text12">
-										           				&nbsp;4.<textarea rows="2" cols="15" class="inputText" name="sviv_god4" maxlength="42">${model.record.sviv_god4}</textarea>
+										           				&nbsp;4.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="sviv_god4" maxlength="42">${model.record.sviv_god4}</textarea>
 										           			</td>
 										           			<td valign="bottom" class="text12">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot4" id="sviv_kot4" size="5" maxlength="5" value="${model.record.sviv_kot4}">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_kot4" id="sviv_kot4" size="5" maxlength="5" value="${model.record.sviv_kot4}">
 															</td>
 															<td align="left" valign="bottom">
 										            			<select class="selectMediumBlueE2" name="sviv_kos4" id="sviv_kos4">
@@ -2043,10 +2043,10 @@
 										           		</tr>
 									           			<tr>
 										           			<td valign="top" class="text12">
-										           				&nbsp;5.<textarea rows="2" cols="15" class="inputText" name="sviv_god5" id="sviv_god5" maxlength="42">${model.record.sviv_god5}</textarea>
+										           				&nbsp;5.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="sviv_god5" id="sviv_god5" maxlength="42">${model.record.sviv_god5}</textarea>
 										           			</td>
 										           			<td valign="bottom" class="text12">
-																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputText" name="sviv_kot5" id="sviv_kot5" size="5" maxlength="5" value="${model.record.sviv_kot5}">
+																&nbsp;<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlue" name="sviv_kot5" id="sviv_kot5" size="5" maxlength="5" value="${model.record.sviv_kot5}">
 															</td>
 															<td align="left" valign="bottom">
 										            			<select class="selectMediumBlueE2" name="sviv_kos5" id="sviv_kos5">
@@ -2084,72 +2084,72 @@
 									        		</tr>
 								           			<tr>
 									           			<td class="text12">
-									           				&nbsp;1.<input type="text" class="inputText" name="sviv_co01" id="sviv_co01" size="12" maxlength="17" value="${model.record.sviv_co01}">
+									           				&nbsp;1.<input type="text" class="inputTextMediumBlue" name="sviv_co01" id="sviv_co01" size="12" maxlength="17" value="${model.record.sviv_co01}">
 									           			</td>
 														<td class="text12">
-															&nbsp;2.<input type="text" class="inputText" name="sviv_co02" id="sviv_co02" size="12" maxlength="17" value="${model.record.sviv_co02}">
+															&nbsp;2.<input type="text" class="inputTextMediumBlue" name="sviv_co02" id="sviv_co02" size="12" maxlength="17" value="${model.record.sviv_co02}">
 														</td>
 														<td class="text12">
-															&nbsp;3.<input type="text" class="inputText" name="sviv_co03" id="sviv_co03" size="12" maxlength="17" value="${model.record.sviv_co03}">
+															&nbsp;3.<input type="text" class="inputTextMediumBlue" name="sviv_co03" id="sviv_co03" size="12" maxlength="17" value="${model.record.sviv_co03}">
 														</td>
 														<td class="text12">
-									           				&nbsp;4.<input type="text" class="inputText" name="sviv_co04" id="sviv_co04" size="12" maxlength="17" value="${model.record.sviv_co04}">
-									           			</td>
-													</tr>
-													<tr>
-									           			<td class="text12">
-									           				&nbsp;5.<input type="text" class="inputText" name="sviv_co05" id="sviv_co05" size="12" maxlength="17" value="${model.record.sviv_co05}">
-									           			</td>
-														<td class="text12">
-															&nbsp;6.<input type="text" class="inputText" name="sviv_co06" id="sviv_co06" size="12" maxlength="17" value="${model.record.sviv_co06}">
-														</td>
-														<td class="text12">
-															&nbsp;7.<input type="text" class="inputText" name="sviv_co07" id="sviv_co07" size="12" maxlength="17" value="${model.record.sviv_co07}">
-														</td>
-														<td class="text12">
-									           				&nbsp;8.<input type="text" class="inputText" name="sviv_co08" id="sviv_co08" size="12" maxlength="17" value="${model.record.sviv_co08}">
+									           				&nbsp;4.<input type="text" class="inputTextMediumBlue" name="sviv_co04" id="sviv_co04" size="12" maxlength="17" value="${model.record.sviv_co04}">
 									           			</td>
 													</tr>
 													<tr>
 									           			<td class="text12">
-									           				&nbsp;9.<input type="text" class="inputText" name="sviv_co09" id="sviv_co09" size="12" maxlength="17" value="${model.record.sviv_co09}">
+									           				&nbsp;5.<input type="text" class="inputTextMediumBlue" name="sviv_co05" id="sviv_co05" size="12" maxlength="17" value="${model.record.sviv_co05}">
 									           			</td>
 														<td class="text12">
-															10.<input type="text" class="inputText" name="sviv_co10" id="sviv_co10" size="12" maxlength="17" value="${model.record.sviv_co10}">
+															&nbsp;6.<input type="text" class="inputTextMediumBlue" name="sviv_co06" id="sviv_co06" size="12" maxlength="17" value="${model.record.sviv_co06}">
 														</td>
 														<td class="text12">
-															11.<input type="text" class="inputText" name="sviv_co11" id="sviv_co11"  size="12" maxlength="17" value="${model.record.sviv_co11}">
+															&nbsp;7.<input type="text" class="inputTextMediumBlue" name="sviv_co07" id="sviv_co07" size="12" maxlength="17" value="${model.record.sviv_co07}">
 														</td>
 														<td class="text12">
-									           				12.<input type="text" class="inputText" name="sviv_co12" id="sviv_co12" size="12" maxlength="17" value="${model.record.sviv_co12}">
-									           			</td>
-													</tr>
-													<tr>
-									           			<td class="text12">
-									           				13.<input type="text" class="inputText" name="sviv_co13" id="sviv_co13" size="12" maxlength="17" value="${model.record.sviv_co13}">
-									           			</td>
-														<td class="text12">
-															14.<input type="text" class="inputText" name="sviv_co14" id="sviv_co14" size="12" maxlength="17" value="${model.record.sviv_co14}">
-														</td>
-														<td class="text12">
-															15.<input type="text" class="inputText" name="sviv_co15" id="sviv_co15" size="12" maxlength="17" value="${model.record.sviv_co15}">
-														</td>
-														<td class="text12">
-									           				16.<input type="text" class="inputText" name="sviv_co16" id="sviv_co16" size="12" maxlength="17" value="${model.record.sviv_co16}">
+									           				&nbsp;8.<input type="text" class="inputTextMediumBlue" name="sviv_co08" id="sviv_co08" size="12" maxlength="17" value="${model.record.sviv_co08}">
 									           			</td>
 													</tr>
 													<tr>
 									           			<td class="text12">
-									           				17.<input type="text" class="inputText" name="sviv_co17" id="sviv_co17" size="12" maxlength="17" value="${model.record.sviv_co17}">
+									           				&nbsp;9.<input type="text" class="inputTextMediumBlue" name="sviv_co09" id="sviv_co09" size="12" maxlength="17" value="${model.record.sviv_co09}">
 									           			</td>
 														<td class="text12">
-															18.<input type="text" class="inputText" name="sviv_co18" id="sviv_co18" size="12" maxlength="17" value="${model.record.sviv_co18}">
+															10.<input type="text" class="inputTextMediumBlue" name="sviv_co10" id="sviv_co10" size="12" maxlength="17" value="${model.record.sviv_co10}">
 														</td>
 														<td class="text12">
-															19.<input type="text" class="inputText" name="sviv_co19" id="sviv_co19" size="12" maxlength="17" value="${model.record.sviv_co19}">
+															11.<input type="text" class="inputTextMediumBlue" name="sviv_co11" id="sviv_co11"  size="12" maxlength="17" value="${model.record.sviv_co11}">
 														</td>
 														<td class="text12">
-									           				20.<input type="text" class="inputText" name="sviv_co20" id="sviv_co20" size="12" maxlength="17" value="${model.record.sviv_co20}">
+									           				12.<input type="text" class="inputTextMediumBlue" name="sviv_co12" id="sviv_co12" size="12" maxlength="17" value="${model.record.sviv_co12}">
+									           			</td>
+													</tr>
+													<tr>
+									           			<td class="text12">
+									           				13.<input type="text" class="inputTextMediumBlue" name="sviv_co13" id="sviv_co13" size="12" maxlength="17" value="${model.record.sviv_co13}">
+									           			</td>
+														<td class="text12">
+															14.<input type="text" class="inputTextMediumBlue" name="sviv_co14" id="sviv_co14" size="12" maxlength="17" value="${model.record.sviv_co14}">
+														</td>
+														<td class="text12">
+															15.<input type="text" class="inputTextMediumBlue" name="sviv_co15" id="sviv_co15" size="12" maxlength="17" value="${model.record.sviv_co15}">
+														</td>
+														<td class="text12">
+									           				16.<input type="text" class="inputTextMediumBlue" name="sviv_co16" id="sviv_co16" size="12" maxlength="17" value="${model.record.sviv_co16}">
+									           			</td>
+													</tr>
+													<tr>
+									           			<td class="text12">
+									           				17.<input type="text" class="inputTextMediumBlue" name="sviv_co17" id="sviv_co17" size="12" maxlength="17" value="${model.record.sviv_co17}">
+									           			</td>
+														<td class="text12">
+															18.<input type="text" class="inputTextMediumBlue" name="sviv_co18" id="sviv_co18" size="12" maxlength="17" value="${model.record.sviv_co18}">
+														</td>
+														<td class="text12">
+															19.<input type="text" class="inputTextMediumBlue" name="sviv_co19" id="sviv_co19" size="12" maxlength="17" value="${model.record.sviv_co19}">
+														</td>
+														<td class="text12">
+									           				20.<input type="text" class="inputTextMediumBlue" name="sviv_co20" id="sviv_co20" size="12" maxlength="17" value="${model.record.sviv_co20}">
 									           			</td>
 													</tr>
 													</table>
@@ -2179,9 +2179,9 @@
 				 						<b>49.</b>
 							            <span title="sviv_lagt">Identifiering av lager:&nbsp;</span>
 							            
-							            <div class="text11" style="position: relative;" align="left" >
+							            <div class="text14" style="position: relative;" align="left" >
 							            <span style="position:absolute;top:2px; width:250px;" id="49_info" class="popupWithInputText text12"  >
-							           		<div class="text11" align="left">
+							           		<div class="text14" align="left">
 						           			<br/>
 						           			<b>Identifiering av lager</b>
 											<br/>
@@ -2230,10 +2230,10 @@
 											<c:choose>
 			 									<%-- only when new record and header value exists --%>
 												<c:when test="${recordTopic.svih_godn!='' && empty model.record.sviv_syli}">
-													<input type="text" class="inputText" name="sviv_lagi" id="sviv_lagi" size="10" maxlength="14" value='${recordTopic.svih_godn}'>
+													<input type="text" class="inputTextMediumBlue" name="sviv_lagi" id="sviv_lagi" size="10" maxlength="14" value='${recordTopic.svih_godn}'>
 												</c:when>
 												<c:otherwise>
-													<input type="text" class="inputText" name="sviv_lagi" id="sviv_lagi" size="10" maxlength="14" value='${model.record.sviv_lagi}'>
+													<input type="text" class="inputTextMediumBlue" name="sviv_lagi" id="sviv_lagi" size="10" maxlength="14" value='${model.record.sviv_lagi}'>
 												</c:otherwise>
 											</c:choose>
 										</td>

@@ -1253,7 +1253,7 @@
 								</div>
 								</td>	
 								<td >
-									<input type="text" class="inputTextMediumBlue" name="sveh_golk" id="sveh_golk" size="4" maxlength="3" value="${model.record.sveh_golk}">
+									<input type="text" class="inputTextMediumBlueUPPERCASE" name="sveh_golk" id="sveh_golk" size="4" maxlength="3" value="${model.record.sveh_golk}">
 								</td>
 													        
 	        				</tr>

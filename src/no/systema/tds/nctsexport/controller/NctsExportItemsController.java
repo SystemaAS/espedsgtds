@@ -7,8 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +29,9 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
-
+import no.systema.main.util.StringManager;
 import no.systema.tds.nctsexport.mapper.url.request.UrlRequestParameterMapper;
+import no.systema.tds.nctsexport.model.jsonjackson.topic.JsonNctsExportSpecificTopicRecord;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemRecord;
 
@@ -45,10 +44,9 @@ import no.systema.tds.nctsexport.util.manager.CodeDropDownMgr;
 //application imports
 import no.systema.tds.util.TdsConstants;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
-
-//models
-
-
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
 
 
 /**
@@ -67,7 +65,8 @@ public class NctsExportItemsController {
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
-
+	private StringManager strMgr = new StringManager();
+	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) {
         //binder.setValidator(new TdsExportItemsValidator());
@@ -115,9 +114,11 @@ public class NctsExportItemsController {
 			String sign = request.getParameter("sign");
 			String tullId = request.getParameter("tullId");
 			String mrnNr = request.getParameter("mrnNr");
-			
 			String status = request.getParameter("status");
 			String datum = request.getParameter("datum");
+			//this fragment gets some header fields needed for the validator
+			JsonNctsExportSpecificTopicRecord headerRecord = (JsonNctsExportSpecificTopicRecord)session.getAttribute(TdsConstants.DOMAIN_RECORD_TOPIC);
+			
 			//this key is only used with a real Update. When empty it will be a signal for a CREATE NEW (Add)
 			String lineNr = request.getParameter("tvli");
 			if(lineNr!=null && !"".equals(lineNr)){
@@ -238,6 +239,9 @@ public class NctsExportItemsController {
 					//At this point we are ready to do an update
 					//--------------------------------------------------
 					if(isValidCreatedRecordTransactionOnRPG){
+						
+						//Last adjustment of some fields
+						this.adjustFields( jsonNctsExportSpecificTopicItemRecord);
 						
 			            logger.info("[INFO] Valid previous step successfully processed, OK ");
 			            logger.info("[INFO] Ready to move forward to do the UPDATE");
@@ -572,6 +576,62 @@ public class NctsExportItemsController {
 				 model,appUser,CodeDropDownMgr.CODE_013_DOKTYPE, null, null);
 	}
 	
+	/**
+	 * 
+	 * @param recordToValidate
+	 */
+	private void adjustFields(JsonNctsExportSpecificTopicItemRecord recordToValidate){
+		//Godsmärkning
+		if(strMgr.isNotNull(recordToValidate.getTvmn())){
+			recordToValidate.setTvmn(recordToValidate.getTvmn().toUpperCase());
+		}
+		//Godsmärkning - Extraordinära uppg
+		if(strMgr.isNotNull(recordToValidate.getTvmn2())){
+			recordToValidate.setTvmn2(recordToValidate.getTvmn2().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getTvmn3())){
+			recordToValidate.setTvmn3(recordToValidate.getTvmn3().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getTvmn4())){
+			recordToValidate.setTvmn4(recordToValidate.getTvmn4().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getTvmn5())){
+			recordToValidate.setTvmn5(recordToValidate.getTvmn5().toUpperCase());
+		}
+	}
+	/**
+	 * 
+	 * @param jsonNctsExportSpecificTopicItemRecord
+	 * @param model
+	 * @param container
+	 * @param headerRecord
+	 */
+	/* NOT NEEDED as in Export/Import= ? CB/THOMAS ... to be continued
+	private void setBruttoViktRestValue(JsonNctsExportSpecificTopicItemRecord jsonNctsExportSpecificTopicItemRecord, Map model, JsonNctsExportSpecificTopicItemContainer container, JsonNctsExportSpecificTopicRecord headerRecord){
+		if(container!=null){
+			try{
+				Double sumBrut = 0.00D;
+				for (JsonNctsExportSpecificTopicItemRecord record : container.getOrderList()){
+					if(strMgr.isNotNull(record.getTvvktb()) ){
+						sumBrut += Double.parseDouble(record.getTvvktb().replace(",", "."));
+					}
+				}
+				Double headerBrutVal = 0.00D;
+				if(strMgr.isNotNull(headerRecord.getThvkb())){
+					headerBrutVal = Double.valueOf(headerRecord.getThvkb().replace(",", "."));
+				}
+				Double result = headerBrutVal - sumBrut;
+				String resultStr = String.valueOf(result);
+				jsonNctsExportSpecificTopicItemRecord.setTvvktb(resultStr.replace(".", ","));
+				logger.info("final rest value:" + jsonNctsExportSpecificTopicItemRecord.getTvvktb());
+			}catch(Exception e){
+				logger.info("ERROR on default Gross weight:" + e.toString());
+			}
+		}
+		
+		
+	}
+	*/
 	
 	//SERVICES
 	

@@ -73,6 +73,7 @@ import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpeci
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicFaktTotalContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicFaktTotalRecord;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicRecord;
 import no.systema.tds.tdsimport.url.store.TdsImportUrlDataStore;
 
 
@@ -373,6 +374,10 @@ public class TdsExportHeaderController {
 						//At this point we are ready to do an update
 						//--------------------------------------------------
 						if(isValidCreatedRecordTransactionOnRPG){
+							
+							//Last adjustment of some fields
+							this.adjustFields( jsonTdsExportSpecificTopicRecord);
+							
 				            //---------------------------
 							//get BASE URL = RPG-PROGRAM
 				            //---------------------------
@@ -1951,6 +1956,17 @@ public class TdsExportHeaderController {
 		return urlRequestParamsKeys.toString();	
 	}
 	
+	/**
+	 * 
+	 * @param recordToValidate
+	 */
+	private void adjustFields(JsonTdsExportSpecificTopicRecord recordToValidate){
+		//Godsmärkning
+		if(strMgr.isNotNull(recordToValidate.getSveh_golk())){
+			recordToValidate.setSveh_golk(recordToValidate.getSveh_golk().toUpperCase());
+		}
+		
+	}
 	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")

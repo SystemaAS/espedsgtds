@@ -1275,7 +1275,7 @@
 								</div>	
 								</td>
 
-							    <td ><input type="text" class="inputTextMediumBlue" name="svih_golk" id="svih_golk" size="4" maxlength="3" value="${model.record.svih_golk}"></td>	
+							    <td ><input type="text" class="inputTextMediumBlueUPPERCASE" name="svih_golk" id="svih_golk" size="4" maxlength="3" value="${model.record.svih_golk}"></td>	
 					        </tr>
 					        <tr>
 					            <td class="text14" align="left" >

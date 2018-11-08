@@ -287,8 +287,8 @@
 								<table id="tblItemLines" class="display compact cell-border">
 									<thead>
 									<tr class="tableHeaderField" >
-									    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvli.linjeNr"/>&nbsp;</th>   
-					                    <th class="text14">&nbsp;Uppdat.&nbsp;</th>
+									    <th class="text14">&nbsp;Uppdat.&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvli.linjeNr"/>&nbsp;</th>   
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvnt.varukod"/>&nbsp;</th>   
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvt.varuBeskrivning"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdk.deklTyp"/>&nbsp;</th>
@@ -314,12 +314,12 @@
 							                       <tr class="tableOddRow" height="20" >
 							                   </c:otherwise>
 							               </c:choose>
-							               <td width="2%" class="text14" align="center">${record.tvli}</td>
 							               <td width="2%" class="text14" align="center">&nbsp;
 							               		<a tabindex=-1 id="recordUpdate_${counter.count}_${record.tvli}" href="#" onClick="getItemData(this);">
 							               			<img valign="bottom" src="resources/images/update.gif" border="0" alt="edit">&nbsp;
 							               		</a>
 							               </td>
+							               <td width="2%" class="text14" align="center">${record.tvli}</td>
 							               <td width="2%" class="text14" >&nbsp;${record.tvvnt}</td>
 							               <td class="text14">&nbsp;${record.tvvt}</td>
 							               <td width="2%" class="text14" >&nbsp;${record.tvdk}</td>
@@ -892,7 +892,7 @@
 							        </tr>
 							        <tr>
 						        		<td valign="top" class="text14">
-											&nbsp;<input type="text" class="inputText" name="tvmn" id="tvmn" size="17" maxlength="17" value='${model.record.tvmn}'>
+											&nbsp;<input type="text" class="inputTextMediumBlueUPPERCASE" name="tvmn" id="tvmn" size="17" maxlength="17" value='${model.record.tvmn}'>
 										</td>
 										<td colspan="2" valign="top" class="text14" >
 											<select class="selectMediumBlueE2" name="tvmnsk" id="tvmnsk">
@@ -1818,7 +1818,7 @@
 													</tr>
 								           			<tr>
 									           			<td valign="top" class="text14">
-									           				&nbsp;2.<textarea rows="2" cols="15" class="inputText" name="tvmn2" id="tvmn2" maxlength="42">${model.record.tvmn2}</textarea>
+									           				&nbsp;2.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="tvmn2" id="tvmn2" maxlength="42">${model.record.tvmn2}</textarea>
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh2" id="tveh2">
@@ -1837,7 +1837,7 @@
 									           		</tr>
 													<tr>
 									           			<td valign="top" class="text14">
-									           				&nbsp;3.<textarea rows="2" cols="15" class="inputText" name="tvmn3" id="tvmn3" maxlength="42">${model.record.tvmn3}</textarea>
+									           				&nbsp;3.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="tvmn3" id="tvmn3" maxlength="42">${model.record.tvmn3}</textarea>
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh3" id="tveh3">
@@ -1856,7 +1856,7 @@
 									           		</tr>
 								           			<tr>
 									           			<td valign="top" class="text14">
-									           				&nbsp;4.<textarea rows="2" cols="15" class="inputText" name="tvmn4" id="tvmn4" maxlength="42">${model.record.tvmn4}</textarea>
+									           				&nbsp;4.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="tvmn4" id="tvmn4" maxlength="42">${model.record.tvmn4}</textarea>
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh4" id="tveh4">
@@ -1876,7 +1876,7 @@
 									           		</tr>
 								           			<tr>
 									           			<td valign="top" class="text14">
-									           				&nbsp;5.<textarea rows="2" cols="15" class="inputText" name="tvmn5" id="tvmn5" maxlength="42">${model.record.tvmn5}</textarea>
+									           				&nbsp;5.<textarea rows="2" cols="15" class="inputTextMediumBlueUPPERCASE" name="tvmn5" id="tvmn5" maxlength="42">${model.record.tvmn5}</textarea>
 									           			</td>
 									           			<td align="left" valign="bottom">
 									            			<select class="selectMediumBlueE2" name="tveh5" id="tveh5">

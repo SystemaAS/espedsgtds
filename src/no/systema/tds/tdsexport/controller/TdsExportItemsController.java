@@ -7,8 +7,6 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +45,11 @@ import no.systema.tds.tdsexport.util.TdsExportCalculator;
 import no.systema.tds.tdsexport.util.manager.TdsExportItemsAutoControlMgr;
 
 import no.systema.tds.tdsexport.validator.TdsExportItemsValidator;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicRecord;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.items.JsonTdsImportSpecificTopicItemContainer;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.items.JsonTdsImportSpecificTopicItemRecord;
 import no.systema.tds.tdsexport.model.KundensVaruRegisterUpdateItemRecord;
-import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
-import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
-import no.systema.tds.tdsexport.url.store.TdsExportUrlDataStore;
+
 //application imports
 import no.systema.tds.util.TdsConstants;
 import no.systema.tds.service.TdsBilagdaHandlingarYKoderService;
@@ -59,10 +58,6 @@ import no.systema.tds.service.TdsTillaggskoderService;
 
 import no.systema.tds.util.manager.CodeDropDownMgr;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
-import no.systema.tds.model.external.url.UrlTaricCountryObject;
-import no.systema.tds.model.external.url.UrlTaricCurrencyObject;
-import no.systema.tds.model.jsonjackson.codes.JsonTdsCodeContainer;
-import no.systema.tds.model.jsonjackson.codes.JsonTdsCodeRecord;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsTaricVarukodContainer;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsTaricVarukodRecord;
 import no.systema.tds.model.jsonjackson.validation.JsonTdsMangdEnhetContainer;
@@ -165,6 +160,7 @@ public class TdsExportItemsController {
 			model.put("status", status);
 			model.put("datum", datum);
 			
+			
 			if(TdsConstants.ACTION_UPDATE.equals(action)){
 				//-----------
 				//Validation
@@ -185,6 +181,7 @@ public class TdsExportItemsController {
 			    validator.validate(recordToValidate, bindingResult);
 			    //check for ERRORS
 				if(bindingResult.hasErrors()){
+					isValidCreatedRecordTransactionOnRPG = false;
 			    	logger.info("[ERROR Validation] Item Record does not validate)");
 			    	logger.info("[INFO lineNr] " + lineNr);
 			    	model.put("sign", sign);
@@ -194,6 +191,7 @@ public class TdsExportItemsController {
 			    		session.setAttribute("svev_syli_SESSION", lineNr);
 				    	recordToValidate.setSvev_syop(opd);
 			    		recordToValidate.setSvev_syav(avd);
+			    		
 			    	}
 			    	
 			    }else{
@@ -257,6 +255,9 @@ public class TdsExportItemsController {
 					//At this point we are ready to do an update
 					//--------------------------------------------------
 					if(isValidCreatedRecordTransactionOnRPG){
+						
+						//Last adjustment of some fields
+						this.adjustFields( jsonTdsExportSpecificTopicItemRecord);
 						
 						//Extra check on [Invoice Due Amount (svev_fabl)] vs [Statistiskt varde (svev_stva)]
 			            //if svev_stva = null then copy the svev_fabl (fakturabelopp)
@@ -371,7 +372,14 @@ public class TdsExportItemsController {
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"E","SAL");
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"E","FF1");
     		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"E","FFK");
-    		  
+    		
+    		//Default values for a new line
+    		if(isValidCreatedRecordTransactionOnRPG){
+    			jsonTdsExportSpecificTopicItemRecord = new JsonTdsExportSpecificTopicItemRecord();
+    			this.setBruttoViktRestValue(jsonTdsExportSpecificTopicItemRecord, model, jsonTdsExportSpecificTopicItemContainer, headerRecord);
+    			this.setDomainObjectsInView(model, jsonTdsExportSpecificTopicItemRecord);
+    		}
+    		//list of items
     		this.setDomainObjectsForListInView(session, model, jsonTdsExportSpecificTopicItemContainer);
 			
     		successView.addObject("model",model);
@@ -892,6 +900,59 @@ public class TdsExportItemsController {
 				//here ...
 			}
 		}
+		
+	}
+	
+	/**
+	 * 
+	 * @param recordToValidate
+	 */
+	private void adjustFields(JsonTdsExportSpecificTopicItemRecord recordToValidate){
+		//Godsmärkning
+		if(strMgr.isNotNull(recordToValidate.getSvev_godm())){
+			recordToValidate.setSvev_godm(recordToValidate.getSvev_godm().toUpperCase());
+		}
+		//Godsmärkning - Extraordinära uppg
+		if(strMgr.isNotNull(recordToValidate.getSvev_god2())){
+			recordToValidate.setSvev_god2(recordToValidate.getSvev_god2().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getSvev_god3())){
+			recordToValidate.setSvev_god3(recordToValidate.getSvev_god3().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getSvev_god4())){
+			recordToValidate.setSvev_god4(recordToValidate.getSvev_god4().toUpperCase());
+		}
+		if(strMgr.isNotNull(recordToValidate.getSvev_god5())){
+			recordToValidate.setSvev_god5(recordToValidate.getSvev_god5().toUpperCase());
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * @param model
+	 * @param container
+	 * @param headerRecord
+	 */
+	private void setBruttoViktRestValue(JsonTdsExportSpecificTopicItemRecord jsonTdsExportSpecificTopicItemRecord, Map model, JsonTdsExportSpecificTopicItemContainer container, JsonTdsExportSpecificTopicRecord headerRecord){
+		if(container!=null){
+			try{
+				Double sumBrut = 0.00D;
+				for (JsonTdsExportSpecificTopicItemRecord record : container.getOrderList()){
+					if(strMgr.isNotNull(record.getSvev_brut()) ){
+						sumBrut += Double.parseDouble(record.getSvev_brut().replace(",", "."));
+					}
+				}
+				Double headerBrutVal = headerRecord.getSveh_brut_dbl();
+				Double result = headerBrutVal - sumBrut;
+				String resultStr = String.valueOf(result);
+				jsonTdsExportSpecificTopicItemRecord.setSvev_brut(resultStr.replace(".", ","));
+				logger.info("final rest value:" + jsonTdsExportSpecificTopicItemRecord.getSvev_brut());
+			}catch(Exception e){
+				logger.info("ERROR on default Gross weight:" + e.toString());
+			}
+		}
+		
 		
 	}
 	

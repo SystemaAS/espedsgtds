@@ -31,7 +31,7 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
-
+import no.systema.main.util.StringManager;
 import no.systema.tds.nctsimport.mapper.url.request.UrlRequestParameterMapper;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.items.JsonNctsImportSpecificTopicItemContainer;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.items.JsonNctsImportSpecificTopicItemRecord;
@@ -46,10 +46,6 @@ import no.systema.tds.nctsimport.validator.NctsImportItemsValidator;
 import no.systema.tds.util.TdsConstants;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
 import no.systema.tds.model.external.url.UrlISOLanguageObject;
-import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeContainer;
-import no.systema.tds.model.jsonjackson.codes.JsonTdsNctsCodeRecord;
-
-import no.systema.tds.url.store.TdsUrlDataStore;
 
 
 
@@ -72,6 +68,8 @@ public class NctsImportItemsController {
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
 
+	
+	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) {
         //binder.setValidator(new TdsExportItemsValidator());
@@ -244,6 +242,7 @@ public class NctsImportItemsController {
 					//At this point we are ready to do an update
 					//--------------------------------------------------
 					if(isValidCreatedRecordTransactionOnRPG){
+						
 						
 			            logger.info("[INFO] Valid previous step successfully processed, OK ");
 			            logger.info("[INFO] Ready to move forward to do the UPDATE");
@@ -687,6 +686,8 @@ public class NctsImportItemsController {
 		this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService,
 				 model,appUser,CodeDropDownMgr.CODE_031_DEKLTYPE, null, null);
 	}
+	
+	
 	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")
