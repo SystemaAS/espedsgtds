@@ -239,7 +239,7 @@ public class TdsImportHeaderController {
 			    		logger.fatal("NO CONTENT on jsonPayload from URL... ??? <Null>");
 			    		return loginView;
 					}
-			    	//----------------------------
+			    //----------------------------
 				//CREATE and/or UPDATE RECORD
 				//----------------------------	
 				}else if(TdsConstants.ACTION_UPDATE.equals(action)){
@@ -256,7 +256,7 @@ public class TdsImportHeaderController {
 						recordToValidate.setSumOfAntalKolliInItemLines(sumTopicRecord.getSumOfAntalKolliInItemLines());
 						recordToValidate.setSumOfGrossWeightInItemLines(sumTopicRecord.getSumOfGrossWeightInItemLines());
 						recordToValidate.setSumOfInvoiceAmountInItemLines(sumTopicRecord.getSumOfInvoiceAmountInItemLines());
-			            
+						
 						
 					}else{
 						recordToValidate.setSvih_syav(avd);
@@ -292,6 +292,7 @@ public class TdsImportHeaderController {
 							logger.info("SVIH_AVNA STEP 1: " + request.getParameter("svih_avna"));
 				            binder.bind(request);
 				            jsonTdsImportSpecificTopicRecord.setSvih_0035(svih_0035);
+				            
 				            
 						}else{
 							logger.info("CREATE NEW follow by UDATE transaction...");
@@ -1746,7 +1747,6 @@ public class TdsImportHeaderController {
 			//(1) handover to final object
 			record.setSumOfAntalKolliInItemLines(sumTopicRecord.getSumOfAntalKolliInItemLines());
 			record.setSumOfGrossWeightInItemLines(sumTopicRecord.getSumOfGrossWeightInItemLines());
-			//logger.info("Bruttovikt B:" + record.getSumOfGrossWeightInItemLinesStr());
 			record.setSumOfInvoiceAmountInItemLines(sumTopicRecord.getSumOfInvoiceAmountInItemLines());
 			record.setInvoiceListTotValidCurrency(sumFaktTotalRecord.getTot_vakd());
 			record.setInvoiceListTotSum(sumFaktTotalRecord.getTot_fabl());
@@ -1765,6 +1765,11 @@ public class TdsImportHeaderController {
 					}
 				}
 			}
+			
+			//logger.info("Bruttovikt Str:" + record.getSumOfGrossWeightInItemLinesStr());
+			//logger.info("Bruttovikt dbl:" + record.getSumOfGrossWeightInItemLines());
+			//logger.info("svih_brut_dbl:" + record.getSvih_brut_dbl());
+			
 			//logger.info("###SVIH_AVNA:" + record.getSvih_avna());
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines
@@ -1782,6 +1787,18 @@ public class TdsImportHeaderController {
 	private void setDomainObjectsInView(HttpSession session, Map model, JsonTdsImportSpecificTopicRecord record, JsonTdsImportSpecificTopicRecord sumTopicRecord){
 		//SET HEADER RECORDS  (from RPG)
 		record.setSumOfAntalKolliInItemLines(sumTopicRecord.getSumOfAntalKolliInItemLines());
+		record.setSumOfGrossWeightInItemLines(sumTopicRecord.getSumOfGrossWeightInItemLines());
+		record.setSumOfInvoiceAmountInItemLines(sumTopicRecord.getSumOfInvoiceAmountInItemLines());
+		
+		//fill in dbl value (if applicable)
+        if( strMgr.isNotNull(record.getSvih_brut()) ){
+        	record.setSvih_brut_dbl(Double.parseDouble(record.getSvih_brut().replace(",", ".")));
+    		//logger.info("SVIH_BRUT_DBL:" + record.getSvih_brut_dbl());
+    	}
+        //logger.info("Bruttovikt Str:" + record.getSumOfGrossWeightInItemLinesStr());
+		//logger.info("Bruttovikt dbl:" + record.getSumOfGrossWeightInItemLines());
+		//logger.info("svih_brut_dbl:" + record.getSvih_brut_dbl());
+		
 		model.put(TdsConstants.DOMAIN_RECORD, record);
 		//put the header topic in session for the coming item lines
 		session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC, record);

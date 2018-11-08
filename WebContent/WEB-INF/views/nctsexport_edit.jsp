@@ -1010,6 +1010,18 @@
 						 				    	<c:if test="${not empty model.record.thtdn && model.record.validUpdate}">
 						 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
 						 				    	</c:if>
+						 				    	
+						 				    	<%-- As a general Warning BEFORE save/send --%>
+					 				    		<div id="submitRedFlag" style="display:none">
+										            <img onMouseOver="showPop('itemsSum_infoOnSubmit');" onMouseOut="hidePop('itemsSum_infoOnSubmit');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
+										            <div class="text11" style="position: relative;" align="left">
+										            <span style="position:absolute; left:10px; top:2px; width:250px;" id="itemsSum_infoOnSubmit" class="popupWithInputText text11" >
+									           			<p>	
+									           				<b>Det finns "warnings" i sidan. Kontrollera bilden!</b>
+									           			</p>
+													</span>	
+													</div>											
+												</div>
 					 				    </c:when>
 					 				    <c:otherwise>
 					 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
@@ -1680,7 +1692,7 @@
 					            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfAntalKolliInItemLines" id="sumOfAntalKolliInItemLines" size="8" maxlength="7" value="${ model.record.sumOfAntalKolliInItemLinesStr}">
 					            		<c:if test="${not empty ( model.record.sumOfAntalKolliInItemLinesStr &&  model.record.thntk)}">
 						            		<c:if test="${ model.record.thntk !=  model.record.sumOfAntalKolliInItemLinesStr}">
-								            <img onMouseOver="showPop('itemsSumKolli_info');" onMouseOut="hidePop('itemsSumKolli_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
+								            <img id="imgRedFlagAntalKolliInItems" onMouseOver="showPop('itemsSumKolli_info');" onMouseOut="hidePop('itemsSumKolli_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
 								            <div class="text11" style="position: relative;" align="left">
 									            <span style="position:absolute; left:10px; top:0px;" id="itemsSumKolli_info" class="popupWithInputText"  >
 								           			<font class="text11">

@@ -29,7 +29,9 @@
   		}
 	  });
     });
-  	
+  
+    
+	
   	//-----------------------------------------------------------------------------
   	//jQuery CALCULATOR (related to jquery.calculator.js and jquery.calculator.css
   	//-----------------------------------------------------------------------------
@@ -1048,5 +1050,11 @@
 	  //-------------------------------------------
 	  	
 	
-	
-	
+	  //aspects/functions on ready document...
+	  jq(document).ready(function() {
+	  		if(jq('#imgRedFlagAntalKolliInItems').length || jq('#imgRedFlagSumGrossWeightInItems').length || jq('#imgSumOfInvoiceAmountInItemLines').length){
+	  			jq('#submitRedFlag').css('display', 'inline-block');	
+	  		}else{
+	  			jq('#submitRedFlag').css('display', 'none');
+	  		}
+	  	});

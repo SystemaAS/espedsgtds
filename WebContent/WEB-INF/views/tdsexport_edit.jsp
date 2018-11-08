@@ -975,8 +975,19 @@
 				 				    	&nbsp;&nbsp;
 				 				    	<c:if test="${not empty model.record.sveh_syop && model.record.validUpdate}">
 				 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='tdsexport_send.do';" value='<spring:message code="systema.tds.export.createnew.send"/>'/>
-				 				    		
 				 				    	</c:if>
+				 				    	
+				 				    	<%-- As a general Warning BEFORE save/send --%>
+			 				    		<div id="submitRedFlag" style="display:none">
+								            <img onMouseOver="showPop('itemsSum_infoOnSubmit');" onMouseOut="hidePop('itemsSum_infoOnSubmit');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
+								            <div class="text11" style="position: relative;" align="left">
+								            <span style="position:absolute; left:10px; top:2px; width:250px;" id="itemsSum_infoOnSubmit" class="popupWithInputText text11" >
+							           			<p>	
+							           				<b>Det finns "warnings" i sidan. Kontrollera bilden!</b>
+							           			</p>
+											</span>	
+											</div>											
+										</div>
 				 				    </c:when>
 				 				    <c:otherwise>
 				 				    	<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
@@ -1364,7 +1375,7 @@
 				            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfAntalKolliInItemLines" id="sumOfAntalKolliInItemLines" size="8" maxlength="7" value="${model.record.sumOfAntalKolliInItemLinesStr}">
 				            		<c:if test="${not empty (model.record.sumOfAntalKolliInItemLinesStr && model.record.sveh_kota)}">
 					            		<c:if test="${model.record.sveh_kota != model.record.sumOfAntalKolliInItemLinesStr}">
-							            <img onMouseOver="showPop('itemsSum_info');" onMouseOut="hidePop('itemsSum_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
+							            <img id="imgRedFlagAntalKolliInItems" onMouseOver="showPop('itemsSum_info');" onMouseOut="hidePop('itemsSum_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
 					            		</c:if>
 				            		</c:if>
 				            		<div class="text11" style="position: relative;" align="left">
@@ -1410,7 +1421,7 @@
 				            		<input readonly style="text-align: right" type="text" class="inputTextReadOnly" name="sumOfGrossWeightInItemLinesStr" id="sumOfGrossWeightInItemLinesStr" size="13" maxlength="13" value="${model.record.sumOfGrossWeightInItemLinesStr}">
 				            		<c:if test="${not empty (model.record.sumOfGrossWeightInItemLinesStr && model.record.sveh_brut)}">
 				            			<c:if test="${model.record.sumOfGrossWeightInItemLines != model.record.sveh_brut_dbl}">
-							            	<img onMouseOver="showPop('itemsSumGrossweight_info');" onMouseOut="hidePop('itemsSumGrossweight_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
+							            	<img id="imgRedFlagSumGrossWeightInItems" onMouseOver="showPop('itemsSumGrossweight_info');" onMouseOut="hidePop('itemsSumGrossweight_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="kolliantal warning">	
 					            		</c:if>
 					            	</c:if>
 				            		<div class="text11" style="position: relative;" align="left">

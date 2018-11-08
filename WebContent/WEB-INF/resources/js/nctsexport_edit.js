@@ -312,4 +312,13 @@
 	    
 	
 	
-
+	    jq(document).ready(function(){
+	  	    
+	  	    //aspects/functions on ready document...
+	  		if(jq('#imgRedFlagAntalKolliInItems').length || jq('#imgRedFlagSumGrossWeightInItems').length || jq('#imgSumOfInvoiceAmountInItemLines').length){
+	  			jq('#submitRedFlag').css('display', 'inline-block');	
+	  		}else{
+	  			jq('#submitRedFlag').css('display', 'none');
+	  		}
+	  	        
+	  	  });
