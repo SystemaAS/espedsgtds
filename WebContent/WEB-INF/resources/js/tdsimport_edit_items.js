@@ -1056,6 +1056,10 @@
 	      jq('input.tblItemLinesAll_filter').on( 'keyup click', function () {
 	      		filterGlobal();
 	      });
+	      
+	      
+	      //
+	  	 jq('#sviv_ulkd').focus();
 	  	
   		});
   	

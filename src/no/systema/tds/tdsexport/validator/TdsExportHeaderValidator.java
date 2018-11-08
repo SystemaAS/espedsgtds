@@ -84,7 +84,7 @@ public class TdsExportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_kota", "systema.tds.export.header.error.null.sveh_kota");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_brut", "systema.tds.export.header.error.null.sveh_brut");
 		//
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_fabl", "systema.tds.export.header.error.null.sveh_fabl");
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_fabl", "systema.tds.export.header.error.null.sveh_fabl");
 		
 		
 		//Logical controls if we passed the NOT NULL errors

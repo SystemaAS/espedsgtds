@@ -1180,6 +1180,8 @@
   		}else{
   			jq('#submitRedFlag').css('display', 'none');
   		}
+  		
+  		
   	        
   	  });
 	  

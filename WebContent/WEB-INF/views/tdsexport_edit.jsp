@@ -801,12 +801,12 @@
 		                	<c:when test="${ empty model.record.invoiceListTotSum}">
 						 		<tr>
 						 			<td class="text14">
-						 				<b>&nbsp;22.</b><font class="text16RedBold" >*</font><span title="sveh_fabl">Fakt.total&nbsp;</span>
+						 				<b>&nbsp;22.</b><span title="sveh_fabl">Fakt.total&nbsp;</span>
 						 			</td>
-						 			<td align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_fabl" id="sveh_fabl" size="20" maxlength="20" value="${model.record.sveh_fabl}"></td>
-						 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="sveh_vakd">Valuta</span>
+						 			<td align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_fabl" id="sveh_fabl" size="20" maxlength="20" value="${model.record.sveh_fabl}"></td>
+						 			<td class="text14">&nbsp;<span title="sveh_vakd">Valuta</span>
 						 				<%-- Note: onChange event in jQuery for this currency list --%>
-						 				<select class="inputTextMediumBlueMandatoryField" name="sveh_vakd" id="sveh_vakd">
+						 				<select class="inputTextMediumBlue" name="sveh_vakd" id="sveh_vakd">
 							            		<option value="">-Välj-</option>
 						 				  	<c:forEach var="currency" items="${model.mdxCodeList}" >
 		                                	 	<option value="${currency.svkd_kd}"<c:if test="${model.record.sveh_vakd == currency.svkd_kd}"> selected </c:if> >${currency.svkd_kd}</option>
@@ -819,9 +819,9 @@
 				 				</tr>
 				 				<tr>
 					 				<td class="text14">
-						 				<b>&nbsp;23.</b>&nbsp;<span title="sveh_vaku"><font class="text16RedBold" >*</font>Kurs&nbsp;</span>
+						 				<b>&nbsp;23.</b>&nbsp;<span title="sveh_vaku">Kurs&nbsp;</span>
 						 			</td>
-						 			<td class="text14" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.sveh_vaku}"></td>
+						 			<td class="text14" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_vaku" id="sveh_vaku" size="20" maxlength="20" value="${model.record.sveh_vaku}"></td>
 						 			<td class="text14" align="left" ><span title="sveh_vaom">Faktor</span><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlue" name="sveh_vaom" id="sveh_vaom" size="10" maxlength="10" value='${model.record.sveh_vaom}'></td>
 				 				</tr>
 			 				</c:when>

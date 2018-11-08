@@ -48,6 +48,9 @@
     		  });
 		});
   		
+  		//
+	  	jq('#svev_vata').focus();
+  		
   	});
   	
   	jq(function() {
