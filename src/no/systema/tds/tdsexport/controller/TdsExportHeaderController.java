@@ -1815,6 +1815,7 @@ public class TdsExportHeaderController {
 			record.setInvoiceListTotSum(sumFaktTotalRecord.getTot_fabl());
 			record.setInvoiceListTotValidCurrency(sumFaktTotalRecord.getTot_vakd());
 			record.setInvoiceListTotKurs(sumFaktTotalRecord.getTot_vaku());
+			logger.info("invoiceListTotSum:" + record.getInvoiceListTotSum());
 			
 			//(2) now check if the Invoice Total amount is NULL. If it is then we should check if the list of invoices gives something
 			if(record.getSveh_fabl()!=null && !"".equals(record.getSveh_fabl())){

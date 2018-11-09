@@ -69,8 +69,8 @@ public class TdsExportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_upps", "systema.tds.export.header.error.null.sveh_upps"); 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_tart", "systema.tds.export.header.error.null.sveh_tart"); 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_mtyp", "systema.tds.export.header.error.null.sveh_mtyp");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_fatx", "systema.tds.export.header.error.null.sveh_fatx");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_faty", "systema.tds.export.header.error.null.sveh_faty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_fatx", "systema.tds.export.header.error.null.sveh_fatx");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_faty", "systema.tds.export.header.error.null.sveh_faty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_avut", "systema.tds.export.header.error.null.sveh_avut");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_aube", "systema.tds.export.header.error.null.sveh_aube");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sveh_trin", "systema.tds.export.header.error.null.sveh_trin");
@@ -107,13 +107,38 @@ public class TdsExportHeaderValidator implements Validator {
 						errors.rejectValue("sveh_dkeo", "systema.tds.export.header.error.rule.sveh_dkeo.eoriInvalid");
 					}
 				}
-				
+				//==========================
 				//Meddelandytyp = sveh_mtyp
+				//==========================
 				if(record.getSveh_mtyp().equalsIgnoreCase("UGE") || record.getSveh_mtyp().equalsIgnoreCase("UGO")){
 					if(!record.getSveh_dek2().equalsIgnoreCase("Z")){
 						errors.rejectValue("sveh_mtyp", "systema.tds.export.header.error.rule.sveh_mtyp.ugeUgo");
 					}
+					
+					if(record.getSveh_mtyp().equalsIgnoreCase("UGE")){
+						if(strMgr.isNull(record.getSveh_golk())){
+							errors.rejectValue("sveh_mtyp", "systema.tds.export.header.error.rule.sveh_mtyp.ugeMandatoryGolk");
+						}
+						if(strMgr.isNull(record.getSveh_beat())){
+							errors.rejectValue("sveh_beat", "systema.tds.export.header.error.rule.sveh_mtyp.ugeMandatoryBeat");
+						}
+					}
+					
 				}
+				//Ber.Avg.Tid
+				if(record.getSveh_beat()!=null && !record.getSveh_beat().equals("")){
+					if(!"UGE".equalsIgnoreCase(record.getSveh_mtyp())){
+						errors.rejectValue("sveh_beat", "systema.tds.export.header.error.rule.sveh_beat.onlyUgeMessageType");
+					}
+				}
+				//Taxdeb.Dag
+				if(record.getSveh_taxd()!=null && !record.getSveh_taxd().equals("")){
+					if(!"UFF".equalsIgnoreCase(record.getSveh_mtyp())){
+						errors.rejectValue("sveh_taxd", "systema.tds.export.header.error.rule.sveh_taxd.onlyUffMessageType");
+					}
+				}
+				//END Meddelandetyp
+				
 				
 				//Fakt.belopp, kurs och valuta = sveh_vakd - sveh_fabl - sveh_vaku
 				if(record.getSveh_fabl()!=null && !record.getSveh_fabl().equalsIgnoreCase("") || 
@@ -129,18 +154,7 @@ public class TdsExportHeaderValidator implements Validator {
 					}
 				}
 				
-				//Ber.Avg.Tid
-				if(record.getSveh_beat()!=null && !record.getSveh_beat().equals("")){
-					if(!"UGE".equalsIgnoreCase(record.getSveh_mtyp())){
-						errors.rejectValue("sveh_beat", "systema.tds.export.header.error.rule.sveh_beat.onlyUgeMessageType");
-					}
-				}
-				//Taxdeb.Dag
-				if(record.getSveh_taxd()!=null && !record.getSveh_taxd().equals("")){
-					if(!"UFF".equalsIgnoreCase(record.getSveh_mtyp())){
-						errors.rejectValue("sveh_taxd", "systema.tds.export.header.error.rule.sveh_taxd.onlyUffMessageType");
-					}
-				}
+				
 				//Transportmedlets id (avg�ng)
 				if(record.getSveh_trid()!=null && !record.getSveh_trid().equals("")){
 					if("5".equalsIgnoreCase(record.getSveh_trin()) || "7".equalsIgnoreCase(record.getSveh_trin()) ){

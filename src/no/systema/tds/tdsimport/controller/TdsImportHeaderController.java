@@ -1755,7 +1755,7 @@ public class TdsImportHeaderController {
 			record.setInvoiceListTotValidCurrency(sumFaktTotalRecord.getTot_vakd());
 			record.setInvoiceListTotSum(sumFaktTotalRecord.getTot_fabl());
 			record.setInvoiceListTotKurs(sumFaktTotalRecord.getTot_vaku());
-			
+			logger.info("invoiceListTotSum:" + record.getInvoiceListTotSum());
             //(2) now check if the Invoice Total amount is NULL. If it is then we should check if the list of invoices gives something
 			if(record.getSvih_fabl()!=null && !"".equals(record.getSvih_fabl())){
 				//nothing
@@ -1775,6 +1775,7 @@ public class TdsImportHeaderController {
 			//logger.info("svih_brut_dbl:" + record.getSvih_brut_dbl());
 			
 			//logger.info("###SVIH_AVNA:" + record.getSvih_avna());
+			//logger.info("###SVIH_:" + record.getSvih_avna());
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines
 			session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC, record);

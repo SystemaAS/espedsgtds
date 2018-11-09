@@ -10,7 +10,25 @@
 	<SCRIPT type="text/javascript" src="resources/js/tdsglobal_edit.js?ver=${user.versionEspedsg}"></SCRIPT>			
 	<SCRIPT type="text/javascript" src="resources/js/tdsexport_edit.js?ver=${user.versionEspedsg}"></SCRIPT>
 	<SCRIPT type="text/javascript" src="resources/js/jquery.calculator.js"></SCRIPT>
- 
+	<SCRIPT type="text/javascript" src="resources/js/jquery-ui-timepicker-addon.js"></SCRIPT>
+ 	
+ 	<style type = "text/css">
+	.ui-datepicker { font-size:9pt;}
+		
+	.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+	.ui-timepicker-div dl { text-align: left; }
+	.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+	.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
+	.ui-timepicker-div td { font-size: 9pt; }
+	.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+	
+	.ui-timepicker-rtl{ direction: rtl; }
+	.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+	.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+	.ui-timepicker-rtl dl dd { margin: 0 40% 10px 10px; }
+	
+	</style>
+	
 <table width="100%" cellspacing="0" border="0" cellpadding="0">
 	
  <tr>
@@ -459,6 +477,23 @@
 								</select>
 			 				</td>
 			 				
+		 					<td class="text14" >&nbsp;
+			 					<img onMouseOver="showPop('berAvg_info');" onMouseOut="hidePop('berAvg_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+			 					<span title="sveh_beat">Ber.Avg.Tid&nbsp;</span>
+			 					<div class="text11" style="position: relative;" align="left">
+			 					<span style="position:absolute;top:2px; width:250px;" id="berAvg_info" class="popupWithInputText text11"  >
+				           			<br>
+				           			Enligt format: CCYYMMDDHHMM
+				           			<br/>
+								</span>
+								</div>
+							</td>
+							
+		 					<td class="text14">
+		 						<input type="text" class="inputTextMediumBlue" name="sveh_beat" id="sveh_beat" size="20" maxlength="12" value="${model.record.sveh_beat}">
+		 					</td>
+									
+			 				
 		 				</tr>
 		 				<tr height="5"><td></td></tr>
 		 				<tr>
@@ -876,7 +911,7 @@
 				 				<input readonly style="text-align: left" type="text" class="inputTextReadOnly" name="sumOfInvoiceAmountInItemLines" id="sumOfInvoiceAmountInItemLines" size="20" maxlength="20" value="${fn:replace(model.record.sumOfInvoiceAmountInItemLinesStr, '.', ',')}">
 				 				<c:if test="${not empty (sumOfInvoiceAmountInItemLinesStr && model.record.sveh_fabl)}">
 			            			<c:if test="${model.record.sumOfInvoiceAmountInItemLines != model.record.sveh_fabl_dbl}">
-						            	<img onMouseOver="showPop('itemsSumInvoiceAmount_info');" onMouseOut="hidePop('itemsSumInvoiceAmount_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="invoice amount warning">	
+						            	<img id="imgSumOfInvoiceAmountInItemLines" onMouseOver="showPop('itemsSumInvoiceAmount_info');" onMouseOut="hidePop('itemsSumInvoiceAmount_info');" width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="invoice amount warning">	
 				            		</c:if>
 				            	</c:if>
 				            	<div class="text11" style="position: relative;" align="left">
@@ -920,11 +955,11 @@
 							            <td class="text14Bold" align="left" >&nbsp;</td> 
 							        </tr>
 							        <tr>
-							            <td class="text14" align="left" >&nbsp;<span title="sveh_fatx">Fakt.nr.&nbsp;</span></td>
-							            <td ><input type="text" class="inputTextMediumBlue" name="sveh_fatx" id="sveh_fatx" size="20" maxlength="50" value="${model.record.sveh_fatx}"></td>
+							            <td class="text14" align="left" ><font class="text16RedBold" >*</font><span title="sveh_fatx">Fakt.nr.&nbsp;</span></td>
+							            <td ><input type="text" class="inputTextMediumBlueMandatoryField" name="sveh_fatx" id="sveh_fatx" size="20" maxlength="50" value="${model.record.sveh_fatx}"></td>
 							            <td class="text14" align="left" >&nbsp;&nbsp;&nbsp;
 							            <img onMouseOver="showPop('faktTyp_info');" onMouseOut="hidePop('faktTyp_info');"style="vertical-align:top;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-						 				<span title="sveh_faty">Fakt.typ&nbsp;</span>
+						 				<font class="text16RedBold" >*</font><span title="sveh_faty">Fakt.typ&nbsp;</span>
 							            
 							            <div class="text11" style="position: relative;" align="left" >
 							            <span style="position:absolute;top:2px; width:250px;" id="faktTyp_info" class="popupWithInputText text11"  >
@@ -938,7 +973,7 @@
 							            </td>
 							            
 							            <td>
-							 				<select class="selectMediumBlueE2" name="sveh_faty" id="sveh_faty">
+							 				<select class="inputTextMediumBlueMandatoryField" name="sveh_faty" id="sveh_faty">
 							 					<option value="">-Välj-</option><option value="N380"<c:if test="${model.record.sveh_faty == 'N380'}"> selected </c:if> >N380</option>
 											  	<option value="N325"<c:if test="${model.record.sveh_faty == 'N325'}"> selected </c:if> >N325</option>
 											  	<option value="N935"<c:if test="${model.record.sveh_faty == 'N935'}"> selected </c:if> >N935</option>
@@ -2190,27 +2225,7 @@
 				 					</td>
 									</tr>
 									
-									<tr>
-				 					<td class="text14" >&nbsp;
-				 					<img onMouseOver="showPop('berAvg_info');" onMouseOut="hidePop('berAvg_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
-				 					<span title="sveh_beat">Ber.Avg.Tid&nbsp;</span>
-				 					<div class="text11" style="position: relative;" align="left">
-				 					<span style="position:absolute;top:2px; width:250px;" id="berAvg_info" class="popupWithInputText text11"  >
-					           			<br>
-					           			Enligt format: CCYYMMDDHHMM
-					           			<br/>
-									</span>
-									</div>
-									</td>
 									
-				 					<td class="text14">
-				 						<input type="text" class="inputTextMediumBlue" name="sveh_beat" id="sveh_beat" size="20" maxlength="12" value="${model.record.sveh_beat}">
-				 					</td>
-									</tr>
-									
-									
-									
-						 			
 									<tr>
 				 					<td class="text14" >&nbsp;<span title="sveh_taxd">Taxeb.Dag..&nbsp;</span></td>
 				 					<td class="text14">

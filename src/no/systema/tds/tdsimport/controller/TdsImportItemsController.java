@@ -775,6 +775,7 @@ public class TdsImportItemsController {
 	 * @param record
 	 */
 	private void setDomainObjectsInView(Map model, JsonTdsImportSpecificTopicItemRecord record){
+		logger.info("###SVIV_EUP1:" + record.getSviv_eup1());
 		model.put(TdsConstants.DOMAIN_RECORD, record);
 	}
 	

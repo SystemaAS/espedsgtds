@@ -31,6 +31,22 @@
   	  
     });
     
+    jq(function() {
+    	  //----------------------------------------------------------------------
+      	  //including timepicker (jQuery addon to datepicker). Ref to parent JSP.
+      	  //----------------------------------------------------------------------
+      	  jq("#sveh_beat").datetimepicker({ 
+      		  dateFormat: 'yymmdd',
+    		  controlType: 'select',
+    		  timeFormat: 'HHmm'  
+    	  });
+      	//no space characters allowed...
+      	  jq('#sveh_beat').change(function() {
+      		var val = jq("#sveh_beat").val();
+      		jq("#sveh_beat").val(val.replace(' ', ''));
+      	  });
+    });
+    
   	//-----------------------------------------------------------------------------
   	//jQuery CALCULATOR (related to jquery.calculator.js and jquery.calculator.css
   	//-----------------------------------------------------------------------------
