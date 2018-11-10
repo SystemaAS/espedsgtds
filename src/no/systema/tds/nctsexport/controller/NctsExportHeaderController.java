@@ -218,6 +218,8 @@ public class NctsExportHeaderController {
 				    		JsonNctsExportSpecificTopicContainer jsonNctsExportSpecificTopicContainer = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
 				    		//add gui lists here
 				    		this.setCodeDropDownMgr(appUser, model);
+				    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
+							this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
 				    		this.setDomainObjectsInView(session, model, jsonNctsExportSpecificTopicContainer, totalItemLinesObject);
 				    		
 				    		successView.addObject(TdsConstants.DOMAIN_MODEL, model);
@@ -261,6 +263,9 @@ public class NctsExportHeaderController {
 					    	//put domain objects and do go back to the original view...
 					    	recordToValidate.setThavd(avd);
 					    	recordToValidate.setThsg(sign);
+					    	this.setCodeDropDownMgr(appUser, model);
+				    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
+							this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);
 					    	this.setDomainObjectsInView(session, model, recordToValidate);
 					    	isValidCreatedRecordTransactionOnRPG = false;
 					    	if(opd==null || "".equals(opd)){

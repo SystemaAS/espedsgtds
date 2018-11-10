@@ -140,7 +140,6 @@
 			<%-- topic specific (syop and tuid) --%>
 			<input type="hidden" name="thavd" id="thavd" value='${model.record.thavd}'>
 			<input type="hidden" name="thtdn" id="thtdn" value='${model.record.thtdn}'>
-			<input type="hidden" name="thsg" id="thsg" value='${model.record.thsg}'>
 			<input type="hidden" name="thst" id="thst" value='${model.record.thst}'>
 			<input type="hidden" name="thdt" id="thdt" value='${model.record.thdt}'>
 			<input type="hidden" name="thtuid" id="thtuid" value='${model.record.thtuid}'>
@@ -171,7 +170,23 @@
 			
 			<tr >
 				<td align="left" class="text14MediumBlue">
-					&nbsp;&nbsp;<span title="thsg">Sign:</span>&nbsp;<b>${model.record.thsg}</b>,&nbsp;&nbsp;<span title="thdt">Datum:</span>&nbsp;<b>${model.record.thdt}</b>,
+					<c:choose>
+	 				    <c:when test="${model.record.thst == 'M' || empty model.record.thst}">																	 			
+							&nbsp;&nbsp;<span title="thsg">Sign:</span>&nbsp;
+		           			<select class="selectMediumBlueE2" name="thsg" id="thsg">
+			            		<option value="">-Välj-</option>
+			 				  	<c:forEach var="record" items="${model.signList}" >
+                             	 	<option value="${record.sign}"<c:if test="${model.record.thsg == record.sign}"> selected </c:if> >${record.sign}</option>
+								</c:forEach> 
+							</select>
+						</c:when>
+						<c:otherwise>
+							&nbsp;&nbsp;<span title="thsg">Sign:</span>&nbsp;<b>${model.record.thsg}</b>
+							<input type="hidden" name="thsg" id="thsg" value='${model.record.thsg}'>
+			
+						</c:otherwise>
+					</c:choose>
+					&nbsp;&nbsp;<span title="thdt">Datum:</span>&nbsp;<b>${model.record.thdt}</b>,
 					&nbsp;&nbsp;<span title="thst">Stat<a tabindex=-1 id="updateStatusLink" runat="server" href="#"><font class="text11MediumBlue">u</font></a>s:</span>&nbsp;${model.record.thst}
 					&nbsp;&nbsp;
 					<font class="text16RedBold" >*</font><span title="thenkl">Typ av förfarande</span>&nbsp;
