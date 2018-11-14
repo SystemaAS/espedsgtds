@@ -197,6 +197,7 @@
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdty.dokTyp"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktb.bruttoVikt"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktn.nettoVikt"/>&nbsp;</th>
+												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktn.kolliSlag"/>&nbsp;</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.sum_of_tvnt.kolliAnt"/>(&Sigma;) / Stk</th>
 												                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdref.docRef"/>&nbsp;</th>
 												                    <c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
@@ -224,6 +225,8 @@
 														               <td width="2%" class="text14" >&nbsp;${record.tvdty}</td>
 														               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktb}&nbsp;</td>
 														               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktn}&nbsp;</td>
+														               <td width="2%" class="text14" align="center" >&nbsp;${record.tveh}&nbsp;</td>
+														               
 														               <td width="2%" class="text14" >&nbsp;${record.sum_of_tvnt}</td>
 														               <td width="2%" class="text14" >&nbsp;${record.tvdref}</td>
 														               
@@ -297,6 +300,7 @@
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdty.dokTyp"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktb.bruttoVikt"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktn.nettoVikt"/>&nbsp;</th>
+					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvvktn.kolliSlag"/>&nbsp;</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.sum_of_tvnt.kolliAnt"/>(&Sigma;)</th>
 					                    <th class="text14">&nbsp;<spring:message code="systema.ncts.export.item.list.label.tvdref.docRef"/>&nbsp;</th>
 					                    <c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
@@ -328,6 +332,8 @@
 							               <td width="2%" class="text14" >&nbsp;${record.tvdty}</td>
 							               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktb}&nbsp;</td>
 							               <td width="2%" class="text14" align="right" >&nbsp;${record.tvvktn}&nbsp;</td>
+							               <td width="2%" class="text14" align="center" >&nbsp;${record.tveh}&nbsp;</td>
+							               
 							               <td width="2%" class="text14" >&nbsp;${record.sum_of_tvnt}</td>
 							               <td width="2%" class="text14" >&nbsp;${record.tvdref}&nbsp;</td>
 							               	<c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">	

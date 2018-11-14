@@ -48,8 +48,15 @@
     		  });
 		});
   		
-  		//
-	  	jq('#svev_vata').focus();
+  		//buffering reasons. The datatable will collide with the form ... ugly scene in HTML
+  		var nrOfLines = 0;
+  		if(jq("#numberOfItemLinesInTopic").val()!=''){
+  			nrOfLines = parseInt(jq("#numberOfItemLinesInTopic").val());
+  		}	
+  		//console.log(nrOfLines);
+		if( nrOfLines < 30){
+			jq('#svev_vata').focus();
+		}
   		
   	});
   	
@@ -809,7 +816,10 @@
   		  //"columnDefs": [{ "type": "num", "targets": 1 }],
   		  "order": [[ 10, "desc" ], [ 1, 'asc' ]],
   		  "autoWidth": false, //for optimization purposes when initializing the table
-  		  "lengthMenu": [ 75, 100, 300, 400, 900]
+  		  "lengthMenu": [ 20, 40, 100, 200, 300],
+  		  "scroller": {
+	        displayBuffer: 20
+	      }
   	  });
       
       //event on input field for search

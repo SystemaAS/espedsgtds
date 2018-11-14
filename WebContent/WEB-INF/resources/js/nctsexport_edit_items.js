@@ -27,7 +27,7 @@
   	jq(function() {
 	  	jq('#itemLinesImportButton').click(function() {
 	    	jq('#itemLinesImportButton').attr('target','_blank');
-	    	window.open('nctsexport_edit_items_childwindow_uppdragslist_gettoitemlines.do?action=doFind&avdNcts=' + jq('#avd').val() + '&opdNcts=' + jq('#opd').val(), "codeWinItemLinesImport", "top=300px,left=400px,height=650px,width=1200px,scrollbars=no,status=no,location=no");
+	    	window.open('nctsexport_edit_items_childwindow_uppdragslist_gettoitemlines.do?action=doFind&avdNcts=' + jq('#avd').val() + '&opdNcts=' + jq('#opd').val(), "codeWinItemLinesImport", "top=100px,left=400px,height=850px,width=1200px,scrollbars=no,status=no,location=no");
 	    });
 	    jq('#itemLinesImportButton').keypress(function(e){ //extra feature for the end user
 			if(e.which == 13) {
@@ -633,8 +633,16 @@
 	      		filterGlobal();
 	      });
 	      
-	      //
-		  jq('#tvvnt').focus();
+	      //buffering reasons. The datatable will collide with the form ... ugly scene in HTML
+	  		var nrOfLines = 0;
+	  		if(jq("#numberOfItemLinesInTopic").val()!=''){
+	  			nrOfLines = parseInt(jq("#numberOfItemLinesInTopic").val());
+	  		}	
+	  		//console.log(nrOfLines);
+			if( nrOfLines < 30){
+				jq('#tvvnt').focus();
+			}
+		  
 
 	});
 	

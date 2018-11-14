@@ -1,22 +1,6 @@
 	//this variable is a global jQuery var instead of using "$" all the time. Very handy
   	var jq = jQuery.noConflict();
   	
-  	jq(document).ready(function() {
-  		jq('#warningCodesFlagDiv').hide();
-  		
-  		//Initialize Dialog for KundensVaruregister here
-  		jq(function() { 
-  		  jq("#dialogKundensVaruregister").dialog({
-  			  autoOpen: false,
-  			  maxWidth:600,
-  	          maxHeight: 250,
-  	          width: 600,
-  	          height: 250,
-  			  modal: true
-  		  });
-  		});
-  		
-  	});
   	
   	//Overlay on tab (to mark visually a delay...)
     jq(function() {
@@ -1029,7 +1013,7 @@
 	      ).draw();
 	    }
   	
-  		jq(document).ready(function() {
+	jq(document).ready(function() {
 	      //init table (no ajax, no columns since the payload is already there by means of HTML produced on the back-end)
 	      jq('#tblItemLinesAll').dataTable( {
 	    	  "dom": '<"top">t<"bottom"flip><"clear">',
@@ -1058,9 +1042,31 @@
 	      });
 	      
 	      
-	      //
-	  	 jq('#sviv_ulkd').focus();
-	  	
+	      
+	      jq('#warningCodesFlagDiv').hide();
+	  		
+	  		//Initialize Dialog for KundensVaruregister here
+	  		jq(function() { 
+	  		  jq("#dialogKundensVaruregister").dialog({
+	  			  autoOpen: false,
+	  			  maxWidth:600,
+	  	          maxHeight: 250,
+	  	          width: 600,
+	  	          height: 250,
+	  			  modal: true
+	  		  });
+	  		});
+	  		
+	  		//buffering reasons. The datatable will collide with the form ... ugly scene in HTML
+	  		var nrOfLines = 0;
+	  		if(jq("#numberOfItemLinesInTopic").val()!=''){
+	  			nrOfLines = parseInt(jq("#numberOfItemLinesInTopic").val());
+	  		}	
+	  		//console.log(nrOfLines);
+			if( nrOfLines < 30){
+				jq('#sviv_ulkd').focus();
+			}
+	     
   		});
   	
 	

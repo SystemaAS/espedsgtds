@@ -29,7 +29,8 @@
   		  dateFormat: 'yymmdd'
   	  });
   	  jq("#thddt").datepicker({ 
-  		  dateFormat: 'yymmdd' 
+  		  dateFormat: 'yymmdd',
+  		  defaultDate: "+4"
   	  });
   	  
     });

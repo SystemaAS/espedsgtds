@@ -262,7 +262,7 @@ public class NctsExportHeaderController {
 					    	logger.info("[ERROR Validation] Record does not validate)");
 					    	//put domain objects and do go back to the original view...
 					    	recordToValidate.setThavd(avd);
-					    	recordToValidate.setThsg(sign);
+					    	//recordToValidate.setThsg(sign);
 					    	this.setCodeDropDownMgr(appUser, model);
 				    		this.populateAvdelningHtmlDropDownsFromJsonString(model, appUser);
 							this.populateSignatureHtmlDropDownsFromJsonString(model, appUser);

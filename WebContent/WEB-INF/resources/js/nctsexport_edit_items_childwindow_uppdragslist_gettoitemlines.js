@@ -97,7 +97,7 @@
   	  //-----------------------
     	  jq('#angivelseList').dataTable( {
     		  "dom": '<"top"fli>rt<"bottom"p><"clear">',
-    		  "scrollY": "300px",
+    		  "scrollY": "600px",
     		  "scrollCollapse": true,
     		  "lengthMenu": [ 75, 100]
     	  });

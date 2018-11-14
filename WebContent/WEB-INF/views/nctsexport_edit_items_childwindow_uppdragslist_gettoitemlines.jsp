@@ -64,7 +64,7 @@
 	           		<tr height="20"><td></td></tr>
 					
 					<tr class="text11" >
-					<td class="ownScrollableSubWindowDynamicWidthHeight" width="100%" style="height:30em;">
+					<td class="ownScrollableSubWindowDynamicWidthHeight" width="100%" >
 					
 					<%-- this is the datatables grid (content)--%>
 					<form action="N/A_is_done_with_jquery....?action=doFind" name="searchForm" id="searchForm" method="post">
@@ -72,7 +72,7 @@
 					<table id="angivelseList" class="display compact cell-border" width="100%" >
 						<thead>
 						<tr class="tableHeaderField" >
-							<th class="text14">&nbsp;Välg&nbsp;</th>
+							<th class="text14">&nbsp;Välj&nbsp;</th>
 							<th class="text14" title="avd">&nbsp;Avd&nbsp;</th>
 		                    <th class="text14" title="sign">&nbsp;Sign&nbsp;</th>
 		                    <th class="text14" title="opd">&nbsp;Ärende&nbsp;</th>
@@ -98,6 +98,8 @@
 				               </c:otherwise>
 			               </c:choose>
 			               <td align="center" class="text14" >
+			               		<input style="cursor:pointer;" class="clazzEksportAware" type="checkbox" value="J" id="syav${record.avd}_syop${record.opd}" name="syav${record.avd}_syop${record.opd}" >
+			               		<%-- REMOVED for DACHSER SE (14.nov.2018) Olga requirement 
 			               		<c:choose>
 				               		<c:when test="${empty record.dokref}">
 				               			<input style="cursor:pointer;" class="clazzEksportAware" type="checkbox" value="J" id="syav${record.avd}_syop${record.opd}" name="syav${record.avd}_syop${record.opd}" >
@@ -106,6 +108,7 @@
 				               			<img title="redan plockad!" style="cursor:pointer;" src="resources/images/lock.gif" border="0" alt="edit">	
 				               		</c:otherwise>
 			               		</c:choose>
+			               		--%>
 			               </td>
 			               <td width="2%" class="text14NoneColor">&nbsp;${record.avd}</td>
 			               <td width="2%" class="text14NoneColor">&nbsp;${record.sign}</td>
