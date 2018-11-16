@@ -463,11 +463,13 @@ public class TdsImportItemsValidator implements Validator {
 							if(this.isValidUrsprungsland_EU(record)){
 								//valid
 							}else{
-								errors.rejectValue("sviv_ulkd", "systema.tds.import.header.error.rule.item.sviv_ulkd.invalid.countryCodes");
+								//REMOVED for DACHSER SE (Mats Jönköping) 19.Nov.2108
+								//errors.rejectValue("sviv_ulkd", "systema.tds.import.header.error.rule.item.sviv_ulkd.invalid.countryCodes");
 							}
 							
 						}else{
-							errors.rejectValue("sviv_ulkd", "systema.tds.import.header.error.rule.item.sviv_ulkd.invalid.countryCodes");
+							//REMOVED for DACHSER SE (Mats Jönköping) 19.Nov.2108
+							//errors.rejectValue("sviv_ulkd", "systema.tds.import.header.error.rule.item.sviv_ulkd.invalid.countryCodes");
 						}
 					}
 					

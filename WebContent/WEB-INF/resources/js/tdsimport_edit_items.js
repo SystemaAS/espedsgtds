@@ -45,6 +45,10 @@
   		jq('#sviv_vata').blur(function() {
   			//Check for codes
   			getTillaggskoderOnBlur();
+  			//put godsmärkning default (value of first line)
+  			if(jq("#sviv_godm").val() == ''){
+  				jq("#sviv_godm").val(jq("#godmFirstLine").text());
+  			}
   		});
   		
   		jq('#sviv_fabl').blur(function() {

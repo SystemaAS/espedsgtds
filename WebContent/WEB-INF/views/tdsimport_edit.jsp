@@ -679,14 +679,15 @@
 							        	<td>
 							        		<table>
 								        		<tr>
+								            		
 								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
-								            		<span title="svih_avpa">Postadress</span></td>
+								            		<span title="svih_avpn">Postnummer</span></td>
 								            		<td class="text14" >&nbsp;</td>
+								            		
 								            	</tr>
 								        		<tr>
-								            		<td align="left" colspan="2">
-								            			<input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avpa" id="svih_avpa" size="30" maxlength="35" value="${model.record.svih_avpa}">
-								            		</td> 
+								        			<td colspan="2" align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avpn" id="svih_avpn" size="10" maxlength="9" value="${model.record.svih_avpn}"></td> 
+								            		
 								            		<td class="text14" >&nbsp;</td>
 								        		</tr>    	
 							            	</table>
@@ -695,7 +696,8 @@
 							            	<table>
 								        		<tr>
 								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
-								            		<span title="svih_avpn">Postnummer</span></td>
+								            		<span title="svih_avpa">Postadress</span></td>
+								            		
 								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_avlk">Land</span>
 													<a tabindex="-1" id="svih_avlkIdLink">
@@ -705,8 +707,11 @@
 								            		
 								            	</tr>
 								        		<tr>
-								        			<td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avpn" id="svih_avpn" size="10" maxlength="9" value="${model.record.svih_avpn}"></td> 
-								            		<td align="left">
+								        			<td align="left" >
+								            			<input type="text" class="inputTextMediumBlueMandatoryField" name="svih_avpa" id="svih_avpa" size="30" maxlength="35" value="${model.record.svih_avpa}">
+								            		</td> 
+								            		
+								        			<td align="left">
 								            			<select class="inputTextMediumBlueMandatoryField" name="svih_avlk" id="svih_avlk">
 										            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="country" items="${model.gcyCodeList}" >
@@ -818,11 +823,11 @@
 							        		<table>
 								        		<tr>
 								            		<td class="text14" align="left" >&nbsp;<font class="text16RedBold" >*</font>
-								            		<span title="svih_mopa">Postadress</span></td>
-												<td align="left">&nbsp;</td>
+								            		<span title="svih_mopn">Postnummer</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								            		<td align="left">&nbsp;</td>
 								            	</tr>
 								        		<tr>
-								            		<td align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_mopa" id="svih_mopa" size="30" maxlength="35" value="${model.record.svih_mopa}"></td> 
+								            		<td align="left" colspan="2"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_mopn" id="svih_mopn" size="10" maxlength="9" value="${model.record.svih_mopn}"></td> 
 								            		
 								        		</tr>    	
 							            	</table>
@@ -831,8 +836,9 @@
 							            	<table>
 								        		<tr>
 								        			<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
-								        			<span title="svih_mopn">Postnummer</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								            		<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
+								        			<span title="svih_mopa">Postadress</span></td>
+													
+								        			<td class="text14" align="left" >&nbsp;&nbsp;<font class="text16RedBold" >*</font>
 								            		<span title="svih_molk">Land</span>
 													<a tabindex="-1" id="svih_molkIdLink">
            												<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
@@ -840,8 +846,9 @@
 												</td>
 								            	</tr>
 								        		<tr>
-								        			<td align="left"><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_mopn" id="svih_mopn" size="10" maxlength="9" value="${model.record.svih_mopn}"></td> 
-								            		<td align="left">
+								        			<td align="left" ><input type="text" class="inputTextMediumBlueMandatoryField" name="svih_mopa" id="svih_mopa" size="30" maxlength="35" value="${model.record.svih_mopa}"></td> 
+								            		
+								        			<td align="left">
 								            			<select class="inputTextMediumBlueMandatoryField" name="svih_molk" id="svih_molk">
 										            		<option value="">-Välj-</option>
 										 				  	<c:forEach var="country" items="${model.gcyCodeList}" >

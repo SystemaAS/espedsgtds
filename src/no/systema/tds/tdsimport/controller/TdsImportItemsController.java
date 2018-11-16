@@ -406,6 +406,7 @@ public class TdsImportItemsController {
     		this.setDomainObjectsForListInView(session, model, jsonTdsImportSpecificTopicItemContainer);
     		successView.addObject("model",model);
     		//successView.addObject(Constants.EDIT_ACTION_ON_TOPIC, Constants.ACTION_FETCH);
+    		
 	    	return successView;
 		}
 	}

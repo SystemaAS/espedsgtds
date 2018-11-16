@@ -263,7 +263,9 @@
 															         
 															        <%-- <c:set var="numberOfItemLinesInTopic" value="${counter.count}" scope="request" />  --%>
 															        <c:set var="numberOfItemLinesInTopic" value="${record.sviv_syli}" scope="request" /> 
-															     
+																   	<c:if test="${counter.count == 1}">
+																   		<label id="godmFirstLine" style="display:none;" >${record.sviv_godm}</label>
+															     	</c:if>
 														            </c:forEach>
 														            </tbody>
 														        </table>
