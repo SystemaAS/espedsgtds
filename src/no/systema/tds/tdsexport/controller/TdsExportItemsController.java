@@ -377,6 +377,7 @@ public class TdsExportItemsController {
     		if(isValidCreatedRecordTransactionOnRPG){
     			jsonTdsExportSpecificTopicItemRecord = new JsonTdsExportSpecificTopicItemRecord();
     			this.setBruttoViktRestValue(jsonTdsExportSpecificTopicItemRecord, model, jsonTdsExportSpecificTopicItemContainer, headerRecord);
+    			this.setAntalKolliRestValue(jsonTdsExportSpecificTopicItemRecord, model, jsonTdsExportSpecificTopicItemContainer, headerRecord);
     			this.setDomainObjectsInView(model, jsonTdsExportSpecificTopicItemRecord);
     		}
     		//list of items
@@ -950,6 +951,38 @@ public class TdsExportItemsController {
 				logger.info("final rest value:" + jsonTdsExportSpecificTopicItemRecord.getSvev_brut());
 			}catch(Exception e){
 				logger.info("ERROR on default Gross weight:" + e.toString());
+			}
+		}
+		
+		
+	}
+	/**
+	 * 
+	 * @param jsonTdsExportSpecificTopicItemRecord
+	 * @param model
+	 * @param container
+	 * @param headerRecord
+	 */
+	private void setAntalKolliRestValue(JsonTdsExportSpecificTopicItemRecord jsonTdsExportSpecificTopicItemRecord, Map model, JsonTdsExportSpecificTopicItemContainer container, JsonTdsExportSpecificTopicRecord headerRecord){
+		if(container!=null){
+			try{
+				Integer sumKolli = 0;
+				for (JsonTdsExportSpecificTopicItemRecord record : container.getOrderList()){
+					if(strMgr.isNotNull(record.getSvev_kota()) ){
+						sumKolli += Integer.parseInt(record.getSvev_kota());
+					}
+				}
+				Integer headerSumKolliVal =0;
+				if(strMgr.isNotNull(headerRecord.getSveh_kota())){
+					headerSumKolliVal = Integer.valueOf(headerRecord.getSveh_kota());
+				}
+				
+				Integer result = headerSumKolliVal - sumKolli;
+				String resultStr = String.valueOf(result);
+				jsonTdsExportSpecificTopicItemRecord.setSvev_kota(resultStr);
+				logger.info("final rest value Kolli:" + jsonTdsExportSpecificTopicItemRecord.getSvev_kota());
+			}catch(Exception e){
+				logger.info("ERROR on default Antal Kolli:" + e.toString());
 			}
 		}
 		
