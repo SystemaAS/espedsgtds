@@ -382,6 +382,7 @@
 	//--------------------------------------------------------------------------------------
 	jq(function() { 
 	    jq('#svih_avkn').blur(function() {
+	    	if(jq('#svih_avna').val()==''){
 	    		var avknValue = jq('#svih_avkn').val();
 	    		if(avknValue!=null && avknValue!=""){
 		    		jq.getJSON('searchCustomer_TdsImport.do', {
@@ -432,6 +433,7 @@
 					}
 				});
 	    		}
+	    	}
 		});
 	});
 	
@@ -540,6 +542,7 @@
 	//--------------------------------------------------------------------------------------
 	jq(function() { 
 	    jq('#svih_mokn').blur(function() {
+	    	if(jq('#svih_mona').val()==''){
 	    		var moknValue = jq('#svih_mokn').val();
 	    		if(moknValue!=null && moknValue!=""){
 		    		jq.getJSON('searchCustomer_TdsImport.do', {
@@ -591,6 +594,7 @@
 					}
 				});
 	    		}
+	    	}
 		});
 	});
 	
@@ -698,6 +702,7 @@
 	//--------------------------------------------------------------------------------------
 	jq(function() { 
 	    jq('#svih_dkkn').blur(function() {
+	    	if(jq('#svih_dkna').val()==''){
 	    		var dkknValue = jq('#svih_dkkn').val();
 	    		if(dkknValue!=null && dkknValue!=""){
 		    		jq.getJSON('searchCustomer_TdsImport.do', {
@@ -747,6 +752,7 @@
 					}
 				});
 	    		}
+	    	}
 		});
 	});
 		

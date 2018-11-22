@@ -223,6 +223,119 @@
 	});
 	
 	
+	
+	
+	//--------------------------------------------------------------------------------------
+	//Extra behavior for Customer number ( without using (choose from list) extra roundtrip)
+	//--------------------------------------------------------------------------------------
+	//SENDER
+	jq(function() { 
+	    jq('#thkns').blur(function() {
+	    	if(jq('#thnas').val()==''){
+	    		var avknValue = jq('#thkns').val();
+	    		if(avknValue!=null && avknValue!=""){
+		    		jq.getJSON('searchCustomer.do', {
+					applicationUser : jq('#applicationUser').val(),
+					customerName : "",
+					customerNumber : jq('#thkns').val(),
+					ajax : 'true'
+				}, function(data) {
+					//alert("Hello");
+					var len = data.length;
+					for ( var i = 0; i < len; i++) {
+						customer = new Object();
+						customer.kundnr = data[i].kundnr;
+						customer.knavn = data[i].knavn;
+						customer.eori = data[i].eori;
+						customer.adr1 = data[i].adr1;
+						customer.adr2 = data[i].adr2;
+						customer.adr3 = data[i].adr3;
+						customer.postnr = data[i].postnr;
+						customer.kpers = data[i].kpers;
+						customer.tlf = data[i].tlf;
+						customer.syland = data[i].syland;
+						
+					}
+					if(len > 0){
+					  	jq('#thkns').val(customer.kundnr);
+					  	jq('#thnas').val(customer.knavn);
+					  	jq('#thtins').val(customer.eori);
+					  	jq('#thads1').val(customer.adr1);
+					  	jq('#thpns').val(customer.postnr);
+					  	jq('#thpss').val(customer.adr3);
+					  	jq('#thlks').val(customer.syland);
+					  	
+					}else{
+						//init fields
+						jq('#thkns').val("");
+					  	jq('#thnas').val("");
+					  	jq('#thtins').val("");
+					  	jq('#thads1').val("");
+					  	jq('#thpns').val("");
+					  	jq('#thpss').val("");
+					  	jq('#thlks').val("");
+					}
+				});
+	    		}
+	    	}
+		});
+	}); 
+	//RECEIVER   
+    jq(function() { 
+	    jq('#thknk').blur(function() {
+	    	if(jq('#thnak').val()==''){
+	    		var avknValue = jq('#thknk').val();
+	    		if(avknValue!=null && avknValue!=""){
+		    		jq.getJSON('searchCustomer.do', {
+					applicationUser : jq('#applicationUser').val(),
+					customerName : "",
+					customerNumber : jq('#thknk').val(),
+					ajax : 'true'
+				}, function(data) {
+					//alert("Hello");
+					var len = data.length;
+					for ( var i = 0; i < len; i++) {
+						customer = new Object();
+						customer.kundnr = data[i].kundnr;
+						customer.knavn = data[i].knavn;
+						customer.eori = data[i].eori;
+						customer.adr1 = data[i].adr1;
+						customer.adr2 = data[i].adr2;
+						customer.adr3 = data[i].adr3;
+						customer.postnr = data[i].postnr;
+						customer.kpers = data[i].kpers;
+						customer.tlf = data[i].tlf;
+						customer.syland = data[i].syland;
+						
+					}
+					if(len > 0){
+					  	jq('#thknk').val(customer.kundnr);
+					  	jq('#thnak').val(customer.knavn);
+					  	jq('#thtink').val(customer.eori);
+					  	jq('#thadk1').val(customer.adr1);
+					  	jq('#thpnk').val(customer.postnr);
+					  	jq('#thpsk').val(customer.adr3);
+					  	jq('#thlkk').val(customer.syland);
+					  	
+					}else{
+						//init fields
+						jq('#thknk').val("");
+					  	jq('#thnak').val("");
+					  	jq('#thtink').val("");
+					  	jq('#thadk1').val("");
+					  	jq('#thpnk').val("");
+					  	jq('#thpsk').val("");
+					  	jq('#thlkk').val("");
+					}
+				});
+	    		}
+	    	}
+		});
+	    
+	});
+	
+	
+	
 	  //-------------------------------------------
 	  //START Model dialog ADMIN: "Update status"
 	  //-------------------------------------------

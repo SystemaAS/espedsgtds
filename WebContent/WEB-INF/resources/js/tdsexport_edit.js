@@ -410,6 +410,7 @@
 	//--------------------------------------------------------------------------------------
 	jq(function() { 
 	    jq('#sveh_avkn').blur(function() {
+	    	if(jq('#sveh_avna').val()==''){
 	    		var avknValue = jq('#sveh_avkn').val();
 	    		if(avknValue!=null && avknValue!=""){
 		    		jq.getJSON('searchCustomer.do', {
@@ -460,6 +461,7 @@
 					}
 				});
 	    		}
+	    	}
 		});
 	});
 		
@@ -571,6 +573,7 @@
 	//--------------------------------------------------------------------------------------
 	jq(function() { 
 	    jq('#sveh_mokn').blur(function() {
+	    	if(jq('#sveh_mona').val()==''){
 	    		var moknValue = jq('#sveh_mokn').val();
 	    		if(moknValue!=null && moknValue!=""){
 		    		jq.getJSON('searchCustomer.do', {
@@ -617,6 +620,7 @@
 					}
 				});
 	    		}
+	    	}
 		});
 	});
 	
@@ -725,6 +729,7 @@
 	//--------------------------------------------------------------------------------------
 	jq(function() { 
 	    jq('#sveh_dkkn').blur(function() {
+	    	if(jq('#sveh_dkna').val()==''){
 	    		var dkknValue = jq('#sveh_dkkn').val();
 	    		if(dkknValue!=null && dkknValue!=""){
 		    		jq.getJSON('searchCustomer.do', {
@@ -770,6 +775,7 @@
 						jq('#sveh_dklk').val("");					}
 				});
 	    		}
+	    	}
 		});
 	});
 	
