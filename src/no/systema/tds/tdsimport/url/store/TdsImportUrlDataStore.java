@@ -71,8 +71,8 @@ public final class TdsImportUrlDataStore {
 	static public String TDS_IMPORT_BASE_UPDATE_SPECIFIC_TOPIC_ITEM_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVI012R.pgm";	
 
 	//Change Godsnr from header to all item lines
-	static public String TDS_IMPORT_BASE_UPDATE_GODSNR_ON_ALL_ITEMS_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVI014R.pgm";
-	//http://10.13.1.22/sycgip/TSVI014r.pgm?user=OSCAR&avd=1&opd=900077&godn=tarzan
+	static public String TDS_IMPORT_BASE_UPDATE_GODSNR_ON_ALL_ITEMS_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVI014GR.pgm";
+	//http://10.13.1.22/sycgip/TSVI014gr.pgm?user=OSCAR&avd=1&opd=900077&godn=tarzan
 	
 	//----------------------------------
 	//[6.1] EDIT/SAVE Avgiftsberäkningen  

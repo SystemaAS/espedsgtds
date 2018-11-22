@@ -72,8 +72,8 @@ public final class TdsExportUrlDataStore {
 	static public String TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_ITEM_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE012R.pgm";	
 
 	//Change Godsnr from header to all item lines
-	static public String TDS_EXPORT_BASE_UPDATE_GODSNR_ON_ALL_ITEMS_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE014R.pgm";
-	//http://10.13.1.22/sycgip/TSVE014r.pgm?user=OSCAR&avd=1&opd=900077&godn=tarzan
+	static public String TDS_EXPORT_BASE_UPDATE_GODSNR_ON_ALL_ITEMS_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE014GR.pgm";
+	//http://10.13.1.22/sycgip/TSVE014gr.pgm?user=OSCAR&avd=1&opd=900077&godn=tarzan
 	
 	//----------------------------------
 	//[6.0.1] Calculate Stat.values  
