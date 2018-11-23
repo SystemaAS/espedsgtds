@@ -284,9 +284,11 @@
 					//only when the list has something to show (at least 1-record)
 		 			if(len>0){
 		 				if(jq('#svev_vati').val()==''){
+		 					console.log("SHOW");
 		 					jq('#warningCodesFlagDiv').show();
 		 				}
 		 			}else{
+		 				console.log("HIDE");
 		 				jq('#warningCodesFlagDiv').hide();
 		 			}
 				},
