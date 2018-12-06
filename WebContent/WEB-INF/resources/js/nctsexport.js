@@ -17,7 +17,7 @@
   });
   
   
-  //-----------------------------------
+//-----------------------------------
   //START Model dialog "Kopiera Ärende
   //-----------------------------------
   //Initialize <div> here
@@ -25,13 +25,17 @@
 	  jq( ".clazz_dialog" ).each(function(){
 		jq(this).dialog({
 			autoOpen: false,
-			modal: true
+			modal: true,
+			width: 350,
+			maxWidth:500
 		});
 	  });
   });
+  
   //Present dialog box onClick (href in parent JSP)
   jq(function() {
 	  jq(".copyLink").click(function() {
+		  
 		  var id = this.id;
 		  counterIndex = id.replace("copyLink","");
 		  //setters (add more if needed)
@@ -94,6 +98,8 @@
   //END Model dialog "Kopiera Ärende
   //---------------------------------
 	  
+  
+  
   
   //-----------------------------------------------------------------------------
   //START Model dialog "Kopiera Ärende från mall (norsk export/transport order)

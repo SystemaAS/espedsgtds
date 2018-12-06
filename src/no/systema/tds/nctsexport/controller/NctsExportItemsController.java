@@ -315,18 +315,11 @@ public class NctsExportItemsController {
 			    	
 			    	if(rpgReturnResponseHandler.getErrorMessage()!=null && !"".equals(rpgReturnResponseHandler.getErrorMessage())){
 			    		rpgReturnResponseHandler.setErrorMessage("[ERROR] FATAL on UPDATE: " + rpgReturnResponseHandler.getErrorMessage());
-			    		this.setFatalError(model, rpgReturnResponseHandler, jsonNctsExportSpecificTopicItemRecord);
-			    		
+			    		this.setFatalError(model, rpgReturnResponseHandler, jsonNctsExportSpecificTopicItemRecord);	
 			    	}else{
 			    		//Delete successfully done!
-			    		logger.info("[INFO] Valid Delete -- Record successfully deleted, OK ");
-			    		//---------------------------
-			    		//REFRESH ON SOME VARIABLES
-			    		//---------------------------
-			    		//Update some variables on header such as (1)Number of item lines, (2)Kolliantal and (3)Gross weight-Bruttovikt
-			    		this.refreshHeaderVariables(appUser.getUser(), avd, opd);
+			    		logger.info("[INFO] Valid Delete -- Record successfully deleted, OK ");			    		
 			    	}
-			
 			}
 			
 	    	
@@ -343,19 +336,25 @@ public class NctsExportItemsController {
 			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
 			logger.info("FETCH av item list... ");
 	     	logger.info("URL: " + BASE_URL_FETCH);
-		    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
-		    	//--------------------------------------
-		    	//EXECUTE the FETCH (RPG program) here
-		    	//--------------------------------------
+	    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+	    	//--------------------------------------
+	    	//EXECUTE the FETCH (RPG program) here
+	    	//--------------------------------------
 			String jsonPayloadFetch = this.urlCgiProxyService.getJsonContent(BASE_URL_FETCH, urlRequestParamsKeys);
 			//Debug --> 
-				logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayloadFetch));
-		    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
-		    	JsonNctsExportSpecificTopicItemContainer jsonNctsExportSpecificTopicItemContainer = this.nctsExportSpecificTopicItemService.getNctsExportSpecificTopicItemContainer(jsonPayloadFetch);
+			logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayloadFetch));
+	    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+	    	JsonNctsExportSpecificTopicItemContainer jsonNctsExportSpecificTopicItemContainer = this.nctsExportSpecificTopicItemService.getNctsExportSpecificTopicItemContainer(jsonPayloadFetch);
 		    	
+	    	//---------------------------
+    		//REFRESH ON SOME VARIABLES
+    		//---------------------------
+    		//Update some variables on header such as (1)Number of item lines, (2)Kolliantal and (3)Gross weight-Bruttovikt
+    		this.refreshHeaderVariables(appUser.getUser(), avd, opd);
+    		
 		    
-		    	this.setCodeDropDownMgr(appUser, model);
-		    	this.setDomainObjectsForListInView(session, model, jsonNctsExportSpecificTopicItemContainer);
+	    	this.setCodeDropDownMgr(appUser, model);
+	    	this.setDomainObjectsForListInView(session, model, jsonNctsExportSpecificTopicItemContainer);
 			
 			successView.addObject("model",model);
 			//successView.addObject(Constants.EDIT_ACTION_ON_TOPIC, Constants.ACTION_FETCH);

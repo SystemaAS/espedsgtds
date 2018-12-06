@@ -11,7 +11,6 @@
 	
 	<style type = "text/css">
 		.ui-datepicker { font-size:9pt;}
-		
 	</style>
 	
 <table width="100%"  class="text11" cellspacing="0" border="0" cellpadding="0">
@@ -180,15 +179,17 @@
 					<thead>
 					<tr class="tableHeaderField" height="20" valign="left">
 	                    <th class="tableHeaderFieldFirst" align="left" >&nbsp;&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.avd"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.signatur"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.signatur"/></th>
                 		<th class="tableHeaderField" align="center" >&nbsp;<spring:message code="systema.ncts.export.list.search.label.update"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.arende"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.lrnNr"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mrnNr"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.datum"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.status"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mottagare"/></th>
-                		<th class="tableHeaderField" align="left" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.bruttovikt"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.arende"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.lrnNr"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mrnNr"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.datum"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.status"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mottagare"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.bruttovikt"/></th>
+                		<th class="tableHeaderField" align="center" >&nbsp;<spring:message code="systema.ncts.export.list.search.label.kopieraArende"/></th>
+	                    
                 		<%--
                 		<td class="tableHeaderField">&nbsp;Kopiera Ärende&nbsp;</td>
 	                     --%>
@@ -225,21 +226,20 @@
 		               <td class="tableCell" >&nbsp;<b>${topic.status}</b></td>
 		               <td class="tableCell" >&nbsp;${topic.motNavn}</td>
 		               <td class="tableCell" >&nbsp;${topic.bruttoVikt}</td>
-   		               <%--
-   		               <td class="tableCell" width="10%">&nbsp;
+   		               
+   		               <td align="center" class="tableCell" width="2%">&nbsp;
 		               		<a class="copyLink" id="copyLink${counter.count}" runat="server" href="#">
 								<img src="resources/images/copy.png" border="0" alt="copy">
-								&nbsp;Kopiera
 							</a>
 							 
-							<div style="display: none; class="clazz_dialog" id="dialog${counter.count}" title="Dialog">
+							<div style="display: none;" class="clazz_dialog" id="dialog${counter.count}" title="Dialog">
 								<form  action="nctsexport_copyTopic.do" name="copyForm${counter.count}" id="copyForm${counter.count}" method="post">
 								 	<input type="hidden" name="action${counter.count}" id="action${counter.count}" value='doFetch'/>
 									<input type="hidden" name="originalAvd${counter.count}" id="originalAvd${counter.count}" value='${topic.avd}'/>
 				 					<input type="hidden" name="originalOpd${counter.count}" id="originalOpd${counter.count}" value='${topic.opd}'/>
 					 					
-									<p class="text14" >Du måste välja ny&nbsp;<code>Avdelning</code>&nbsp;och ny&nbsp;
-										<code>Signatur</code> för att kunna kopiera ett ärende
+									<p class="text14" >Du måste välja ny&nbsp;Avdelning&nbsp;och ny&nbsp;
+										Signatur för att kunna kopiera ett ärende
 									</p>
 									<p class="text14" >Ett nytt ärendenummer kommer att skapas automatiskt.
 									</p>
@@ -271,7 +271,7 @@
 								</form>
 							</div>
 		               </td>
-	                	--%>
+	                
 		               
 		            </tr> 
 		            </c:forEach>

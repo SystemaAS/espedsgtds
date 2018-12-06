@@ -428,8 +428,8 @@
 									<input type="hidden" name="originalAvd${counter.count}" id="originalAvd${counter.count}" value='${topic.avd}'/>
 				 					<input type="hidden" name="originalOpd${counter.count}" id="originalOpd${counter.count}" value='${topic.opd}'/>
 					 					
-									<p class="text14" >Du måste välja ny&nbsp;<code>Avdelning</code>&nbsp;och ny&nbsp;
-												<code>Signatur</code> för att kunna kopiera ett ärende
+									<p class="text14" >Du måste välja ny&nbsp;Avdelning&nbsp;och ny&nbsp;
+												Signatur för att kunna kopiera ett ärende
 									</p>
 									<p class="text14" >Ett nytt ärendenummer kommer att skapas automatiskt.
 									</p>
