@@ -684,7 +684,7 @@ public class TdsImportItemsValidator implements Validator {
 	 */
 	private boolean existsBilagdaHandligarN864(JsonTdsImportSpecificTopicItemRecord record){
 		boolean retval = false;
-		
+		final String _N864 = "N864";
 		String bit1 = record.getSviv_bit1();
 		String bit2 = record.getSviv_bit2();
 		String bit3 = record.getSviv_bit3();
@@ -695,8 +695,8 @@ public class TdsImportItemsValidator implements Validator {
 		String bit8 = record.getSviv_bit8();
 		String bit9 = record.getSviv_bit9();
 
-		if(bit1.equals("N864") || bit2.equals("N864") || bit3.equals("N864") || bit4.equals("N864") ||
-		   bit5.equals("N864") || bit6.equals("N864") || bit7.equals("N864") || bit8.equals("N864") || bit9.equals("N864")){
+		if(_N864.equals(bit1) || _N864.equals(bit2) || _N864.equals(bit3) || _N864.equals(bit4) ||
+			_N864.equals(bit5) || _N864.equals(bit6) || _N864.equals(bit7) || _N864.equals(bit8) || _N864.equals(bit9)){
 			retval = true;
 		}
 

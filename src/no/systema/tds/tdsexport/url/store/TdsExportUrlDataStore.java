@@ -23,6 +23,8 @@ public final class TdsExportUrlDataStore {
 	//fetch external references
 	//http://10.13.1.22/sycgip/tdke004r.pgm?user=A25DEMO
 	static public String TDS_EXPORT_BASE_FETCH_TOPIC_LIST_EXTERNAL_REFERENCES_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE004R.pgm";
+	//http://gw.systema.no/sycgip/tsve0??r.pgm?user=OSCAR&avd=1&opd=91127&mode=U&reff=6445&unik=4012087
+	static public String TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_EXTERNAL_REFERENCES_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVE0??R.pgm";	
 		
 	
 	//----------------------------

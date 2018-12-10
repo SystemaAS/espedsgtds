@@ -35,19 +35,23 @@
 			                    <th class="text14">&nbsp;Datum&nbsp;</th>   
 			                    <th class="text14">&nbsp;Avsändare&nbsp;</th> 
 			                    <th class="text14">&nbsp;Mottagare&nbsp;</th> 
+			                    <th align="center" class="text14">Radera</th>
 		                    </tr>
 		                    </thead>
 		                    <tbody>
 		                    <c:forEach items="${model.listExternalRef}" var="record" varStatus="counter">    
 				               <td  style="cursor:pointer;" class="text14MediumBlue" id="ref${record.fssok}" >
-			               		&nbsp;<img title="select" style="vertical-align:top;" src="resources/images/bebullet.gif" border="0" alt="edit">
 			               		&nbsp;&nbsp;${record.fssok}
 			               		</td>
 				               <td class="text14" >&nbsp;${record.fsavd}&nbsp;</td>
 				               <td class="text14" >&nbsp;${record.fsdtop}&nbsp;</td>
 				               <td class="text14" >&nbsp;${record.henas}</td>
 				               <td class="text14" >&nbsp;${record.henak}</td>
-				               
+				               <td width="2%" class="text14" align="center" nowrap>
+					               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_childwindow_external_references_delete.do?action=doDelete&svef_syav=${model.avd}&svef_syop=${model.opd}&svef_reff=${Xrecord.svef_reff}&svef_unik=${Xrecord.svef_unik}">
+					               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
+					               	</a>
+				               </td>
 			               </tr>
 			               </c:forEach>
 			               </tbody>

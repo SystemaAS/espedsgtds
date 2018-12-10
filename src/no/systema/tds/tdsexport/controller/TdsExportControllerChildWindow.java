@@ -305,6 +305,53 @@ public class TdsExportControllerChildWindow {
 		}
 		
 	}
+	
+	/**
+	 * Remove record line upon end-user interaction 
+	 * 
+	 * @param recordToValidate
+	 * @param bindingResult
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsexport_edit_childwindow_external_references_delete.do",  method={RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView tdsExportExternalReferenesDelete(@ModelAttribute ("record") JsonTdsExportTopicListExternalRefContainer recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
+		logger.info("Inside: tdsExportExternalReferencesDelete");
+		
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		//redirect view
+		StringBuffer paramsRedirect = new StringBuffer();
+		paramsRedirect.append("user=" + appUser.getUser());
+		ModelAndView successView = new ModelAndView("redirect:tdsexport_childwindow_external_references.do?" + paramsRedirect);
+		
+		String urlRequestParamsKeys = null;
+		//Catch required action (doFetch or doUpdate)
+		String action = request.getParameter("action");
+		logger.info("ACTION: " + action);
+		
+		if(appUser == null || "".equals(appUser)){
+		  return this.loginView;
+		}else{
+		
+		  String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_EXTERNAL_REFERENCES_URL;
+		  String params = "user=" + appUser.getUser() + "&mode=D" + "&reff=" ; //TODO+ recordToValidate.getSvef_reff() + "&unik=" + recordToValidate.getSvef_unik();
+		  logger.info("URL:" + BASE_URL);
+		  logger.info("PARAMS:" + params);
+		  
+		  String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, params);
+		  JsonTdsExportTopicInvoiceExternalForUpdateContainer container = this.tdsExportSpecificTopicService.getTdsExportTopicInvoiceContainerOneInvoiceExternalForUpdate(jsonPayload);
+		  
+		  if(container!=null && ( container.getErrmsg()!=null && !"".equals(container.getErrmsg())) ){
+			  logger.info("[ERROR] " + container.getErrmsg());
+		  }else{
+			  logger.info("[INFO]" + " Update successfully done!");
+		  }
+		  //logger.info("END of method");
+		  return successView;
+		}
+		
+	}
 	/**
 	 * 
 	 * @param model
