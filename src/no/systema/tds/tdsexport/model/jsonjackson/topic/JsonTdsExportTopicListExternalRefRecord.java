@@ -24,6 +24,10 @@ public class JsonTdsExportTopicListExternalRefRecord extends JsonAbstractGrandFa
 	public void setFsavd(String value) {  this.fsavd = value; }
 	public String getFsavd() { return this.fsavd;}
 	
+	private String fsopd = null;
+	public void setFsopd(String value) {  this.fsopd = value; }
+	public String getFsopd() { return this.fsopd;}
+	
 	private String fsdtop = null;
 	public void setFsdtop(String value) {  this.fsdtop = value; }
 	public String getFsdtop() { return this.fsdtop;}

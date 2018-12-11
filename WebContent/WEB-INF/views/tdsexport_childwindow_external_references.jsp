@@ -9,6 +9,7 @@
 	specified in servlet.xml as static <mvc:resources mapping="/resources/**" location="WEB-INF/resources/" order="1"/> --%>
 	<SCRIPT type="text/javascript" src="resources/js/tdsexport_childwindow_external_references.js?ver=${user.versionEspedsg}"></SCRIPT>
 	
+	
 	<table width="99%" height="100px" class="tableBorderWithRoundCorners3D_RoundOnlyOnBottom" cellspacing="0" border="0" cellpadding="0">
 	
 		<tr><td valign="top" colspan="3" class="text14Bold">&nbsp;&nbsp;&nbsp;
@@ -31,7 +32,8 @@
 							<thead>
 							<tr class="tableHeaderField">
 								<th class="text14">&nbsp;Extern refnr.&nbsp;</th>
-								<th class="text14">&nbsp;Avd.&nbsp;</th>   
+								<th class="text14">&nbsp;Avd.&nbsp;</th> 
+								<th class="text14">&nbsp;Opd.&nbsp;</th>
 			                    <th class="text14">&nbsp;Datum&nbsp;</th>   
 			                    <th class="text14">&nbsp;Avsändare&nbsp;</th> 
 			                    <th class="text14">&nbsp;Mottagare&nbsp;</th> 
@@ -44,13 +46,14 @@
 			               		&nbsp;&nbsp;${record.fssok}
 			               		</td>
 				               <td class="text14" >&nbsp;${record.fsavd}&nbsp;</td>
+				               <td class="text14" >&nbsp;${record.fsopd}&nbsp;</td>
 				               <td class="text14" >&nbsp;${record.fsdtop}&nbsp;</td>
 				               <td class="text14" >&nbsp;${record.henas}</td>
 				               <td class="text14" >&nbsp;${record.henak}</td>
-				               <td width="2%" class="text14" align="center" nowrap>
-					               	<a onclick="javascript:return confirm('Är du säker att du vill radera raden?')" tabindex=-1 href="tdsexport_edit_childwindow_external_references_delete.do?action=doDelete&svef_syav=${model.avd}&svef_syop=${model.opd}&svef_reff=${Xrecord.svef_reff}&svef_unik=${Xrecord.svef_unik}">
-					               		<img valign="bottom" src="resources/images/delete.gif" border="0" alt="remove">
-					               	</a>
+				               <td width="2%" class="text14" align="center">
+					               	<a id="avd_${record.fsavd}@opd_${record.fsopd}" title="delete" onClick="doPermanentlyDeleteExternalRef(this)" tabindex=-1>
+					               		<img src="resources/images/delete.gif" border="0" alt="remove">
+					               	</a>&nbsp;
 				               </td>
 			               </tr>
 			               </c:forEach>

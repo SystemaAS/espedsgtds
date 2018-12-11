@@ -47,6 +47,7 @@ import no.systema.tds.model.jsonjackson.codes.JsonTdsBilagdaHandlingarYKoderReco
 
 import no.systema.tds.service.TdsBilagdaHandlingarYKoderService;
 import no.systema.tds.service.TdsTillaggskoderService;
+import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicListExternalRefRecord;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicInvoiceExternalForUpdateContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicInvoiceExternalContainer;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportTopicInvoiceExternalRecord;
@@ -224,6 +225,51 @@ public class TdsImportControllerChildWindow {
 		
 		  String BASE_URL = TdsImportUrlDataStore.TDS_IMPORT_BASE_UPDATE_SPECIFIC_TOPIC_INVOICE_EXTERNAL_URL;
 		  String params = "user=" + appUser.getUser() + "&mode=D" + "&reff=" + recordToValidate.getSvif_reff() + "&unik=" + recordToValidate.getSvif_unik();
+		  logger.info("URL:" + BASE_URL);
+		  logger.info("PARAMS:" + params);
+		  
+		  String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, params);
+		  JsonTdsImportTopicInvoiceExternalForUpdateContainer container = this.tdsImportSpecificTopicService.getTdsImportTopicInvoiceContainerOneInvoiceExternalForUpdate(jsonPayload);
+		  
+		  if(container!=null && ( container.getErrmsg()!=null && !"".equals(container.getErrmsg())) ){
+			  logger.info("[ERROR] " + container.getErrmsg());
+		  }else{
+			  logger.info("[INFO]" + " Update successfully done!");
+		  }
+		  //logger.info("END of method");
+		  return successView;
+		}
+		
+	}
+	/**
+	 * 
+	 * @param recordToValidate
+	 * @param bindingResult
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsimport_edit_childwindow_external_references_delete.do",  method={RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView tdsExportExternalReferenesDelete(@ModelAttribute ("record") JsonTdsImportTopicListExternalRefRecord recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
+		logger.info("Inside: tdsExportExternalReferencesDelete");
+		
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		//redirect view
+		StringBuffer paramsRedirect = new StringBuffer();
+		paramsRedirect.append("user=" + appUser.getUser());
+		ModelAndView successView = new ModelAndView("redirect:tdsimport_childwindow_external_references.do?" + paramsRedirect);
+		
+		String urlRequestParamsKeys = null;
+		//Catch required action (doFetch or doUpdate)
+		String action = request.getParameter("action");
+		logger.info("ACTION: " + action);
+		
+		if(appUser == null || "".equals(appUser)){
+		  return this.loginView;
+		}else{
+		
+		  String BASE_URL = TdsImportUrlDataStore.TDS_IMPORT_BASE_UPDATE_SPECIFIC_TOPIC_EXTERNAL_REFERENCES_URL;
+		  String params = "user=" + appUser.getUser() + "&avd=" + recordToValidate.getFsavd() + "&opd=" + recordToValidate.getFsopd(); 
 		  logger.info("URL:" + BASE_URL);
 		  logger.info("PARAMS:" + params);
 		  

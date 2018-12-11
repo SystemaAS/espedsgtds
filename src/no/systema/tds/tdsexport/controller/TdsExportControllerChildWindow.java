@@ -316,7 +316,7 @@ public class TdsExportControllerChildWindow {
 	 * @return
 	 */
 	@RequestMapping(value="tdsexport_edit_childwindow_external_references_delete.do",  method={RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView tdsExportExternalReferenesDelete(@ModelAttribute ("record") JsonTdsExportTopicListExternalRefContainer recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
+	public ModelAndView tdsExportExternalReferenesDelete(@ModelAttribute ("record") JsonTdsExportTopicListExternalRefRecord recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
 		logger.info("Inside: tdsExportExternalReferencesDelete");
 		
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
@@ -335,7 +335,7 @@ public class TdsExportControllerChildWindow {
 		}else{
 		
 		  String BASE_URL = TdsExportUrlDataStore.TDS_EXPORT_BASE_UPDATE_SPECIFIC_TOPIC_EXTERNAL_REFERENCES_URL;
-		  String params = "user=" + appUser.getUser() + "&mode=D" + "&reff=" ; //TODO+ recordToValidate.getSvef_reff() + "&unik=" + recordToValidate.getSvef_unik();
+		  String params = "user=" + appUser.getUser() + "&avd=" + recordToValidate.getFsavd() + "&opd=" + recordToValidate.getFsopd(); 
 		  logger.info("URL:" + BASE_URL);
 		  logger.info("PARAMS:" + params);
 		  

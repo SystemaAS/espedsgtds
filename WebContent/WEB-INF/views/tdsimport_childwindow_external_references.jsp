@@ -35,6 +35,7 @@
 			                    <th class="text14">&nbsp;Datum&nbsp;</th>   
 			                    <th class="text14">&nbsp;Avsändare&nbsp;</th> 
 			                    <th class="text14">&nbsp;Mottagare&nbsp;</th> 
+			                    <th align="center" class="text14">Radera</th>
 		                    </tr>
 		                    </thead>
 		                    <tbody>
@@ -47,7 +48,11 @@
 				               <td class="text14" >&nbsp;${record.fsdtop}&nbsp;</td>
 				               <td class="text14" >&nbsp;${record.henas}</td>
 				               <td class="text14" >&nbsp;${record.henak}</td>
-				               
+				               <td width="2%" class="text14" align="center">
+					               	<a id="avd_${record.fsavd}@opd_${record.fsopd}" title="delete" onClick="doPermanentlyDeleteExternalRef(this)" tabindex=-1>
+					               		<img src="resources/images/delete.gif" border="0" alt="remove">
+					               	</a>&nbsp;
+				               </td>
 			               </tr>
 			               </c:forEach>
 			               </tbody>
