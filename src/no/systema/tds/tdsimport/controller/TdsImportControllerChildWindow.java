@@ -38,6 +38,8 @@ import no.systema.main.util.AppConstants;
 import no.systema.main.util.DateTimeManager;
 import no.systema.main.util.EncodingTransformer;
 import no.systema.main.util.JsonDebugger;
+import no.systema.main.util.StringManager;
+
 import no.systema.main.model.SystemaWebUser;
 
 import no.systema.tds.model.jsonjackson.codes.JsonTdsTillaggskodContainer;
@@ -77,14 +79,12 @@ public class TdsImportControllerChildWindow {
 	private static final JsonDebugger jsonDebugger = new JsonDebugger(2000);
 	//customer
 	private final String DATATABLE_LIST = "list";
-
-	
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private ApplicationContext context;
 	private LoginValidator loginValidator = new LoginValidator();
 	//private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
 	private DateTimeManager dateTimeMgr = new DateTimeManager();
-	
+	private StringManager strMgr = new StringManager();
 	
 	@PostConstruct
 	public void initIt() throws Exception {
@@ -209,6 +209,7 @@ public class TdsImportControllerChildWindow {
 		logger.info("Inside: tdsImportExternalInvoicesDelete");
 		
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
 		//redirect view
 		StringBuffer paramsRedirect = new StringBuffer();
 		paramsRedirect.append("user=" + appUser.getUser() + "&avd=" + recordToValidate.getSvif_syav() + "&opd=" + recordToValidate.getSvif_syop());
@@ -254,9 +255,13 @@ public class TdsImportControllerChildWindow {
 		logger.info("Inside: tdsExportExternalReferencesDelete");
 		
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		String parentAvd = request.getParameter("parentAvd");
 		//redirect view
 		StringBuffer paramsRedirect = new StringBuffer();
 		paramsRedirect.append("user=" + appUser.getUser());
+		if(strMgr.isNotNull(parentAvd)){
+			paramsRedirect.append("&avd=" + parentAvd);
+		}
 		ModelAndView successView = new ModelAndView("redirect:tdsimport_childwindow_external_references.do?" + paramsRedirect);
 		
 		String urlRequestParamsKeys = null;

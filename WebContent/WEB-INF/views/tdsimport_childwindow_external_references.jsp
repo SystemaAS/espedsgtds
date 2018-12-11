@@ -23,6 +23,7 @@
 			<%-- this container table is necessary in order to separate the datatables element and the frame above, otherwise
 		 	the cosmetic frame will not follow the whole datatable grid including the search field... --%>
 			<table id="containerdatatableTable" width="98%" align="left">
+				<input type="hidden" name="parentAvd" id="parentAvd" value='${model.avd}'/>
 				<%-- List (external references) --%>
 				<tr height="15"><td></td></tr>
 				<tr>

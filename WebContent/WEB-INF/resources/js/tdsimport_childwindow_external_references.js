@@ -68,7 +68,7 @@
   	        		jq( this ).dialog( "close" );
   		            //do delete
   		            jq.blockUI({ message: BLOCKUI_OVERLAY_MESSAGE_DEFAULT});
-  		            window.location = "tdsimport_edit_childwindow_external_references_delete.do?action=doDelete" + "&fsavd=" + avd + "&fsopd=" + opd;
+  		            window.location = "tdsimport_edit_childwindow_external_references_delete.do?action=doDelete&parentAvd=" + jq("#parentAvd").val() + "&fsavd=" + avd + "&fsopd=" + opd;
   		        },
   		        Avbryt: function() {
   		            jq( this ).dialog( "close" );

@@ -171,6 +171,7 @@ public class TdsImportHeaderControllerChildWindow {
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		
 		Map model = new HashMap();
+		
 		StringBuffer urlRequestParamsKeys = new StringBuffer();
 		//Catch required action (doFetch or doUpdate)
 		
@@ -187,6 +188,7 @@ public class TdsImportHeaderControllerChildWindow {
 			urlRequestParamsKeys.append("user=" + appUser.getUser());
 			if(StringUtils.isNotEmpty(avd)){
 				urlRequestParamsKeys.append("&avd=" + avd);
+				model.put("avd", avd);
 			}
 			
 			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
