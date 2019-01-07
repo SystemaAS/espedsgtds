@@ -6,6 +6,7 @@ import org.springframework.validation.ValidationUtils;
 
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 import no.systema.main.util.StringManager;
+import no.systema.main.util.DateTimeManager;
 
 /**
  * 
@@ -129,6 +130,11 @@ public class TdsExportHeaderValidator implements Validator {
 				if(record.getSveh_beat()!=null && !record.getSveh_beat().equals("")){
 					if(!"UGE".equalsIgnoreCase(record.getSveh_mtyp())){
 						errors.rejectValue("sveh_beat", "systema.tds.export.header.error.rule.sveh_beat.onlyUgeMessageType");
+					}else{
+						boolean isValidDate = new DateTimeManager().isValidForwardTime(record.getSveh_beat(), "yyyyMMddHHmm");
+						if(!isValidDate){
+							errors.rejectValue("sveh_beat", "systema.tds.export.header.error.rule.sveh_beat.notValid"); 
+						}
 					}
 				}
 				//Taxdeb.Dag
