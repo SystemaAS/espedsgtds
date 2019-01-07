@@ -197,7 +197,7 @@
 				    			
 				    			<%-- ------------------------------- --%>
 				    			<%-- SIGNERING MENU (if applicable)  --%>
-				    			<%-- ------------------------------- --%>
+				    			<%-- ------------------------------- 
 				    			<c:if test="${user.authorizedTdsSignPkiUserAS400 == 'Y'}">
 					    			<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
 					    			<a tabindex=-1 href="tds_sign_pki.do">
@@ -218,7 +218,7 @@
 				    			&nbsp;<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
 				    			<%-- -------------------- --%>
 				    			<%-- CHANGE PASSWORD MENU --%>
-				    			<%-- -------------------- --%>
+				    			<%-- -------------------- 
 				    			<a tabindex=-1 href="tds_change_password.do">
 				    				&nbsp;<font
 				    				<c:choose>           
@@ -231,8 +231,9 @@
 			               			</c:choose>
 				    				>&nbsp;<spring:message code="systema.tds.change.password.label"/>&nbsp;</font>
 				    			</a>
-				    			
+				    			--%>
 				    			&nbsp;<font color="#FFFFFF"; style="font-weight: bold;">&nbsp;|&nbsp;</font>
+				    			
 				    			<%-- -------------- --%>
 				    			<%-- ADMIN  MENU    --%>
 				    			<%-- -------------- --%>
@@ -360,13 +361,15 @@
 		      					<input readonly type="text" autocomplete='off' class="inputTextReadOnly" name=userAS400 id="userAS400" size="10" maxlength="10" value='${user.userAS400}'>	
 				    		</td>
 	      	        </tr>
+	      	        <%--
 	      	        <tr >
 				    		<td class="text14" >&nbsp;&nbsp;Lösenord</td>
 		      				<td class="text14" >
-		      					<%-- this will ensure not to enable the brower to ask the user to remember the password --%>
+		      					<%-- this will ensure not to enable the brower to ask the user to remember the password
 		      					<input type="password" autocomplete='off' readonly onfocus="this.removeAttribute('readonly');" class="inputTextMediumBlue" name="pwAS400" id="pwAS400" size="10" maxlength="20" value="">	
 				    		</td>
 	      	        </tr>
+	      	         --%>
 	      	        <tr>
 						<td>&nbsp;</td>
 						<td align="left"><input class="inputFormLoginSubmitGreen" type="submit" value="<spring:message code="login.user.submit"/>" /></td>

@@ -57,6 +57,93 @@ public class GateController {
 	public ModelAndView tdsgate(HttpSession session, HttpServletRequest request){
 		
 		ModelAndView SUCCESS_VIEW = new ModelAndView("tdsgate");
+		//init
+		ModelAndView theView = SUCCESS_VIEW;
+		
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
+		if(appUser==null){
+			return this.loginView;
+		}else{
+			appUser.setActiveMenu("INIT");
+			logger.info("Inside method: tdsgate");
+			logger.info("appUser user:" + appUser.getUser());
+			logger.info("appUser lang:" + appUser.getUsrLang());
+			logger.info("appUser userAS400:" + appUser.getUserAS400());
+			
+			
+			//check for GUI required element (if any...)
+			if( (appUser.getUserAS400()!=null && !"".equals(appUser.getUserAS400())) ){
+				if(appUser.getAuthorizedTdsUserAS400()!=null && !"Y".equals(appUser.getAuthorizedTdsUserAS400())){
+					//do nothing meaning:
+					//that the user has already been previously authorized in a TDS-general
+				}else{
+					
+					String BASE_URL = TdsUrlDataStore.TDS_GET_AUTHORIZATION_CODE;
+					//url params
+					String urlRequestParamsKeys = this.getRequestUrlKeyParameters(appUser);
+					//for debug purposes in GUI
+					session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
+					
+					logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+				    	logger.info("URL: " + BASE_URL);
+				    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+				    	//--------------------------------------
+				    	//EXECUTE the FETCH (RPG program) here
+				    	//--------------------------------------
+				    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+				    	JsonTdsAuthorizationContainer jsonTdsAuthorizationContainer = null;
+				    	if(jsonPayload!=null){
+				    		try{
+				    			jsonTdsAuthorizationContainer = this.tdsAuthorizationService.getContainer(jsonPayload);
+				    			if(jsonTdsAuthorizationContainer.getErrMsg()!=null && !"".equals(jsonTdsAuthorizationContainer.getErrMsg())){
+				    				session.setAttribute(AppConstants.ASPECT_ERROR_MESSAGE, jsonTdsAuthorizationContainer.getErrMsg());
+			    					//init password to NULL upon error
+				    				//appUser.setPwAS400(null);
+				    				session.setAttribute(AppConstants.SYSTEMA_WEB_USER_KEY, appUser);
+					    			
+				    			}else{
+				    				//get now the authorization flags for both: Tds-general and Tds-Pki
+				    				this.updateAppUser(jsonTdsAuthorizationContainer, appUser);
+				    				
+				    				//if the login is valid we populate this value that will enable valid TDS-menus at the JSP (headerTds.jsp)
+				    				if("Y".equals(appUser.getAuthorizedTdsUserAS400())){
+				    					session.setAttribute(AppConstants.SYSTEMA_WEB_USER_KEY, appUser);
+				    					logger.info("[After returning AS400]sign: " + appUser.getTdsSign());
+				    				}else{
+				    					String unauthorizedErrorMessage = this.getUnauthorizedTdsErrorMessage(appUser);
+				    					session.setAttribute(AppConstants.ASPECT_ERROR_MESSAGE, unauthorizedErrorMessage);
+				    				}
+				    			}
+				    		}catch(Exception e){
+				    			e.printStackTrace();
+				    		}
+				    	}
+						//Debug --> 
+				    	logger.info(" --> jsonPayload:" + jsonPayload);
+				    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+				}
+			}else{
+				//Only when the user has submit the form-Post. With a general GET (coming from the Dashboard) no error message should be presented.
+				if("POST".equals(request.getMethod())){
+					String requiredValuesMissingErrorMessage = this.getRequiredValuesMissingErrorMessage();
+					session.setAttribute(AppConstants.ASPECT_ERROR_MESSAGE, requiredValuesMissingErrorMessage);
+				}
+			}
+	    	
+			logger.info("Host via HttpServletRequest.getHeader('Host'): " + request.getHeader("Host"));
+		    session.setAttribute(AppConstants.ACTIVE_URL_RPG, AppConstants.ACTIVE_URL_RPG_INITVALUE);
+		    
+		    return theView;
+		}
+	}
+	
+	
+	/* OLD method with password ... DELETE this on March 2019 ...
+	@RequestMapping(value="tdsgate.do", method={RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView tdsgate(HttpSession session, HttpServletRequest request){
+		
+		ModelAndView SUCCESS_VIEW = new ModelAndView("tdsgate");
 		ModelAndView TOO_OLD_PASSWORD_VIEW = new ModelAndView("tds_change_password_too_old");
 		//init
 		ModelAndView theView = SUCCESS_VIEW;
@@ -181,6 +268,8 @@ public class GateController {
 			return theView;
 		}
 	}
+	*/
+	
 	
 	/**
 	 * The method gets an the error message for invalid required fields for authorization of TDS
@@ -224,16 +313,15 @@ public class GateController {
 	/**
 	 * 
 	 * @param appUser
-	 * @param numberOfTries
 	 * @return
 	 */
-	private String getRequestUrlKeyParameters(SystemaWebUser appUser, int numberOfTries){
+	private String getRequestUrlKeyParameters(SystemaWebUser appUser){
 		StringBuffer urlRequestParamsKeys = new StringBuffer();
 		//String action = request.getParameter("action");
 		urlRequestParamsKeys.append("user=" + appUser.getUser());
 		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "usrAS400=" + appUser.getUserAS400());
-		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "pwAS400=" + appUser.getPwAS400());
-		urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "ant=" + numberOfTries);
+		//urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "pwAS400=" + appUser.getPwAS400());
+		//urlRequestParamsKeys.append(TdsConstants.URL_CHAR_DELIMETER_FOR_PARAMS_WITH_HTML_REQUEST + "ant=" + numberOfTries);
 		
 		return urlRequestParamsKeys.toString();
 	}
