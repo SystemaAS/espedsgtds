@@ -35,9 +35,9 @@ public class TdsAuthorizationMapper extends ObjectMapperAbstractGrandFather{
 			//DEBUG
 			Collection<JsonTdsAuthorizationRecord> fields = container.getTdsBehorigKontroll();
 			for(JsonTdsAuthorizationRecord record : fields){
-				logger.info("bpki: " + record.getBpki());
-				logger.info("btds: " + record.getBtds());
-				logger.info("sign: " + record.getSign());
+				//logger.info("bpki: " + record.getBpki());
+				//logger.info("btds: " + record.getBtds());
+				//logger.info("sign: " + record.getSign());
 			}
 		}
 		return container;
