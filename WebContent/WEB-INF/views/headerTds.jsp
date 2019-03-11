@@ -12,13 +12,6 @@
 		<link type="text/css" href="//cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet">
 		<link type="text/css" href="//cdn.datatables.net/plug-ins/1.10.19/features/searchHighlight/dataTables.searchHighlight.css" rel="stylesheet">
 		
-		
-		<%-- for dialog popup --%>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-		<style type = "text/css">
-			.ui-dialog{font-size:10pt;}
-		</style>
-	
 		<c:choose>
 			<%-- set up BEFORE login --%>
 			<c:when test="${ fn:contains(user.cssEspedsg, 'Toten') }"> 
@@ -28,7 +21,11 @@
 				<link rel="SHORTCUT ICON" type="image/png" href="resources/images/systema_logo.png"></link>
 			</c:otherwise>
 		</c:choose>
-		
+		<%-- for dialog popup --%>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<style type = "text/css">
+			.ui-dialog{font-size:10pt;}
+		</style>
 		<%-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> --%>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />

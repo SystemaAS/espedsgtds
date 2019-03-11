@@ -43,7 +43,8 @@
 		                    </tr>
 		                    </thead>
 		                    <tbody>
-		                    <c:forEach items="${model.listExternalRef}" var="record" varStatus="counter">    
+		                    <c:forEach items="${model.listExternalRef}" var="record" varStatus="counter">
+		                    	<tr>    
 				               <td  style="cursor:pointer;" class="text14MediumBlue" id="ref${record.fssok}" >
 			               		&nbsp;&nbsp;${record.fssok}
 			               		</td>
