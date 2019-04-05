@@ -1,59 +1,46 @@
 <!DOCTYPE html>
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@ include file="/WEB-INF/views/include.jsp" %> <!-- generally you will include this in a header.jsp -->
+<%@ include file="/WEB-INF/views/include.jsp" %>
 
 <html>
 	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<title>eSpedsg - Tillfällig lagring</title>
+
 		<link href="/espedsg2/resources/${user.cssEspedsg}?ver=${user.versionEspedsg}" rel="stylesheet" type="text/css"/>
-		<link href="resources/jquery.calculator.css" rel="stylesheet" type="text/css"/>
+		<link href="resources/accounting.css" rel="stylesheet" type="text/css"/>
+		<link type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet"/>
+		<link type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/overcast/jquery-ui.css" rel="stylesheet"/>
+ 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">		
+		<link rel="SHORTCUT ICON" type="image/png" href="resources/images/systema_logo.png"></link>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.bootstrap4.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/1.10.19/features/mark.js/datatables.mark.min.css"/>
 		
-		<%-- datatables grid CSS --%>
-		<link type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css" rel="stylesheet">
-		<link type="text/css" href="//cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet">
-		<link type="text/css" href="//cdn.datatables.net/plug-ins/1.10.19/features/searchHighlight/dataTables.searchHighlight.css" rel="stylesheet">
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="resources/js/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="/espedsg2/resources/js/systemaWebGlobal.js?ver=${user.versionEspedsg}"></script>
+		<script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="resources/js/accounting.js?ver=${user.versionEspedsg}"></script>	
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>	
+		<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.2/js/dataTables.responsive.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.19/features/mark.js/datatables.mark.js"></script>
 		
-		<c:choose>
-			<%-- set up BEFORE login --%>
-			<c:when test="${ fn:contains(user.cssEspedsg, 'Toten') }"> 
-				<link rel="SHORTCUT ICON" type="image/ico" href="resources/images/toten_ico.ico"></link>
-			</c:when>
-			<c:otherwise>
-				<link rel="SHORTCUT ICON" type="image/png" href="resources/images/systema_logo.png"></link>
-			</c:otherwise>
-		</c:choose>
-		<%-- for dialog popup --%>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-		<style type = "text/css">
-			.ui-dialog{font-size:10pt;}
-		</style>
-		<%-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> --%>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-		<%-- Cache disabled --%>
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="expires" content="0">
 		
-		<title>eSpedsg - TDS</title>
+		<script>
+			var lang = '${user.usrLang}';
+		  	var svlthUrl = "/syjservicesbcore/syjsSVLTH?user=${user.user}";
+		</script>
+
 	</head>
-	<body>
-	<%-- include som javascript functions --%>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery.blockUI.js"></script>
-	<script type="text/javascript" src="resources/js/systemaWebGlobal.js?ver=${user.versionEspedsg}"></script>
-	<SCRIPT type="text/javascript" src="resources/js/headerTds.js?ver=${user.versionEspedsg}"></SCRIPT>	
-	
-	<%--datatables grid --%>
-	<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-	<%-- searchHighlight on datatables --%>
-	<script type="text/javascript" src="//bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
-	<script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
-	<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.19/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
 	
 	
-	
-    <table class="noBg" width="100%" border="0" cellspacing="0" cellpadding="0">
+   <table class="noBg" width="100%" border="0" cellspacing="0" cellpadding="0">
 		<%--Banner --%>
 	 	<tr>
 	 		 <%-- class="grayTitanBg" --%>
@@ -445,12 +432,7 @@
 		</tr>
 		
 	    
-		
-		
-		<%-- ------------------------------------
-		Content after banner och header menu
-		------------------------------------- --%>
-		<tr>
-    		<td width="100%" align="left" colspan="3"> 
+</table>
     		     
-     
+
+	
