@@ -38,7 +38,7 @@
 	    </a>
 		<a class="nav-item nav-link nav-new no-gutters" onClick="setBlockUI();" href="accounting_inlagg.do?action=1">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Skapa nytt inlägg
+		    Skapa&nbsp;nytt&nbsp;inlägg
 		  </span>	
 		</a>
 	  </div>
@@ -79,16 +79,16 @@
 				<tr>
 					<th>Godslokalkod</th>
 					<th>Inlägg</th>
-					<th>Extern referans</th>
+					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
 					<th>Godsnummer</th>
 					<th>Arkiveringsdatum</th>
 					<th>Ankomstdatum</th>
-					<th>Tidigare handling-1</th>
-					<th>Tidigare handling-2</th>
-					<th>Tidigare handling-3</th>
-					<th>Tidigare handling-4</th>
-					<th>Tidigare handling-5</th>
+					<th>Tidigare&nbsp;handling-1</th>
+					<th>Tidigare&nbsp;handling-2</th>
+					<th>Tidigare&nbsp;handling-3</th>
+					<th>Tidigare&nbsp;handling-4</th>
+					<th>Tidigare&nbsp;handling-5</th>
 					<th>Antal</th>
 					<th>Kollislag</th>
 					<th>Bruttovikt</th>

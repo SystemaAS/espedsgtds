@@ -1,7 +1,6 @@
 package no.systema.tds.bokf.tlagring.controller;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +26,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import no.systema.jservices.common.dao.SvlthDao;
 import no.systema.jservices.common.json.JsonDtoContainer;
 import no.systema.jservices.common.json.JsonReader;
+import no.systema.jservices.common.util.DateTimeManager;
 import no.systema.jservices.common.util.StringUtils;
 import no.systema.jservices.common.values.CRUDEnum;
 import no.systema.jservices.common.values.EventTypeEnum;
@@ -36,28 +36,22 @@ import no.systema.main.util.AppConstants;
 import no.systema.main.validator.LoginValidator;
 
 /**
- * Controller  for Tillfällig lagring - List.
+ * Controller  for Tillfällig lagring.
  * 
  * @author Fredrik Möller
  * @date Mar 29 , 2019
  * 
  */
 @Controller
-public class AccountingListController {
-	private static Logger logger = Logger.getLogger(AccountingListController.class.getName());
+public class AccountingController {
+	private static Logger logger = Logger.getLogger(AccountingController.class.getName());
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private LoginValidator loginValidator = new LoginValidator();
 	
 	@Autowired
 	RestTemplate restTemplate;
 	
-	
-	/**
-	 * This method just render jsp
-	 * @param session
-	 * @param request
-	 * @return
-	 */
+
 	@RequestMapping(value="accounting_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doList(HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_list");
@@ -75,7 +69,8 @@ public class AccountingListController {
 
 	
 	@RequestMapping(value="accounting_inlagg.do", method={RequestMethod.GET, RequestMethod.POST} )
-	public ModelAndView doCreate( @ModelAttribute ("record") SvlthDao record, 
+	public ModelAndView doInlagg(@RequestParam(value = "svlth_irn", required = false) String svlth_irn,
+								@ModelAttribute ("record") SvlthDao record, 
 								@RequestParam(value = "action", required = true) Integer action,
 								BindingResult bindingResult, HttpSession session, HttpServletRequest request){
 
@@ -87,9 +82,6 @@ public class AccountingListController {
 		logger.info("accounting_inlagg.do, record="+ReflectionToStringBuilder.reflectionToString(record, ToStringStyle.MULTI_LINE_STYLE));
 		logger.info("action="+action);
 		
-		String svlth_id2 =request.getParameter("svlth_id2");
-		logger.info("svlth_id2="+svlth_id2);
-
 		ModelAndView successView =  new ModelAndView("accounting_inlagg");
 		SvlthDao returnDao = new SvlthDao();
 
@@ -104,10 +96,12 @@ public class AccountingListController {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
-				returnDao = saveRecord(appUser, record, "A");
-//				returnDto = fetchRecord(appUser, dto);
-				successView.addObject("record", returnDao);
 
+				setDate(EventTypeEnum.INLAGG, record);
+				saveRecord(appUser, record, "A");
+
+				returnDao = fetchRecord(appUser, record);
+				successView.addObject("record", returnDao);
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
@@ -117,55 +111,55 @@ public class AccountingListController {
 				logger.info("Read...");
 				returnDao = fetchRecord(appUser, record);
 				successView.addObject("record", returnDao);
-
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.DELETE.getValue())) {
 				throw new IllegalAccessError("Delete not allowed!");
 
 			}
+			
+			successView.addObject("svlth_irn", svlth_irn);
+			return successView;			
+			
 
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
 			successView.addObject("error", e.getMessage());
+			successView.addObject("svlth_irn", svlth_irn);
+			return successView;			
 
 		}
 
-		return successView;
-
 	}
 
-	/**
-	 * This method just render jsp
-	 * @param session
-	 * @param request
-	 * @return
-	 */
 	@RequestMapping(value="accounting_uttag_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doUttagList(@RequestParam(value = "svlth_irn", required = true) String svlth_irn,
 									HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_uttag");
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
-		SvlthDao returnDao;
+		SvlthDao headDao;
 		
 		if (appUser == null) {
 			return loginView;
 		} else {
 
 			try {
-				returnDao = fetchRecord(appUser, svlth_irn);
-				successView.addObject("svlth_irn", svlth_irn);
-				successView.addObject("headRecord", returnDao);
+				headDao = fetchRecord(appUser, svlth_irn);
+				successView.addObject("headRecord", headDao);
 				successView.addObject("action", CRUDEnum.CREATE.getValue());
 				appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
 
-			} catch (Exception e) {
+				successView.addObject("svlth_irn", svlth_irn);
+				return successView;
+				
+			} catch (Throwable e) {
 				logger.error("ERROR:", e);
 				successView.addObject("error", e.getMessage());
+				successView.addObject("svlth_irn", svlth_irn);
+				return successView;
 			}
 
-			return successView;
 
 		}
 
@@ -192,8 +186,9 @@ public class AccountingListController {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
-				SvlthDao dao = saveRecord(appUser, record, "A");
-				successView.addObject("record", dao);
+
+				setDate(EventTypeEnum.UTTAG, record);
+				saveRecord(appUser, record, "A");
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
@@ -203,6 +198,7 @@ public class AccountingListController {
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
 				returnDao = fetchRecord(appUser, record);
+				successView.addObject("svlth_irn", svlth_irn);
 				successView.addObject("record", returnDao);
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -212,18 +208,19 @@ public class AccountingListController {
 
 			}
 
-		} catch (Exception e) {
+			successView.addObject("svlth_irn", svlth_irn);
+			return successView;			
+			
+		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
 			successView.addObject("error", e.getMessage());
+			successView.addObject("svlth_irn", svlth_irn);
+			return successView;
 
 		}
 
-		return successView;
-
 	}
-	
-	
 	
 	private SvlthDao fetchRecord(SystemaWebUser appUser, SvlthDao record) {
 		logger.info("::fetchRecord::");
@@ -256,7 +253,6 @@ public class AccountingListController {
 
 		ResponseEntity<String> response = restTemplate.exchange(BASE_URL + urlRequestParams.toString(), HttpMethod.GET, null, String.class);
 		String jsonPayload = response.getBody();		
-		
 		logger.info("jsonPayload="+jsonPayload);
 		
 		JsonDtoContainer<SvlthDao> container = (JsonDtoContainer<SvlthDao>) jsonReader.get(jsonPayload);
@@ -283,12 +279,12 @@ public class AccountingListController {
 	}
 	
 
-	private SvlthDao saveRecord(SystemaWebUser appUser, SvlthDao record, String mode) {
+	private void saveRecord(SystemaWebUser appUser, SvlthDao record, String mode) {
 		logger.info("saveRecord::record::"+ReflectionToStringBuilder.toString(record));
-		String SVLTH_DML__URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH_U.do";
+		String SVLTH_DML_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH_U.do";
 
 		MultiValueMap<String, String> recordParams = UrlRequestParameterMapper.getUriParameter(record);
-	    UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(SVLTH_DML__URL)
+	    UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(SVLTH_DML_URL)
 		        .queryParam("user", appUser.getUser())
 		        .queryParam("mode", mode)
 		        .queryParam("lang", appUser.getUsrLang())
@@ -302,8 +298,6 @@ public class AccountingListController {
 
 		JsonReader<JsonDtoContainer<SvlthDao>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDao>>();
 		jsonReader.set(new JsonDtoContainer<SvlthDao>());
-		List<SvlthDao> list = new ArrayList<SvlthDao>();
-		SvlthDao dao = null;
 		JsonDtoContainer<SvlthDao> container = (JsonDtoContainer<SvlthDao>) jsonReader.get(body);
 		if (container != null) {
 			if (StringUtils.hasValue(container.getErrMsg())) {
@@ -311,17 +305,22 @@ public class AccountingListController {
 				logger.info(errMsg);
 				throw new RuntimeException(container.getErrMsg());
 			}		
-			list = container.getDtoList();
-			if (list.isEmpty() || list.size() != 1){
-				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag, mrn: %s. Error message: %s", record.getSvlth_irn(), container.getErrMsg()) ;
-				throw new RuntimeException(errMsg);
-			} else {
-				dao = list.get(0);
-			}
 		}
 		
-		return dao;
 	}	
+
+	private void setDate(EventTypeEnum eventType, SvlthDao record) {
+		int[] dato = DateTimeManager.getNowDato();		
+
+		if (eventType == EventTypeEnum.INLAGG) {
+			record.setSvlth_id1(dato[0]);
+			record.setSvlth_im1(dato[1]);
+		} else if (eventType == EventTypeEnum.UTTAG) {
+			record.setSvlth_ud1(dato[0]);
+			record.setSvlth_um1(dato[1]);
+		}
+		
+	}
 
 }
 

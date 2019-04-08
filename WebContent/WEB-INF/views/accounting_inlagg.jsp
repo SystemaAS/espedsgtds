@@ -55,9 +55,11 @@
 
 	<div class="padded-row-small left-right-border"></div>
 
-	<div class="container-fluid p-1 left-right-border">
+	<div class="container-fluid p-1 left-right-bottom-border">
 
-		<form action="accounting_inlagg.do" method="POST">
+		<form action="accounting_inlagg.do" name="formRecord" id="formRecord" method="POST">
+			<input type="hidden" name="action" id="action" value='${action}'>
+			<input type="hidden" name="svlth_h" id="svlth_h" value='I'>
 	
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
@@ -73,7 +75,7 @@
 					</div>
 	
 					<div class="form-group pr-2 col-1 mb-0">
-						<label for="svlth_iex" class="col-form-label-sm mb-0 required">Extern referans</label>
+						<label for="svlth_iex" class="col-form-label-sm mb-0 required">Extern&nbsp;referans</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_iex" id="svlth_iex" value="${record.svlth_iex}"  size="17" maxlength="15">
 					</div>
 
@@ -94,28 +96,28 @@
 					</div>		
 	
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih1" class="col-form-label-sm mb-0 required">Tidigare handling 1</label>
+						<label for="svlth_ih1" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;1</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="37" maxlength="35">
 					</div>	
 
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih2" class="col-form-label-sm mb-0 required">Tidigare handling 2</label>
+						<label for="svlth_ih2" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;2</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ih2" id="svlth_ih2" value="${record.svlth_ih2}"  size="37" maxlength="35">
 					</div>	
 					
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih3" class="col-form-label-sm mb-0 required">Tidigare handling 3</label>
+						<label for="svlth_ih3" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;3</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ih3" id="svlth_ih3" value="${record.svlth_ih3}"  size="37" maxlength="35">
 					</div>	
 					
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih4" class="col-form-label-sm mb-0 required">Tidigare handling 4</label>
+						<label for="svlth_ih4" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;4</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ih4" id="svlth_ih4" value="${record.svlth_ih4}"  size="37" maxlength="35">
 					</div>	
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih5" class="col-form-label-sm mb-0 required">Tidigare handling 5</label>
+						<label for="svlth_ih5" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;5</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ih5" id="svlth_ih5" value="${record.svlth_ih5}"  size="37" maxlength="35">
 					</div>	
 
@@ -134,12 +136,12 @@
 						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14">
 					</div>	
 
-					<div class="form-group pr-2 pl-1 col-2 mb-0">
+					<div class="form-group pr-2 pl-1 col-4 mb-0">
 						<label for="svlth_ivb" class="col-form-label-sm mb-0 required">Varubeskrivning</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ivb" id="svlth_ivb" value="${record.svlth_ivb}"  size="70" maxlength="70">
 					</div>	
 
-					<div class="form-group pr-2 pl-1 col-2 mb-0">
+					<div class="form-group pr-2 pl-1 col-4 mb-0">
 						<label for="svlth_itx" class="col-form-label-sm mb-0">Fritext</label>
 						<input type="text" class="form-control form-control-sm" name="svlth_itx" id="svlth_itx" value="${record.svlth_itx}"  size="70" maxlength="70">
 					</div>	

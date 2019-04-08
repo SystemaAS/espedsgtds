@@ -85,8 +85,8 @@
 		</table>
 	</div>	
 	
-	<form action="accounting_uttag.do" method="POST">
-		<input type="hidden" name="action" id="action" value='${action}'>
+	<form action="accounting_uttag.do" name="formRecord" id="formRecord" method="POST">
+		<input type="hidden" name="action" id="action" value='1'>
 		<input type="hidden" name="svlth_h" id="svlth_h" value='U'>
 		<input type="hidden" name="svlth_igl" id="svlth_igl" value='${headRecord.svlth_igl}'>
 		<input type="hidden" name="svlth_iex" id="svlth_iex" value='${headRecord.svlth_iex}'>
@@ -106,7 +106,7 @@
 
 
 
-		<div class="container-fluid p-1 left-right-border"> <!-- EDIT/NEW -->
+		<div class="container-fluid p-1 left-right-bottom-border">
 
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
@@ -117,8 +117,8 @@
 			<div class="form-row left-right-bottom-border formFrame">
 
 				<div class="form-group pr-2 col-auto">
-					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Extern referans</label>
-					<input autofocus required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="17" maxlength="15">
+					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Extern&nbsp;referans</label>
+					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="17" maxlength="15">
 				</div>
 
 				<div class="form-group pr-2 col-auto">
@@ -136,13 +136,13 @@
 
 				<div class="form-group col-11 align-self-end">
 					<div class="float-md-right">
-						<button class="btn inputFormSubmit btn-sm" id="submitBtn">Lagre</button>
+						<button class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>
 					</div>
 				</div>					
 	
 			</div> <!-- form-row -->
 
-		</div> <!-- EDIT -->
+		</div>
 
 	</form>
 			
@@ -161,7 +161,3 @@
 		</div>
 	</div>
 </c:if>
-
-
-
-</div> <!-- container -->

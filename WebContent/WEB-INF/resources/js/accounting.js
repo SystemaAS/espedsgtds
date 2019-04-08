@@ -87,7 +87,7 @@ function loadSvlth() {
 
 function loadSvlthUttag() {
 	console.log('loadSvlthUttag');
-	//clearKostbLineValues();
+	clearValues();
 
 	let runningUrl;
 	console.log('svlth_irn',svlth_irn);
@@ -130,7 +130,20 @@ function loadSvlthUttag() {
 	});	
 	
 	
+function clearValues() {
 	
+	
+    jq("#svlth_uex").val("");
+    jq("#svlth_uti").val("");
+    jq("#svlth_unt").val("");
+    jq("#svlth_utx").val("");
+    
+ //   jq("#action").val(2);  //READ 	
+	
+	
+	
+	
+}	
 	
 	
 	
@@ -210,13 +223,16 @@ function getRunningSvlthUrl() {
 }
 
 
-
-
-
-
-
 jq(function() {
+	
+	jq("#formRecord").submit(function() {
+		setBlockUI();	
+	});
 
+	jq("#svlth_id2").datepicker({ 
+		dateFormat: 'yymmdd'
+	});		
+	
 	jq("#selectArrival").datepicker({ 
 		dateFormat: 'yymmdd'
 	});	
