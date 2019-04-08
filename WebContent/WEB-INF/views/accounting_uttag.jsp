@@ -120,12 +120,7 @@
 					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Extern referans</label>
 					<input autofocus required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="17" maxlength="15">
 				</div>
-<!--  
-				<div class="form-group pr-2 col-auto">
-					<label for="svlth_ud1" class="col-form-label-sm mb-0">Uttagsdatum</label>
-					<input type="text" class="form-control form-control-sm" name="svlth_ud1" id="svlth_ud1" value="${record.svlth_ud1}" size="10" maxlength="8">
-				</div>
--->
+
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uti" class="col-form-label-sm mb-0 required">Tullid</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="12" maxlength="10">
@@ -138,9 +133,6 @@
 					<label for="svlth_utx" class="col-form-label-sm mb-0">Fritext</label>
 					<input type="text" class="form-control form-control-sm" name="svlth_utx" id="svlth_utx" value="${record.svlth_utx}" size="70" maxlength="70">
 				</div>
-
-
-
 
 				<div class="form-group col-11 align-self-end">
 					<div class="float-md-right">

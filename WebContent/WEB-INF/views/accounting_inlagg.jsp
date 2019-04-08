@@ -40,7 +40,7 @@
 	    </a>
 		<a class="nav-item nav-link active disabled">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Inlägg[${record.svlth_irn}]
+		    Inlägg<c:if test="${action == 2}"> ${record.svlth_irn}</c:if>  
 		  </span>
 		</a>
 	<c:if test="${action == 2}"> 
@@ -147,7 +147,7 @@
 	
 					<div class="form-group col-11 align-self-end">
 						<div class="float-md-right">
-							<button class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>
+							<button <c:if test="${action == 2}"> disabled</c:if> class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>
 						</div>
 					</div>					
 					

@@ -78,7 +78,7 @@
 			<thead class="tableHeaderField">
 				<tr>
 					<th>Godslokalkod</th>
-					<th>Visa inlägg</th>
+					<th>Inlägg</th>
 					<th>Extern referans</th>
 					<th>MRN</th>
 					<th>Godsnummer</th>
