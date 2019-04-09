@@ -79,6 +79,8 @@
 				<tr>
 					<th>Godslokalkod</th>
 					<th>Inlägg</th>
+					<th>Saldo</th>
+					<th>Antal</th>
 					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
 					<th>Godsnummer</th>
@@ -89,7 +91,6 @@
 					<th>Tidigare&nbsp;handling-3</th>
 					<th>Tidigare&nbsp;handling-4</th>
 					<th>Tidigare&nbsp;handling-5</th>
-					<th>Antal</th>
 					<th>Kollislag</th>
 					<th>Bruttovikt</th>
 					<th>Varubeskrivning</th>

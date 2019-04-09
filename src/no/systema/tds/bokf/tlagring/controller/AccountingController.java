@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import no.systema.jservices.common.dao.SvlthDao;
+import no.systema.jservices.common.dto.SvlthDto;
 import no.systema.jservices.common.json.JsonDtoContainer;
 import no.systema.jservices.common.json.JsonReader;
 import no.systema.jservices.common.util.DateTimeManager;
@@ -83,7 +84,7 @@ public class AccountingController {
 		logger.info("action="+action);
 		
 		ModelAndView successView =  new ModelAndView("accounting_inlagg");
-		SvlthDao returnDao = new SvlthDao();
+		SvlthDto returnDto = new SvlthDto();
 
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_h() == null) {
 			logger.info("Init...");
@@ -100,8 +101,8 @@ public class AccountingController {
 				setDate(EventTypeEnum.INLAGG, record);
 				saveRecord(appUser, record, "A");
 
-				returnDao = fetchRecord(appUser, record);
-				successView.addObject("record", returnDao);
+				returnDto = fetchRecord(appUser, record);
+				successView.addObject("record", returnDto);
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
@@ -109,8 +110,8 @@ public class AccountingController {
 
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
-				returnDao = fetchRecord(appUser, record);
-				successView.addObject("record", returnDao);
+				returnDto = fetchRecord(appUser, record);
+				successView.addObject("record", returnDto);
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.DELETE.getValue())) {
@@ -138,15 +139,15 @@ public class AccountingController {
 									HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_uttag");
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
-		SvlthDao headDao;
+		SvlthDto headDto;
 		
 		if (appUser == null) {
 			return loginView;
 		} else {
 
 			try {
-				headDao = fetchRecord(appUser, svlth_irn);
-				successView.addObject("headRecord", headDao);
+				headDto = fetchRecord(appUser, svlth_irn);
+				successView.addObject("headRecord", headDto);
 				successView.addObject("action", CRUDEnum.CREATE.getValue());
 				appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
 
@@ -180,7 +181,7 @@ public class AccountingController {
 		logger.info("action="+action);
 
 		ModelAndView successView =  new ModelAndView("accounting_uttag");
-		SvlthDao returnDao = new SvlthDao();
+		SvlthDto returnDto = new SvlthDto();
 
 		try {
 
@@ -197,9 +198,9 @@ public class AccountingController {
 
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
-				returnDao = fetchRecord(appUser, record);
+				returnDto = fetchRecord(appUser, record);
 				successView.addObject("svlth_irn", svlth_irn);
-				successView.addObject("record", returnDao);
+				successView.addObject("record", returnDto);
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
@@ -222,27 +223,27 @@ public class AccountingController {
 
 	}
 	
-	private SvlthDao fetchRecord(SystemaWebUser appUser, SvlthDao record) {
+	private SvlthDto fetchRecord(SystemaWebUser appUser, SvlthDao record) {
 		logger.info("::fetchRecord::");
-		SvlthDao dao = getHeadDao(appUser.getUser(), record.getSvlth_irn());
+		SvlthDto dao = getHeadDto(appUser.getUser(), record.getSvlth_irn());
 		
 		return dao;
 		
 	}	
 
-	private SvlthDao fetchRecord(SystemaWebUser appUser, String Svlth_irn) {
+	private SvlthDto fetchRecord(SystemaWebUser appUser, String Svlth_irn) {
 		logger.info("::fetchRecord::");
-		SvlthDao dao = getHeadDao(appUser.getUser(), Svlth_irn);
+		SvlthDto dto = getHeadDto(appUser.getUser(), Svlth_irn);
 		
-		return dao;
+		return dto;
 		
 	}	
 	
 	
-	private SvlthDao getHeadDao(String user, String mrn) {
-		JsonReader<JsonDtoContainer<SvlthDao>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDao>>();
-		jsonReader.set(new JsonDtoContainer<SvlthDao>());
-		SvlthDao dao;
+	private SvlthDto getHeadDto(String user, String mrn) {
+		JsonReader<JsonDtoContainer<SvlthDto>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDto>>();
+		jsonReader.set(new JsonDtoContainer<SvlthDto>());
+		SvlthDto dto;
 
 		String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH.do";	
 		StringBuilder urlRequestParams = new StringBuilder();
@@ -255,21 +256,21 @@ public class AccountingController {
 		String jsonPayload = response.getBody();		
 		logger.info("jsonPayload="+jsonPayload);
 		
-		JsonDtoContainer<SvlthDao> container = (JsonDtoContainer<SvlthDao>) jsonReader.get(jsonPayload);
+		JsonDtoContainer<SvlthDto> container = (JsonDtoContainer<SvlthDto>) jsonReader.get(jsonPayload);
 		if (container != null) {
 			if (StringUtils.hasValue(container.getErrMsg())) {
 				String errMsg = String.format("DML-error on inlagg, mrn: %s. Error message: %s", mrn, container.getErrMsg()) ;
 				logger.error(errMsg);
 				throw new RuntimeException(container.getErrMsg());
 			}		
-			List<SvlthDao> list = container.getDtoList();
+			List<SvlthDto> list = container.getDtoList();
 			if (list.isEmpty() || list.size() != 1){
 				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag, mrn: %s. Error message: %s", mrn, container.getErrMsg()) ;
 				logger.error(errMsg);
 				throw new RuntimeException(errMsg);
 			} else {
-				dao = list.get(0);
-				return  dao;
+				dto = list.get(0);
+				return  dto;
 
 			}
 		}

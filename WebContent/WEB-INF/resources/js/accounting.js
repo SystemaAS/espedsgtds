@@ -42,6 +42,8 @@ function initSvlthSearch() {
 	            "data":           null,
 	            "defaultContent": ''
 	    	},
+	        { "data": "saldo" },
+	        { "data": "svlth_int" },
 	        { "data": "svlth_iex" },
 	        { "data": "svlth_irn" },
 	        { "data": "svlth_ign" },
@@ -52,7 +54,6 @@ function initSvlthSearch() {
 	        { "data": "svlth_ih3" },
 	        { "data": "svlth_ih4" },
 	        { "data": "svlth_ih5" },
-	        { "data": "svlth_int" },
 	        { "data": "svlth_isl" },
 	    	{ "data": "svlth_ibr" },
 	    	{ "data": "svlth_ivb" },
