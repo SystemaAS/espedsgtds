@@ -1,6 +1,8 @@
 package no.systema.tds.bokf.tlagring.controller;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +12,13 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
@@ -23,10 +30,15 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import no.systema.jservices.common.dao.SvlthDao;
 import no.systema.jservices.common.dto.SvlthDto;
 import no.systema.jservices.common.json.JsonDtoContainer;
 import no.systema.jservices.common.json.JsonReader;
+import no.systema.jservices.common.util.CommonResponseErrorHandler;
 import no.systema.jservices.common.util.DateTimeManager;
 import no.systema.jservices.common.util.StringUtils;
 import no.systema.jservices.common.values.CRUDEnum;
@@ -34,6 +46,7 @@ import no.systema.jservices.common.values.EventTypeEnum;
 import no.systema.main.mapper.url.request.UrlRequestParameterMapper;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
+import no.systema.main.util.EncodingTransformer;
 import no.systema.main.validator.LoginValidator;
 
 /**
@@ -51,8 +64,44 @@ public class AccountingController {
 	
 	@Autowired
 	RestTemplate restTemplate;
-	
 
+
+	/**
+	 * Explicit settings of Jackson ObjectMapper.
+	 * <li> Support Java 8 LocalDateTime.</li>
+	 * <li> Indent output </li>
+	 * <li> Exlude properties with null vales</li>
+	 * 
+	 * @return ObjectMapper
+	 */
+    @Bean
+    @Primary
+    public ObjectMapper objectMapper() {
+    	return Jackson2ObjectMapperBuilder.json()
+	            .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS) //ISODate
+	            .createXmlMapper(false)
+	            .featuresToEnable(SerializationFeature.INDENT_OUTPUT) //nicer output
+	            .serializationInclusion(Include.NON_NULL) //exclude null values
+	            .build();
+    }	
+	
+	
+	/**
+	 * Initialize  {@linkplain RestTemplate} with {@linkplain StringHttpMessageConverter(Charset.forName("UTF-8"))}
+	 * 
+	 * @return RestTemplate
+	 */
+    @Bean
+	public RestTemplate restTemplate(){
+    	RestTemplate restTemplate = new RestTemplate(Arrays.asList(
+    			new StringHttpMessageConverter(StandardCharsets.UTF_8),
+    			new MappingJackson2HttpMessageConverter(objectMapper()))
+    			);
+		restTemplate.setErrorHandler(new CommonResponseErrorHandler());
+
+		return restTemplate;  
+	}	
+	
 	@RequestMapping(value="accounting_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doList(HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_list");
@@ -83,6 +132,9 @@ public class AccountingController {
 		logger.info("accounting_inlagg.do, record="+ReflectionToStringBuilder.reflectionToString(record, ToStringStyle.MULTI_LINE_STYLE));
 		logger.info("action="+action);
 		
+		String vikt = request.getParameter("svlth_ibr");
+		logger.info("vikt="+vikt);
+		
 		ModelAndView successView =  new ModelAndView("accounting_inlagg");
 		SvlthDto returnDto = new SvlthDto();
 
@@ -99,6 +151,7 @@ public class AccountingController {
 				logger.info("Create...");
 
 				setDate(EventTypeEnum.INLAGG, record);
+				setGodsnummer(EventTypeEnum.INLAGG, record);
 				saveRecord(appUser, record, "A");
 
 				returnDto = fetchRecord(appUser, record);
@@ -133,6 +186,9 @@ public class AccountingController {
 		}
 
 	}
+
+
+
 
 	@RequestMapping(value="accounting_uttag_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doUttagList(@RequestParam(value = "svlth_irn", required = true) String svlth_irn,
@@ -210,6 +266,9 @@ public class AccountingController {
 			}
 
 			successView.addObject("svlth_irn", svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn);
+			successView.addObject("headRecord", headDto);
+
 			return successView;			
 			
 		} catch (Throwable e) {
@@ -217,6 +276,9 @@ public class AccountingController {
 			successView.addObject("action", action);
 			successView.addObject("error", e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn);
+			successView.addObject("headRecord", headDto);
+
 			return successView;
 
 		}
@@ -240,7 +302,8 @@ public class AccountingController {
 	}	
 	
 	
-	private SvlthDto getHeadDto(String user, String mrn) {
+	private SvlthDto getHeadDto(String user, String mrn)  {
+		EncodingTransformer transformer = new EncodingTransformer();
 		JsonReader<JsonDtoContainer<SvlthDto>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDto>>();
 		jsonReader.set(new JsonDtoContainer<SvlthDto>());
 		SvlthDto dto;
@@ -251,37 +314,52 @@ public class AccountingController {
 		urlRequestParams.append("&svlth_h=" + EventTypeEnum.INLAGG.getValue());
 		urlRequestParams.append("&svlth_irn=" + mrn);
 		logger.info("Full url: " + BASE_URL +urlRequestParams.toString());
+		
+		ResponseEntity<String> response = null;
+		try {
+			response = restTemplate().exchange(BASE_URL + transformer.transformToJSONTargetEncoding(urlRequestParams.toString(), "UTF8"), HttpMethod.GET, null, String.class);
+		}  catch (Exception e) {
+			logger.error("Transforming did not work on "+urlRequestParams.toString());
+			throw new RuntimeException("Transforming did not work, e", e);
+		}
+		String jsonPayloadResponse = response.getBody().toString();		
+		logger.info("jsonPayloadResponse="+jsonPayloadResponse);
 
-		ResponseEntity<String> response = restTemplate.exchange(BASE_URL + urlRequestParams.toString(), HttpMethod.GET, null, String.class);
-		String jsonPayload = response.getBody();		
-		logger.info("jsonPayload="+jsonPayload);
+		String jsonPayload = null;
+		try {
+			jsonPayload = transformer.transformToJSONTargetEncoding(jsonPayloadResponse, "UTF8");
+			logger.info("jsonPayload="+jsonPayload);		
+		} catch (Exception e) {
+			logger.error("Transforming did not work on "+urlRequestParams.toString());
+			throw new RuntimeException("Transforming did not work, e", e);
+		}
 		
 		JsonDtoContainer<SvlthDto> container = (JsonDtoContainer<SvlthDto>) jsonReader.get(jsonPayload);
 		if (container != null) {
 			if (StringUtils.hasValue(container.getErrMsg())) {
-				String errMsg = String.format("DML-error on inlagg, mrn: %s. Error message: %s", mrn, container.getErrMsg()) ;
+				String errMsg = String.format("READ-error on inlagg, mrn: %s. Error message: %s", mrn, container.getErrMsg()) ;
 				logger.error(errMsg);
 				throw new RuntimeException(container.getErrMsg());
 			}		
 			List<SvlthDto> list = container.getDtoList();
 			if (list.isEmpty() || list.size() != 1){
 				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag, mrn: %s. Error message: %s", mrn, container.getErrMsg()) ;
-				logger.error(errMsg);
 				throw new RuntimeException(errMsg);
 			} else {
 				dto = list.get(0);
 				return  dto;
-
 			}
+		} else {
+			String errMsg = String.format("Container is null. Could not found SvlthDto on mrn: %s , jsonPayload %s", mrn, jsonPayload) ;
+			throw new RuntimeException(errMsg);
 		}
-		
-		return null;
 		
 	}
 	
 
 	private void saveRecord(SystemaWebUser appUser, SvlthDao record, String mode) {
 		logger.info("saveRecord::record::"+ReflectionToStringBuilder.toString(record));
+		EncodingTransformer transformer = new EncodingTransformer();
 		String SVLTH_DML_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH_U.do";
 
 		MultiValueMap<String, String> recordParams = UrlRequestParameterMapper.getUriParameter(record);
@@ -290,21 +368,30 @@ public class AccountingController {
 		        .queryParam("mode", mode)
 		        .queryParam("lang", appUser.getUsrLang())
 		        .queryParams(recordParams);
-		URI uri = builder.buildAndExpand().toUri();
+		URI uri = builder.buildAndExpand().encode().toUri();
 		logger.info("Full uri="+uri);
 		
-		ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, null, String.class);
-		String body = response.getBody();		
-		logger.info("body="+body);
-
+		ResponseEntity<String> response = restTemplate().exchange(uri, HttpMethod.GET, null, String.class);
+		String jsonPayloadResponse = response.getBody();		
+		logger.info("jsonPayloadResponse="+jsonPayloadResponse);
+		
+		String jsonPayload = null;
+		try {
+			jsonPayload = transformer.transformToJSONTargetEncoding(jsonPayloadResponse, "UTF8");
+			logger.info("jsonPayload="+jsonPayload);		
+		} catch (Exception e) {
+			logger.error("Transforming did not work on "+jsonPayloadResponse);
+			throw new RuntimeException("Transforming did not work, e", e);
+		}		
+		
 		JsonReader<JsonDtoContainer<SvlthDao>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDao>>();
 		jsonReader.set(new JsonDtoContainer<SvlthDao>());
-		JsonDtoContainer<SvlthDao> container = (JsonDtoContainer<SvlthDao>) jsonReader.get(body);
+		JsonDtoContainer<SvlthDao> container = (JsonDtoContainer<SvlthDao>) jsonReader.get(jsonPayload);
 		if (container != null) {
 			if (StringUtils.hasValue(container.getErrMsg())) {
-				String errMsg = String.format("DML-error on inlagg, mrn: %s. Error message: %s", record.getSvlth_irn(), container.getErrMsg()) ;
-				logger.info(errMsg);
-				throw new RuntimeException(container.getErrMsg());
+				String errMsg = String.format("SAVE-error on inlagg, mrn: %s. Error message: %s", record.getSvlth_irn(), container.getErrMsg()) ;
+				logger.error(errMsg);
+				throw new IllegalArgumentException(container.getErrMsg());
 			}		
 		}
 		
@@ -323,5 +410,13 @@ public class AccountingController {
 		
 	}
 
+	private void setGodsnummer(EventTypeEnum eventType, SvlthDao record) {
+		if (eventType == EventTypeEnum.INLAGG) {
+			record.setSvlth_ign(record.getSvlth_igl() + record.getSvlth_ign());
+		}
+	}	
+	
+	
+	
 }
 

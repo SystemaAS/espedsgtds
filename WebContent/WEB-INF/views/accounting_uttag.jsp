@@ -11,11 +11,24 @@
 	"use strict";
 
 	var svlth_irn = "${svlth_irn}";
+	let hasError = "${error}";
 	
 	jq(document).ready(function() {
  		jq('[data-toggle="tooltip"]').tooltip(); //TODO?
 
+ 				
+ 			console.log("svlth_irn", svlth_irn);	
+ 				
+ 				
 			loadSvlthUttag();
+ 		
+ 			console.log("hasError", hasError);
+ 			
+ 			if (hasError == "") {
+ 				console.log("clearValues...");
+ 				clearValues();
+ 			}
+			
 		
 	});
 </script>
@@ -145,19 +158,19 @@
 		</div>
 
 	</form>
-			
+		
+	<c:if test="${not empty error}">
+		<div class="container-fluid p-1 left-right-bottom-border">
+			<div class="form-row no-gutters">
+	
+				<div class="alert alert-danger" role="alert">
+					<p class="mb-0">${error}</p>
+				</div>
+	
+			</div>
+		</div>
+	</c:if>
 
    	</div> <!-- container -->
 
 
-<c:if test="${not empty error}">
-	<div class="container-fluid p-1 left-right-bottom-border">
-		<div class="form-row no-gutters">
-
-			<div class="alert alert-danger" role="alert">
-				<p class="mb-0">${error}</p>
-			</div>
-
-		</div>
-	</div>
-</c:if>

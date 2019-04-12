@@ -92,38 +92,38 @@
 	
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
 						<label for="svlth_id2" class="col-form-label-sm mb-0 required">Ankomstdatum</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_id2" id="svlth_id2" value="${record.svlth_id2}"  size="17" maxlength="15">
+						<input type="text" required class="form-control form-control-sm" name="svlth_id2" id="svlth_id2" value="${record.svlth_id2}"  size="17" maxlength="15" onKeyPress="return numberKey(event)">
 					</div>		
 	
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih1" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;1</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="37" maxlength="35">
+						<label for="svlth_ih1" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;1</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="37" maxlength="35">
 					</div>	
 
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih2" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;2</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ih2" id="svlth_ih2" value="${record.svlth_ih2}"  size="37" maxlength="35">
+						<label for="svlth_ih2" class="col-form-label-sm mb-0 ">Tidigare&nbsp;handling&nbsp;2</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ih2" id="svlth_ih2" value="${record.svlth_ih2}"  size="37" maxlength="35">
 					</div>	
 					
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih3" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;3</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ih3" id="svlth_ih3" value="${record.svlth_ih3}"  size="37" maxlength="35">
+						<label for="svlth_ih3" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;3</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ih3" id="svlth_ih3" value="${record.svlth_ih3}"  size="37" maxlength="35">
 					</div>	
 					
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih4" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;4</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ih4" id="svlth_ih4" value="${record.svlth_ih4}"  size="37" maxlength="35">
+						<label for="svlth_ih4" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;4</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ih4" id="svlth_ih4" value="${record.svlth_ih4}"  size="37" maxlength="35">
 					</div>	
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ih5" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling&nbsp;5</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ih5" id="svlth_ih5" value="${record.svlth_ih5}"  size="37" maxlength="35">
+						<label for="svlth_ih5" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;5</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ih5" id="svlth_ih5" value="${record.svlth_ih5}"  size="37" maxlength="35">
 					</div>	
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
 						<label for="svlth_int" class="col-form-label-sm mb-0 required">Antal</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_int" id="svlth_int" value="${record.svlth_int}"  size="7" maxlength="5">
+						<input type="text" required class="form-control form-control-sm" name="svlth_int" id="svlth_int" value="${record.svlth_int}"  size="7" maxlength="5" onKeyPress="return numberKey(event)">
 					</div>	
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
@@ -133,7 +133,7 @@
 
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
 						<label for="svlth_ibr" class="col-form-label-sm mb-0 required">Bruttovikt</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14">
+						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
 					</div>	
 
 					<div class="form-group pr-2 pl-1 col-4 mb-0">
@@ -146,6 +146,12 @@
 						<input type="text" class="form-control form-control-sm" name="svlth_itx" id="svlth_itx" value="${record.svlth_itx}"  size="70" maxlength="70">
 					</div>	
 
+<!--  
+					<div class="form-group pr-2 pl-1 col-1 mb-0">
+						<label for="saldo" class="col-form-label-sm mb-0">Saldo</label>
+						<input type="text" disabled class="form-control form-control-sm" name="saldo" id="saldo" value="${record.saldo}" size="10" maxlength="20">
+					</div>	
+-->
 	
 					<div class="form-group col-11 align-self-end">
 						<div class="float-md-right">

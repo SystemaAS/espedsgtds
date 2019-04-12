@@ -17,14 +17,29 @@ function initSvlthSearch() {
 
 	//Init datatables, done once, then reload with ajax
 	svlthTable = jq('#svlthTable').DataTable({
-		"dom" : '<"top"f>t<"bottom"lip><"clear">',
-		"ajax": {
+		dom : '<"top"f>t<"bottom"lip>B<"clear">',
+		ajax: {
 	        "url": svlthUrl + doNotLoad,
 	        "dataSrc": "dtoList"
 	    },	
+	    //https://datatables.net/reference/button/
+	    //https://datatables.net/extensions/buttons/
+	    //https://datatables.net/extensions/buttons/examples/html5/pdfPage.html
+	    buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            },
+            {
+                extend: 'print',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            }
+        ],
 		mark: true,
 	    responsive: true,
-		"columnDefs" : [ 
+		columnDefs : [ 
 			{
 				"targets" : 1,
 				className: 'dt-body-center',
@@ -35,7 +50,7 @@ function initSvlthSearch() {
 			    }			
 			}
 		],	    
-	    "columns": [
+	    columns: [
 	        { "data": "svlth_igl" },
 	    	{
 	            "orderable":      false,
@@ -59,9 +74,9 @@ function initSvlthSearch() {
 	    	{ "data": "svlth_ivb" },
 	        { "data": "svlth_itx" }
 	    ],
-		"lengthMenu" : [ 25, 75, 100 ],
-		"language" : {
-			"url" : getLanguage(lang)
+		lengthMenu : [ 25, 75, 100 ],
+		language : {
+			url : getLanguage(lang)
 		}        
 	
 	});
@@ -88,7 +103,6 @@ function loadSvlth() {
 
 function loadSvlthUttag() {
 	console.log('loadSvlthUttag');
-	clearValues();
 
 	let runningUrl;
 	console.log('svlth_irn',svlth_irn);
@@ -129,31 +143,18 @@ function loadSvlthUttag() {
 		}
 
 	});	
-	
+
+//	clearValues();
+
+}
 	
 function clearValues() {
-	
-	
     jq("#svlth_uex").val("");
     jq("#svlth_uti").val("");
     jq("#svlth_unt").val("");
     jq("#svlth_utx").val("");
     
  //   jq("#action").val(2);  //READ 	
-	
-	
-	
-	
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
 
@@ -161,7 +162,7 @@ function clearValues() {
 function setUttagHeader() {
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_irn : svlth_irn }, 
+	  	  data: { svlth_h : "I" , svlth_irn : svlth_irn }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -172,9 +173,7 @@ function setUttagHeader() {
 			  jq("#godsnr").text(record[0].svlth_ign);
 			  jq("#arrival").text(record[0].svlth_id2);
 			  jq("#archive").text(record[0].svlth_id1);
-
-			  jq("#saldo").text(23);
-
+			  jq("#saldo").text(record[0].saldo);
 			  
 		  }, 
 		  error: function (jqXHR, exception) {
