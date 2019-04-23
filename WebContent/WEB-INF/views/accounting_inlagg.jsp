@@ -7,26 +7,6 @@
 
 <link href="resources/accounting.css" rel="stylesheet" type="text/css"/>
 
-<script type="text/javascript">
-	"use strict";
-
-// 	var kosttUrl = "/syjserviceskostf/syjsKOSTT?user=${user.user}";
-// 	var levefUrlGet = "/syjserviceskostf/syjsLEVEF_GET?user=${user.user}"
-	
-	jq(document).ready(function() {
- 		jq('[data-toggle="tooltip"]').tooltip(); //TODO?
-
-// 		//default when NEW
-//  		jq('#kasg').append('<option selected="true">${user.signatur}</option>');
-// 		jq('#kasg').prop('selectedIndex', '${user.signatur}');	
- 	
-//  		getAttKode('#kasg');
-// 		getBilagsSerie('#kttyp');
-		
-		
-	});
-</script>
-
 <div class="container-fluid">
 
 	<div class="padded-row-small"></div>
@@ -90,11 +70,39 @@
 						<input type="text" required class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="17" maxlength="15">
 					</div>	
 	
-					<div class="form-group pr-2 pl-1 col-2 mb-0">
+					<div class="form-group pr-2 pl-1 col-1 mb-0">
 						<label for="svlth_id2" class="col-form-label-sm mb-0 required">Ankomstdatum</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_id2" id="svlth_id2" value="${record.svlth_id2}"  size="17" maxlength="15" onKeyPress="return numberKey(event)">
 					</div>		
 	
+
+					<div class="form-group pr-2 pl-1 mb-0">
+						<label for="svlth_int" class="col-form-label-sm mb-0 required">Antal</label>
+						<input type="text" required class="form-control form-control-sm" name="svlth_int" id="svlth_int" value="${record.svlth_int}"  size="7" maxlength="5" onKeyPress="return numberKey(event)">
+					</div>	
+
+					<div class="form-group pr-2 pl-1 mb-0">
+						<label for="svlth_isl" class="col-form-label-sm mb-0 required">Kollislag</label>
+						<div class="input-group">
+		                    <input type="text" required class="form-control form-control-sm" name="svlth_isl" id="svlth_isl" value="${record.svlth_isl}" size="4" maxlength="4">&nbsp;
+		                    <span class="input-group-prepend">
+		       					<a tabindex="-1" id="kollislag_Link">
+									<img src="resources/images/find.png" width="14px" height="14px">
+								</a>
+		                    </span>
+		                </div>
+		            </div>
+
+					<div class="form-group pr-2 pl-1 col-1 mb-0">
+						<label for="svlth_ibr" class="col-form-label-sm mb-0 required">Bruttovikt</label>
+						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
+					</div>	
+
+					<div class="form-group pr-2 pl-1 col-4 mb-0">
+						<label for="svlth_ivb" class="col-form-label-sm mb-0 required">Varubeskrivning</label>
+						<input type="text" required class="form-control form-control-sm" name="svlth_ivb" id="svlth_ivb" value="${record.svlth_ivb}"  size="70" maxlength="70">
+					</div>	
+
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
 						<label for="svlth_ih1" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;1</label>
 						<input type="text" class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="37" maxlength="35">
@@ -121,38 +129,11 @@
 						<input type="text" class="form-control form-control-sm" name="svlth_ih5" id="svlth_ih5" value="${record.svlth_ih5}"  size="37" maxlength="35">
 					</div>	
 
-					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_int" class="col-form-label-sm mb-0 required">Antal</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_int" id="svlth_int" value="${record.svlth_int}"  size="7" maxlength="5" onKeyPress="return numberKey(event)">
-					</div>	
-
-					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_isl" class="col-form-label-sm mb-0 required">Kollislag</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_isl" id="svlth_isl" value="${record.svlth_isl}"  size="6" maxlength="4">
-					</div>	
-
-					<div class="form-group pr-2 pl-1 col-2 mb-0">
-						<label for="svlth_ibr" class="col-form-label-sm mb-0 required">Bruttovikt</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
-					</div>	
-
-					<div class="form-group pr-2 pl-1 col-4 mb-0">
-						<label for="svlth_ivb" class="col-form-label-sm mb-0 required">Varubeskrivning</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ivb" id="svlth_ivb" value="${record.svlth_ivb}"  size="70" maxlength="70">
-					</div>	
-
 					<div class="form-group pr-2 pl-1 col-4 mb-0">
 						<label for="svlth_itx" class="col-form-label-sm mb-0">Fritext</label>
 						<input type="text" class="form-control form-control-sm" name="svlth_itx" id="svlth_itx" value="${record.svlth_itx}"  size="70" maxlength="70">
 					</div>	
 
-<!--  
-					<div class="form-group pr-2 pl-1 col-1 mb-0">
-						<label for="saldo" class="col-form-label-sm mb-0">Saldo</label>
-						<input type="text" disabled class="form-control form-control-sm" name="saldo" id="saldo" value="${record.saldo}" size="10" maxlength="20">
-					</div>	
--->
-	
 					<div class="form-group col-11 align-self-end">
 						<div class="float-md-right">
 							<button <c:if test="${action == 2}"> disabled</c:if> class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>

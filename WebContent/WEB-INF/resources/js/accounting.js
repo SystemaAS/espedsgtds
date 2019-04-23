@@ -3,6 +3,7 @@ var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Vennligst vent...";
 
 var svlthTable;
 var uttagTable;
+var svtx03fTable;
 
 var inlaggUrl_read = "accounting_inlagg.do?action=2";
 var doNotLoad = "&DO_NOT_LOAD";  //disabling datatables autoload of content
@@ -147,6 +148,38 @@ function loadSvlthUttag() {
 //	clearValues();
 
 }
+
+function loadSvtx03f() {
+	let runningUrl;
+	runningUrl = getRunningSvtx03fUrl();
+	console.log("svtx03f runningUrl=" + runningUrl);
+
+	setBlockUI();
+	
+	svtx03fTable.ajax.url(runningUrl);
+	svtx03fTable.ajax.reload();
+	//	unBlockUI(); is done in draw.dt
+
+}
+
+function getRunningSvtx03fUrl() {
+	let runningUrl = kollislagkoderUrl;
+
+	var selectedId = jq('#selectId').val();
+	var selectedBeskrivning = jq('#selectBeskrivning').val();
+
+	if (selectedId != "") {
+		runningUrl = runningUrl + "&svtx03_03=" + selectedId;
+	} 
+	if (selectedBeskrivning != "") {
+		runningUrl = runningUrl + "&svtx03_04=" + selectedBeskrivning;
+	} 		
+	
+	console.log("svtx03f runningUrl", runningUrl);
+	
+	return runningUrl;
+}
+
 	
 function clearValues() {
     jq("#svlth_uex").val("");
@@ -223,6 +256,101 @@ function getRunningSvlthUrl() {
 }
 
 
+function initSvtx03fSearch(caller) {
+	console.log("initSvtx03fSearch, caller", caller);
+
+	svtx03fTable = jq('#svtx03fTable').DataTable({
+		"dom" : '<"top"f>t<"bottom"lip><"clear">',
+		"ajax": {
+	        "url": kollislagkoderUrl + doNotLoad,
+	        "dataSrc": "dtoList"
+	    },	
+		mark: true,			
+		responsive : true,
+		select : true,
+		destroy : true,
+		"scrollY" : "300px",
+		"scrollCollapse" : false,
+		"order" : [ [ 1, "desc" ] ],
+		"columnDefs" : [ 
+			{
+				"targets" : 1,
+				className: 'dt-body-center',
+			    "render": function ( data, type, row, meta ) {
+	           		return '<a>' +
+	       			'<img class="img-fluid float-center" title="Välg" src="resources/images/bebullet.gif">' +
+	       			'</a>'    	
+			    }
+			}
+		],			
+		"columns" : [ 
+			{"data" : "svtx03_03"}, 
+	    	{
+	        	"class":          "choose dt-body-center",
+	        	"orderable":      false,
+	            "data":           null,
+	            "defaultContent": ''
+	    	},		
+			{"data" : "svtx03_04"}
+		 ],
+		"lengthMenu" : [ 10, 25, 75],
+		"language" : {
+			"url" : getLanguage(lang)
+		},
+		
+	    initComplete: function () {
+	    	//levefInitialized = true;
+	    }
+
+	});
+
+	svtx03fTable.on( 'click', 'td.choose img', function () {	
+	    let row = svtx03fTable.row( jq(this).parents('tr') ).data();	
+
+		opener.jq(caller).val(row.svtx03_03);
+		opener.jq(caller).change();
+		opener.jq(caller).focus();
+		
+		window.close();
+		
+	});	
+	
+	
+	svtx03fTable.on( 'draw.dt', function () {
+	    unBlockUI();
+	});		
+	
+}//end initSvtx03fSearch
+
+
+
+
+//deprecated, remove when appropriate
+function getKollislagKode(caller){
+	console.log('getKollislagKode, caller',caller);
+	jq.ajax({
+			  type: 'GET',
+			  url: kollislagUrl,
+			  dataType: 'json',
+			  cache: true,
+			  contentType: 'application/json',
+			  success: function(data) {
+				_.each(data.dtoList, function( d) {
+					jq(caller).append(jq('<option></option>').attr('value', d.svtx03_03).text(d.svtx03_04).attr('title', d.svtx03_03));	
+				});
+				
+			  }, 
+			  error: function (jqXHR, exception) {
+				    alert('Error loading kollislag...look in console log.');
+				    console.log("jqXHR",jqXHR);
+				    console.log("exception",exception);
+			  }	
+	});	
+}
+
+
+
+
 jq(function() {
 	
 	jq("#formRecord").submit(function() {
@@ -240,6 +368,12 @@ jq(function() {
 	jq("#selectRegdate").datepicker({ 
 		dateFormat: 'yymmdd'
 	});	
+	
+	jq('a#kollislag_Link').click(function() {
+		jq('#kollislag_Link').attr('target','_blank');
+    	window.open('childwindow_codes.do?caller=svlth_isl', "codeWin", "top=300px,left=500px,height=500px,width=800px,scrollbars=no,status=no,location=no");
+	}); 	
+	
 	
 	/*the asterix*/
 	jq("input[required]").parent("label").addClass("required");
