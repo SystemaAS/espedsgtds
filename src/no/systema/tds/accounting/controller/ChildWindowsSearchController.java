@@ -1,4 +1,4 @@
-package no.systema.tds.bokf.tlagring.controller;
+package no.systema.tds.accounting.controller;
 
 import java.util.HashMap;
 import java.util.Map;

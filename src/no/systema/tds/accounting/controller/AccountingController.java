@@ -1,4 +1,4 @@
-package no.systema.tds.bokf.tlagring.controller;
+package no.systema.tds.accounting.controller;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
