@@ -10,17 +10,9 @@
 <script type="text/javascript">
 	"use strict";
 	var signatur = "${user.signatur}";
-	var attkode = "&attkode="+signatur;
 	
 	jq(document).ready(function() {
-
 		initSvlthSearch();
-		
-// 		jq('#selectAttkode').append('<option selected="true">${user.signatur}</option>');
-// 		jq('#selectAttkode').prop('selectedIndex', '${user.signatur}');			
-		
-// 		getAttKode('#selectAttkode');
-		
 	});
 
 </script>
@@ -47,21 +39,29 @@
 	<div class="padded-row-small left-right-border"></div>	
 
 	<div class="form-row left-right-border">
-		<div class="form-group pr-2 col-1">
+
+		<div class="form-group pr-2">
+			<label for="selectGodsnr" class="col-form-label-sm mb-0">Godsnummer</label>
+			<input type="text" class="form-control form-control-sm" id="selectGodsnr"  size="17"  maxlength="15">
+		</div>
+
+		<div class="form-group pr-2">
 			<label for="selectMrn" class="col-form-label-sm mb-0">MRN</label>
 			<input type="text" class="form-control form-control-sm" id="selectMrn" size="20" maxlength="18"/>
 		</div>
 
-		<div class="form-group pr-2 col-1">
-			<label for="selectArrival" class="col-form-label-sm mb-0">Ankomstdatum</label>
-			<input type="text" class="form-control form-control-sm" id="selectArrival"  size="13"  maxlength="13">
+		<div class="form-group pr-2">
+			<label for="selectArrival" class="col-form-label-sm mb-0">Från ankomstdatum</label>
+			<input type="text" class="form-control form-control-sm" id="selectArrival"  size="10"  maxlength="8">
 		</div>
 
+
+<!--  
 		<div class="form-group pr-2 col-1">
 			<label for="selectRegdate" class="col-form-label-sm mb-0">Arkiveringsdatum</label>
 			<input type="text" class="form-control form-control-sm" id="selectRegdate"  size="13"  maxlength="13">
 		</div>
-
+-->
 		<div class="form-group col-2 align-self-end">
 			<div class="float-md-right">
 				<button class="btn inputFormSubmit btn-sm" onclick="loadSvlth()" id="submitBtn"  autofocus>Søk</button>
@@ -77,24 +77,25 @@
 		<table class="display compact cell-border responsive nowrap" id="svlthTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Godslokalkod</th>
-					<th>Inlägg</th>
+					<th>Visa</th>
+					<th>Godsnummer</th>
+					<th>Händelse</th>
 					<th>Saldo</th>
 					<th>Antal</th>
 					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
-					<th>Godsnummer</th>
-					<th>Arkiveringsdatum</th>
 					<th>Ankomstdatum</th>
+					<th>Godslokalkod</th>
+					<th>Kollislag</th>
+					<th>Bruttovikt</th>
+					<th>Varubeskrivning</th>
 					<th>Tidigare&nbsp;handling-1</th>
 					<th>Tidigare&nbsp;handling-2</th>
 					<th>Tidigare&nbsp;handling-3</th>
 					<th>Tidigare&nbsp;handling-4</th>
 					<th>Tidigare&nbsp;handling-5</th>
-					<th>Kollislag</th>
-					<th>Bruttovikt</th>
-					<th>Varubeskrivning</th>
 					<th>Intern fritext</th>
+					<th>Arkiveringsdatum</th>
 				</tr>
 			</thead>
 		</table>

@@ -30,52 +30,65 @@ function initSvlthSearch() {
             {
                 extend: 'pdfHtml5',
                 orientation: 'landscape',
-                pageSize: 'LEGAL'
+                pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: [ 1,3,4,5,6,7,8 ]
+                }
             },
             {
                 extend: 'print',
                 orientation: 'landscape',
-                pageSize: 'LEGAL'
+                pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: [ 1,3,4,5,6,7,8 ]
+                }
             }
         ],
 		mark: true,
 	    responsive: true,
 		columnDefs : [ 
 			{
-				"targets" : 1,
+				"targets" : 0,
 				className: 'dt-body-center',
 			    "render": function ( data, type, row, meta ) {
-			    	var url= inlaggUrl_read+'&svlth_irn='+row.svlth_irn; 
-			    	var href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/update.gif" onClick="setBlockUI();"></a>';
+			    	let href;
+			    	//console.log("row.svlth_h",row.svlth_h);
+			    	if (row.svlth_h == 'I') {
+			    		//console.log("YES");
+				    	let url= inlaggUrl_read+'&svlth_irn='+row.svlth_irn; 
+				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/update.gif" onClick="setBlockUI();"></a>';
+			    	} 
 			    	return href;
 			    }			
 			}
 		],	    
 	    columns: [
-	        { "data": "svlth_igl" },
-	    	{
+	        {
 	            "orderable":      false,
 	            "data":           null,
 	            "defaultContent": ''
 	    	},
-	        { "data": "saldo" },
-	        { "data": "svlth_int" },
-	        { "data": "svlth_iex" },
-	        { "data": "svlth_irn" },
-	        { "data": "svlth_ign" },
-	        { "data": "svlth_id1" },
-	        { "data": "svlth_id2" },
-	        { "data": "svlth_ih1" },
-	    	{ "data": "svlth_ih2" },	        
-	        { "data": "svlth_ih3" },
-	        { "data": "svlth_ih4" },
-	        { "data": "svlth_ih5" },
-	        { "data": "svlth_isl" },
-	    	{ "data": "svlth_ibr" },
-	    	{ "data": "svlth_ivb" },
-	        { "data": "svlth_itx" }
+	        { data: "svlth_ign" },
+	    	{ data: "svlth_h" },
+	    	{ data: "saldo" },
+	        { data: "svlth_int" },
+	        { data: "svlth_iex" },
+	        { data: "svlth_irn" },
+	        { data: "svlth_id2" },
+	    	{ data: "svlth_igl" },
+	        { data: "svlth_isl" },
+	    	{ data: "svlth_ibr" },
+	    	{ data: "svlth_ivb" },
+	        { data: "svlth_ih1" },
+	    	{ data: "svlth_ih2" },	        
+	        { data: "svlth_ih3" },
+	        { data: "svlth_ih4" },
+	        { data: "svlth_ih5" },
+	    	{ data: "svlth_itx" },
+	        { data: "svlth_id1" }
 	    ],
-		lengthMenu : [ 25, 75, 100 ],
+	    order: [[5, 'asc']],
+	    lengthMenu : [ 25, 75, 100 ],
 		language : {
 			url : getLanguage(lang)
 		}        
@@ -92,8 +105,12 @@ function initSvlthSearch() {
 function loadSvlth() {
 	let runningUrl;
 	runningUrl = getRunningSvlthUrl();
-	console.log("runningUrl=" + runningUrl);
-
+	console.log("runningUrl" + runningUrl);
+	if (runningUrl == null) {
+		alert('Du måste fylla i något fält för sökning');
+		return null;
+	}
+	
 	setBlockUI();
 	
 	svlthTable.ajax.url(runningUrl);
@@ -108,8 +125,8 @@ function loadSvlthUttag() {
 	let runningUrl;
 	console.log('svlth_irn',svlth_irn);
 	runningUrl= getRunningSvlthUttagUrl();
-	console.log("runningUrl=" + runningUrl);
-		
+	console.log("runningUrl" + runningUrl);
+	
 	console.log('uttagTable', uttagTable);
 	if (uttagTable != undefined) {
 		console.log('uttagTable already set.');
@@ -218,9 +235,6 @@ function setUttagHeader() {
 	
 }
 
-
-
-
 function getRunningSvlthUttagUrl() {
 	let runningUrl = svlthUrl;
 	runningUrl = runningUrl + "&svlth_irn=" + svlth_irn;
@@ -234,21 +248,32 @@ function getRunningSvlthUttagUrl() {
 function getRunningSvlthUrl() {
 		let runningUrl = svlthUrl;
 	
+		let selectedGodsnr = jq('#selectGodsnr').val();
 		let selectedMrn = jq('#selectMrn').val();
 		let selectedArrival = jq('#selectArrival').val();
-		let selectedRegdate = jq('#selectRegdate').val();
+//		let selectedRegdate = jq('#selectRegdate').val();
+		
+		if (selectedGodsnr != "") {
+			runningUrl = runningUrl + "&svlth_ign=" + selectedGodsnr;
+		} 
 		
 		if (selectedMrn != "") {
 			runningUrl = runningUrl + "&svlth_irn=" + selectedMrn;
 		} 
-		runningUrl = runningUrl + "&svlth_h=I";
+		
+	//	runningUrl = runningUrl + "&svlth_h=I";
 
 		if (selectedArrival != "") {
 			runningUrl = runningUrl + "&svlth_id2=" + selectedArrival;
 		} 
-		if (selectedRegdate != "") {
-			runningUrl = runningUrl + "&svlth_id1=" + selectedRegdate;
-		} 
+		
+//		if (selectedRegdate != "") {
+//			runningUrl = runningUrl + "&svlth_id1=" + selectedRegdate;
+//		} 
+	
+		if (selectedGodsnr == "" && selectedMrn == "" && selectedArrival == "") {
+			return null;
+		}
 		
 		
 		return runningUrl;	
