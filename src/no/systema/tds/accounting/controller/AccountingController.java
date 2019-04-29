@@ -132,9 +132,6 @@ public class AccountingController {
 		logger.info("accounting_inlagg.do, record="+ReflectionToStringBuilder.reflectionToString(record, ToStringStyle.MULTI_LINE_STYLE));
 		logger.info("action="+action);
 		
-		String vikt = request.getParameter("svlth_ibr");
-		logger.info("vikt="+vikt);
-		
 		ModelAndView successView =  new ModelAndView("accounting_inlagg");
 		SvlthDto returnDto = new SvlthDto();
 
@@ -202,7 +199,7 @@ public class AccountingController {
 		} else {
 
 			try {
-				headDto = fetchRecord(appUser, svlth_irn);
+				headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), null, null);
 				successView.addObject("headRecord", headDto);
 				successView.addObject("action", CRUDEnum.CREATE.getValue());
 				appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
@@ -266,7 +263,7 @@ public class AccountingController {
 			}
 
 			successView.addObject("svlth_irn", svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), null, null);
 			successView.addObject("headRecord", headDto);
 
 			return successView;			
@@ -276,7 +273,7 @@ public class AccountingController {
 			successView.addObject("action", action);
 			successView.addObject("error", e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), null, null);
 			successView.addObject("headRecord", headDto);
 
 			return successView;
@@ -285,24 +282,111 @@ public class AccountingController {
 
 	}
 	
+
+	@RequestMapping(value="accounting_rattelse.do", method={RequestMethod.GET, RequestMethod.POST} )
+	public ModelAndView doRattelse( @ModelAttribute ("record") SvlthDao record, 
+									@RequestParam(value = "action", required = true) Integer action,
+									@RequestParam(value = "svlth_irn", required = true) String svlth_irn,
+									@RequestParam(value = "svlth_h", required = true) String svlth_h,
+									@RequestParam(value = "svlth_id1", required = true) String svlth_id1,
+									@RequestParam(value = "svlth_ud1", required = false) Integer svlth_ud1,
+									@RequestParam(value = "svlth_um1", required = false) Integer svlth_um1,
+									HttpSession session, HttpServletRequest request){
+
+		SystemaWebUser appUser = loginValidator.getValidUser(session);		
+		if (appUser == null) {
+			return loginView;
+		}		
+		
+		logger.info("accounting_rattelse.do, record="+ReflectionToStringBuilder.reflectionToString(record));
+		logger.info("action="+action);
+
+		ModelAndView successView =  new ModelAndView("accounting_rattelse");
+		SvlthDto returnDto = new SvlthDto();
+		
+		
+		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_rty() == null) {
+			logger.info("Init...");
+			successView.addObject("svlth_h", svlth_h);
+			successView.addObject("svlth_irn", svlth_irn);
+			successView.addObject("svlth_id1", svlth_id1);
+			successView.addObject("svlth_ud1", svlth_ud1);
+			
+			successView.addObject("action", CRUDEnum.CREATE.getValue());
+			
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+			successView.addObject("headRecord", headDto);
+			
+			return successView;
+		} 		
+		
+		try {
+
+			if (action.equals(CRUDEnum.CREATE.getValue())) {
+				logger.info("Create...");
+
+				saveRecord(appUser, record, "A");
+
+				successView.addObject("action", CRUDEnum.READ.getValue());
+
+			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
+				throw new IllegalAccessError("Updates not allowed!");
+
+			} else if (action.equals(CRUDEnum.READ.getValue())) {
+				logger.info("Read...");
+				returnDto = fetchRecord(appUser, record);
+				successView.addObject("svlth_irn", svlth_irn);
+				successView.addObject("record", returnDto);
+
+				successView.addObject("action", CRUDEnum.READ.getValue());
+
+			} else if (action.equals(CRUDEnum.DELETE.getValue())) {
+				throw new IllegalAccessError("Delete not allowed!");
+
+			}
+
+			successView.addObject("svlth_irn", svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+			successView.addObject("headRecord", headDto);
+
+			return successView;			
+			
+		} catch (Throwable e) {
+			logger.error("ERROR:", e);
+			successView.addObject("action", action);
+			successView.addObject("error", e.getMessage());
+			successView.addObject("svlth_irn", svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+			successView.addObject("headRecord", headDto);
+
+			return successView;
+
+		}
+
+	}
+	
+	
+	
+	
+	
+	
 	private SvlthDto fetchRecord(SystemaWebUser appUser, SvlthDao record) {
 		logger.info("::fetchRecord::");
-		SvlthDto dao = getHeadDto(appUser.getUser(), record.getSvlth_irn());
+		SvlthDto dao = getHeadDto(appUser.getUser(), record.getSvlth_irn(), record.getSvlth_h(), record.getSvlth_ud1(), record.getSvlth_um1());
 		
 		return dao;
 		
 	}	
 
-	private SvlthDto fetchRecord(SystemaWebUser appUser, String Svlth_irn) {
+	private SvlthDto fetchRecord(SystemaWebUser appUser, String svlth_irn, String svlth_h, Integer svlth_ud1, Integer svlth_um1) {
 		logger.info("::fetchRecord::");
-		SvlthDto dto = getHeadDto(appUser.getUser(), Svlth_irn);
+		SvlthDto dto = getHeadDto(appUser.getUser(), svlth_irn, svlth_h, svlth_ud1, svlth_um1);
 		
 		return dto;
 		
 	}	
 	
-	
-	private SvlthDto getHeadDto(String user, String mrn)  {
+	private SvlthDto getHeadDto(String user, String mrn, String svlth_h, Integer svlth_ud1, Integer svlth_um1)  {
 		EncodingTransformer transformer = new EncodingTransformer();
 		JsonReader<JsonDtoContainer<SvlthDto>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDto>>();
 		jsonReader.set(new JsonDtoContainer<SvlthDto>());
@@ -311,8 +395,13 @@ public class AccountingController {
 		String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH.do";	
 		StringBuilder urlRequestParams = new StringBuilder();
 		urlRequestParams.append("?user=" + user);
-		urlRequestParams.append("&svlth_h=" + EventTypeEnum.INLAGG.getValue());
+		urlRequestParams.append("&svlth_h=" + svlth_h);
 		urlRequestParams.append("&svlth_irn=" + mrn);
+		if (svlth_h.equals(EventTypeEnum.UTTAG.getValue())) {
+			urlRequestParams.append("&svlth_ud1=" + svlth_ud1);
+			urlRequestParams.append("&svlth_um1=" + svlth_um1);
+		}
+		
 		logger.info("Full url: " + BASE_URL +urlRequestParams.toString());
 		
 		ResponseEntity<String> response = null;
@@ -343,8 +432,10 @@ public class AccountingController {
 			}		
 			List<SvlthDto> list = container.getDtoList();
 			if (list.isEmpty() || list.size() != 1){
-				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag, mrn: %s. Error message: %s", mrn, container.getErrMsg()) ;
-				throw new RuntimeException(errMsg);
+				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag") ;
+				String inParams = String.format("mrn: %s ,  svlth_h: %s , svlth_ud1: %s , svlth_um1: %s", mrn, svlth_h, svlth_ud1, svlth_um1 ) ;
+				logger.error(errMsg + "list.size="+list.size());
+				throw new RuntimeException(errMsg + inParams);
 			} else {
 				dto = list.get(0);
 				return  dto;

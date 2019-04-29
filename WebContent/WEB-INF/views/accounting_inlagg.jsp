@@ -77,7 +77,7 @@
 	
 
 					<div class="form-group pr-2 pl-1 mb-0">
-						<label for="svlth_int" class="col-form-label-sm mb-0 required">Antal</label>
+						<label for="svlth_int" class="col-form-label-sm mb-0 required">Antal(räknat)</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_int" id="svlth_int" value="${record.svlth_int}"  size="7" maxlength="5" onKeyPress="return numberKey(event)">
 					</div>	
 

@@ -9,26 +9,32 @@
 
 <script type="text/javascript">
 	"use strict";
-
-	var svlth_irn = "${svlth_irn}";
-	let hasError = "${error}";
+	
+	var svlth_h = "${headRecord.svlth_h}";
+	var svlth_irn = "${headRecord.svlth_irn}";
+	var svlth_id1 = "${headRecord.svlth_id1}";
+	var svlth_ud1 = "${headRecord.svlth_ud1}";
+	var svlth_um1 = "${headRecord.svlth_um1}";
 	
 	jq(document).ready(function() {
- 		jq('[data-toggle="tooltip"]').tooltip(); //TODO?
-
- 				
- 			console.log("svlth_irn", svlth_irn);	
- 				
- 				
-			loadSvlthUttag();
- 		
- 			console.log("hasError", hasError);
- 			
- 			if (hasError == "") {
- 				console.log("clearValues...");
- 				clearValues();
- 			}
+			if (svlth_h.length == 0) {
+				alert("svlth_h is 0");
+			}
+			if (svlth_irn.length == 0) {
+				alert("svlth_irn is 0");
+			}
+			if (svlth_id1.length == 0) {
+				alert("svlth_id1 is 0");
+			}
+			if (svlth_ud1.length == 0) {
+				alert("svlth_ud1 is 0");
+			}
+			if (svlth_um1.length == 0) {
+				alert("svlth_um1 is 0");
+			}
 			
+			
+			loadEvent();
 		
 	});
 </script>
@@ -44,14 +50,14 @@
 		    Bokföring
 		  </span>
 	    </a>
-		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_irn=${svlth_irn}">
+		<a class="nav-item nav-link nav-new no-gutters" onClick="setBlockUI();" href="accounting_inlagg.do?action=1">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Inlägg[${svlth_irn}]
+		    Skapa&nbsp;nytt&nbsp;inlägg
 		  </span>	
 		</a>
 		<a class="nav-item nav-link nav-new active disabled">
 	      <span class="navbar-text no-gutters pb-0 pt-0">
-		    Uttag
+		    Rättelse
 		  </span>		
 		</a>
 	  </div>
@@ -61,13 +67,17 @@
 	<div class="padded-row-small left-right-border"></div>
 		<div class="container-fluid p-1 left-right-border">
 	
-			<div class="form-row formFrameHeader">
+			<div class="form-row left-right-bottom-border formFrameHeader">
 				<div class="col-sm-12">
-					<span class="rounded-top">Inlägg</span>
+					<span class="rounded-top">Registrerad händelse</span>
 				</div>
 			</div>	
 		
-			<div class="form-row no-gutters left-right-bottom-border">
+			<div class="form-row no-gutters left-right-border">
+				<div class="form-group pr-2 col-2">
+					<label for="event" class="col-form-label-sm mb-0 pb-0">Händelse</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="event"/>
+				</div>
 				<div class="form-group pr-2 col-2">
 					<label for="mrn" class="col-form-label-sm mb-0 pb-0">MRN</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="mrn"/>
@@ -77,37 +87,27 @@
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="godsnr"/>
 				</div>	
 				<div class="form-group pr-2 col-2">
-					<label for="arrival" class="col-form-label-sm mb-0 pb-0">Ankomstdatum</label>
-					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="arrival"/>
-				</div>
-				<div class="form-group pr-2 col-2">
-					<label for="archive" class="col-form-label-sm mb-0 pb-0">Arkiveringsdatum</label>
-					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="archive"/>
-				</div>
-				<div class="form-group pr-2 col-1">
-					<label for="saldo" class="col-form-label-sm mb-0 pb-0">Saldo</label>
-					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="saldo"/>
-				</div>
+					<label for="antal" class="col-form-label-sm mb-0 pb-0">Räknat antal</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="antal"/>
+				</div>	
+
 			</div>
 	</div>
-
-	<div class="panel-body left-right-border no-gutters">
-		<table class="display compact cell-border responsive nowrap" id="uttagTable">
+	
+		<div class="panel-body left-right-border no-gutters">
+		<table class="display compact cell-border responsive nowrap" id="rattelseTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Extern referans</th>
-					<th>Uttagsdatum</th>
-					<th>Tullid</th>
-					<th>Antal</th>
+					<th>Räknat antal</th>
 					<th>Fritext</th>
 				</tr>
 			</thead>
 		</table>
-	</div>	
+	</div>
 	
-	<form action="accounting_uttag.do" name="formRecord" id="formRecord" method="POST">
+	<form action="accounting_rattelse.do" name="formRecord" id="formRecord" method="POST">
 		<input type="hidden" name="action" id="action" value='1'>
-		<input type="hidden" name="svlth_h" id="svlth_h" value='U'>
+		<input type="hidden" name="svlth_h" id="svlth_h" value='H'>
 		<input type="hidden" name="svlth_igl" id="svlth_igl" value='${headRecord.svlth_igl}'>
 		<input type="hidden" name="svlth_iex" id="svlth_iex" value='${headRecord.svlth_iex}'>
 		<input type="hidden" name="svlth_irn" id="svlth_irn" value='${headRecord.svlth_irn}'>
@@ -123,35 +123,26 @@
 		<input type="hidden" name="svlth_isl" id="svlth_isl" value='${headRecord.svlth_isl}'>
 		<input type="hidden" name="svlth_ibr" id="svlth_ibr" value='${headRecord.svlth_ibr}'>
 		<input type="hidden" name="svlth_ivb" id="svlth_ivb" value='${headRecord.svlth_ivb}'>
-
+		<input type="hidden" name="svlth_rty" id="svlth_rty" value='${headRecord.svlth_h}'>
 
 
 		<div class="container-fluid p-1 left-right-bottom-border">
 
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
-					<span class="rounded-top">&nbsp;Nytt uttag</span>
+					<span class="rounded-top">&nbsp;Ny rättelse</span>
 				</div>
 			</div>
 
 			<div class="form-row left-right-bottom-border formFrame">
 
 				<div class="form-group pr-2 col-auto">
-					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Extern&nbsp;referans</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="17" maxlength="15">
-				</div>
-
-				<div class="form-group pr-2 col-auto">
-					<label for="svlth_uti" class="col-form-label-sm mb-0 required">Tullid</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="12" maxlength="10">
-				</div>
-				<div class="form-group pr-2 col-auto">
-					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Antal</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_unt" id="svlth_unt" value="${record.svlth_unt}" size="7" maxlength="5">
+					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Nytt räknat antal</label>
+					<input required type="text" class="form-control form-control-sm" name="svlth_rnt" id="svlth_rnt" value="${record.svlth_rnt}" size="7" maxlength="5">
 				</div>
 				<div class="form-group pr-3 col-auto">
-					<label for="svlth_utx" class="col-form-label-sm mb-0">Fritext</label>
-					<input type="text" class="form-control form-control-sm" name="svlth_utx" id="svlth_utx" value="${record.svlth_utx}" size="70" maxlength="70">
+					<label for="svlth_rtx" class="col-form-label-sm mb-0">Fritext</label>
+					<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="70" maxlength="70">
 				</div>
 
 				<div class="form-group col-11 align-self-end">

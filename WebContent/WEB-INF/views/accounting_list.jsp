@@ -41,7 +41,7 @@
 	<div class="form-row left-right-border">
 
 		<div class="form-group pr-2">
-			<label for="selectGodsnr" class="col-form-label-sm mb-0">Godsnummer</label>
+			<label for="selectGodsnr" class="col-form-label-sm mb-0 ml-1">Godsnummer</label>
 			<input type="text" class="form-control form-control-sm" id="selectGodsnr"  size="17"  maxlength="15">
 		</div>
 
@@ -55,13 +55,6 @@
 			<input type="text" class="form-control form-control-sm" id="selectArrival"  size="10"  maxlength="8">
 		</div>
 
-
-<!--  
-		<div class="form-group pr-2 col-1">
-			<label for="selectRegdate" class="col-form-label-sm mb-0">Arkiveringsdatum</label>
-			<input type="text" class="form-control form-control-sm" id="selectRegdate"  size="13"  maxlength="13">
-		</div>
--->
 		<div class="form-group col-2 align-self-end">
 			<div class="float-md-right">
 				<button class="btn inputFormSubmit btn-sm" onclick="loadSvlth()" id="submitBtn"  autofocus>Søk</button>
@@ -69,9 +62,6 @@
 		</div>	
 
 	</div>
-
-	
-
 
 	<div class="left-right-bottom-border no-gutters">
 		<table class="display compact cell-border responsive nowrap" id="svlthTable">
@@ -85,6 +75,7 @@
 					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
 					<th>Ankomstdatum</th>
+					<th>Uttagsdatum</th>
 					<th>Godslokalkod</th>
 					<th>Kollislag</th>
 					<th>Bruttovikt</th>
@@ -96,6 +87,7 @@
 					<th>Tidigare&nbsp;handling-5</th>
 					<th>Intern fritext</th>
 					<th>Arkiveringsdatum</th>
+					<th>Rättelse</th>					
 				</tr>
 			</thead>
 		</table>
