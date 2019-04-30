@@ -52,6 +52,7 @@
 
 	</head>
 	
+	<input type="hidden" name="language" id=language value="${user.usrLang}">
 	
    <table class="noBg" width="100%" border="0" cellspacing="0" cellpadding="0">
 		<%--Banner --%>

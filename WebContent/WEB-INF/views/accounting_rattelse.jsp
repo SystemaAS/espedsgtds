@@ -129,11 +129,11 @@
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Nytt räknat antal</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_rnt" id="svlth_rnt" value="${record.svlth_rnt}" size="7" maxlength="5">
+					<input required type="text" class="form-control form-control-sm" name="svlth_rnt" id="svlth_rnt" value="${record.svlth_rnt}" size="8" maxlength="5">
 				</div>
 				<div class="form-group pr-3 col-auto">
 					<label for="svlth_rtx" class="col-form-label-sm mb-0">Fritext</label>
-					<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="70" maxlength="70">
+					<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="73" maxlength="70">
 				</div>
 
 				<div class="form-group col-11 align-self-end">

@@ -67,7 +67,7 @@ function initSvlthSearch() {
 			    	} 
 			    	return href;
 			    },
-	            defaultContent: '-'
+	            defaultContent: ''
 	    	},
 	        { data: "svlth_ign"	},
 	    	{ data: null,
@@ -91,7 +91,12 @@ function initSvlthSearch() {
 	    	{ data: "saldo" },
 	        { data: "svlth_iex" },
 	        { data: "svlth_irn" },
-	        { data: "svlth_id2" },
+	        { data: "svlth_id1",
+	        	render: function ( data, type, row, meta ) {
+	        		return row.svlth_id1 + ':' + row.svlth_im1;
+	        	} 	
+	        },
+	        { data: "svlth_id2" },   	
 	        { data: "svlth_ud1" },
 	        { data: "svlth_igl" },
 	        { data: "svlth_isl" },

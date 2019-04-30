@@ -39,8 +39,8 @@
 
 	<div class="form-row left-right-border">
 
-		<div class="form-group pr-2">
-			<label for="selectGodsnr" class="col-form-label-sm mb-0 ml-1">Godsnummer</label>
+		<div class="form-group pr-2 pl-1">
+			<label for="selectGodsnr" class="col-form-label-sm mb-0">Godsnummer</label>
 			<input type="text" class="form-control form-control-sm" id="selectGodsnr"  size="17"  maxlength="15">
 		</div>
 
@@ -56,7 +56,7 @@
 
 		<div class="form-group col-2 align-self-end">
 			<div class="float-md-right">
-				<button class="btn inputFormSubmit btn-sm" onclick="loadSvlth()" id="submitBtn"  autofocus>Søk</button>
+				<button class="btn inputFormSubmit btn-sm" onclick="loadSvlth()" id="submitBtn"  autofocus>Sök</button>
 			</div>
 		</div>	
 
@@ -73,6 +73,7 @@
 					<th>Saldo</th>
 					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
+					<th>Arkiverad</th>
 					<th>Ankomstdatum</th>
 					<th>Uttagsdatum</th>
 					<th>Godslokalkod</th>

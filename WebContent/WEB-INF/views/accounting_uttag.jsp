@@ -131,12 +131,12 @@
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Extern&nbsp;referans</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="17" maxlength="15">
+					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="18" maxlength="15">
 				</div>
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uti" class="col-form-label-sm mb-0 required">Tullid</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="12" maxlength="10">
+					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="13" maxlength="10">
 				</div>
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Antal</label>
@@ -144,7 +144,7 @@
 				</div>
 				<div class="form-group pr-3 col-auto">
 					<label for="svlth_utx" class="col-form-label-sm mb-0">Fritext</label>
-					<input type="text" class="form-control form-control-sm" name="svlth_utx" id="svlth_utx" value="${record.svlth_utx}" size="70" maxlength="70">
+					<input type="text" class="form-control form-control-sm" name="svlth_utx" id="svlth_utx" value="${record.svlth_utx}" size="73" maxlength="70">
 				</div>
 
 				<div class="form-group col-11 align-self-end">
