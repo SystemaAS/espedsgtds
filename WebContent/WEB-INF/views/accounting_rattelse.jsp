@@ -10,32 +10,14 @@
 <script type="text/javascript">
 	"use strict";
 	
-	var svlth_h = "${headRecord.svlth_h}";
-	var svlth_irn = "${headRecord.svlth_irn}";
-	var svlth_id1 = "${headRecord.svlth_id1}";
-	var svlth_ud1 = "${headRecord.svlth_ud1}";
-	var svlth_um1 = "${headRecord.svlth_um1}";
+	var h_svlth_h = "${headRecord.svlth_h}";
+	var h_svlth_irn = "${headRecord.svlth_irn}";
+	var h_svlth_id1 = "${headRecord.svlth_id1}";
+	var h_svlth_ud1 = "${headRecord.svlth_ud1}";
+	var h_svlth_um1 = "${headRecord.svlth_um1}";
 	
 	jq(document).ready(function() {
-			if (svlth_h.length == 0) {
-				alert("svlth_h is 0");
-			}
-			if (svlth_irn.length == 0) {
-				alert("svlth_irn is 0");
-			}
-			if (svlth_id1.length == 0) {
-				alert("svlth_id1 is 0");
-			}
-			if (svlth_ud1.length == 0) {
-				alert("svlth_ud1 is 0");
-			}
-			if (svlth_um1.length == 0) {
-				alert("svlth_um1 is 0");
-			}
-			
-			
-			loadEvent();
-		
+		loadEvent();
 	});
 </script>
 
@@ -98,7 +80,7 @@
 		<table class="display compact cell-border responsive nowrap" id="rattelseTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Räknat antal</th>
+					<th>Nytt räknat antal</th>
 					<th>Fritext</th>
 				</tr>
 			</thead>
@@ -107,7 +89,7 @@
 	
 	<form action="accounting_rattelse.do" name="formRecord" id="formRecord" method="POST">
 		<input type="hidden" name="action" id="action" value='1'>
-		<input type="hidden" name="svlth_h" id="svlth_h" value='H'>
+		<input type="hidden" name="svlth_h" id="svlth_h" value='R'>
 		<input type="hidden" name="svlth_igl" id="svlth_igl" value='${headRecord.svlth_igl}'>
 		<input type="hidden" name="svlth_iex" id="svlth_iex" value='${headRecord.svlth_iex}'>
 		<input type="hidden" name="svlth_irn" id="svlth_irn" value='${headRecord.svlth_irn}'>
@@ -124,6 +106,15 @@
 		<input type="hidden" name="svlth_ibr" id="svlth_ibr" value='${headRecord.svlth_ibr}'>
 		<input type="hidden" name="svlth_ivb" id="svlth_ivb" value='${headRecord.svlth_ivb}'>
 		<input type="hidden" name="svlth_rty" id="svlth_rty" value='${headRecord.svlth_h}'>
+		<input type="hidden" name="svlth_ud1" id="svlth_ud1"  value='${headRecord.svlth_ud1}'>
+		<input type="hidden" name="svlth_um1" id="svlth_um1"  value='${headRecord.svlth_um1}'>
+		
+		<!-- Head -->		
+		<input type="hidden" name="h_svlth_h" id="h_svlth_h"  value='${headRecord.svlth_h}'>
+		<input type="hidden" name="h_svlth_irn" id="h_svlth_irn"  value='${headRecord.svlth_irn}'>
+		<input type="hidden" name="h_svlth_id1" id="h_svlth_id1"  value='${headRecord.svlth_id1}'>
+		<input type="hidden" name="h_svlth_ud1" id="h_svlth_ud1"  value='${headRecord.svlth_ud1}'>
+		<input type="hidden" name="h_svlth_um1" id="h_svlth_um1"  value='${headRecord.svlth_um1}'>
 
 
 		<div class="container-fluid p-1 left-right-bottom-border">

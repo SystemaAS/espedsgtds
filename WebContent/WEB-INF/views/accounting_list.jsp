@@ -9,8 +9,7 @@
 
 <script type="text/javascript">
 	"use strict";
-	var signatur = "${user.signatur}";
-	
+
 	jq(document).ready(function() {
 		initSvlthSearch();
 	});
@@ -70,8 +69,8 @@
 					<th>Visa</th>
 					<th>Godsnummer</th>
 					<th>Händelse</th>
-					<th>Saldo</th>
 					<th>Antal</th>
+					<th>Saldo</th>
 					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
 					<th>Ankomstdatum</th>
@@ -80,6 +79,9 @@
 					<th>Kollislag</th>
 					<th>Bruttovikt</th>
 					<th>Varubeskrivning</th>
+					<th>Rättad händelse</th>
+					<th>Rättat antal</th>
+					<th>Rättelse fritext</th>
 					<th>Tidigare&nbsp;handling-1</th>
 					<th>Tidigare&nbsp;handling-2</th>
 					<th>Tidigare&nbsp;handling-3</th>

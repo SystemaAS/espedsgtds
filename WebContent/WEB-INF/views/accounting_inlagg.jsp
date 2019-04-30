@@ -67,7 +67,7 @@
 	
 					<div class="form-group pr-2 pl-1 col-2 mb-0">
 						<label for="svlth_ign" class="col-form-label-sm mb-0 required">Godsnummer</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="17" maxlength="15">
+						<input type="text" required class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
 					</div>	
 	
 					<div class="form-group pr-2 pl-1 col-1 mb-0">

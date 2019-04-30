@@ -160,6 +160,7 @@ public class AccountingController {
 
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
+				record.setSvlth_h(EventTypeEnum.INLAGG.getValue());
 				returnDto = fetchRecord(appUser, record);
 				successView.addObject("record", returnDto);
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -286,11 +287,11 @@ public class AccountingController {
 	@RequestMapping(value="accounting_rattelse.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doRattelse( @ModelAttribute ("record") SvlthDao record, 
 									@RequestParam(value = "action", required = true) Integer action,
-									@RequestParam(value = "svlth_irn", required = true) String svlth_irn,
-									@RequestParam(value = "svlth_h", required = true) String svlth_h,
-									@RequestParam(value = "svlth_id1", required = true) String svlth_id1,
-									@RequestParam(value = "svlth_ud1", required = false) Integer svlth_ud1,
-									@RequestParam(value = "svlth_um1", required = false) Integer svlth_um1,
+									@RequestParam(value = "h_svlth_irn", required = true) String h_svlth_irn,
+									@RequestParam(value = "h_svlth_h", required = true) String h_svlth_h,
+									@RequestParam(value = "h_svlth_id1", required = true) String h_svlth_id1,
+									@RequestParam(value = "h_svlth_ud1", required = false) Integer h_svlth_ud1,
+									@RequestParam(value = "h_svlth_um1", required = false) Integer h_svlth_um1,
 									HttpSession session, HttpServletRequest request){
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);		
@@ -301,20 +302,16 @@ public class AccountingController {
 		logger.info("accounting_rattelse.do, record="+ReflectionToStringBuilder.reflectionToString(record));
 		logger.info("action="+action);
 
+		
 		ModelAndView successView =  new ModelAndView("accounting_rattelse");
 		SvlthDto returnDto = new SvlthDto();
 		
 		
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_rty() == null) {
 			logger.info("Init...");
-			successView.addObject("svlth_h", svlth_h);
-			successView.addObject("svlth_irn", svlth_irn);
-			successView.addObject("svlth_id1", svlth_id1);
-			successView.addObject("svlth_ud1", svlth_ud1);
-			
 			successView.addObject("action", CRUDEnum.CREATE.getValue());
 			
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_ud1, h_svlth_um1);
 			successView.addObject("headRecord", headDto);
 			
 			return successView;
@@ -324,7 +321,6 @@ public class AccountingController {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
-
 				saveRecord(appUser, record, "A");
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -335,7 +331,6 @@ public class AccountingController {
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
 				returnDto = fetchRecord(appUser, record);
-				successView.addObject("svlth_irn", svlth_irn);
 				successView.addObject("record", returnDto);
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -345,8 +340,7 @@ public class AccountingController {
 
 			}
 
-			successView.addObject("svlth_irn", svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_ud1, h_svlth_um1);
 			successView.addObject("headRecord", headDto);
 
 			return successView;			
@@ -355,8 +349,8 @@ public class AccountingController {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
 			successView.addObject("error", e.getMessage());
-			successView.addObject("svlth_irn", svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+			successView.addObject("svlth_irn", h_svlth_irn);
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_ud1, h_svlth_um1);
 			successView.addObject("headRecord", headDto);
 
 			return successView;
@@ -364,11 +358,6 @@ public class AccountingController {
 		}
 
 	}
-	
-	
-	
-	
-	
 	
 	private SvlthDto fetchRecord(SystemaWebUser appUser, SvlthDao record) {
 		logger.info("::fetchRecord::");

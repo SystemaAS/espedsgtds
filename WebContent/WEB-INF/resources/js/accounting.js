@@ -20,30 +20,33 @@ function initSvlthSearch() {
 
 	//Init datatables, done once, then reload with ajax
 	svlthTable = jq('#svlthTable').DataTable({
-		dom : '<"top"f>t<"bottom"lip>B<"clear">',
+		dom : '<"top"Bf>t<"bottom"lip><"clear">',
 		ajax: {
 	        "url": svlthUrl + doNotLoad,
 	        "dataSrc": "dtoList"
 	    },	
-	    //https://datatables.net/reference/button/
-	    //https://datatables.net/extensions/buttons/
-	    //https://datatables.net/extensions/buttons/examples/html5/pdfPage.html
 	    buttons: [
             {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-                pageSize: 'LEGAL',
-                exportOptions: {
-                    columns: [ 1,3,4,5,6,7,8 ]
-                }
+                extend: 'colvis',
+                text: 'Välj kolumner'
             },
             {
                 extend: 'print',
+                text: 'Skriv ut',
                 orientation: 'landscape',
                 pageSize: 'LEGAL',
                 exportOptions: {
-                    columns: [ 1,3,4,5,6,7,8 ]
-                }
+                    columns: ':visible'
+                }      	
+            },
+	    	{
+                extend: 'pdfHtml5',
+                text: 'Skapa PDF',
+                orientation: 'landscape',
+                pageSize: 'LEGAL',
+                exportOptions: {
+                    columns: ':visible'
+                },
             }
         ],
 		mark: true,
@@ -60,32 +63,32 @@ function initSvlthSearch() {
 			    	let href;
 			    	if (row.svlth_h == 'I') {
 				    	let url= inlaggUrl_read+'&svlth_irn='+row.svlth_irn; 
-				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/update.gif" onClick="setBlockUI();"></a>';
+				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-right" src="resources/images/update.gif" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
 			    },
 	            defaultContent: '-'
 	    	},
 	        { data: "svlth_ign"	},
-	    	{ data: "svlth_h",
+	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_h);
-	        		
-	        		
-//	        		if (row.svlth_h == 'I') {
-//	        			return 'Inlägg';
-//	        		}
-//	        		if (row.svlth_h == 'U') {
-//	        			return 'Uttag';
-//	        		}
-//	        		if (row.svlth_h == 'R') {
-//	        			return 'Rättelse';
-//	        		}
-//	        		return row.svlth_h;
-	        	},
+	        	}
 	    	},
+	        { data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_h == 'I') {
+		        		return row.svlth_int;	        			
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return row.svlth_unt;	        			
+	        		}
+	        		if (row.svlth_h == 'R') {
+		        		return row.svlth_rnt;	        			
+	        		}	        		
+	        	}	
+	        },
 	    	{ data: "saldo" },
-	        { data: "svlth_int" },
 	        { data: "svlth_iex" },
 	        { data: "svlth_irn" },
 	        { data: "svlth_id2" },
@@ -94,6 +97,13 @@ function initSvlthSearch() {
 	        { data: "svlth_isl" },
 	    	{ data: "svlth_ibr" },
 	    	{ data: "svlth_ivb" },
+	    	{ data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		return getDescription(row.svlth_rty);
+	        	}
+	    	},
+	    	{ data: "svlth_rnt" },
+	    	{ data: "svlth_rtx" },
 	        { data: "svlth_ih1" },
 	    	{ data: "svlth_ih2" },	        
 	        { data: "svlth_ih3" },
@@ -108,7 +118,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h != 'R') { 
-				    	let url= rattelseUrl_create + '&svlth_h='+row.svlth_h + '&svlth_irn='+row.svlth_irn  + '&svlth_id1='+row.svlth_id1  + '&svlth_ud1='+row.svlth_ud1  + '&svlth_um1='+row.svlth_um1
+				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_irn='+row.svlth_irn  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_ud1='+row.svlth_ud1  + '&h_svlth_um1='+row.svlth_um1
 				    	href = '<a title="Skapa" href="'+url+'"' +'><img class="img-fluid float-center" src="resources/images/log-icon.gif"  width="16" height="16" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -127,15 +137,6 @@ function initSvlthSearch() {
     jq('#svlthTable').on( 'draw.dt', function () {
         unBlockUI();
     });	
-    
-    jq('#svlthTable tbody').on( 'click', 'button', function () {
-        let data = svlthTable.row( jq(this).parents('tr') ).data();
-       // console.log("data[svlth_irn]",data[svlth_irn]);
-        console.log("data[svlth_irn]",data['svlth_irn']);
-        alert( "'rättelse av: "+ data['svlth_irn'] );
-    } );   
-    
-    
     
 	
 } //end initSvlthSearch
@@ -209,12 +210,7 @@ function loadSvlthUttag() {
 function loadEvent() {
 	console.log('loadEvent');
 
-	console.log('svlth_irn',svlth_irn);
-	console.log('svlth_h',svlth_h);
-	console.log('loadEvent');
-
 	let runningUrl;
-	console.log('svlth_irn',svlth_irn);
 	runningUrl= getRunningSvlthRattelseUrl();
 	console.log("runningUrl" + runningUrl);
 	
@@ -341,11 +337,11 @@ function setUttagHeader() {
 
 function setEventHeader() {
 	
-	console.log("svlth_um1", svlth_um1);
+	console.log("h_svlth_um1", h_svlth_um1);
 	
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : svlth_h , svlth_irn : svlth_irn, svlth_id1 : svlth_id1, svlth_ud1 : svlth_ud1, svlth_um1 : svlth_um1 }, 
+	  	  data: { svlth_h : h_svlth_h , svlth_irn : h_svlth_irn, svlth_id1 : h_svlth_id1, svlth_ud1 : h_svlth_ud1, svlth_um1 : h_svlth_um1 }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -363,7 +359,7 @@ function setEventHeader() {
 			  jq("#godsnr").text(record[0].svlth_ign);
 		  }, 
 		  error: function (jqXHR, exception) {
-		  	console.log("svlth_irn don't exist", svlth_irn);
+		  	//console.log("hsvlth_irn don't exist", h_svlth_irn);
 		    console.log("jqXHR",jqXHR);
 		    console.log("exception",exception);
 		  }	
@@ -380,7 +376,11 @@ function getRunningSvlthUttagUrl() {
 
 function getRunningSvlthRattelseUrl() {
 	let runningUrl = svlthUrl;
-	runningUrl = runningUrl + "&svlth_irn=" + svlth_irn;
+	runningUrl = runningUrl + "&svlth_irn=" + h_svlth_irn;
+	runningUrl = runningUrl + "&svlth_id1=" + h_svlth_id1;
+	runningUrl = runningUrl + "&svlth_ud1=" + h_svlth_ud1;
+	runningUrl = runningUrl + "&svlth_um1=" + h_svlth_um1;
+	runningUrl = runningUrl + "&svlth_rty="+h_svlth_h;
 	runningUrl = runningUrl + "&svlth_h=R";
 	
 	return runningUrl;

@@ -14,16 +14,9 @@
 	let hasError = "${error}";
 	
 	jq(document).ready(function() {
- 		jq('[data-toggle="tooltip"]').tooltip(); //TODO?
-
- 				
- 			console.log("svlth_irn", svlth_irn);	
- 				
  				
 			loadSvlthUttag();
  		
- 			console.log("hasError", hasError);
- 			
  			if (hasError == "") {
  				console.log("clearValues...");
  				clearValues();
