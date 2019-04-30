@@ -43,7 +43,7 @@
 	
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
-					<span class="rounded-top">Nytt&nbsp;Inlägg</span>
+					<span class="rounded-top">Inlägg</span>
 				</div>
 			</div>
 	
@@ -96,6 +96,12 @@
 						<label for="svlth_ibr" class="col-form-label-sm mb-0 required">Bruttovikt</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
 					</div>	
+
+					<div class="form-group pr-2">
+						<label for="saldo" class="col-form-label-sm mb-0 pb-0">Saldo</label>
+						<label class="form-control-plaintext form-control-sm font-weight-bold" id="saldo">${record.saldo}</label>
+					</div>
+
 
 					<div class="form-group pr-2 pl-1  mb-0">
 						<label for="svlth_ivb" class="col-form-label-sm mb-0 required">Varubeskrivning</label>

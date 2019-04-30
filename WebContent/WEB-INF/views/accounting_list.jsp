@@ -69,7 +69,7 @@
 					<th>Visa</th>
 					<th>Godsnummer</th>
 					<th>Händelse</th>
-					<th>Antal</th>
+					<th title="Ref. till händelse">Antal</th>
 					<th>Saldo</th>
 					<th>Extern&nbsp;referans</th>
 					<th>MRN</th>
@@ -81,7 +81,7 @@
 					<th>Bruttovikt</th>
 					<th>Varubeskrivning</th>
 					<th>Rättad händelse</th>
-					<th>Rättat antal</th>
+					<th title="Samma som Antal">Rättat antal</th>
 					<th>Rättelse fritext</th>
 					<th>Tidigare&nbsp;handling-1</th>
 					<th>Tidigare&nbsp;handling-2</th>

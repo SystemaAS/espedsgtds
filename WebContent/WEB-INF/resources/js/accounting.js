@@ -97,7 +97,14 @@ function initSvlthSearch() {
 	        	} 	
 	        },
 	        { data: "svlth_id2" },   	
-	        { data: "svlth_ud1" },
+	        { data: "svlth_ud1",
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_ud1 == '0') {
+	        			return null;
+	        		}
+	        		return row.svlth_ud1;
+	        	}	        	
+	        },
 	        { data: "svlth_igl" },
 	        { data: "svlth_isl" },
 	    	{ data: "svlth_ibr" },
