@@ -13,8 +13,10 @@
 	var h_svlth_h = "${headRecord.svlth_h}";
 	var h_svlth_irn = "${headRecord.svlth_irn}";
 	var h_svlth_id1 = "${headRecord.svlth_id1}";
-	var h_svlth_ud1 = "${headRecord.svlth_ud1}";
-	var h_svlth_um1 = "${headRecord.svlth_um1}";
+	var h_svlth_im1 = "${headRecord.svlth_im1}";
+
+// 	var h_svlth_ud1 = "${headRecord.svlth_ud1}";
+// 	var h_svlth_um1 = "${headRecord.svlth_um1}";
 	
 	jq(document).ready(function() {
 		loadEvent();
@@ -115,6 +117,7 @@
 		<input type="hidden" name="h_svlth_h" id="h_svlth_h"  value='${headRecord.svlth_h}'>
 		<input type="hidden" name="h_svlth_irn" id="h_svlth_irn"  value='${headRecord.svlth_irn}'>
 		<input type="hidden" name="h_svlth_id1" id="h_svlth_id1"  value='${headRecord.svlth_id1}'>
+		<input type="hidden" name="h_svlth_im1" id="h_svlth_im1"  value='${headRecord.svlth_im1}'>
 		<input type="hidden" name="h_svlth_ud1" id="h_svlth_ud1"  value='${headRecord.svlth_ud1}'>
 		<input type="hidden" name="h_svlth_um1" id="h_svlth_um1"  value='${headRecord.svlth_um1}'>
 

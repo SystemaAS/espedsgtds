@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.NonNull;
 import no.systema.jservices.common.dao.SvlthDao;
 import no.systema.jservices.common.dto.SvlthDto;
 import no.systema.jservices.common.json.JsonDtoContainer;
@@ -134,10 +135,12 @@ public class AccountingController {
 		
 		ModelAndView successView =  new ModelAndView("accounting_inlagg");
 		SvlthDto returnDto = new SvlthDto();
-
+		
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_h() == null) {
 			logger.info("Init...");
 			successView.addObject("action", CRUDEnum.CREATE.getValue());
+			successView.addObject("saldo", null);
+			
 			
 			return successView;
 		} 		
@@ -153,6 +156,8 @@ public class AccountingController {
 
 				returnDto = fetchRecord(appUser, record);
 				successView.addObject("record", returnDto);
+				successView.addObject("saldo", returnDto.getSaldo());
+
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
@@ -163,33 +168,38 @@ public class AccountingController {
 				record.setSvlth_h(EventTypeEnum.INLAGG.getValue());
 				returnDto = fetchRecord(appUser, record);
 				successView.addObject("record", returnDto);
-				successView.addObject("action", CRUDEnum.READ.getValue());
+				successView.addObject("saldo", returnDto.getSaldo());
 
+				successView.addObject("action", CRUDEnum.READ.getValue());
+					
+				
 			} else if (action.equals(CRUDEnum.DELETE.getValue())) {
 				throw new IllegalAccessError("Delete not allowed!");
 
 			}
 			
 			successView.addObject("svlth_irn", svlth_irn);
+
 			return successView;			
 			
 
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", e.getMessage());
+			successView.addObject("error", "Tekniskt fel : "+e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
+			successView.addObject("saldo", null);
+
 			return successView;			
 
 		}
 
 	}
 
-
-
-
 	@RequestMapping(value="accounting_uttag_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doUttagList(@RequestParam(value = "svlth_irn", required = true) String svlth_irn,
+									@RequestParam(value = "svlth_id1", required = true) Integer svlth_id1,
+									@RequestParam(value = "svlth_im1", required = true) Integer svlth_im1,
 									HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_uttag");
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
@@ -200,7 +210,7 @@ public class AccountingController {
 		} else {
 
 			try {
-				headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), null, null);
+				headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), svlth_id1,svlth_im1, null, null);
 				successView.addObject("headRecord", headDto);
 				successView.addObject("action", CRUDEnum.CREATE.getValue());
 				appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
@@ -210,7 +220,7 @@ public class AccountingController {
 				
 			} catch (Throwable e) {
 				logger.error("ERROR:", e);
-				successView.addObject("error", e.getMessage());
+				successView.addObject("error", "Tekniskt fel : "+e.getMessage());
 				successView.addObject("svlth_irn", svlth_irn);
 				return successView;
 			}
@@ -223,7 +233,9 @@ public class AccountingController {
 	@RequestMapping(value="accounting_uttag.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doUttag( @ModelAttribute ("record") SvlthDao record, 
 								@RequestParam(value = "action", required = true) Integer action,
-								@RequestParam(value = "svlth_irn", required = false) String svlth_irn,
+								@RequestParam(value = "svlth_irn", required = true) String svlth_irn,
+								@RequestParam(value = "svlth_id1", required = true) Integer svlth_id1,
+								@RequestParam(value = "svlth_im1", required = true) Integer svlth_im1,
 								HttpSession session, HttpServletRequest request){
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);		
@@ -264,7 +276,7 @@ public class AccountingController {
 			}
 
 			successView.addObject("svlth_irn", svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), null, null);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), svlth_id1,svlth_im1, null, null);
 			successView.addObject("headRecord", headDto);
 
 			return successView;			
@@ -272,9 +284,9 @@ public class AccountingController {
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", e.getMessage());
+			successView.addObject("error", "Tekniskt fel : "+e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), null, null);
+			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), svlth_id1,svlth_im1, null, null);
 			successView.addObject("headRecord", headDto);
 
 			return successView;
@@ -289,9 +301,8 @@ public class AccountingController {
 									@RequestParam(value = "action", required = true) Integer action,
 									@RequestParam(value = "h_svlth_irn", required = true) String h_svlth_irn,
 									@RequestParam(value = "h_svlth_h", required = true) String h_svlth_h,
-									@RequestParam(value = "h_svlth_id1", required = true) String h_svlth_id1,
-									@RequestParam(value = "h_svlth_ud1", required = false) Integer h_svlth_ud1,
-									@RequestParam(value = "h_svlth_um1", required = false) Integer h_svlth_um1,
+									@RequestParam(value = "h_svlth_id1", required = true) Integer h_svlth_id1,
+									@RequestParam(value = "h_svlth_im1", required = true) Integer h_svlth_im1,
 									HttpSession session, HttpServletRequest request){
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);		
@@ -311,7 +322,7 @@ public class AccountingController {
 			logger.info("Init...");
 			successView.addObject("action", CRUDEnum.CREATE.getValue());
 			
-			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_ud1, h_svlth_um1);
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h,h_svlth_id1,h_svlth_im1, null, null);
 			successView.addObject("headRecord", headDto);
 			
 			return successView;
@@ -321,6 +332,8 @@ public class AccountingController {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
+
+				setDate(EventTypeEnum.RATTELSE, record);
 				saveRecord(appUser, record, "A");
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -340,7 +353,7 @@ public class AccountingController {
 
 			}
 
-			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_ud1, h_svlth_um1);
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_id1, h_svlth_im1, null, null);
 			successView.addObject("headRecord", headDto);
 
 			return successView;			
@@ -348,9 +361,9 @@ public class AccountingController {
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", e.getMessage());
+			successView.addObject("error", "Tekniskt fel : "+e.getMessage());
 			successView.addObject("svlth_irn", h_svlth_irn);
-			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_ud1, h_svlth_um1);
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_irn, h_svlth_h, h_svlth_id1, h_svlth_im1, null, null);
 			successView.addObject("headRecord", headDto);
 
 			return successView;
@@ -360,22 +373,20 @@ public class AccountingController {
 	}
 	
 	private SvlthDto fetchRecord(SystemaWebUser appUser, SvlthDao record) {
-		logger.info("::fetchRecord::");
-		SvlthDto dao = getHeadDto(appUser.getUser(), record.getSvlth_irn(), record.getSvlth_h(), record.getSvlth_ud1(), record.getSvlth_um1());
+		SvlthDto dto = getHeadDto(appUser.getUser(), record.getSvlth_irn(), record.getSvlth_h(), record.getSvlth_id1() , record.getSvlth_im1(), record.getSvlth_ud1(), record.getSvlth_um1());
 		
-		return dao;
+		return dto;
 		
 	}	
 
-	private SvlthDto fetchRecord(SystemaWebUser appUser, String svlth_irn, String svlth_h, Integer svlth_ud1, Integer svlth_um1) {
-		logger.info("::fetchRecord::");
-		SvlthDto dto = getHeadDto(appUser.getUser(), svlth_irn, svlth_h, svlth_ud1, svlth_um1);
+	private SvlthDto fetchRecord(SystemaWebUser appUser, String svlth_irn, String svlth_h, Integer svlth_id1, Integer svlth_im1, Integer svlth_ud1, Integer svlth_um1) {
+		SvlthDto dto = getHeadDto(appUser.getUser(), svlth_irn, svlth_h, svlth_id1, svlth_im1, svlth_ud1, svlth_um1);
 		
 		return dto;
 		
 	}	
 	
-	private SvlthDto getHeadDto(String user, String mrn, String svlth_h, Integer svlth_ud1, Integer svlth_um1)  {
+	private SvlthDto getHeadDto(@NonNull String user, @NonNull String mrn, @NonNull String svlth_h, @NonNull Integer svlth_id1, @NonNull Integer svlth_im1, Integer svlth_ud1, Integer svlth_um1)  {
 		EncodingTransformer transformer = new EncodingTransformer();
 		JsonReader<JsonDtoContainer<SvlthDto>> jsonReader = new JsonReader<JsonDtoContainer<SvlthDto>>();
 		jsonReader.set(new JsonDtoContainer<SvlthDto>());
@@ -386,10 +397,8 @@ public class AccountingController {
 		urlRequestParams.append("?user=" + user);
 		urlRequestParams.append("&svlth_h=" + svlth_h);
 		urlRequestParams.append("&svlth_irn=" + mrn);
-		if (svlth_h.equals(EventTypeEnum.UTTAG.getValue())) {
-			urlRequestParams.append("&svlth_ud1=" + svlth_ud1);
-			urlRequestParams.append("&svlth_um1=" + svlth_um1);
-		}
+		urlRequestParams.append("&svlth_id1=" + svlth_id1);
+		urlRequestParams.append("&svlth_im1=" + svlth_im1);
 		
 		logger.info("Full url: " + BASE_URL +urlRequestParams.toString());
 		
@@ -479,11 +488,10 @@ public class AccountingController {
 
 	private void setDate(EventTypeEnum eventType, SvlthDao record) {
 		int[] dato = DateTimeManager.getNowDato();		
-
-		if (eventType == EventTypeEnum.INLAGG) {
-			record.setSvlth_id1(dato[0]);
-			record.setSvlth_im1(dato[1]);
-		} else if (eventType == EventTypeEnum.UTTAG) {
+		record.setSvlth_id1(dato[0]);
+		record.setSvlth_im1(dato[1]);
+		
+		if (eventType == EventTypeEnum.UTTAG) {
 			record.setSvlth_ud1(dato[0]);
 			record.setSvlth_um1(dato[1]);
 		}
@@ -495,8 +503,6 @@ public class AccountingController {
 			record.setSvlth_ign(record.getSvlth_igl() + record.getSvlth_ign());
 		}
 	}	
-	
-	
 	
 }
 

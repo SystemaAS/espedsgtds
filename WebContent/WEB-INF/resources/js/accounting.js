@@ -62,7 +62,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h == 'I') {
-				    	let url= inlaggUrl_read+'&svlth_irn='+row.svlth_irn; 
+				    	let url= inlaggUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-right" src="resources/images/update.gif" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -130,7 +130,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h != 'R') { 
-				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_irn='+row.svlth_irn  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_ud1='+row.svlth_ud1  + '&h_svlth_um1='+row.svlth_um1
+				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_irn='+row.svlth_irn  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_im1='+row.svlth_im1;
 				    	href = '<a title="Skapa" href="'+url+'"' +'><img class="img-fluid float-center" src="resources/images/log-icon.gif"  width="16" height="16" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -251,7 +251,7 @@ function loadEvent() {
 	    	{"data" : "svlth_rnt"},
 			{"data" : "svlth_rtx"}
 			],
-		"lengthMenu" : [ 2, 5, 20 ],
+		"lengthMenu" : [ 5, 10, 20 ],
 		"language" : {
 			"url" : getLanguage(lang)
 		}
@@ -353,7 +353,7 @@ function setEventHeader() {
 	
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : h_svlth_h , svlth_irn : h_svlth_irn, svlth_id1 : h_svlth_id1, svlth_ud1 : h_svlth_ud1, svlth_um1 : h_svlth_um1 }, 
+	  	  data: { svlth_h : h_svlth_h , svlth_irn : h_svlth_irn, svlth_id1 : h_svlth_id1, svlth_im1 : h_svlth_im1 }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -389,9 +389,16 @@ function getRunningSvlthUttagUrl() {
 function getRunningSvlthRattelseUrl() {
 	let runningUrl = svlthUrl;
 	runningUrl = runningUrl + "&svlth_irn=" + h_svlth_irn;
-	runningUrl = runningUrl + "&svlth_id1=" + h_svlth_id1;
-	runningUrl = runningUrl + "&svlth_ud1=" + h_svlth_ud1;
-	runningUrl = runningUrl + "&svlth_um1=" + h_svlth_um1;
+
+	//TODO check type
+	
+//	runningUrl = runningUrl + "&svlth_id1=" + h_svlth_id1;
+//	runningUrl = runningUrl + "&svlth_im1=" + h_svlth_im1;
+
+//	runningUrl = runningUrl + "&svlth_ud1=" + h_svlth_ud1;
+//	runningUrl = runningUrl + "&svlth_um1=" + h_svlth_um1;
+
+	
 	runningUrl = runningUrl + "&svlth_rty="+h_svlth_h;
 	runningUrl = runningUrl + "&svlth_h=R";
 	

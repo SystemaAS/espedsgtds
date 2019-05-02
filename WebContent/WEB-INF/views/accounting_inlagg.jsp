@@ -24,7 +24,7 @@
 		  </span>
 		</a>
 	<c:if test="${action == 2}"> 
-		<a class="nav-item nav-link nav-new" onClick="setBlockUI();" href="accounting_uttag_list.do?action=2&svlth_irn=${record.svlth_irn}">
+		<a class="nav-item nav-link nav-new" onClick="setBlockUI();" href="accounting_uttag_list.do?action=2&svlth_irn=${record.svlth_irn}&svlth_id1=${record.svlth_id1}&svlth_im1=${record.svlth_im1}">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
 			Uttag
 		  </span>
@@ -80,6 +80,11 @@
 						<input type="text" required class="form-control form-control-sm" name="svlth_int" id="svlth_int" value="${record.svlth_int}"  size="8" maxlength="5" onKeyPress="return numberKey(event)">
 					</div>	
 
+					<div class="form-group pr-2">
+						<label for="saldo" class="col-form-label-sm mb-1 pb-0">Saldo</label>
+						<label class="form-control-plaintext form-control-sm" id="saldo">${saldo}</label>
+					</div>
+
 					<div class="form-group pr-2 pl-1 mb-0">
 						<label for="svlth_isl" class="col-form-label-sm mb-0 required">Kollislag</label>
 						<div class="input-group">
@@ -96,12 +101,6 @@
 						<label for="svlth_ibr" class="col-form-label-sm mb-0 required">Bruttovikt</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
 					</div>	
-
-					<div class="form-group pr-2">
-						<label for="saldo" class="col-form-label-sm mb-0 pb-0">Saldo</label>
-						<label class="form-control-plaintext form-control-sm font-weight-bold" id="saldo">${record.saldo}</label>
-					</div>
-
 
 					<div class="form-group pr-2 pl-1  mb-0">
 						<label for="svlth_ivb" class="col-form-label-sm mb-0 required">Varubeskrivning</label>
