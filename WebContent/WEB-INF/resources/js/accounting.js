@@ -93,7 +93,7 @@ function initSvlthSearch() {
 	        { data: "svlth_irn" },
 	        { data: "svlth_id1",
 	        	render: function ( data, type, row, meta ) {
-	        		return row.svlth_id1 + ':' + row.svlth_im1;
+	        		return row.timestamp;
 	        	} 	
 	        },
 	        { data: "svlth_id2" },   	
