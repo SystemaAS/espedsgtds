@@ -186,7 +186,7 @@ public class AccountingController {
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", "Tekniskt fel : "+e.getMessage());
+			successView.addObject("error", e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
 			successView.addObject("saldo", null);
 
@@ -220,7 +220,7 @@ public class AccountingController {
 				
 			} catch (Throwable e) {
 				logger.error("ERROR:", e);
-				successView.addObject("error", "Tekniskt fel : "+e.getMessage());
+				successView.addObject("error", e.getMessage());
 				successView.addObject("svlth_irn", svlth_irn);
 				return successView;
 			}
@@ -284,7 +284,7 @@ public class AccountingController {
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", "Tekniskt fel : "+e.getMessage());
+			successView.addObject("error", e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
 			SvlthDto headDto = fetchRecord(appUser, svlth_irn, EventTypeEnum.INLAGG.getValue(), svlth_id1,svlth_im1, null, null);
 			successView.addObject("headRecord", headDto);

@@ -69,8 +69,11 @@ function initSvlthSearch() {
 			    },
 	            defaultContent: ''
 	    	},
-	        { data: "svlth_ign"	},
-	    	{ data: null,
+	        { data: "svlth_igl" },
+	    	{ data: "svlth_ign"	},
+	        { data: "svlth_irn" },
+	        { data: "svlth_iex" },
+	        { data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_h);
 	        	}
@@ -89,13 +92,6 @@ function initSvlthSearch() {
 	        	}	
 	        },
 	    	{ data: "saldo" },
-	        { data: "svlth_iex" },
-	        { data: "svlth_irn" },
-	        { data: "svlth_id1",
-	        	render: function ( data, type, row, meta ) {
-	        		return row.timestamp;
-	        	} 	
-	        },
 	        { data: "svlth_id2" },   	
 	        { data: "svlth_ud1",
 	        	render: function ( data, type, row, meta ) {
@@ -105,7 +101,6 @@ function initSvlthSearch() {
 	        		return row.svlth_ud1;
 	        	}	        	
 	        },
-	        { data: "svlth_igl" },
 	        { data: "svlth_isl" },
 	    	{ data: "svlth_ibr" },
 	    	{ data: "svlth_ivb" },
@@ -122,7 +117,11 @@ function initSvlthSearch() {
 	        { data: "svlth_ih4" },
 	        { data: "svlth_ih5" },
 	    	{ data: "svlth_itx" },
-	        { data: "svlth_id1" },
+	        { data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		return row.timestamp;
+	        	} 	
+	        },
 	        {
 	            orderable:      false,
 	            data:           null,
@@ -138,7 +137,7 @@ function initSvlthSearch() {
 	            defaultContent: '-'
 	        }, 
 	    ],
-	    order: [[5, 'asc']],
+	    order: [[4, 'asc']],
 	    lengthMenu : [ 25, 75, 100 ],
 		language : {
 			url : getLanguage(lang)
@@ -409,9 +408,15 @@ function getRunningSvlthRattelseUrl() {
 function getRunningSvlthUrl() {
 		let runningUrl = svlthUrl;
 	
+		let selectedGodslokalkod = jq('#selectGodslokalkod').val();
+
 		let selectedGodsnr = jq('#selectGodsnr').val();
 		let selectedMrn = jq('#selectMrn').val();
-		let selectedArrival = jq('#selectArrival').val();
+		let selectedArrivalFrom = jq('#selectArrivalFrom').val();
+		
+		if (selectedGodslokalkod != "") {
+			runningUrl = runningUrl + "&svlth_igl=" + selectedGodslokalkod;
+		} 
 		
 		if (selectedGodsnr != "") {
 			runningUrl = runningUrl + "&svlth_ign=" + selectedGodsnr;
@@ -419,14 +424,13 @@ function getRunningSvlthUrl() {
 		if (selectedMrn != "") {
 			runningUrl = runningUrl + "&svlth_irn=" + selectedMrn;
 		} 
-		if (selectedArrival != "") {
-			runningUrl = runningUrl + "&svlth_id2=" + selectedArrival;
+		if (selectedArrivalFrom != "") {
+			runningUrl = runningUrl + "&svlth_id2=" + selectedArrivalFrom;
 		} 
 	
-		if (selectedGodsnr == "" && selectedMrn == "" && selectedArrival == "") {
+		if (selectedGodslokalkod == "" && selectedGodsnr == "" && selectedMrn == "" && selectedArrivalFrom == "") {
 			return null;
 		}
-		
 		
 		return runningUrl;	
 		
@@ -538,13 +542,14 @@ jq(function() {
 		dateFormat: 'yymmdd'
 	});		
 	
-	jq("#selectArrival").datepicker({ 
+	jq("#selectArrivalFrom").datepicker({ 
 		dateFormat: 'yymmdd'
 	});	
-	
-	jq("#selectRegdate").datepicker({ 
+
+	jq("#selectArrivalTo").datepicker({ 
 		dateFormat: 'yymmdd'
-	});	
+	});		
+
 	
 	jq('a#kollislag_Link').click(function() {
 		jq('#kollislag_Link').attr('target','_blank');

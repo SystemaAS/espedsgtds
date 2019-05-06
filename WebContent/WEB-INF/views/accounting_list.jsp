@@ -40,6 +40,11 @@
 	<div class="form-row left-right-border">
 
 		<div class="form-group pr-2 pl-1">
+			<label for="selectGodslokalkod" class="col-form-label-sm mb-0">Godslokalkod</label>
+			<input type="text" class="form-control form-control-sm" id="selectGodslokalkod"  size="5"  maxlength="3">
+		</div>
+
+		<div class="form-group pr-2 pl-1">
 			<label for="selectGodsnr" class="col-form-label-sm mb-0">Godsnummer</label>
 			<input type="text" class="form-control form-control-sm" id="selectGodsnr"  size="17"  maxlength="15">
 		</div>
@@ -50,9 +55,15 @@
 		</div>
 
 		<div class="form-group pr-2">
-			<label for="selectArrival" class="col-form-label-sm mb-0">Från ankomstdatum</label>
-			<input type="text" class="form-control form-control-sm" id="selectArrival"  size="10"  maxlength="8">
+			<label for="selectArrivalFrom" class="col-form-label-sm mb-0">F.o.m&nbsp;ankomstdatum</label>
+			<input type="text" class="form-control form-control-sm" id="selectArrivalFrom"  size="10"  maxlength="8">
 		</div>
+
+		<div class="form-group pr-2">
+			<label for="selectArrivalTo" class="col-form-label-sm mb-0">T.o.m&nbsp;ankomstdatum</label>
+			<input type="text" class="form-control form-control-sm" id="selectArrivalTo"  size="10"  maxlength="8">
+		</div>
+
 
 		<div class="form-group col-2 align-self-end">
 			<div class="float-md-right">
@@ -67,16 +78,15 @@
 			<thead class="tableHeaderField">
 				<tr>
 					<th>Visa</th>
+					<th>Godslokalkod</th>
 					<th>Godsnummer</th>
+					<th>MRN</th>
+					<th>Extern&nbsp;referans</th>
 					<th>Händelse</th>
 					<th title="Ref. till händelse">Antal</th>
 					<th>Saldo</th>
-					<th>Extern&nbsp;referans</th>
-					<th>MRN</th>
-					<th>Arkiverad</th>
 					<th>Ankomstdatum</th>
 					<th>Uttagsdatum</th>
-					<th>Godslokalkod</th>
 					<th>Kollislag</th>
 					<th>Bruttovikt</th>
 					<th>Varubeskrivning</th>
@@ -89,7 +99,7 @@
 					<th>Tidigare&nbsp;handling-4</th>
 					<th>Tidigare&nbsp;handling-5</th>
 					<th>Intern fritext</th>
-					<th>Arkiveringsdatum</th>
+					<th>Arkiverad</th>
 					<th>Rättelse</th>					
 				</tr>
 			</thead>
