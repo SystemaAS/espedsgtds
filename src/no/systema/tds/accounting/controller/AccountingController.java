@@ -136,13 +136,15 @@ public class AccountingController {
 		ModelAndView successView =  new ModelAndView("accounting_inlagg");
 		SvlthDto returnDto = new SvlthDto();
 		
+		String enteredGodsNummer = null;
+		
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_h() == null) {
 			logger.info("Init...");
 			successView.addObject("action", CRUDEnum.CREATE.getValue());
 			successView.addObject("saldo", null);
 			
-			
 			return successView;
+
 		} 		
 		
 		try {
@@ -151,6 +153,8 @@ public class AccountingController {
 				logger.info("Create...");
 
 				setDate(EventTypeEnum.INLAGG, record);
+
+				enteredGodsNummer = record.getSvlth_ign(); //use if error
 				setGodsnummer(EventTypeEnum.INLAGG, record);
 				saveRecord(appUser, record, "A");
 
@@ -189,6 +193,8 @@ public class AccountingController {
 			successView.addObject("error", e.getMessage());
 			successView.addObject("svlth_irn", svlth_irn);
 			successView.addObject("saldo", null);
+			
+			record.setSvlth_ign(enteredGodsNummer);
 
 			return successView;			
 
