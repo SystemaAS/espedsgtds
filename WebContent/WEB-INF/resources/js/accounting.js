@@ -73,6 +73,7 @@ function initSvlthSearch() {
 	    	{ data: "svlth_ign"	},
 	        { data: "svlth_irn" },
 	        { data: "svlth_iex" },
+	        { data: "svlth_uti" },
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_h);

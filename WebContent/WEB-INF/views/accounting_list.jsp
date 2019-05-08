@@ -82,6 +82,7 @@
 					<th>Godsnummer</th>
 					<th>MRN</th>
 					<th>Extern&nbsp;referans</th>
+					<th>Tullid</th>
 					<th>Händelse</th>
 					<th title="Ref. till händelse">Antal</th>
 					<th>Saldo</th>
