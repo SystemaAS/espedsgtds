@@ -6,6 +6,9 @@ var uttagTable;
 var rattelseTable;
 var svtx03fTable;
 
+
+var uttagUrl_read = "accounting_uttag_list.do?action=2";
+
 var inlaggUrl_read = "accounting_inlagg.do?action=2";
 var rattelseUrl_create = "accounting_rattelse.do?action=1";
 var doNotLoad = "&DO_NOT_LOAD";  //disabling datatables autoload of content
@@ -52,23 +55,10 @@ function initSvlthSearch() {
 		mark: true,
 	    responsive: true,
 		columnDefs : [ 
-            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 1, targets: -2 },
             { responsivePriority: 2, targets: -1 }
 		],	    
 	    columns: [
-	        {
-	            orderable:      false,
-	            data:           null,
-	            render: function ( data, type, row, meta ) {
-			    	let href;
-			    	if (row.svlth_h == 'I') {
-				    	let url= inlaggUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
-				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-right" src="resources/images/update.gif" onClick="setBlockUI();"></a>';
-			    	} 
-			    	return href;
-			    },
-	            defaultContent: ''
-	    	},
 	        { data: "svlth_igl" },
 	    	{ data: "svlth_ign"	},
 	        { data: "svlth_irn" },
@@ -93,6 +83,8 @@ function initSvlthSearch() {
 	        	}	
 	        },
 	    	{ data: "saldo" },
+	        { data: "svlth_isl" },
+	    	{ data: "svlth_ivb" },
 	        { data: "svlth_id2" },   	
 	        { data: "svlth_ud1",
 	        	render: function ( data, type, row, meta ) {
@@ -102,9 +94,7 @@ function initSvlthSearch() {
 	        		return row.svlth_ud1;
 	        	}	        	
 	        },
-	        { data: "svlth_isl" },
 	    	{ data: "svlth_ibr" },
-	    	{ data: "svlth_ivb" },
 	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_rty);
@@ -129,16 +119,31 @@ function initSvlthSearch() {
 	            className: "dt-body-center",
 	            render: function ( data, type, row, meta ) {
 			    	let href;
-			    	if (row.svlth_h != 'R') { 
-				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_irn='+row.svlth_irn  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_im1='+row.svlth_im1;
-				    	href = '<a title="Skapa" href="'+url+'"' +'><img class="img-fluid float-center" src="resources/images/log-icon.gif"  width="16" height="16" onClick="setBlockUI();"></a>';
+			    	if (row.svlth_h == 'I') {
+				    	let url= inlaggUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
+//				    	let url= uttagUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
+				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/unloading.png" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
 			    },
-	            defaultContent: '-'
+	            defaultContent: ''
+	    	},
+	        {
+	            orderable:      false,
+	            data:           null,
+	            className: "dt-body-center",
+	            render: function ( data, type, row, meta ) {
+			    	let href;
+			    	if (row.svlth_h != 'R') { 
+				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_irn='+row.svlth_irn  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_im1='+row.svlth_im1;
+				    	href = '<a href="'+url+'"' +'><img class="img-fluid float-center" src="resources/images/log-icon.gif"  width="16" height="16" onClick="setBlockUI();"></a>';
+			    	} 
+			    	return href;
+			    },
+	            defaultContent: ''
 	        }, 
 	    ],
-	    order: [[22, 'asc']],   //Arkiverad
+	    order: [[22, 'desc']],   //Arkiverad
 	    lengthMenu : [ 25, 75, 100 ],
 		language : {
 			url : getLanguage(lang)
@@ -199,13 +204,18 @@ function loadSvlthUttag() {
 	    },	
 	    mark: true,
 		responsive : true,
-		"order" : [ [ 1, "desc" ] ],		
+		"order" : [ [ 2, "desc" ] ],		
 		"columns" : [ 
 	    	{"data" : "svlth_uex"},
 			{"data" : "svlth_ud1"},
 			{"data" : "svlth_uti"}, 
 			{"data" : "svlth_unt"}, 
-			{"data" : "svlth_utx"}
+			{"data" : "svlth_utx"},
+	        { data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		return row.timestamp;
+	        	} 	
+	        }			
 			],
 		"lengthMenu" : [ 10, 25, 100 ],
 		"language" : {
@@ -249,7 +259,12 @@ function loadEvent() {
 		"order" : [ [ 1, "desc" ] ],		
 		"columns" : [ 
 	    	{"data" : "svlth_rnt"},
-			{"data" : "svlth_rtx"}
+			{"data" : "svlth_rtx"},
+	        { data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		return row.timestamp;
+	        	} 	
+	        }
 			],
 		"lengthMenu" : [ 5, 10, 20 ],
 		"language" : {

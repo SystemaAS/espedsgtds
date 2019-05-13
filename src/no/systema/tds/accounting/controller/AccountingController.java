@@ -207,6 +207,7 @@ public class AccountingController {
 									@RequestParam(value = "svlth_id1", required = true) Integer svlth_id1,
 									@RequestParam(value = "svlth_im1", required = true) Integer svlth_im1,
 									HttpSession session, HttpServletRequest request) {
+
 		ModelAndView successView = new ModelAndView("accounting_uttag");
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
 		SvlthDto headDto;

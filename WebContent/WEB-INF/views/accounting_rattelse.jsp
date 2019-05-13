@@ -14,9 +14,6 @@
 	var h_svlth_irn = "${headRecord.svlth_irn}";
 	var h_svlth_id1 = "${headRecord.svlth_id1}";
 	var h_svlth_im1 = "${headRecord.svlth_im1}";
-
-// 	var h_svlth_ud1 = "${headRecord.svlth_ud1}";
-// 	var h_svlth_um1 = "${headRecord.svlth_um1}";
 	
 	jq(document).ready(function() {
 		loadEvent();
@@ -53,7 +50,7 @@
 	
 			<div class="form-row left-right-bottom-border formFrameHeader">
 				<div class="col-sm-12">
-					<span class="rounded-top">Registrerad händelse</span>
+					<span class="rounded-top">Registrerad&nbsp;händelse</span>
 				</div>
 			</div>	
 		
@@ -71,7 +68,7 @@
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="godsnr"/>
 				</div>	
 				<div class="form-group pr-2 col-2">
-					<label for="antal" class="col-form-label-sm mb-0 pb-0">Räknat antal</label>
+					<label for="antal" class="col-form-label-sm mb-0 pb-0">Räknat&nbsp;antal</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="antal"/>
 				</div>	
 
@@ -84,6 +81,7 @@
 				<tr>
 					<th>Nytt räknat antal</th>
 					<th>Fritext</th>
+					<th>Arkiverad</th>
 				</tr>
 			</thead>
 		</table>

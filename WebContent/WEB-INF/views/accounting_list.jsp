@@ -77,7 +77,6 @@
 		<table class="display compact cell-border responsive nowrap" id="svlthTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Visa</th>
 					<th>Godslokalkod</th>
 					<th>Godsnummer</th>
 					<th>MRN</th>
@@ -86,11 +85,11 @@
 					<th>Händelse</th>
 					<th title="Ref. till händelse">Antal</th>
 					<th>Saldo</th>
+					<th>Kollislag</th>
+					<th>Varubeskrivning</th>
 					<th>Ankomstdatum</th>
 					<th>Uttagsdatum</th>
-					<th>Kollislag</th>
 					<th>Bruttovikt</th>
-					<th>Varubeskrivning</th>
 					<th>Rättad händelse</th>
 					<th title="Samma som Antal">Rättat antal</th>
 					<th>Rättelse fritext</th>
@@ -101,6 +100,7 @@
 					<th>Tidigare&nbsp;handling-5</th>
 					<th>Intern fritext</th>
 					<th>Arkiverad</th>
+					<th>Uttag</th>
 					<th>Rättelse</th>					
 				</tr>
 			</thead>

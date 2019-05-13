@@ -93,6 +93,7 @@
 					<th>Tullid</th>
 					<th>Antal</th>
 					<th>Fritext</th>
+					<th>Arkiverad</th>
 				</tr>
 			</thead>
 		</table>
