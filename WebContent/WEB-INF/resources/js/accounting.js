@@ -138,7 +138,7 @@ function initSvlthSearch() {
 	            defaultContent: '-'
 	        }, 
 	    ],
-	    order: [[4, 'asc']],
+	    order: [[22, 'asc']],   //Arkiverad
 	    lengthMenu : [ 25, 75, 100 ],
 		language : {
 			url : getLanguage(lang)
@@ -414,6 +414,7 @@ function getRunningSvlthUrl() {
 		let selectedGodsnr = jq('#selectGodsnr').val();
 		let selectedMrn = jq('#selectMrn').val();
 		let selectedArrivalFrom = jq('#selectArrivalFrom').val();
+		let selectedArrivalTo = jq('#selectArrivalTo').val();
 		
 		if (selectedGodslokalkod != "") {
 			runningUrl = runningUrl + "&svlth_igl=" + selectedGodslokalkod;
@@ -426,9 +427,12 @@ function getRunningSvlthUrl() {
 			runningUrl = runningUrl + "&svlth_irn=" + selectedMrn;
 		} 
 		if (selectedArrivalFrom != "") {
-			runningUrl = runningUrl + "&svlth_id2=" + selectedArrivalFrom;
+			runningUrl = runningUrl + "&svlth_id2F=" + selectedArrivalFrom;
 		} 
-	
+		if (selectedArrivalTo != "") {
+			runningUrl = runningUrl + "&svlth_id2T=" + selectedArrivalTo;
+		} 
+
 		if (selectedGodslokalkod == "" && selectedGodsnr == "" && selectedMrn == "" && selectedArrivalFrom == "") {
 			return null;
 		}
