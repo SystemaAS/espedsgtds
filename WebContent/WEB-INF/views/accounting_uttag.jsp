@@ -88,11 +88,11 @@
 		<table class="display compact cell-border responsive nowrap" id="uttagTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Extern referans</th>
+					<th>Utgående&nbsp;handling</th>
 					<th>Uttagsdatum</th>
 					<th>Tullid</th>
 					<th>Antal</th>
-					<th>Fritext</th>
+					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 				</tr>
 			</thead>
@@ -125,14 +125,14 @@
 
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
-					<span class="rounded-top">&nbsp;Nytt uttag</span>
+					<span class="rounded-top">&nbsp;Nytt&nbsp;uttag</span>
 				</div>
 			</div>
 
 			<div class="form-row left-right-bottom-border formFrame">
 
 				<div class="form-group pr-2 col-auto">
-					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Extern&nbsp;referans</label>
+					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Utgående&nbsp;handling</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="18" maxlength="15">
 				</div>
 
@@ -145,7 +145,7 @@
 					<input required type="text" class="form-control form-control-sm" name="svlth_unt" id="svlth_unt" value="${record.svlth_unt}" size="7" maxlength="5">
 				</div>
 				<div class="form-group pr-3 col-auto">
-					<label for="svlth_utx" class="col-form-label-sm mb-0">Fritext</label>
+					<label for="svlth_utx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
 					<input type="text" class="form-control form-control-sm" name="svlth_utx" id="svlth_utx" value="${record.svlth_utx}" size="73" maxlength="70">
 				</div>
 

@@ -139,7 +139,7 @@
 			<div class="form-row left-right-bottom-border" <c:if test="${action == 2}"> disabled</c:if>>
 
 					<div class="form-group pr-2 pl-1  mb-0">
-						<label for="svlth_itx" class="col-form-label-sm mb-0">Fritext</label>
+						<label for="svlth_itx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
 						<input type="text" class="form-control form-control-sm" name="svlth_itx" id="svlth_itx" value="${record.svlth_itx}"  size="73" maxlength="70">
 					</div>			
 	

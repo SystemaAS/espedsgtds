@@ -71,7 +71,10 @@
 					<label for="antal" class="col-form-label-sm mb-0 pb-0">Räknat&nbsp;antal</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="antal"/>
 				</div>	
-
+				<div class="form-group pr-2 col-1">
+					<label for="saldo" class="col-form-label-sm mb-0 pb-0">Saldo</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="saldo"/>
+				</div>
 			</div>
 	</div>
 	
@@ -79,8 +82,8 @@
 		<table class="display compact cell-border responsive nowrap" id="rattelseTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Nytt räknat antal</th>
-					<th>Fritext</th>
+					<th>Nytt&nbsp;räknat&nbsp;antal</th>
+					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 				</tr>
 			</thead>
@@ -124,18 +127,18 @@
 
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
-					<span class="rounded-top">&nbsp;Ny rättelse</span>
+					<span class="rounded-top">&nbsp;Ny&nbsp;rättelse</span>
 				</div>
 			</div>
 
 			<div class="form-row left-right-bottom-border formFrame">
 
 				<div class="form-group pr-2 col-auto">
-					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Nytt räknat antal</label>
+					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Nytt&nbsp;räknat&nbsp;antal</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_rnt" id="svlth_rnt" value="${record.svlth_rnt}" size="8" maxlength="5">
 				</div>
 				<div class="form-group pr-3 col-auto">
-					<label for="svlth_rtx" class="col-form-label-sm mb-0">Fritext</label>
+					<label for="svlth_rtx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
 					<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="73" maxlength="70">
 				</div>
 

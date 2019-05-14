@@ -81,6 +81,7 @@
 					<th>Godsnummer</th>
 					<th>MRN</th>
 					<th>Extern&nbsp;referans</th>
+					<th>Utgående&nbsp;handling</th>
 					<th>Tullid</th>
 					<th>Händelse</th>
 					<th title="Ref. till händelse">Antal</th>
@@ -92,13 +93,13 @@
 					<th>Bruttovikt</th>
 					<th>Rättad händelse</th>
 					<th title="Samma som Antal">Rättat antal</th>
-					<th>Rättelse fritext</th>
+					<th>Rättelse&nbsp;int.info.</th>
 					<th>Tidigare&nbsp;handling-1</th>
 					<th>Tidigare&nbsp;handling-2</th>
 					<th>Tidigare&nbsp;handling-3</th>
 					<th>Tidigare&nbsp;handling-4</th>
 					<th>Tidigare&nbsp;handling-5</th>
-					<th>Intern fritext</th>
+					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 					<th>Uttag</th>
 					<th>Rättelse</th>					

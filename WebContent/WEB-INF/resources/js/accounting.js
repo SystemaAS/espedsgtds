@@ -13,6 +13,9 @@ var inlaggUrl_read = "accounting_inlagg.do?action=2";
 var rattelseUrl_create = "accounting_rattelse.do?action=1";
 var doNotLoad = "&DO_NOT_LOAD";  //disabling datatables autoload of content
 
+var selectionMessage ='';
+var now = new Date();
+
 function initSvlthSearch() {
 	console.log('svlthTable', svlthTable);
 	if (svlthTable != undefined) {
@@ -34,22 +37,36 @@ function initSvlthSearch() {
                 text: 'Välj kolumner'
             },
             {
-                extend: 'print',
+                extend: 'print', //pdfHtml5
                 text: 'Skriv ut',
-                orientation: 'landscape',
-                pageSize: 'LEGAL',
+                orientation: 'landscape',  //portrait
+                pageSize: 'A4', //A3 , A5 , A6 , legal , letter
                 exportOptions: {
-                    columns: ':visible'
-                }      	
+                    columns: ':visible',
+                    search: 'applied',
+                    order: 'applied'
+                },
+                title: "Tillfällig lagring",
+                messageTop: function () {
+                       return selectionMessage;
+                },
+                messageBottom: now
             },
 	    	{
                 extend: 'pdfHtml5',
                 text: 'Skapa PDF',
-                orientation: 'landscape',
-                pageSize: 'LEGAL',
+                orientation: 'landscape',  //portrait
+                pageSize: 'A4', //A3 , A5 , A6 , legal , letter
                 exportOptions: {
-                    columns: ':visible'
+                    columns: ':visible',
+                    search: 'applied',
+                    order: 'applied'
                 },
+                title: "Tillfällig lagring",
+                messageTop: function () {
+                       return selectionMessage;
+                },
+                messageBottom: now
             }
         ],
 		mark: true,
@@ -63,6 +80,7 @@ function initSvlthSearch() {
 	    	{ data: "svlth_ign"	},
 	        { data: "svlth_irn" },
 	        { data: "svlth_iex" },
+	        { data: "svlth_uex" },
 	        { data: "svlth_uti" },
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
@@ -144,7 +162,7 @@ function initSvlthSearch() {
 	        }, 
 	    ],
 	    order: [[22, 'desc']],   //Arkiverad
-	    lengthMenu : [ 25, 75, 100 ],
+	    lengthMenu : [ 25, 75, 100, 200, 500 ],
 		language : {
 			url : getLanguage(lang)
 		}        
@@ -173,6 +191,8 @@ function loadSvlth() {
 	svlthTable.ajax.url(runningUrl);
 	svlthTable.ajax.reload();
 //	unBlockUI(); is done in draw.dt
+	
+	
 
 }
 
@@ -376,6 +396,7 @@ function setEventHeader() {
 			  let record = data.dtoList;
 			  if (record[0].svlth_h == "I") {
 				  jq("#antal").text(record[0].svlth_int);  
+				  jq("#saldo").text(record[0].saldo);
 			  } 
 			  if (record[0].svlth_h == "U") {
 				  jq("#antal").text(record[0].svlth_unt);  
@@ -404,16 +425,6 @@ function getRunningSvlthUttagUrl() {
 function getRunningSvlthRattelseUrl() {
 	let runningUrl = svlthUrl;
 	runningUrl = runningUrl + "&svlth_irn=" + h_svlth_irn;
-
-	//TODO check type
-	
-//	runningUrl = runningUrl + "&svlth_id1=" + h_svlth_id1;
-//	runningUrl = runningUrl + "&svlth_im1=" + h_svlth_im1;
-
-//	runningUrl = runningUrl + "&svlth_ud1=" + h_svlth_ud1;
-//	runningUrl = runningUrl + "&svlth_um1=" + h_svlth_um1;
-
-	
 	runningUrl = runningUrl + "&svlth_rty="+h_svlth_h;
 	runningUrl = runningUrl + "&svlth_h=R";
 	
@@ -422,10 +433,10 @@ function getRunningSvlthRattelseUrl() {
 
 
 function getRunningSvlthUrl() {
+		selectionMessage = '';
 		let runningUrl = svlthUrl;
 	
 		let selectedGodslokalkod = jq('#selectGodslokalkod').val();
-
 		let selectedGodsnr = jq('#selectGodsnr').val();
 		let selectedMrn = jq('#selectMrn').val();
 		let selectedArrivalFrom = jq('#selectArrivalFrom').val();
@@ -433,19 +444,25 @@ function getRunningSvlthUrl() {
 		
 		if (selectedGodslokalkod != "") {
 			runningUrl = runningUrl + "&svlth_igl=" + selectedGodslokalkod;
+			selectionMessage = selectionMessage + " Godslokalkod:"+selectedGodslokalkod;
 		} 
-		
 		if (selectedGodsnr != "") {
 			runningUrl = runningUrl + "&svlth_ign=" + selectedGodsnr;
+			selectionMessage = selectionMessage + " Godsnummer:"+selectedGodsnr;
 		} 
 		if (selectedMrn != "") {
 			runningUrl = runningUrl + "&svlth_irn=" + selectedMrn;
+			selectionMessage = selectionMessage + " MRN:"+selectedMrn;
+
 		} 
 		if (selectedArrivalFrom != "") {
 			runningUrl = runningUrl + "&svlth_id2F=" + selectedArrivalFrom;
+			selectionMessage = selectionMessage + " F.o.m ankomstdatum:"+selectedArrivalFrom;
 		} 
 		if (selectedArrivalTo != "") {
 			runningUrl = runningUrl + "&svlth_id2T=" + selectedArrivalTo;
+			selectionMessage = selectionMessage + " T.o.m ankomstdatum:"+selectedArrivalTo;
+
 		} 
 
 		if (selectedGodslokalkod == "" && selectedGodsnr == "" && selectedMrn == "" && selectedArrivalFrom == "") {
