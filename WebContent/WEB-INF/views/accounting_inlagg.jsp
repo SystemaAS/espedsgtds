@@ -20,11 +20,11 @@
 	    </a>
 		<a class="nav-item nav-link active disabled">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Inlägg<c:if test="${action == 2}"> ${record.svlth_irn}</c:if>  
+		    Inlägg<c:if test="${action == 2}"> ${record.svlth_ign}</c:if>  
 		  </span>
 		</a>
 	<c:if test="${action == 2}"> 
-		<a class="nav-item nav-link nav-new" onClick="setBlockUI();" href="accounting_uttag_list.do?action=2&svlth_irn=${record.svlth_irn}&svlth_id1=${record.svlth_id1}&svlth_im1=${record.svlth_im1}">
+		<a class="nav-item nav-link nav-new" onClick="setBlockUI();" href="accounting_uttag_list.do?action=2&svlth_ign=${record.svlth_ign}&svlth_pos=${record.svlth_pos}&svlth_id1=${record.svlth_id1}&svlth_im1=${record.svlth_im1}">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
 			Uttag
 		  </span>
@@ -56,6 +56,11 @@
 					<div class="form-group pr-2 mb-0">
 						<label for="svlth_ign" class="col-form-label-sm mb-0 required">Godsnummer</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
+					</div>	
+
+					<div class="form-group pr-2 mb-0">
+						<label for="svlth_pos" class="col-form-label-sm mb-0 required">Position</label>
+						<input type="text" required class="form-control form-control-sm" name="svlth_pos" id="svlth_pos" value="${record.svlth_pos}"  size="11" maxlength="9">
 					</div>	
 
 					<div class="form-group pr-2 mb-0">

@@ -10,19 +10,15 @@
 <script type="text/javascript">
 	"use strict";
 
-	var svlth_irn = "${svlth_irn}";
+	var svlth_ign = "${record.svlth_ign}";
+	var svlth_pos = "${record.svlth_pos}";
 	let hasError = "${error}";
 	
 	jq(document).ready(function() {
- 				
 			loadSvlthUttag();
- 		
  			if (hasError == "") {
- 				console.log("clearValues...");
  				clearValues();
  			}
-			
-		
 	});
 </script>
 
@@ -37,9 +33,9 @@
 		    Bokföring
 		  </span>
 	    </a>
-		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_irn=${svlth_irn}">
+		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_ign=${record.svlth_ign}&svlth_pos=${record.svlth_pos}">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Inlägg[${svlth_irn}]
+		    Inlägg[${record.svlth_ign}]
 		  </span>	
 		</a>
 		<a class="nav-item nav-link nav-new active disabled">
@@ -68,6 +64,10 @@
 				<div class="form-group pr-2 col-2">
 					<label for="godsnr" class="col-form-label-sm mb-0 pb-0">Godsnummer</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="godsnr"/>
+				</div>	
+				<div class="form-group pr-2 col-2">
+					<label for="position" class="col-form-label-sm mb-0 pb-0">Position</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="position"/>
 				</div>	
 				<div class="form-group pr-2 col-2">
 					<label for="arrival" class="col-form-label-sm mb-0 pb-0">Ankomstdatum</label>
@@ -106,6 +106,7 @@
 		<input type="hidden" name="svlth_iex" id="svlth_iex" value='${headRecord.svlth_iex}'>
 		<input type="hidden" name="svlth_irn" id="svlth_irn" value='${headRecord.svlth_irn}'>
 		<input type="hidden" name="svlth_ign" id="svlth_ign" value='${headRecord.svlth_ign}'>
+		<input type="hidden" name="svlth_pos" id="svlth_pos" value='${headRecord.svlth_pos}'>
 		<input type="hidden" name="svlth_id1" id="svlth_id1" value='${headRecord.svlth_id1}'>
 		<input type="hidden" name="svlth_im1" id="svlth_im1" value='${headRecord.svlth_im1}'>
 		<input type="hidden" name="svlth_id2" id="svlth_id2" value='${headRecord.svlth_id2}'>

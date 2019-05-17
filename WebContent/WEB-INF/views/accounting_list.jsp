@@ -79,6 +79,7 @@
 				<tr>
 					<th>Godslokalkod</th>
 					<th>Godsnummer</th>
+					<th>Position</th>
 					<th>MRN</th>
 					<th>Extern&nbsp;referans</th>
 					<th>Utgående&nbsp;handling</th>

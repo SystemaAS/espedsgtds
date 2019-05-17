@@ -11,7 +11,8 @@
 	"use strict";
 	
 	var h_svlth_h = "${headRecord.svlth_h}";
-	var h_svlth_irn = "${headRecord.svlth_irn}";
+	var h_svlth_ign = "${headRecord.svlth_ign}";
+	var h_svlth_pos = "${headRecord.svlth_pos}";
 	var h_svlth_id1 = "${headRecord.svlth_id1}";
 	var h_svlth_im1 = "${headRecord.svlth_im1}";
 	
@@ -68,6 +69,10 @@
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="godsnr"/>
 				</div>	
 				<div class="form-group pr-2 col-2">
+					<label for="position" class="col-form-label-sm mb-0 pb-0">Position</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="position"/>
+				</div>	
+				<div class="form-group pr-2 col-2">
 					<label for="antal" class="col-form-label-sm mb-0 pb-0">Räknat&nbsp;antal</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="antal"/>
 				</div>	
@@ -97,6 +102,7 @@
 		<input type="hidden" name="svlth_iex" id="svlth_iex" value='${headRecord.svlth_iex}'>
 		<input type="hidden" name="svlth_irn" id="svlth_irn" value='${headRecord.svlth_irn}'>
 		<input type="hidden" name="svlth_ign" id="svlth_ign" value='${headRecord.svlth_ign}'>
+		<input type="hidden" name="svlth_pos" id="svlth_pos" value='${headRecord.svlth_pos}'>
 		<input type="hidden" name="svlth_id1" id="svlth_id1" value='${headRecord.svlth_id1}'>
 		<input type="hidden" name="svlth_im1" id="svlth_im1" value='${headRecord.svlth_im1}'>
 		<input type="hidden" name="svlth_id2" id="svlth_id2" value='${headRecord.svlth_id2}'>
@@ -116,7 +122,8 @@
 		
 		<!-- Head -->		
 		<input type="hidden" name="h_svlth_h" id="h_svlth_h"  value='${headRecord.svlth_h}'>
-		<input type="hidden" name="h_svlth_irn" id="h_svlth_irn"  value='${headRecord.svlth_irn}'>
+		<input type="hidden" name="h_svlth_ign" id="h_svlth_ign"  value='${headRecord.svlth_ign}'>
+		<input type="hidden" name="h_svlth_pos" id="h_svlth_pos"  value='${headRecord.svlth_pos}'>
 		<input type="hidden" name="h_svlth_id1" id="h_svlth_id1"  value='${headRecord.svlth_id1}'>
 		<input type="hidden" name="h_svlth_im1" id="h_svlth_im1"  value='${headRecord.svlth_im1}'>
 		<input type="hidden" name="h_svlth_ud1" id="h_svlth_ud1"  value='${headRecord.svlth_ud1}'>

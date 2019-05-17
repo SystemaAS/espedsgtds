@@ -6,9 +6,7 @@ var uttagTable;
 var rattelseTable;
 var svtx03fTable;
 
-
-var uttagUrl_read = "accounting_uttag_list.do?action=2";
-
+//var uttagUrl_read = "accounting_uttag_list.do?action=2";
 var inlaggUrl_read = "accounting_inlagg.do?action=2";
 var rattelseUrl_create = "accounting_rattelse.do?action=1";
 var doNotLoad = "&DO_NOT_LOAD";  //disabling datatables autoload of content
@@ -78,7 +76,8 @@ function initSvlthSearch() {
 	    columns: [
 	        { data: "svlth_igl" },
 	    	{ data: "svlth_ign"	},
-	        { data: "svlth_irn" },
+	    	{ data: "svlth_pos"	},
+	    	{ data: "svlth_irn" },
 	        { data: "svlth_iex" },
 	        { data: "svlth_uex" },
 	        { data: "svlth_uti" },
@@ -138,7 +137,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h == 'I') {
-				    	let url= inlaggUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
+				    	let url= inlaggUrl_read + '&svlth_ign='+row.svlth_ign + '&svlth_pos='+row.svlth_pos + '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 //				    	let url= uttagUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/unloading.png" onClick="setBlockUI();"></a>';
 			    	} 
@@ -153,7 +152,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h != 'R') { 
-				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_irn='+row.svlth_irn  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_im1='+row.svlth_im1;
+				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_ign='+row.svlth_ign + '&h_svlth_pos='+row.svlth_pos  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_im1='+row.svlth_im1;
 				    	href = '<a href="'+url+'"' +'><img class="img-fluid float-center" src="resources/images/log-icon.gif"  width="16" height="16" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -200,7 +199,7 @@ function loadSvlthUttag() {
 	console.log('loadSvlthUttag');
 
 	let runningUrl;
-	console.log('svlth_irn',svlth_irn);
+	console.log('svlth_ign',svlth_ign);
 	runningUrl= getRunningSvlthUttagUrl();
 	console.log("runningUrl" + runningUrl);
 	
@@ -293,10 +292,7 @@ function loadEvent() {
 
 	});	
 
-
 }
-
-
 
 function loadSvtx03f() {
 	let runningUrl;
@@ -336,8 +332,6 @@ function clearValues() {
     jq("#svlth_unt").val("");
     jq("#svlth_utx").val("");
     
- //   jq("#action").val(2);  //READ 	
-
 }
 
 
@@ -359,7 +353,7 @@ function getDescription(svlth_h){
 function setUttagHeader() {
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : "I" , svlth_irn : svlth_irn }, 
+	  	  data: { svlth_h : "I" , svlth_ign : svlth_ign,  svlth_pos : svlth_pos }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -368,13 +362,13 @@ function setUttagHeader() {
 			  console.log("record", record);
 			  jq("#mrn").text(record[0].svlth_irn);
 			  jq("#godsnr").text(record[0].svlth_ign);
+			  jq("#position").text(record[0].svlth_pos);
 			  jq("#arrival").text(record[0].svlth_id2);
 			  jq("#archive").text(record[0].svlth_id1);
 			  jq("#saldo").text(record[0].saldo);
 			  
 		  }, 
 		  error: function (jqXHR, exception) {
-		  	console.log("svlth_irn don't exist", svlth_irn);
 		    console.log("jqXHR",jqXHR);
 		    console.log("exception",exception);
 		  }	
@@ -383,12 +377,9 @@ function setUttagHeader() {
 }
 
 function setEventHeader() {
-	
-	console.log("h_svlth_um1", h_svlth_um1);
-	
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : h_svlth_h , svlth_irn : h_svlth_irn, svlth_id1 : h_svlth_id1, svlth_im1 : h_svlth_im1 }, 
+	  	  data: { svlth_h : h_svlth_h , svlth_ign : h_svlth_ign, svlth_pos : h_svlth_pos, svlth_id1 : h_svlth_id1, svlth_im1 : h_svlth_im1 }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -400,14 +391,15 @@ function setEventHeader() {
 			  } 
 			  if (record[0].svlth_h == "U") {
 				  jq("#antal").text(record[0].svlth_unt);  
+				  jq("#saldo").text("-");
 			  } 
 			  
 			  jq("#event").text(getDescription(record[0].svlth_h));
 			  jq("#mrn").text(record[0].svlth_irn);
 			  jq("#godsnr").text(record[0].svlth_ign);
+			  jq("#position").text(record[0].svlth_pos);
 		  }, 
 		  error: function (jqXHR, exception) {
-		  	//console.log("hsvlth_irn don't exist", h_svlth_irn);
 		    console.log("jqXHR",jqXHR);
 		    console.log("exception",exception);
 		  }	
@@ -416,7 +408,8 @@ function setEventHeader() {
 
 function getRunningSvlthUttagUrl() {
 	let runningUrl = svlthUrl;
-	runningUrl = runningUrl + "&svlth_irn=" + svlth_irn;
+	runningUrl = runningUrl + "&svlth_ign=" + svlth_ign;
+	runningUrl = runningUrl + "&svlth_pos=" + svlth_pos;
 	runningUrl = runningUrl + "&svlth_h=U";
 	
 	return runningUrl;
@@ -424,7 +417,8 @@ function getRunningSvlthUttagUrl() {
 
 function getRunningSvlthRattelseUrl() {
 	let runningUrl = svlthUrl;
-	runningUrl = runningUrl + "&svlth_irn=" + h_svlth_irn;
+	runningUrl = runningUrl + "&svlth_ign=" + h_svlth_ign;
+	runningUrl = runningUrl + "&svlth_pos=" + h_svlth_pos;
 	runningUrl = runningUrl + "&svlth_rty="+h_svlth_h;
 	runningUrl = runningUrl + "&svlth_h=R";
 	
@@ -539,8 +533,6 @@ function initSvtx03fSearch(caller) {
 	});		
 	
 }//end initSvtx03fSearch
-
-
 
 
 //deprecated, remove when appropriate
