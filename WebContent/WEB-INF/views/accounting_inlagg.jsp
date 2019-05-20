@@ -123,8 +123,8 @@
 					</div>	
 
 					<div class="form-group mb-0 col-6">
-						<label for="svlth_ih1" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="73" maxlength="70">
+						<label for="svlth_ih1" class="col-form-label-sm mb-0">Tidigare&nbsp;handling</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="73" maxlength="70">
 						<a data-toggle="collapse" href="#morePrevEvents" aria-expanded="false" aria-controls="morePrevEvents">Ytterligare handlingar</a>
 					</div>	
 			</div>

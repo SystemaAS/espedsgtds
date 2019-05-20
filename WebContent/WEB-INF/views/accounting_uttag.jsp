@@ -12,6 +12,9 @@
 
 	var svlth_ign = "${record.svlth_ign}";
 	var svlth_pos = "${record.svlth_pos}";
+	var svlth_id1 = "${record.svlth_id1}";
+	var svlth_im1 = "${record.svlth_im1}";
+
 	let hasError = "${error}";
 	
 	jq(document).ready(function() {
@@ -119,8 +122,10 @@
 		<input type="hidden" name="svlth_isl" id="svlth_isl" value='${headRecord.svlth_isl}'>
 		<input type="hidden" name="svlth_ibr" id="svlth_ibr" value='${headRecord.svlth_ibr}'>
 		<input type="hidden" name="svlth_ivb" id="svlth_ivb" value='${headRecord.svlth_ivb}'>
-
-
+		<input type="hidden" name="svlth_ivb2" id="svlth_ivb2" value='${headRecord.svlth_ivb2}'>
+		<input type="hidden" name="svlth_ivb3" id="svlth_ivb3" value='${headRecord.svlth_ivb3}'>
+		<input type="hidden" name="svlth_ivb4" id="svlth_ivb4" value='${headRecord.svlth_ivb4}'>
+		<input type="hidden" name="svlth_ivb5" id="svlth_ivb5" value='${headRecord.svlth_ivb5}'>
 
 		<div class="container-fluid p-1 left-right-bottom-border">
 

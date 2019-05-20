@@ -232,7 +232,8 @@ public class AccountingController {
 	}
 	
 	@RequestMapping(value = "accounting_uttag.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView doUttag(@ModelAttribute("record") SvlthDao record, @RequestParam(value = "action", required = true) Integer action, HttpSession session, HttpServletRequest request) {
+	public ModelAndView doUttag(@ModelAttribute("record") SvlthDao record, 
+								@RequestParam(value = "action", required = true) Integer action, HttpSession session, HttpServletRequest request) {
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
 		if (appUser == null) {
@@ -289,9 +290,12 @@ public class AccountingController {
 
 	@RequestMapping(value = "accounting_rattelse.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView doRattelse(@ModelAttribute("record") SvlthDao record, @RequestParam(value = "action", required = true) Integer action,
-			@RequestParam(value = "h_svlth_ign", required = true) String h_svlth_ign, @RequestParam(value = "h_svlth_pos", required = true) String h_svlth_pos,
-			@RequestParam(value = "h_svlth_h", required = true) String h_svlth_h, @RequestParam(value = "h_svlth_id1", required = true) Integer h_svlth_id1,
-			@RequestParam(value = "h_svlth_im1", required = true) Integer h_svlth_im1, HttpSession session, HttpServletRequest request) {
+			@RequestParam(value = "h_svlth_h", required = true) String h_svlth_h, 
+			@RequestParam(value = "h_svlth_ign", required = true) String h_svlth_ign, 
+			@RequestParam(value = "h_svlth_pos", required = true) String h_svlth_pos,
+			@RequestParam(value = "h_svlth_id1", required = true) Integer h_svlth_id1,
+			@RequestParam(value = "h_svlth_im1", required = true) Integer h_svlth_im1,
+			HttpSession session, HttpServletRequest request) {
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
 		if (appUser == null) {
@@ -300,6 +304,14 @@ public class AccountingController {
 
 		logger.info("accounting_rattelse.do, record=" + ReflectionToStringBuilder.reflectionToString(record));
 		logger.info("action=" + action);
+		
+		logger.info("h_svlth_h="+h_svlth_h);
+		logger.info("h_svlth_ign="+h_svlth_ign);
+		logger.info("h_svlth_pos="+h_svlth_pos);
+		logger.info("h_svlth_id1="+h_svlth_id1);
+		logger.info("h_svlth_im1="+h_svlth_im1);
+		
+		
 
 		ModelAndView successView = new ModelAndView("accounting_rattelse");
 		SvlthDto returnDto = new SvlthDto();
@@ -411,7 +423,7 @@ public class AccountingController {
 			List<SvlthDto> list = container.getDtoList();
 			if (list.isEmpty() || list.size() != 1){
 				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag.") ;
-				String inParams = String.format(" svlth_h: %s ,  svlth_ign: %s , svlth_pos: %s , svlth_id1: %s, svlth_im1: %s", svlth_h, svlth_ign, svlth_id1, svlth_im1 ) ;
+				String inParams = String.format(" svlth_h: %s ,  svlth_ign: %s , svlth_pos: %s , svlth_id1: %s, svlth_im1: %s", svlth_h, svlth_ign,svlth_pos, svlth_id1, svlth_im1 ) ;
 				logger.error(errMsg + "list.size="+list.size());
 				throw new RuntimeException(errMsg + inParams);
 			} else {
@@ -428,6 +440,7 @@ public class AccountingController {
 
 	private void saveRecord(SystemaWebUser appUser, SvlthDao record, String mode) {
 		logger.info("saveRecord::record::"+ReflectionToStringBuilder.toString(record));
+		setUser(appUser.getUser(), record);
 		EncodingTransformer transformer = new EncodingTransformer();
 		String SVLTH_DML_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH_U.do";
 
@@ -465,6 +478,10 @@ public class AccountingController {
 		}
 		
 	}	
+
+	private void setUser(String user, SvlthDao record) {
+		record.setSvlth_ius(user);
+	}
 
 	private void setDate(EventTypeEnum eventType, SvlthDao record) {
 		int[] dato = DateTimeManager.getNowDato();		

@@ -13,8 +13,8 @@
 	var h_svlth_h = "${headRecord.svlth_h}";
 	var h_svlth_ign = "${headRecord.svlth_ign}";
 	var h_svlth_pos = "${headRecord.svlth_pos}";
-	var h_svlth_id1 = "${headRecord.svlth_id1}";
-	var h_svlth_im1 = "${headRecord.svlth_im1}";
+// 	var h_svlth_id1 = "${headRecord.svlth_id1}";
+// 	var h_svlth_im1 = "${headRecord.svlth_im1}";
 	
 	jq(document).ready(function() {
 		loadEvent();
@@ -116,6 +116,10 @@
 		<input type="hidden" name="svlth_isl" id="svlth_isl" value='${headRecord.svlth_isl}'>
 		<input type="hidden" name="svlth_ibr" id="svlth_ibr" value='${headRecord.svlth_ibr}'>
 		<input type="hidden" name="svlth_ivb" id="svlth_ivb" value='${headRecord.svlth_ivb}'>
+		<input type="hidden" name="svlth_ivb2" id="svlth_ivb2" value='${headRecord.svlth_ivb2}'>
+		<input type="hidden" name="svlth_ivb3" id="svlth_ivb3" value='${headRecord.svlth_ivb3}'>
+		<input type="hidden" name="svlth_ivb4" id="svlth_ivb4" value='${headRecord.svlth_ivb4}'>
+		<input type="hidden" name="svlth_ivb5" id="svlth_ivb5" value='${headRecord.svlth_ivb5}'>
 		<input type="hidden" name="svlth_rty" id="svlth_rty" value='${headRecord.svlth_h}'>
 		<input type="hidden" name="svlth_ud1" id="svlth_ud1"  value='${headRecord.svlth_ud1}'>
 		<input type="hidden" name="svlth_um1" id="svlth_um1"  value='${headRecord.svlth_um1}'>

@@ -137,7 +137,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h == 'I') {
-				    	let url= inlaggUrl_read + '&svlth_ign='+row.svlth_ign + '&svlth_pos='+row.svlth_pos + '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
+				    	let url= inlaggUrl_read + '&svlth_ign='+row.svlth_ign + '&svlth_pos='+row.svlth_pos+'&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 //				    	let url= uttagUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/unloading.png" onClick="setBlockUI();"></a>';
 			    	} 
@@ -152,7 +152,7 @@ function initSvlthSearch() {
 	            render: function ( data, type, row, meta ) {
 			    	let href;
 			    	if (row.svlth_h != 'R') { 
-				    	let url= rattelseUrl_create + '&h_svlth_h='+row.svlth_h + '&h_svlth_ign='+row.svlth_ign + '&h_svlth_pos='+row.svlth_pos  + '&h_svlth_id1='+row.svlth_id1  + '&h_svlth_im1='+row.svlth_im1;
+				    	let url= rattelseUrl_create+'&h_svlth_h='+row.svlth_h+'&h_svlth_ign='+row.svlth_ign+'&h_svlth_pos='+row.svlth_pos+'&h_svlth_id1='+row.svlth_id1+'&h_svlth_im1='+row.svlth_im1;
 				    	href = '<a href="'+url+'"' +'><img class="img-fluid float-center" src="resources/images/log-icon.gif"  width="16" height="16" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -160,7 +160,7 @@ function initSvlthSearch() {
 	            defaultContent: ''
 	        }, 
 	    ],
-	    order: [[22, 'desc']],   //Arkiverad
+	    order: [[24, 'desc']],   //Arkiverad
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
 		language : {
 			url : getLanguage(lang)
@@ -353,7 +353,7 @@ function getDescription(svlth_h){
 function setUttagHeader() {
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : "I" , svlth_ign : svlth_ign,  svlth_pos : svlth_pos }, 
+	  	  data: { svlth_h : "I" , svlth_ign : svlth_ign,  svlth_pos : svlth_pos, svlth_id1 : svlth_id1, svlth_im1 : svlth_im1 }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -379,7 +379,7 @@ function setUttagHeader() {
 function setEventHeader() {
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : h_svlth_h , svlth_ign : h_svlth_ign, svlth_pos : h_svlth_pos, svlth_id1 : h_svlth_id1, svlth_im1 : h_svlth_im1 }, 
+	  	  data: { svlth_h : h_svlth_h , svlth_ign : h_svlth_ign, svlth_pos : h_svlth_pos}, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
