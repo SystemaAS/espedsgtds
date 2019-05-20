@@ -558,6 +558,26 @@ function getKollislagKode(caller){
 	});	
 }
 
+function getGodslokalkod(caller){
+	jq.ajax({
+			  type: 'GET',
+			  url: svltfUrl,
+			  dataType: 'json',
+			  cache: true,
+			  contentType: 'application/json',
+			  success: function(data) {
+				  
+				_.each(data.dtoList, function( d) {
+					jq(caller).append(jq('<option></option>').attr('value', d.svltf_igl).text(d.svltf_igl));
+				});
+				
+			  }, 
+			  error: function (jqXHR, exception) {
+				    console.log("jqXHR",jqXHR);
+				    console.log("exception",exception);
+			  }	
+	});	
+}
 
 
 

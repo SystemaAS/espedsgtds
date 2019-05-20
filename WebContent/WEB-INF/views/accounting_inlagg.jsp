@@ -7,6 +7,13 @@
 
 <link href="resources/accounting.css" rel="stylesheet" type="text/css"/>
 
+<script type="text/javascript">
+	"use strict";
+	jq(document).ready(function() {
+		getGodslokalkod('#svlth_igl');
+	});
+</script>
+
 <div class="container-fluid">
 
 	<div class="padded-row-small"></div>
@@ -50,7 +57,7 @@
 			<div class="form-row left-right-border" <c:if test="${action == 2}"> disabled</c:if>>
 					<div class="form-group pr-2 pl-1 mb-0">
 						<label for="svlth_igl" class="col-form-label-sm mb-0 required">Godslokalkod</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_igl" id="svlth_igl" value="${record.svlth_igl}" size="5" maxlength="3">
+						<select class="form-control form-control-sm w-auto" name="svlth_igl" id="svlth_igl"></select>	
 					</div>
 	
 					<div class="form-group pr-2 mb-0">
@@ -106,44 +113,83 @@
 						<input type="text" required class="form-control form-control-sm" name="svlth_ibr" id="svlth_ibr" value="${record.svlth_ibr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
 					</div>	
 
-					<div class="form-group pr-2 mb-0">
+			</div>
+			
+			<div class="form-row left-right-border">
+					<div class="form-group mb-0 col-6">
 						<label for="svlth_ivb" class="col-form-label-sm mb-0 required">Varubeskrivning</label>
 						<input type="text" required class="form-control form-control-sm" name="svlth_ivb" id="svlth_ivb" value="${record.svlth_ivb}"  size="73" maxlength="70">
+						<a data-toggle="collapse" href="#moreDesc" aria-expanded="false" aria-controls="moreDesc">Ytterligare varubeskrivning</a>
 					</div>	
 
-
+					<div class="form-group mb-0 col-6">
+						<label for="svlth_ih1" class="col-form-label-sm mb-0 required">Tidigare&nbsp;handling</label>
+						<input type="text" required class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="73" maxlength="70">
+						<a data-toggle="collapse" href="#morePrevEvents" aria-expanded="false" aria-controls="morePrevEvents">Ytterligare handlingar</a>
+					</div>	
 			</div>
-			<div class="form-row left-right-border" <c:if test="${action == 2}"> disabled</c:if>>
+			
+			
+			<div class="form-row left-right-border">
+				  <div class="col-6">
+				    <div class="collapse multi-collapse" id="moreDesc">
+				      <div class="card card-body">
 
-					<div class="form-group pr-2 pl-1 mb-0">
-						<label for="svlth_ih1" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;1</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_ih1" id="svlth_ih1" value="${record.svlth_ih1}"  size="38" maxlength="35">
-					</div>	
+						<div class="form-group mb-0">
+							<label for="svlth_ivb2" class="col-form-label-sm mb-0">Varubeskrivning</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ivb2" id="svlth_ivb2" value="${record.svlth_ivb2}"  size="73" maxlength="70">
+						</div>	
+						<div class="form-group mb-0">
+							<label for="svlth_ivb3" class="col-form-label-sm mb-0">Varubeskrivning</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ivb3" id="svlth_ivb3" value="${record.svlth_ivb3}"  size="73" maxlength="70">
+						</div>	
+	
+						<div class="form-group mb-0">
+							<label for="svlth_ivb4" class="col-form-label-sm mb-0">Varubeskrivning</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ivb4" id="svlth_ivb4" value="${record.svlth_ivb4}"  size="73" maxlength="70">
+						</div>	
+	
+						<div class="form-group mb-0">
+							<label for="svlth_ivb5" class="col-form-label-sm mb-0">Varubeskrivning</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ivb5" id="svlth_ivb5" value="${record.svlth_ivb5}"  size="73" maxlength="70">
+						</div>	
+	
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-6">
+				    <div class="collapse multi-collapse" id="morePrevEvents">
+				      <div class="card card-body">
 
-					<div class="form-group pr-2 mb-0">
-						<label for="svlth_ih2" class="col-form-label-sm mb-0 ">Tidigare&nbsp;handling&nbsp;2</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_ih2" id="svlth_ih2" value="${record.svlth_ih2}"  size="38" maxlength="35">
-					</div>	
-					
-					<div class="form-group pr-2 mb-0">
-						<label for="svlth_ih3" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;3</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_ih3" id="svlth_ih3" value="${record.svlth_ih3}"  size="38" maxlength="35">
-					</div>	
-					
-					<div class="form-group pr-2 mb-0">
-						<label for="svlth_ih4" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;4</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_ih4" id="svlth_ih4" value="${record.svlth_ih4}"  size="38" maxlength="35">
-					</div>	
+						<div class="form-group pr-2 mb-0">
+							<label for="svlth_ih2" class="col-form-label-sm mb-0 ">Tidigare&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ih2" id="svlth_ih2" value="${record.svlth_ih2}"  size="38" maxlength="35">
+						</div>	
+						
+						<div class="form-group pr-2 mb-0">
+							<label for="svlth_ih3" class="col-form-label-sm mb-0">Tidigare&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ih3" id="svlth_ih3" value="${record.svlth_ih3}"  size="38" maxlength="35">
+						</div>	
+						
+						<div class="form-group pr-2 mb-0">
+							<label for="svlth_ih4" class="col-form-label-sm mb-0">Tidigare&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ih4" id="svlth_ih4" value="${record.svlth_ih4}"  size="38" maxlength="35">
+						</div>	
+	
+						<div class="form-group pr-2 mb-0">
+							<label for="svlth_ih5" class="col-form-label-sm mb-0">Tidigare&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_ih5" id="svlth_ih5" value="${record.svlth_ih5}"  size="38" maxlength="35">
+						</div>	
 
-					<div class="form-group pr-2 mb-0">
-						<label for="svlth_ih5" class="col-form-label-sm mb-0">Tidigare&nbsp;handling&nbsp;5</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_ih5" id="svlth_ih5" value="${record.svlth_ih5}"  size="38" maxlength="35">
-					</div>	
+				      </div>
+				    </div>
+				  </div>
+				  
+			</div>			
 
-			</div>
 			<div class="form-row left-right-bottom-border" <c:if test="${action == 2}"> disabled</c:if>>
 
-					<div class="form-group pr-2 pl-1  mb-0">
+					<div class="form-group pr-2 pl-1 mb-0">
 						<label for="svlth_itx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
 						<input type="text" class="form-control form-control-sm" name="svlth_itx" id="svlth_itx" value="${record.svlth_itx}"  size="73" maxlength="70">
 					</div>			

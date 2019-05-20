@@ -47,7 +47,8 @@
 		<script>
 			var lang = '${user.usrLang}';
 		  	var svlthUrl = "/syjservicesbcore/syjsSVLTH?user=${user.user}";
-		  	var kollislagUrl = '/syjservicesbcore/syjsSVTX03F.do?user=${user.user}&02=KLI'
+		  	var kollislagUrl = '/syjservicesbcore/syjsSVTX03F.do?user=${user.user}&02=KLI';
+		  	var svltfUrl = "/syjservicesbcore/syjsSVLTF.do?user=${user.user}";
 		</script>
 
 	</head>
