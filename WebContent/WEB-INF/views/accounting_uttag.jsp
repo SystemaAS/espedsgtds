@@ -10,10 +10,17 @@
 <script type="text/javascript">
 	"use strict";
 
-	var svlth_ign = "${record.svlth_ign}";
-	var svlth_pos = "${record.svlth_pos}";
-	var svlth_id1 = "${record.svlth_id1}";
-	var svlth_im1 = "${record.svlth_im1}";
+// 	var svlth_ign = "${record.svlth_ign}";
+// 	var svlth_pos = "${record.svlth_pos}";
+// 	var svlth_id1 = "${record.svlth_id1}";
+// 	var svlth_im1 = "${record.svlth_im1}";
+	
+	var h_svlth_h = "${headRecord.svlth_h}";
+	var h_svlth_ign = "${headRecord.svlth_ign}";
+	var h_svlth_pos = "${headRecord.svlth_pos}";
+	var h_svlth_id1 = "${headRecord.svlth_id1}";
+	var h_svlth_im1 = "${headRecord.svlth_im1}";	
+	
 
 	let hasError = "${error}";
 	
@@ -126,6 +133,14 @@
 		<input type="hidden" name="svlth_ivb3" id="svlth_ivb3" value='${headRecord.svlth_ivb3}'>
 		<input type="hidden" name="svlth_ivb4" id="svlth_ivb4" value='${headRecord.svlth_ivb4}'>
 		<input type="hidden" name="svlth_ivb5" id="svlth_ivb5" value='${headRecord.svlth_ivb5}'>
+
+		<input type="hidden" name="h_svlth_h" id="h_svlth_h"  value='${headRecord.svlth_h}'>
+		<input type="hidden" name="h_svlth_ign" id="h_svlth_ign"  value='${headRecord.svlth_ign}'>
+		<input type="hidden" name="h_svlth_pos" id="h_svlth_pos"  value='${headRecord.svlth_pos}'>
+		<input type="hidden" name="h_svlth_id1" id="h_svlth_id1"  value='${headRecord.svlth_id1}'>
+		<input type="hidden" name="h_svlth_im1" id="h_svlth_im1"  value='${headRecord.svlth_im1}'>
+
+
 
 		<div class="container-fluid p-1 left-right-bottom-border">
 

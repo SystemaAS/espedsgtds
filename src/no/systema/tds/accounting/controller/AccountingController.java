@@ -233,6 +233,11 @@ public class AccountingController {
 	
 	@RequestMapping(value = "accounting_uttag.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView doUttag(@ModelAttribute("record") SvlthDao record, 
+								@RequestParam(value = "h_svlth_ign", required = true) String h_svlth_ign, 
+								@RequestParam(value = "h_svlth_pos", required = true) String h_svlth_pos,
+								@RequestParam(value = "h_svlth_id1", required = true) Integer h_svlth_id1,
+								@RequestParam(value = "h_svlth_im1", required = true) Integer h_svlth_im1,
+
 								@RequestParam(value = "action", required = true) Integer action, HttpSession session, HttpServletRequest request) {
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
@@ -268,7 +273,7 @@ public class AccountingController {
 
 			}
 
-			SvlthDto headDto = fetchRecord(appUser, record.getSvlth_ign(), record.getSvlth_pos(), EventTypeEnum.INLAGG.getValue(), record.getSvlth_id1(), record.getSvlth_im1());
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_ign, h_svlth_pos, EventTypeEnum.INLAGG.getValue(), h_svlth_id1, h_svlth_im1);
 			successView.addObject("headRecord", headDto);
 
 			return successView;
@@ -278,7 +283,7 @@ public class AccountingController {
 			successView.addObject("action", action);
 			successView.addObject("error", e.getMessage());
 			successView.addObject("record", record);
-			SvlthDto headDto = fetchRecord(appUser, record.getSvlth_ign(), record.getSvlth_pos(), EventTypeEnum.INLAGG.getValue(), record.getSvlth_id1(), record.getSvlth_im1());
+			SvlthDto headDto = fetchRecord(appUser, h_svlth_ign, h_svlth_pos, EventTypeEnum.INLAGG.getValue(), h_svlth_id1, h_svlth_im1);
 			successView.addObject("headRecord", headDto);
 
 			return successView;

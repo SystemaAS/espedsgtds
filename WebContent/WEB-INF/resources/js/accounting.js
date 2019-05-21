@@ -353,7 +353,7 @@ function getDescription(svlth_h){
 function setUttagHeader() {
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : "I" , svlth_ign : svlth_ign,  svlth_pos : svlth_pos, svlth_id1 : svlth_id1, svlth_im1 : svlth_im1 }, 
+	  	  data: { svlth_h : "I" , svlth_ign : h_svlth_ign,  svlth_pos : h_svlth_pos, svlth_id1 : h_svlth_id1, svlth_im1 : h_svlth_im1 }, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -379,7 +379,7 @@ function setUttagHeader() {
 function setEventHeader() {
 	jq.ajax({
 		  url: svlthUrl,
-	  	  data: { svlth_h : h_svlth_h , svlth_ign : h_svlth_ign, svlth_pos : h_svlth_pos}, 
+	  	  data: { svlth_h : h_svlth_h , svlth_ign : h_svlth_ign, svlth_pos : h_svlth_pos, svlth_id1 : h_svlth_id1, svlth_im1 : h_svlth_im1}, 
 		  dataType: 'json',
 		  cache: false,
 		  contentType: 'application/json',
@@ -408,8 +408,10 @@ function setEventHeader() {
 
 function getRunningSvlthUttagUrl() {
 	let runningUrl = svlthUrl;
-	runningUrl = runningUrl + "&svlth_ign=" + svlth_ign;
-	runningUrl = runningUrl + "&svlth_pos=" + svlth_pos;
+	runningUrl = runningUrl + "&svlth_ign=" + h_svlth_ign;
+	runningUrl = runningUrl + "&svlth_pos=" + h_svlth_pos;
+//	runningUrl = runningUrl + "&svlth_id1=" + h_svlth_id1;
+//	runningUrl = runningUrl + "&svlth_im1=" + h_svlth_im1;
 	runningUrl = runningUrl + "&svlth_h=U";
 	
 	return runningUrl;
