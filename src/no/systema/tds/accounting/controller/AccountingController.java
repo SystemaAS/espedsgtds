@@ -199,7 +199,7 @@ public class AccountingController {
 	}
 
 	@RequestMapping(value = "accounting_uttag_list.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView doUttagList(@ModelAttribute("record") SvlthDao record, HttpSession session, HttpServletRequest request) {
+	public ModelAndView doUttagList(@ModelAttribute("record") SvlthDto record, HttpSession session, HttpServletRequest request) {
 
 		ModelAndView successView = new ModelAndView("accounting_uttag");
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
@@ -232,7 +232,7 @@ public class AccountingController {
 	}
 	
 	@RequestMapping(value = "accounting_uttag.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView doUttag(@ModelAttribute("record") SvlthDao record, 
+	public ModelAndView doUttag(@ModelAttribute("record") SvlthDto record, 
 								@RequestParam(value = "h_svlth_ign", required = true) String h_svlth_ign, 
 								@RequestParam(value = "h_svlth_pos", required = true) String h_svlth_pos,
 								@RequestParam(value = "h_svlth_id1", required = true) Integer h_svlth_id1,
@@ -250,13 +250,15 @@ public class AccountingController {
 
 		ModelAndView successView = new ModelAndView("accounting_uttag");
 		SvlthDto returnDto = new SvlthDto();
+		
+		SvlthDao recordDao = SvlthDto.get(record);
 
 		try {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
-				setDate(EventTypeEnum.UTTAG, record);
-				saveRecord(appUser, record, "A");
+				setDate(EventTypeEnum.UTTAG, recordDao);
+				saveRecord(appUser, recordDao, "A");
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
@@ -264,7 +266,7 @@ public class AccountingController {
 
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
-				returnDto = fetchRecord(appUser, record);
+				returnDto = fetchRecord(appUser, recordDao);
 				successView.addObject("record", returnDto);
 				successView.addObject("action", CRUDEnum.READ.getValue());
 

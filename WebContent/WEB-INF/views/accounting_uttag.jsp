@@ -6,21 +6,27 @@
 <!-- =====================end header ==========================-->
 
 <link href="resources/accounting.css" rel="stylesheet" type="text/css"/>
+<style>
 
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
+
+</style>
 <script type="text/javascript">
 	"use strict";
 
-// 	var svlth_ign = "${record.svlth_ign}";
-// 	var svlth_pos = "${record.svlth_pos}";
-// 	var svlth_id1 = "${record.svlth_id1}";
-// 	var svlth_im1 = "${record.svlth_im1}";
-	
 	var h_svlth_h = "${headRecord.svlth_h}";
 	var h_svlth_ign = "${headRecord.svlth_ign}";
 	var h_svlth_pos = "${headRecord.svlth_pos}";
 	var h_svlth_id1 = "${headRecord.svlth_id1}";
 	var h_svlth_im1 = "${headRecord.svlth_im1}";	
-	
 
 	let hasError = "${error}";
 	
@@ -29,8 +35,12 @@
  			if (hasError == "") {
  				clearValues();
  			}
+ 			
 	});
+	
 </script>
+
+
 
 <div class="container-fluid">
 
@@ -43,7 +53,7 @@
 		    Bokföring
 		  </span>
 	    </a>
-		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_ign=${record.svlth_ign}&svlth_pos=${record.svlth_pos}">
+		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_ign=${record.svlth_ign}&svlth_pos=${record.svlth_pos}&svlth_id1=${record.svlth_id1}&svlth_im1=${record.svlth_im1}">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
 		    Inlägg[${record.svlth_ign}]
 		  </span>	
@@ -150,21 +160,97 @@
 				</div>
 			</div>
 
-			<div class="form-row left-right-bottom-border formFrame">
+			<div class="form-row left-right-border formFrame">
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Utgående&nbsp;handling</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="18" maxlength="15">
+					<a data-toggle="collapse" href="#moreEvents" aria-expanded="false" aria-controls="moreEvents">Ytterligare&nbsp;utgående&nbsp;handling</a>
+
 				</div>
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uti" class="col-form-label-sm mb-0 required">Tullid</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="13" maxlength="10">
 				</div>
+
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Antal</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_unt" id="svlth_unt" value="${record.svlth_unt}" size="7" maxlength="5">
 				</div>
+
+			</div> <!-- form-row -->
+	
+			<div class="form-row left-right-border formFrame">
+				  <div class="col-6">
+				    <div class="collapse multi-collapse" id="moreEvents">
+				      <div class="card card-body">
+
+						<div class="form-group mb-0">
+							<label for="svlth_uex2" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex2" id="svlth_uex2" value="${record.svlth_uex2}"  size="73" maxlength="70">
+						</div>	
+						<div class="form-group mb-0">
+							<label for="svlth_uex3" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex3" id="svlth_uex3" value="${record.svlth_uex3}"  size="73" maxlength="70">
+						</div>	
+	
+						<div class="form-group mb-0">
+							<label for="svlth_uex4" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex4" id="svlth_uex4" value="${record.svlth_uex4}"  size="73" maxlength="70">
+						</div>	
+	
+						<div class="form-group mb-0">
+							<label for="svlth_uex5" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex5" id="svlth_uex5" value="${record.svlth_uex5}"  size="73" maxlength="70">
+						</div>	
+
+						<div class="form-group mb-0">
+							<label for="svlth_uex6" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex6" id="svlth_uex6" value="${record.svlth_uex6}"  size="73" maxlength="70">
+						</div>	
+							
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-6">
+				    <div class="collapse multi-collapse" id="moreEvents">
+				      <div class="card card-body">
+
+						<div class="form-group mb-0">
+							<label for="svlth_uex7" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex7" id="svlth_uex7" value="${record.svlth_uex7}"  size="73" maxlength="70">
+						</div>	
+
+						<div class="form-group mb-0">
+							<label for="svlth_uex8" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex8" id="svlth_uex8" value="${record.svlth_uex8}"  size="73" maxlength="70">
+						</div>	
+	
+						<div class="form-group mb-0">
+							<label for="svlth_uex9" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex9" id="svlth_uex9" value="${record.svlth_uex9}"  size="73" maxlength="70">
+						</div>	
+	
+						<div class="form-group mb-0">
+							<label for="svlth_uex10" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex10" id="svlth_uex10" value="${record.svlth_uex10}"  size="73" maxlength="70">
+						</div>	
+
+						<div class="form-group mb-0">
+							<label for="svlth_uex11" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
+							<input type="text" class="form-control form-control-sm" name="svlth_uex11" id="svlth_uex11" value="${record.svlth_uex11}"  size="73" maxlength="70">
+						</div>	
+	
+				      </div>
+				    </div>
+				  </div>
+
+
+			</div>			
+	
+			<div class="form-row left-right-bottom-border formFrame">
+	
 				<div class="form-group pr-3 col-auto">
 					<label for="svlth_utx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
 					<input type="text" class="form-control form-control-sm" name="svlth_utx" id="svlth_utx" value="${record.svlth_utx}" size="73" maxlength="70">
@@ -174,10 +260,9 @@
 					<div class="float-md-right">
 						<button class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>
 					</div>
-				</div>					
-	
-			</div> <!-- form-row -->
-
+				</div>			
+		
+			</div>
 		</div>
 
 	</form>
@@ -194,6 +279,6 @@
 		</div>
 	</c:if>
 
-   	</div> <!-- container -->
+</div> <!-- container -->
 
 
