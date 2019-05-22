@@ -38,7 +38,7 @@ function initSvlthSearch() {
                 extend: 'print', //pdfHtml5
                 text: 'Skriv ut',
                 orientation: 'landscape',  //portrait
-                pageSize: 'A4', //A3 , A5 , A6 , legal , letter
+                pageSize: 'LEGAL', //A3, A4 , A5 , A6 , legal , letter
                 exportOptions: {
                     columns: ':visible',
                     search: 'applied',
@@ -54,7 +54,7 @@ function initSvlthSearch() {
                 extend: 'pdfHtml5',
                 text: 'Skapa PDF',
                 orientation: 'landscape',  //portrait
-                pageSize: 'A4', //A3 , A5 , A6 , legal , letter
+                pageSize: 'LEGAL', //A3, A4 , A5 , A6 , legal , letter
                 exportOptions: {
                     columns: ':visible',
                     search: 'applied',
@@ -129,11 +129,12 @@ function initSvlthSearch() {
 	        { data: "svlth_ih4" },
 	        { data: "svlth_ih5" },
 	    	{ data: "svlth_itx" },
-	        { data: null,
+	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return row.timestamp;
 	        	} 	
 	        },
+	    	{ data: "svlth_ius" },
 	        {
 	            orderable:      false,
 	            data:           null,
@@ -164,7 +165,7 @@ function initSvlthSearch() {
 	            defaultContent: ''
 	        }, 
 	    ],
-	    order: [[24, 'desc']],   //Arkiverad
+	    order: [[28, 'desc']],   //Arkiverad
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
 		language : {
 			url : getLanguage(lang)
