@@ -102,7 +102,11 @@ function initSvlthSearch() {
 	    	{ data: "saldo" },
 	        { data: "svlth_isl" },
 	    	{ data: "svlth_ivb" },
-	        { data: "svlth_id2" },   	
+	    	{ data: "svlth_ivb2" },
+	    	{ data: "svlth_ivb3" },
+	    	{ data: "svlth_ivb4" },
+	    	{ data: "svlth_ivb5" },
+	    	{ data: "svlth_id2" },   	
 	        { data: "svlth_ud1",
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_ud1 == '0') {

@@ -89,17 +89,21 @@
 					<th>Saldo</th>
 					<th>Kollislag</th>
 					<th>Varubeskrivning</th>
+					<th>Varubeskrivning</th>
+					<th>Varubeskrivning</th>
+					<th>Varubeskrivning</th>
+					<th>Varubeskrivning</th>
 					<th>Ankomstdatum</th>
 					<th>Uttagsdatum</th>
 					<th>Bruttovikt</th>
 					<th>Rättad händelse</th>
 					<th title="Samma som Antal">Rättat antal</th>
 					<th>Rättelse&nbsp;int.info.</th>
-					<th>Tidigare&nbsp;handling-1</th>
-					<th>Tidigare&nbsp;handling-2</th>
-					<th>Tidigare&nbsp;handling-3</th>
-					<th>Tidigare&nbsp;handling-4</th>
-					<th>Tidigare&nbsp;handling-5</th>
+					<th>Tidigare&nbsp;handling</th>
+					<th>Tidigare&nbsp;handling</th>
+					<th>Tidigare&nbsp;handling</th>
+					<th>Tidigare&nbsp;handling</th>
+					<th>Tidigare&nbsp;handling</th>
 					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 					<th>Uttag</th>
