@@ -27,7 +27,7 @@
 	    </a>
 		<a class="nav-item nav-link active disabled">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Inlägg<c:if test="${action == 2}"> ${record.svlth_ign}</c:if>  
+		    Inlägg<c:if test="${action == 2}"> ${record.svlth_ign}-${record.svlth_pos}</c:if>  
 		  </span>
 		</a>
 	<c:if test="${action == 2}"> 

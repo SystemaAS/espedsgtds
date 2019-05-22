@@ -36,6 +36,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import lombok.NonNull;
 import no.systema.jservices.common.dao.SvlthDao;
+import no.systema.jservices.common.dao.SvltuDao;
 import no.systema.jservices.common.dto.SvlthDto;
 import no.systema.jservices.common.json.JsonDtoContainer;
 import no.systema.jservices.common.json.JsonReader;
@@ -252,13 +253,22 @@ public class AccountingController {
 		SvlthDto returnDto = new SvlthDto();
 		
 		SvlthDao recordDao = SvlthDto.get(record);
+		List<SvltuDao> uhDaoList = SvlthDto.transform(record);
 
+		uhDaoList.forEach(dao -> {
+			logger.info("dao="+ReflectionToStringBuilder.toString(dao, ToStringStyle.MULTI_LINE_STYLE));
+		});
+		
+		
 		try {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
 				setDate(EventTypeEnum.UTTAG, recordDao);
+
 				saveRecord(appUser, recordDao, "A");
+				saveRecords(appUser, uhDaoList, "A");
+
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
@@ -335,6 +345,12 @@ public class AccountingController {
 		try {
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
+				//Special, due to acting as placeholder for Svlthu see: BcoreMaintResponseOutputterController_SVLTH
+				if (StringUtils.hasValue(record.getSvlth_uex())) {
+					int index = record.getSvlth_uex().indexOf("#");
+					record.setSvlth_uex(record.getSvlth_uex().substring(0, index));
+				}
+				
 				setDate(EventTypeEnum.RATTELSE, record);
 				saveRecord(appUser, record, "A");
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -485,7 +501,58 @@ public class AccountingController {
 		}
 		
 	}	
+	
+	
+	private void saveRecords(SystemaWebUser appUser, List<SvltuDao> recordList, String mode) {
+		recordList.forEach(dao -> {
+			saveRecord(appUser, dao, mode);
+		});
+	}
 
+	private void saveRecord(SystemaWebUser appUser, SvltuDao record, String mode) {
+		logger.info("saveRecord::record::"+ReflectionToStringBuilder.toString(record));
+		EncodingTransformer transformer = new EncodingTransformer();
+		String SVLTU_DML_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTU_U.do";
+
+		MultiValueMap<String, String> recordParams = UrlRequestParameterMapper.getUriParameter(record);
+	    UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(SVLTU_DML_URL)
+		        .queryParam("user", appUser.getUser())
+		        .queryParam("mode", mode)
+		        .queryParam("lang", appUser.getUsrLang())
+		        .queryParams(recordParams);
+		URI uri = builder.buildAndExpand().encode().toUri();
+		logger.info("Full uri="+uri);
+		
+		ResponseEntity<String> response = restTemplate().exchange(uri, HttpMethod.GET, null, String.class);
+		String jsonPayloadResponse = response.getBody();		
+		logger.info("jsonPayloadResponse="+jsonPayloadResponse);
+		
+		String jsonPayload = null;
+		try {
+			jsonPayload = transformer.transformToJSONTargetEncoding(jsonPayloadResponse, "UTF8");
+			logger.info("jsonPayload="+jsonPayload);		
+		} catch (Exception e) {
+			logger.error("Transforming did not work on "+jsonPayloadResponse);
+			throw new RuntimeException("Transforming did not work, e", e);
+		}		
+		
+		JsonReader<JsonDtoContainer<SvltuDao>> jsonReader = new JsonReader<JsonDtoContainer<SvltuDao>>();
+		jsonReader.set(new JsonDtoContainer<SvltuDao>());
+		JsonDtoContainer<SvltuDao> container = (JsonDtoContainer<SvltuDao>) jsonReader.get(jsonPayload);
+		if (container != null) {
+			if (StringUtils.hasValue(container.getErrMsg())) {
+				String errMsg = String.format("SAVE-error on utgående handlingar, godsnummer: %s. Error message: %s", record.getSvltu_ign(), container.getErrMsg()) ;
+				logger.error(errMsg);
+				throw new IllegalArgumentException(container.getErrMsg());
+			}		
+		}
+		
+	}	
+
+	
+	
+	
+	
 	private void setUser(String user, SvlthDao record) {
 		record.setSvlth_ius(user);
 	}
