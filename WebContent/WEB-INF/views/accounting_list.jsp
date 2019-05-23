@@ -12,6 +12,7 @@
 
 	jq(document).ready(function() {
 		initSvlthSearch();
+		getGodslokalkod('#selectGodslokalkod');
 	});
 
 </script>
@@ -39,10 +40,11 @@
 
 	<div class="form-row left-right-border">
 
-		<div class="form-group pr-2 pl-1">
+		<div class="form-group pr-2 pl-1 mb-0">
 			<label for="selectGodslokalkod" class="col-form-label-sm mb-0">Godslokalkod</label>
-			<input type="text" class="form-control form-control-sm" id="selectGodslokalkod"  size="5"  maxlength="3">
+			<select class="form-control form-control-sm w-auto" name="selectGodslokalkod" id="selectGodslokalkod"></select>	
 		</div>
+
 
 		<div class="form-group pr-2 pl-1">
 			<label for="selectGodsnr" class="col-form-label-sm mb-0">Godsnummer</label>
@@ -89,16 +91,16 @@
 					<th>Saldo</th>
 					<th>Slag</th>
 					<th>Beskrivning</th>
-					<th>Beskrivning</th>
-					<th>Beskrivning</th>
-					<th>Beskrivning</th>
-					<th>Beskrivning</th>
 					<th>Ankommit</th>
 					<th>Uttaget</th>
 					<th>Bruttovikt</th>
 					<th>Rättelse</th>
 					<th title="Samma som Antal">Rättat&nbsp;antal</th>
 					<th>Rättelse&nbsp;int.info.</th>
+					<th>Beskrivning</th>
+					<th>Beskrivning</th>
+					<th>Beskrivning</th>
+					<th>Beskrivning</th>					
 					<th>Tidigare&nbsp;handling</th>
 					<th>Tidigare&nbsp;handling</th>
 					<th>Tidigare&nbsp;handling</th>
@@ -107,8 +109,8 @@
 					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 					<th>Användare</th>
-					<th>Uttag</th>
-					<th>Rättelse</th>					
+					<th><i>Uttag</i></th>
+					<th><i>Rättelse</i></th>					
 				</tr>
 			</thead>
 		</table>

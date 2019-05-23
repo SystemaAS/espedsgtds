@@ -12,10 +12,25 @@ var rattelseUrl_create = "accounting_rattelse.do?action=1";
 var doNotLoad = "&DO_NOT_LOAD";  //disabling datatables autoload of content
 
 var selectionMessage ='';
+var godsLokalkoder;
 var now = new Date();
 
+
+//
+var selectedGodslokalkod = '';
+var selectedGodsnr = '';
+var selectedMrn = '';
+var selectedArrivalFrom = '';
+var selectedArrivalTo ='';
+//
+
+
 function initSvlthSearch() {
-	console.log('svlthTable', svlthTable);
+	console.log('::initSvlthSearch::');
+	
+	console.log("selectedArrivalFrom",selectedArrivalFrom);
+	
+	
 	if (svlthTable != undefined) {
 		console.log('svlthTable already set.');
 		return;
@@ -101,11 +116,7 @@ function initSvlthSearch() {
 	        },
 	    	{ data: "saldo" },
 	        { data: "svlth_isl" },
-	    	{ data: "svlth_ivb" },
-	    	{ data: "svlth_ivb2" },
-	    	{ data: "svlth_ivb3" },
-	    	{ data: "svlth_ivb4" },
-	    	{ data: "svlth_ivb5" },
+	        { data: "svlth_ivb" },
 	    	{ data: "svlth_id2" },   	
 	        { data: "svlth_ud1",
 	        	render: function ( data, type, row, meta ) {
@@ -122,6 +133,10 @@ function initSvlthSearch() {
 	        	}
 	    	},
 	    	{ data: "svlth_rnt" },
+	        { data: "svlth_ivb2" },
+	    	{ data: "svlth_ivb3" },
+	    	{ data: "svlth_ivb4" },
+	    	{ data: "svlth_ivb5" },	    	
 	    	{ data: "svlth_rtx" },
 	        { data: "svlth_ih1" },
 	    	{ data: "svlth_ih2" },	        
@@ -143,7 +158,6 @@ function initSvlthSearch() {
 			    	let href;
 			    	if (row.svlth_h == 'I') {
 				    	let url= inlaggUrl_read + '&svlth_ign='+row.svlth_ign + '&svlth_pos='+row.svlth_pos+'&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
-//				    	let url= uttagUrl_read + '&svlth_irn='+row.svlth_irn+ '&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/unloading.png" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -437,15 +451,15 @@ function getRunningSvlthUrl() {
 		selectionMessage = '';
 		let runningUrl = svlthUrl;
 	
-		let selectedGodslokalkod = jq('#selectGodslokalkod').val();
-		let selectedGodsnr = jq('#selectGodsnr').val();
-		let selectedMrn = jq('#selectMrn').val();
-		let selectedArrivalFrom = jq('#selectArrivalFrom').val();
-		let selectedArrivalTo = jq('#selectArrivalTo').val();
+		selectedGodslokalkod = jq('#selectGodslokalkod').val();
+		selectedGodsnr = jq('#selectGodsnr').val();
+		selectedMrn = jq('#selectMrn').val();
+		selectedArrivalFrom = jq('#selectArrivalFrom').val();
+		selectedArrivalTo = jq('#selectArrivalTo').val();
 		
 		if (selectedGodslokalkod != "") {
 			runningUrl = runningUrl + "&svlth_igl=" + selectedGodslokalkod;
-			selectionMessage = selectionMessage + " Godslokalkod:"+selectedGodslokalkod;
+			selectionMessage = selectionMessage + _.findWhere(godsLokalkoder,{svltf_igl:selectedGodslokalkod}).svltf_txt;
 		} 
 		if (selectedGodsnr != "") {
 			runningUrl = runningUrl + "&svlth_ign=" + selectedGodsnr;
@@ -454,7 +468,6 @@ function getRunningSvlthUrl() {
 		if (selectedMrn != "") {
 			runningUrl = runningUrl + "&svlth_irn=" + selectedMrn;
 			selectionMessage = selectionMessage + " MRN:"+selectedMrn;
-
 		} 
 		if (selectedArrivalFrom != "") {
 			runningUrl = runningUrl + "&svlth_id2F=" + selectedArrivalFrom;
@@ -463,12 +476,12 @@ function getRunningSvlthUrl() {
 		if (selectedArrivalTo != "") {
 			runningUrl = runningUrl + "&svlth_id2T=" + selectedArrivalTo;
 			selectionMessage = selectionMessage + " T.o.m ankomstdatum:"+selectedArrivalTo;
-
 		} 
 
 		if (selectedGodslokalkod == "" && selectedGodsnr == "" && selectedMrn == "" && selectedArrivalFrom == "") {
 			return null;
 		}
+		
 		
 		return runningUrl;	
 		
@@ -541,30 +554,6 @@ function initSvtx03fSearch(caller) {
 	
 }//end initSvtx03fSearch
 
-
-//deprecated, remove when appropriate
-function getKollislagKode(caller){
-	console.log('getKollislagKode, caller',caller);
-	jq.ajax({
-			  type: 'GET',
-			  url: kollislagUrl,
-			  dataType: 'json',
-			  cache: true,
-			  contentType: 'application/json',
-			  success: function(data) {
-				_.each(data.dtoList, function( d) {
-					jq(caller).append(jq('<option></option>').attr('value', d.svtx03_03).text(d.svtx03_04).attr('title', d.svtx03_03));	
-				});
-				
-			  }, 
-			  error: function (jqXHR, exception) {
-				    alert('Error loading kollislag...look in console log.');
-				    console.log("jqXHR",jqXHR);
-				    console.log("exception",exception);
-			  }	
-	});	
-}
-
 function getGodslokalkod(caller){
 	jq.ajax({
 			  type: 'GET',
@@ -577,6 +566,8 @@ function getGodslokalkod(caller){
 				_.each(data.dtoList, function( d) {
 					jq(caller).append(jq('<option></option>').attr('value', d.svltf_igl).text(d.svltf_igl));
 				});
+
+				godsLokalkoder = data.dtoList;
 				
 			  }, 
 			  error: function (jqXHR, exception) {

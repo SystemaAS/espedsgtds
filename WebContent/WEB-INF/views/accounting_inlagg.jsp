@@ -61,13 +61,13 @@
 					</div>
 	
 					<div class="form-group pr-2 mb-0">
-						<label for="svlth_ign" class="col-form-label-sm mb-0 required">Godsnummer</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
+						<label for="svlth_ign" class="col-form-label-sm mb-0">Godsnummer</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
 					</div>	
 
 					<div class="form-group pr-2 mb-0">
-						<label for="svlth_pos" class="col-form-label-sm mb-0 required">Position</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_pos" id="svlth_pos" value="${record.svlth_pos}"  size="11" maxlength="9">
+						<label for="svlth_pos" class="col-form-label-sm mb-0">Position</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_pos" id="svlth_pos" value="${record.svlth_pos}"  size="11" maxlength="9">
 					</div>	
 
 					<div class="form-group pr-2 mb-0">

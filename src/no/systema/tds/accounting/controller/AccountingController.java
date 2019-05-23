@@ -154,11 +154,13 @@ public class AccountingController {
 
 				setDate(EventTypeEnum.INLAGG, record);
 
-				enteredGodsNummer = record.getSvlth_ign(); //use if error
-				setGodsnummer(EventTypeEnum.INLAGG, record);
-				saveRecord(appUser, record, "A");
-
-				returnDto = fetchRecord(appUser, record);
+				if (StringUtils.hasValue(record.getSvlth_ign())){
+					enteredGodsNummer = record.getSvlth_ign(); //use if error
+//					setGodsnummer(EventTypeEnum.INLAGG, record);
+				}
+				SvlthDao saved = saveRecord(appUser, record, "A");
+//				returnDto = fetchRecord(appUser, record);
+				returnDto = fetchRecord(appUser, saved);
 				successView.addObject("record", returnDto);
 				successView.addObject("saldo", returnDto.getSaldo());
 
@@ -346,7 +348,7 @@ public class AccountingController {
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
 				//Special, due to acting as placeholder for Svlthu see: BcoreMaintResponseOutputterController_SVLTH
-				if (StringUtils.hasValue(record.getSvlth_uex())) {
+				if (StringUtils.hasValue(record.getSvlth_uex()) && record.getSvlth_uex().contains("#")) {
 					int index = record.getSvlth_uex().indexOf("#");
 					record.setSvlth_uex(record.getSvlth_uex().substring(0, index));
 				}
@@ -461,8 +463,9 @@ public class AccountingController {
 	}
 	
 
-	private void saveRecord(SystemaWebUser appUser, SvlthDao record, String mode) {
+	private SvlthDao saveRecord(SystemaWebUser appUser, SvlthDao record, String mode) {
 		logger.info("saveRecord::record::"+ReflectionToStringBuilder.toString(record));
+		SvlthDao dao = null;
 		setUser(appUser.getUser(), record);
 		EncodingTransformer transformer = new EncodingTransformer();
 		String SVLTH_DML_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSVLTH_U.do";
@@ -497,8 +500,20 @@ public class AccountingController {
 				String errMsg = String.format("SAVE-error on inlagg, mrn: %s. Error message: %s", record.getSvlth_irn(), container.getErrMsg()) ;
 				logger.error(errMsg);
 				throw new IllegalArgumentException(container.getErrMsg());
-			}		
+			}	
+			List<SvlthDao> list = container.getDtoList();
+			if (list.isEmpty() || list.size() != 1){
+				String errMsg = String.format("Expecting SvlthDao in return! DML-error on bilag.") ;
+				String inParams = String.format(" Record to save: %s ", ReflectionToStringBuilder.toString(record,ToStringStyle.MULTI_LINE_STYLE));
+				logger.error(errMsg + "list.size="+list.size());
+				throw new RuntimeException(errMsg + inParams);
+			} else {
+				dao = list.get(0);
+				
+			}
 		}
+		
+		return  dao;
 		
 	}	
 	
