@@ -62,12 +62,18 @@
 	
 					<div class="form-group pr-2 mb-0">
 						<label for="svlth_ign" class="col-form-label-sm mb-0">Godsnummer</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
+						<img width="12px" height="12px" src="resources/images/info3.png" data-toggle="tooltip"  title="Godsnummer kan skrivas in manuellt, alternativ genereras med knappen Generera. Godlokalkod kommer läggas som prefix.">
+						<div class="input-group">
+							<input required type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
+		                    <span class="input-group-prepend">
+								 <button <c:if test="${action == 2}"> disabled</c:if> type="button" class="btn btn-info btn-sm btn-outline-secondary" onclick="generateGodsnummer()" title="Generera Godsnummer">Generera</button>
+		                    </span>
+		                </div>
 					</div>	
 
 					<div class="form-group pr-2 mb-0">
-						<label for="svlth_pos" class="col-form-label-sm mb-0">Position</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_pos" id="svlth_pos" value="${record.svlth_pos}"  size="11" maxlength="9">
+						<label for="svlth_pos" class="col-form-label-sm mb-0 required">Position</label>
+						<input required type="text" class="form-control form-control-sm" name="svlth_pos" id="svlth_pos" value="${record.svlth_pos}"  size="11" maxlength="9">
 					</div>	
 
 					<div class="form-group pr-2 mb-0">

@@ -578,6 +578,28 @@ function getGodslokalkod(caller){
 }
 
 
+function generateGodsnummer() {
+	setGodsnummer("#svlth_ign");
+}
+
+
+function setGodsnummer(caller){
+	jq.ajax({
+			  type: 'GET',
+			  url: generateGodsnummerUrl + '&svlth_igl=BJO',  //TODO remove hardcode
+			  dataType: 'text',
+			  cache: true,
+			  contentType: 'application/json',
+			  success: function(data) {
+				jq(caller).val(data);
+			  }, 
+			  error: function (jqXHR, exception) {
+				    console.log("jqXHR",jqXHR);
+				    console.log("exception",exception);
+			  }	
+	});	
+}
+
 
 jq(function() {
 	
