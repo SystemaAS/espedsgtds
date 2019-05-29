@@ -50,7 +50,7 @@
 		  	var kollislagUrl = '/syjservicesbcore/syjsSVTX03F.do?user=${user.user}&02=KLI';
 		  	var svltfUrl = "/syjservicesbcore/syjsSVLTF.do?user=${user.user}";
 		  	var generateGodsnummerUrl = "/syjservicesbcore/generateGodsnummer.do?user=${user.user}";
-
+			var glk = '${godslokalkod}';
 	 	</script>
 
 	</head>

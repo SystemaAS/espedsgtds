@@ -53,11 +53,13 @@
 		    Bokföring
 		  </span>
 	    </a>
+<!--  
 		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_ign=${record.svlth_ign}&svlth_pos=${record.svlth_pos}&svlth_id1=${record.svlth_id1}&svlth_im1=${record.svlth_im1}">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
 		    Inlägg ${record.svlth_ign}-${record.svlth_pos}
 		  </span>	
 		</a>
+-->
 		<a class="nav-item nav-link nav-new active disabled">
 	      <span class="navbar-text no-gutters pb-0 pt-0">
 		    Uttag

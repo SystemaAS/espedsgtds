@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	"use strict";
 	jq(document).ready(function() {
-		getGodslokalkod('#svlth_igl');
+		
 	});
 </script>
 
@@ -55,14 +55,15 @@
 			</div>
 	
 			<div class="form-row left-right-border" <c:if test="${action == 2}"> disabled</c:if>>
-					<div class="form-group pr-2 pl-1 mb-0">
-						<label for="svlth_igl" class="col-form-label-sm mb-0 required">Godslokalkod</label>
-						<select class="form-control form-control-sm w-auto" name="svlth_igl" id="svlth_igl"></select>	
-					</div>
 	
+					<div class="form-group pr-2 pl-1 mb-0">
+						<label for="svlth_igl" class="col-form-label-sm mb-0">Godslokalkod</label>
+						<input type="text" class="form-control-plaintext form-control form-control-sm" name="svlth_igl" id="svlth_igl" value="${godslokalkod}">
+					</div>
+
 					<div class="form-group pr-2 mb-0">
 						<label for="svlth_ign" class="col-form-label-sm mb-0">Godsnummer</label>
-						<img width="12px" height="12px" src="resources/images/info3.png" data-toggle="tooltip"  title="Godsnummer kan skrivas in manuellt, alternativ genereras med knappen Generera. Godlokalkod kommer läggas som prefix.">
+						<img width="12px" height="12px" src="resources/images/info3.png" data-toggle="tooltip"  title="Godsnummer kan skrivas in manuellt, alternativ genereras med knappen Generera. Godslokalkod kommer läggas som prefix.">
 						<div class="input-group">
 							<input required type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
 		                    <span class="input-group-prepend">
@@ -82,8 +83,8 @@
 					</div>	
 
 					<div class="form-group pr-2 mb-0">
-						<label for="svlth_iex" class="col-form-label-sm mb-0 required">Extern&nbsp;referans</label>
-						<input type="text" required class="form-control form-control-sm" name="svlth_iex" id="svlth_iex" value="${record.svlth_iex}"  size="18" maxlength="15">
+						<label for="svlth_iex" class="col-form-label-sm mb-0">Extern&nbsp;referans</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_iex" id="svlth_iex" value="${record.svlth_iex}"  size="18" maxlength="15">
 					</div>
 
 					<div class="form-group pr-2 mb-0">

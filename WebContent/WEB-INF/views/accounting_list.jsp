@@ -12,7 +12,6 @@
 
 	jq(document).ready(function() {
 		initSvlthSearch();
-		getGodslokalkod('#selectGodslokalkod');
 	});
 
 </script>
@@ -41,10 +40,9 @@
 	<div class="form-row left-right-border">
 
 		<div class="form-group pr-2 pl-1 mb-0">
-			<label for="selectGodslokalkod" class="col-form-label-sm mb-0">Godslokalkod</label>
-			<select class="form-control form-control-sm w-auto" name="selectGodslokalkod" id="selectGodslokalkod"></select>	
+			<label for="godslokalkod" class="col-form-label-sm mb-0">Godslokalkod</label>
+			<input type="text" class="form-control-plaintext form-control form-control-sm" id="godslokalkod" value="${godslokalkod}">
 		</div>
-
 
 		<div class="form-group pr-2 pl-1">
 			<label for="selectGodsnr" class="col-form-label-sm mb-0">Godsnummer</label>
@@ -82,11 +80,11 @@
 					<th>Godslokalkod</th>
 					<th>Godsnummer</th>
 					<th>Position</th>
+					<th>Händelse</th>
 					<th>MRN</th>
 					<th>Ext.&nbsp;referans</th>
 					<th>Utgående&nbsp;handling</th>
 					<th>Tullid</th>
-					<th>Händelse</th>
 					<th title="Ref. till händelse">Antal</th>
 					<th>Saldo</th>
 					<th>Slag</th>

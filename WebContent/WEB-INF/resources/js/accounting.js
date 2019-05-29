@@ -6,7 +6,7 @@ var uttagTable;
 var rattelseTable;
 var svtx03fTable;
 
-//var uttagUrl_read = "accounting_uttag_list.do?action=2";
+var uttagUrl_read = "accounting_uttag_list.do?action=2";
 var inlaggUrl_read = "accounting_inlagg.do?action=2";
 var rattelseUrl_create = "accounting_rattelse.do?action=1";
 var doNotLoad = "&DO_NOT_LOAD";  //disabling datatables autoload of content
@@ -16,13 +16,11 @@ var godsLokalkoder;
 var now = new Date();
 
 
-//
 var selectedGodslokalkod = '';
 var selectedGodsnr = '';
 var selectedMrn = '';
 var selectedArrivalFrom = '';
 var selectedArrivalTo ='';
-//
 
 
 function initSvlthSearch() {
@@ -92,16 +90,16 @@ function initSvlthSearch() {
 	        { data: "svlth_igl" },
 	    	{ data: "svlth_ign"	},
 	    	{ data: "svlth_pos"	},
-	    	{ data: "svlth_irn" },
-	        { data: "svlth_iex" },
-	        { data: "svlth_uex" },
-	        { data: "svlth_uti" },
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_h);
 	        	}
 	    	},
-	        { data: null,
+	    	{ data: "svlth_irn" },
+	        { data: "svlth_iex" },
+	        { data: "svlth_uex" },
+	        { data: "svlth_uti" },
+	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_h == 'I') {
 		        		return row.svlth_int;	        			
@@ -156,8 +154,8 @@ function initSvlthSearch() {
 	            className: "dt-body-center",
 	            render: function ( data, type, row, meta ) {
 			    	let href;
-			    	if (row.svlth_h == 'I') {
-				    	let url= inlaggUrl_read + '&svlth_ign='+row.svlth_ign + '&svlth_pos='+row.svlth_pos+'&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
+			    	if (row.svlth_h == 'I' && row.saldo) {
+				    	let url= uttagUrl_read + '&svlth_ign='+row.svlth_ign + '&svlth_pos='+row.svlth_pos+'&svlth_id1='+row.svlth_id1 + '&svlth_im1='+row.svlth_im1; 
 				    	href = '<a href="'+url+'"' +'><img class= "img-fluid float-center" src="resources/images/unloading.png" onClick="setBlockUI();"></a>';
 			    	} 
 			    	return href;
@@ -429,8 +427,6 @@ function getRunningSvlthUttagUrl() {
 	let runningUrl = svlthUrl;
 	runningUrl = runningUrl + "&svlth_ign=" + h_svlth_ign;
 	runningUrl = runningUrl + "&svlth_pos=" + h_svlth_pos;
-//	runningUrl = runningUrl + "&svlth_id1=" + h_svlth_id1;
-//	runningUrl = runningUrl + "&svlth_im1=" + h_svlth_im1;
 	runningUrl = runningUrl + "&svlth_h=U";
 	
 	return runningUrl;
@@ -451,7 +447,7 @@ function getRunningSvlthUrl() {
 		selectionMessage = '';
 		let runningUrl = svlthUrl;
 	
-		selectedGodslokalkod = jq('#selectGodslokalkod').val();
+		selectedGodslokalkod = glk;
 		selectedGodsnr = jq('#selectGodsnr').val();
 		selectedMrn = jq('#selectMrn').val();
 		selectedArrivalFrom = jq('#selectArrivalFrom').val();
@@ -459,7 +455,9 @@ function getRunningSvlthUrl() {
 		
 		if (selectedGodslokalkod != "") {
 			runningUrl = runningUrl + "&svlth_igl=" + selectedGodslokalkod;
-			selectionMessage = selectionMessage + _.findWhere(godsLokalkoder,{svltf_igl:selectedGodslokalkod}).svltf_txt;
+//			selectionMessage = selectionMessage + _.findWhere(godsLokalkoder,{svltf_igl:selectedGodslokalkod}).svltf_txt;
+			selectionMessage = selectionMessage + " Godslokalkod:"+selectedGodslokalkod;
+		
 		} 
 		if (selectedGodsnr != "") {
 			runningUrl = runningUrl + "&svlth_ign=" + selectedGodsnr;
@@ -478,7 +476,7 @@ function getRunningSvlthUrl() {
 			selectionMessage = selectionMessage + " T.o.m ankomstdatum:"+selectedArrivalTo;
 		} 
 
-		if (selectedGodslokalkod == "" && selectedGodsnr == "" && selectedMrn == "" && selectedArrivalFrom == "") {
+		if (selectedGodsnr == "" && selectedMrn == "" && selectedArrivalFrom == "" && selectedArrivalTo == "") {
 			return null;
 		}
 		
@@ -569,6 +567,8 @@ function getGodslokalkod(caller){
 
 				godsLokalkoder = data.dtoList;
 				
+				jq("#glkButton").removeAttr('disabled');
+				
 			  }, 
 			  error: function (jqXHR, exception) {
 				    console.log("jqXHR",jqXHR);
@@ -576,6 +576,27 @@ function getGodslokalkod(caller){
 			  }	
 	});	
 }
+
+
+function loadGodslokalkoder(){
+	jq.ajax({
+			  type: 'GET',
+			  url: svltfUrl,
+			  dataType: 'json',
+			  cache: true,
+			  contentType: 'application/json',
+			  success: function(data) {
+				  
+				godsLokalkoder = data.dtoList;
+				
+			  }, 
+			  error: function (jqXHR, exception) {
+				    console.log("jqXHR",jqXHR);
+				    console.log("exception",exception);
+			  }	
+	});	
+}
+
 
 
 function generateGodsnummer() {
@@ -586,7 +607,7 @@ function generateGodsnummer() {
 function setGodsnummer(caller){
 	jq.ajax({
 			  type: 'GET',
-			  url: generateGodsnummerUrl + '&svlth_igl=BJO',  //TODO remove hardcode
+			  url: generateGodsnummerUrl + '&svlth_igl='+glk, 
 			  dataType: 'text',
 			  cache: true,
 			  contentType: 'application/json',
@@ -602,6 +623,14 @@ function setGodsnummer(caller){
 
 
 jq(function() {
+	
+	jq("#godsLokalkodModal").on('hidden.bs.modal', function(){
+		console.log("selected", jq("#selectGodslokalkod").val());
+	    
+		jq('#formRecord').submit();
+	    
+	});		
+	
 	
 	jq("#formRecord").submit(function() {
 		setBlockUI();	
