@@ -45,7 +45,8 @@ function initSvlthSearch() {
 	    buttons: [
             {
                 extend: 'colvis',
-                text: 'Välj kolumner'
+                text: 'Välj kolumner',
+                collectionLayout: 'fixed two-column'
             },
             {
                 extend: 'print', //pdfHtml5
@@ -85,6 +86,7 @@ function initSvlthSearch() {
 		columnDefs : [ 
             { responsivePriority: 1, targets: -2 },
             { responsivePriority: 2, targets: -1 }
+           // {  visible: false , targets: 1}
 		],	    
 	    columns: [
 	        { data: "svlth_igl" },
