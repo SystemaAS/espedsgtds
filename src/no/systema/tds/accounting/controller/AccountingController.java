@@ -106,7 +106,8 @@ public class AccountingController {
 	
 	@RequestMapping(value="accounting_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doList(@RequestParam(value = "selectGodslokalkod", required = false) String godslokalkod,
-								HttpSession session, HttpServletRequest request) {
+							   @RequestParam(value = "selectGodsnr", required = false) String godsnr,
+							   HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_list");
 		ModelAndView modalView = new ModelAndView("accounting_modal_godslokalkod");
 		ModelAndView returnView;
@@ -115,6 +116,9 @@ public class AccountingController {
 		
 		logger.info("accounting_list.do....");
 		logger.info("selectGodslokalkod="+godslokalkod);
+		logger.info("selectGodsnr="+godsnr);
+		
+		
 		if (godslokalkod != null) {
 			setGodslokalkod(session, godslokalkod);
 		}		
@@ -137,28 +141,6 @@ public class AccountingController {
 
 	}
 
-	
-	private boolean hasGodslokalkod(HttpSession session) {
-		String glk = getGodslokalkod(session); 
-		if (glk != null) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	
-	private String getGodslokalkod(HttpSession session) {
-		return (String)session.getAttribute(AccountingSession.GODS_LOKAL_KOD);
-	}
-
-	private void setGodslokalkod(HttpSession session, String godslokalkod) {
-		session.setAttribute(AccountingSession.GODS_LOKAL_KOD, godslokalkod);
-		
-	}	
-	
-	
-	
 	@RequestMapping(value="accounting_inlagg.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doInlagg(@ModelAttribute ("record") SvlthDao record, 
 								@RequestParam(value = "action", required = true) Integer action,
@@ -195,10 +177,8 @@ public class AccountingController {
 
 				if (StringUtils.hasValue(record.getSvlth_ign())){
 					enteredGodsNummer = record.getSvlth_ign(); //use if error
-//					setGodsnummer(EventTypeEnum.INLAGG, record);
 				}
 				SvlthDao saved = saveRecord(appUser, record, "A");
-//				returnDto = fetchRecord(appUser, record);
 				returnDto = fetchRecord(appUser, saved);
 				successView.addObject("record", returnDto);
 				successView.addObject("saldo", returnDto.getSaldo());
@@ -386,11 +366,11 @@ public class AccountingController {
 		try {
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
-				//Special, due to acting as placeholder for Svlthu see: BcoreMaintResponseOutputterController_SVLTH
-				if (StringUtils.hasValue(record.getSvlth_uex()) && record.getSvlth_uex().contains("#")) {
-					int index = record.getSvlth_uex().indexOf("#");
-					record.setSvlth_uex(record.getSvlth_uex().substring(0, index));
-				}
+//				//Special, due to acting as placeholder for Svlthu see: BcoreMaintResponseOutputterController_SVLTH
+//				if (StringUtils.hasValue(record.getSvlth_uex()) && record.getSvlth_uex().contains("#")) {
+//					int index = record.getSvlth_uex().indexOf("#");
+//					record.setSvlth_uex(record.getSvlth_uex().substring(0, index));
+//				}
 				
 				setDate(EventTypeEnum.RATTELSE, record);
 				saveRecord(appUser, record, "A");
@@ -429,31 +409,24 @@ public class AccountingController {
 
 	}
 	
-	@RequestMapping(value="addToSession.do", method={ RequestMethod.GET, RequestMethod.POST} )
-	public ModelAndView addToSession(@RequestParam(value = "godslokalkod", required = false) String godslokalkod,
-			HttpSession session, HttpServletRequest request) {
-		ModelAndView successView = new ModelAndView("accounting_list");
-		SystemaWebUser appUser = loginValidator.getValidUser(session);
-
-		logger.info("yes, godslokalkod="+godslokalkod);
-		
-		if (appUser == null) {
-			return loginView;
-		} else {
-			appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
-			
-			session.setAttribute(AccountingSession.GODS_LOKAL_KOD, godslokalkod); 
-
-			return successView;
-		}		
-		
-		
-
-	}	
-	
-	
-	
-	
+//	@RequestMapping(value="addToSession.do", method={ RequestMethod.GET, RequestMethod.POST} )
+//	public ModelAndView addToSession(@RequestParam(value = "godslokalkod", required = false) String godslokalkod,
+//			HttpSession session, HttpServletRequest request) {
+//		ModelAndView successView = new ModelAndView("accounting_list");
+//		SystemaWebUser appUser = loginValidator.getValidUser(session);
+//
+//		logger.info("yes, godslokalkod="+godslokalkod);
+//		
+//		if (appUser == null) {
+//			return loginView;
+//		} else {
+//			appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
+//			
+//			session.setAttribute(AccountingSession.GODS_LOKAL_KOD, godslokalkod); 
+//
+//			return successView;
+//		}		
+//	}	
 	
 	private SvlthDto fetchRecord(SystemaWebUser appUser, SvlthDao record) {
 		SvlthDto dto = getHeadDto(appUser.getUser(), record.getSvlth_ign(), record.getSvlth_pos(), record.getSvlth_h(), record.getSvlth_id1(), record.getSvlth_im1());
@@ -630,9 +603,6 @@ public class AccountingController {
 	}	
 
 	
-	
-	
-	
 	private void setUser(String user, SvlthDao record) {
 		record.setSvlth_ius(user);
 	}
@@ -649,11 +619,28 @@ public class AccountingController {
 		
 	}
 
-	private void setGodsnummer(EventTypeEnum eventType, SvlthDao record) {
-		if (eventType == EventTypeEnum.INLAGG) {
-			record.setSvlth_ign(record.getSvlth_igl() + record.getSvlth_ign());
+	private boolean hasGodslokalkod(HttpSession session) {
+		String glk = getGodslokalkod(session); 
+		if (glk != null) {
+			return true;
+		} else {
+			return false;
 		}
+	}
+	
+	private String getGodslokalkod(HttpSession session) {
+		return (String)session.getAttribute(AccountingSession.GODS_LOKAL_KOD);
+	}
+
+	private void setGodslokalkod(HttpSession session, String godslokalkod) {
+		session.setAttribute(AccountingSession.GODS_LOKAL_KOD, godslokalkod);
+		
 	}	
+	
+	
+	
+	
+	
 	
 }
 

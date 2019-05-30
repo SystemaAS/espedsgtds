@@ -77,9 +77,8 @@
 		<table class="display compact cell-border responsive nowrap" id="svlthTable">
 			<thead class="tableHeaderField">
 				<tr>
-					<th>Godslokalkod</th>
 					<th>Godsnummer</th>
-					<th>Position</th>
+					<th>Pos</th>
 					<th>Händelse</th>
 					<th>MRN</th>
 					<th>Ext.&nbsp;referans</th>
@@ -104,6 +103,7 @@
 					<th>Tidigare&nbsp;handling</th>
 					<th>Tidigare&nbsp;handling</th>
 					<th>Tidigare&nbsp;handling</th>
+					<th title="Separerade med #">Ytterligare&nbsp;utgående&nbsp;handlingar</th>
 					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 					<th>Användare</th>

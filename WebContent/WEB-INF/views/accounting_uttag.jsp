@@ -53,13 +53,11 @@
 		    Bokföring
 		  </span>
 	    </a>
-<!--  
-		<a class="nav-item nav-link" onClick="setBlockUI();" href="accounting_inlagg.do?action=2&svlth_ign=${record.svlth_ign}&svlth_pos=${record.svlth_pos}&svlth_id1=${record.svlth_id1}&svlth_im1=${record.svlth_im1}">
+		<a class="nav-item nav-link nav-new no-gutters" onClick="setBlockUI();" href="accounting_inlagg.do?action=1">
 		  <span class="navbar-text no-gutters pb-0 pt-0">
-		    Inlägg ${record.svlth_ign}-${record.svlth_pos}
+		    Skapa&nbsp;nytt&nbsp;inlägg
 		  </span>	
 		</a>
--->
 		<a class="nav-item nav-link nav-new active disabled">
 	      <span class="navbar-text no-gutters pb-0 pt-0">
 		    Uttag
@@ -166,7 +164,7 @@
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uex" class="col-form-label-sm mb-0 required">Utgående&nbsp;handling</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="18" maxlength="15">
+					<input autofocus required type="text" class="form-control form-control-sm" name="svlth_uex" id="svlth_uex" value="${record.svlth_uex}"  size="18" maxlength="15">
 					<a data-toggle="collapse" href="#moreEvents" aria-expanded="false" aria-controls="moreEvents">Ytterligare&nbsp;utgående&nbsp;handling</a>
 
 				</div>

@@ -22,24 +22,38 @@ var selectedMrn = '';
 var selectedArrivalFrom = '';
 var selectedArrivalTo ='';
 
-
 function initSvlthSearch() {
 	console.log('::initSvlthSearch::');
+	let runningUrl;
 	
-	console.log("selectedArrivalFrom",selectedArrivalFrom);
+//	console.log("cache: selectedGodsnr",localStorage.getItem('selectedGodsnr'));		
+//	console.log("cache: selectedMrn",localStorage.getItem('selectedMrn'));		
+//	console.log("cache: selectedArrivalFrom",localStorage.getItem('selectedArrivalFrom'));		
+//	console.log("cache: selectedArrivalTo",localStorage.getItem('selectedArrivalTo'));			
 	
+	jq('#selectGodsnr').val(localStorage.getItem('selectedGodsnr'));
+	jq('#selectMrn').val(localStorage.getItem('selectedMrn'));
+	jq('#selectArrivalFrom').val(localStorage.getItem('selectedArrivalFrom'));
+	jq('#selectArrivalTo').val(localStorage.getItem('selectedArrivalTo'));
+
+	if (jq('#selectGodsnr').val() != "" && jq('#selectMrn').val()!= "" && jq('#selectArrivalFrom').val() !="" && jq('#selectArrivalTo').val() != "") {
+		runningUrl = svlthUrl + doNotLoad;
+	} else {
+		runningUrl = getRunningSvlthUrl();
+	}
+	
+	console.log("runningUrl",runningUrl);
 	
 	if (svlthTable != undefined) {
 		console.log('svlthTable already set.');
 		return;
 	}
-	console.log('initSvlthSearch');
 
 	//Init datatables, done once, then reload with ajax
 	svlthTable = jq('#svlthTable').DataTable({
 		dom : '<"top"Bf>t<"bottom"lip><"clear">',
 		ajax: {
-	        "url": svlthUrl + doNotLoad,
+	        "url": runningUrl,
 	        "dataSrc": "dtoList"
 	    },	
 	    buttons: [
@@ -86,10 +100,8 @@ function initSvlthSearch() {
 		columnDefs : [ 
             { responsivePriority: 1, targets: -2 },
             { responsivePriority: 2, targets: -1 }
-           // {  visible: false , targets: 1}
 		],	    
 	    columns: [
-	        { data: "svlth_igl" },
 	    	{ data: "svlth_ign"	},
 	    	{ data: "svlth_pos"	},
 	        { data: null,
@@ -143,6 +155,7 @@ function initSvlthSearch() {
 	        { data: "svlth_ih3" },
 	        { data: "svlth_ih4" },
 	        { data: "svlth_ih5" },
+	        { data: "svlth_uex_concat" },        
 	    	{ data: "svlth_itx" },
 	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
@@ -482,7 +495,12 @@ function getRunningSvlthUrl() {
 			return null;
 		}
 		
-		
+		//cache query params
+		localStorage.setItem('selectedGodsnr', selectedGodsnr);
+		localStorage.setItem('selectedMrn', selectedMrn);
+		localStorage.setItem('selectedArrivalFrom', selectedArrivalFrom);
+		localStorage.setItem('selectedArrivalTo', selectedArrivalTo);
+
 		return runningUrl;	
 		
 }
@@ -614,7 +632,8 @@ function setGodsnummer(caller){
 			  cache: true,
 			  contentType: 'application/json',
 			  success: function(data) {
-				jq(caller).val(data);
+				  let godsnummerconcat = glk + data;
+				  jq(caller).val(godsnummerconcat);
 			  }, 
 			  error: function (jqXHR, exception) {
 				    console.log("jqXHR",jqXHR);
@@ -627,10 +646,7 @@ function setGodsnummer(caller){
 jq(function() {
 	
 	jq("#godsLokalkodModal").on('hidden.bs.modal', function(){
-		console.log("selected", jq("#selectGodslokalkod").val());
-	    
 		jq('#formRecord').submit();
-	    
 	});		
 	
 	
