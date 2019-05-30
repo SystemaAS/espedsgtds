@@ -81,7 +81,8 @@
 					<th>Pos</th>
 					<th>Händelse</th>
 					<th>MRN</th>
-					<th>Ext.&nbsp;referans</th>
+
+
 					<th>Utgående&nbsp;handling</th>
 					<th>Tullid</th>
 					<th title="Ref. till händelse">Antal</th>
@@ -94,6 +95,7 @@
 					<th>Rättelse</th>
 					<th title="Samma som Antal">Rättat&nbsp;antal</th>
 					<th>Rättelse&nbsp;int.info.</th>
+					<th>Ext.&nbsp;referans</th>
 					<th>Beskrivning</th>
 					<th>Beskrivning</th>
 					<th>Beskrivning</th>

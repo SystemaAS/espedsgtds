@@ -26,20 +26,16 @@ function initSvlthSearch() {
 	console.log('::initSvlthSearch::');
 	let runningUrl;
 	
-//	console.log("cache: selectedGodsnr",localStorage.getItem('selectedGodsnr'));		
-//	console.log("cache: selectedMrn",localStorage.getItem('selectedMrn'));		
-//	console.log("cache: selectedArrivalFrom",localStorage.getItem('selectedArrivalFrom'));		
-//	console.log("cache: selectedArrivalTo",localStorage.getItem('selectedArrivalTo'));			
+	jq('#selectGodsnr').val(sessionStorage.getItem('selectedGodsnr'));
+	jq('#selectMrn').val(sessionStorage.getItem('selectedMrn'));
+	jq('#selectArrivalFrom').val(sessionStorage.getItem('selectedArrivalFrom'));
+	jq('#selectArrivalTo').val(sessionStorage.getItem('selectedArrivalTo'));
 	
-	jq('#selectGodsnr').val(localStorage.getItem('selectedGodsnr'));
-	jq('#selectMrn').val(localStorage.getItem('selectedMrn'));
-	jq('#selectArrivalFrom').val(localStorage.getItem('selectedArrivalFrom'));
-	jq('#selectArrivalTo').val(localStorage.getItem('selectedArrivalTo'));
-
-	if (jq('#selectGodsnr').val() != "" && jq('#selectMrn').val()!= "" && jq('#selectArrivalFrom').val() !="" && jq('#selectArrivalTo').val() != "") {
-		runningUrl = svlthUrl + doNotLoad;
-	} else {
+	if (jq('#selectGodsnr').val() != "" || jq('#selectMrn').val()!= "" || jq('#selectArrivalFrom').val() !="" || jq('#selectArrivalTo').val() != "") {
 		runningUrl = getRunningSvlthUrl();
+	} else {
+		runningUrl = svlthUrl + doNotLoad;
+
 	}
 	
 	console.log("runningUrl",runningUrl);
@@ -102,7 +98,7 @@ function initSvlthSearch() {
             { responsivePriority: 2, targets: -1 }
 		],	    
 	    columns: [
-	    	{ data: "svlth_ign"	},
+	    	{ data: "svlth_ign"},
 	    	{ data: "svlth_pos"	},
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
@@ -110,8 +106,7 @@ function initSvlthSearch() {
 	        	}
 	    	},
 	    	{ data: "svlth_irn" },
-	        { data: "svlth_iex" },
-	        { data: "svlth_uex" },
+	    	{ data: "svlth_uex" },
 	        { data: "svlth_uti" },
 	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
@@ -145,11 +140,12 @@ function initSvlthSearch() {
 	        	}
 	    	},
 	    	{ data: "svlth_rnt" },
+	    	{ data: "svlth_rtx" },
+	    	{ data: "svlth_iex" },
 	        { data: "svlth_ivb2" },
 	    	{ data: "svlth_ivb3" },
 	    	{ data: "svlth_ivb4" },
 	    	{ data: "svlth_ivb5" },	    	
-	    	{ data: "svlth_rtx" },
 	        { data: "svlth_ih1" },
 	    	{ data: "svlth_ih2" },	        
 	        { data: "svlth_ih3" },
@@ -192,16 +188,18 @@ function initSvlthSearch() {
 	            defaultContent: ''
 	        }, 
 	    ],
-	    order: [[28, 'desc']],   //Arkiverad
+	    order: [[0, 'desc']], 
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
 		language : {
 			url : getLanguage(lang)
 		}        
 	
 	});
-
+	
+	
     jq('#svlthTable').on( 'draw.dt', function () {
-        unBlockUI();
+    	svlthTable.columns( [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
+    	unBlockUI();
     });	
     
 	
@@ -496,11 +494,11 @@ function getRunningSvlthUrl() {
 		}
 		
 		//cache query params
-		localStorage.setItem('selectedGodsnr', selectedGodsnr);
-		localStorage.setItem('selectedMrn', selectedMrn);
-		localStorage.setItem('selectedArrivalFrom', selectedArrivalFrom);
-		localStorage.setItem('selectedArrivalTo', selectedArrivalTo);
-
+		sessionStorage.setItem('selectedGodsnr', selectedGodsnr);
+		sessionStorage.setItem('selectedMrn', selectedMrn);
+		sessionStorage.setItem('selectedArrivalFrom', selectedArrivalFrom);
+		sessionStorage.setItem('selectedArrivalTo', selectedArrivalTo);
+		
 		return runningUrl;	
 		
 }
