@@ -16,9 +16,16 @@
 	var h_svlth_id1 = "${headRecord.svlth_id1}";
 	var h_svlth_im1 = "${headRecord.svlth_im1}";
 	
+	let hasError = "${error}";
+	
 	jq(document).ready(function() {
 		loadEvent();
+		getFieldChangeCodes('#svlth_r_field');
+		if (hasError == "") {
+				clearValuesRattelse();
+		}	
 	});
+	
 </script>
 
 <div class="container-fluid">
@@ -56,23 +63,23 @@
 			</div>	
 		
 			<div class="form-row no-gutters left-right-border">
-				<div class="form-group pr-2 col-2">
+				<div class="form-group pr-2 col-1">
 					<label for="event" class="col-form-label-sm mb-0 pb-0">Händelse</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="event"/>
 				</div>
-				<div class="form-group pr-2 col-2">
-					<label for="mrn" class="col-form-label-sm mb-0 pb-0">MRN</label>
-					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="mrn"/>
-				</div>
-				<div class="form-group pr-2 col-2">
+				<div class="form-group pr-2 col-1">
 					<label for="godsnr" class="col-form-label-sm mb-0 pb-0">Godsnummer</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="godsnr"/>
 				</div>	
-				<div class="form-group pr-2 col-2">
+				<div class="form-group pr-2 col-1">
 					<label for="position" class="col-form-label-sm mb-0 pb-0">Position</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="position"/>
 				</div>	
 				<div class="form-group pr-2 col-2">
+					<label for="mrn" class="col-form-label-sm mb-0 pb-0">MRN</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="mrn"/>
+				</div>
+				<div class="form-group pr-2 col-1">
 					<label for="antal" class="col-form-label-sm mb-0 pb-0">Räknat&nbsp;antal</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="antal"/>
 				</div>	
@@ -80,14 +87,26 @@
 					<label for="saldo" class="col-form-label-sm mb-0 pb-0">Saldo</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="saldo"/>
 				</div>
+				<div class="form-group pr-2 col-1">
+					<label for="beskrivning" class="col-form-label-sm mb-0 pb-0">Beskrivning</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="beskrivning"/>
+				</div>
+				<div class="form-group pr-2 col-1">
+					<label for="vikt" class="col-form-label-sm mb-0 pb-0">Bruttovikt</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="vikt"/>
+				</div>
+
+
 			</div>
 	</div>
 	
-		<div class="panel-body left-right-border no-gutters">
+	<div class="panel-body left-right-border no-gutters">
 		<table class="display compact cell-border responsive nowrap" id="rattelseTable">
 			<thead class="tableHeaderField">
 				<tr>
 					<th>Nytt&nbsp;räknat&nbsp;antal</th>
+					<th>Ny&nbsp;beskrivning</th>
+					<th>Ny&nbsp;bruttovikt</th>
 					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 				</tr>
@@ -146,10 +165,13 @@
 			</div>
 
 			<div class="form-row left-right-bottom-border formFrame">
-
 				<div class="form-group pr-2 col-auto">
-					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Nytt&nbsp;räknat&nbsp;antal</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_rnt" id="svlth_rnt" value="${record.svlth_rnt}" size="8" maxlength="5">
+				    <label for="svlth_r_field" class="col-form-label-sm mb-0 required">Välj&nbsp;fält</label>
+				    <select required class="form-control" name="svlth_r_field" id="svlth_r_field" value="${record.svlth_r_field}"></select>
+			  	</div>
+				<div class="form-group pr-2 col-auto">
+					<label for="svlth_r_value" class="col-form-label-sm mb-0 required">Nytt&nbsp;värde</label>
+					<input required type="text" class="form-control form-control-sm" name="svlth_r_value" id="svlth_r_value" value="${record.svlth_r_value}" size="70" maxlength="70">
 				</div>
 				<div class="form-group pr-3 col-auto">
 					<label for="svlth_rtx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
@@ -179,6 +201,22 @@
 			</div>
 		</div>
 	</c:if>
+	
+	<c:if test="${not empty info}">
+		<div class="container-fluid p-1 left-right-bottom-border">
+			<div class="form-row no-gutters">
+	
+				<div class="alert alert-info" role="alert">
+					<p class="mb-0">${info}</p>
+				</div>
+	
+			</div>
+		</div>
+	</c:if>	
+	
+	
+	
+	
 
    	</div> <!-- container -->
 

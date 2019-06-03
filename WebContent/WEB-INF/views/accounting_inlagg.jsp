@@ -45,6 +45,8 @@
 	<div class="container-fluid p-1 left-right-bottom-border">
 
 		<form action="accounting_inlagg.do" name="formRecord" id="formRecord" method="POST">
+		  <fieldset <c:if test="${action == 2}"> disabled</c:if>>
+
 			<input type="hidden" name="action" id="action" value='${action}'>
 			<input type="hidden" name="svlth_h" id="svlth_h" value='I'>
 	
@@ -54,7 +56,7 @@
 				</div>
 			</div>
 	
-			<div class="form-row left-right-border" <c:if test="${action == 2}"> disabled</c:if>>
+			<div class="form-row left-right-border">
 	
 					<div class="form-group pr-2 pl-1 mb-0">
 						<label for="svlth_igl" class="col-form-label-sm mb-0">Godslokalkod</label>
@@ -67,7 +69,7 @@
 						<div class="input-group">
 							<input required type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
 		                    <span class="input-group-prepend">
-								 <button <c:if test="${action == 2}"> disabled</c:if> type="button" class="btn btn-info btn-sm btn-outline-secondary" onclick="generateGodsnummer()" title="Generera Godsnummer">Generera</button>
+								 <button type="button" class="btn btn-info btn-sm btn-outline-secondary" onclick="generateGodsnummer()" title="Generera Godsnummer">Generera</button>
 		                    </span>
 		                </div>
 					</div>	
@@ -194,7 +196,7 @@
 				  
 			</div>			
 
-			<div class="form-row left-right-bottom-border" <c:if test="${action == 2}"> disabled</c:if>>
+			<div class="form-row left-right-bottom-border">
 
 					<div class="form-group pr-2 pl-1 mb-0">
 						<label for="svlth_itx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
@@ -209,22 +211,36 @@
 			
 			</div>		
 			
-			
+		  </fieldset>
 		</form>
    	</div> <!-- container -->
 
 
-<c:if test="${not empty error}">
-	<div class="container-fluid p-1 left-right-bottom-border">
-		<div class="form-row no-gutters">
-
-			<div class="alert alert-danger" role="alert">
-				<p class="mb-0">${error}</p>
+	<c:if test="${not empty error}">
+		<div class="container-fluid p-1 left-right-bottom-border">
+			<div class="form-row no-gutters">
+	
+				<div class="alert alert-danger" role="alert">
+					<p class="mb-0">${error}</p>
+				</div>
+	
 			</div>
-
 		</div>
-	</div>
-</c:if>
+	</c:if>
+	
+	
+	<c:if test="${not empty info}">
+		<div class="container-fluid p-1 left-right-bottom-border">
+			<div class="form-row no-gutters">
+	
+				<div class="alert alert-info" role="alert">
+					<p class="mb-0">${info}</p>
+				</div>
+	
+			</div>
+		</div>
+	</c:if>
+
 
 
 

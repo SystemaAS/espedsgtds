@@ -81,19 +81,17 @@
 					<th>Pos</th>
 					<th>Händelse</th>
 					<th>MRN</th>
-
-
 					<th>Utgående&nbsp;handling</th>
 					<th>Tullid</th>
 					<th title="Ref. till händelse">Antal</th>
 					<th>Saldo</th>
 					<th>Slag</th>
-					<th>Beskrivning</th>
+					<th title="Ref. till händelse">Beskrivning</th>
 					<th>Ankommit</th>
 					<th>Uttaget</th>
-					<th>Bruttovikt</th>
+					<th title="Ref. till händelse">Bruttovikt</th>
 					<th>Rättelse</th>
-					<th title="Samma som Antal">Rättat&nbsp;antal</th>
+					<th>Rättat&nbsp;antal</th>
 					<th>Rättelse&nbsp;int.info.</th>
 					<th>Ext.&nbsp;referans</th>
 					<th>Beskrivning</th>

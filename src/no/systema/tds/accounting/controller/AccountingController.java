@@ -106,7 +106,6 @@ public class AccountingController {
 	
 	@RequestMapping(value="accounting_list.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doList(@RequestParam(value = "selectGodslokalkod", required = false) String godslokalkod,
-							   @RequestParam(value = "selectGodsnr", required = false) String godsnr,
 							   HttpSession session, HttpServletRequest request) {
 		ModelAndView successView = new ModelAndView("accounting_list");
 		ModelAndView modalView = new ModelAndView("accounting_modal_godslokalkod");
@@ -116,7 +115,6 @@ public class AccountingController {
 		
 		logger.info("accounting_list.do....");
 		logger.info("selectGodslokalkod="+godslokalkod);
-		logger.info("selectGodsnr="+godsnr);
 		
 		
 		if (godslokalkod != null) {
@@ -184,6 +182,9 @@ public class AccountingController {
 				successView.addObject("saldo", returnDto.getSaldo());
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
+				
+				successView.addObject("info", "Inlägg skapat.");
+				
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
 				throw new IllegalAccessError("Updates not allowed!");
@@ -259,7 +260,6 @@ public class AccountingController {
 								@RequestParam(value = "h_svlth_pos", required = true) String h_svlth_pos,
 								@RequestParam(value = "h_svlth_id1", required = true) Integer h_svlth_id1,
 								@RequestParam(value = "h_svlth_im1", required = true) Integer h_svlth_im1,
-
 								@RequestParam(value = "action", required = true) Integer action, HttpSession session, HttpServletRequest request) {
 
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
@@ -291,6 +291,8 @@ public class AccountingController {
 				saveRecords(appUser, uhDaoList, "A");
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
+				
+				successView.addObject("info", "Uttag skapat.");
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
 				throw new IllegalAccessError("Updates not allowed!");
@@ -327,7 +329,7 @@ public class AccountingController {
 	
 
 	@RequestMapping(value = "accounting_rattelse.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView doRattelse(@ModelAttribute("record") SvlthDao record, @RequestParam(value = "action", required = true) Integer action,
+	public ModelAndView doRattelse(@ModelAttribute("record") SvlthDto record, @RequestParam(value = "action", required = true) Integer action,
 			@RequestParam(value = "h_svlth_h", required = true) String h_svlth_h, 
 			@RequestParam(value = "h_svlth_ign", required = true) String h_svlth_ign, 
 			@RequestParam(value = "h_svlth_pos", required = true) String h_svlth_pos,
@@ -353,6 +355,7 @@ public class AccountingController {
 
 		ModelAndView successView = new ModelAndView("accounting_rattelse");
 		SvlthDto returnDto = new SvlthDto();
+//		SvlthDao recordDao = SvlthDto.get(record);
 
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_rty() == null) {
 			logger.info("Init...");
@@ -366,22 +369,25 @@ public class AccountingController {
 		try {
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
 				logger.info("Create...");
-//				//Special, due to acting as placeholder for Svlthu see: BcoreMaintResponseOutputterController_SVLTH
-//				if (StringUtils.hasValue(record.getSvlth_uex()) && record.getSvlth_uex().contains("#")) {
-//					int index = record.getSvlth_uex().indexOf("#");
-//					record.setSvlth_uex(record.getSvlth_uex().substring(0, index));
-//				}
+	
+				SvlthDao recordDao = SvlthDto.get(record);
+				setRattelseValue(recordDao,record);
 				
-				setDate(EventTypeEnum.RATTELSE, record);
-				saveRecord(appUser, record, "A");
+				setDate(EventTypeEnum.RATTELSE, recordDao);
+				saveRecord(appUser, recordDao, "A");
 				successView.addObject("action", CRUDEnum.READ.getValue());
+				
+				successView.addObject("info", "Rättelse skapat.");
 
 			} else if (action.equals(CRUDEnum.UPDATE.getValue())) {
 				throw new IllegalAccessError("Updates not allowed!");
 
 			} else if (action.equals(CRUDEnum.READ.getValue())) {
 				logger.info("Read...");
-				returnDto = fetchRecord(appUser, record);
+
+				SvlthDao recordDao = SvlthDto.get(record);
+
+				returnDto = fetchRecord(appUser, recordDao);
 				successView.addObject("record", returnDto);
 				successView.addObject("action", CRUDEnum.READ.getValue());
 
@@ -409,25 +415,27 @@ public class AccountingController {
 
 	}
 	
-//	@RequestMapping(value="addToSession.do", method={ RequestMethod.GET, RequestMethod.POST} )
-//	public ModelAndView addToSession(@RequestParam(value = "godslokalkod", required = false) String godslokalkod,
-//			HttpSession session, HttpServletRequest request) {
-//		ModelAndView successView = new ModelAndView("accounting_list");
-//		SystemaWebUser appUser = loginValidator.getValidUser(session);
-//
-//		logger.info("yes, godslokalkod="+godslokalkod);
-//		
-//		if (appUser == null) {
-//			return loginView;
-//		} else {
-//			appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);
-//			
-//			session.setAttribute(AccountingSession.GODS_LOKAL_KOD, godslokalkod); 
-//
-//			return successView;
-//		}		
-//	}	
-	
+	private void setRattelseValue(SvlthDao recordDao, SvlthDto record) {
+		switch (record.getSvlth_r_field()) {
+		case "ANTAL":
+			Integer rnt = Integer.parseInt(record.getSvlth_r_value());
+			recordDao.setSvlth_rnt(rnt);
+			break;
+		case "VIKT":
+			String rbr = record.getSvlth_r_value();
+			recordDao.setSvlth_rbr(rbr);
+			break;
+		case "BESK":
+			String rvb = record.getSvlth_r_value();
+			recordDao.setSvlth_rvb(rvb);
+			break;
+		default:
+			throw new IllegalArgumentException("Not a valid r_field: "+record.getSvlth_r_field());
+		}
+		
+	}
+
+
 	private SvlthDto fetchRecord(SystemaWebUser appUser, SvlthDao record) {
 		SvlthDto dto = getHeadDto(appUser.getUser(), record.getSvlth_ign(), record.getSvlth_pos(), record.getSvlth_h(), record.getSvlth_id1(), record.getSvlth_im1());
 		

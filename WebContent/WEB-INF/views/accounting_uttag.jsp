@@ -33,7 +33,7 @@
 	jq(document).ready(function() {
 			loadSvlthUttag();
  			if (hasError == "") {
- 				clearValues();
+ 				clearValuesUttag();
  			}
  			
 	});
@@ -278,6 +278,26 @@
 			</div>
 		</div>
 	</c:if>
+	
+
+	<c:if test="${not empty info}">
+		<div class="container-fluid p-1 left-right-bottom-border">
+			<div class="form-row no-gutters">
+	
+				<div class="alert alert-info" role="alert">
+					<p class="mb-0">${info}</p>
+				</div>
+	
+			</div>
+		</div>
+	</c:if>	
+	
+	
+	
+	
+	
+	
+	
 
 </div> <!-- container -->
 
