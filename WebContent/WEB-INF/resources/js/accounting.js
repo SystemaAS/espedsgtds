@@ -24,17 +24,20 @@ var selectedArrivalTo ='';
 
 function initSvlthSearch() {
 	console.log('::initSvlthSearch::');
+	
 	let runningUrl;
 	
 	jq('#selectGodsnr').val(sessionStorage.getItem('selectedGodsnr'));
 	jq('#selectMrn').val(sessionStorage.getItem('selectedMrn'));
-	jq('#selectArrivalFrom').val(sessionStorage.getItem('selectedArrivalFrom'));
+	if (sessionStorage.getItem('selectedArrivalFrom') != null) {
+		jq('#selectArrivalFrom').val(sessionStorage.getItem('selectedArrivalFrom'));
+	}
 	jq('#selectArrivalTo').val(sessionStorage.getItem('selectedArrivalTo'));
-	
+
 	if (jq('#selectGodsnr').val() != "" || jq('#selectMrn').val()!= "" || jq('#selectArrivalFrom').val() !="" || jq('#selectArrivalTo').val() != "") {
 		runningUrl = getRunningSvlthUrl();
 	} else {
-		runningUrl = svlthUrl + doNotLoad;
+		runningUrl = svlthUrl + doNotLoad;  // a bit overkill
 
 	}
 	
@@ -212,7 +215,7 @@ function initSvlthSearch() {
 	            defaultContent: ''
 	        }, 
 	    ],
-	    order: [[0, 'desc']], 
+	    order: [[0, 'desc'],[1, 'asc']], 
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
 		language : {
 			url : getLanguage(lang)
@@ -223,8 +226,25 @@ function initSvlthSearch() {
 	
     jq('#svlthTable').on( 'draw.dt', function () {
     	svlthTable.columns( [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
-    	unBlockUI();
+    	//unBlockUI();
     });	
+    
+//    jq('#svlthTable').on( 'preInit.dt', function (e, settings) {
+//    	console.log("preinit");
+//    	setBlockUI();
+//    });
+    
+    
+    jq('#svlthTable').on( 'processing.dt', function ( e, settings, processing ) {
+    	console.log("processing", processing);
+    	if (processing) {
+    	   	setBlockUI();
+    	} else {
+    		unBlockUI();
+    	}
+    	
+    }).dataTable();
+    		
     
 	
 } //end initSvlthSearch
@@ -239,7 +259,7 @@ function loadSvlth() {
 		return null;
 	}
 	
-	setBlockUI();
+	//setBlockUI();
 	
 	svlthTable.ajax.url(runningUrl);
 	svlthTable.ajax.reload();
@@ -546,50 +566,45 @@ function getRunningSvlthUrl() {
 
 
 function initSvtx03fSearch(caller) {
-	console.log("initSvtx03fSearch, caller", caller);
-
 	svtx03fTable = jq('#svtx03fTable').DataTable({
-		"dom" : '<"top"f>t<"bottom"lip><"clear">',
-		"ajax": {
-	        "url": kollislagkoderUrl + doNotLoad,
-	        "dataSrc": "dtoList"
+		dom : '<"top"f>t<"bottom"lip><"clear">',
+		ajax: {
+	        url: kollislagkoderUrl + doNotLoad,
+	        dataSrc: "dtoList"
 	    },	
 		mark: true,			
 		responsive : true,
 		select : true,
 		destroy : true,
-		"scrollY" : "300px",
-		"scrollCollapse" : false,
-		"order" : [ [ 1, "desc" ] ],
-		"columnDefs" : [ 
+		scrollY : "300px",
+		scrollCollapse : false,
+		order : [ [ 1, "desc" ] ],
+		columnDefs : [ 
 			{
-				"targets" : 1,
+				targets : 1,
 				className: 'dt-body-center',
-			    "render": function ( data, type, row, meta ) {
+			    render: function ( data, type, row, meta ) {
 	           		return '<a>' +
 	       			'<img class="img-fluid float-center" title="Välg" src="resources/images/bebullet.gif">' +
 	       			'</a>'    	
 			    }
 			}
 		],			
-		"columns" : [ 
-			{"data" : "svtx03_03"}, 
+		columns : [ 
+			{data : "svtx03_03"}, 
 	    	{
-	        	"class":          "choose dt-body-center",
-	        	"orderable":      false,
-	            "data":           null,
-	            "defaultContent": ''
+	        	class:          "choose dt-body-center",
+	        	orderable:      false,
+	            data:           null,
+	            defaultContent: ''
 	    	},		
-			{"data" : "svtx03_04"}
+			{data : "svtx03_04"}
 		 ],
-		"lengthMenu" : [ 10, 25, 75],
-		"language" : {
-			"url" : getLanguage(lang)
+		lengthMenu : [ 10, 25, 75],
+		language : {
+			url : getLanguage(lang)
 		},
 		
-	    initComplete: function () {
-	    	//levefInitialized = true;
-	    }
 
 	});
 
@@ -702,9 +717,8 @@ function setGodsnummer(caller){
 jq(function() {
 	
 	jq("#godsLokalkodModal").on('hidden.bs.modal', function(){
-		jq('#formRecord').submit();
+		jq('#glkFormRecord').submit();
 	});		
-	
 	
 	jq("#formRecord").submit(function() {
 		setBlockUI();	
@@ -715,7 +729,7 @@ jq(function() {
 	});		
 	
 	jq("#selectArrivalFrom").datepicker({ 
-		dateFormat: 'yymmdd'
+		dateFormat: 'yymmdd',
 	});	
 
 	jq("#selectArrivalTo").datepicker({ 
@@ -731,6 +745,7 @@ jq(function() {
 	
 	/*the asterix*/
 	jq("input[required]").parent("label").addClass("required");
+	
 	
 });  
 

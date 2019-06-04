@@ -10,7 +10,19 @@
 <script type="text/javascript">
 	"use strict";
 
+	var fromDate = new Date();
+	
+	console.log("dftdg",dftdg);
+	var offset = dftdg;
+	if(offset > 0) {
+		//set on user		
+	} else {
+		offset = 7;
+	}
+	fromDate.setDate(fromDate.getDate() - offset);
+	
 	jq(document).ready(function() {
+ 		jq("#selectArrivalFrom").datepicker( "setDate", fromDate );
 		initSvlthSearch();
 	});
 

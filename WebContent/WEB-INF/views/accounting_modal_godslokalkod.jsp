@@ -30,7 +30,7 @@
 	        <h5 class="modal-title" id="modalLabel">Välj Godslokalkod</h5>
 	      </div>
 	      <div class="modal-body">
-	      	<form action="accounting_list.do" name="formRecord" id="formRecord" method="POST">
+	      	<form action="accounting_list.do" name="glkFormRecord" id="glkFormRecord" method="POST">
 				<div class="form-group">
 					<label for="selectGodslokalkod" class="col-form-label-sm mb-0">Godslokalkod</label>
 					<select class="form-control form-control-sm w-auto" name="selectGodslokalkod" id="selectGodslokalkod"></select>	
