@@ -88,6 +88,10 @@
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="saldo"/>
 				</div>
 				<div class="form-group pr-2 col-1">
+					<label for="slag" class="col-form-label-sm mb-0 pb-0">Kollislag</label>
+					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="slag"/>
+				</div>
+				<div class="form-group pr-2 col-1">
 					<label for="beskrivning" class="col-form-label-sm mb-0 pb-0">Beskrivning</label>
 					<label class="form-control-plaintext form-control-sm font-weight-bold pt-0 pb-0" id="beskrivning"/>
 				</div>
@@ -105,6 +109,7 @@
 			<thead class="tableHeaderField">
 				<tr>
 					<th>Nytt&nbsp;räknat&nbsp;antal</th>
+					<th>Nytt&nbsp;kollislag</th>
 					<th>Ny&nbsp;beskrivning</th>
 					<th>Ny&nbsp;bruttovikt</th>
 					<th>Intern&nbsp;information</th>

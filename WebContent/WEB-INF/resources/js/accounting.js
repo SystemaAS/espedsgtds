@@ -122,7 +122,19 @@ function initSvlthSearch() {
 	        	}	
 	        },
 	    	{ data: "saldo" },
-	        { data: "svlth_isl" },
+	        { data: null, //Kollislag
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_h == 'I') {
+		        		return row.svlth_isl;	        			
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return row.svlth_isl;	        			
+	        		}
+	        		if (row.svlth_h == 'R') {
+		        		return row.svlth_rsl;	        			
+	        		}	        		
+	        	}	
+	        },
 	        { data: null, //Beskrivning
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_h == 'I') {
@@ -287,7 +299,12 @@ function loadSvlthUttag() {
 		order : [ [ 2, "desc" ] ],		
 		columns : [ 
 	    	{ data : "svlth_uex"},
-			{ data : "svlth_ud1"},
+			{ data : null,
+	        	render: function ( data, type, row, meta ) {
+
+	        		return dateFormatter(row.svlth_ud1);
+	        	}	    		
+			},
 			{ data : "svlth_uti"}, 
 			{ data : "svlth_unt"}, 
 			{ data : "svlth_utx"},
@@ -332,6 +349,7 @@ function loadEvent() {
 		responsive : true,
 		columns : [ 
 	    	{ data : "svlth_rnt"},
+	    	{ data : "svlth_rsl"},
 	    	{ data : null,
 	        	render: function ( data, type, row, meta ) {
 	        		return row.svlth_rvb; 
@@ -402,6 +420,7 @@ function clearValuesUttag() {
     jq("#svlth_uti").val("");
     jq("#svlth_unt").val("");
     jq("#svlth_utx").val("");
+    jq("#svlth_ud1").val("");
 }
 
 function clearValuesRattelse() {
@@ -433,12 +452,11 @@ function setUttagHeader() {
 		  contentType: 'application/json',
 		  success: function(data) {
 			  let record = data.dtoList;
-			  console.log("record", record);
 			  jq("#mrn").text(record[0].svlth_irn);
 			  jq("#godsnr").text(record[0].svlth_ign);
 			  jq("#position").text(record[0].svlth_pos);
-			  jq("#arrival").text(record[0].svlth_id2);
-			  jq("#archive").text(record[0].svlth_id1);
+			  jq("#arrival").text(dateFormatter(record[0].svlth_id2));
+			  jq("#archive").text(dateFormatter(record[0].svlth_id1));
 			  jq("#saldo").text(record[0].saldo);
 			  
 		  }, 
@@ -474,6 +492,7 @@ function setEventHeader() {
 			  jq("#position").text(record[0].svlth_pos);
 			  jq("#beskrivning").text(record[0].svlth_ivb);
 			  jq("#vikt").text(decimalConverter(record[0].svlth_ibr));
+			  jq("#slag").text(record[0].svlth_isl);
 
 		  }, 
 		  error: function (jqXHR, exception) {
@@ -663,6 +682,8 @@ function getFieldChangeCodes(caller) {
 		jq(caller).append(jq('<option></option>').attr('value', 'ANTAL').text("Räknat antal"));
 		jq(caller).append(jq('<option></option>').attr('value', 'BESK').text("Beskrivning"));
 		jq(caller).append(jq('<option></option>').attr('value', 'VIKT').text("Vikt"));
+		jq(caller).append(jq('<option></option>').attr('value', 'SLAG').text("Kollislag"));
+
 	} else {
 		jq(caller).append(jq('<option></option>').attr('value', 'ANTAL').text("Räknat antal"));
 	}
@@ -726,7 +747,18 @@ jq(function() {
 		setBlockUI();	
 	});
 
+	jq("#utformRecord").submit(function() {
+		setBlockUI();	
+		var trimmed = jq("#svlth_ud1").val().replace(/-/g,"")
+		jq("#svlth_ud1").val(trimmed);		
+	});	
+	
+	
 	jq("#svlth_id2").datepicker({ 
+		dateFormat: 'yy-mm-dd'
+	});		
+
+	jq("#svlth_ud1").datepicker({ 
 		dateFormat: 'yy-mm-dd'
 	});		
 	

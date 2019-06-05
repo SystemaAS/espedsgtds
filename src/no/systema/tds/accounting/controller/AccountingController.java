@@ -318,7 +318,7 @@ public class AccountingController {
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", e.getMessage());
+			successView.addObject("error", e.getMessage().replace("\"", ""));
 			successView.addObject("record", record);
 			SvlthDto headDto = fetchRecord(appUser, h_svlth_ign, h_svlth_pos, EventTypeEnum.INLAGG.getValue(), h_svlth_id1, h_svlth_im1);
 			successView.addObject("headRecord", headDto);
@@ -357,7 +357,6 @@ public class AccountingController {
 
 		ModelAndView successView = new ModelAndView("accounting_rattelse");
 		SvlthDto returnDto = new SvlthDto();
-//		SvlthDao recordDao = SvlthDto.get(record);
 
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_rty() == null) {
 			logger.info("Init...");
@@ -406,7 +405,7 @@ public class AccountingController {
 		} catch (Throwable e) {
 			logger.error("ERROR:", e);
 			successView.addObject("action", action);
-			successView.addObject("error", "Tekniskt fel : " + e.getMessage());
+			successView.addObject("error", e.getMessage().replace("\"", ""));
 			successView.addObject("svlth_ign", h_svlth_ign);
 			SvlthDto headDto = fetchRecord(appUser, h_svlth_ign, h_svlth_pos, h_svlth_h, h_svlth_id1, h_svlth_im1);
 			successView.addObject("headRecord", headDto);
@@ -430,6 +429,10 @@ public class AccountingController {
 		case "BESK":
 			String rvb = record.getSvlth_r_value();
 			recordDao.setSvlth_rvb(rvb);
+			break;
+		case "SLAG":
+			String rsl = record.getSvlth_r_value();
+			recordDao.setSvlth_rsl(rsl);
 			break;
 		default:
 			throw new IllegalArgumentException("Not a valid r_field: "+record.getSvlth_r_field());
@@ -623,7 +626,6 @@ public class AccountingController {
 		record.setSvlth_im1(dato[1]);
 		
 		if (eventType == EventTypeEnum.UTTAG) {
-			record.setSvlth_ud1(dato[0]);
 			record.setSvlth_um1(dato[1]);
 		}
 		

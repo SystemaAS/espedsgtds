@@ -119,7 +119,7 @@
 		</table>
 	</div>	
 	
-	<form action="accounting_uttag.do" name="formRecord" id="formRecord" method="POST">
+	<form action="accounting_uttag.do" name="utformRecord" id="utformRecord" method="POST">
 		<input type="hidden" name="action" id="action" value='1'>
 		<input type="hidden" name="svlth_h" id="svlth_h" value='U'>
 		<input type="hidden" name="svlth_igl" id="svlth_igl" value='${headRecord.svlth_igl}'>
@@ -178,6 +178,12 @@
 					<label for="svlth_unt" class="col-form-label-sm mb-0 required">Antal</label>
 					<input required type="text" class="form-control form-control-sm" name="svlth_unt" id="svlth_unt" value="${record.svlth_unt}" size="7" maxlength="5">
 				</div>
+
+				<div class="form-group pr-2 col-auto">
+					<label for="svlth_ud1" class="col-form-label-sm mb-0 required">Uttagsdatum</label>
+					<input type="text" required class="form-control form-control-sm" name="svlth_ud1" id="svlth_ud1" value="${record.svlth_ud1}"  size="11" maxlength="8" onKeyPress="return numberKey(event)">
+				</div>	
+
 
 			</div> <!-- form-row -->
 	
