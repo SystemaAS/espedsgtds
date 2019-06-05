@@ -113,6 +113,7 @@ public class AccountingController {
 		
 		SystemaWebUser appUser = loginValidator.getValidUser(session);
 		
+		
 		logger.info("accounting_list.do....");
 		logger.info("selectGodslokalkod="+godslokalkod);
 		
@@ -234,6 +235,7 @@ public class AccountingController {
 
 			try {
 				headDto = fetchRecord(appUser, record.getSvlth_ign(), record.getSvlth_pos(), EventTypeEnum.INLAGG.getValue(), record.getSvlth_id1(), record.getSvlth_im1());
+
 				successView.addObject("headRecord", headDto);
 				successView.addObject("action", CRUDEnum.CREATE.getValue());
 				appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_TDS_ACCOUNTING);

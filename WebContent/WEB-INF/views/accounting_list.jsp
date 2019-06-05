@@ -25,6 +25,7 @@
  		jq("#selectArrivalFrom").datepicker( "setDate", fromDate );
 		initSvlthSearch();
 	});
+	
 
 </script>
 

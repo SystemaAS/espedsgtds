@@ -44,6 +44,10 @@
 		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
 		
+		<!--  script type="text/javascript" src="https://cdn.date-fns.org/v1.0.0/date_fns.min.js"></script-->
+		
+		<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.28.5/date_fns.min.js"></script>
+		
 		<script>
 			var lang = '${user.usrLang}';
 			var dftdg = '${user.dftdg}';
@@ -52,6 +56,7 @@
 		  	var svltfUrl = "/syjservicesbcore/syjsSVLTF.do?user=${user.user}";
 		  	var generateGodsnummerUrl = "/syjservicesbcore/generateGodsnummer.do?user=${user.user}";
 			var glk = '${godslokalkod}';
+			
 	 	</script>
 
 	</head>

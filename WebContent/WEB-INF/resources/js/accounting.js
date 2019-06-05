@@ -139,13 +139,24 @@ function initSvlthSearch() {
 	        		}	        		
 	        	}	
 	        },
-	        { data: "svlth_id2" },   	
+	        { data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		var id2 = row.svlth_id2.toString();
+	        		console.log("id2",id2);
+	        		var id2Date = dateFns.parse(id2);
+	           		console.log("id2Date",id2Date);
+	        		var result = dateFns.format(new Date(id2Date),'YY-MM-DD');	          		
+	        		return result;
+	        	}   	
+	        },
 	        { data: "svlth_ud1",
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_ud1 == '0') {
 	        			return null;
 	        		}
-	        		return row.svlth_ud1;
+//	        		return row.svlth_ud1;
+	        		
+	        		return dateFormatter(row.svlth_ud1);
 	        	}	        	
 	        },
 	        { data: null, //Vikt
@@ -226,13 +237,7 @@ function initSvlthSearch() {
 	
     jq('#svlthTable').on( 'draw.dt', function () {
     	svlthTable.columns( [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
-    	//unBlockUI();
     });	
-    
-//    jq('#svlthTable').on( 'preInit.dt', function (e, settings) {
-//    	console.log("preinit");
-//    	setBlockUI();
-//    });
     
     
     jq('#svlthTable').on( 'processing.dt', function ( e, settings, processing ) {
@@ -259,13 +264,8 @@ function loadSvlth() {
 		return null;
 	}
 	
-	//setBlockUI();
-	
 	svlthTable.ajax.url(runningUrl);
 	svlthTable.ajax.reload();
-//	unBlockUI(); is done in draw.dt
-	
-	
 
 }
 
@@ -542,11 +542,11 @@ function getRunningSvlthUrl() {
 			selectionMessage = selectionMessage + " MRN:"+selectedMrn;
 		} 
 		if (selectedArrivalFrom != "") {
-			runningUrl = runningUrl + "&svlth_id2F=" + selectedArrivalFrom;
+			runningUrl = runningUrl + "&svlth_id2F=" + selectedArrivalFrom.replace(/-/g,"");
 			selectionMessage = selectionMessage + " F.o.m ankomstdatum:"+selectedArrivalFrom;
 		} 
 		if (selectedArrivalTo != "") {
-			runningUrl = runningUrl + "&svlth_id2T=" + selectedArrivalTo;
+			runningUrl = runningUrl + "&svlth_id2T=" + selectedArrivalTo.replace(/-/g,"");
 			selectionMessage = selectionMessage + " T.o.m ankomstdatum:"+selectedArrivalTo;
 		} 
 
@@ -713,27 +713,45 @@ function setGodsnummer(caller){
 	});	
 }
 
+function dateFormatter(dateInt) {
+	let dateString = dateInt.toString();
+	console.log("dateString",dateString);
+	let dateDate = dateFns.parse(dateString);
+	console.log("dateDate",dateDate);
+	let result = dateFns.format(new Date(dateDate),'YY-MM-DD');	          		
+
+	return result;	
+}
 
 jq(function() {
 	
 	jq("#godsLokalkodModal").on('hidden.bs.modal', function(){
-		jq('#glkFormRecord').submit();
+		jq('#glkformRecord').submit();
 	});		
+	
+	jq("#informRecord").submit(function() {
+		setBlockUI();	
+		
+		var trimmed = jq("#svlth_id2").val().replace(/-/g,"")
+		jq("#svlth_id2").val(trimmed);
+		
+		
+	});
 	
 	jq("#formRecord").submit(function() {
 		setBlockUI();	
 	});
 
 	jq("#svlth_id2").datepicker({ 
-		dateFormat: 'yymmdd'
+		dateFormat: 'yy-mm-dd'
 	});		
 	
 	jq("#selectArrivalFrom").datepicker({ 
-		dateFormat: 'yymmdd',
+		dateFormat: 'yy-mm-dd',
 	});	
 
 	jq("#selectArrivalTo").datepicker({ 
-		dateFormat: 'yymmdd'
+		dateFormat: 'yy-mm-dd'
 	});		
 
 	

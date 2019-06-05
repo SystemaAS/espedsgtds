@@ -44,7 +44,7 @@
 
 	<div class="container-fluid p-1 left-right-bottom-border">
 
-		<form action="accounting_inlagg.do" name="formRecord" id="formRecord" method="POST">
+		<form action="accounting_inlagg.do" name="informRecord" id="informRecord" method="POST">
 		  <fieldset <c:if test="${action == 2}"> disabled</c:if>>
 
 			<input type="hidden" name="action" id="action" value='${action}'>
