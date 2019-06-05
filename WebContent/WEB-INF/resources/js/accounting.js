@@ -23,8 +23,6 @@ var selectedArrivalFrom = '';
 var selectedArrivalTo ='';
 
 function initSvlthSearch() {
-	console.log('::initSvlthSearch::');
-	
 	let runningUrl;
 	
 	jq('#selectGodsnr').val(sessionStorage.getItem('selectedGodsnr'));
@@ -44,7 +42,6 @@ function initSvlthSearch() {
 	console.log("runningUrl",runningUrl);
 	
 	if (svlthTable != undefined) {
-		console.log('svlthTable already set.');
 		return;
 	}
 
@@ -141,34 +138,31 @@ function initSvlthSearch() {
 	        },
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
-	        		var id2 = row.svlth_id2.toString();
-	        		console.log("id2",id2);
-	        		var id2Date = dateFns.parse(id2);
-	           		console.log("id2Date",id2Date);
-	        		var result = dateFns.format(new Date(id2Date),'YY-MM-DD');	          		
-	        		return result;
+	        		return dateFormatter(row.svlth_id2);
 	        	}   	
 	        },
-	        { data: "svlth_ud1",
+	        { data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_ud1 == '0') {
 	        			return null;
 	        		}
-//	        		return row.svlth_ud1;
-	        		
 	        		return dateFormatter(row.svlth_ud1);
 	        	}	        	
 	        },
 	        { data: null, //Vikt
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_h == 'I') {
-		        		return row.svlth_ibr;	        			
+		        		return decimalConverter(row.svlth_ibr);
 	        		}
 	        		if (row.svlth_h == 'U') {
-		        		return row.svlth_ibr;	        			
+		        		return decimalConverter(row.svlth_ibr);
 	        		}
 	        		if (row.svlth_h == 'R') {
-		        		return row.svlth_rbr;	        			
+	        			let result = '';
+	        			if (row.svlth_rbr != null) {
+	        				result = decimalConverter(row.svlth_rbr);
+	        			}
+		        		return result;	         			
 	        		}	        		
 	        	}	
 	        },
@@ -241,7 +235,6 @@ function initSvlthSearch() {
     
     
     jq('#svlthTable').on( 'processing.dt', function ( e, settings, processing ) {
-    	console.log("processing", processing);
     	if (processing) {
     	   	setBlockUI();
     	} else {
@@ -270,17 +263,11 @@ function loadSvlth() {
 }
 
 function loadSvlthUttag() {
-	console.log('loadSvlthUttag');
-
 	let runningUrl;
-	console.log('svlth_ign',svlth_ign);
 	runningUrl= getRunningSvlthUttagUrl();
 	console.log("runningUrl" + runningUrl);
 	
-	console.log('uttagTable', uttagTable);
 	if (uttagTable != undefined) {
-		console.log('uttagTable already set.');
-		
 		uttagTable.ajax.url(runningUrl);
 		uttagTable.ajax.reload();		
 		
@@ -322,16 +309,11 @@ function loadSvlthUttag() {
 
 
 function loadEvent() {
-	console.log('loadEvent');
-
 	let runningUrl;
 	runningUrl= getRunningSvlthRattelseUrl();
 	console.log("runningUrl" + runningUrl);
 	
-	console.log('uttagTable', uttagTable);
 	if (rattelseTable != undefined) {
-		console.log('rattelseTable already set.');
-		
 		rattelseTable.ajax.url(runningUrl);
 		rattelseTable.ajax.reload();		
 		
@@ -358,7 +340,11 @@ function loadEvent() {
 	    	},
 	    	{ data : null,
 	        	render: function ( data, type, row, meta ) {
-	        		return row.svlth_rbr; 
+	        		if (row.svlth_rbr != null) {
+	        			let rbr = row.svlth_rbr.toString();
+	        			let result = rbr.replace(".",",");   	
+	        			return result;
+	        		}
 	        	},
 	        	 defaultContent: ''
 	    	},
@@ -487,7 +473,7 @@ function setEventHeader() {
 			  jq("#godsnr").text(record[0].svlth_ign);
 			  jq("#position").text(record[0].svlth_pos);
 			  jq("#beskrivning").text(record[0].svlth_ivb);
-			  jq("#vikt").text(record[0].svlth_ibr);
+			  jq("#vikt").text(decimalConverter(record[0].svlth_ibr));
 
 		  }, 
 		  error: function (jqXHR, exception) {
@@ -673,9 +659,6 @@ function loadGodslokalkoder(){
 
 
 function getFieldChangeCodes(caller) {
-
-	console.log("h_svlth_h",h_svlth_h);
-	
 	if (h_svlth_h == 'I') {
 		jq(caller).append(jq('<option></option>').attr('value', 'ANTAL').text("Räknat antal"));
 		jq(caller).append(jq('<option></option>').attr('value', 'BESK').text("Beskrivning"));
@@ -715,12 +698,16 @@ function setGodsnummer(caller){
 
 function dateFormatter(dateInt) {
 	let dateString = dateInt.toString();
-	console.log("dateString",dateString);
 	let dateDate = dateFns.parse(dateString);
-	console.log("dateDate",dateDate);
 	let result = dateFns.format(new Date(dateDate),'YY-MM-DD');	          		
 
 	return result;	
+}
+
+function decimalConverter(value) {
+	let valueString = value.toString();
+	let result = valueString.replace(".",",");
+	return result;	 
 }
 
 jq(function() {
@@ -731,11 +718,8 @@ jq(function() {
 	
 	jq("#informRecord").submit(function() {
 		setBlockUI();	
-		
 		var trimmed = jq("#svlth_id2").val().replace(/-/g,"")
 		jq("#svlth_id2").val(trimmed);
-		
-		
 	});
 	
 	jq("#formRecord").submit(function() {

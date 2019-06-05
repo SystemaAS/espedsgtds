@@ -11,8 +11,6 @@
 	"use strict";
 
 	var fromDate = new Date();
-	
-	console.log("dftdg",dftdg);
 	var offset = dftdg;
 	if(offset > 0) {
 		//set on user		
