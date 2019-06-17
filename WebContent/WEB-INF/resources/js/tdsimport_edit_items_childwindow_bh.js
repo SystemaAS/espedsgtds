@@ -37,7 +37,7 @@
 			  }else{
 				  opener.jq('#warningCodesFlagDivBh').hide();
 			  }
-			
+			//
 			opener.jq('#submit').focus();
 			//close child window
 			window.close();
