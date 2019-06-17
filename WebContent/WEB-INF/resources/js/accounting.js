@@ -118,8 +118,32 @@ function initSvlthSearch() {
 	        		}	        		
 	        	}	    		
 	    	},
-	    	{ data: "svlth_uex" },
-	        { data: "svlth_uti" },
+	    	{ data: null, //Utgående handling
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_h == 'I') {
+		        		return row.svlth_uex;	        			
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return row.svlth_uex;	        			
+	        		}
+	        		if (row.svlth_h == 'R') {
+		        		return row.svlth_rex;	        			
+	        		}	        		
+	        	}		    		
+	    	}, 
+	        { data: null,  //tullid
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_h == 'I') {
+		        		return row.svlth_uti;	        			
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return row.svlth_uti;	        			
+	        		}
+	        		if (row.svlth_h == 'R') {
+		        		return row.svlth_ruti;	        			
+	        		}	        		
+	        	}	        	
+	        },
 	    	{ data: null,  //Antal
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_h == 'I') {
