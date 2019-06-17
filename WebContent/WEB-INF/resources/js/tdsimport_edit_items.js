@@ -61,7 +61,7 @@
   			//(1) Calculate
   			calculateAvgifter();
   			//(2) Check for codes
-  			getBilagdaHandlingarYkoder();
+  			getBilagdaHandlingarYkoder2();
   		});
   			
   		//Button (Beräkna) calculate all avgifter (inkl. stat.värde)
@@ -77,50 +77,28 @@
   	});
   	
   	
-  	function getBilagdaHandlingarYkoder(element){
-  		//jq('#tillaggskoderLink').attr('target','_blank');
-  		//open child window
-  		if(jq('#session_svih_avut').val()!='' && jq('#sviv_vata').val()!=''){
-			jq.ajax({
-				type: 'GET',
-				url: 'getTillagskoder_TdsImport.do',
-				data: { 	applicationUser : jq('#applicationUser').val(),
-					countryCode : jq('#session_svih_avut').val(), 
-					itemCode : jq('#sviv_vata').val() },
-					dataType: 'json',
-				success: function(data) {
-					var len = data.length;
-					//only when the list has something to show (at least 1-record)
-		 			if(len>0){
-		 				if(jq('#sviv_vati').val()==''){
-		 					jq('#warningCodesFlagDiv').show();
-		 					//Step 2 (getBilagdaHandlingarYkoder2 won't be necessary since we are already fast in this exception)
-		 				}
-		 			}else{
-		 				jq('#warningCodesFlagDiv').hide();
-		 				//Step 2  only if the getTillagskoder_TdsImport is OK
-		 				getBilagdaHandlingarYkoder2();
-		 			}
-				},
-				error: function() {
-					alert('Error loading ...');
-				}
-			});
-  		}
-	}
-  	
-  	
   	//General events
   	jq(function() {
-	  	jq( "#submit" ).click(function( event ) {
-	  		setBlockUI();
+	  	jq("#btnItemsSave").click(function( event ) {
+	  		//Has to be done here since it is a "last resort" in case the user does not navigate to sviv_fabl (at some point in the GUI-flow)
+	  		getBilagdaHandlingarYkoder2_OnFormSubmit();
 	  	});
+	  	
+	  	
+	  	
 	  	//Show child window (if applicable)
   		jq('#warningCodesLink').click(function() {
   			window.open('tdsimport_edit_items_childwindow_codes.do?action=doInit&lk=' 
 	 			+ jq('#session_svih_avut').val() + '&vata=' + jq('#sviv_vata').val() + '&fokd=' + jq('#sviv_fokd').val(), 
-	 			"codesWin", "top=300px,left=450px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	 			"codesWin", "top=300px,left=450px,height=450px,width=800px,scrollbars=no,status=no,location=no");
   		});
+  		//Show child window (if applicable)
+  		jq('#warningCodesLinkBh').click(function() {
+  			window.open('tdsimport_edit_items_childwindow_codes_bh.do?action=doInit&lk=' 
+	 			+ jq('#session_svih_avut').val() + '&vata=' + jq('#sviv_vata').val() + '&fokd=' + jq('#sviv_fokd').val(), 
+	 			"codesBhWin", "top=300px,left=450px,height=450px,width=800px,scrollbars=no,status=no,location=no");
+  		});
+  		
   		//Auto control - autoförtullning
 	  	jq('#itemListControlButton').click(function() {
 	  		setBlockUI();
@@ -344,13 +322,12 @@
 	}
 
   	//---------------------------------------------
-  	//Get Bilagda handlingar - Ykoder Child window
+  	//Get Bilagda handlingar 
   	//(if applicable)
   	//---------------------------------------------
   	function getBilagdaHandlingarYkoder2(){
-		jq('#bhandlingarYkoderLink').attr('target','_blank');
-  		//open child window
-  		if(jq('#session_svih_avut').val()!='' && jq('#sviv_vata').val()!=''){
+		
+		if(jq('#session_svih_avut').val()!='' && jq('#sviv_vata').val()!=''){
 			jq.ajax({
 				type: 'GET',
 				url: 'getBilagdaHandlingarYkoder_TdsImport.do',
@@ -364,12 +341,12 @@
 					//only when the list has something to show (at least 1-record)
 		 			if(len>0){
 		 				if(userValuesExist()==true){
-		 					jq('#warningCodesFlagDiv').hide();
+		 					jq('#warningCodesFlagDivBh').hide();
 		 				}else{
-		 					jq('#warningCodesFlagDiv').show();
+		 					jq('#warningCodesFlagDivBh').show();
 		 				}
 		 			}else{
-		 				jq('#warningCodesFlagDiv').hide();
+		 				jq('#warningCodesFlagDivBh').hide();
 		 			}
 				},
 				error: function() {
@@ -380,21 +357,64 @@
   		
 	}
   	
+  	
+  	function getBilagdaHandlingarYkoder2_OnFormSubmit(){
+		if(jq('#session_svih_avut').val()!='' && jq('#sviv_vata').val()!=''){
+			jq.ajax({
+				type: 'GET',
+				url: 'getBilagdaHandlingarYkoder_TdsImport.do',
+				data: { 	applicationUser : jq('#applicationUser').val(),
+					countryCode : jq('#session_svih_avut').val(), 
+					itemCode : jq('#sviv_vata').val(),
+					formansCode : jq('#sviv_fokd').val() },
+					dataType: 'json',
+				success: function(data) {
+					var len = data.length;
+					//only when the list has something to show (at least 1-record)
+		 			if(len>0){
+		 				if(userValuesExist()==true){
+		 					jq('#warningCodesFlagDivBh').hide();
+		 					//submit form
+		 					setBlockUI();
+		 			  		jq( "#tdsImportEditTopicItemForm" ).submit();
+		 			  		
+		 				}else{
+		 					//stay in page
+		 					jq('#warningCodesFlagDivBh').show();
+		 				}
+		 			}else{
+		 				jq('#warningCodesFlagDivBh').hide();
+		 				//submit form
+		 				setBlockUI();
+	 			  		jq( "#tdsImportEditTopicItemForm" ).submit();
+	 			  		
+		 			}
+				},
+				error: function() {
+					alert('Error loading ...');
+				}
+			});
+  		}
+  		
+	}
+  	
+  	
   	function userValuesExist(){
   		var retval = false;
-  		if(jq('#sviv_bit1').val()!='' && ( jq('#sviv_bit1').val().match("^Y") || jq('#sviv_bit1').val().match("^X")) ){
+  		//bit1 usually holds the N380 code (invoice)
+  		/*if(jq('#sviv_bit1').val()!='' && ( jq('#sviv_bit1').val().match("^Y") || jq('#sviv_bit1').val().match("^X")) ){
+  			retval = true;
+  		}*/
+  		if(jq('#sviv_bit2').val()!='' && ( jq('#sviv_bit2').val().match("^Y") || jq('#sviv_bit2').val().match("^X") || jq('#sviv_bit2').val().match("^C")) ){
   			retval = true;
   		}
-  		if(jq('#sviv_bit2').val()!='' && ( jq('#sviv_bit2').val().match("^Y") || jq('#sviv_bit2').val().match("^X")) ){
+  		if(jq('#sviv_bit3').val()!='' && ( jq('#sviv_bit3').val().match("^Y") || jq('#sviv_bit3').val().match("^X") || jq('#sviv_bit3').val().match("^C")) ){
   			retval = true;
   		}
-  		if(jq('#sviv_bit3').val()!='' && ( jq('#sviv_bit3').val().match("^Y") || jq('#sviv_bit3').val().match("^X")) ){
+  		if(jq('#sviv_bit4').val()!='' && ( jq('#sviv_bit4').val().match("^Y") || jq('#sviv_bit4').val().match("^X") || jq('#sviv_bit4').val().match("^C")) ){
   			retval = true;
   		}
-  		if(jq('#sviv_bit4').val()!='' && ( jq('#sviv_bit4').val().match("^Y") || jq('#sviv_bit4').val().match("^X")) ){
-  			retval = true;
-  		}
-  		if(jq('#sviv_bit5').val()!='' && ( jq('#sviv_bit5').val().match("^Y") || jq('#sviv_bit5').val().match("^X")) ){
+  		if(jq('#sviv_bit5').val()!='' && ( jq('#sviv_bit5').val().match("^Y") || jq('#sviv_bit5').val().match("^X") || jq('#sviv_bit5').val().match("^C")) ){
   			retval = true;
   		}
   		return retval;
@@ -1056,6 +1076,7 @@
 	      
 	      
 	      jq('#warningCodesFlagDiv').hide();
+	      jq('#warningCodesFlagDivBh').hide();
 	  		
 	  		//Initialize Dialog for KundensVaruregister here
 	  		jq(function() { 

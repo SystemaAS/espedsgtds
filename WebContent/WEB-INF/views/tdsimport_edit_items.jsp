@@ -1347,22 +1347,38 @@
 								        </tr>
 								        
 								        <tr height="8"><td></td></tr>
-								        	<tr align="right">								        
+								        	<tr align="left">								        
 	   							 			<td colspan="10">
 												<c:choose>	
 													<c:when test="${model.status == 'M' || empty model.status}">
-														<div style="float:right;" id="warningCodesFlagDiv" >
-															<a id="warningCodesLink" style="cursor:pointer;">
-																<img width="18px" height="20px" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="warning">
-																<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
-															</a>
-														</div>
-														<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.import.item.createnew.submit"/>'>
+														<input class="inputFormSubmit" type="button" name="btnItemsSave" id="btnItemsSave" value='<spring:message code="systema.tds.import.item.createnew.submit"/>'>
 													</c:when>
 													<c:otherwise>
-							 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
+							 				    		<input disabled class="inputFormSubmitGrayDisabled" type="button" name="btnItemsSave" value='Ej uppdaterbart'/>
 							 				    	</c:otherwise>	
 						 				    	</c:choose>	
+											</td>
+								        </tr>
+								        
+								        <tr align="left">								        
+	   							 			<td colspan="10">
+												<div style="float:left;" id="warningCodesFlagDiv" >
+													<a id="warningCodesLink" style="cursor:pointer;">
+														<img width="18px" height="20px" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="warning">
+														<font class="text14Red">Det finns Tilläggskoder att välja. Klicka här</font>
+													</a>
+												</div>				
+											</td>
+								        </tr>
+								        
+								        <tr align="left">								        
+	   							 			<td colspan="10">
+												<div style="float:left;" id="warningCodesFlagDivBh" >
+													<a id="warningCodesLinkBh" style="cursor:pointer;">
+														<img width="18px" height="20px" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="warning">
+														<font class="text14Red">Det finns Bilagda Handlingar att välja. Klicka här</font>
+													</a>
+												</div>				
 											</td>
 								        </tr>
 								        </table>

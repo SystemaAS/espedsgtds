@@ -95,6 +95,7 @@ public class TdsImportControllerChildWindow {
 	
 	/**
 	 * 
+	 * @param recordToValidate
 	 * @param session
 	 * @param request
 	 * @return
@@ -118,9 +119,39 @@ public class TdsImportControllerChildWindow {
 		}else{
 			  
 			List listTillaggskoder = this.getTillagsCodesList(appUser, countryCode, itemCode);
-			List listBilagdaHandlingarYkoder = this.getBilagdaHandlingarCodesList(appUser, countryCode, itemCode, formansCode);
-			
 			model.put("listTillaggskoder", listTillaggskoder);
+			successView.addObject(TdsConstants.DOMAIN_MODEL , model);
+			
+	    	return successView;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param recordToValidate
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsimport_edit_items_childwindow_codes_bh.do", params="action=doInit",  method={RequestMethod.GET} )
+	public ModelAndView doInitCodesBh(@ModelAttribute ("record") JsonTdsTillaggskodRecord recordToValidate, HttpSession session, HttpServletRequest request){
+		this.context = TdsAppContext.getApplicationContext();
+		logger.info("Inside: doInitCodesBh");
+		Map model = new HashMap();
+		String countryCode = request.getParameter("lk");
+		String itemCode = request.getParameter("vata");
+		String formansCode = request.getParameter("fokd");
+		
+		
+		ModelAndView successView = new ModelAndView("tdsimport_edit_items_childwindow_codes_bh");
+		SystemaWebUser appUser = this.loginValidator.getValidUser(session);
+		//check user (should be in session already)
+		if(appUser==null){
+			return this.loginView;
+			
+		}else{
+			  
+			List listBilagdaHandlingarYkoder = this.getBilagdaHandlingarCodesList(appUser, countryCode, itemCode, formansCode);
 			model.put("listBilagdaHandlingarYkoder", listBilagdaHandlingarYkoder);
 			successView.addObject(TdsConstants.DOMAIN_MODEL , model);
 			
