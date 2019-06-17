@@ -362,6 +362,9 @@ public class AccountingController {
 			logger.info("Init...");
 			successView.addObject("action", CRUDEnum.CREATE.getValue());
 			SvlthDto headDto = fetchRecord(appUser, h_svlth_ign, h_svlth_pos, h_svlth_h, h_svlth_id1, h_svlth_im1);
+	
+			logger.info("headRecord="+ReflectionToStringBuilder.toString(headDto, ToStringStyle.MULTI_LINE_STYLE));
+			
 			successView.addObject("headRecord", headDto);
 
 			return successView;
@@ -372,8 +375,9 @@ public class AccountingController {
 				logger.info("Create...");
 	
 				SvlthDao recordDao = SvlthDto.get(record);
-				setRattelseValue(recordDao,record);
-				
+	
+				adjustIntoDao(h_svlth_h, record,recordDao);
+	
 				setDate(EventTypeEnum.RATTELSE, recordDao);
 				saveRecord(appUser, recordDao, "A");
 				successView.addObject("action", CRUDEnum.READ.getValue());
@@ -415,29 +419,23 @@ public class AccountingController {
 		}
 
 	}
-	
-	private void setRattelseValue(SvlthDao recordDao, SvlthDto record) {
-		switch (record.getSvlth_r_field()) {
-		case "ANTAL":
-			Integer rnt = Integer.parseInt(record.getSvlth_r_value());
-			recordDao.setSvlth_rnt(rnt);
-			break;
-		case "VIKT":
-			String rbr = record.getSvlth_r_value();
-			recordDao.setSvlth_rbr(rbr);
-			break;
-		case "BESK":
-			String rvb = record.getSvlth_r_value();
-			recordDao.setSvlth_rvb(rvb);
-			break;
-		case "SLAG":
-			String rsl = record.getSvlth_r_value();
-			recordDao.setSvlth_rsl(rsl);
-			break;
-		default:
-			throw new IllegalArgumentException("Not a valid r_field: "+record.getSvlth_r_field());
+
+	//TODO testa, börja med antal
+	private void adjustIntoDao(String h_svlth_h, SvlthDto record, SvlthDao recordDao) {
+		logger.info("::adjustIntoDao::");
+		logger.info("h_svlth_h="+h_svlth_h);
+		if (h_svlth_h.equals(EventTypeEnum.UTTAG.getValue())) {
+			logger.info("record.getSvlth_rntU()="+record.getSvlth_rntU());
+			if (StringUtils.hasValue(record.getSvlth_rexU())) {
+				recordDao.setSvlth_rex(record.getSvlth_rexU());
+			}
+			if (StringUtils.hasValue(record.getSvlth_rntU())) {
+				recordDao.setSvlth_rnt(Integer.parseInt(record.getSvlth_rntU()));
+			}
+			if (StringUtils.hasValue(record.getSvlth_rtxU())) {
+				recordDao.setSvlth_rtx(record.getSvlth_rtxU());
+			}
 		}
-		
 	}
 
 

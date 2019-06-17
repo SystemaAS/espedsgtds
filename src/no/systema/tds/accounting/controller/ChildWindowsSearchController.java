@@ -57,6 +57,9 @@ public class ChildWindowsSearchController {
 		case "svlth_isl":
 			successView = new ModelAndView("accounting_childwindow_search_kollislag");
 			break;
+		case "svlth_rsl":
+			successView = new ModelAndView("accounting_childwindow_search_kollislag");
+			break;
 		default:
 			String errMsg = String.format("caller %s not supported!", caller);
 			throw new RuntimeException(errMsg);

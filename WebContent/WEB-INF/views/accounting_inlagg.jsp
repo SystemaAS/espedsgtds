@@ -9,8 +9,16 @@
 
 <script type="text/javascript">
 	"use strict";
+	var prefix = "${godslokalkod}";
+	
 	jq(document).ready(function() {
-
+	
+		console.log("{action}",${action} );
+		
+		if (jq("#svlth_ign").val() == "") {
+			jq("#svlth_ign").val(prefix);
+		}
+		
 	});
 </script>
 
@@ -64,7 +72,10 @@
 					</div>
 
 					<div class="form-group pr-2 mb-0">
-						<label for="svlth_ign" class="col-form-label-sm mb-0">Godsnummer</label>
+						<label for="svlth_ign" class="col-form-label-sm mb-0 required">Godsnummer</label>
+						<img width="12px" height="12px" src="resources/images/info3.png" title="Godslokalkod måste förekomma i godsnummer när det finns flera godslokalkoder i firman.">
+						<input required type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
+<!--
 						<img width="12px" height="12px" src="resources/images/info3.png" data-toggle="tooltip"  title="Godsnummer kan skrivas in manuellt, alternativ genereras med knappen Generera. Godslokalkod kommer läggas som prefix.">
 						<div class="input-group">
 							<input required type="text" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
@@ -72,6 +83,7 @@
 								 <button type="button" class="btn btn-info btn-sm btn-outline-secondary" onclick="generateGodsnummer()" title="Generera Godsnummer">Generera</button>
 		                    </span>
 		                </div>
+-->	
 					</div>	
 
 					<div class="form-group pr-2 mb-0">

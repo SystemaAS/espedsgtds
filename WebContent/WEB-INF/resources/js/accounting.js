@@ -105,7 +105,19 @@ function initSvlthSearch() {
 	        		return getDescription(row.svlth_h);
 	        	}
 	    	},
-	    	{ data: "svlth_irn" },
+	    	{ data: null, //MRN
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_h == 'I') {
+		        		return row.svlth_irn;	        			
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return row.svlth_irn;	        			
+	        		}
+	        		if (row.svlth_h == 'R') {
+		        		return row.svlth_rrn;	        			
+	        		}	        		
+	        	}	    		
+	    	},
 	    	{ data: "svlth_uex" },
 	        { data: "svlth_uti" },
 	    	{ data: null,  //Antal
@@ -338,49 +350,84 @@ function loadEvent() {
 	}	
 	
 	setEventHeader();
-
-	rattelseTable = jq('#rattelseTable').DataTable({
-		dom : '<"top">t<"bottom"flip><"clear">',
-	    ajax: {
-	        url: runningUrl,
-	        dataSrc: "dtoList"
-	    },	
-	    mark: true,
-		responsive : true,
-		columns : [ 
-	    	{ data : "svlth_rnt"},
-	    	{ data : "svlth_rsl"},
-	    	{ data : null,
-	        	render: function ( data, type, row, meta ) {
-	        		return row.svlth_rvb; 
-	        	},
-	        	 defaultContent: ''
-	    	},
-	    	{ data : null,
-	        	render: function ( data, type, row, meta ) {
-	        		if (row.svlth_rbr != null) {
-	        			let rbr = row.svlth_rbr.toString();
-	        			let result = rbr.replace(".",",");   	
-	        			return result;
-	        		}
-	        	},
-	        	 defaultContent: ''
-	    	},
-	    	{ data : "svlth_rtx"},
-	        { data: null,
-	        	render: function ( data, type, row, meta ) {
-	        		return row.timestamp;
-	        	} 	
-	        }
-			],
-		lengthMenu : [ 5, 10, 20 ],
-		order: [[4, 'desc']], 
-		language : {
-			url : getLanguage(lang)
-		}
-
-	});	
-
+	
+		rattelseTable = jq('#rattelseTable').DataTable({
+			dom : '<"top">t<"bottom"flip><"clear">',
+		    ajax: {
+		        url: runningUrl,
+		        dataSrc: "dtoList"
+		    },	
+		    mark: true,
+			responsive : true,
+			columns : [ 
+		    	{ data : "svlth_rrn"},
+		    	{ data : null, 
+		        	render: function ( data, type, row, meta ) {
+		        		if (row.svlth_rd2 == '0') {
+		        			return null;
+		        		}
+		        		return dateFormatter(row.svlth_rd2);
+		        	} 
+		    	},
+		    	{ data : "svlth_rnt"},
+		    	{ data : "svlth_rsl"},
+		    	{ data : null,
+		        	render: function ( data, type, row, meta ) {
+		        		return row.svlth_rvb; 
+		        	},
+		        	 defaultContent: ''
+		    	},
+		    	{ data : null,
+		        	render: function ( data, type, row, meta ) {
+		        		if (row.svlth_rbr != null) {
+		        			let rbr = row.svlth_rbr.toString();
+		        			let result = rbr.replace(".",",");   	
+		        			return result;
+		        		}
+		        	},
+		        	 defaultContent: ''
+		    	},
+		    	
+		    	
+		    	{ data : "svlth_rex"},
+		    	{ data : "svlth_ruti"},		  
+		    	{ data : "svlth_rnt"},		  
+		    	{ data : null, 
+		        	render: function ( data, type, row, meta ) {
+		        		if (row.svlth_rud1 == '0') {
+		        			return null;
+		        		}
+		        		return dateFormatter(row.svlth_rud1);
+		        	} 
+		    	},		    	
+		    	{ data : "svlth_rtx"},
+		        { data: null,
+		        	render: function ( data, type, row, meta ) {
+		        		return row.timestamp;
+		        	} 	
+		        }
+				],
+			lengthMenu : [ 5, 10, 20 ],
+			order: [[11, 'desc']], 
+			language : {
+				url : getLanguage(lang)
+			}
+	
+		});	
+		
+		
+	if (h_svlth_h == 'I') {
+		jq('#rattelseTable').on( 'draw.dt', function () {
+			rattelseTable.columns( [6,7,8,9 ] ).visible( false);
+		});	
+		jq("#uttag").hide();
+	} else { // 'U'
+		jq('#rattelseTable').on( 'draw.dt', function () {
+			rattelseTable.columns( [0,1,2,3,4,5 ] ).visible( false);
+		});	
+		jq("#inlagg").hide();
+	}
+	
 }
 
 function loadSvtx03f() {
@@ -424,8 +471,21 @@ function clearValuesUttag() {
 }
 
 function clearValuesRattelse() {
-    jq("#svlth_r_value").val("");
-    jq("#svlth_rtx").val("");
+	//Inlagg
+	jq("#svlth_rrn").val("");	
+	jq("#svlth_rex").val("");	
+	jq("#svlth_rd2").val("");	
+	jq("#svlth_rnt").val("");	
+	jq("#svlth_rsl").val("");		
+	jq("#svlth_rbr").val("");	
+	jq("#svlth_rvb").val("");		
+	//Uttag
+	jq("#svlth_rexU").val("");
+	jq("#svlth_ruti").val(""); 
+	jq("#svlth_rntU").val(""); 	
+	jq("#svlth_rud1").val(""); 		
+	//Common
+	jq("#svlth_rtx").val("");
 }
 
 function getDescription(svlth_h){
@@ -677,15 +737,36 @@ function loadGodslokalkoder(){
 }
 
 
+//Deprecated remomve when appropriate
 function getFieldChangeCodes(caller) {
 	if (h_svlth_h == 'I') {
+		jq(caller).append(jq('<option></option>').attr('value', 'MRN').text("MRN"));
 		jq(caller).append(jq('<option></option>').attr('value', 'ANTAL').text("Räknat antal"));
-		jq(caller).append(jq('<option></option>').attr('value', 'BESK').text("Beskrivning"));
+		jq(caller).append(jq('<option></option>').attr('value', 'BESK1').text("Varubeskrivning 1"));
+		jq(caller).append(jq('<option></option>').attr('value', 'BESK2').text("Varubeskrivning 2"));
+		jq(caller).append(jq('<option></option>').attr('value', 'BESK3').text("Varubeskrivning 3"));
+		jq(caller).append(jq('<option></option>').attr('value', 'BESK4').text("Varubeskrivning 4"));
+		jq(caller).append(jq('<option></option>').attr('value', 'BESK5').text("Varubeskrivning 5"));
+		jq(caller).append(jq('<option></option>').attr('value', 'EXTR').text("Extern referans"));
+		jq(caller).append(jq('<option></option>').attr('value', 'ANKD').text("Ankomstdatum"));
 		jq(caller).append(jq('<option></option>').attr('value', 'VIKT').text("Vikt"));
 		jq(caller).append(jq('<option></option>').attr('value', 'SLAG').text("Kollislag"));
+		jq(caller).append(jq('<option></option>').attr('value', 'TH1').text("Tidigare handling 1"));
+		jq(caller).append(jq('<option></option>').attr('value', 'TH2').text("Tidigare handling 2"));
+		jq(caller).append(jq('<option></option>').attr('value', 'TH3').text("Tidigare handling 3"));
+		jq(caller).append(jq('<option></option>').attr('value', 'TH4').text("Tidigare handling 4"));
+		jq(caller).append(jq('<option></option>').attr('value', 'TH5').text("Tidigare handling 5"));
 
-	} else {
+		
+	} else if (h_svlth_h == 'U') {
 		jq(caller).append(jq('<option></option>').attr('value', 'ANTAL').text("Räknat antal"));
+		jq(caller).append(jq('<option></option>').attr('value', 'UH1').text("Utgående handling 1"));
+		//TODO UH1-UH10
+		jq(caller).append(jq('<option></option>').attr('value', 'UTD').text("Uttagsdatum"));
+		jq(caller).append(jq('<option></option>').attr('value', 'TUID').text("Tullid"));
+	} else {
+		console.log("h_svlth_h not set correct.");
+		alert("Teknisk fel: h_svlth_h inte satt.");
 	}
 	
 }
@@ -743,8 +824,12 @@ jq(function() {
 		jq("#svlth_id2").val(trimmed);
 	});
 	
-	jq("#formRecord").submit(function() {
+	jq("#rattformRecord").submit(function() {
 		setBlockUI();	
+		var trimmed = jq("#svlth_rd2").val().replace(/-/g,"")
+		jq("#svlth_rd2").val(trimmed);	
+		var trimmed = jq("#svlth_rud1").val().replace(/-/g,"")
+		jq("#svlth_rud1").val(trimmed);	
 	});
 
 	jq("#utformRecord").submit(function() {
@@ -758,7 +843,15 @@ jq(function() {
 		dateFormat: 'yy-mm-dd'
 	});		
 
+	jq("#svlth_rd2").datepicker({ 
+		dateFormat: 'yy-mm-dd'
+	});		
+	
 	jq("#svlth_ud1").datepicker({ 
+		dateFormat: 'yy-mm-dd'
+	});		
+	
+	jq("#svlth_rud1").datepicker({ 
 		dateFormat: 'yy-mm-dd'
 	});		
 	
@@ -775,7 +868,11 @@ jq(function() {
 		jq('#kollislag_Link').attr('target','_blank');
     	window.open('childwindow_codes.do?caller=svlth_isl', "codeWin", "top=300px,left=500px,height=500px,width=800px,scrollbars=no,status=no,location=no");
 	}); 	
-	
+
+	jq('a#kollislag_Link2').click(function() {
+		jq('#kollislag_Link2').attr('target','_blank');
+    	window.open('childwindow_codes.do?caller=svlth_rsl', "codeWin", "top=300px,left=500px,height=500px,width=800px,scrollbars=no,status=no,location=no");
+	}); 	
 	
 	/*the asterix*/
 	jq("input[required]").parent("label").addClass("required");

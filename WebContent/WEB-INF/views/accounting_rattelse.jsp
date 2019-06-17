@@ -20,10 +20,10 @@
 	
 	jq(document).ready(function() {
 		loadEvent();
-		getFieldChangeCodes('#svlth_r_field');
 		if (hasError == "") {
 				clearValuesRattelse();
 		}	
+		
 	});
 	
 </script>
@@ -108,10 +108,18 @@
 		<table class="display compact cell-border responsive nowrap" id="rattelseTable">
 			<thead class="tableHeaderField">
 				<tr>
+					<th>Nytt&nbsp;MRN</th>
+					<th>Nytt&nbsp;ankomstdatum</th>
 					<th>Nytt&nbsp;räknat&nbsp;antal</th>
 					<th>Nytt&nbsp;kollislag</th>
 					<th>Ny&nbsp;beskrivning</th>
 					<th>Ny&nbsp;bruttovikt</th>
+
+					<th>Ny&nbsp;utgående&nbsp;handling&nbsp;1</th>
+					<th>Nytt&nbsp;tullid</th>
+					<th>Nytt&nbsp;uttaget&nbsp;antal</th>
+					<th>Nytt&nbsp;uttagsdatum</th>
+
 					<th>Intern&nbsp;information</th>
 					<th>Arkiverad</th>
 				</tr>
@@ -119,7 +127,7 @@
 		</table>
 	</div>
 	
-	<form action="accounting_rattelse.do" name="formRecord" id="formRecord" method="POST">
+	<form action="accounting_rattelse.do" name="rattformRecord" id="rattformRecord" method="POST">
 		<input type="hidden" name="action" id="action" value='1'>
 		<input type="hidden" name="svlth_h" id="svlth_h" value='R'>
 		<input type="hidden" name="svlth_igl" id="svlth_igl" value='${headRecord.svlth_igl}'>
@@ -161,7 +169,7 @@
 		<input type="hidden" name="h_svlth_um1" id="h_svlth_um1"  value='${headRecord.svlth_um1}'>
 
 
-		<div class="container-fluid p-1 left-right-bottom-border">
+		<div class="container-fluid p-1 left-right-bottom-border" id="kalle">
 
 			<div class="form-row left-right-border formFrameHeader">
 				<div class="col-sm-12">
@@ -169,18 +177,94 @@
 				</div>
 			</div>
 
-			<div class="form-row left-right-bottom-border formFrame">
+			<div class="form-row left-right-bottom-border formFrame" id="inlagg">
+
+					<div class="form-group pr-2 mb-0">
+						<label for="svlth_rrn" class="col-form-label-sm mb-0">MRN</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rrn" id="svlth_rrn" value="${record.svlth_rrn}"  size="21" maxlength="18">
+					</div>	
+
+					<div class="form-group pr-2 mb-0">
+						<label for="svlth_rex" class="col-form-label-sm mb-0">Extern&nbsp;referans</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rex" id="svlth_rex" value="${record.svlth_rex}"  size="18" maxlength="15">
+					</div>
+					<div class="form-group pr-2 mb-0">
+						<label for="svlth_rd2" class="col-form-label-sm mb-0">Ankomstdatum</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rd2" id="svlth_rd2" value="${record.svlth_rd2}"  size="11" maxlength="8" onKeyPress="return numberKey(event)">
+					</div>		
+	
+					<div class="form-group pr-2 mb-0">
+						<label for="svlth_rnt" class="col-form-label-sm mb-0">Antal(räknat)</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rnt" id="svlth_rnt" value="${record.svlth_rnt}"  size="8" maxlength="5" onKeyPress="return numberKey(event)">
+					</div>	
+
+					<div class="form-group pr-2 pl-1 mb-0">
+						<label for="svlth_rsl" class="col-form-label-sm mb-0">Kollislag</label>
+						<div class="input-group">
+		                    <input type="text" class="form-control form-control-sm" name="svlth_rsl" id="svlth_rsl" value="${record.svlth_rsl}" size="4" maxlength="4">&nbsp;
+		                    <span class="input-group-prepend">
+		       					<a tabindex="-1" id="kollislag_Link2">
+									<img src="resources/images/find.png" width="14px" height="14px">
+								</a>
+		                    </span>
+		                </div>
+		            </div>
+
+					<div class="form-group pr-2 pl-1 mb-0">
+						<label for="svlth_rbr" class="col-form-label-sm mb-0">Bruttovikt</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rbr" id="svlth_rbr" value="${record.svlth_rbr}"  size="16" maxlength="14" onKeyPress="return amountKey(event)">
+					</div>	
+
+					<div class="form-group pr-2 pl-1 mb-0 col-6">
+						<label for="svlth_rvb" class="col-form-label-sm mb-0">Varubeskrivning</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rvb" id="svlth_rvb" value="${record.svlth_rvb}"  size="73" maxlength="70">
+	<!--  
+						<a data-toggle="collapse" href="#moreDesc" aria-expanded="false" aria-controls="moreDesc">Ytterligare varubeskrivning</a>
+	-->
+					</div>	
+
+					<div class="form-group pr-2 col-auto">
+						<label for="svlth_rtx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
+						<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="73" maxlength="70">
+					</div>
+
+					<div class="form-group col-11 align-self-end">
+						<div class="float-md-right">
+							<button class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>
+						</div>
+					</div>	
+
+
+			</div>
+
+			<div class="form-row left-right-bottom-border formFrame" id="uttag">
+
 				<div class="form-group pr-2 col-auto">
-				    <label for="svlth_r_field" class="col-form-label-sm mb-0 required">Välj&nbsp;fält</label>
-				    <select required class="form-control" name="svlth_r_field" id="svlth_r_field" value="${record.svlth_r_field}"></select>
-			  	</div>
-				<div class="form-group pr-2 col-auto">
-					<label for="svlth_r_value" class="col-form-label-sm mb-0 required">Nytt&nbsp;värde</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_r_value" id="svlth_r_value" value="${record.svlth_r_value}" size="70" maxlength="70">
+					<label for="svlth_rexU" class="col-form-label-sm mb-0">Utgående&nbsp;handling&nbsp;1</label>
+					<input autofocus type="text" class="form-control form-control-sm" name="svlth_rexU" id="svlth_rexU" value="${record.svlth_rexU}"  size="18" maxlength="15">
+	<!--  
+					<a data-toggle="collapse" href="#moreEvents" aria-expanded="false" aria-controls="moreEvents">Ytterligare&nbsp;utgående&nbsp;handling</a>
+	-->
 				</div>
+
+				<div class="form-group pr-2 col-auto">
+					<label for="svlth_ruti" class="col-form-label-sm mb-0">Tullid</label>
+					<input type="text" class="form-control form-control-sm" name="svlth_ruti" id="svlth_ruti" value="${record.svlth_ruti}" size="13" maxlength="10">
+				</div>
+
+				<div class="form-group pr-2 col-auto">
+					<label for="svlth_rntU" class="col-form-label-sm mb-0">Antal</label>
+					<input type="text" class="form-control form-control-sm" name="svlth_rntU" id="svlth_rntU" value="${record.svlth_rntU}" size="7" maxlength="5">
+				</div>
+
+				<div class="form-group pr-2 col-auto">
+					<label for="svlth_rud1" class="col-form-label-sm mb-0">Uttagsdatum</label>
+					<input type="text" class="form-control form-control-sm" name="svlth_rud1" id="svlth_rud1" value="${record.svlth_rud1}"  size="11" maxlength="8" onKeyPress="return numberKey(event)">
+				</div>	
+	
 				<div class="form-group pr-3 col-auto">
-					<label for="svlth_rtx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
-					<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="73" maxlength="70">
+					<label for="svlth_rtxU" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
+					<input type="text" class="form-control form-control-sm" name="svlth_rtxU" id="svlth_rtxU" value="${record.svlth_rtxU}" size="73" maxlength="70">
 				</div>
 
 				<div class="form-group col-11 align-self-end">
@@ -189,7 +273,7 @@
 					</div>
 				</div>					
 	
-			</div> <!-- form-row -->
+			</div>
 
 		</div>
 
