@@ -78,6 +78,7 @@
   	
   	
   	//General events
+  	//
   	jq(function() {
 	  	jq("#btnItemsSave").click(function( event ) {
 	  		//Has to be done here since it is a "last resort" in case the user does not navigate to sviv_fabl (at some point in the GUI-flow)
