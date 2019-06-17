@@ -50,6 +50,12 @@
   				jq("#sviv_godm").val(jq("#godmFirstLine").text());
   			}
   		});
+  		jq('#sviv_vati').blur(function() {
+  			//Check for codes
+  			getTillaggskoderOnBlur();
+  			
+  		});
+  		
   		
   		jq('#sviv_fabl').blur(function() {
   			//(1) Calculate
@@ -323,6 +329,8 @@
 		 			if(len>0){
 		 				if(jq('#sviv_vati').val()==''){
 		 					jq('#warningCodesFlagDiv').show();
+		 				}else{
+		 					jq('#warningCodesFlagDiv').hide();
 		 				}
 		 			}else{
 		 				jq('#warningCodesFlagDiv').hide();

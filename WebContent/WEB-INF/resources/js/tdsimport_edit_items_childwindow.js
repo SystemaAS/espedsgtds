@@ -23,6 +23,12 @@
 					  }else if(checkedCounterTillaggs==2){
 						  opener.jq('#sviv_vat4').val(kod);
 					  }
+					  //GUI adapt
+					  if(opener.jq('#sviv_vati').val()==''){
+						  opener.jq('#warningCodesFlagDiv').show();
+					  }else{
+						  opener.jq('#warningCodesFlagDiv').hide();
+					  }
 			  	  }
 			});
 			//Bilagda handlingar Y-koder
