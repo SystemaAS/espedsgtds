@@ -1354,8 +1354,8 @@
 														<input class="inputFormSubmit" type="button" name="btnItemsSave" id="btnItemsSave" value='<spring:message code="systema.tds.import.item.createnew.submit"/>'>
 													</c:when>
 													<c:otherwise>
-							 				    		<input disabled class="inputFormSubmitGrayDisabled" type="button" name="btnItemsSave" value='Ej uppdaterbart'/>
-							 				    	</c:otherwise>	
+							 				    			<input disabled class="inputFormSubmitGrayDisabled" type="button" name="btnItemsSave" value='Ej uppdaterbart'/>
+							 				    		</c:otherwise>	
 						 				    	</c:choose>	
 											</td>
 								        </tr>

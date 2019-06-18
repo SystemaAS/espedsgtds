@@ -7,7 +7,7 @@
 
 	<%-- specific jQuery functions for this JSP (must reside under the resource map since this has been
 	specified in servlet.xml as static <mvc:resources mapping="/resources/**" location="WEB-INF/resources/" order="1"/> --%>
-	<SCRIPT type="text/javascript" src="resources/js/tdsexport_edit_items_childwindow.js?ver=${user.versionEspedsg}"></SCRIPT>
+	<SCRIPT type="text/javascript" src="resources/js/tdsexport_edit_items_childwindow_bh.js?ver=${user.versionEspedsg}"></SCRIPT>
 	
 	<table width="90%" height="100px" class="tableBorderWithRoundCorners3D_RoundOnlyOnBottom" cellspacing="0" border="0" cellpadding="0">
 	
@@ -22,20 +22,18 @@
 				<%-- this container table is necessary in order to separate the datatables element and the frame above, otherwise
 			 	the cosmetic frame will not follow the whole datatable grid including the search field... --%>
 				<table id="containerdatatableTable" cellspacing="2" align="left">
-					<%-- Tilläggskoder --%>
-					<tr><td valign="top" colspan="3" class="text14Bold">&nbsp;Tilläggskoder <font style="font-weight:normal;">(Rubrik 33.3 och 33.4)</font></td></tr>
+					<%-- Bilagda handlingar Y-koder --%>
+					<tr height="15"><td></td></tr>
+					<tr><td valign="top" colspan="3" class="text14Bold">&nbsp;Bilagda handlingar Y-koder <font style="font-weight:normal;">(Rubrik 44)</font></td></tr>
 					<tr>
 						<td class="ownScrollableSubWindow" style="width:600px; height:10em;">
 							<table id="codeList" width="100%" cellspacing="0" border="0" cellpadding="0">
-								<thead>
 								<tr class="tableHeaderField" height="20" valign="left">
-									<th align="center" class="tableHeaderFieldFirst">&nbsp;Välj&nbsp;</th>
-								    <th align="center" class="tableHeaderField">&nbsp;Kod&nbsp;</th>   
-				                    <th class="tableHeaderField">&nbsp;Text&nbsp;</th> 
+									<td align="center" class="tableHeaderFieldFirst">&nbsp;Välj&nbsp;</td>
+								    <td align="center" class="tableHeaderField">&nbsp;Kod&nbsp;</td>   
+				                    <td class="tableHeaderField">&nbsp;Text&nbsp;</td> 
 			                    </tr>
-			                    <thead>
-			                    <tbody>
-			                    <c:forEach items="${model.listTillaggskoder}" var="record" varStatus="counter">    
+			                    <c:forEach items="${model.listBilagdaHandlingarYkoder}" var="record" varStatus="counter">    
 					               <c:choose>           
 					                   <c:when test="${counter.count%2==0}">
 					                       <tr class="tableRow" height="20" >
@@ -45,13 +43,13 @@
 					                   </c:otherwise>
 					               </c:choose>
 					               <td class="tableCellFirst" align="center">
-					               		<input class="clazzTillaggskodAware" type="checkbox" value="J" id="kod${record.kod}_dt${counter.count}" name="kod${record.kod}_dt${counter.count}" >
+					               		<input class="clazzYkodAware" type="checkbox" value="J" id="kod${record.kod}_dt${counter.count}" name="kod${record.kod}_dt${counter.count}" >
 					               </td>
 					               <td width="10%" class="tableCell" align="center">&nbsp;${record.kod}</td>
 					               <td class="tableCell" >&nbsp;${record.txt}</td>
 				               </tr>
 				               </c:forEach>
-				               </tbody>
+				               
 		                    </table>  
 						</td>
 					</tr>

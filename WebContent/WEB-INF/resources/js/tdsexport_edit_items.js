@@ -22,46 +22,12 @@
   	  
     });
   	
-  	jq(document).ready(function() {
-  		jq('#warningCodesFlagDiv').hide();
-  		
-  		//Initialize Dialog for KundensVaruregister here
-  		jq(function() { 
-  		  jq("#dialogKundensVaruregister").dialog({
-  			  autoOpen: false,
-  			  maxWidth:600,
-  	          maxHeight: 250,
-  	          width: 600,
-  	          height: 250,
-  			  modal: true
-  		  });
-  		});
-  		//Initialize Dialog for Varupostkontroll here
-  		jq(function() { 
-    		  jq("#dialogVarupostkontroll").dialog({
-    			  autoOpen: false,
-    			  maxWidth:500,
-    	          maxHeight: 300,
-    	          width: 400,
-    	          height: 250,
-    			  modal: true
-    		  });
-		});
-  		
-  		//buffering reasons. The datatable will collide with the form ... ugly scene in HTML
-  		var nrOfLines = 0;
-  		if(jq("#numberOfItemLinesInTopic").val()!=''){
-  			nrOfLines = parseInt(jq("#numberOfItemLinesInTopic").val());
-  		}	
-  		//console.log(nrOfLines);
-		if( nrOfLines < 30){
-			jq('#svev_vata').focus();
-		}
-  		
-  	});
-  	
   	jq(function() {
   		jq('#svev_vata').blur(function() {
+  			//Check for codes
+  			getTillaggskoderOnBlur();
+  		});
+  		jq('#svev_vati').blur(function() {
   			//Check for codes
   			getTillaggskoderOnBlur();
   		});
@@ -77,13 +43,20 @@
   	
   	//General events
   	jq(function() {
-	  	jq( "#submit" ).click(function( event ) {
-	  		setBlockUI();
+	  	
+	  	jq("#btnItemsSave").click(function( event ) {
+	  		//Has to be done here since it is a "last resort" in case the user does not navigate to sviv_fabl (at some point in the GUI-flow)
+	  		getBilagdaHandlingarYkoder_OnFormSubmit();
 	  	});
+	  	
 	  	//Show child window (if applicable)
   		jq('#warningCodesLink').click(function() {
   			window.open('tdsexport_edit_items_childwindow_codes.do?action=doInit&lk='+ jq('#session_sveh_aube').val() + '&vata=' + jq('#svev_vata').val(), 
-	 		"codesWin", "top=300px,left=450px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	 		"codesWin", "top=300px,left=450px,height=450px,width=800px,scrollbars=no,status=no,location=no");
+  		});
+  		jq('#warningCodesLinkBh').click(function() {
+  			window.open('tdsexport_edit_items_childwindow_codes_bh.do?action=doInit&lk='+ jq('#session_sveh_aube').val() + '&vata=' + jq('#svev_vata').val(), 
+	 		"codesWin", "top=300px,left=450px,height=450px,width=800px,scrollbars=no,status=no,location=no");
   		});
   		//Auto control - autoförtullning
   		//jq('#itemListControlButton').click(function() {
@@ -284,11 +257,11 @@
 					//only when the list has something to show (at least 1-record)
 		 			if(len>0){
 		 				if(jq('#svev_vati').val()==''){
-		 					console.log("SHOW");
 		 					jq('#warningCodesFlagDiv').show();
+		 				}else{
+		 					jq('#warningCodesFlagDiv').hide();
 		 				}
 		 			}else{
-		 				console.log("HIDE");
 		 				jq('#warningCodesFlagDiv').hide();
 		 			}
 				},
@@ -320,12 +293,52 @@
 					//only when the list has something to show (at least 1-record)
 		 			if(len>0){
 		 				if(userValuesExist()==true){
-		 					jq('#warningCodesFlagDiv').hide();
+		 					jq('#warningCodesFlagDivBh').hide();
 		 				}else{
-		 					jq('#warningCodesFlagDiv').show();
+		 					jq('#warningCodesFlagDivBh').show();
 		 				}
 		 			}else{
-		 				jq('#warningCodesFlagDiv').hide();
+		 				jq('#warningCodesFlagDivBh').hide();
+		 			}	
+				},
+				error: function() {
+					alert('Error loading ...');
+				}
+			});
+  		}
+  		
+	}
+  	
+  	function getBilagdaHandlingarYkoder_OnFormSubmit(){
+		jq('#bhandlingarYkoderLink').attr('target','_blank');
+  		//open child window
+  		if(jq('#session_sveh_aube').val()!='' && jq('#svev_vata').val()!=''){
+			jq.ajax({
+				type: 'GET',
+				url: 'getBilagdaHandlingarYkoder_TdsExport.do',
+				data: { 	applicationUser : jq('#applicationUser').val(),
+					countryCode : jq('#session_sveh_aube').val(), 
+					itemCode : jq('#svev_vata').val() },
+				dataType: 'json',
+				async: false,	
+				success: function(data) {
+					var len = data.length;
+					//only when the list has something to show (at least 1-record)
+		 			if(len>0){
+		 				if(userValuesExist()==true){
+		 					jq('#warningCodesFlagDivBh').hide();
+		 					//submit form
+		 					setBlockUI();
+		 			  		jq( "#tdsExportEditTopicItemForm" ).submit();
+		 				}else{
+		 					//stay in page
+		 					jq('#warningCodesFlagDivBh').show();
+		 				}
+		 			}else{
+		 				jq('#warningCodesFlagDivBh').hide();
+		 				//submit form
+	 					setBlockUI();
+	 			  		jq( "#tdsExportEditTopicItemForm" ).submit();
 		 			}	
 				},
 				error: function() {
@@ -341,19 +354,20 @@
   	 */
   	function userValuesExist(){
   		var retval = false;
-  		if(jq('#svev_bit1').val()!='' && ( jq('#svev_bit1').val().match("^Y") || jq('#svev_bit1').val().match("^X")) ){
+  		//bit1 usually holds the N380 code (invoice)
+  		/*if(jq('#svev_bit1').val()!='' && ( jq('#svev_bit1').val().match("^Y") || jq('#svev_bit1').val().match("^X")) ){
+  			retval = true;
+  		}*/
+  		if(jq('#svev_bit2').val()!='' && ( jq('#svev_bit2').val().match("^Y") || jq('#svev_bit2').val().match("^X") || jq('#svev_bit2').val().match("^C")) ){
   			retval = true;
   		}
-  		if(jq('#svev_bit2').val()!='' && ( jq('#svev_bit2').val().match("^Y") || jq('#svev_bit2').val().match("^X")) ){
+  		if(jq('#svev_bit3').val()!='' && ( jq('#svev_bit3').val().match("^Y") || jq('#svev_bit3').val().match("^X") || jq('#svev_bit3').val().match("^C")) ){
   			retval = true;
   		}
-  		if(jq('#svev_bit3').val()!='' && ( jq('#svev_bit3').val().match("^Y") || jq('#svev_bit3').val().match("^X")) ){
+  		if(jq('#svev_bit4').val()!='' && ( jq('#svev_bit4').val().match("^Y") || jq('#svev_bit4').val().match("^X") || jq('#svev_bit4').val().match("^C")) ){
   			retval = true;
   		}
-  		if(jq('#svev_bit4').val()!='' && ( jq('#svev_bit4').val().match("^Y") || jq('#svev_bit4').val().match("^X")) ){
-  			retval = true;
-  		}
-  		if(jq('#svev_bit5').val()!='' && ( jq('#svev_bit5').val().match("^Y") || jq('#svev_bit5').val().match("^X")) ){
+  		if(jq('#svev_bit5').val()!='' && ( jq('#svev_bit5').val().match("^Y") || jq('#svev_bit5').val().match("^X") || jq('#svev_bit5').val().match("^C")) ){
   			retval = true;
   		}
   		return retval;
@@ -832,6 +846,43 @@
       jq('input.tblItemLinesAll_filter').on( 'keyup click', function () {
       		filterGlobal();
       });
+      
+      	//Initialize Dialog for KundensVaruregister here
+  		jq(function() { 
+  		  jq("#dialogKundensVaruregister").dialog({
+  			  autoOpen: false,
+  			  maxWidth:600,
+  	          maxHeight: 250,
+  	          width: 600,
+  	          height: 250,
+  			  modal: true
+  		  });
+  		});
+  		//Initialize Dialog for Varupostkontroll here
+  		jq(function() { 
+    		  jq("#dialogVarupostkontroll").dialog({
+    			  autoOpen: false,
+    			  maxWidth:500,
+    	          maxHeight: 300,
+    	          width: 400,
+    	          height: 250,
+    			  modal: true
+    		  });
+		});
+  		
+  		//buffering reasons. The datatable will collide with the form ... ugly scene in HTML
+  		var nrOfLines = 0;
+  		if(jq("#numberOfItemLinesInTopic").val()!=''){
+  			nrOfLines = parseInt(jq("#numberOfItemLinesInTopic").val());
+  		}	
+  		//console.log(nrOfLines);
+		if( nrOfLines < 30){
+			jq('#svev_vata').focus();
+		}
+		
+		jq('#warningCodesFlagDiv').hide();
+	    jq('#warningCodesFlagDivBh').hide();
+	  		
   	
 	});
 

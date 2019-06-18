@@ -434,7 +434,7 @@
            	<%-- ------------------------------------------------- --%>
            	<tr>
 	 		<td >
-	 		<form name="tdsExportEditTopicItemForm" id="tdsExportEditTopicItemForm" action="tdsexport_edit_items.do" method="post">
+	 		<form name="tdsExportEditTopicItemForm" id="tdsExportEditTopicItemForm" action="tdsexport_edit_items.do"  method="post">
            		<%--Required key parameters from the Topic parent --%>
 				 	<input type="hidden" name="action" id="action" value='doUpdate'/>
 				 	<input type="hidden" name="opd" id="opd" value='${model.opd}'/>
@@ -968,23 +968,39 @@
 									        </tr>
 									        <tr height="10"><td></td></tr>
 									        <tr>
-										        <td colspan="2" align="right">
+										        <td colspan="2" align="left">
 												<c:choose>	
 													<c:when test="${model.status == 'M' || empty model.status}">
-														<div style="float:right;" id="warningCodesFlagDiv" >
-															<a id="warningCodesLink" style="cursor:pointer;">
-																<img width="18px" height="20px" src="resources/images/redFlag.png" border="0" alt="warning">
-																<font class="text14Red">Det finns Tilläggskoder/Bilagda Handlingar att välja. Klicka här</font>
-															</a>
-														</div>
-														<input class="inputFormSubmit" type="submit" name="submit" id="submit" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
+														<input class="inputFormSubmit" type="button" name="btnItemsSave" id="btnItemsSave" value='<spring:message code="systema.tds.export.item.createnew.submit"/>'>
 													</c:when>
 													<c:otherwise>
-							 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value='Ej uppdaterbart'/>
-							 				    	</c:otherwise>	
+							 				    			<input disabled class="inputFormSubmitGrayDisabled" type="button" name="btnItemsSave" value='Ej uppdaterbart'/>
+							 				    		</c:otherwise>	
 							 				    	</c:choose>	
 												</td>
 											</tr>
+											
+											<tr align="left">								        
+	   							 			<td colspan="10">
+												<div style="float:left;" id="warningCodesFlagDiv" >
+													<a id="warningCodesLink" style="cursor:pointer;">
+														<img width="18px" height="20px" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="warning">
+														<font class="text14Red">Det finns Tilläggskoder att välja. Klicka här</font>
+													</a>
+												</div>				
+											</td>
+								        </tr>
+								        
+								        <tr align="left">								        
+	   							 			<td colspan="10">
+												<div style="float:left;" id="warningCodesFlagDivBh" >
+													<a id="warningCodesLinkBh" style="cursor:pointer;">
+														<img width="18px" height="20px" src="resources/images/redFlag.png" width="18px" height="18px" border="0" alt="warning">
+														<font class="text14Red">Det finns Bilagda Handlingar att välja. Klicka här</font>
+													</a>
+												</div>				
+											</td>
+								        </tr>
 										</table>
 									</td>
 									</tr>
