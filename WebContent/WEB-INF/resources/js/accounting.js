@@ -94,12 +94,12 @@ function initSvlthSearch() {
 		mark: true,
 	    responsive: true,
 		columnDefs : [ 
-            { responsivePriority: 1, targets: -2 },
+			{ responsivePriority: 1, targets: -2 },
             { responsivePriority: 2, targets: -1 }
-		],	    
+		],
 	    columns: [
 	    	{ data: "svlth_ign"},
-	    	{ data: "svlth_pos"	},
+	    	{ data: "svlth_pos"},
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_h);
@@ -236,7 +236,8 @@ function initSvlthSearch() {
 	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return row.timestamp;
-	        	} 	
+	        	} ,
+	        	className: 'dt-body-nowrap'
 	        },
 	    	{ data: "svlth_ius" },
 	        {
@@ -278,7 +279,7 @@ function initSvlthSearch() {
 	
 	
     jq('#svlthTable').on( 'draw.dt', function () {
-    	svlthTable.columns( [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
+    	svlthTable.columns( [ 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
     });	
     
     

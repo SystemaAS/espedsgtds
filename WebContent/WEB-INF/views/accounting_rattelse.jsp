@@ -114,13 +114,11 @@
 					<th>Nytt&nbsp;kollislag</th>
 					<th>Ny&nbsp;beskrivning</th>
 					<th>Ny&nbsp;bruttovikt</th>
-
 					<th>Ny&nbsp;utgående&nbsp;handling&nbsp;1</th>
 					<th>Nytt&nbsp;tullid</th>
 					<th>Nytt&nbsp;uttaget&nbsp;antal</th>
 					<th>Nytt&nbsp;uttagsdatum</th>
-
-					<th>Intern&nbsp;information</th>
+					<th>Information</th>
 					<th>Arkiverad</th>
 				</tr>
 			</thead>
@@ -224,7 +222,7 @@
 					</div>	
 
 					<div class="form-group pr-2 col-auto">
-						<label for="svlth_rtx" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
+						<label for="svlth_rtx" class="col-form-label-sm mb-0">Information</label>
 						<input type="text" class="form-control form-control-sm" name="svlth_rtx" id="svlth_rtx" value="${record.svlth_rtx}" size="73" maxlength="70">
 					</div>
 
@@ -263,7 +261,7 @@
 				</div>	
 	
 				<div class="form-group pr-3 col-auto">
-					<label for="svlth_rtxU" class="col-form-label-sm mb-0">Intern&nbsp;information</label>
+					<label for="svlth_rtxU" class="col-form-label-sm mb-0">Information</label>
 					<input type="text" class="form-control form-control-sm" name="svlth_rtxU" id="svlth_rtxU" value="${record.svlth_rtxU}" size="73" maxlength="70">
 				</div>
 

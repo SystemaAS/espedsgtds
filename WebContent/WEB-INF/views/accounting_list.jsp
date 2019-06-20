@@ -85,7 +85,7 @@
 	</div>
 
 	<div class="left-right-bottom-border no-gutters">
-		<table class="display compact cell-border responsive nowrap" id="svlthTable">
+		<table class="display compact cell-border responsive" id="svlthTable">
 			<thead class="tableHeaderField">
 				<tr>
 					<th>Godsnummer</th>
@@ -103,7 +103,7 @@
 					<th title="Ref. till händelse">Bruttovikt</th>
 					<th>Rättelse</th>
 					<th>Rättat&nbsp;antal</th>
-					<th>Rättelse&nbsp;int.info.</th>
+					<th>Rättelse&nbsp;info</th>
 					<th>Ext.&nbsp;referans</th>
 					<th>Beskrivning</th>
 					<th>Beskrivning</th>
