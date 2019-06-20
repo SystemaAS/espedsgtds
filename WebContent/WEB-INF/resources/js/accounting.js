@@ -510,7 +510,7 @@ function clearValuesRattelse() {
 	jq("#svlth_rntU").val(""); 	
 	jq("#svlth_rud1").val(""); 		
 	//Common
-	jq("#svlth_rtx").val("");
+	jq("#svlth_rtxU").val("");
 }
 
 function getDescription(svlth_h){

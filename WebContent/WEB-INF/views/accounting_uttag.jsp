@@ -171,7 +171,7 @@
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_uti" class="col-form-label-sm mb-0 required">Tullid</label>
-					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="13" maxlength="10">
+					<input required type="text" class="form-control form-control-sm" name="svlth_uti" id="svlth_uti" value="${record.svlth_uti}" size="21" maxlength="18">
 				</div>
 
 				<div class="form-group pr-2 col-auto">
