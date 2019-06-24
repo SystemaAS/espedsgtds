@@ -78,8 +78,8 @@
 
 					<div class="form-group pr-2 mb-0">
 						<label for="svlth_ign" class="col-form-label-sm mb-0 required">Godsnummer</label>
-						<img width="12px" height="12px" src="resources/images/info3.png" title="Godslokalkod måste förekomma i godsnummer när det finns flera godslokalkoder i firman.">
-						<input required type="text" pattern="[A-Z]{3}[0-9]{2}[-]{1}[0-9]{4}" title="<Godslokalkod><år>-<löpnummer(4 siffor)>" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="12">
+						<img width="12px" height="12px" src="resources/images/info3.png" title="Godslokalkod måste förekomma i godsnummer när det finns flera godslokalkoder i firman. Format: [Godslokalkod][år]-[löpnummer]. 10 tecken">
+						<input required type="text" pattern="[A-Z]{3}[0-9]{2}[-]{1}[0-9]{4}" title="<Godslokalkod><år>-<löpnummer(4 siffor)>" class="form-control form-control-sm" name="svlth_ign" id="svlth_ign" value="${record.svlth_ign}"  size="15" maxlength="10">
 <!--
 						<img width="12px" height="12px" src="resources/images/info3.png" data-toggle="tooltip"  title="Godsnummer kan skrivas in manuellt, alternativ genereras med knappen Generera. Godslokalkod kommer läggas som prefix.">
 						<div class="input-group">
