@@ -181,7 +181,7 @@
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_ud1" class="col-form-label-sm mb-0 required">Uttagsdatum</label>
-					<input type="text" required class="form-control form-control-sm" name="svlth_ud1" id="svlth_ud1" value="${record.svlth_ud1}"  size="11" maxlength="8" onKeyPress="return numberKey(event)">
+					<input required  type="text" class="form-control form-control-sm" name="svlth_ud1" id="svlth_ud1" value="${record.svlth_ud1}" size="11" maxlength="10" onKeyPress="return numberKey(event)">
 				</div>	
 
 

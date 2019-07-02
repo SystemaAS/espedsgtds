@@ -19,10 +19,6 @@
 			jq("#svlth_ign").val(prefix);
 		}
 		
-// 		var validator = jq( "#informRecord" ).validate();
-// 		validator.element( "#svlth_ign" );		
-		
-		
 		
 	});
 </script>
@@ -222,7 +218,7 @@
 	
 					<div class="form-group col-11 align-self-end">
 						<div class="float-md-right">
-							<button <c:if test="${action == 2}"> disabled</c:if> class="btn inputFormSubmit btn-sm" id="submitBtn">Spara</button>
+							<button <c:if test="${action == 2}"> disabled</c:if> class="btn inputFormSubmit btn-sm" id="in-fukker-button">Spara</button>
 						</div>
 					</div>		
 			

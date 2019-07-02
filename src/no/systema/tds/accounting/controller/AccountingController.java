@@ -65,9 +65,8 @@ public class AccountingController {
 	private LoginValidator loginValidator = new LoginValidator();
 	
 	@Autowired
-	RestTemplate restTemplate;
-
-
+	WTF wtf;
+	
 	/**
 	 * Explicit settings of Jackson ObjectMapper.
 	 * <li> Support Java 8 LocalDateTime.</li>
@@ -158,6 +157,9 @@ public class AccountingController {
 		
 		String enteredGodsNummer = null;
 		
+		boolean crap = false;
+		
+		
 		if (action.equals(CRUDEnum.CREATE.getValue()) && record.getSvlth_h() == null) {
 			logger.info("Init...");
 			successView.addObject("action", CRUDEnum.CREATE.getValue());
@@ -170,17 +172,34 @@ public class AccountingController {
 		try {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
-				logger.info("Create...");
+				logger.info("Create INLAGG...");
 
+				Long millis =  wtf.getGodsNrMap().get(record.getSvlth_ign() );
+				if ( millis != null) {
+					logger.info("millis != null, record.getSvlth_ign() ="+record.getSvlth_ign());
+					wtf.getGodsNrMap().remove(record.getSvlth_ign());
+					logger.error("!!!!!!!!!!WTF, this is the crap that needs to go away!!!!!!!!!!");
+					crap = true;
+				} else {
+					logger.info("millis = null, put record.getSvlth_ign()="+record.getSvlth_ign());				
+					wtf.getGodsNrMap().put(record.getSvlth_ign(), System.currentTimeMillis());
+					logger.info(" wtf.getGodsNrMap().values()"+ wtf.getGodsNrMap().values());
+				}
+				
 				setDate(EventTypeEnum.INLAGG, record);
 
 				if (StringUtils.hasValue(record.getSvlth_ign())){
 					enteredGodsNummer = record.getSvlth_ign(); //use if error
 				}
-				SvlthDao saved = saveRecord(appUser, record, "A");
-				returnDto = fetchRecord(appUser, saved);
-				successView.addObject("record", returnDto);
-				successView.addObject("saldo", returnDto.getSaldo());
+				if (!crap) {
+					SvlthDao saved = saveRecord(appUser, record, "A");
+				}
+				wtf.getGodsNrMap().remove(record.getSvlth_ign());
+				logger.info(" wtf.getGodsNrMap().values()"+ wtf.getGodsNrMap().values());
+
+//				returnDto = fetchRecord(appUser, saved);
+//				successView.addObject("record", returnDto);
+//				successView.addObject("saldo", returnDto.getSaldo());
 
 				successView.addObject("action", CRUDEnum.READ.getValue());
 				
@@ -215,6 +234,9 @@ public class AccountingController {
 			successView.addObject("saldo", null);
 			
 			record.setSvlth_ign(enteredGodsNummer);
+			
+			wtf.getGodsNrMap().remove(record.getSvlth_ign());
+
 
 			return successView;			
 
@@ -277,21 +299,39 @@ public class AccountingController {
 		
 		SvlthDao recordDao = SvlthDto.get(record);
 		List<SvltuDao> uhDaoList = SvlthDto.transform(record);
+		
+		boolean crap = false;
 
-		uhDaoList.forEach(dao -> {
-			logger.info("dao="+ReflectionToStringBuilder.toString(dao, ToStringStyle.MULTI_LINE_STYLE));
-		});
+//		uhDaoList.forEach(dao -> {
+//			logger.info("dao="+ReflectionToStringBuilder.toString(dao, ToStringStyle.MULTI_LINE_STYLE));
+//		});
 		
 		
 		try {
 
 			if (action.equals(CRUDEnum.CREATE.getValue())) {
-				logger.info("Create...");
+				logger.info("Create UTTAG...");
+				Long millis =  wtf.getGodsNrMap().get(record.getSvlth_ign() );
+	
+				if ( millis != null) {
+					logger.info("millis != null, record.getSvlth_ign() ="+record.getSvlth_ign());
+					wtf.getGodsNrMap().remove(record.getSvlth_ign());
+					logger.error("WTF, this is the crap that needs to go away! Now handled with logic.");
+					crap = true;
+				} else {
+					logger.info("millis = null, put record.getSvlth_ign()="+record.getSvlth_ign());				
+					wtf.getGodsNrMap().put(record.getSvlth_ign(), System.currentTimeMillis());
+					logger.info(" wtf.getGodsNrMap().values()"+ wtf.getGodsNrMap().values());
+				}
 				setDate(EventTypeEnum.UTTAG, recordDao);
-
-				saveRecord(appUser, recordDao, "A");
-				saveRecords(appUser, uhDaoList, "A");
-
+				
+				if (!crap) {
+					saveRecord(appUser, recordDao, "A");
+					saveRecords(appUser, uhDaoList, "A");
+				}
+				wtf.getGodsNrMap().remove(record.getSvlth_ign());
+				logger.info(" wtf.getGodsNrMap().values()"+ wtf.getGodsNrMap().values());
+				
 				successView.addObject("action", CRUDEnum.READ.getValue());
 				
 				successView.addObject("info", "Uttag skapat.");
@@ -420,7 +460,6 @@ public class AccountingController {
 
 	}
 
-	//TODO testa, börja med antal
 	private void adjustIntoDao(String h_svlth_h, SvlthDto record, SvlthDao recordDao) {
 		logger.info("::adjustIntoDao::");
 		logger.info("h_svlth_h="+h_svlth_h);
@@ -481,7 +520,7 @@ public class AccountingController {
 		String jsonPayload = null;
 		try {
 			jsonPayload = transformer.transformToJSONTargetEncoding(jsonPayloadResponse, "UTF8");
-			logger.info("jsonPayload="+jsonPayload);		
+//			logger.info("jsonPayload="+jsonPayload);		
 		} catch (Exception e) {
 			logger.error("Transforming did not work on "+urlRequestParams.toString());
 			throw new RuntimeException("Transforming did not work, e", e);
@@ -530,12 +569,12 @@ public class AccountingController {
 		
 		ResponseEntity<String> response = restTemplate().exchange(uri, HttpMethod.GET, null, String.class);
 		String jsonPayloadResponse = response.getBody();		
-		logger.info("jsonPayloadResponse="+jsonPayloadResponse);
+//		logger.info("jsonPayloadResponse="+jsonPayloadResponse);
 		
 		String jsonPayload = null;
 		try {
 			jsonPayload = transformer.transformToJSONTargetEncoding(jsonPayloadResponse, "UTF8");
-			logger.info("jsonPayload="+jsonPayload);		
+//			logger.info("jsonPayload="+jsonPayload);		
 		} catch (Exception e) {
 			logger.error("Transforming did not work on "+jsonPayloadResponse);
 			throw new RuntimeException("Transforming did not work, e", e);

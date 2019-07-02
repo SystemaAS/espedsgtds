@@ -67,12 +67,12 @@
 
 		<div class="form-group pr-2">
 			<label for="selectArrivalFrom" class="col-form-label-sm mb-0">F.o.m&nbsp;ankomstdatum</label>
-			<input type="text" class="form-control form-control-sm" id="selectArrivalFrom"  size="10"  maxlength="8">
+			<input readonly type="text" class="form-control form-control-sm" id="selectArrivalFrom"  size="11"  maxlength="10">
 		</div>
 
 		<div class="form-group pr-2">
 			<label for="selectArrivalTo" class="col-form-label-sm mb-0">T.o.m&nbsp;ankomstdatum</label>
-			<input type="text" class="form-control form-control-sm" id="selectArrivalTo"  size="10"  maxlength="8">
+			<input readonly type="text" class="form-control form-control-sm" id="selectArrivalTo"  size="11"  maxlength="10">
 		</div>
 
 

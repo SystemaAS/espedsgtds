@@ -188,7 +188,7 @@
 					</div>
 					<div class="form-group pr-2 mb-0">
 						<label for="svlth_rd2" class="col-form-label-sm mb-0">Ankomstdatum</label>
-						<input type="text" class="form-control form-control-sm" name="svlth_rd2" id="svlth_rd2" value="${record.svlth_rd2}"  size="11" maxlength="8" onKeyPress="return numberKey(event)">
+						<input type="text" class="form-control form-control-sm" name="svlth_rd2" id="svlth_rd2" value="${record.svlth_rd2}"  size="11" maxlength="10" onKeyPress="return numberKey(event)">
 					</div>		
 	
 					<div class="form-group pr-2 mb-0">
@@ -257,7 +257,7 @@
 
 				<div class="form-group pr-2 col-auto">
 					<label for="svlth_rud1" class="col-form-label-sm mb-0">Uttagsdatum</label>
-					<input type="text" class="form-control form-control-sm" name="svlth_rud1" id="svlth_rud1" value="${record.svlth_rud1}"  size="11" maxlength="8" onKeyPress="return numberKey(event)">
+					<input type="text" class="form-control form-control-sm" name="svlth_rud1" id="svlth_rud1" value="${record.svlth_rud1}"  size="11" maxlength="10" onKeyPress="return numberKey(event)">
 				</div>	
 	
 				<div class="form-group pr-3 col-auto">

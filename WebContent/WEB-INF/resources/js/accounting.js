@@ -842,6 +842,16 @@ jq(function() {
 	jq("#godsLokalkodModal").on('hidden.bs.modal', function(){
 		jq('#glkformRecord').submit();
 	});		
+
+	
+//	jq('#in-fukker-button').click(function(evt) {
+//		console.log("#fukker-button clicked!");
+//		setBlockUI();	
+//		var trimmed = jq("#svlth_id2").val().replace(/-/g,"")
+//		jq("#svlth_id2").val(trimmed);
+//		jq("#informRecord").submit();
+//	});	
+	
 	
 	jq("#informRecord").submit(function() {
 		setBlockUI();	
@@ -857,11 +867,21 @@ jq(function() {
 		jq("#svlth_rud1").val(trimmed);	
 	});
 
+//	jq('#ut-fukker-button').click(function(evt) {	
+//		setBlockUI();	
+//		var trimmed = jq("#svlth_ud1").val().replace(/-/g,"")
+//		jq("#svlth_ud1").val(trimmed);	
+//		jq("#utformRecord").submit();
+//	});	
+		
 	jq("#utformRecord").submit(function() {
 		setBlockUI();	
 		var trimmed = jq("#svlth_ud1").val().replace(/-/g,"")
 		jq("#svlth_ud1").val(trimmed);		
 	});	
+	
+
+	
 	
 	
 	jq("#svlth_id2").datepicker({ 
