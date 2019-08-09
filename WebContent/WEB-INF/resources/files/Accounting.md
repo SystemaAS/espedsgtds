@@ -52,7 +52,7 @@ Vid uttag av material klicka på uttags-ikonen ![Alt text](/Users/fredrikmoller/
 
 Alla fält med en röd * innan ledtext är obligatoriska.
 
-När saldot är 0 är inte uttags-ikonen inte tillgänglig.
+När saldot är 0 är uttags-ikonen inte tillgänglig.
 
 
 ### Rättelse
