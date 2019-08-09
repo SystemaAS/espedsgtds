@@ -43,7 +43,7 @@
 		    Skapa&nbsp;nytt&nbsp;inlägg
 		  </span>	
 		</a>
-		<a class="img-help justify-content-end ml-auto" href="resources/files/README.pdf" target="_blank">	
+		<a class="img-help justify-content-end ml-auto" href="resources/files/Accounting.pdf" target="_blank">	
 		  <span class="navbar-text no-gutters pb-0 pt-0">
 		    &nbsp;Hjälp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		  </span>
