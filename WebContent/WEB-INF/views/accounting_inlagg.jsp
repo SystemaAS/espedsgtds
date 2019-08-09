@@ -46,6 +46,11 @@
 		  </span>
 		</a>
 	</c:if>
+		<a class="img-help justify-content-end ml-auto" href="resources/files/README.pdf" target="_blank">	
+		  <span class="navbar-text no-gutters pb-0 pt-0">
+		    &nbsp;Hjälp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		  </span>
+		</a>		
 	  </div>
 	</nav>
 

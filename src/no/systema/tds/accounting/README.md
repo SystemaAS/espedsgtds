@@ -9,7 +9,6 @@ ___
 ### Inledning
 ___
 
-
 eSpedsg Tillfällig lagring syftar till att uppfylla ovan krav från Tullverket. Detta ger ett system som till stor del påminner om ett bokföringssystem.
 
 Det betyder också att **inga** ändringar kan göras i sparad information, utan en `Rättelse` behöver göras.
@@ -19,10 +18,9 @@ Tillfällig lagring innefattar 3 huvudbegrepp:
 - Uttag
 - Rättelse
 
-
 Vid ankomst av material görs ett `Inlägg`.
 Vid uttag av material görs ett `Uttag`.
-Vid ev. fel i `Inlägg` eller  `Uttag` görs en `Rättelse`.
+Vid eventuella fel i befintliga `Inlägg` eller  `Uttag` görs en `Rättelse`.
 
 ### Bokföring
 ___
@@ -34,6 +32,7 @@ En arbetsvy för `Uttag` och `Rättelse`.
 
 
 ### Skapa nytt inlägg
+___
 
 Vid ankomst av material klicka på `Skapa nytt inlägg`.
 
@@ -42,7 +41,6 @@ Vid ankomst av material klicka på `Skapa nytt inlägg`.
 - Godsnummer behöver börja med godslokalkod. Format: <Godslokalkod><år>-<löpnummer>. 10 tecken.
 
 Alla fält med en röd * innan ledtext är obligatoriska.
-
 
   
 ### Uttag
@@ -57,11 +55,10 @@ Alla fält med en röd * innan ledtext är obligatoriska.
 När saldot är 0 är inte uttags-ikonen inte tillgänglig.
 
 
-
-#### Rättelse
+### Rättelse
 ___
 
-Vid ev. fel i `Inlägg` eller  `Uttag` görs en `Rättelse`.
+Vid eventuella fel i `Inlägg` eller  `Uttag` görs en `Rättelse`.
 
 Klicka på rättelse-ikonen för aktuellt `Inlägg` eller  `Uttag`.
 
@@ -76,7 +73,7 @@ ___
 
 > "Bokföringen ska innehålla den information och de uppgifter som gör det möjligt för Tullverket att övervaka tillståndet, särskilt när det gäller att identifiera de varor som lagras på anläggningen, deras tullstatus och befordran av dessa varor."
 
-För att underlätta delgivning av information till Tullverket finns en dynamiskt rapportverktyg tillgängligt
+För att underlätta delgivning av information till Tullverket finns ett dynamiskt rapportverktyg tillgängligt.
 
 Sök fram aktuella poster, se **Bokföring**
 

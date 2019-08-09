@@ -129,3 +129,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:b
 	background-position: right 1rem center;
 }
 
+.img-help {
+	color: black !important; 
+	background: url('images/helpIcon.gif') no-repeat; 
+	/**background-color: lightgrey;*/
+	background-size: 0.9rem 0.9rem;
+	background-position: right 1rem center;
+}
+
