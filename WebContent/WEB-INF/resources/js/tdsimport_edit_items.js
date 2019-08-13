@@ -382,6 +382,9 @@
 		 				}else{
 		 					//stay in page
 		 					jq('#warningCodesFlagDivBh').show();
+		 					//submit form (anyway ... Dachser JKP - Mats genom CB 2019-08-13 13:00)
+		 					setBlockUI();
+		 			  		jq( "#tdsImportEditTopicItemForm" ).submit();
 		 				}
 		 			}else{
 		 				jq('#warningCodesFlagDivBh').hide();
