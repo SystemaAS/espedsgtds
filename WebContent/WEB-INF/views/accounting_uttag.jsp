@@ -199,26 +199,26 @@
 
 						<div class="form-group mb-0">
 							<label for="svlth_uex2" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex2" id="svlth_uex2" value="${record.svlth_uex2}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex2" id="svlth_uex2" value="${record.svlth_uex2}"  size="18" maxlength="15">
 						</div>	
 						<div class="form-group mb-0">
 							<label for="svlth_uex3" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex3" id="svlth_uex3" value="${record.svlth_uex3}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex3" id="svlth_uex3" value="${record.svlth_uex3}"  size="18" maxlength="15">
 						</div>	
 	
 						<div class="form-group mb-0">
 							<label for="svlth_uex4" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex4" id="svlth_uex4" value="${record.svlth_uex4}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex4" id="svlth_uex4" value="${record.svlth_uex4}"  size="18" maxlength="15">
 						</div>	
 	
 						<div class="form-group mb-0">
 							<label for="svlth_uex5" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex5" id="svlth_uex5" value="${record.svlth_uex5}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex5" id="svlth_uex5" value="${record.svlth_uex5}"  size="18" maxlength="15">
 						</div>	
 
 						<div class="form-group mb-0">
 							<label for="svlth_uex6" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex6" id="svlth_uex6" value="${record.svlth_uex6}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex6" id="svlth_uex6" value="${record.svlth_uex6}"  size="18" maxlength="15">
 						</div>	
 							
 				      </div>
@@ -230,27 +230,27 @@
 
 						<div class="form-group mb-0">
 							<label for="svlth_uex7" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex7" id="svlth_uex7" value="${record.svlth_uex7}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex7" id="svlth_uex7" value="${record.svlth_uex7}"  size="18" maxlength="15">
 						</div>	
 
 						<div class="form-group mb-0">
 							<label for="svlth_uex8" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex8" id="svlth_uex8" value="${record.svlth_uex8}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex8" id="svlth_uex8" value="${record.svlth_uex8}"  size="18" maxlength="15">
 						</div>	
 	
 						<div class="form-group mb-0">
 							<label for="svlth_uex9" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex9" id="svlth_uex9" value="${record.svlth_uex9}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex9" id="svlth_uex9" value="${record.svlth_uex9}"  size="18" maxlength="15">
 						</div>	
 	
 						<div class="form-group mb-0">
 							<label for="svlth_uex10" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex10" id="svlth_uex10" value="${record.svlth_uex10}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex10" id="svlth_uex10" value="${record.svlth_uex10}"  size="18" maxlength="15">
 						</div>	
 
 						<div class="form-group mb-0">
 							<label for="svlth_uex11" class="col-form-label-sm mb-0">Utgående&nbsp;handling</label>
-							<input type="text" class="form-control form-control-sm" name="svlth_uex11" id="svlth_uex11" value="${record.svlth_uex11}"  size="73" maxlength="70">
+							<input type="text" class="form-control form-control-sm" name="svlth_uex11" id="svlth_uex11" value="${record.svlth_uex11}"  size="18" maxlength="15">
 						</div>	
 	
 				      </div>

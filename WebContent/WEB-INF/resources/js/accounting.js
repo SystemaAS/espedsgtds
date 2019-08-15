@@ -124,7 +124,12 @@ function initSvlthSearch() {
 		        		return row.svlth_uex;	        			
 	        		}
 	        		if (row.svlth_h == 'U') {
-		        		return row.svlth_uex;	        			
+	        			if (row.svlth_uex_concat != undefined) {
+	        				let uex = row.svlth_uex + row.svlth_uex_concat;
+	        				return uex;
+	        			} else{
+		        			return row.svlth_uex;	        			
+	        			}
 	        		}
 	        		if (row.svlth_h == 'R') {
 		        		return row.svlth_rex;	        			
