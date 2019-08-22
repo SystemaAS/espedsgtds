@@ -137,3 +137,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:b
 	background-position: right 1rem center;
 }
 
+/* buttons in Välj kolumner*/
+button.buttons-columnVisibility {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+button.buttons-columnVisibility.active {
+    background: gray; !important;

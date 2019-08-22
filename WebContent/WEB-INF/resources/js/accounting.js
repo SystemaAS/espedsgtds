@@ -52,45 +52,56 @@ function initSvlthSearch() {
 	        "url": runningUrl,
 	        "dataSrc": "dtoList"
 	    },	
-	    buttons: [
-            {
-                extend: 'colvis',
-                text: 'Välj kolumner',
-                collectionLayout: 'fixed two-column'
-            },
-            {
-                extend: 'print', //pdfHtml5
-                text: 'Skriv ut',
-                orientation: 'landscape',  //portrait
-                pageSize: 'LEGAL', //A3, A4 , A5 , A6 , legal , letter
-                exportOptions: {
-                    columns: ':visible',
-                    search: 'applied',
-                    order: 'applied'
-                },
-                title: "Tillfällig lagring",
-                messageTop: function () {
-                       return selectionMessage;
-                },
-                messageBottom: now
-            },
-	    	{
-                extend: 'pdfHtml5',
-                text: 'Skapa PDF',
-                orientation: 'landscape',  //portrait
-                pageSize: 'LEGAL', //A3, A4 , A5 , A6 , legal , letter
-                exportOptions: {
-                    columns: ':visible',
-                    search: 'applied',
-                    order: 'applied'
-                },
-                title: "Tillfällig lagring",
-                messageTop: function () {
-                       return selectionMessage;
-                },
-                messageBottom: now
-            }
-        ],
+	
+	    buttons: {
+			dom: {  //to enable using className on buttons
+			    button: {
+			      tag: 'button',
+			      className: ''
+			    }
+			},
+			buttons: [
+			    {
+			        extend: 'colvis',
+			        text: 'Välj kolumner',
+			        collectionLayout: 'fixed two-column',
+			        className: 'btn-sm',
+			    },
+			    {
+			        extend: 'print',
+			        text: 'Skriv ut',
+			        orientation: 'landscape',
+			        pageSize: 'A3', //https://pdfmake.github.io/docs/document-definition-object/page/
+			        exportOptions: {
+			            columns: ':visible',
+			            search: 'applied',
+			            order: 'applied'
+			        },
+			        title: "Tillfällig lagring",
+			        messageTop: function () {
+			               return selectionMessage;
+			        },
+			        messageBottom: now,
+			        className: 'btn-sm'
+			    },
+				{
+			        extend: 'pdfHtml5',
+			        text: 'Skapa rapport',
+			        orientation: 'landscape',  //portrait
+			        pageSize: 'A3', //https://pdfmake.github.io/docs/document-definition-object/page/
+			        pageMargins: [ 4, 6, 4, 6 ],
+			        exportOptions: {
+			           columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 28 ]
+			        },
+			        title: "Tillfällig lagring",
+			        messageTop: function () {
+			               return selectionMessage;
+			        },
+			        messageBottom: now,
+			        className: 'buttonGrayWithGreenFrame'
+			    }
+			]
+	    },
 		mark: true,
 	    responsive: true,
 		columnDefs : [ 

@@ -68,25 +68,25 @@ _Exempel för Inlägg_:
 `Rättelse` kan göras flera gånger på samma `Inlägg` och `Uttag`.
 
 
-#### Rapport
+### Skapa rapport
 ___
 
 > "Bokföringen ska innehålla den information och de uppgifter som gör det möjligt för Tullverket att övervaka tillståndet, särskilt när det gäller att identifiera de varor som lagras på anläggningen, deras tullstatus och befordran av dessa varor."
 
-För att underlätta delgivning av information till Tullverket finns ett dynamiskt rapportverktyg tillgängligt.
 
 Sök fram aktuella poster, se **Bokföring**
 
-Klicka på Skapa PDF.
+Klicka på knappen **Skapa rapport**.
 
-En PDF med namn _Tillfällig lagring.pdf_ lagras där din webläsare laddar ner från Internet.
+En PDF med namn _Tillfällig lagring.pdf_ genereras och lagras där din webläsare laddar ner från Internet.
 
-_Exempel på rapport_: 
-
-![Alt text](/Users/fredrikmoller/Temp/rapport.png)
-
-Denna rapport kan skickas till Tullverket.
+Denna genererade rapport ska vid tillfälle skickas till Tullverket.
 
 
-Om fler eller färre fält önskas i rapporten justeras det genom att klicka på _Välj kolumner_.
-Det som ses i listan är det som kommer med i PDF.  
+### Välj kolumner / Skriv ut
+
+Det är möjligt att få ut information om bokföringen via ditt IT-systems __Skriv ut__-funktion.
+
+1. För att få ut valfritt data; välj önskade kolumner under knappen **Välj kolumner**
+2. Det som syns på skärmen kan nu skrivas ut genom ditt IT-systems skrivarfunktion. Kontakta din interna IT support om du undrar hur just din __Skriv ut__-funktion fungerar.
+
