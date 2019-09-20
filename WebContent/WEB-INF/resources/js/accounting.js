@@ -91,7 +91,7 @@ function initSvlthSearch() {
 			        pageSize: 'A3', //https://pdfmake.github.io/docs/document-definition-object/page/
 			        pageMargins: [ 4, 6, 4, 6 ],
 			        exportOptions: {
-			           columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 28 ]
+			           columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 28 ]
 			        },
 			        title: "Tillfällig lagring",
 			        messageTop: function () {
@@ -230,11 +230,21 @@ function initSvlthSearch() {
 	        		}	        		
 	        	}	
 	        },
+	        
 	    	{ data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		return getDescription(row.svlth_rty);
 	        	}
 	    	},
+	    	{ data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		if (row.svlth_rud1 == '0') {
+	        			return null;
+	        		}
+	        		return dateFormatter(row.svlth_rud1);
+	        	}	        	
+	        },
+	    	
 	    	{ data: "svlth_rnt" },
 	    	{ data: "svlth_rtx" },
 	    	{ data: "svlth_iex" },
@@ -295,7 +305,7 @@ function initSvlthSearch() {
 	
 	
     jq('#svlthTable').on( 'draw.dt', function () {
-    	svlthTable.columns( [ 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
+    	svlthTable.columns( [  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
     });	
     
     
