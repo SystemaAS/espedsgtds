@@ -8,7 +8,7 @@
   	//Overlay on tab (to mark visually a delay...)
     jq(function() {
     	jq('#alinkMainList').click(function() { 
-      		setBlockUI();
+      	setBlockUI();
       	  });		
   	  jq('#alinkHeader').click(function() { 
   		setBlockUI();
