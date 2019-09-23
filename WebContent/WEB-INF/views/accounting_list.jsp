@@ -108,7 +108,6 @@
 					<th>Uttaget</th>
 					<th title="Ref. till händelse">Bruttovikt</th>
 					<th>Rättelse</th>
-					<th>R.&nbsp;dat.</th>
 					<th>Rättat&nbsp;antal</th>
 					<th>Rättelse&nbsp;info</th>
 					<th>Ext.&nbsp;referans</th>
@@ -126,7 +125,8 @@
 					<th>Arkiverad</th>
 					<th>Användare</th>
 					<th><i>Uttag</i></th>
-					<th><i>Rättelse</i></th>					
+					<th><i>Rättelse</i></th>	
+					<th>Rättelse&nbsp;datum</th>
 				</tr>
 			</thead>
 		</table>

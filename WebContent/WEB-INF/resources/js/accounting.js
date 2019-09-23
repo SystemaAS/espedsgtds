@@ -47,6 +47,7 @@ function initSvlthSearch() {
 
 	//Init datatables, done once, then reload with ajax
 	svlthTable = jq('#svlthTable').DataTable({
+		
 		dom : '<"top"Bf>t<"bottom"lip><"clear">',
 		ajax: {
 	        "url": runningUrl,
@@ -91,7 +92,7 @@ function initSvlthSearch() {
 			        pageSize: 'A3', //https://pdfmake.github.io/docs/document-definition-object/page/
 			        pageMargins: [ 4, 6, 4, 6 ],
 			        exportOptions: {
-			           columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 28 ]
+			           columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 28 ]
 			        },
 			        title: "Tillfällig lagring",
 			        messageTop: function () {
@@ -102,7 +103,7 @@ function initSvlthSearch() {
 			    }
 			]
 	    },
-		mark: true,
+	    searchHighlight: true,
 	    responsive: true,
 		columnDefs : [ 
 			{ responsivePriority: 1, targets: -2 },
@@ -202,7 +203,34 @@ function initSvlthSearch() {
 	        },
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
-	        		return dateFormatter(row.svlth_id2);
+	        		//original FM -->return dateFormatter(row.svlth_id2);
+
+	        		if (row.svlth_h == 'I') {
+		        		return dateFormatter(row.svlth_id2);
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return dateFormatter(row.svlth_id2);
+	        		}
+	        		if (row.svlth_h == 'R') {
+	        			let result = row.svlth_rud1;
+	        			if (result != null && row.svlth_rty != null) {
+	        				//only when rty = (I)nlägg
+	        				if(row.svlth_rty == 'I'){
+		        				if (result == '0') {
+		        					result = null;
+		        				}else{
+		        					result =  dateFormatter(row.svlth_rud1);
+		        				}
+	        				}else{
+	        					result = null;
+	        				}
+	        			}else{
+	        				result = null;
+	        			} 
+	        			return result;
+	        		}
+	        		
+	        		
 	        	}   	
 	        },
 	        { data: null,
@@ -210,7 +238,35 @@ function initSvlthSearch() {
 	        		if (row.svlth_ud1 == '0') {
 	        			return null;
 	        		}
-	        		return dateFormatter(row.svlth_ud1);
+	        		
+	        		if (row.svlth_h == 'I') {
+		        		return dateFormatter(row.svlth_ud1);
+	        		}
+	        		if (row.svlth_h == 'U') {
+		        		return dateFormatter(row.svlth_ud1);
+	        		}
+	        		
+	        		if (row.svlth_h == 'R') {
+	        			let result = row.svlth_rud1;
+	        			if (result != null && row.svlth_rty != null) {
+	        				//only when rty = (U)ttag
+	        				if(row.svlth_rty == 'U'){
+		        				if (result == '0') {
+		        					result = null;
+		        				}else{
+		        					result =  dateFormatter(row.svlth_rud1);
+		        				}
+	        				}else{
+	        					result = null;
+	        				}
+	        			}else{
+	        				result = null;
+	        			} 
+	        			return result;
+	        		}
+	        		
+	        		//original FM -->return dateFormatter(row.svlth_ud1);
+	        		
 	        	}	        	
 	        },
 	        { data: null, //Vikt
@@ -236,14 +292,6 @@ function initSvlthSearch() {
 	        		return getDescription(row.svlth_rty);
 	        	}
 	    	},
-	    	{ data: null,
-	        	render: function ( data, type, row, meta ) {
-	        		if (row.svlth_rud1 == '0') {
-	        			return null;
-	        		}
-	        		return dateFormatter(row.svlth_rud1);
-	        	}	        	
-	        },
 	    	
 	    	{ data: "svlth_rnt" },
 	    	{ data: "svlth_rtx" },
@@ -293,7 +341,8 @@ function initSvlthSearch() {
 			    	return href;
 			    },
 	            defaultContent: ''
-	        }, 
+	        },
+	        { data: "svlth_rud1" },
 	    ],
 	    order: [[0, 'desc'],[1, 'asc']], 
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
@@ -305,7 +354,7 @@ function initSvlthSearch() {
 	
 	
     jq('#svlthTable').on( 'draw.dt', function () {
-    	svlthTable.columns( [  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29 ] ).visible( false);
+    	svlthTable.columns( [ 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 32 ] ).visible( false);
     });	
     
     
