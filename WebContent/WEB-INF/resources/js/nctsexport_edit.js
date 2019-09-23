@@ -434,5 +434,13 @@
 	  		}else{
 	  			jq('#submitRedFlag').css('display', 'none');
 	  		}
+	  		
+	  		jq(document).ready(function() {
+	  			//to prevent hiding datepicker behind the autocomplete function
+	  			jq('.datepicker').on('click', function(e) {
+	  			   e.preventDefault();
+	  			   jq(this).attr("autocomplete", "off");  
+	  			});
+	  		});
 	  	        
 	  	  });

@@ -54,6 +54,14 @@
     	window.open('nctsimport_edit_items_childwindow_generalcodes.do?action=doInit&type=012&ctype=' + id , "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
     }	
 	
+    
+    jq(document).ready(function() {
+  	  //to prevent hiding datepicker behind the autocomplete function
+  	  jq('.datepicker').on('click', function(e) {
+  		   e.preventDefault();
+  		   jq(this).attr("autocomplete", "off");  
+  	  });
+    });
 	
 	
 	
