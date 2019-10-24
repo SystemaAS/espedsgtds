@@ -130,6 +130,17 @@ public class MaintTdsFellesController {
 		object.setPgm("svt058r");
 		listObject.add(object);
 		
+		//
+		object = new  MaintenanceMainListObject();
+		object.setId("5");
+		object.setSubject("Tulltaxa fildistribution");
+		object.setCode("TDS_TULLTAXA");
+		object.setText("TULLVERKET");
+		object.setDbTable("N/A");
+		object.setStatus("G");
+		object.setPgm("tulltaxa");
+		listObject.add(object);
+		
 		return listObject;
 	}
 	

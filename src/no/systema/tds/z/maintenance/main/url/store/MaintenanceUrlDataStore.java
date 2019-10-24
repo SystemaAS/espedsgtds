@@ -44,7 +44,10 @@ public final class MaintenanceUrlDataStore {
 	//DKX030R
 	//ALL --> http://gw.systema.no:8080/syjservicesst/syjsDKX030R.do?user=OSCAR
 	static public String MAINTENANCE_BASE_SVX030R_GET_LIST_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX030R.do";
-		
+	
+	//Tulltaxa FTP pgp - dir content
+	//http://10.13.3.22/SYCGIP/TSVT201R.pgm?user=CB 
+	static public String MAINTENANCE_BASE_TULLTAXA_GET_LIST_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVT201R.pgm";
 			
 		
 	//----------------------------------

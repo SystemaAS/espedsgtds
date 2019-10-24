@@ -1,7 +1,16 @@
   //this variable is a global jQuery var instead of using "$" all the time. Very handy
   var jq = jQuery.noConflict();
   var counterIndex = 0;
+  var BLOCKUI_OVERLAY_MESSAGE_DEFAULT = "Please wait...";
+  var BLOCKUI_OVERLAY_MESSAGE_LONG = "Please wait. The operation can take 1-5 min";
   
+  jq(function() {
+		jq('#alinkRecordId_tulltaxa').click(function(){
+			jq('#alinkRecordId_tulltaxa').attr('target','_blank');
+	    	window.open('tdsmaintenancefelles_tulltaxa.do?action=doInit', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+	    	
+		});
+  });
   //-------------------
   //Datatables jquery
   //-------------------

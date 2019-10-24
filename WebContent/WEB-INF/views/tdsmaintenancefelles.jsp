@@ -58,9 +58,16 @@
 				               <td width="2%" class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" align="center">
 				               	<c:choose>
 				               		<c:when test="${record.status == 'G'}">
-					               		<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_${record.pgm}.do?id=${record.dbTable}">
-		               						<img src="resources/images/update.gif" border="0" alt="edit">
-					               		</a>
+				               			<c:choose>
+				               			<c:when test="${record.pgm == 'tulltaxa'}">
+						               		<img src="resources/images/engines.png" width="12" height="12" border="0" alt="edit">
+					               		</c:when>
+					               		<c:otherwise>
+					               			<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_${record.pgm}.do?id=${record.dbTable}">
+			               						<img src="resources/images/update.gif" border="0" alt="edit">
+						               		</a>
+					               		</c:otherwise>
+					               		</c:choose>
 				               		</c:when>
 				               		<c:otherwise>
 											<img src="resources/images/lock.gif" border="0" alt="edit">				               		
@@ -70,9 +77,18 @@
 				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" width="80%" >
 				               		<c:choose>
 					               		<c:when test="${record.status == 'G'}">
-					               			<a id="alinkRecordDesc_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_${record.pgm}.do?id=${record.dbTable}">
-		               							<font class="text14SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
-		               						</a>
+					               			<c:choose>
+						               			<c:when test="${record.pgm == 'tulltaxa'}">
+						               				<a id="alinkRecordId_tulltaxa" style="cursor:pointer;">
+								               			<font class="text14SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
+								               		</a>
+							               		</c:when>
+							               		<c:otherwise>
+							               			<a id="alinkRecordDesc_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_${record.pgm}.do?id=${record.dbTable}">
+				               							<font class="text14SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
+				               						</a>
+			               						</c:otherwise>
+		               						</c:choose>
 					               		</c:when>
 					               		<c:otherwise>
 					               			<font class="text14">&nbsp;&nbsp;${record.subject}&nbsp;</font>
