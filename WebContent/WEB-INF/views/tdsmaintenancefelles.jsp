@@ -79,9 +79,16 @@
 					               		<c:when test="${record.status == 'G'}">
 					               			<c:choose>
 						               			<c:when test="${record.pgm == 'tulltaxa'}">
-						               				<a id="alinkRecordId_tulltaxa" style="cursor:pointer;">
-								               			<font class="text14SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
-								               		</a>
+						               				<c:choose>
+							               				<c:when test="${user.authorizedTulltaxaUserAS400 == 'J'}">
+							               					<a id="alinkRecordId_tulltaxa" style="cursor:pointer;">
+									               				<font class="text14SkyBlue">&nbsp;&nbsp;${record.subject}&nbsp;</font>
+									               			</a>
+							               				</c:when>
+							               				<c:otherwise>
+									               			<font class="text14" style="color:#CCCCCC;">&nbsp;&nbsp;${record.subject}&nbsp;</font>
+									               		</c:otherwise>
+								               		</c:choose>
 							               		</c:when>
 							               		<c:otherwise>
 							               			<a id="alinkRecordDesc_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_${record.pgm}.do?id=${record.dbTable}">
@@ -94,6 +101,7 @@
 					               			<font class="text14">&nbsp;&nbsp;${record.subject}&nbsp;</font>
 					               		</c:otherwise>
 				               		</c:choose>
+				               		
 				               </td>
 				            </tr> 
 				            </c:forEach>

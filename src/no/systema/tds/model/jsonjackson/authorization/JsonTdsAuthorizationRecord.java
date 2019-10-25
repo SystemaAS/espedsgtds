@@ -26,6 +26,10 @@ public class JsonTdsAuthorizationRecord extends JsonAbstractGrandFatherRecord  {
 	public void setSign(String value){ this.sign = value;}
 	public String getSign(){ return this.sign; }
 	
+	private String ttax = null;
+	public void setTtax(String value){ this.ttax = value;}
+	public String getTtax(){ return this.ttax; }
+	
 	
 	/**
 	 * Used for java reflection in other classes

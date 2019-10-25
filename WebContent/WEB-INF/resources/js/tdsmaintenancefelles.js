@@ -6,9 +6,7 @@
   
   jq(function() {
 		jq('#alinkRecordId_tulltaxa').click(function(){
-			jq('#alinkRecordId_tulltaxa').attr('target','_blank');
-	    	window.open('tdsmaintenancefelles_tulltaxa.do?action=doInit', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
-	    	
+			doTulltaxa();
 		});
   });
   //-------------------
@@ -37,4 +35,35 @@
       });
   	
   });
+  
+//---------------------------------------
+  //DELETE Order
+  //This is done in order to present a jquery
+  //Alert modal pop-up
+  //----------------------------------------
+  function doTulltaxa(){
+	  	//Start dialog
+	  	jq('<div></div>').dialog({
+	        modal: true,
+	        title: "Hämta filer från Tulltaxa fildistribution ",
+	        width: 420,
+	        buttons: {
+		        Fortsätt: function() {
+	        		jq( this ).dialog( "close" );
+		            //do delete
+		            jq('#alinkRecordId_tulltaxa').attr('target','_blank');
+			    	window.open('tdsmaintenancefelles_tulltaxa.do?action=doInit', "codeWin", "top=300px,left=500px,height=600px,width=800px,scrollbars=no,status=no,location=no");
+		        },
+		        Avbryt: function() {
+		            jq( this ).dialog( "close" );
+		        }
+	        },
+	        open: function() {
+		  		  var markup = "Är du säkert på att du vill hämta filerna nu?<p>Operationen kan ta upp till 1 min. Tryck på 'Fortsätt'";
+		          jq(this).html(markup);
+		          //make Cancel the default button
+		          jq(this).siblings('.ui-dialog-buttonpane').find('button:eq(1)').focus();
+		     }
+		});  //end dialog
+  }
   

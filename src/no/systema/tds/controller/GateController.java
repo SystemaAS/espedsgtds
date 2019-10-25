@@ -103,7 +103,7 @@ public class GateController {
 				    				session.setAttribute(AppConstants.SYSTEMA_WEB_USER_KEY, appUser);
 					    			
 				    			}else{
-				    				//get now the authorization flags for both: Tds-general and Tds-Pki
+				    				//get now the authorization flags for both: Tds-general, Tds-Pki, Tulltaxa fildistribution
 				    				this.updateAppUser(jsonTdsAuthorizationContainer, appUser);
 				    				
 				    				//if the login is valid we populate this value that will enable valid TDS-menus at the JSP (headerTds.jsp)
@@ -306,7 +306,9 @@ public class GateController {
 		for(JsonTdsAuthorizationRecord record : jsonTdsAuthorizationContainer.getTdsBehorigKontroll()){
 			appUser.setAuthorizedTdsSignPkiUserAS400(record.getBpki());
 			appUser.setAuthorizedTdsUserAS400(record.getBtds());
+			appUser.setAuthorizedTulltaxaUserAS400(record.getTtax());
 			appUser.setTdsSign(record.getSign());
+			//logger.info("AAAAAAAAA:" + record.getTtax());
 		}
 	}
 	

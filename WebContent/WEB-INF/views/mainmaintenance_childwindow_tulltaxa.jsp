@@ -23,7 +23,7 @@
 				<table id="containerdatatableTable" cellspacing="2" align="left" width="100%" >
 					<tr>
 					<td>
-						<form name="tulltaxaFilesForm" id="tulltaxaFilesForm" action="tdsmaintenancefelles_tulltaxa_pgp.do" method="post">
+						<form name="tulltaxaFilesForm" id="tulltaxaFilesForm" onClick="setBlockUI()" action="tdsmaintenancefelles_tulltaxa_pgp.do" method="post">
 							<input type="hidden" name="lnkpgp" id="lnkpgp" value="${model.tulltaxaObject.lnkpgp}">
 							<input type="hidden" name="lnkzip" id="lnkzip" value="${model.tulltaxaObject.lnkzip}">
 							<input type="hidden" name="lnkunzip" id="lnkunzip" value="${model.tulltaxaObject.lnkunzip}">
