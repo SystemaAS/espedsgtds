@@ -208,6 +208,8 @@ public class NctsExportController {
 					successView.addObject(TdsConstants.DOMAIN_MODEL , model);
 			    		//domain and search filter
 					successView.addObject(TdsConstants.DOMAIN_LIST,outputList);
+					//set a session variable in order to make the list available to an external view controller (Excel/PDF- Controller)
+					session.setAttribute(session.getId() + TdsConstants.SESSION_LIST, outputList);
 					
 					if(session.getAttribute(TdsConstants.SESSION_SEARCH_FILTER_TDSEXPORT_NCTS) ==null || "".equals(session.getAttribute(TdsConstants.SESSION_SEARCH_FILTER_TDSEXPORT_NCTS)) ){
 						successView.addObject(TdsConstants.SESSION_SEARCH_FILTER_TDSEXPORT_NCTS, searchFilter);

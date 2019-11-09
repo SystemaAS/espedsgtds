@@ -53,7 +53,8 @@ import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListCo
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicListRecord;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicZemListContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportTopicZemListRecord;
-
+import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
 import no.systema.tds.tdsexport.service.TdsExportTopicListService;
 import no.systema.tds.tdsexport.url.store.TdsExportUrlDataStore;
 import no.systema.tds.tdsexport.util.RpgReturnResponseHandler;
@@ -201,6 +202,8 @@ public class TdsExportController {
 				successView.addObject(TdsConstants.DOMAIN_MODEL , model);
 	    		//domain and search filter
 				successView.addObject(TdsConstants.DOMAIN_LIST,outputList);
+				//set a session variable in order to make the list available to an external view controller (Excel/PDF- Controller)
+				session.setAttribute(session.getId() + TdsConstants.SESSION_LIST, outputList);
 				
 				if(session.getAttribute(TdsConstants.SESSION_SEARCH_FILTER_TDSEXPORT) ==null || "".equals(session.getAttribute(TdsConstants.SESSION_SEARCH_FILTER_TDSEXPORT)) ){
 					successView.addObject(TdsConstants.DOMAIN_SEARCH_FILTER_TDSEXPORT, searchFilter);
@@ -615,6 +618,8 @@ public class TdsExportController {
 			
 		return urlRequestParamsKeys.toString();
 	}
+	
+	
 	
 	//SERVICES
 	

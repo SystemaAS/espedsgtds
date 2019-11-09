@@ -222,6 +222,19 @@
 	<%-- list component --%>
 	<c:if test="${not empty list}">
 	<tr>
+		<td width="100%" >
+	     <table width="100%" >
+	     	<%-- OK BUTTON --%>
+	    		<tr >
+			<td class="text14" align="right">
+	        		<a href="tdsImportMainListExcelView.do" target="_blank">
+               		<img valign="bottom" id="itemListExcel" src="resources/images/excel.png" border="0" alt="excel">&nbsp;Excel
+	        		</a>&nbsp;
+		</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
 		<td>		
 		<table width="100%" cellspacing="0" border="0" cellpadding="0">
 	    	<%-- separator --%>

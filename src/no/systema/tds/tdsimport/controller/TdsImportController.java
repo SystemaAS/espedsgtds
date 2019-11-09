@@ -198,6 +198,8 @@ public class TdsImportController {
 				successView.addObject(TdsConstants.DOMAIN_MODEL , model);
 	    		//domain and search filter
 				successView.addObject(TdsConstants.DOMAIN_LIST,outputList);
+				//set a session variable in order to make the list available to an external view controller (Excel/PDF- Controller)
+				session.setAttribute(session.getId() + TdsConstants.SESSION_LIST, outputList);
 				
 				if(session.getAttribute(TdsConstants.SESSION_SEARCH_FILTER_TDSIMPORT) ==null || "".equals(session.getAttribute(TdsConstants.SESSION_SEARCH_FILTER_TDSIMPORT)) ){
 					successView.addObject(TdsConstants.DOMAIN_SEARCH_FILTER_TDSIMPORT, searchFilter);

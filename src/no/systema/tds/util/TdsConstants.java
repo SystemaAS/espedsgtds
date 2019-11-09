@@ -118,6 +118,8 @@ public final class TdsConstants {
 	public static final String SESSION_SEARCH_FILTER_TDSEXPORT_NCTS = "searchFilterTdsExportNcts";
 	
 	public static final String ITEM_LIST = "itemList";	
+	public static final String MAIN_TOPIC_LIST = "mainList";	
+	
 	
 	
 	//aspects in view (sucha as errors, logs, other
