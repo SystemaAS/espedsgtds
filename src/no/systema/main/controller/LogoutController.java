@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.net.URLEncoder;
 //application imports
 import no.systema.main.util.AppConstants;
+import no.systema.tds.util.manager.Log4jMgr;
 
 
 @Controller
@@ -33,6 +34,10 @@ public class LogoutController {
 		//String user = request.getParameter("user");
 		//String pwd = request.getParameter("password");
 		//String aes = request.getParameter("aes");
+		
+		//go back to WARN level since we might have put lower levels (DEBUG, INFO) for debugging reasons
+		Log4jMgr log4jMgr = new Log4jMgr();
+		log4jMgr.doLogoutLogger();
 		
 		
 		if (session!=null){ 
