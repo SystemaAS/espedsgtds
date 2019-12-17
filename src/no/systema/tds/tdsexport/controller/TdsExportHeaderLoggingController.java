@@ -24,7 +24,7 @@ import org.springframework.web.bind.WebDataBinder;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.io.PayloadContentFlusher;
-
+import no.systema.main.validator.IPAddressValidator;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.logging.JsonTdsExportSpecificTopicLoggingContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.logging.JsonTdsExportSpecificTopicLoggingLargeTextContainer;
@@ -151,17 +151,21 @@ public class TdsExportHeaderLoggingController {
 			if(filePath!=null && !"".equals(filePath)){
                 String absoluteFilePath = filePath;
                 //String absoluteFilePath = appUser.getServletHost() + filePath;
-                response.setContentType(AppConstants.HTML_CONTENTTYPE_TEXTHTML);
-                //--> with browser dialogbox: response.setHeader ("Content-disposition", "attachment; filename=\"edifactPayload.txt\"");
-                response.setHeader ("Content-disposition", "filename=\"edifactPayload.txt\"");
-                
-                logger.info("Start flushing file payload...");
-                //send the file output to the ServletOutputStream
-                try{
-                		payloadContentFlusher.flushServletOutput(response, absoluteFilePath);
-                		
-                }catch (Exception e){
-                		e.printStackTrace();
+                if(!new IPAddressValidator().isValidAbsoluteFilePathFor_RenderFile(absoluteFilePath)){
+                	return (null);
+                }else{
+	                response.setContentType(AppConstants.HTML_CONTENTTYPE_TEXTHTML);
+	                //--> with browser dialogbox: response.setHeader ("Content-disposition", "attachment; filename=\"edifactPayload.txt\"");
+	                response.setHeader ("Content-disposition", "filename=\"edifactPayload.txt\"");
+	                
+	                logger.info("Start flushing file payload...");
+	                //send the file output to the ServletOutputStream
+	                try{
+	                		payloadContentFlusher.flushServletOutput(response, absoluteFilePath);
+	                		
+	                }catch (Exception e){
+	                		e.printStackTrace();
+	                }
                 }
             }
 			//this to present the output in an independent window
