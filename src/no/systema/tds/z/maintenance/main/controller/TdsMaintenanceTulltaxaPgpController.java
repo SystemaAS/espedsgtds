@@ -71,7 +71,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 			return this.loginView;
 		}else{
 			//appUser.setActiveMenu("INIT");
-			logger.info("Inside method: runTulltaxa_pgp");
+			logger.warn("Inside method: runTulltaxa_pgp");
 			logger.info("appUser user:" + appUser.getUser());
 			logger.info("appUser lang:" + appUser.getUsrLang());
 			logger.info("appUser userAS400:" + appUser.getUserAS400());
@@ -91,7 +91,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 				//STEP 1 - Decrypt (we decrypt all first in order to have bulks in the pipe process)
 				//------
 				try (Stream<Path> paths = Files.walk(Paths.get(_1Dir))) {
-					logger.info("Starting decryption ...");
+					logger.warn("Starting decryption ...");
 		    	    paths
 		    	        .filter(Files::isRegularFile)
 		    	        .forEach( e ->{
@@ -105,16 +105,16 @@ public class TdsMaintenanceTulltaxaPgpController {
 		    	   //STEP 2 - Decompress (decompress in a bulk: after all decrypted files have been processed)
 		    	   //------- 
 		    	  
-		    	   logger.info("Start decompression ..."); 
+		    	   logger.warn("Start decompression ..."); 
 		    	   decompressor.decompress(Paths.get(_2Dir), _3Dir);
-		    	   logger.info("End decompression ...");
+		    	   logger.warn("End decompression ...");
 		    	   
 				}catch (Exception e) { 
-				   logger.info("Exception: " + e); 
+				   logger.warn("Exception: " + e); 
 				   model.put("error", "Exception: " + e);
 			    } 
 			}else{
-			   logger.info("Exception: All directories MUST exist.");	
+			   logger.warn("Exception: All directories MUST exist.");	
 			   model.put("error", "Exception: All directories MUST exist.");
 			}
 	    	
@@ -140,7 +140,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 			return this.loginView;
 		}else{
 			//appUser.setActiveMenu("INIT");
-			logger.info("Inside method: initTulltaxaFtp");
+			logger.warn("Inside method: initTulltaxaFtp");
 			logger.info("appUser user:" + appUser.getUser());
 			logger.info("appUser lang:" + appUser.getUsrLang());
 			logger.info("appUser userAS400:" + appUser.getUserAS400());
@@ -166,7 +166,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 			//String _1Dir = "/ownfiles/tullverketCert/encrypted/";
 			if(container!=null && strMgr.isNull(container.getErrMsg()) &&  Files.exists(Paths.get(container.getLnkpgp()))){
 				try (Stream<Path> paths = Files.walk(Paths.get(container.getLnkpgp()))) {
-					logger.info("Listing FTP files for decryption ...");
+					logger.warn("Listing FTP files for decryption ...");
 		    	    paths
 		    	        .filter(Files::isRegularFile)
 		    	        .forEach( e ->{
@@ -177,7 +177,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 		    	        	});
 			    
 				}catch(Exception e){
-					logger.info("Exception: " + e);
+					logger.warn("Exception: " + e);
 				}
 				Map model = new HashMap();
 				model.put("listpgp", outputList);
@@ -187,10 +187,10 @@ public class TdsMaintenanceTulltaxaPgpController {
 			}else{
 				
 				if(container!=null){
-					logger.info("errMsg: " + container.getErrMsg());
-					logger.info("File not found:" + container.getLnkpgp());
+					logger.warn("errMsg: " + container.getErrMsg());
+					logger.warn("File not found:" + container.getLnkpgp());
 				}else{
-					logger.info("FATAL File not found: container=null");
+					logger.warn("FATAL File not found: container=null");
 				}
 			}
 			

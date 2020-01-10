@@ -29,7 +29,11 @@
 							<input type="hidden" name="lnkunzip" id="lnkunzip" value="${model.tulltaxaObject.lnkunzip}">
 							<c:choose>
 								<c:when test="${not empty tulltaxaObject.errMsg}">
-									<font style="background-color:red"><b>ERROR on FTP back-end when fetching files from TULLVERKET Fildistribution</b></font>
+									<p>
+										<font style="background-color:red"><b>ERROR on FTP back-end when fetching files from TULLVERKET Fildistribution</b></font>
+										<br/>
+										<b>${tulltaxaObject.errMsg}</b>
+									</p>
 								</c:when>
 								<c:otherwise>
 									<table>

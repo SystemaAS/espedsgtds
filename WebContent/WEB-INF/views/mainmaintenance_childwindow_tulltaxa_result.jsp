@@ -17,6 +17,8 @@
 				<c:choose>
 					<c:when test="${not empty model.error}">
 						<h1><font style="background-color:red"><b>ERROR on PGP or GZIP processes</b></font></h1>
+						<h2><b>${model.error}</b></h2>
+						
 					</c:when>
 					<c:otherwise>
 						<b>Started process OK. Close window</b>
