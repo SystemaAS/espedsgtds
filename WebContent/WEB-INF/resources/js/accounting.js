@@ -105,7 +105,17 @@ function initSvlthSearch() {
 	    },
 	    searchHighlight: true,
 	    responsive: true,
-		columnDefs : [ 
+	    	rowCallback: function (row, data, index) {
+	            if (data.svlth_h == 'I' && data.saldo > 0) {
+	            	let result = getLagringsTid(data);
+	        		if(result > 0){
+	        			jq(row).css('background', '#FEEFB3');
+	        			jq(row).css('color', '#9F6000');
+	        		}
+		    	} 
+	        },
+	    
+	    columnDefs : [ 
 			{ responsivePriority: 1, targets: -2 },
             { responsivePriority: 2, targets: -1 }
 		],
@@ -175,7 +185,7 @@ function initSvlthSearch() {
 	        	}	
 	        },
 	    	{ data: "saldo" },
-	        { data: null, //Kollislag
+	    	{ data: null, //Kollislag
 	        	render: function ( data, type, row, meta ) {
 	        		if (row.svlth_h == 'I') {
 		        		return row.svlth_isl;	        			
@@ -343,6 +353,16 @@ function initSvlthSearch() {
 	            defaultContent: ''
 	        },
 	        { data: "svlth_rud1" },
+	        //lagringstid
+	        { data: null,
+	        	render: function ( data, type, row, meta ) {
+	        		let result = getLagringsTid(row);
+	        		if(result > 0){
+	        			result = '<span class="isa_error" style="display:block">'+result+'</span>';
+	        		}
+	        		return result; 
+	        	}
+	    	},
 	    ],
 	    order: [[0, 'desc'],[1, 'asc']], 
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
@@ -353,8 +373,32 @@ function initSvlthSearch() {
 	});
 	
 	
+	function getLagringsTid(data){
+		let result = '';
+		if(data.svlth_h == 'I'){
+			if (data.saldo == null || data.saldo == 0) {
+				//nothing
+			}else{
+				//let x = row.svlth_id2;
+				let ankomstDateString = data.svlth_id2.toString();
+				let ankomstDate = dateFns.parse(ankomstDateString);
+				let today = new Date();
+				// To calculate the time difference of two dates 
+				var diffInTime = today.getTime() - ankomstDate.getTime(); 
+				var diffInDays = diffInTime / (1000 * 3600 * 24); 
+				//result
+				result = Math.trunc(diffInDays);
+				
+			}
+		}
+		
+		return result;
+		
+	}
+
+	
     jq('#svlthTable').on( 'draw.dt', function () {
-    	svlthTable.columns( [ 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 32 ] ).visible( false);
+    	svlthTable.columns( [ 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 32, 33 ] ).visible( false);
     });	
     
     

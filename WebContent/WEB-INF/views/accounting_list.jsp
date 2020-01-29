@@ -122,11 +122,12 @@
 					<th>Tidigare&nbsp;handling</th>
 					<th title="Separerade med #">Ytterligare&nbsp;utgående&nbsp;handlingar</th>
 					<th>Intern&nbsp;information</th>
-					<th>Arkiverad</th>
+					<th data-priority="1">Arkiverad</th>
 					<th>Användare</th>
 					<th><i>Uttag</i></th>
 					<th><i>Rättelse</i></th>	
 					<th>Rättelse&nbsp;datum</th>
+					<th title="Antal dagar">Lagr.Tid</th>
 				</tr>
 			</thead>
 		</table>
