@@ -109,8 +109,21 @@ function initSvlthSearch() {
 	            if (data.svlth_h == 'I' && data.saldo > 0) {
 	            	let result = getLagringsTid(data);
 	        		if(result > 0){
-	        			jq(row).css('background', '#FEEFB3');
-	        			jq(row).css('color', '#9F6000');
+	        			//antal dagar
+	        			if(result >=3 && result <5){
+	        				//yellow-brown
+	        				jq(row).css('background', '#FEEFB3');
+	        				jq(row).css('color', '#9F6000');
+	        				
+	        			}else if (result >=5 && result < 85){
+	        				//purple-light purple
+	        				jq(row).css('background', '#E6E6FA');
+	        				jq(row).css('color', '#9370DB');
+	        			}else if (result > 85 ){
+	        				//red-light red
+	        				jq(row).css('background', '#FFBABA');
+	        				jq(row).css('color', '#D8000C');
+	        			}
 	        		}
 		    	} 
 	        },
@@ -357,12 +370,14 @@ function initSvlthSearch() {
 	        { data: null,
 	        	render: function ( data, type, row, meta ) {
 	        		let result = getLagringsTid(row);
+	        		/* OBSOLETE ? --- change to row-color instead (ref. rowCallback in this same dataTable)
 	        		if(result > 0){
 	        			result = '<span class="isa_error" style="display:block">'+result+'</span>';
-	        		}
+	        		}*/
 	        		return result; 
 	        	}
 	    	},
+	    	
 	    ],
 	    order: [[0, 'desc'],[1, 'asc']], 
 	    lengthMenu : [ 25, 75, 100, 200, 500 ],
