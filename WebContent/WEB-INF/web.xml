@@ -60,7 +60,7 @@
   </servlet-mapping>
   <session-config>
   	<!-- in minutes -->
-    <session-timeout>60</session-timeout>
+    <session-timeout>360</session-timeout>
     
     <cookie-config>
     	  <http-only>true</http-only> 
