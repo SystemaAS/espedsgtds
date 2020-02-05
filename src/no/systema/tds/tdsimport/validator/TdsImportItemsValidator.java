@@ -139,7 +139,7 @@ public class TdsImportItemsValidator implements Validator {
 						if(this.existsBilagdaHandligarN864(record) ){
 							//ok
 						}else{
-							errors.rejectValue("sviv_fokd", "systema.tds.import.header.error.rule.item.sviv_fokd.N184.mustExists");
+							//OBSOLETE --> errors.rejectValue("sviv_fokd", "systema.tds.import.header.error.rule.item.sviv_fokd.N184.mustExists");
 						}
 					}else if( strMgr.isNotNull(record.getSviv_fokd()) && "100".equals(record.getSviv_fokd())) {
 						if(this.existsBilagdaHandligarN864(record) ){
