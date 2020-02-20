@@ -419,6 +419,7 @@
 				jq('#svev_syli').val(data[i].svev_syli);
 				jq('#svev_vano').val(data[i].svev_vano); jq('#svev_ulkd').val(data[i].svev_ulkd); 
 				jq('#svev_vata').val(data[i].svev_vata); jq('#svev_vati').val(data[i].svev_vati); 
+				jq('#svev_vat4').val(data[i].svev_vat4);
 				jq('#svev_eup1').val(data[i].svev_eup1); jq('#svev_eup2').val(data[i].svev_eup2); 
 				jq('#svev_brut').val(data[i].svev_brut); jq('#svev_neto').val(data[i].svev_neto); 
 				jq('#svev_ankv').val(data[i].svev_ankv); jq('#svev_vasl').val(data[i].svev_vasl);

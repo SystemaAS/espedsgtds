@@ -532,7 +532,7 @@
 							 			</td>
 							 			
 							            <td class="text14" align="left"><b>&nbsp;<span title="svev_vati">33.3</span></b>&nbsp;&nbsp;</td>
-							            <td class="text14" align="left"><b>&nbsp;<span title="svev_vatu">33.4</span></b>&nbsp;&nbsp;</td>
+							            <td class="text14" align="left"><b>&nbsp;<span title="svev_vat4">33.4</span></b>&nbsp;&nbsp;</td>
 							            <td class="text14" align="left">
 							            <img onMouseOver="showPop('37_1_info');" onMouseOut="hidePop('37_1_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 				 						<b>37.</b>
