@@ -52,7 +52,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	
 	private StringManager strMgr = new StringManager();
-	
+	private String CATALINA_HOME = System.getProperty("catalina.home");
 	
 	/**
 	 * 
@@ -71,18 +71,26 @@ public class TdsMaintenanceTulltaxaPgpController {
 			return this.loginView;
 		}else{
 			//appUser.setActiveMenu("INIT");
+			
 			logger.warn("Inside method: runTulltaxa_pgp");
 			logger.info("appUser user:" + appUser.getUser());
 			logger.info("appUser lang:" + appUser.getUsrLang());
 			logger.info("appUser userAS400:" + appUser.getUserAS400());
 			
-			final String PUBLIC_KEY_RING = ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.pubkey");
-			final String PRIVATE_KEY_RING = ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.privkey");
+			
+			final String PUBLIC_KEY_RING = getPgpKey(ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.pubkey"));
+			final String PRIVATE_KEY_RING = getPgpKey(ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.privkey"));
 			final String SECRET_KEY_RING_PASS = ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.seckey");
+			logger.warn(PUBLIC_KEY_RING);
 			
 			final String _1Dir = request.getParameter("lnkpgp");
 			final String _2Dir = request.getParameter("lnkzip");
 			final String _3Dir = request.getParameter("lnkunzip");
+			
+			logger.warn("lnkpgp:" + _1Dir);
+			logger.warn("lnkzip:" + _2Dir);
+			logger.warn("lnkunzip:" + _3Dir);
+			
 			
 			DecryptMain engineDecrypt = new DecryptMain();
 			PgpDecompressor decompressor = new PgpDecompressor();
@@ -124,6 +132,19 @@ public class TdsMaintenanceTulltaxaPgpController {
 		}
 	}
 	/**
+	 * Get correct path for pgp-certificate's key
+	 * @param value
+	 * @return
+	 */
+	private String getPgpKey(String value){
+		String certKey = value;
+		//check if there was a relative path in application.properties
+		if(certKey.startsWith("/certstulltaxa")){
+			certKey = this.CATALINA_HOME + certKey;
+		}
+		return certKey;
+	}
+	/**
 	 * The method starts the back-end FTP process that fetches all .pgp files from Tullverket Fildistribution
 	 * @param session
 	 * @param request
@@ -140,6 +161,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 			return this.loginView;
 		}else{
 			//appUser.setActiveMenu("INIT");
+			logger.warn(System.getProperty("catalina.home"));
 			logger.warn("Inside method: initTulltaxaFtp");
 			logger.info("appUser user:" + appUser.getUser());
 			logger.info("appUser lang:" + appUser.getUsrLang());
