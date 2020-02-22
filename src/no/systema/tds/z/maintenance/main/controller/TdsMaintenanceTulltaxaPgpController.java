@@ -81,15 +81,15 @@ public class TdsMaintenanceTulltaxaPgpController {
 			final String PUBLIC_KEY_RING = getPgpKey(ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.pubkey"));
 			final String PRIVATE_KEY_RING = getPgpKey(ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.privkey"));
 			final String SECRET_KEY_RING_PASS = ApplicationPropertiesUtil.getProperty("pgp.tulltaxa.cert.seckey");
-			logger.warn(PUBLIC_KEY_RING);
+			logger.info(PUBLIC_KEY_RING);
 			
 			final String _1Dir = request.getParameter("lnkpgp");
 			final String _2Dir = request.getParameter("lnkzip");
 			final String _3Dir = request.getParameter("lnkunzip");
 			
-			logger.warn("lnkpgp:" + _1Dir);
-			logger.warn("lnkzip:" + _2Dir);
-			logger.warn("lnkunzip:" + _3Dir);
+			logger.info("lnkpgp:" + _1Dir);
+			logger.info("lnkzip:" + _2Dir);
+			logger.info("lnkunzip:" + _3Dir);
 			
 			
 			DecryptMain engineDecrypt = new DecryptMain();
