@@ -161,7 +161,7 @@ public class TdsMaintenanceTulltaxaPgpController {
 			return this.loginView;
 		}else{
 			//appUser.setActiveMenu("INIT");
-			logger.warn(System.getProperty("catalina.home"));
+			logger.info(System.getProperty("catalina.home"));
 			logger.warn("Inside method: initTulltaxaFtp");
 			logger.info("appUser user:" + appUser.getUser());
 			logger.info("appUser lang:" + appUser.getUsrLang());
