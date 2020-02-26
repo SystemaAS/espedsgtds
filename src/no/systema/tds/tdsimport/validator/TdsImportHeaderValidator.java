@@ -47,8 +47,7 @@ public class TdsImportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_mopa", "systema.tds.import.header.error.null.svih_mopa"); 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_molk", "systema.tds.import.header.error.null.svih_molk");
 		if( !record.getSvih_mtyp().startsWith("H")){
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_moha", "systema.tds.import.header.error.null.svih_moha"); 
-			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_motl", "systema.tds.import.header.error.null.svih_motl"); 
+			
 		}
 		//deklarant
 		/* if null then we copy from RECEIVER
@@ -66,13 +65,31 @@ public class TdsImportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_omty", "systema.tds.import.header.error.null.svih_omty"); 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_omha", "systema.tds.import.header.error.null.svih_omha"); 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_omtl", "systema.tds.import.header.error.null.svih_omtl"); 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_upps", "systema.tds.import.header.error.null.svih_upps");
 		//header
 		//all messages like HNU, HNK, etc (with "H") have optional fields (ref. to the import matrix spec . CB.)
 		if( !record.getSvih_mtyp().startsWith("H")){
-			//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_upps", "systema.tds.import.header.error.null.svih_upps");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_upps", "systema.tds.import.header.error.null.svih_upps");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_moha", "systema.tds.import.header.error.null.svih_moha"); 
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_motl", "systema.tds.import.header.error.null.svih_motl"); 
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_tart", "systema.tds.import.header.error.null.svih_tart"); 
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_fabl", "systema.tds.import.header.error.null.svih_fabl"); 
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_fatx", "systema.tds.import.header.error.null.svih_fatx");
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_faty", "systema.tds.import.header.error.null.svih_faty");
+			
+			//Fakt.belopp, kurs och valuta = svih_vakd - svih_fabl - svih_vaku
+			if(record.getSvih_fabl()!=null && !record.getSvih_fabl().equalsIgnoreCase("") || 
+			   record.getSvih_vakd()!=null && !record.getSvih_vakd().equalsIgnoreCase("") ||
+			   record.getSvih_vaku()!=null && !record.getSvih_vaku().equalsIgnoreCase("")){
+					
+				if(record.getSvih_vakd()==null || record.getSvih_vakd().equalsIgnoreCase("")){
+					errors.rejectValue("svih_fabl", "systema.tds.import.header.error.rule.svih_fabl.totalValidity");
+				}else if (record.getSvih_vaku()==null || record.getSvih_vaku().equalsIgnoreCase("")){
+					errors.rejectValue("svih_fabl", "systema.tds.import.header.error.rule.svih_fabl.totalValidity");
+				}else if (record.getSvih_fabl()==null || record.getSvih_fabl().equalsIgnoreCase("")){
+					errors.rejectValue("svih_fabl", "systema.tds.import.header.error.rule.svih_fabl.totalValidity");
+				}
+			}
+			
 		}
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_syav", "systema.tds.import.header.error.null.svih_syav"); 
@@ -85,8 +102,6 @@ public class TdsImportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_mtyp", "systema.tds.import.header.error.null.svih_mtyp");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_eup1", "systema.tds.import.header.error.null.svih_eup1");
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_fatx", "systema.tds.import.header.error.null.svih_fatx");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_faty", "systema.tds.import.header.error.null.svih_faty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_avut", "systema.tds.import.header.error.null.svih_avut");
 		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_aube", "systema.tds.import.header.error.null.svih_aube");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "svih_trin", "systema.tds.import.header.error.null.svih_trin");
@@ -168,19 +183,7 @@ public class TdsImportHeaderValidator implements Validator {
 					}
 				}
 				
-				//Fakt.belopp, kurs och valuta = svih_vakd - svih_fabl - svih_vaku
-				if(record.getSvih_fabl()!=null && !record.getSvih_fabl().equalsIgnoreCase("") || 
-				   record.getSvih_vakd()!=null && !record.getSvih_vakd().equalsIgnoreCase("") ||
-				   record.getSvih_vaku()!=null && !record.getSvih_vaku().equalsIgnoreCase("")){
-						
-					if(record.getSvih_vakd()==null || record.getSvih_vakd().equalsIgnoreCase("")){
-						errors.rejectValue("svih_fabl", "systema.tds.import.header.error.rule.svih_fabl.totalValidity");
-					}else if (record.getSvih_vaku()==null || record.getSvih_vaku().equalsIgnoreCase("")){
-						errors.rejectValue("svih_fabl", "systema.tds.import.header.error.rule.svih_fabl.totalValidity");
-					}else if (record.getSvih_fabl()==null || record.getSvih_fabl().equalsIgnoreCase("")){
-						errors.rejectValue("svih_fabl", "systema.tds.import.header.error.rule.svih_fabl.totalValidity");
-					}
-				}
+				
 				
 				//Transportmedlets nationalitet (gränsspassagen)
 				if(record.getSvih_tral()!=null && !record.getSvih_tral().equals("")){
