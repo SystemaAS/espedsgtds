@@ -538,16 +538,43 @@
 										<input type="text" class="inputTextMediumBlue" name="nictb2" id="nictb2" size="40" maxlength="70" value="${model.record.nictb2}">
 									</td>
 								</tr>
-								<%-- finns på grön skärm men används inte längre. Vi gömmer dessa här tills vidare besked
+								
 								<tr>	
-									<td class="text14" >&nbsp;&nbsp;&nbsp;<span title="nictp">Pekare:</span>&nbsp;</td>
+						 			<td class="text14" >&nbsp;&nbsp;
+						 			<img onMouseOver="showPop('pointer_info');" onMouseOut="hidePop('pointer_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+						 			<span title="nictp">Poäng:</span>
+						 				<div class="text11" style="position: relative;" align="left">
+										<span style="position:absolute; top:2px; width:250px;" id="pointer_info" class="popupWithInputText text11"  >
+							           			<b>Poäng</b>
+												<p>
+													Skriv in rubriknr exportföljedokument(ZEM) med fel. Om det finns avvikelser i den sista posten, paket eller vikt, sänds poäng och kod automatiskt.
+												</p>
+										</span>
+										</div>						 			
+						 			</td>
 						 			<td class="text14">
-										<input type="text" class="inputTextMediumBlue" name="nictp" id="nictp" size="6" maxlength="5" value="${model.record.nictp}">
-										&nbsp;<span title="nictnv">Nytt värde:</span>&nbsp;
-										<input type="text" class="inputTextMediumBlue" name="nictnv" id="nictnv" size="16" maxlength="15" value="${model.record.nictnv}">
+										<input type="text" class="inputTextMediumBlue" name="nictp" id="nictp" size="30" maxlength="35" value="${model.record.nictp}">
 									</td>
-						 		</tr>
-						 		 --%>
+								</tr>
+								<tr>	
+						 			<td class="text14" >&nbsp;&nbsp;
+						 			<img onMouseOver="showPop('correctedValue_info');" onMouseOut="hidePop('correctedValue_info');"style="vertical-align:bottom;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
+						 			<span title="nictnv">Korrigerat värde:</span>
+						 				<div class="text11" style="position: relative;" align="left">
+										<span style="position:absolute; top:2px; width:250px;" id="correctedValue_info" class="popupWithInputText text11"  >
+							           			<br/>
+							           			<b>Korrigerat värde</b>
+												<p>
+													Skriv in avvikande värdet i fältet om fältet <b>Poäng</b> är anviget.
+												</p>
+										</span>	
+										</div>					 			
+						 			</td>
+						 			<td class="text14">
+										<input type="text" class="inputTextMediumBlue" name="nictnv" id="nictnv" size="20" maxlength="15" value="${model.record.nictnv}">
+									</td>
+								</tr>
+								
 						 		<tr height="5"><td></td></tr>
 				            </table>
 				            </td>

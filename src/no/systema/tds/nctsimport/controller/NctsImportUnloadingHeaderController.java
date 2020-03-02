@@ -37,7 +37,7 @@ import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
 import no.systema.tds.nctsimport.validator.NctsImportHeaderValidator;
-
+import no.systema.tds.nctsimport.validator.NctsImportUnloadingHeaderValidator;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicContainer;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicRecord;
@@ -165,27 +165,8 @@ public class NctsImportUnloadingHeaderController {
 				//UPDATE RECORD
 				//----------------------------	
 				if(TdsConstants.ACTION_UPDATE.equals(action)){
-					//---------------------
-					//Validation Light GUI
-					//---------------------
-					/*
-					NctsImportHeaderValidator validator = new NctsImportHeaderValidator();
-					logger.info("VALIDATING...");
-					if(opd!=null && !"".equals(opd)){
-						//Update...
-						//nothing
-					}else{
-						logger.info("avdXX: " + avd);
-						logger.info("signXX: " + sign);
-						
-						//Create
-						//we must lend these dropdown variables to the validation object
-						recordToValidate.setTiavd(avd);
-						recordToValidate.setTisg(sign);
-						
-					}
+					NctsImportUnloadingHeaderValidator validator = new NctsImportUnloadingHeaderValidator();
 					validator.validate(recordToValidate, bindingResult);
-					*/
 					
 					
 				    //check for ERRORS
@@ -194,11 +175,11 @@ public class NctsImportUnloadingHeaderController {
 					    	//put domain objects and do go back to the original view...
 					    	recordToValidate.setTiavd(avd);
 					    	recordToValidate.setTisg(sign);
-					    	this.setDomainObjectsInView(session, model, recordToValidate);
+					    	this.getSpecificTopicRecord(session, avd, opd, sign, appUser);
 					    	
 				    }else{
 				    	
-				    		JsonNctsImportSpecificTopicUnloadingRecord jsonNctsImportSpecificTopicUnloadingRecord = null;
+				    	JsonNctsImportSpecificTopicUnloadingRecord jsonNctsImportSpecificTopicUnloadingRecord = null;
 						String tuid = null;
 						
 						if(opd!=null && !"".equals(opd)){
@@ -407,7 +388,7 @@ public class NctsImportUnloadingHeaderController {
 	    	//EXECUTE the FETCH (RPG program) here
 	    	//--------------------------------------
 	    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
-		//Debug --> 
+	    	//Debug --> 
 	    	logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
 	    	//logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
 	    	if(jsonPayload!=null){
@@ -522,12 +503,12 @@ public class NctsImportUnloadingHeaderController {
 	 * @param jsonTdsExportSpecificTopicRecord
 	 * @return
 	 */
-	private void setDomainObjectsInView(HttpSession session, Map model, JsonNctsImportSpecificTopicUnloadingRecord jsonNctsImportSpecificTopicUnloadingRecord){
+	/*private void setDomainObjectsInView(HttpSession session, Map model, JsonNctsImportSpecificTopicUnloadingRecord jsonNctsImportSpecificTopicUnloadingRecord){
 		//SET HEADER RECORDS  (from RPG)
 		model.put(TdsConstants.DOMAIN_RECORD, jsonNctsImportSpecificTopicUnloadingRecord);
 		//put the header topic in session for the coming item lines
 		session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC, jsonNctsImportSpecificTopicUnloadingRecord);
-	}
+	}*/
 	/**
 	 * 
 	 * 
