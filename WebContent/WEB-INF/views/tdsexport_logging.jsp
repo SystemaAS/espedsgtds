@@ -209,14 +209,15 @@
 	                      
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.date"/>&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.time"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;Sent/Rec&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.tds.export.logging.list.label.text"/>&nbsp;</th>
 	               </tr>
 	               </thead>
 	               <tbody>     
 		           	<c:forEach items="${list}" var="record" varStatus="counter">    
 		               <c:choose>           
-		                   <c:when test="${counter.count%2==0}">
-		                       <tr class="tableRow" height="20" >
+		                   <c:when test="${record.msr == 'R'}">
+		                       <tr class="tableRow" style="background-color:#EEEEEE;" height="20" >
 		                   </c:when>
 		                   <c:otherwise>   
 		                       <tr class="tableOddRow" height="20" >
@@ -224,21 +225,22 @@
 		               </c:choose>
 		               <td class="tableCellFirst" >&nbsp;${record.mtdn}&nbsp;&nbsp;<font class="text8">[${model.sign}]</font></td>
 		               <td class="tableCell">&nbsp;
-		               		<a href="ediftplog.do?sssn=${record.msn}&ftplev=EDISS" target="_new" onClick="window.open(this.href,'targetWindow','top=200px,left=600px,height=800px,width=700px,scrollbars=no,status=no,location=no'); return false;">
+		               		<a <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> href="ediftplog.do?sssn=${record.msn}&ftplev=EDISS" target="_new" onClick="window.open(this.href,'targetWindow','top=200px,left=600px,height=800px,width=700px,scrollbars=no,status=no,location=no'); return false;">
 		               			<img src="resources/images/bebullet.gif" border="0" alt="Vis Ftp log" >
 		               			&nbsp;${record.msn}
 		               		</a>
 		               	</td>
 		               <td class="tableCell" >&nbsp;
-		               		<a href="tds_export_renderEdifact.do?fp=${record.wurl}" target="_new" >
+		               		<a <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> href="tds_export_renderEdifact.do?fp=${record.wurl}" target="_new" >
 			               		<img src="resources/images/list.gif" border="0" width="12px" height="12px" alt="Visa Edifact" >
 			               		&nbsp;${record.mmn}
 	               		   	</a>
 		               </td>
-		               <td class="tableCell">&nbsp;${record.m1225}</td>
-		               <td class="tableCell" >&nbsp;${record.mdt}</td>
-		               <td class="tableCell" >&nbsp;${record.mtm}</td>
-		               <td class="tableCell" >&nbsp;${record.wtxt}
+		               <td class="tableCell" <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> >&nbsp;${record.m1225}</td>
+		               <td class="tableCell" <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> >&nbsp;${record.mdt}</td>
+		               <td class="tableCell" <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> >&nbsp;${record.mtm}</td>
+		               <td class="tableCell" <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> >&nbsp;${record.msr}</td>
+		               <td class="tableCell" <c:if test="${record.msr == 'R'}">style="color:#9F6000;"</c:if> >&nbsp;${record.wtxt}
 		               		<c:if test="${record.wmore == 'X'}">
 		               			&nbsp;&nbsp;
 		               			<a href="tds_export_renderLargeText.do?fmn=${record.mmn}" target="_blank" onClick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=500'); return false;">
