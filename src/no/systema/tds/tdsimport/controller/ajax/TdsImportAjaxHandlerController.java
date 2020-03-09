@@ -306,6 +306,8 @@ public class TdsImportAjaxHandlerController {
 				  //Debug
 				  logger.info("Currency RATE: " + record.getSvvk_krs());
 				  logger.info("Currency FACTOR: " + record.getSvvs_omr());
+				  //
+				  record.setOwnkod(jsonCurrencyRateContainer.getKod());
 				  result.add(record);
 			  }
 		  } 

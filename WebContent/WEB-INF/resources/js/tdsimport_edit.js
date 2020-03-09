@@ -769,15 +769,17 @@
 			}, function(data) {
 				var len = data.length;
 				for ( var i = 0; i < len; i++) {
-					//data[i].svvk_krs;
-					//data[i].svvs_omr;
-					jq('#svih_vaku').val(data[i].svvk_krs);
-					jq('#svih_vaom').val(data[i].svvs_omr);
+					//This is need it because of the latency on the ajax call that DACHSER JKG experiences 
+					if(jq('#svih_vakd').val() == data[i].ownkod){
+						jq('#svih_vaku').val(data[i].svvk_krs);
+						jq('#svih_vaom').val(data[i].svvs_omr);
+					}
 				}
 				
 			});
 	    });
 	});
+	/*
 	jq(function() { 
 	    jq('#svih_vakd').blur(function() {
 	    	if(jq('#svih_vaku').val()==''){
@@ -799,7 +801,7 @@
 	    	}
 	    });
 	});
-
+	*/
 	
 	//Meddelandetyp Mandatory fields
 	jq(function() { 
