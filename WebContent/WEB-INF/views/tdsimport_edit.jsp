@@ -2074,7 +2074,7 @@
 									<tr>	
 										<td class="text11">&nbsp;Fil:</td>
 										<td class="text11">
-			           						&nbsp;<input type="file" name="fileUpload" id="fileUpload" />
+			           						&nbsp;<input ondragenter="myFileUploadDragEnter(event)" ondragleave="myFileUploadDragLeave(event)" tabindex=-1 class="tableBorderWithRoundCornersLightYellow3D noFileChosenTransparent" style="width:150px;height:60px;display:block;" type="file" name="fileUpload" id="fileUpload" />
 			       						</td>
 					           		</tr>
 					           		</table>
