@@ -133,5 +133,13 @@ public final class TdsUrlDataStore {
 	//http://gw.systema.no/sycgip/TARC001R.pgm?user=OSCAR&type=Z..
 	static public String TDS_CODES2_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TARC001R.pgm"; 
 	
+	
+	//-------------
+	//Upload CSV
+	//-------------
+	static public String SYSTEMA_UPLOAD_FILE_CSV_INVOICE_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVG020R.pgm";	
+	//http://gw.systema.no:65209/sycgip/TSVG020R.pgm?user=OSCAR&wsdokn=tarzan.jpg
+	//{ "user": "OSCAR", "wsdokn": "tarzan.jpg","valids": "Y", "tmpdir": "/pdf/tmp/", "errMsg": "", "uploadcsv": [] } 
+		
 
 }
