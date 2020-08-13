@@ -380,13 +380,13 @@ public class TdsExportController {
 		String urlRequestParams = this.getRequestUrlKeyParameters(searchFilter, appUser);
 		//session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL + "==>params: " + urlRequestParams.toString()); 
 		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-		logger.info("URL: " + BASE_URL);
-		logger.info("URL PARAMS: " + urlRequestParams);
+		logger.warn("URL: " + BASE_URL);
+		logger.warn("URL PARAMS: " + urlRequestParams);
 		
 		String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
 	
 		//Debug --> 
-		logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
+		logger.warn(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
 		logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
 		if(jsonPayload!=null){
 			JsonTdsExportTopicListContainer jsonTdsExportTopicListContainer = this.tdsExportTopicListService.getTdsExportTopicListContainer(jsonPayload);

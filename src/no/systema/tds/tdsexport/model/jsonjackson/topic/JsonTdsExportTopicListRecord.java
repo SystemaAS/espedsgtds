@@ -36,6 +36,10 @@ public class JsonTdsExportTopicListRecord extends JsonAbstractGrandFatherRecord 
 	public void setTullid(String value) {  this.tullid = value; }
 	public String getTullid() { return this.tullid;}
 	
+	private String mrn = null;
+	public void setMrn(String value) {  this.mrn = value; }
+	public String getMrn() { return this.mrn;}
+	
 	private String sign = null;
 	public void setSign(String value) {  this.sign = value; }
 	public String getSign() { return this.sign;}
