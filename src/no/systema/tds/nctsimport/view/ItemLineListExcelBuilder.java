@@ -11,11 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.servlet.view.document.AbstractExcelView;
-import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.hssf.util.*;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
+import org.springframework.web.servlet.view.document.AbstractXlsView;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
 
 import no.systema.tds.nctsimport.model.jsonjackson.topic.items.JsonNctsImportSpecificTopicItemRecord;
 import no.systema.tds.util.TdsConstants;
@@ -26,7 +24,7 @@ import no.systema.main.context.TdsAppContext;
  * @date Dec 5, 2014
  * 
  */
-public class ItemLineListExcelBuilder extends AbstractExcelView {
+public class ItemLineListExcelBuilder extends AbstractXlsView {
 	private ApplicationContext context;
 	
 	public ItemLineListExcelBuilder(){
@@ -34,26 +32,26 @@ public class ItemLineListExcelBuilder extends AbstractExcelView {
 	}
 	
 	protected void buildExcelDocument(Map<String, Object> model,
-        HSSFWorkbook workbook, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Workbook workbook, HttpServletRequest request, HttpServletResponse response) throws Exception {
         // get data model which is passed by the Spring Container via our own Controller implementation
         List<JsonNctsImportSpecificTopicItemRecord> itemList = (List<JsonNctsImportSpecificTopicItemRecord>) model.get(TdsConstants.ITEM_LIST);
          
         // create a new Excel sheet
-        HSSFSheet sheet = workbook.createSheet("TDS NCTS-Import Item list");
+        Sheet sheet = workbook.createSheet("TDS NCTS-Import Item list");
         sheet.setDefaultColumnWidth(30);
          
         // create style for header cells
         CellStyle style = workbook.createCellStyle();
         Font font = workbook.createFont();
         font.setFontName("Arial");
-        style.setFillForegroundColor(HSSFColor.BLUE.index);
-        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-        font.setColor(HSSFColor.WHITE.index);
+        style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.BLUE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        font.setBold(true);
+        font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
         style.setFont(font);
          
         // create header row
-        HSSFRow header = sheet.createRow(0);
+        Row header = sheet.createRow(0);
 
         header.createCell(0).setCellValue(this.context.getMessage("systema.ncts.import.item.list.label.tvavd.avdelning", new Object[0], request.getLocale()));
         header.getCell(0).setCellStyle(style);
@@ -79,7 +77,7 @@ public class ItemLineListExcelBuilder extends AbstractExcelView {
         int rowCount = 1;
          
         for (JsonNctsImportSpecificTopicItemRecord record : itemList) {
-            HSSFRow aRow = sheet.createRow(rowCount++);
+            Row aRow = sheet.createRow(rowCount++);
             aRow.createCell(0).setCellValue(record.getTvavd());
             aRow.createCell(1).setCellValue(record.getTvtdn());
             aRow.createCell(2).setCellValue(record.getTvli());
