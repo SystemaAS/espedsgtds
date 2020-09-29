@@ -126,7 +126,7 @@ public class TdsAjaxHandlerController {
 	   */
 	  @RequestMapping(value = "getCurrencyRate.do", method = RequestMethod.GET)
 	  public @ResponseBody Set<JsonTdsExportTullkontorRecord> getCurrencyRate(@RequestParam String applicationUser, @RequestParam String currencyCode) {
-		  logger.info("Inside TdsExportAjaxHandler.getCurrencyRate()");
+		  logger.warn("Inside TdsExportAjaxHandler.getCurrencyRate()");
 		  Set result = new HashSet();
 		  
 		  String BASE_URL_CURRENCY_RATE = TdsUrlDataStore.TDS_FETCH_CURRENCY_RATE_URL;
@@ -142,8 +142,8 @@ public class TdsAjaxHandlerController {
 			  JsonCurrencyRateContainer jsonCurrencyRateContainer = this.currencyRateService.getCurrencyRateContainer(jsonPayloadCurrencyRate);
 			  for(JsonCurrencyRateRecord record : jsonCurrencyRateContainer.getValutakurs()){
 				  //Debug
-				  logger.info("Currency RATE: " + record.getSvvk_krs());
-				  logger.info("Currency FACTOR: " + record.getSvvs_omr());
+				  logger.warn("Currency RATE: " + record.getSvvk_krs());
+				  logger.warn("Currency FACTOR: " + record.getSvvs_omr());
 				  result.add(record);
 			  }
 		  } 

@@ -4,6 +4,9 @@
 <!-- ======================= header ===========================-->
 <jsp:include page="/WEB-INF/views/headerTds.jsp" />
 <!-- =====================end header ==========================-->
+
+<SCRIPT type="text/javascript" src="resources/js/tdsgate.js?ver=${user.versionEspedsg}"></SCRIPT>
+
  	<%-- The important part of this JSP is the above view: headerTds.jsp  --%>
  	<table class="text32Bold" width="100%" border="0" cellspacing="0" cellpadding="0">
  	        <tr height="50"><td >&nbsp;</td></tr> 
