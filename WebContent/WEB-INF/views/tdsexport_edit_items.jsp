@@ -133,7 +133,7 @@
 							        
 			        	        </table>
 					        </td>
-					        <td width="50%">
+					        <td width="30%">
 						 		<table width="80%" border="0" cellspacing="1" cellpadding="0">
 							 		<tr>
 							            <td width="30%" class="text12Bold" align="left" >Mottagare</td>
@@ -157,6 +157,63 @@
 							        </tr>
 			        	        </table>
 					        </td>
+					        	<td valign="bottom" align="right">
+								<table class="tableNoBorderWithRoundCorners"> 
+								<%--<table class="tableBorderWithRoundCorners">--%>
+								<tr>
+									<td class="text11">&nbsp;</td>
+									<td align="center" class="tableHeaderField12"><b>Antal</b></td>
+									<td align="center" class="tableHeaderField12"><b>B.vikt</b></td>
+									<td align="center" class="tableHeaderField12"><b>F.belop</b></td>
+								</tr>
+								<tr>
+									<td class="text12">Huvud</td>
+									<td align="right" class="tableCellFirst12">${recordTopic.sveh_kota}</td>
+									<td align="right" class="tableCell12">${recordTopic.sveh_brut}</td>
+									<td align="right" class="tableCell12">${recordTopic.sveh_fabl}</td>
+								</tr>
+								<tr>	
+									<td class="text12">Linje</td>
+									<td align="right" class="tableCellFirst12">${model.recordItemContainerTopic.calculatedItemLinesTotalKolli}</td>
+									<td align="right" class="tableCell12">${model.recordItemContainerTopic.calculatedItemLinesTotalGrossWeight}</td>
+									<td align="right" class="tableCell12">${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}</td>
+								</tr>
+								<tr>	
+									<td class="text12">Diff.</td>
+									<%--Diff Antal --%>
+									<c:choose>
+									<c:when test="${model.recordItemContainerTopic.diffItemLinesTotalKolliWithInvoiceTotalKolliInt != 0}">
+										<td align="right" class="tableCell12" style="background-color:lightyellow;color:red;" >${model.recordItemContainerTopic.diffItemLinesTotalKolliWithInvoiceTotalKolli}</td>
+									</c:when>
+									<c:otherwise>
+										<td align="right" class="tableCell12" style="background-color:lightyellow;" >${model.recordItemContainerTopic.diffItemLinesTotalKolliWithInvoiceTotalKolli}</td>
+									</c:otherwise>
+									</c:choose>
+									
+									<%--Diff B.vikt --%>
+									<c:choose>
+									<c:when test="${model.recordItemContainerTopic.diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeightDbl != 0}">
+										<td align="right" class="tableCell12" style="background-color:lightyellow;color:red;" >${model.recordItemContainerTopic.diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight}</td>
+									</c:when>
+									<c:otherwise>
+										<td align="right" class="tableCell12" style="background-color:lightyellow;" >${model.recordItemContainerTopic.diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight}</td>
+									</c:otherwise>
+									</c:choose>
+									
+									<%--Diff F.belopp --%>
+									<c:choose>
+									<c:when test="${fn:contains(model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
+										<td align="right" class="tableCell12" style="background-color:lightyellow;color:red;" >${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}</td>
+									</c:when>
+									<c:otherwise>
+										<td align="right" class="tableCell12" style="background-color:lightyellow;" >${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}</td>
+									</c:otherwise>
+									</c:choose>
+									
+								</tr>
+								</table>
+							</td>
+										
 				        </tr>
 				        
 					</table>          
@@ -287,24 +344,6 @@
 											</c:if>
 										</td>
 										<td width="5%" class="text14">&nbsp;</td>
-										<td align="right" class="text12">Fakturabelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="12" maxlength="20" value='${recordTopic.sveh_fabl}'>
-										</td>
-										<td align="right" class="text12">Varulinjebelopp:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly class="inputText12BlueBoldReadOnly" size="12" maxlength="20" value='${model.recordItemContainerTopic.calculatedItemLinesTotalAmount}'>
-										</td>
-										<td align="right" class="text12">Differans:&nbsp;
-											<input tabindex=-1 align="right" type="text" readonly
-												<c:choose>
-												<c:when test="${fn:contains(model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount,'-')}">
-													class="inputtext14RedBoldReadOnly" 
-												</c:when>
-												<c:otherwise>
-													class="inputtext14BlueBoldReadOnly"
-												</c:otherwise>
-												</c:choose>
-												size="12" maxlength=20" value='${model.recordItemContainerTopic.diffItemLinesTotalAmountWithInvoiceTotalAmount}'>
-										</td>
 									</tr>
 									<tr height="2"><td></td></tr>
 								</table>

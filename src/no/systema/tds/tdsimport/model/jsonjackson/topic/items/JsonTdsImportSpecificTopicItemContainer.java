@@ -43,6 +43,34 @@ public class JsonTdsImportSpecificTopicItemContainer {
 		NumberFormatterLocaleAware formatter = new NumberFormatterLocaleAware();
 		return formatter.getDoubleEuropeanFormat(this.diffItemLinesTotalAmountWithInvoiceTotalAmount, 3, false);
 	}
+	public Double getDiffItemLinesTotalAmountWithInvoiceTotalAmountDbl() { return this.diffItemLinesTotalAmountWithInvoiceTotalAmount;	}
+	
+	private int calculatedItemLinesTotalKolli = 0;
+	public void setCalculatedItemLinesTotalKolli(int value) {  this.calculatedItemLinesTotalKolli = value; }
+	public String getCalculatedItemLinesTotalKolli() { return String.valueOf(this.calculatedItemLinesTotalKolli); }
+
+	private int diffItemLinesTotalKolliWithInvoiceTotalKolli = 0;
+	public void setDiffItemLinesTotalKolliWithInvoiceTotalKolli(int value) {  this.diffItemLinesTotalKolliWithInvoiceTotalKolli = value; }
+	public String getDiffItemLinesTotalKolliWithInvoiceTotalKolli() { return String.valueOf(this.diffItemLinesTotalKolliWithInvoiceTotalKolli);	}
+	public Integer getDiffItemLinesTotalKolliWithInvoiceTotalKolliInt() { return this.diffItemLinesTotalKolliWithInvoiceTotalKolli;	}
+	
+	
+	private Double calculatedItemLinesTotalGrossWeight = 0.000D;
+	public void setCalculatedItemLinesTotalGrossWeight(Double value) {  this.calculatedItemLinesTotalGrossWeight = value; }
+	public String getCalculatedItemLinesTotalGrossWeight() {
+		NumberFormatterLocaleAware formatter = new NumberFormatterLocaleAware();
+		return formatter.getDoubleEuropeanFormat(this.calculatedItemLinesTotalGrossWeight, 3, false);	}
+	public Double getCalculatedItemLinesTotalGrossWeightDbl() { return this.calculatedItemLinesTotalGrossWeight;	}
+
+	private Double diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight = 0.000D;
+	public void setDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight(Double value) {  this.diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight = value; }
+	public String getDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight() {
+		NumberFormatterLocaleAware formatter = new NumberFormatterLocaleAware();
+		return formatter.getDoubleEuropeanFormat(this.diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight, 3, false);	}
+	public Double getDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeightDbl() { return this.diffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight;	}
+	
+	
+	
 	
 	private Collection<JsonTdsImportSpecificTopicItemRecord> orderList;
 	public void setOrderList(Collection<JsonTdsImportSpecificTopicItemRecord> value){ this.orderList = value; }

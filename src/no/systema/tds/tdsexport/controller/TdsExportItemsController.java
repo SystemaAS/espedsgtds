@@ -2,6 +2,7 @@
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +34,7 @@ import no.systema.main.util.JsonDebugger;
 import no.systema.main.util.StringManager;
 
 import no.systema.tds.tdsexport.mapper.url.request.UrlRequestParameterMapper;
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicFaktTotalRecord;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
@@ -43,7 +45,7 @@ import no.systema.tds.tdsexport.url.store.TdsExportUrlDataStore;
 import no.systema.tds.tdsexport.util.RpgReturnResponseHandler;
 import no.systema.tds.tdsexport.util.TdsExportCalculator;
 import no.systema.tds.tdsexport.util.manager.TdsExportItemsAutoControlMgr;
-
+import no.systema.tds.tdsexport.util.manager.TdsExportSumDiffCalculatorMgr;
 import no.systema.tds.tdsexport.validator.TdsExportItemsValidator;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.JsonTdsImportSpecificTopicRecord;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.items.JsonTdsImportSpecificTopicItemContainer;
@@ -361,6 +363,26 @@ public class TdsExportItemsController {
 	    		Double diffItemLinesTotalAmountWithInvoiceTotalAmount = this.tdsExportCalculator.getDiffBetweenCalculatedTotalAmountAndTotalAmount(invoiceTotalAmount, calculatedItemLinesTotalAmount);
 	    		jsonTdsExportSpecificTopicItemContainer.setCalculatedItemLinesTotalAmount(calculatedItemLinesTotalAmount);
 	    		jsonTdsExportSpecificTopicItemContainer.setDiffItemLinesTotalAmountWithInvoiceTotalAmount(diffItemLinesTotalAmountWithInvoiceTotalAmount);
+	    		
+	    		//New elements on matrix
+	    		//Antal and diff with total antal on header(sveh_kota)
+	    		JsonTdsExportSpecificTopicRecord sumTopicRecord = this.tdsExportSumDiffCalculatorMgr.getSumOfSpecificFieldsInItemLines(avd, opd, appUser);
+				jsonTdsExportSpecificTopicItemContainer.setCalculatedItemLinesTotalKolli(sumTopicRecord.getSumOfAntalKolliInItemLines());
+				if(StringUtils.isNotEmpty(headerRecord.getSveh_kota())){
+					jsonTdsExportSpecificTopicItemContainer.setDiffItemLinesTotalKolliWithInvoiceTotalKolli(Integer.parseInt(headerRecord.getSveh_kota()) - sumTopicRecord.getSumOfAntalKolliInItemLines() );
+				}else{
+					jsonTdsExportSpecificTopicItemContainer.setDiffItemLinesTotalKolliWithInvoiceTotalKolli(0 - sumTopicRecord.getSumOfAntalKolliInItemLines() );
+				}
+				
+				//Gross weight and diff with total Gross weight on header(sveh_brut)
+				jsonTdsExportSpecificTopicItemContainer.setCalculatedItemLinesTotalGrossWeight(sumTopicRecord.getSumOfGrossWeightInItemLines());
+				if(StringUtils.isNotEmpty(headerRecord.getSveh_brut())){
+					Double diffGrossWeight = headerRecord.getSveh_brut_dbl() - sumTopicRecord.getSumOfGrossWeightInItemLines();
+					jsonTdsExportSpecificTopicItemContainer.setDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight(diffGrossWeight);
+				}else{
+					Double diffGrossWeight = 0.00D - sumTopicRecord.getSumOfGrossWeightInItemLines();
+					jsonTdsExportSpecificTopicItemContainer.setDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight(diffGrossWeight);
+				}
 	    	}
 	    	
 	    	//general code population
@@ -1038,6 +1060,7 @@ public class TdsExportItemsController {
 	public void setTdsBilagdaHandlingarYKoderService(TdsBilagdaHandlingarYKoderService value){this.tdsBilagdaHandlingarYKoderService = value;}
 	public TdsBilagdaHandlingarYKoderService getTdsBilagdaHandlingarYKoderService(){ return this.tdsBilagdaHandlingarYKoderService; }
 	
-	
+	@Autowired
+	TdsExportSumDiffCalculatorMgr tdsExportSumDiffCalculatorMgr;
 }
 

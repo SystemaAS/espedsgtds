@@ -2,6 +2,7 @@ package no.systema.tds.tdsimport.controller;
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,7 @@ import no.systema.main.util.StringManager;
 
 
 import no.systema.tds.tdsimport.util.manager.TdsImportItemsAutoControlMgr;
+import no.systema.tds.tdsimport.util.manager.TdsImportSumDiffCalculatorMgr;
 import no.systema.tds.tdsimport.mapper.url.request.UrlRequestParameterMapper;
 import no.systema.tds.tdsimport.model.KundensVaruRegisterUpdateItemRecord;
 import no.systema.tds.tdsimport.model.jsonjackson.topic.items.JsonTdsImportSpecificTopicItemContainer;
@@ -55,7 +57,8 @@ import no.systema.tds.service.TdsBilagdaHandlingarYKoderService;
 import no.systema.tds.service.TdsTaricVarukodService;
 import no.systema.tds.service.TdsTillaggskoderService;
 import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
-
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
+import no.systema.tds.tdsexport.util.manager.TdsExportSumDiffCalculatorMgr;
 import no.systema.tds.util.manager.CodeDropDownMgr;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsTaricVarukodContainer;
 import no.systema.tds.model.jsonjackson.codes.JsonTdsTaricVarukodRecord;
@@ -379,6 +382,25 @@ public class TdsImportItemsController {
 		    	Double diffItemLinesTotalAmountWithInvoiceTotalAmount = this.tdsImportCalculator.getDiffBetweenCalculatedTotalAmountAndTotalAmount(invoiceTotalAmount, calculatedItemLinesTotalAmount);
 		    	jsonTdsImportSpecificTopicItemContainer.setCalculatedItemLinesTotalAmount(calculatedItemLinesTotalAmount);
 		    	jsonTdsImportSpecificTopicItemContainer.setDiffItemLinesTotalAmountWithInvoiceTotalAmount(diffItemLinesTotalAmountWithInvoiceTotalAmount);
+		    	//New elements on matrix
+	    		//Antal and diff with total antal on header(sveh_kota)
+	    		JsonTdsImportSpecificTopicRecord sumTopicRecord = this.tdsImportSumDiffCalculatorMgr.getSumOfSpecificFieldsInItemLines(avd, opd, appUser);
+				jsonTdsImportSpecificTopicItemContainer.setCalculatedItemLinesTotalKolli(sumTopicRecord.getSumOfAntalKolliInItemLines());
+				if(StringUtils.isNotEmpty(headerRecord.getSvih_kota())){
+					jsonTdsImportSpecificTopicItemContainer.setDiffItemLinesTotalKolliWithInvoiceTotalKolli(Integer.parseInt(headerRecord.getSvih_kota()) - sumTopicRecord.getSumOfAntalKolliInItemLines() );
+				}else{
+					jsonTdsImportSpecificTopicItemContainer.setDiffItemLinesTotalKolliWithInvoiceTotalKolli(0 - sumTopicRecord.getSumOfAntalKolliInItemLines() );
+				}
+				
+				//Gross weight and diff with total Gross weight on header(sveh_brut)
+				jsonTdsImportSpecificTopicItemContainer.setCalculatedItemLinesTotalGrossWeight(sumTopicRecord.getSumOfGrossWeightInItemLines());
+				if(StringUtils.isNotEmpty(headerRecord.getSvih_brut())){
+					Double diffGrossWeight = headerRecord.getSvih_brut_dbl() - sumTopicRecord.getSumOfGrossWeightInItemLines();
+					jsonTdsImportSpecificTopicItemContainer.setDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight(diffGrossWeight);
+				}else{
+					Double diffGrossWeight = 0.00D - sumTopicRecord.getSumOfGrossWeightInItemLines();
+					jsonTdsImportSpecificTopicItemContainer.setDiffItemLinesTotalGrossWeightWithInvoiceTotalGrossWeight(diffGrossWeight);
+				}
 	    	}
 	    	//general code population
 	    	this.codeDropDownMgr.populateCodesHtmlDropDownsFromJsonString(this.urlCgiProxyService, this.tdsDropDownListPopulationService, model,appUser,"A","KLI");
@@ -1001,7 +1023,8 @@ public class TdsImportItemsController {
 	public void setTdsBilagdaHandlingarYKoderService(TdsBilagdaHandlingarYKoderService value){this.tdsBilagdaHandlingarYKoderService = value;}
 	public TdsBilagdaHandlingarYKoderService getTdsBilagdaHandlingarYKoderService(){ return this.tdsBilagdaHandlingarYKoderService; }
 	
-	
+	@Autowired
+	TdsImportSumDiffCalculatorMgr tdsImportSumDiffCalculatorMgr;
 	 
 }
 
