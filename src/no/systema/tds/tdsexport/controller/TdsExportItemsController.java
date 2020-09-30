@@ -889,9 +889,9 @@ public class TdsExportItemsController {
 		String urlRequestParamsKeys = "user="+ applicationUser + "&ie=" + TDS_IE + "&kod=" + recordToValidate.getSvev_vata() + "&lk=" + headerRecord.getSveh_aube();
 
 		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-		logger.info("FETCH av mangdenhet... ");
-    	logger.info("URL: " + BASE_URL_FETCH);
-    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+		logger.warn("FETCH av mangdenhet... ");
+    	logger.warn("URL: " + BASE_URL_FETCH);
+    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
     	//-----------------
     	//Json and execute 
     	//-----------------
@@ -899,7 +899,9 @@ public class TdsExportItemsController {
 		logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
 		JsonTdsMangdEnhetContainer container = this.tdsExportSpecificTopicItemService.getTdsMangdEnhetContainer(jsonPayload);
 		for(JsonTdsMangdEnhetRecord record: container.getXtramangdenhet()){
+			logger.warn("A");
 			if(record.getXtra()!=null && record.getXtra().toUpperCase().equals("Y")){
+				logger.warn("B -> Xtramangdenhet:" + record.getXtra());
 				//Set all values
 				recordToValidate.setExtraMangdEnhet(record.getXtra().toUpperCase());
 				recordToValidate.setExtraMangdEnhetCode(record.getSvtx15_33());
