@@ -4,6 +4,7 @@ import org.springframework.validation.Validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
+import no.systema.tds.tdsexport.model.jsonjackson.topic.JsonTdsExportSpecificTopicRecord;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
 
 /**
@@ -20,12 +21,16 @@ public class TdsExportItemsValidator implements Validator {
 		return JsonTdsExportSpecificTopicItemRecord.class.isAssignableFrom(clazz); 
 	}
 	
+	public void validate(Object obj, Errors errors) { 
+		
+	}
 	/**
+	 * 
+	 * @param headerRecord
 	 * @param obj
 	 * @param errors
-	 * 
 	 */
-	public void validate(Object obj, Errors errors) { 
+	public void validate(JsonTdsExportSpecificTopicRecord headerRecord, Object obj, Errors errors) { 
 		JsonTdsExportSpecificTopicItemRecord record = (JsonTdsExportSpecificTopicItemRecord)obj;
 		
 		//Check for Mandatory fields first
@@ -127,9 +132,13 @@ public class TdsExportItemsValidator implements Validator {
 							errors.rejectValue("svev_ankv", "", "(Extra mängdenhet: antal " + record.getExtraMangdEnhetDescription() + ")");
 						}
 					}else{
-						if(record.getSvev_ankv()!=null && !"".equals(record.getSvev_ankv())){
-							errors.rejectValue("svev_ankv", "systema.tds.export.header.error.rule.item.svev_ankv.extraMangd.mustNotExist");
-						}
+						
+							if(record.getSvev_ankv()!=null && !"".equals(record.getSvev_ankv())){
+								if(!"CO".equals(headerRecord.getSveh_dek1())){
+									errors.rejectValue("svev_ankv", "systema.tds.export.header.error.rule.item.svev_ankv.extraMangd.mustNotExist");
+								}
+							}
+						
 					}
 					
 					

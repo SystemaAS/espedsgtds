@@ -180,7 +180,7 @@ public class TdsExportItemsController {
 				
 				TdsExportItemsValidator validator = new TdsExportItemsValidator();
 				logger.info("Host via HttpServletRequest.getHeader('Host'): " + request.getHeader("Host"));
-			    validator.validate(recordToValidate, bindingResult);
+			    validator.validate(headerRecord, recordToValidate, bindingResult);
 			    //check for ERRORS
 				if(bindingResult.hasErrors()){
 					isValidCreatedRecordTransactionOnRPG = false;
