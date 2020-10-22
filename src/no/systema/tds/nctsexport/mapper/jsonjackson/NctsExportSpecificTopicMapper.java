@@ -28,18 +28,19 @@ public class NctsExportSpecificTopicMapper extends ObjectMapperAbstractGrandFath
 		logger.info("[JSON-String payload status=OK]  " + topicListContainer.getUser());
 		
 		//DEBUG
-		
-		Collection<JsonNctsExportSpecificTopicRecord> fields = topicListContainer.getOneorder();
-		for(JsonNctsExportSpecificTopicRecord record : fields){
-			/*logger.info("SVEH_SYAV: " + record.getSveh_syav());
-			logger.info("SVEH_SYOP: " + record.getSveh_syop());
-			logger.info("SVEH_AVTL: " + record.getSveh_avtl());
-			logger.info("SVEH_MOPA: " + record.getSveh_mopa());
-			logger.info("SVEH_MOLK: " + record.getSveh_molk());
-			logger.info("SVEH_FABL: " + record.getSveh_fabl());
-			logger.info("SVEH_FATX: " + record.getSveh_fatx());
-			logger.info("SVEH_VAKD: " + record.getSveh_vakd());
-			*/
+		if(topicListContainer.getOneorder()!=null){
+			Collection<JsonNctsExportSpecificTopicRecord> fields = topicListContainer.getOneorder();
+			for(JsonNctsExportSpecificTopicRecord record : fields){
+				/*logger.info("SVEH_SYAV: " + record.getSveh_syav());
+				logger.info("SVEH_SYOP: " + record.getSveh_syop());
+				logger.info("SVEH_AVTL: " + record.getSveh_avtl());
+				logger.info("SVEH_MOPA: " + record.getSveh_mopa());
+				logger.info("SVEH_MOLK: " + record.getSveh_molk());
+				logger.info("SVEH_FABL: " + record.getSveh_fabl());
+				logger.info("SVEH_FATX: " + record.getSveh_fatx());
+				logger.info("SVEH_VAKD: " + record.getSveh_vakd());
+				*/
+			}
 		}
 			
 		return topicListContainer;

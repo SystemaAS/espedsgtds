@@ -253,6 +253,52 @@ public class NctsExportAjaxHandlerController {
 			return result;
 		  
 	  }
+	 
+	 /**
+	  * Calculates the guarantee amount for an end-user event (usually a button)
+	  * @param applicationUser
+	  * @param avd
+	  * @param opd
+	  * @return
+	  */
+	 @RequestMapping(value = "calculateGuaranteeAmount.do", method = RequestMethod.GET)
+	  public @ResponseBody Set<JsonNctsExportSpecificTopicContainer> calculateGuarantee(@RequestParam String applicationUser, 
+			  								@RequestParam String avd, @RequestParam String opd) {
+		 
+		 	String method = "NctsExportAjaxHandlerController.calculateGuarantee";
+		 	logger.info("Inside " + method);
+		 	Set result = new HashSet();
+		 	
+		 	logger.info("FETCH calculation...");
+			//---------------------------
+			//get BASE URL = RPG-PROGRAM
+			//---------------------------
+			String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_CALCULATE_SPECIFIC_TOPIC_GUARRANTEE_URL;
+			//url params
+			StringBuffer urlRequestParamsKeys = new StringBuffer();
+			urlRequestParamsKeys.append("user=" + applicationUser + "&avd=" + avd + "&opd=" + opd);
+			//for debug purposes in GUI
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+			logger.warn("URL: " + BASE_URL);
+			logger.warn("URL PARAMS: " + urlRequestParamsKeys.toString());
+			//--------------------------------------
+			//EXECUTE the FETCH (RPG program) here
+			//--------------------------------------
+			String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
+			//Debug --> 
+			logger.info(method + " --> jsonPayload:" + jsonPayload);
+			logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+
+			if(jsonPayload!=null){
+	    		JsonNctsExportSpecificTopicContainer container = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
+	    		if(container!=null){
+	    			logger.warn("Guarantee amount via AJAX: " + container.getAmount() );
+	    			result.add(container);
+	    		}
+	    	}
+			return result;
+	  }
 	  
 	  /**
 	   * 	

@@ -205,8 +205,8 @@ public class NctsExportHeaderController {
 					session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
 					
 					logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-				    	logger.info("URL: " + BASE_URL);
-				    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+				    	logger.warn("URL: " + BASE_URL);
+				    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
 				    	//--------------------------------------
 				    	//EXECUTE the FETCH (RPG program) here
 				    	//--------------------------------------
@@ -231,7 +231,7 @@ public class NctsExportHeaderController {
 						return loginView;
 					}
 			    	
-			    	//----------------------------
+			    //----------------------------
 				//CREATE and/or UPDATE RECORD
 				//----------------------------	
 				}else if(TdsConstants.ACTION_UPDATE.equals(action)){

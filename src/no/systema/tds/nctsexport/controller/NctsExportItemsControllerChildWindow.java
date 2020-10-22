@@ -199,8 +199,8 @@ public class NctsExportItemsControllerChildWindow {
 		//add URL-parameters
 		String urlRequestParams = this.getRequestUrlKeyParameters(searchFilter, appUser);
 		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-    	logger.info("URL: " + BASE_URL);
-    	logger.info("URL PARAMS: " + urlRequestParams);
+    	logger.warn("URL: " + BASE_URL);
+    	logger.warn("URL PARAMS: " + urlRequestParams);
     	
     	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
 

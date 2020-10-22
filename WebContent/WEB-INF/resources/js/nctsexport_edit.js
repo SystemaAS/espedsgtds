@@ -222,6 +222,25 @@
 	    });
 	});
 	
+	jq(function() { 
+	    jq('#calculateGuaranteeButton').click(function() {
+	    		//alert('Hej');
+	    		//this parameters must match the AJAX controller parameter names in Spring exactly...
+	    		jq.getJSON('calculateGuaranteeAmount.do', {
+	    			applicationUser : jq('#applicationUser').val(),
+	    			avd : jq('#avd').val(),
+	    			opd : jq('#opd').val(),
+	    			ajax : 'true'
+			}, 
+			function(data) {
+				var len = data.length;
+				for ( var i = 0; i < len; i++) {
+					jq('#thgbl').val(data[i].amount);
+				}
+			});
+	    });
+	});
+	
 	
 	
 	

@@ -25,6 +25,10 @@ public class JsonNctsExportSpecificTopicContainer {
 	public void setOpd(String value) {  this.opd = value; }
 	public String getOpd() { return this.opd;}
 	
+	private String amount = null;
+	public void setAmount(String value) {  this.amount = value; }
+	public String getAmount() { return this.amount;}
+	
 	private String errMsg = null;
 	public void setErrMsg(String value) {  this.errMsg = value; }
 	public String getErrMsg() { return this.errMsg;}

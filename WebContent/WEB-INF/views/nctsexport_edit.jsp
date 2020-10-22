@@ -971,7 +971,9 @@
 										 			<td class="text14">&nbsp;<font class="text16RedBold" >*</font><span title="thgvk">Valuta</span></td>
 										 		</tr>
 										 		<tr>	
-										 			<td colspan="2" align="left" ><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="thgbl" id="thgbl" size="20" maxlength="20" value="${model.record.thgbl}"></td>
+										 			<td colspan="2" align="left" >
+										 				<input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="thgbl" id="thgbl" size="20" maxlength="20" value="${model.record.thgbl}">
+										 			</td>
 										 			<td class="text14">
 										 				<select class="inputTextMediumBlueMandatoryField" name="thgvk" id="thgvk" >
 										 				  <option value="">-Välj-</option>	
@@ -983,6 +985,11 @@
 															<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="16px" height="16px" border="0" alt="search" >
 														</a>								
 									 				</td>
+								 				</tr>
+								 				<tr>
+								 					<td colspan="2" align="left" >
+										 				<button title="Hämta garantibeloppet vid behov" name="calculateGuaranteeButton" id="calculateGuaranteeButton" class="buttonGrayWithGreenFrame" type="button" >Hämta garantibelopp</button>
+										 			</td>
 								 				</tr>
 								 				<tr height="15"><td></td></tr>
 											

@@ -41,6 +41,10 @@ public final class UrlDataStore {
 	static public String NCTS_EXPORT_BASE_VALIDATE_SPECIFIC_TOPIC_GUARRANTEE_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE003R.pgm";
 	//http://gw.systema.no/sycgip/TNCE003R.pgm?user=YBC&thgft1=09SE00005000000W7&thgadk=2222
 	
+	//Calculate Guarantee manually
+	//http://10.13.3.22/sycgip/TNCE001RG0.pgm?user=OSCAR&avd=1&opd=50211
+	static public String NCTS_EXPORT_BASE_CALCULATE_SPECIFIC_TOPIC_GUARRANTEE_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE001RG0.pgm";
+	
 	//Validate Sensitive goods
 	//http://gw.systema.no/sycgip/TNCE017R.pgm?user=OSCAR&tftanr=170199(valid varukod) --->010290 (valid varukod)
 	static public String NCTS_EXPORT_BASE_VALIDATE_SPECIFIC_TOPIC_ITEM_SENSITIVE_GOODS_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE017R.pgm";
