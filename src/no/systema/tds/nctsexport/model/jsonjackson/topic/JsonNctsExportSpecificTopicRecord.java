@@ -6,6 +6,7 @@ package no.systema.tds.nctsexport.model.jsonjackson.topic;
 import no.systema.main.model.jsonjackson.general.JsonAbstractGrandFatherRecord;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.*;
 
 import org.apache.log4j.Logger;
@@ -43,6 +44,17 @@ public class JsonNctsExportSpecificTopicRecord extends JsonAbstractGrandFatherRe
 		this.sumOfAntalItemLinesStr = String.valueOf(this.sumOfAntalItemLines);
 		return this.sumOfAntalItemLinesStr;
 	}
+	//guarantee
+	private int comparedGuaranteeValue = 0;
+	public void setComparedGuaranteeValue(int value) {  this.comparedGuaranteeValue = value; }
+	public int getComparedGuaranteeValue() { return this.comparedGuaranteeValue; }
+	
+	//calculated guarantee amount
+	private Integer calculatedGuaranteeAmount = 0;
+	public void setCalculatedGuaranteeAmount(Integer value) {  this.calculatedGuaranteeAmount = value; }
+	public Integer getCalculatedGuaranteeAmount() { return this.calculatedGuaranteeAmount; }
+		
+	
 	//thavd Avdeling 
 	private String thavd = null;
 	public void setThavd(String value) {  this.thavd = value; }

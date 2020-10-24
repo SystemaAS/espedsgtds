@@ -30,6 +30,7 @@ import org.springframework.web.bind.WebDataBinder;
 //application imports
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
+import no.systema.main.util.BigDecimalFormatter;
 import no.systema.main.util.JsonDebugger;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
@@ -66,6 +67,7 @@ import no.systema.tds.nctsexport.service.html.dropdown.DropDownListPopulationSer
 import no.systema.tds.nctsexport.url.store.UrlDataStore;
 import no.systema.tds.nctsexport.util.RpgReturnResponseHandler;
 import no.systema.tds.nctsexport.util.manager.CodeDropDownMgr;
+import no.systema.tds.nctsexport.util.manager.NctsExportControllerAjaxCommonFunctionsMgr;
 import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.util.TdsConstants;
 
@@ -87,7 +89,7 @@ public class NctsExportHeaderController {
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
-
+	private BigDecimalFormatter bigDecimalFormatter = new BigDecimalFormatter();
 	private ApplicationContext context;
 	
 	@InitBinder
@@ -254,8 +256,16 @@ public class NctsExportHeaderController {
 						recordToValidate.setThsg(sign);
 						
 					}
+					//get guarantee in order to validate with end-user guarantee in GUI
+					JsonNctsExportSpecificTopicContainer guaranteeContainer = nctsExportControllerAjaxCommonFunctionsMgr
+						      .calculateGuaranteeAmount(appUser.getUser(), recordToValidate.getThavd(), recordToValidate.getThtdn());
+					int comparedGuaranteeValue = bigDecimalFormatter.compareBigDecimals(recordToValidate.getThgbl(), guaranteeContainer.getAmount(), 0);
+					recordToValidate.setComparedGuaranteeValue(comparedGuaranteeValue);
+					recordToValidate.setCalculatedGuaranteeAmount(bigDecimalFormatter.getBigDecimalIntegerPart(guaranteeContainer.getAmount()));
+					
 					validator.validate(recordToValidate, bindingResult);
 					recordToValidate.setTh0035(th0035);
+					
 					
 				    //check for ERRORS
 					if(bindingResult.hasErrors()){
@@ -1596,6 +1606,48 @@ public class NctsExportHeaderController {
 		
 	}
 	
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @param opd
+	 * @return
+	 */
+	public String calculateGuaranteeAmount(String applicationUser, String avd, String opd){
+		String retval = "";
+		
+		logger.info("FETCH calculation...");
+		//---------------------------
+		//get BASE URL = RPG-PROGRAM
+		//---------------------------
+		String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_CALCULATE_SPECIFIC_TOPIC_GUARRANTEE_URL;
+		//url params
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		urlRequestParamsKeys.append("user=" + applicationUser + "&avd=" + avd + "&opd=" + opd);
+		//for debug purposes in GUI
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+		logger.warn("URL: " + BASE_URL);
+		logger.warn("URL PARAMS: " + urlRequestParamsKeys.toString());
+		//--------------------------------------
+		//EXECUTE the FETCH (RPG program) here
+		//--------------------------------------
+		String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
+		//Debug --> 
+		logger.info(" --> jsonPayload:" + jsonPayload);
+		logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+
+		if(jsonPayload!=null){
+    		JsonNctsExportSpecificTopicContainer container = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
+    		if(container!=null){
+    			logger.warn("Guarantee amount via AJAX: " + container.getAmount() );
+    			retval = container.getAmount();
+    		}
+    	}
+		return retval;
+		
+	}
+	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")
 	private UrlCgiProxyService urlCgiProxyService;
@@ -1647,6 +1699,7 @@ public class NctsExportHeaderController {
 	public void setTdsDropDownPopulationService (TdsDropDownListPopulationService value){ this.tdsDropDownListPopulationService=value; }
 	public TdsDropDownListPopulationService getTdsDropDownListPopulationService(){return this.tdsDropDownListPopulationService;}
 	
-	
+	@Autowired
+	NctsExportControllerAjaxCommonFunctionsMgr nctsExportControllerAjaxCommonFunctionsMgr;
 }
 

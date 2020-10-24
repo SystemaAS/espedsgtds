@@ -16,6 +16,7 @@ import org.springframework.validation.ValidationUtils;
 
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.service.UrlCgiProxyServiceImpl;
+import no.systema.main.util.BigDecimalFormatter;
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicService;
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicServiceImpl;
 
@@ -35,7 +36,7 @@ public class NctsExportHeaderValidator implements Validator {
 	//Intantiate services here since we are not capable to configure injection with Autowired. Check that further...
 	private UrlCgiProxyService urlCgiProxyService = new UrlCgiProxyServiceImpl();
 	private NctsExportSpecificTopicService nctsExportSpecificTopicService = new NctsExportSpecificTopicServiceImpl();
-	   
+	private BigDecimalFormatter bigDecimalFormatter = new BigDecimalFormatter();   
 	
 	/**
 	 * 
@@ -196,6 +197,30 @@ public class NctsExportHeaderValidator implements Validator {
 					if(record.getThgft2()==null || "".equals (record.getThgft2())){
 						errors.rejectValue("thgft1", "systema.ncts.export.header.error.rule.thgft1.atleastone");
 						logger.info("ERROR thgft1");
+					}
+				}
+				
+				//------------------------------------------------------------------------------------------
+				//Garantee calculation between end-user (thgbl vs the actual calculation in all item lines) 
+				//------------------------------------------------------------------------------------------
+				logger.warn("comparedValue:" + record.getComparedGuaranteeValue());
+				logger.warn("guiAmount:"+ bigDecimalFormatter.getBigDecimalIntegerPart(record.getThgbl()));
+				logger.warn("calculatedAmount:"+ record.getCalculatedGuaranteeAmount());
+				
+				if(record.getComparedGuaranteeValue()==0){
+					//OK
+				}else{
+					Integer guiAmount = bigDecimalFormatter.getBigDecimalIntegerPart(record.getThgbl());
+					Integer calculatedAmount = record.getCalculatedGuaranteeAmount();
+					
+					if(calculatedAmount == 0){
+						if(guiAmount < 5){
+							//OK meaning that this is newly created and the user has not fetched the correct calculation. Usually when the oppdrag has been newly created
+						}	
+					}else{
+						if(guiAmount < 5){
+							errors.reject("thgbl", "Garantifel: Garantibeloppet är inte korrekt. Vänligen hämta garantibeloppen med hjälp av knappen eller mata in ett värde > 5");
+						}
 					}
 				}
 				

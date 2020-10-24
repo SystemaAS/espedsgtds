@@ -1029,8 +1029,18 @@
 					 				    <c:when test="${ model.record.thst == 'G' ||  model.status=='F' || model.record.thst == 'M' || empty model.record.thst}">
 						 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" id="submit" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
 						 				    	&nbsp;&nbsp;
+						 				    	
 						 				    	<c:if test="${not empty model.record.thtdn && model.record.validUpdate && not empty model.record.thtuid}">
-						 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+						 				    		<%-- the guarantee must be correct in order to be able to SEND --%>
+					 				    			<%-- the amount could come in different formats regarding grouping (thousands separator). With or without --%>
+					 				    			<c:set var="tmpWithNoSeparator" value="${fn:replace(model.record.thgbl, '.' , '')}" />
+					 				    			<c:set var="tmpThbgl" value="${fn:replace(tmpWithNoSeparator, ',' , '.')}" />
+					 				    			<fmt:parseNumber scope="request" var="i" integerOnly = "true" type="number" value="${tmpThbgl}" />	
+						 				    		<c:set var = "finalAmount" value = "${i}" />
+						 						<%--<label>DEBUG:&nbsp;${finalAmount}</label> --%>
+						 				    		<c:if test="${not empty model.record.thgbl && finalAmount > 5}">
+						 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+						 				    		</c:if>
 						 				    	</c:if>
 						 				    	
 						 				    	<%-- As a general Warning BEFORE save/send --%>
@@ -1813,14 +1823,23 @@
 			 				    	<%-- only status = M or emtpy status is allowed --%>
 				 				    <c:choose>
 					 				    <c:when test="${ model.record.thst == 'G' ||  model.status=='F' || model.record.thst == 'M' || empty model.record.thst}">
-					 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
-					 				    	&nbsp;&nbsp;
-					 				    	<c:if test="${not empty model.record.thtdn && model.record.validUpdate  && not empty model.record.thtuid}">
-					 				    		<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
-					 				    	</c:if>
-					 				    </c:when>
+						 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
+						 				    	&nbsp;&nbsp;
+						 				    	<c:if test="${not empty model.record.thtdn && model.record.validUpdate && not empty model.record.thtuid}">
+						 				    		<%-- the guarantee must be correct in order to be able to SEND --%>
+					 				    			<%-- the amount could come in different formats regarding grouping (thousands separator). With or without --%>
+					 				    			<c:set var="tmpWithNoSeparator" value="${fn:replace(model.record.thgbl, '.' , '')}" />
+					 				    			<c:set var="tmpThbgl" value="${fn:replace(tmpWithNoSeparator, ',' , '.')}" />
+					 				    			<fmt:parseNumber scope="request" var="i" integerOnly = "true" type="number" value="${tmpThbgl}" />	
+						 				    		<c:set var = "finalAmount" value = "${i}" />
+						 						<%--<label>DEBUG:&nbsp;${finalAmount}</label> --%>
+						 				    		<c:if test="${not empty model.record.thgbl && finalAmount > 5}">
+						 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+						 				    		</c:if>
+						 				    	</c:if>
+					 				    	</c:when>
 					 				    <c:otherwise>
-				 				    		<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit2" value='Ej uppdaterbart'/>
+				 				    			<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit2" value='Ej uppdaterbart'/>
 					 				    </c:otherwise>	
 				 				    </c:choose>
 	                				</td>

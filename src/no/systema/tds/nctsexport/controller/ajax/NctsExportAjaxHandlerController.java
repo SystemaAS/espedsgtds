@@ -24,6 +24,7 @@ import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.service.general.CurrencyRateService;
 import no.systema.main.util.NumberFormatterLocaleAware;
 import no.systema.tds.nctsexport.url.store.UrlDataStore;
+import no.systema.tds.nctsexport.util.manager.NctsExportControllerAjaxCommonFunctionsMgr;
 import no.systema.tds.tdsexport.model.jsonjackson.customer.JsonTdsExportCustomerRecord;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemContainer;
 import no.systema.tds.nctsexport.model.jsonjackson.topic.items.JsonNctsExportSpecificTopicItemRecord;
@@ -270,34 +271,13 @@ public class NctsExportAjaxHandlerController {
 		 	Set result = new HashSet();
 		 	
 		 	logger.info("FETCH calculation...");
-			//---------------------------
-			//get BASE URL = RPG-PROGRAM
-			//---------------------------
-			String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_CALCULATE_SPECIFIC_TOPIC_GUARRANTEE_URL;
-			//url params
-			StringBuffer urlRequestParamsKeys = new StringBuffer();
-			urlRequestParamsKeys.append("user=" + applicationUser + "&avd=" + avd + "&opd=" + opd);
-			//for debug purposes in GUI
-			
-			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-			logger.warn("URL: " + BASE_URL);
-			logger.warn("URL PARAMS: " + urlRequestParamsKeys.toString());
-			//--------------------------------------
-			//EXECUTE the FETCH (RPG program) here
-			//--------------------------------------
-			String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
-			//Debug --> 
-			logger.info(method + " --> jsonPayload:" + jsonPayload);
-			logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
-
-			if(jsonPayload!=null){
-	    		JsonNctsExportSpecificTopicContainer container = this.nctsExportSpecificTopicService.getNctsExportSpecificTopicContainer(jsonPayload);
-	    		if(container!=null){
-	    			logger.warn("Guarantee amount via AJAX: " + container.getAmount() );
-	    			result.add(container);
-	    		}
-	    	}
-			return result;
+		 	JsonNctsExportSpecificTopicContainer container = this.nctsExportControllerAjaxCommonFunctionsMgr.calculateGuaranteeAmount(applicationUser, avd, opd);
+			if(container!=null){
+    			logger.warn("Guarantee amount via AJAX: " + container.getAmount() );
+    			result.add(container);
+			}
+			return result;			
+		 	
 	  }
 	  
 	  /**
@@ -532,5 +512,7 @@ public class NctsExportAjaxHandlerController {
 	  public TdsTaricVarukodService getTdsTaricVarukodService(){ return this.tdsTaricVarukodService; }
 	   
 	  
+	  @Autowired
+	  NctsExportControllerAjaxCommonFunctionsMgr nctsExportControllerAjaxCommonFunctionsMgr;
 		
 }
