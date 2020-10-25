@@ -1038,9 +1038,17 @@
 					 				    			<fmt:parseNumber scope="request" var="i" integerOnly = "true" type="number" value="${tmpThbgl}" />	
 						 				    		<c:set var = "finalAmount" value = "${i}" />
 						 						<%--<label>DEBUG:&nbsp;${finalAmount}</label> --%>
-						 				    		<c:if test="${not empty model.record.thgbl && finalAmount > 5}">
-						 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
-						 				    		</c:if>
+						 						<c:choose>
+						 							<%-- negative guarantee should be valid --%>
+							 				    		<c:when test="${not empty model.record.thgbl && fn:contains(model.record.thgbl,'-') }">
+							 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+							 				    		</c:when>
+							 				    		<c:otherwise>
+							 				    			<c:if test="${not empty model.record.thgbl && finalAmount > 5}">
+							 				    				<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+							 				    			</c:if>
+							 				    		</c:otherwise>
+						 				    		</c:choose>
 						 				    	</c:if>
 						 				    	
 						 				    	<%-- As a general Warning BEFORE save/send --%>

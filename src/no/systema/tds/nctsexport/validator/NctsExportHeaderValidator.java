@@ -214,12 +214,12 @@ public class NctsExportHeaderValidator implements Validator {
 					Integer calculatedAmount = record.getCalculatedGuaranteeAmount();
 					
 					if(calculatedAmount == 0){
-						if(guiAmount < 5){
+						if(guiAmount > -5 && guiAmount < 5){
 							//OK meaning that this is newly created and the user has not fetched the correct calculation. Usually when the oppdrag has been newly created
 						}	
 					}else{
-						if(guiAmount < 5){
-							errors.reject("thgbl", "Garantifel: Garantibeloppet är inte korrekt. Vänligen hämta garantibeloppen med hjälp av knappen eller mata in ett värde > 5");
+						if(guiAmount > -5 && guiAmount < 5){
+							errors.rejectValue("thgbl", "systema.ncts.export.header.error.rule.thgbl.invalid");
 						}
 					}
 				}
