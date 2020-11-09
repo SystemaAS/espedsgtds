@@ -1,5 +1,6 @@
 package no.systema.tds.controller;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.util.*;
 
@@ -11,22 +12,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Value;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import no.systema.main.service.EmailService;
+import no.systema.main.service.PdfiTextService;
 //import no.systema.tds.service.MainHdTopicService;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.util.TdsConstants;
+import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
 import no.systema.tds.model.jsonjackson.authorization.JsonTdsAuthorizationContainer;
 import no.systema.tds.model.jsonjackson.authorization.JsonTdsAuthorizationRecord;
 import no.systema.tds.service.TdsAuthorizationService;
-
+import no.systema.jservices.common.dao.SvlthDao;
+import no.systema.main.context.TdsServletContext;
 //application imports
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
 //models
+import no.systema.main.util.EmailUtil;
 
 
 /**
@@ -43,6 +51,14 @@ import no.systema.main.util.AppConstants;
 
 @Controller
 public class GateController {
+	
+	@Autowired
+	EmailService emailService;
+	
+	@Autowired
+	PdfiTextService pdfService;
+	
+	
 	private static final Logger logger = Logger.getLogger(GateController.class.getName());
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	
@@ -65,6 +81,8 @@ public class GateController {
 		if(appUser==null){
 			return this.loginView;
 		}else{
+			
+			
 			appUser.setActiveMenu("INIT");
 			logger.info("Inside method: tdsgate");
 			logger.info("appUser user:" + appUser.getUser());
@@ -134,9 +152,50 @@ public class GateController {
 			logger.info("Host via HttpServletRequest.getHeader('Host'): " + request.getHeader("Host"));
 		    session.setAttribute(AppConstants.ACTIVE_URL_RPG, AppConstants.ACTIVE_URL_RPG_INITVALUE);
 		    
+		    
+		    //TILLF.LAGRING TEST
+		    runTillfLagringUseCase(appUser);
+		    
+		    
 		    return theView;
 		}
 	}
+	/**
+	 * test case since JUnit does not work with Juni4 and pgengine cracks
+	 * @param appUser
+	 */
+	private void runTillfLagringUseCase(SystemaWebUser appUser){
+			SvlthDao dao = new SvlthDao();
+			dao.setSvlth_h("I");
+			dao.setSvlth_igl("BJO");
+			dao.setSvlth_ign("BJO20-0199");
+			dao.setSvlth_id2(20201202);
+			dao.setSvlth_irn("NO2345678888888888");
+			//
+			
+			//
+	    	runTLagringUCase(dao, appUser);
+	}
+
+	private void runTLagringUCase(SvlthDao dao, SystemaWebUser appUser){
+		try{
+	    	//Only inlägg(I) or rättelse(R)
+	    	if(PdfiTextService.TYPE_H_INLAGG.equals(dao.getSvlth_h()) || PdfiTextService.TYPE_H_RATTELSE.equals(dao.getSvlth_h())){
+		    	pdfService.setFileBasePath(appUser.getUser());
+		    	File fbp = new File(pdfService.getFileBasePath());
+		    	
+		    	if(fbp.exists()){
+		    		pdfService.createPdf(dao);
+		    		//emailService.sendMail("SimpleEmail Testing Subject", "Tillfällig lagring", false, "/ownfiles/hello_world.pdf");
+		    	}
+	    	}
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+		
+	}
+	
+	
 	
 	
 	/* OLD method with password ... DELETE this on March 2019 ...
