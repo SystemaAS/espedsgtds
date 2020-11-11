@@ -3,6 +3,7 @@
  */
 package no.systema.main.service;
 
+import no.systema.tds.model.jsonjackson.JsonTdsArkivpContainer;
 import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
 
 import org.springframework.stereotype.Service;
@@ -16,11 +17,25 @@ import no.systema.tds.mapper.jsonjackson.TdsFirmArcMapper;
  */
 @Service
 public class FirmArcService{
+	
 	public JsonTdsFirmArcContainer getContainer(String utfPayload) {
 		JsonTdsFirmArcContainer container = null;
 		try{
 			TdsFirmArcMapper mapper = new TdsFirmArcMapper();
 			container = mapper.getContainer(utfPayload);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return container;
+		
+	}
+	
+	public JsonTdsArkivpContainer getArkivpContainer(String utfPayload) {
+		JsonTdsArkivpContainer container = null;
+		try{
+			TdsFirmArcMapper mapper = new TdsFirmArcMapper();
+			container = mapper.getArkivpContainer(utfPayload);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

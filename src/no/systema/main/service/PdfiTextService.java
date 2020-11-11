@@ -59,9 +59,10 @@ public class PdfiTextService {
 	/**
 	 * Creates the Pdf on disk
 	 * @param fileName
+	 * @return
 	 * @throws Exception
 	 */
-	public void createPdf(SvlthDao dao) throws Exception {
+	public String createPdf(SvlthDao dao) throws Exception {
         String plainFileName = this.getPlainFileName(dao);
         String absoluteFileName = this.fileBasePath + plainFileName;
         logger.warn(absoluteFileName);
@@ -95,7 +96,7 @@ public class PdfiTextService {
         table.addCell(addCell(dao.getSvlth_irn()));
         //record
         table.addCell(addCell("Uppläggningsdatum"));
-        table.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
+        table.addCell(addCell( setStringValue(dao.getSvlth_id1())) );
         //record
         table.addCell(addCell("Varupostnr (antal varuposter)"));
         table.addCell(addCell( EMPTY_PLACEHOLDER ));
@@ -179,7 +180,7 @@ public class PdfiTextService {
         document.add(table);
         document.close();
         
-        
+        return absoluteFileName;
     }
 	
 	private static Cell addCell(String str){
@@ -253,7 +254,7 @@ public class PdfiTextService {
 		
 		if(dao!=null){
 			name = new StringBuffer();
-			name.append(dao.getSvlth_igl() + SEPARATOR + dao.getSvlth_id2() + SEPARATOR);
+			name.append(dao.getSvlth_igl() + SEPARATOR + dao.getSvlth_id1() + SEPARATOR);
 			if(TYPE_H_INLAGG.equals(dao.getSvlth_h())){
 				name.append(PDF_TYPE_DTL);
 				name.append("_" + dao.getSvlth_ign());

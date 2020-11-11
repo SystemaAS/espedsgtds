@@ -170,7 +170,8 @@ public class GateController {
 			dao.setSvlth_h("I");
 			dao.setSvlth_igl("BJO");
 			dao.setSvlth_ign("BJO20-0199");
-			dao.setSvlth_id2(20201202);
+			dao.setSvlth_id1(20201202);
+			dao.setSvlth_im1(171002);
 			dao.setSvlth_irn("NO2345678888888888");
 			//
 			tlagringTempSolutionService.execute(dao, appUser);

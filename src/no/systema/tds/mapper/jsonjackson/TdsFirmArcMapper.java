@@ -7,6 +7,7 @@ package no.systema.tds.mapper.jsonjackson;
 import org.apache.log4j.Logger;
 
 import no.systema.main.mapper.jsonjackson.general.ObjectMapperAbstractGrandFather;
+import no.systema.tds.model.jsonjackson.JsonTdsArkivpContainer;
 import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
 
 
@@ -34,5 +35,15 @@ public class TdsFirmArcMapper extends ObjectMapperAbstractGrandFather{
 		return container;
 	}
 	
+	
+	public JsonTdsArkivpContainer getArkivpContainer(String utfPayload) throws Exception{
+		JsonTdsArkivpContainer container = null;
+		
+		if(utfPayload!=null){
+			//At this point we now have an UTF-8 payload
+			container = super.getObjectMapper().readValue(utfPayload.getBytes(), JsonTdsArkivpContainer.class); 
+		}	
+		return container;
+	}
 	
 }

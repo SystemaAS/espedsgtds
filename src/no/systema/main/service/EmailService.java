@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.mail.Session;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -33,7 +34,7 @@ public class EmailService {
 	@Value("${tlagring.smtp.send.file.to.tullverket}")
     private Integer sendFileToTullverket;
 	
-	
+	private static final Logger logger = Logger.getLogger(EmailService.class.getName());
     
    /**
     * Uses Spring Mail ...not working ??
