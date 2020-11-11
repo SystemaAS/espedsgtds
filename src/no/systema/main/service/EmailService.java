@@ -18,19 +18,19 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
       
-    @Value("${smtp.host.server}")
+    @Value("${tlagring.smtp.host.server}")
     private String smtpHostServer;
     
-    @Value("${smtp.debug}")
+    @Value("${tlagring.smtp.debug}")
     private String smtpDebug;
 	
-	@Value("${smtp.email.dtl.tullverket}")
+	@Value("${tlagring.smtp.email.dtl.tullverket}")
     private String emailTullverketDtl;
 	
-	@Value("${smtp.email.dtl.avvikelser.tullverket}")
+	@Value("${tlagring.smtp.email.dtl.avvikelser.tullverket}")
     private String emailTullverketAvvik;
 	
-	@Value("${smtp.send.file.to.tullverket}")
+	@Value("${tlagring.smtp.send.file.to.tullverket}")
     private Integer sendFileToTullverket;
 	
 	

@@ -333,6 +333,10 @@
 		 				}else{
 		 					//stay in page
 		 					jq('#warningCodesFlagDivBh').show();
+		 					//ChangeRequest DACHSER GOT - 20201111
+		 					//submit form anyway since this should be a warning and not a STOP. Sometimes the Y-kod should be neglected
+		 					setBlockUI();
+		 			  		jq( "#tdsExportEditTopicItemForm" ).submit();
 		 				}
 		 			}else{
 		 				jq('#warningCodesFlagDivBh').hide();

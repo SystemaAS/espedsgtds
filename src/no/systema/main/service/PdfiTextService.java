@@ -1,6 +1,7 @@
 package no.systema.main.service;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class PdfiTextService {
 	private static final String PDF_FILE_SUFFIX = ".pdf";
 	public static final String TYPE_H_INLAGG = "I";
 	public static final String TYPE_H_RATTELSE = "R";
-	
+	public static final String EMPTY_PLACEHOLDER = "Värdet var inte tillgängligt vid denna tidpunkt. Se vidare på NCTS (MRN)";
 	private String fileBasePath = "";
 	
 	/**
@@ -94,10 +95,10 @@ public class PdfiTextService {
         table.addCell(addCell(dao.getSvlth_irn()));
         //record
         table.addCell(addCell("Uppläggningsdatum"));
-        table.addCell(addCell( String.valueOf(dao.getSvlth_id2())) );
+        table.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
         //record
         table.addCell(addCell("Varupostnr (antal varuposter)"));
-        table.addCell(addCell( "todo" ));
+        table.addCell(addCell( EMPTY_PLACEHOLDER ));
         //record
         table.addCell(addCell("Underskrift/Bestyrkande"));
         table.addCell(addCell( "Namn och email-> todo" ));
@@ -118,16 +119,16 @@ public class PdfiTextService {
         //Ange lämplig unionskod till exempel SE, 
         //typ av lagringsanläggning följt av tillståndsnr. för anläggningen för tillfällig lagring i fråga)
         table.addCell(addCell("Identifiering av lager"));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record
         table.addCell(addCell("Eori-nr - Deklaranten"));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record
         table.addCell(addCell("Eori-nr - Ombud"));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record
         table.addCell(addCell("Kod för ombudsstatus (T eller O)"));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         
         //record
         table.addCell(addCell("Godslokalkod - (Varornas förvaringsplats)"));
@@ -135,7 +136,7 @@ public class PdfiTextService {
         //record
         table.addCell(addCell("Bruttovikt(kg)"));
         if(dao.getSvlth_ibr()!=null){
-        	table.addCell(addCell(dao.getSvlth_ibr().toString()));
+        	table.addCell(addCell(setStringValue(dao.getSvlth_ibr())) );
         }else{
         	table.addCell(addCell(""));
         }
@@ -147,24 +148,22 @@ public class PdfiTextService {
         table.addCell(addCell(dao.getSvlth_isl()));
         //record
         table.addCell(addCell("Antal kollin"));
-        table.addCell(addCell( String.valueOf(dao.getSvlth_int())) );
+        table.addCell(addCell( setStringValue(dao.getSvlth_int())) );
         //record
         table.addCell(addCell("Godsmärkning"));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record (ej obligatoriskt om det finns varubeskr.)
         //table.addCell(addCell("Varukod"));
         //table.addCell(addCell("-"));
         //record
         table.addCell(addCell("Transp.medlets ID vid ankomsten"));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record
         table.addCell(addCell("Containernr."));
-        table.addCell(addCell("todo"));
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record
         table.addCell(addCell("Förseglingsnr"));
-        table.addCell(addCell("todo"));
-        
-        
+        table.addCell(addCell(EMPTY_PLACEHOLDER));
         
         /*
         Table table = new Table(UnitValue.createPercentArray(8)).useAllAvailableWidth();
@@ -190,6 +189,27 @@ public class PdfiTextService {
 		}
 		return newCell;
 	}
+	
+	private static String setStringValue(Integer value){
+		String retval = "";
+		try{
+			retval = String.valueOf(value);
+		}catch(Exception e){
+			e.toString();
+		}
+		return retval;	
+	}
+	
+	private static String setStringValue(BigDecimal value){
+		String retval = "";
+		try{
+			retval = value.toString();
+		}catch(Exception e){
+			e.toString();
+		}
+		return retval;	
+	}
+		
 	
 	/**
 	 * 
@@ -222,6 +242,7 @@ public class PdfiTextService {
 	 * Tullverket requires 2 name conventions:
 	 * (1) Godslokalkod_YYYYMMDD_DTL (inlägg)
 	 * (2) Godslokalkod_YYYYMMDD_Avvikelse (rättelse)
+	 * (Lägg därtill Godsnr ifall filen inte är unik för denna dag (ref email från tullverket))
 	 * 
 	 * @param dao
 	 * @return
@@ -235,8 +256,10 @@ public class PdfiTextService {
 			name.append(dao.getSvlth_igl() + SEPARATOR + dao.getSvlth_id2() + SEPARATOR);
 			if(TYPE_H_INLAGG.equals(dao.getSvlth_h())){
 				name.append(PDF_TYPE_DTL);
+				name.append("_" + dao.getSvlth_ign());
 			}else if(TYPE_H_RATTELSE.equals(dao.getSvlth_h())){
 				name.append(PDF_TYPE_AVVIKELSE);
+				name.append("_" + dao.getSvlth_ign());
 			}
 			name.append(PDF_FILE_SUFFIX);
 		}
