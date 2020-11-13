@@ -1,6 +1,7 @@
 package no.systema.main.service;
 
 import java.io.File;
+import java.util.Calendar;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +12,14 @@ import org.springframework.stereotype.Service;
 
 import no.systema.jservices.common.dao.SvlthDao;
 import no.systema.main.model.SystemaWebUser;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportTopicListContainer;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportTopicListRecord;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImportSpecificTopicUnloadingContainer;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImportSpecificTopicUnloadingRecord;
+import no.systema.tds.nctsimport.service.NctsImportSpecificTopicUnloadingService;
+import no.systema.tds.nctsimport.service.NctsImportTopicListService;
+import no.systema.tds.nctsimport.url.store.UrlDataStore;
+import no.systema.tds.util.TdsConstants;
 
 /**
  * This class is the manager class dealing with the Temporary Solution for Tillfällig Lagring.
@@ -35,6 +44,16 @@ public class TillfalligLagringTempSolutionService {
 	
 	@Autowired
 	ArchiveService archiveService;
+	
+	@Autowired	
+	UrlCgiProxyService urlCgiProxyService;
+	
+	@Autowired
+	NctsImportSpecificTopicUnloadingService nctsImportSpecificTopicUnloadingService;
+	
+	@Autowired
+	NctsImportTopicListService nctsImportTopicListService;
+	
 	
 	@Value("${tlagring.activate.usecase.send.file.dtl:1}")
     private Integer sendFileDtlActivated;
@@ -63,13 +82,16 @@ public class TillfalligLagringTempSolutionService {
 		    	if(fbp.exists()){
 		    		//---------------------
 		    		//STEP (1) create PDF
-		    		//---------------------		    		
-		    		String absoluteFileName = pdfService.createPdf(dao);
+		    		//---------------------
+		    		JsonNctsImportTopicListRecord daoTmp = this.getAvdOpdTNCI000R(appUser.getUser(), dao.getSvlth_irn());
+		    		JsonNctsImportSpecificTopicUnloadingRecord auxDao = this.getAuxDaoTNCI005R(appUser.getUser(), daoTmp);
+		    		//logger.warn(auxDao);
+		    		String absoluteFileName = pdfService.createPdf(dao, auxDao);
 		    		//---------------------
 		    		//STEP (2) archive PDF
 		    		//---------------------
 		    		if(StringUtils.isNotEmpty(FilenameUtils.getName(absoluteFileName)) && FilenameUtils.getName(absoluteFileName).length()<=40){
-		    			archiveService.save(appUser, absoluteFileName, dao);
+		    			//archiveService.save(appUser, absoluteFileName, dao);
 		    		}else{
 		    			logger.error("ERROR: NULL or invalid length(>40 chars):" + absoluteFileName );
 		    		}
@@ -81,7 +103,7 @@ public class TillfalligLagringTempSolutionService {
 		    			//avvikelse type has a different target email address
 		    			avvikelseFlag = true;
 		    		}
-		    		emailService.sendMail(getEmailSubject(absoluteFileName), EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
+		    		//emailService.sendMail(getEmailSubject(absoluteFileName), EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
 		    	}else{
 		    		logger.error("ERROR:" + pdfService.getFileBasePath() + " does not exist");
 		    	}
@@ -120,6 +142,73 @@ public class TillfalligLagringTempSolutionService {
 			retval = true;
 		}
 		return retval;
+	}
+	
+	/**
+	 * Get auxiliary fields not found in main svlth-dao
+	 * 
+	 * @param applicationUser
+	 * @param avd
+	 * @param opd
+	 * @return
+	 */
+	private JsonNctsImportSpecificTopicUnloadingRecord getAuxDaoTNCI005R(String applicationUser, JsonNctsImportTopicListRecord dto){
+		JsonNctsImportSpecificTopicUnloadingRecord dao = null;
+		String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_FETCH_SPECIFIC_TOPIC_UNLOADING_URL;
+		//url params
+		String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + dto.getAvd() + "&opd=" + dto.getOpd();
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.warn("URL: " + BASE_URL);
+    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
+    	//--------------------------------------
+    	//EXECUTE the FETCH (RPG program) here
+    	//--------------------------------------
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+		//Debug --> 
+    	logger.debug(jsonPayload);
+    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+    	if(jsonPayload!=null){
+    		JsonNctsImportSpecificTopicUnloadingContainer container = this.nctsImportSpecificTopicUnloadingService.getNctsImportSpecificTopicUnloadingContainer(jsonPayload);
+    		if(container!=null && container.getOneorder()!=null){
+    			for(JsonNctsImportSpecificTopicUnloadingRecord record: container.getOneorder() ){
+    				dao = record;
+    			}
+    		}
+    	}
+    	return dao;
+	}
+	
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param mrn
+	 * @return
+	 */
+	private JsonNctsImportTopicListRecord getAvdOpdTNCI000R(String applicationUser, String mrn){
+		JsonNctsImportTopicListRecord daoAvdOpd = null;
+		//get BASE URL
+		final String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_TOPICLIST_URL;
+		//add URL-parameters
+		String urlRequestParamsKeys = "user=" + applicationUser + "&mrn=" + mrn;
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.info("URL: " + BASE_URL);
+    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+    	
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+    	//Debug --> 
+    	logger.debug(jsonPayload);
+    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+    	
+		if(jsonPayload!=null){
+			JsonNctsImportTopicListContainer container = this.nctsImportTopicListService.getNctsImportTopicListContainer(jsonPayload);
+			if(container!=null && container.getOrderList()!=null){
+				for(JsonNctsImportTopicListRecord record: container.getOrderList()){
+					daoAvdOpd = record;
+				}
+			}
+		}
+		return daoAvdOpd;
 	}
 	
 }

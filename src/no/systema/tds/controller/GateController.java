@@ -170,9 +170,15 @@ public class GateController {
 			dao.setSvlth_h("I");
 			dao.setSvlth_igl("BJO");
 			dao.setSvlth_ign("BJO20-0199");
-			dao.setSvlth_id1(20201202);
-			dao.setSvlth_im1(171002);
-			dao.setSvlth_irn("NO2345678888888888");
+			dao.setSvlth_id2(20201202); //ankomstdatum
+			dao.setSvlth_irn("20CH00000245500773");
+			//
+			dao.setSvlth_pos("Postion 31");
+			dao.setSvlth_iex("Extra ref.");
+			dao.setSvlth_ibr("20"); //bruttovikt kg
+			dao.setSvlth_ivb("Bananer");
+			dao.setSvlth_isl("PK"); //kollislag
+			dao.setSvlth_int(3); //Antal kollin
 			//
 			tlagringTempSolutionService.execute(dao, appUser);
 	}

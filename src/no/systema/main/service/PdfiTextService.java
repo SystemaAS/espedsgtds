@@ -32,6 +32,7 @@ import no.systema.tds.controller.GateController;
 import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningRecord;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImportSpecificTopicUnloadingRecord;
 import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.util.TdsConstants;
 
@@ -62,10 +63,11 @@ public class PdfiTextService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String createPdf(SvlthDao dao) throws Exception {
+	public String createPdf(SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao) throws Exception {
         String plainFileName = this.getPlainFileName(dao);
         String absoluteFileName = this.fileBasePath + plainFileName;
         logger.warn(absoluteFileName);
+         
 		//Initialize PDF writer
         PdfWriter writer = new PdfWriter(absoluteFileName);
         //Initialize PDF document
@@ -96,19 +98,23 @@ public class PdfiTextService {
         table.addCell(addCell(dao.getSvlth_irn()));
         //record
         table.addCell(addCell("Uppläggningsdatum"));
-        table.addCell(addCell( setStringValue(dao.getSvlth_id1())) );
+        table.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
         //record
         table.addCell(addCell("Varupostnr (antal varuposter)"));
-        table.addCell(addCell( EMPTY_PLACEHOLDER ));
+        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTivpos())){ 
+        	table.addCell(addCell(auxDao.getTivpos())); 
+        }else{
+        	table.addCell(addCell(EMPTY_PLACEHOLDER));
+        }
         //record
         table.addCell(addCell("Underskrift/Bestyrkande"));
         table.addCell(addCell( "Namn och email-> todo" ));
         //record
         table.addCell(addCell("Tidigare dokument"));
-        table.addCell(addCell(dao.getSvlth_ih1()) + " " + dao.getSvlth_ih2() + " " + dao.getSvlth_ih3());
+        table.addCell(addCell(getTidigareDocument(dao.getSvlth_ih1(), dao.getSvlth_ih2(), dao.getSvlth_ih3())));
         //record
         table.addCell(addCell("Ytterligare uppgifter"));
-        table.addCell(addCell(dao.getSvlth_iex()) );
+        table.addCell(addCell(dao.getSvlth_pos()) );
         //record
         table.addCell(addCell("Framlagda dokument"));
         table.addCell(addCell(dao.getSvlth_iex()) );
@@ -123,10 +129,18 @@ public class PdfiTextService {
         table.addCell(addCell(EMPTY_PLACEHOLDER));
         //record
         table.addCell(addCell("Eori-nr - Deklaranten"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
+        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTitina())){ 
+        	table.addCell(addCell(auxDao.getTitina())); 
+        }else{
+        	table.addCell(addCell(EMPTY_PLACEHOLDER));
+        }
         //record
         table.addCell(addCell("Eori-nr - Ombud"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
+        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTitin())){ 
+        	table.addCell(addCell(auxDao.getTitin())); 
+        }else{
+        	table.addCell(addCell(EMPTY_PLACEHOLDER));
+        }
         //record
         table.addCell(addCell("Kod för ombudsstatus (T eller O)"));
         table.addCell(addCell(EMPTY_PLACEHOLDER));
@@ -152,19 +166,19 @@ public class PdfiTextService {
         table.addCell(addCell( setStringValue(dao.getSvlth_int())) );
         //record
         table.addCell(addCell("Godsmärkning"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
+        table.addCell(addCell(this.getGodsmarkning(auxDao.getNimn1(), auxDao.getNimn2())));
         //record (ej obligatoriskt om det finns varubeskr.)
         //table.addCell(addCell("Varukod"));
         //table.addCell(addCell("-"));
         //record
         table.addCell(addCell("Transp.medlets ID vid ankomsten"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
+        table.addCell(addCell(""));
         //record
         table.addCell(addCell("Containernr."));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
+        table.addCell(addCell(""));
         //record
         table.addCell(addCell("Förseglingsnr"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
+        table.addCell(addCell(auxDao.getNidfkd()));
         
         /*
         Table table = new Table(UnitValue.createPercentArray(8)).useAllAvailableWidth();
@@ -183,7 +197,42 @@ public class PdfiTextService {
         return absoluteFileName;
     }
 	
-	private static Cell addCell(String str){
+	private String getTidigareDocument(String ih1, String ih2 , String ih3){
+		StringBuffer retval = new StringBuffer();
+		if(StringUtils.isNotEmpty(ih1)){
+			retval.append(ih1);
+		}
+		if(StringUtils.isNotEmpty(ih2)){
+			retval.append("," + ih2);
+		}
+		if(StringUtils.isNotEmpty(ih3)){
+			retval.append("," + ih3);
+		}
+		
+		if(retval.length()==0){
+			retval.append("");
+		}
+		
+		return retval.toString();
+	}
+	
+	private String getGodsmarkning(String nimn1, String nimn2){
+		StringBuffer retval = new StringBuffer();
+		if(StringUtils.isNotEmpty(nimn1)){
+			retval.append(nimn1);
+		}
+		if(StringUtils.isNotEmpty(nimn2)){
+			retval.append("," + nimn2);
+		}
+		
+		if(retval.length()==0){
+			retval.append("");
+		}
+		
+		return retval.toString();
+	}
+	
+	private Cell addCell(String str){
 		Cell newCell = new Cell().add(new Paragraph(""));
 		if(StringUtils.isNotEmpty(str)){
 			newCell = new Cell().add(new Paragraph(str));			
@@ -191,7 +240,7 @@ public class PdfiTextService {
 		return newCell;
 	}
 	
-	private static String setStringValue(Integer value){
+	private String setStringValue(Integer value){
 		String retval = "";
 		try{
 			retval = String.valueOf(value);
@@ -201,7 +250,7 @@ public class PdfiTextService {
 		return retval;	
 	}
 	
-	private static String setStringValue(BigDecimal value){
+	private String setStringValue(BigDecimal value){
 		String retval = "";
 		try{
 			retval = value.toString();
@@ -254,7 +303,7 @@ public class PdfiTextService {
 		
 		if(dao!=null){
 			name = new StringBuffer();
-			name.append(dao.getSvlth_igl() + SEPARATOR + dao.getSvlth_id1() + SEPARATOR);
+			name.append(dao.getSvlth_igl() + SEPARATOR + dao.getSvlth_id2() + SEPARATOR);
 			if(TYPE_H_INLAGG.equals(dao.getSvlth_h())){
 				name.append(PDF_TYPE_DTL);
 				name.append("_" + dao.getSvlth_ign());

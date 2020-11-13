@@ -6,6 +6,7 @@ package no.systema.tds.nctsimport.model.jsonjackson.topic.unloading;
 import java.lang.reflect.Field;
 import java.util.*;
 
+import lombok.Data;
 import no.systema.main.model.jsonjackson.general.JsonAbstractGrandFatherRecord;
 
 /**
@@ -13,6 +14,7 @@ import no.systema.main.model.jsonjackson.general.JsonAbstractGrandFatherRecord;
  * @date Dec 19, 2013
  *
  */
+@Data
 public class JsonNctsImportSpecificTopicUnloadingRecord extends JsonAbstractGrandFatherRecord  {
 	//This record is used in special occasions when the session object is impossible to use
 	//Typically in a Validator when we want to check further into RPG and we need the user name in a parameter (user=Oscar)
@@ -313,6 +315,13 @@ public class JsonNctsImportSpecificTopicUnloadingRecord extends JsonAbstractGran
 	private String tibyte = null;
 	public void setTibyte(String value) {  this.tibyte = value; }
 	public String getTibyte() { return this.tibyte;}
+	
+	private String tina = null;
+	private String tiad1 = null;
+	private String tipn = null;
+	private String tips = null;
+	private String tilk = null;
+	private String titin = null;
 	
 
 	/**
