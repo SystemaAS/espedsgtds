@@ -12,6 +12,7 @@ import no.systema.jservices.common.dao.ArkivpDao;
 import no.systema.jservices.common.dao.SvlthDao;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
+import no.systema.main.util.DateTimeManager;
 import no.systema.tds.model.jsonjackson.JsonTdsArkivpContainer;
 import no.systema.tds.tdsexport.mapper.url.request.UrlRequestParameterMapper;
 
@@ -42,6 +43,8 @@ public class ArchiveService {
 	 */
 	public void save(SystemaWebUser appUser, String absoluteFileName, SvlthDao dao){
 		File tmp = new File(absoluteFileName);
+		logger.warn("Absolute file name:" + absoluteFileName);
+		logger.warn("SvlthDao:" + dao);
 		
 		if(tmp.exists() && dao!=null){
 			//handover from dao to dto(arkivp)
@@ -81,10 +84,11 @@ public class ArchiveService {
 	 */
 	private ArkivpDao handover(SystemaWebUser appUser, String absoluteFileName, SvlthDao dao){
 		ArkivpDao dto = new ArkivpDao();
+		DateTimeManager dateTimeMgr = new DateTimeManager();
 		
 		dto.setArlink(FilenameUtils.getName(absoluteFileName));
-		dto.setArdate(String.valueOf((dao.getSvlth_id1())));
-		dto.setArtime(String.valueOf((dao.getSvlth_im1())));
+		dto.setArdate(dateTimeMgr.getCurrentDate_ISO());
+		dto.setArtime(dateTimeMgr.getCurrentDate_ISO("HHmmss"));
 		dto.setArrfk(dao.getSvlth_ign());
 		String companyCode = appUser.getCompanyCode();
 		if(StringUtils.isEmpty(companyCode)){ companyCode = appUser.getFallbackCompanyCode(); }

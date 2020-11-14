@@ -170,6 +170,9 @@ public class GateController {
 			dao.setSvlth_h("I");
 			dao.setSvlth_igl("BJO");
 			dao.setSvlth_ign("BJO20-0199");
+			dao.setSvlth_id1(20201114);
+			dao.setSvlth_im1(170314);
+			//
 			dao.setSvlth_id2(20201202); //ankomstdatum
 			dao.setSvlth_irn("20CH00000245500773");
 			//

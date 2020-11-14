@@ -2,6 +2,7 @@ package no.systema.main.service;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.Map;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -19,7 +20,6 @@ import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImpor
 import no.systema.tds.nctsimport.service.NctsImportSpecificTopicUnloadingService;
 import no.systema.tds.nctsimport.service.NctsImportTopicListService;
 import no.systema.tds.nctsimport.url.store.UrlDataStore;
-import no.systema.tds.util.TdsConstants;
 
 /**
  * This class is the manager class dealing with the Temporary Solution for Tillfällig Lagring.
@@ -86,14 +86,16 @@ public class TillfalligLagringTempSolutionService {
 		    		JsonNctsImportTopicListRecord daoTmp = this.getAvdOpdTNCI000R(appUser.getUser(), dao.getSvlth_irn());
 		    		JsonNctsImportSpecificTopicUnloadingRecord auxDao = this.getAuxDaoTNCI005R(appUser.getUser(), daoTmp);
 		    		//logger.warn(auxDao);
-		    		String absoluteFileName = pdfService.createPdf(dao, auxDao);
+		    		Map<String, String> map = pdfService.createPdf(dao, auxDao);
 		    		//---------------------
 		    		//STEP (2) archive PDF
 		    		//---------------------
+		    		String absoluteFileName = map.get(PdfiTextService.MAP_KEY_FILE_NAME);
+		    		String emailSubject = map.get(PdfiTextService.MAP_KEY_EMAIL_SUBJECT);
 		    		if(StringUtils.isNotEmpty(FilenameUtils.getName(absoluteFileName)) && FilenameUtils.getName(absoluteFileName).length()<=40){
 		    			//archiveService.save(appUser, absoluteFileName, dao);
 		    		}else{
-		    			logger.error("ERROR: NULL or invalid length(>40 chars):" + absoluteFileName );
+		    			logger.error("ERROR: NULL or invalid length(>40 chars):" + absoluteFileName);
 		    		}
 		    		//---------------------------------
 		    		//STEP (3) send mail to tullverket
@@ -103,7 +105,7 @@ public class TillfalligLagringTempSolutionService {
 		    			//avvikelse type has a different target email address
 		    			avvikelseFlag = true;
 		    		}
-		    		//emailService.sendMail(getEmailSubject(absoluteFileName), EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
+		    		//emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
 		    	}else{
 		    		logger.error("ERROR:" + pdfService.getFileBasePath() + " does not exist");
 		    	}
@@ -113,12 +115,7 @@ public class TillfalligLagringTempSolutionService {
 	    }
 		
 	}
-	private String getEmailSubject(String absoluteFileName){
-		String fileName = FilenameUtils.getName(absoluteFileName);
-		int i = fileName.indexOf(".");
-		
-		return fileName.substring(0,i);
-	}
+	
 	/**
 	 * 
 	 * @param dao

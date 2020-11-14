@@ -4,16 +4,13 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -26,15 +23,9 @@ import com.itextpdf.layout.property.UnitValue;
 
 import lombok.Data;
 import no.systema.jservices.common.dao.SvlthDao;
-import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
-import no.systema.tds.controller.GateController;
 import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
-import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
-import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningRecord;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImportSpecificTopicUnloadingRecord;
-import no.systema.tds.url.store.TdsUrlDataStore;
-import no.systema.tds.util.TdsConstants;
 
 @Data
 @Service
@@ -56,6 +47,9 @@ public class PdfiTextService {
 	public static final String TYPE_H_RATTELSE = "R";
 	public static final String EMPTY_PLACEHOLDER = "Värdet var inte tillgängligt vid denna tidpunkt. Se vidare på NCTS (MRN)";
 	private String fileBasePath = "";
+	//
+	public static final String MAP_KEY_FILE_NAME = "file";
+	public static final String MAP_KEY_EMAIL_SUBJECT = "subject";
 	
 	/**
 	 * Creates the Pdf on disk
@@ -63,11 +57,16 @@ public class PdfiTextService {
 	 * @return
 	 * @throws Exception
 	 */
-	public String createPdf(SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao) throws Exception {
-        String plainFileName = this.getPlainFileName(dao);
+	public Map<String, String> createPdf(SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao) throws Exception {
+        HashMap<String, String> map = new HashMap<String, String>();
+		String plainFileName = this.getPlainFileName(dao);
+        String emailSubject = this.getEmailSubject(dao);
         String absoluteFileName = this.fileBasePath + plainFileName;
         logger.warn(absoluteFileName);
-         
+        
+        map.put(MAP_KEY_FILE_NAME, absoluteFileName);
+        map.put(MAP_KEY_EMAIL_SUBJECT, emailSubject);
+        
 		//Initialize PDF writer
         PdfWriter writer = new PdfWriter(absoluteFileName);
         //Initialize PDF document
@@ -194,7 +193,7 @@ public class PdfiTextService {
         document.add(table);
         document.close();
         
-        return absoluteFileName;
+        return map;
     }
 	
 	private String getTidigareDocument(String ih1, String ih2 , String ih3){
@@ -289,6 +288,30 @@ public class PdfiTextService {
 	}
 	
 	/**
+	 * File name must be unique. We use the archive time-stamp of the dao
+	 * It must be <= 40 chars
+	 * 
+	 * @param dao
+	 * @return
+	 */
+	private String getPlainFileName(SvlthDao dao){
+		String SEPARATOR = "_";
+		StringBuffer name = null;
+		
+		if(dao!=null){
+			name = new StringBuffer();
+			name.append(dao.getSvlth_ign() + SEPARATOR + dao.getSvlth_id1() + dao.getSvlth_im1());
+			if(TYPE_H_INLAGG.equals(dao.getSvlth_h())){
+				name.append(SEPARATOR + PDF_TYPE_DTL);
+			}else if(TYPE_H_RATTELSE.equals(dao.getSvlth_h())){
+				name.append(SEPARATOR + PDF_TYPE_AVVIKELSE.toUpperCase().substring(0,5));
+			}
+			name.append(PDF_FILE_SUFFIX);
+		}
+		return name.toString();
+	}
+	
+	/**
 	 * Tullverket requires 2 name conventions:
 	 * (1) Godslokalkod_YYYYMMDD_DTL (inlägg)
 	 * (2) Godslokalkod_YYYYMMDD_Avvikelse (rättelse)
@@ -297,7 +320,7 @@ public class PdfiTextService {
 	 * @param dao
 	 * @return
 	 */
-	private String getPlainFileName(SvlthDao dao){
+	private String getEmailSubject(SvlthDao dao){
 		String SEPARATOR = "_";
 		StringBuffer name = null;
 		
