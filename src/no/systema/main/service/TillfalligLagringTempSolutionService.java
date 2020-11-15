@@ -105,7 +105,7 @@ public class TillfalligLagringTempSolutionService {
 		    			//avvikelse type has a different target email address
 		    			avvikelseFlag = true;
 		    		}
-		    		//emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
+		    		emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
 		    	}else{
 		    		logger.error("ERROR:" + pdfService.getFileBasePath() + " does not exist");
 		    	}
