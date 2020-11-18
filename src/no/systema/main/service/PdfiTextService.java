@@ -11,6 +11,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -38,6 +39,21 @@ public class PdfiTextService {
 	@Autowired
 	private FirmArcService firmArcService;
 		
+	
+	@Value("${tlagring.dao.responsible.contact.person.name}")
+    private String contactPersonName;
+	@Value("${tlagring.dao.responsible.contact.person.email}")
+    private String contactPersonEmail;
+	@Value("${tlagring.dao.responsible.contact.person.mobile}")
+    private String contactPersonMobile;
+	
+	@Value("${tlagring.dao.warehouse.id}")
+    private String warehouseId;
+	@Value("${tlagring.dao.ombud.status}")
+    private String ombudStatus;
+	
+	
+	
 	private static final Logger logger = Logger.getLogger(PdfiTextService.class.getName());
 	private static final String BASE_DIR_TILLFALLIG_LAGRING_ARCHIVE = File.separator  + "tillflag" + File.separator;
 	private static final String PDF_TYPE_DTL = "DTL";
@@ -81,116 +97,156 @@ public class PdfiTextService {
        
         //Add paragraph to the document
         String declarationType = "DTL";
+        
+        Table tableAvvikelse = null; 
         if(TYPE_H_RATTELSE.equals(dao.getSvlth_h())){
         	declarationType = "Avvikelse";
-        }
-        document.add(new Paragraph(declarationType + " - Deklaration for Tillfällig lagring "));
-        document.add(new Paragraph(now));
-        document.add(new Paragraph(""));
-        //table 
-        Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
-        //===============
-        //SVLTH db-table
-        //===============
-        //record
-        table.addCell(addCell("MRN"));
-        table.addCell(addCell(dao.getSvlth_irn()));
-        //record
-        table.addCell(addCell("Uppläggningsdatum"));
-        table.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
-        //record
-        table.addCell(addCell("Varupostnr (antal varuposter)"));
-        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTivpos())){ 
-        	table.addCell(addCell(auxDao.getTivpos())); 
-        }else{
-        	table.addCell(addCell(EMPTY_PLACEHOLDER));
-        }
-        //record
-        table.addCell(addCell("Underskrift/Bestyrkande"));
-        table.addCell(addCell( "Namn och email-> todo" ));
-        //record
-        table.addCell(addCell("Tidigare dokument"));
-        table.addCell(addCell(getTidigareDocument(dao.getSvlth_ih1(), dao.getSvlth_ih2(), dao.getSvlth_ih3())));
-        //record
-        table.addCell(addCell("Ytterligare uppgifter"));
-        table.addCell(addCell(dao.getSvlth_pos()) );
-        //record
-        table.addCell(addCell("Framlagda dokument"));
-        table.addCell(addCell(dao.getSvlth_iex()) );
-        //record
-        table.addCell(addCell("LRN - Godsnummer"));
-        table.addCell(addCell(dao.getSvlth_ign()));
-        
-        //record - Identifiering av lager
-        //Ange lämplig unionskod till exempel SE, 
-        //typ av lagringsanläggning följt av tillståndsnr. för anläggningen för tillfällig lagring i fråga)
-        table.addCell(addCell("Identifiering av lager"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
-        //record
-        table.addCell(addCell("Eori-nr - Deklaranten"));
-        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTitina())){ 
-        	table.addCell(addCell(auxDao.getTitina())); 
-        }else{
-        	table.addCell(addCell(EMPTY_PLACEHOLDER));
-        }
-        //record
-        table.addCell(addCell("Eori-nr - Ombud"));
-        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTitin())){ 
-        	table.addCell(addCell(auxDao.getTitin())); 
-        }else{
-        	table.addCell(addCell(EMPTY_PLACEHOLDER));
-        }
-        //record
-        table.addCell(addCell("Kod för ombudsstatus (T eller O)"));
-        table.addCell(addCell(EMPTY_PLACEHOLDER));
-        
-        //record
-        table.addCell(addCell("Godslokalkod - (Varornas förvaringsplats)"));
-        table.addCell(addCell(dao.getSvlth_ign()));
-        //record
-        table.addCell(addCell("Bruttovikt(kg)"));
-        if(dao.getSvlth_ibr()!=null){
-        	table.addCell(addCell(setStringValue(dao.getSvlth_ibr())) );
-        }else{
-        	table.addCell(addCell(""));
-        }
-        //record
-        table.addCell(addCell("Varubeskrivning"));
-        table.addCell(addCell(dao.getSvlth_ivb()));
-        //record
-        table.addCell(addCell("Kollislag"));
-        table.addCell(addCell(dao.getSvlth_isl()));
-        //record
-        table.addCell(addCell("Antal kollin"));
-        table.addCell(addCell( setStringValue(dao.getSvlth_int())) );
-        //record
-        table.addCell(addCell("Godsmärkning"));
-        table.addCell(addCell(this.getGodsmarkning(auxDao.getNimn1(), auxDao.getNimn2())));
-        //record (ej obligatoriskt om det finns varubeskr.)
-        //table.addCell(addCell("Varukod"));
-        //table.addCell(addCell("-"));
-        //record
-        table.addCell(addCell("Transp.medlets ID vid ankomsten"));
-        table.addCell(addCell(""));
-        //record
-        table.addCell(addCell("Containernr."));
-        table.addCell(addCell(""));
-        //record
-        table.addCell(addCell("Förseglingsnr"));
-        table.addCell(addCell(auxDao.getNidfkd()));
-        
-        /*
-        Table table = new Table(UnitValue.createPercentArray(8)).useAllAvailableWidth();
-        
-        List<List<String>> dataset = getData();
-        for (List<String> record : dataset) {
-            for (String field : record) {
-                table.addCell(new Cell().add(new Paragraph(field)));
+        	
+        	this.getDocumentHeader(document, declarationType, now);
+        	//tableAvv
+            tableAvvikelse = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
+            //record
+            tableAvvikelse.addCell(addCell("MRN"));
+            tableAvvikelse.addCell(addCell(dao.getSvlth_irn()));
+            //record
+            tableAvvikelse.addCell(addCell("Uppläggningsdatum"));
+            tableAvvikelse.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
+            //record
+            tableAvvikelse.addCell(addCell("Kontaktuppgifter"));
+            tableAvvikelse.addCell(addCell( contactPersonName + ",  epost:" + contactPersonEmail + ",  mobil:" + contactPersonMobile));
+            
+            //record - Identifiering av lager
+            //Ange lämplig unionskod till exempel SE, 
+            //typ av lagringsanläggning följt av tillståndsnr. för anläggningen för tillfällig lagring i fråga)
+            tableAvvikelse.addCell(addCell("Identifiering av lager"));
+            tableAvvikelse.addCell(addCell(warehouseId));
+            //record
+            tableAvvikelse.addCell(addCell("Godslokalkod - (Varornas förvaringsplats)"));
+            tableAvvikelse.addCell(addCell(dao.getSvlth_igl()));
+            tableAvvikelse.addCell(addCell("LRN - Godsnummer"));
+            tableAvvikelse.addCell(addCell(dao.getSvlth_ign()));
+            
+            //record
+            tableAvvikelse.addCell(addCell("Bruttovikt(kg)"));
+            if(dao.getSvlth_ibr()!=null){
+            	tableAvvikelse.addCell(addCell(setStringValue(dao.getSvlth_ibr())) );
+            }else{
+            	tableAvvikelse.addCell(addCell(""));
             }
+            //record
+            tableAvvikelse.addCell(addCell("Kollislag"));
+            tableAvvikelse.addCell(addCell(dao.getSvlth_isl()));
+            //record
+            tableAvvikelse.addCell(addCell("Antal kollin"));
+            tableAvvikelse.addCell(addCell( setStringValue(dao.getSvlth_int())) );
+            //record
+            tableAvvikelse.addCell(addCell("Extrainformation"));
+            StringBuffer sb = new StringBuffer(dao.getSvlth_ivb());
+            if(StringUtils.isNotEmpty(dao.getSvlth_ivb2())){ sb.append("," + dao.getSvlth_ivb2()); }
+            if(StringUtils.isNotEmpty(dao.getSvlth_ivb3())){ sb.append("," + dao.getSvlth_ivb3()); }
+            if(StringUtils.isNotEmpty(dao.getSvlth_ivb4())){ sb.append("," + dao.getSvlth_ivb4()); }
+            tableAvvikelse.addCell(addCell(sb.toString()));
+            //add table
+            document.add(tableAvvikelse);
+            
+        }else{
+        	this.getDocumentHeader(document, declarationType, now);
+	        //table 
+	        Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
+	        //===============
+	        //SVLTH db-table
+	        //===============
+	        //record
+	        table.addCell(addCell("MRN"));
+	        table.addCell(addCell(dao.getSvlth_irn()));
+	        //record
+	        table.addCell(addCell("Uppläggningsdatum"));
+	        table.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
+	        //record
+	        table.addCell(addCell("Varupostnr (antal varuposter)"));
+	        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTivpos())){ 
+	        	table.addCell(addCell(auxDao.getTivpos())); 
+	        }else{
+	        	table.addCell(addCell(EMPTY_PLACEHOLDER));
+	        }
+	        //record
+	        table.addCell(addCell("Underskrift/Bestyrkande"));
+	        table.addCell(addCell( contactPersonName + ",  epost:" + contactPersonEmail + ",  mobil:" + contactPersonMobile));
+	        //record
+	        table.addCell(addCell("Tidigare dokument"));
+	        table.addCell(addCell(getTidigareDocument(dao.getSvlth_ih1(), dao.getSvlth_ih2(), dao.getSvlth_ih3())));
+	        //record
+	        table.addCell(addCell("Ytterligare uppgifter"));
+	        table.addCell(addCell(dao.getSvlth_pos()) );
+	        //record
+	        table.addCell(addCell("Framlagda dokument"));
+	        table.addCell(addCell(dao.getSvlth_iex()) );
+	        //record
+	        table.addCell(addCell("LRN - Godsnummer"));
+	        table.addCell(addCell(dao.getSvlth_ign()));
+	        
+	        //record - Identifiering av lager
+	        //Ange lämplig unionskod till exempel SE, 
+	        //typ av lagringsanläggning följt av tillståndsnr. för anläggningen för tillfällig lagring i fråga)
+	        table.addCell(addCell("Identifiering av lager"));
+	        table.addCell(addCell(warehouseId));
+	        //record
+	        table.addCell(addCell("Eori-nr - Deklaranten"));
+	        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTitina())){ 
+	        	table.addCell(addCell(auxDao.getTitina())); 
+	        }else{
+	        	table.addCell(addCell(EMPTY_PLACEHOLDER));
+	        }
+	        //record
+	        table.addCell(addCell("Eori-nr - Ombud"));
+	        if(auxDao!=null && StringUtils.isNotEmpty(auxDao.getTitin())){ 
+	        	table.addCell(addCell(auxDao.getTitin())); 
+	        }else{
+	        	table.addCell(addCell(EMPTY_PLACEHOLDER));
+	        }
+	        //record
+	        table.addCell(addCell("Kod för ombudsstatus (T eller O)"));
+	        table.addCell(addCell(ombudStatus));
+	        
+	        //record
+	        table.addCell(addCell("Godslokalkod - (Varornas förvaringsplats)"));
+	        table.addCell(addCell(dao.getSvlth_igl()));
+	        //record
+	        table.addCell(addCell("Bruttovikt(kg)"));
+	        if(dao.getSvlth_ibr()!=null){
+	        	table.addCell(addCell(setStringValue(dao.getSvlth_ibr())) );
+	        }else{
+	        	table.addCell(addCell(""));
+	        }
+	        //record
+	        table.addCell(addCell("Varubeskrivning"));
+	        table.addCell(addCell(dao.getSvlth_ivb()));
+	        //record
+	        table.addCell(addCell("Kollislag"));
+	        table.addCell(addCell(dao.getSvlth_isl()));
+	        //record
+	        table.addCell(addCell("Antal kollin"));
+	        table.addCell(addCell( setStringValue(dao.getSvlth_int())) );
+	        //record
+	        table.addCell(addCell("Godsmärkning"));
+	        table.addCell(addCell(this.getGodsmarkning(auxDao.getNimn1(), auxDao.getNimn2())));
+	        //record (ej obligatoriskt om det finns varubeskr.)
+	        //table.addCell(addCell("Varukod"));
+	        //table.addCell(addCell("-"));
+	        //record
+	        table.addCell(addCell("Transp.medlets ID vid ankomsten"));
+	        table.addCell(addCell(""));
+	        //record
+	        table.addCell(addCell("Containernr."));
+	        table.addCell(addCell(""));
+	        //record
+	        table.addCell(addCell("Förseglingsnr"));
+	        table.addCell(addCell(auxDao.getNidfkd()));	        
+	        
+	        document.add(table);
         }
-        */
         
-        document.add(table);
+        
         document.close();
         
         return map;
@@ -337,5 +393,11 @@ public class PdfiTextService {
 			name.append(PDF_FILE_SUFFIX);
 		}
 		return name.toString();
+	}
+	
+	private void getDocumentHeader(Document document, String declarationType, String now){
+		document.add(new Paragraph(declarationType + " - Deklaration for Tillfällig lagring "));
+    	document.add(new Paragraph(now));
+    	document.add(new Paragraph(""));
 	}
 }
