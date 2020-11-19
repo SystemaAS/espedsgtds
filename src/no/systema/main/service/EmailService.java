@@ -59,8 +59,7 @@ public class EmailService {
     * @param subject
     * @param body
     */
-    public void sendMail(String to, String subject, String body) 
-    {
+    public void sendMail(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject(subject);
@@ -124,11 +123,9 @@ public class EmailService {
 			    EmailUtil.sendEmail(session, targetEmail, subject, body, attachmentFileName);
 	    	}
     	}catch (Exception e){
-    		e.printStackTrace();
-    		
+    		logger.error("ERROR SMTP:" + e.toString());
+    		e.printStackTrace();		
     	}
     }
-    	
-  
     
 }

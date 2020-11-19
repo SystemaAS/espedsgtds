@@ -108,6 +108,9 @@ public class NctsExportHeaderValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thgbl", "systema.ncts.export.header.error.null.thgbl");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thgvk", "systema.ncts.export.header.error.null.thgvk");
 		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "thddt", "systema.ncts.export.header.error.null.thddt");
+		
+		
 		
 		//Logical controls if we passed the NOT NULL errors
 		if(!errors.hasFieldErrors()){

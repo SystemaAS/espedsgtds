@@ -73,42 +73,48 @@ public class PdfiTextService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, String> createPdf(SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao) throws Exception {
-        HashMap<String, String> map = new HashMap<String, String>();
-		String plainFileName = this.getPlainFileName(dao);
-        String emailSubject = this.getEmailSubject(dao);
-        String absoluteFileName = this.fileBasePath + plainFileName;
-        logger.warn(absoluteFileName);
-        
-        map.put(MAP_KEY_FILE_NAME, absoluteFileName);
-        map.put(MAP_KEY_EMAIL_SUBJECT, emailSubject);
-        
-		//Initialize PDF writer
-        PdfWriter writer = new PdfWriter(absoluteFileName);
-        //Initialize PDF document
-        PdfDocument pdf = new PdfDocument(writer);
-        // Initialize document
-        Document document = new Document(pdf);
-
+	public Map<String, String> createPdf(SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao) {
+		HashMap<String, String> map = new HashMap<String, String>();
 		
-        LocalDateTime time = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String now = formatter.format(time);
-       
-        //Add paragraph to the document
-        String declarationType = "DTL";
-        
-        if(TYPE_H_RATTELSE.equals(dao.getSvlth_h())){
-        	declarationType = "Avvikelse";
-        	this.getDocumentHeader(document, declarationType, now);
-        	this.createPdfAvvikelse(document, dao);    
-        }else{
-        	this.getDocumentHeader(document, declarationType, now);
-	        this.createPdfDtl(document, dao, auxDao);
-        }
-        
-        document.close();
-        
+		try{
+	        String plainFileName = this.getPlainFileName(dao);
+	        String emailSubject = this.getEmailSubject(dao);
+	        String absoluteFileName = this.fileBasePath + plainFileName;
+	        logger.warn(absoluteFileName);
+	        
+	        map.put(MAP_KEY_FILE_NAME, absoluteFileName);
+	        map.put(MAP_KEY_EMAIL_SUBJECT, emailSubject);
+	        
+			//Initialize PDF writer
+	        PdfWriter writer = new PdfWriter(absoluteFileName);
+	        //Initialize PDF document
+	        PdfDocument pdf = new PdfDocument(writer);
+	        // Initialize document
+	        Document document = new Document(pdf);
+	
+			
+	        LocalDateTime time = LocalDateTime.now();
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	        String now = formatter.format(time);
+	       
+	        //Add paragraph to the document
+	        String declarationType = "DTL";
+	        
+	        if(TYPE_H_RATTELSE.equals(dao.getSvlth_h())){
+	        	declarationType = "Avvikelse";
+	        	this.getDocumentHeader(document, declarationType, now);
+	        	this.createPdfAvvikelse(document, dao);    
+	        }else{
+	        	this.getDocumentHeader(document, declarationType, now);
+		        this.createPdfDtl(document, dao, auxDao);
+	        }
+	        
+	        document.close();
+	        
+		}catch (Exception e){
+			e.printStackTrace();
+			logger.error("SEVERE ERROR:" + e.toString());
+		}
         return map;
     }
 	
@@ -118,7 +124,7 @@ public class PdfiTextService {
 	 * @param dao
 	 * @param auxDao
 	 */
-	private void createPdfDtl(Document document, SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao){
+	private void createPdfDtl(Document document, SvlthDao dao, JsonNctsImportSpecificTopicUnloadingRecord auxDao) throws Exception{
 		//table 
         Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
         //===============
@@ -219,7 +225,7 @@ public class PdfiTextService {
 	 * @param document
 	 * @param dao
 	 */
-	private void createPdfAvvikelse(Document document, SvlthDao dao){
+	private void createPdfAvvikelse(Document document, SvlthDao dao) throws Exception{
     	//tableAvv
         Table tableAvvikelse = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
         //record
@@ -287,7 +293,7 @@ public class PdfiTextService {
 
 	}
 	
-	private String getTidigareDocument(String ih1, String ih2 , String ih3){
+	private String getTidigareDocument(String ih1, String ih2 , String ih3) throws Exception{
 		StringBuffer retval = new StringBuffer();
 		if(StringUtils.isNotEmpty(ih1)){
 			retval.append(ih1);
@@ -306,7 +312,7 @@ public class PdfiTextService {
 		return retval.toString();
 	}
 	
-	private String getGodsmarkning(String nimn1, String nimn2){
+	private String getGodsmarkning(String nimn1, String nimn2) throws Exception{
 		StringBuffer retval = new StringBuffer();
 		if(StringUtils.isNotEmpty(nimn1)){
 			retval.append(nimn1);
@@ -322,7 +328,7 @@ public class PdfiTextService {
 		return retval.toString();
 	}
 	
-	private Cell addCell(String str){
+	private Cell addCell(String str) throws Exception{
 		Cell newCell = new Cell().add(new Paragraph(""));
 		if(StringUtils.isNotEmpty(str)){
 			newCell = new Cell().add(new Paragraph(str));			
@@ -330,7 +336,7 @@ public class PdfiTextService {
 		return newCell;
 	}
 	
-	private String setStringValue(Integer value){
+	private String setStringValue(Integer value) throws Exception{
 		String retval = "";
 		try{
 			retval = String.valueOf(value);
@@ -340,7 +346,7 @@ public class PdfiTextService {
 		return retval;	
 	}
 	
-	private String setStringValue(BigDecimal value){
+	private String setStringValue(BigDecimal value)throws Exception{
 		String retval = "";
 		try{
 			retval = value.toString();
@@ -356,7 +362,7 @@ public class PdfiTextService {
 	 * @param dto
 	 * @param appUser
 	 */
-	public void setFileBasePath(String applicationUser){
+	public void setFileBasePath(String applicationUser) {
 		
 		try{
 			String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSYFIRMARC.do";
@@ -385,7 +391,7 @@ public class PdfiTextService {
 	 * @param dao
 	 * @return
 	 */
-	private String getPlainFileName(SvlthDao dao){
+	private String getPlainFileName(SvlthDao dao) throws Exception{
 		String SEPARATOR = "_";
 		StringBuffer name = null;
 		
@@ -411,7 +417,7 @@ public class PdfiTextService {
 	 * @param dao
 	 * @return
 	 */
-	private String getEmailSubject(SvlthDao dao){
+	private String getEmailSubject(SvlthDao dao) throws Exception{
 		String SEPARATOR = "_";
 		StringBuffer name = null;
 		
@@ -430,7 +436,7 @@ public class PdfiTextService {
 		return name.toString();
 	}
 	
-	private void getDocumentHeader(Document document, String declarationType, String now){
+	private void getDocumentHeader(Document document, String declarationType, String now) throws Exception{
 		document.add(new Paragraph(declarationType + " - Deklaration for Tillfällig lagring "));
     	document.add(new Paragraph(now));
     	document.add(new Paragraph(""));

@@ -72,7 +72,6 @@ public class TillfalligLagringTempSolutionService {
 	 */
 	public void execute(SvlthDao dao, SystemaWebUser appUser){
 		try{
-			
 	    	//Only inlägg(I) or rättelse(R) and only when their are activated. We can deactivate one or both.
 	    	if(isActiveDtlUseCase(dao) || isActiveAvvikelseUseCase(dao)){
 		    	//init directory for file on disk
@@ -105,12 +104,13 @@ public class TillfalligLagringTempSolutionService {
 		    			//avvikelse type has a different target email address
 		    			avvikelseFlag = true;
 		    		}
-		    		//emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
+		    		emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
 		    	}else{
 		    		logger.error("ERROR:" + pdfService.getFileBasePath() + " does not exist");
 		    	}
 	    	}
 	    }catch(Exception e){
+	    	logger.error("ERROR:" + e.toString());
 	    	e.printStackTrace();
 	    }
 		
@@ -149,7 +149,7 @@ public class TillfalligLagringTempSolutionService {
 	 * @param opd
 	 * @return
 	 */
-	private JsonNctsImportSpecificTopicUnloadingRecord getAuxDaoTNCI005R(String applicationUser, JsonNctsImportTopicListRecord dto){
+	private JsonNctsImportSpecificTopicUnloadingRecord getAuxDaoTNCI005R(String applicationUser, JsonNctsImportTopicListRecord dto) throws Exception{
 		JsonNctsImportSpecificTopicUnloadingRecord dao = new JsonNctsImportSpecificTopicUnloadingRecord() ;
 		if(dto!=null){
 			String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_FETCH_SPECIFIC_TOPIC_UNLOADING_URL;
@@ -186,7 +186,7 @@ public class TillfalligLagringTempSolutionService {
 	 * @param mrn
 	 * @return
 	 */
-	private JsonNctsImportTopicListRecord getAvdOpdTNCI000R(String applicationUser, String mrn){
+	private JsonNctsImportTopicListRecord getAvdOpdTNCI000R(String applicationUser, String mrn) throws Exception{
 		JsonNctsImportTopicListRecord daoAvdOpd = null;
 		//get BASE URL
 		final String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_TOPICLIST_URL;

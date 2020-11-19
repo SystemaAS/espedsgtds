@@ -44,36 +44,42 @@ public class ArchiveService {
 	 * @param dao
 	 */
 	public void save(SystemaWebUser appUser, String absoluteFileName, SvlthDao dao){
-		File tmp = new File(absoluteFileName);
-		logger.warn("Absolute file name:" + absoluteFileName);
-		logger.warn("SvlthDao:" + dao);
-		
-		if(tmp.exists() && dao!=null){
-			//handover from dao to dto(arkivp)
-			ArkivpDao dto = handover(appUser, absoluteFileName, dao);
-			logger.warn(dto.toString());
-			String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsARKIVP_U.do";
+		try{
+			File tmp = new File(absoluteFileName);
+			logger.warn("Absolute file name:" + absoluteFileName);
+			logger.warn("SvlthDao:" + dao);
 			
-			String urlRequestParamsKey = "user=" + appUser.getUser() + "&mode=A";
-			String urlRequestParams = this.urlRequestParameterMapper.getUrlParameterValidString((dto));
-			String urlParams = urlRequestParamsKey + urlRequestParams;
-			logger.warn("URL" + BASE_URL);
-			logger.warn("PARAMs:" + urlParams);
-			//Execute rest-service
-			String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlParams);
-			logger.info("jsonPayload on request: " + jsonPayload);
-    		if(jsonPayload!=null){
-    			JsonTdsArkivpContainer container = this.firmArcService.getArkivpContainer(jsonPayload);
-    			if(container!=null){
-    				if(StringUtils.isNotEmpty(container.getErrMsg())){
-    					logger.error("ERROR<insert>: " + container.getErrMsg());
-    				}else{
-    					//OK
-    				}
-    			}
-    		}
-		}else{
-			logger.error("ERROR:" + absoluteFileName + " not found or dao = NULL ?" );
+			if(tmp.exists() && dao!=null){
+				//handover from dao to dto(arkivp)
+				ArkivpDao dto = handover(appUser, absoluteFileName, dao);
+				logger.warn(dto.toString());
+				String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsARKIVP_U.do";
+				
+				String urlRequestParamsKey = "user=" + appUser.getUser() + "&mode=A";
+				String urlRequestParams = this.urlRequestParameterMapper.getUrlParameterValidString((dto));
+				String urlParams = urlRequestParamsKey + urlRequestParams;
+				logger.warn("URL" + BASE_URL);
+				logger.warn("PARAMs:" + urlParams);
+				//Execute rest-service
+				String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlParams);
+				logger.info("jsonPayload on request: " + jsonPayload);
+	    		if(jsonPayload!=null){
+	    			JsonTdsArkivpContainer container = this.firmArcService.getArkivpContainer(jsonPayload);
+	    			if(container!=null){
+	    				if(StringUtils.isNotEmpty(container.getErrMsg())){
+	    					logger.error("ERROR<insert>: " + container.getErrMsg());
+	    				}else{
+	    					//OK
+	    				}
+	    			}
+	    		}
+			}else{
+				logger.error("ERROR:" + absoluteFileName + " not found or dao = NULL ?" );
+			}
+		}catch(Exception e){
+			logger.error("ERROR:" + e.toString());
+			e.printStackTrace();
+			
 		}
 		
 	}
@@ -84,7 +90,7 @@ public class ArchiveService {
 	 * @param dao
 	 * @return
 	 */
-	private ArkivpDao handover(SystemaWebUser appUser, String absoluteFileName, SvlthDao dao){
+	private ArkivpDao handover(SystemaWebUser appUser, String absoluteFileName, SvlthDao dao) throws Exception{
 		ArkivpDao dto = new ArkivpDao();
 		DateTimeManager dateTimeMgr = new DateTimeManager();
 		

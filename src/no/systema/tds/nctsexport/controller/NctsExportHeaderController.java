@@ -2,6 +2,7 @@ package no.systema.tds.nctsexport.controller;
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.WebDataBinder;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.BigDecimalFormatter;
+import no.systema.main.util.DateTimeManager;
 import no.systema.main.util.JsonDebugger;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemContainer;
 import no.systema.tds.tdsexport.model.jsonjackson.topic.items.JsonTdsExportSpecificTopicItemRecord;
@@ -90,7 +92,7 @@ public class NctsExportHeaderController {
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
 	private BigDecimalFormatter bigDecimalFormatter = new BigDecimalFormatter();
-	private ApplicationContext context;
+	private DateTimeManager dateMgr = new DateTimeManager();
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -138,6 +140,7 @@ public class NctsExportHeaderController {
 			model.put("sign", sign);
 			model.put("avd", avd);
 			JsonNctsExportSpecificTopicRecord record = this.initCreateNewTopic(appUser.getUser(),avd);
+			this.adjustValues(record);
 			model.put("record", record);
 			
 			successView.addObject("model", model);
@@ -470,6 +473,13 @@ public class NctsExportHeaderController {
 	private void adjustValidUpdateFlag(Map model, JsonNctsExportSpecificTopicRecord record){
 		record.setValidUpdate(true);
 		model.put(TdsConstants.DOMAIN_RECORD, record);
+	}
+	
+	private void adjustValues(JsonNctsExportSpecificTopicRecord record){
+		//default if empty. Must be filled in ahead of time
+		if(record != null && StringUtils.isEmpty(record.getThddt())){
+			record.setThddt(dateMgr.getNewDateFromNow(DateTimeManager.ISO_FORMAT, 5));
+		}
 	}
 	/**
 	 * 
@@ -1361,6 +1371,7 @@ public class NctsExportHeaderController {
 				record.setSumOfAntalKolliInItemLines(totalItemLinesObject.getSumOfAntalKolliInItemLines());
 				record.setSumOfAntalItemLines(totalItemLinesObject.getSumOfAntalItemLines());
 			}
+			this.adjustValues(record);
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines
 			session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC, record);
@@ -1647,6 +1658,7 @@ public class NctsExportHeaderController {
 		return retval;
 		
 	}
+	
 	
 	//SERVICES
 	@Qualifier ("urlCgiProxyService")
