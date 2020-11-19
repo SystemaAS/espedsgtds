@@ -93,7 +93,7 @@ public class TillfalligLagringTempSolutionService {
 		    		String absoluteFileName = map.get(PdfiTextService.MAP_KEY_FILE_NAME);
 		    		String emailSubject = map.get(PdfiTextService.MAP_KEY_EMAIL_SUBJECT);
 		    		if(StringUtils.isNotEmpty(FilenameUtils.getName(absoluteFileName)) && FilenameUtils.getName(absoluteFileName).length()<=40){
-		    			//archiveService.save(appUser, absoluteFileName, dao);
+		    			archiveService.save(appUser, absoluteFileName, dao);
 		    		}else{
 		    			logger.error("ERROR: NULL or invalid length(>40 chars):" + absoluteFileName);
 		    		}
@@ -105,7 +105,7 @@ public class TillfalligLagringTempSolutionService {
 		    			//avvikelse type has a different target email address
 		    			avvikelseFlag = true;
 		    		}
-		    		emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
+		    		//emailService.sendMail(emailSubject, EMAIL_TEXT_TILLFALLIGLAGRING, avvikelseFlag, absoluteFileName);
 		    	}else{
 		    		logger.error("ERROR:" + pdfService.getFileBasePath() + " does not exist");
 		    	}
@@ -150,29 +150,33 @@ public class TillfalligLagringTempSolutionService {
 	 * @return
 	 */
 	private JsonNctsImportSpecificTopicUnloadingRecord getAuxDaoTNCI005R(String applicationUser, JsonNctsImportTopicListRecord dto){
-		JsonNctsImportSpecificTopicUnloadingRecord dao = null;
-		String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_FETCH_SPECIFIC_TOPIC_UNLOADING_URL;
-		//url params
-		String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + dto.getAvd() + "&opd=" + dto.getOpd();
-		
-		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-    	logger.warn("URL: " + BASE_URL);
-    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
-    	//--------------------------------------
-    	//EXECUTE the FETCH (RPG program) here
-    	//--------------------------------------
-    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
-		//Debug --> 
-    	logger.debug(jsonPayload);
-    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
-    	if(jsonPayload!=null){
-    		JsonNctsImportSpecificTopicUnloadingContainer container = this.nctsImportSpecificTopicUnloadingService.getNctsImportSpecificTopicUnloadingContainer(jsonPayload);
-    		if(container!=null && container.getOneorder()!=null){
-    			for(JsonNctsImportSpecificTopicUnloadingRecord record: container.getOneorder() ){
-    				dao = record;
-    			}
-    		}
-    	}
+		JsonNctsImportSpecificTopicUnloadingRecord dao = new JsonNctsImportSpecificTopicUnloadingRecord() ;
+		if(dto!=null){
+			String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_FETCH_SPECIFIC_TOPIC_UNLOADING_URL;
+			//url params
+			String urlRequestParamsKeys = "user=" + applicationUser + "&avd=" + dto.getAvd() + "&opd=" + dto.getOpd();
+			
+			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+	    	logger.warn("URL: " + BASE_URL);
+	    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
+	    	//--------------------------------------
+	    	//EXECUTE the FETCH (RPG program) here
+	    	//--------------------------------------
+	    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+			//Debug --> 
+	    	logger.debug(jsonPayload);
+	    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+	    	if(jsonPayload!=null){
+	    		JsonNctsImportSpecificTopicUnloadingContainer container = this.nctsImportSpecificTopicUnloadingService.getNctsImportSpecificTopicUnloadingContainer(jsonPayload);
+	    		if(container!=null && container.getOneorder()!=null){
+	    			for(JsonNctsImportSpecificTopicUnloadingRecord record: container.getOneorder() ){
+	    				dao = record;
+	    			}
+	    		}
+	    	}
+		}else{
+			logger.error("ERROR MRNnr does not exists in NCTS-Import. It is mandatory for DTL-PDF");
+		}
     	return dao;
 	}
 	

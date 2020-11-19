@@ -40,6 +40,13 @@
 	background-position: right 1rem center;
 }
 
+.nav-archive {
+	color: black !important;  /*link is defined in espedsg.css, override*/
+	background: url('images/archive.png') no-repeat center right; 
+	background-size: 0.8rem 0.8rem;
+	background-position: right 1rem center;
+}
+
 .find {
 	color: black !important;
 	background: url('images/find.png') no-repeat center right; 

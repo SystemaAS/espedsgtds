@@ -1,11 +1,15 @@
 package no.systema.tds.accounting.controller;
 
+import java.io.File;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -35,6 +39,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import lombok.NonNull;
+import no.systema.jservices.common.dao.ArkivpDao;
 import no.systema.jservices.common.dao.SvlthDao;
 import no.systema.jservices.common.dao.SvltuDao;
 import no.systema.jservices.common.dto.SvlthDto;
@@ -47,9 +52,18 @@ import no.systema.jservices.common.values.CRUDEnum;
 import no.systema.jservices.common.values.EventTypeEnum;
 import no.systema.main.mapper.url.request.UrlRequestParameterMapper;
 import no.systema.main.model.SystemaWebUser;
+import no.systema.main.service.ArchiveService;
+import no.systema.main.service.FirmArcService;
+import no.systema.main.service.PdfiTextService;
+import no.systema.main.service.TillfalligLagringTempSolutionService;
+import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.EncodingTransformer;
+import no.systema.main.util.io.PayloadContentFlusher;
+import no.systema.main.validator.IPAddressValidator;
 import no.systema.main.validator.LoginValidator;
+import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
+import no.systema.tds.util.TdsConstants;
 
 /**
  * Controller  for Tillfällig lagring.
@@ -63,9 +77,24 @@ public class AccountingController {
 	private static Logger logger = Logger.getLogger(AccountingController.class.getName());
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private LoginValidator loginValidator = new LoginValidator();
+	private PayloadContentFlusher payloadContentFlusher = new PayloadContentFlusher();
 	
 	@Autowired
 	WTF wtf;
+	
+	@Autowired	
+	private UrlCgiProxyService urlCgiProxyService;
+	
+	@Autowired
+	private ArchiveService archiveService;
+	
+	@Autowired
+	private FirmArcService firmArcService;
+	
+	@Autowired
+	TillfalligLagringTempSolutionService tlagringTempSolutionService;
+	
+	
 	
 	/**
 	 * Explicit settings of Jackson ObjectMapper.
@@ -138,6 +167,95 @@ public class AccountingController {
 		}
 
 	}
+	/**
+	 * Show Archive (Tullverkets Övergångslösning)
+	 * @param record
+	 * @param bindingResult
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="accounting_archive.do", method={RequestMethod.GET, RequestMethod.POST} )
+	public ModelAndView doListArchive(@ModelAttribute ("record") ArkivpDao record, BindingResult bindingResult, HttpSession session, HttpServletRequest request) {
+		ModelAndView successView = new ModelAndView("accounting_archive");
+		
+		SystemaWebUser appUser = loginValidator.getValidUser(session);
+		logger.warn("accounting_archive.do....");
+		logger.warn(record.getArrfk());
+		if (appUser == null) {
+			return loginView;
+		} else {
+			Collection<ArkivpDao> list = this.archiveService.getList(appUser, record);
+			String pdfDir = this.getFileBasePath(appUser.getUser());
+			successView.addObject("pdfDir", pdfDir);
+			successView.addObject("list", list);
+			return successView;
+		}
+
+	}
+	/**
+	 * Render Pdf on Archive (Tullverkets Övergångslösning)
+	 * @param session
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value="accounting_renderArchive.do", method={ RequestMethod.GET })
+	public ModelAndView doAccountingRenderArchive(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+		logger.info("Inside doAccountingRenderArchive...");
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
+		if(appUser==null){
+			return this.loginView;
+			
+		}else{
+			
+			//appUser.setActiveMenu(SystemaWebUser.ACTIVE_MENU_SIGN_PKI);
+			session.setAttribute(TdsConstants.ACTIVE_URL_RPG, TdsConstants.ACTIVE_URL_RPG_INITVALUE); 
+			String filePath = request.getParameter("fp");
+			
+			if(filePath!=null && !"".equals(filePath)){
+				
+                String absoluteFilePath = filePath;
+                if(!new IPAddressValidator().isValidAbsoluteFilePathFor_RenderFile(absoluteFilePath)){
+                	return (null);
+                }else{
+	                //must know the file type in order to put the correct content type on the Servlet response.
+	                String fileType = this.payloadContentFlusher.getFileType(filePath);
+	                if(AppConstants.DOCUMENTTYPE_PDF.equals(fileType)){
+	                		response.setContentType(AppConstants.HTML_CONTENTTYPE_PDF);
+	                }else if(AppConstants.DOCUMENTTYPE_TIFF.equals(fileType) || AppConstants.DOCUMENTTYPE_TIF.equals(fileType)){
+	            			response.setContentType(AppConstants.HTML_CONTENTTYPE_TIFF);
+	                }else if(AppConstants.DOCUMENTTYPE_JPEG.equals(fileType) || AppConstants.DOCUMENTTYPE_JPG.equals(fileType)){
+	                		response.setContentType(AppConstants.HTML_CONTENTTYPE_JPEG);
+	                }else if(AppConstants.DOCUMENTTYPE_TXT.equals(fileType)){
+	            			response.setContentType(AppConstants.HTML_CONTENTTYPE_TEXTHTML);
+	                }else if(AppConstants.DOCUMENTTYPE_DOC.equals(fileType)){
+	            			response.setContentType(AppConstants.HTML_CONTENTTYPE_WORD);
+	                }else if(AppConstants.DOCUMENTTYPE_XLS.equals(fileType)){
+	            			response.setContentType(AppConstants.HTML_CONTENTTYPE_EXCEL);
+	                }
+	                //--> with browser dialogbox: response.setHeader ("Content-disposition", "attachment; filename=\"edifactPayload.txt\"");
+	                response.setHeader ("Content-disposition", "filename=\"archiveDocument." + fileType + "\"");
+	                
+	                logger.info("Start flushing file payload...");
+	                //send the file output to the ServletOutputStream
+	                try{
+	                		this.payloadContentFlusher.flushServletOutput(response, absoluteFilePath);
+	                		//payloadContentFlusher.flushServletOutput(response, "plain text test...".getBytes());
+	                	
+	                }catch (Exception e){
+	                		e.printStackTrace();
+	                }
+                }
+            }
+			//this to present the output in an independent window
+            return(null);
+			
+		}
+			
+	}	
+	
 
 	@RequestMapping(value="accounting_inlagg.do", method={RequestMethod.GET, RequestMethod.POST} )
 	public ModelAndView doInlagg(@ModelAttribute ("record") SvlthDao record, 
@@ -192,7 +310,10 @@ public class AccountingController {
 					enteredGodsNummer = record.getSvlth_ign(); //use if error
 				}
 				if (!crap) {
-					SvlthDao saved = saveRecord(appUser, record, "A");
+					SvlthDao savedDao = saveRecord(appUser, record, "A");
+					if(savedDao!=null && org.apache.commons.lang3.StringUtils.isNotEmpty(savedDao.getSvlth_ign())){
+						this.tlagringTempSolutionService.execute(savedDao, appUser);
+					}
 				}
 				wtf.getGodsNrMap().remove(record.getSvlth_ign());
 				logger.info(" wtf.getGodsNrMap().values()"+ wtf.getGodsNrMap().values());
@@ -419,7 +540,10 @@ public class AccountingController {
 				adjustIntoDao(h_svlth_h, record,recordDao);
 	
 				setDate(EventTypeEnum.RATTELSE, recordDao);
-				saveRecord(appUser, recordDao, "A");
+				SvlthDao savedDao = saveRecord(appUser, recordDao, "A");
+				if(savedDao!=null && org.apache.commons.lang3.StringUtils.isNotEmpty(savedDao.getSvlth_ign())){
+					this.tlagringTempSolutionService.execute(savedDao, appUser);
+				}
 				successView.addObject("action", CRUDEnum.READ.getValue());
 				
 				successView.addObject("info", "Rättelse skapat.");
@@ -687,6 +811,29 @@ public class AccountingController {
 	}	
 	
 	
+	
+	public String getFileBasePath(String applicationUser){	
+		String retval = "";
+		try{
+			String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSYFIRMARC.do";
+			StringBuffer urlRequestParamsKeys = new StringBuffer();
+			urlRequestParamsKeys.append("user=" + applicationUser);
+			//Now build the URL and send to the back end via the drop down service
+			String url = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
+			logger.info("AVD BASE_URL:" + BASE_URL);
+			logger.info("AVD BASE_PARAMS:" + urlRequestParamsKeys.toString());
+			JsonTdsFirmArcContainer container = this.firmArcService.getContainer(url);
+			
+			retval = File.separator + container.getArcane() + PdfiTextService.BASE_DIR_TILLFALLIG_LAGRING_ARCHIVE;
+			logger.warn("path:" + retval);
+			
+		}catch(Exception e){
+			logger.error(e.toString());
+		}
+		
+		return retval;
+		
+	}
 	
 	
 	

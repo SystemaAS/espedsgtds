@@ -680,7 +680,7 @@
 										</td>
 							            <td class="text14" align="left">
 							            	<a id="tillaggskoderLink"></a>
-							            	<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_vata" id="svev_vata" size="10" maxlength="10" value='${model.record.svev_vata}'>
+							            	<input onKeyPress="return numberKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="svev_vata" id="svev_vata" size="10" maxlength="8" value='${model.record.svev_vata}'>
 							            	<a tabindex="-1" id="svev_vataIdLink">
            										<img style="cursor:pointer;vertical-align: middle;" src="resources/images/find.png" width="14px" height="14px" border="0" alt="search" >
            									</a>

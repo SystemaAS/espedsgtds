@@ -155,7 +155,7 @@ public class GateController {
 		    
 		    
 		    //TILLF.LAGRING TEST
-		    runTillfLagringUseCase(appUser);
+		    //runTillfLagringUseCase(appUser);
 		    
 		    
 		    return theView;
@@ -176,7 +176,7 @@ public class GateController {
 			dao.setSvlth_id2(20201202); //ankomstdatum
 			dao.setSvlth_irn("20CH00000245500773");
 			//
-			dao.setSvlth_pos("Postion 31");
+			dao.setSvlth_pos("3");
 			dao.setSvlth_iex("Extra ref.");
 			dao.setSvlth_ibr("20"); //bruttovikt kg
 			dao.setSvlth_ivb("Bananer");

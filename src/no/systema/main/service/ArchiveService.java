@@ -1,6 +1,8 @@
 package no.systema.main.service;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -89,12 +91,53 @@ public class ArchiveService {
 		dto.setArlink(FilenameUtils.getName(absoluteFileName));
 		dto.setArdate(dateTimeMgr.getCurrentDate_ISO());
 		dto.setArtime(dateTimeMgr.getCurrentDate_ISO("HHmmss"));
-		dto.setArrfk(dao.getSvlth_ign());
+		dto.setArrfk(dao.getSvlth_ign());//Godsnr
+		dto.setArunde(dao.getSvlth_pos());
+		dto.setArbhis(dao.getSvlth_irn());//MRN
 		String companyCode = appUser.getCompanyCode();
 		if(StringUtils.isEmpty(companyCode)){ companyCode = appUser.getFallbackCompanyCode(); }
 		dto.setArfirm(companyCode);
 		dto.setAruser(appUser.getUser());
 		
 		return dto;
+	}
+	
+	/**
+	 * 
+	 * @param appUser
+	 * @param dto
+	 * @return
+	 */
+	public Collection<ArkivpDao> getList(SystemaWebUser appUser, ArkivpDao dto){
+		Collection<ArkivpDao> result = new ArrayList<ArkivpDao>();
+		if(dto!=null){
+			//handover from dao to dto(arkivp)
+			logger.warn(dto.toString());
+			String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsARKIVP.do";
+			
+			String urlRequestParamsKey = "user=" + appUser.getUser();
+			String urlRequestParams = this.urlRequestParameterMapper.getUrlParameterValidString((dto));
+			String urlParams = urlRequestParamsKey + urlRequestParams;
+			logger.warn("URL" + BASE_URL);
+			logger.warn("PARAMs:" + urlParams);
+			//Execute rest-service
+			String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlParams);
+			logger.info("jsonPayload on request: " + jsonPayload);
+    		if(jsonPayload!=null){
+    			JsonTdsArkivpContainer container = this.firmArcService.getArkivpContainer(jsonPayload);
+    			if(container!=null){
+    				if(StringUtils.isNotEmpty(container.getErrMsg())){
+    					logger.error("ERROR<insert>: " + container.getErrMsg());
+    				}else{
+    					result = container.getList();
+    				}
+    			}
+    		}
+		}else{
+			logger.error("ERROR:dao = NULL ?" );
+		}
+		logger.warn(result);
+		return result;
+		
 	}
 }
