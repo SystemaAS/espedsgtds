@@ -1,5 +1,7 @@
 	package no.systema.tds.tdsexport.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +33,7 @@ import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
+import no.systema.main.util.NumberFormatterLocaleAware;
 import no.systema.main.util.StringManager;
 
 import no.systema.tds.tdsexport.mapper.url.request.UrlRequestParameterMapper;
@@ -85,7 +88,7 @@ public class TdsExportItemsController {
 	private static final JsonDebugger jsonDebugger = new JsonDebugger(2000);
 	private static final Logger logger = Logger.getLogger(TdsExportItemsController.class.getName());
 	private final StringManager strMgr = new StringManager();
-	
+	private final NumberFormatterLocaleAware numberFormatter = new NumberFormatterLocaleAware();
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
 	private TdsExportCalculator tdsExportCalculator = new TdsExportCalculator();
@@ -933,6 +936,11 @@ public class TdsExportItemsController {
 	 * @param recordToValidate
 	 */
 	private void adjustFields(JsonTdsExportSpecificTopicItemRecord recordToValidate){
+		//Bruttovikt
+		recordToValidate.setSvev_brut(numberFormatter.formatBigDecimal(3, recordToValidate.getSvev_brut()));
+		//Nettovikt
+		recordToValidate.setSvev_neto(numberFormatter.formatBigDecimal(3, recordToValidate.getSvev_neto()));
+				
 		//Godsmärkning
 		if(strMgr.isNotNull(recordToValidate.getSvev_godm())){
 			recordToValidate.setSvev_godm(recordToValidate.getSvev_godm().toUpperCase());

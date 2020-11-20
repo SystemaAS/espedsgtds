@@ -33,6 +33,7 @@ import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.model.SystemaWebUser;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
+import no.systema.main.util.NumberFormatterLocaleAware;
 import no.systema.main.util.StringManager;
 
 
@@ -82,7 +83,7 @@ public class TdsImportItemsController {
 	private static final Logger logger = Logger.getLogger(TdsImportItemsController.class.getName());
 	private static final JsonDebugger jsonDebugger = new JsonDebugger(1500);
 	private final StringManager strMgr = new StringManager();
-	
+	private final NumberFormatterLocaleAware numberFormatter = new NumberFormatterLocaleAware();
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
 	private TdsImportCalculator tdsImportCalculator = new TdsImportCalculator();
@@ -955,6 +956,11 @@ public class TdsImportItemsController {
 	 * @param recordToValidate
 	 */
 	private void adjustFields(JsonTdsImportSpecificTopicItemRecord recordToValidate){
+		//Bruttovikt
+		recordToValidate.setSviv_brut(numberFormatter.formatBigDecimal(3, recordToValidate.getSviv_brut()));
+		//Nettovikt
+		recordToValidate.setSviv_neto(numberFormatter.formatBigDecimal(3, recordToValidate.getSviv_neto()));
+				
 		//Godsmärkning
 		if(strMgr.isNotNull(recordToValidate.getSviv_godm())){
 			recordToValidate.setSviv_godm(recordToValidate.getSviv_godm().toUpperCase());
