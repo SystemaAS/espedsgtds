@@ -1,6 +1,7 @@
 package no.systema.main.controller;
 
 
+import java.io.File;
 import java.net.URLEncoder;
 import java.util.*;
 
@@ -33,6 +34,7 @@ import org.springframework.validation.BindingResult;
 
 //import no.systema.tds.service.MainHdTopicService;
 import no.systema.main.validator.UserValidator;
+import no.systema.tds.model.jsonjackson.JsonTdsFirmArcContainer;
 import no.systema.main.cookie.SessionCookieManager;
 //application imports
 import no.systema.main.model.SystemaWebUser;
@@ -44,6 +46,7 @@ import no.systema.main.model.jsonjackson.JsonFirmLoginRecord;
 
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.service.login.SystemaWebLoginService;
+import no.systema.main.service.FirmArcService;
 import no.systema.main.service.FirmLoginService;
 
 import no.systema.main.url.store.MainUrlDataStore;
@@ -400,6 +403,35 @@ public class DashboardController {
 	
     	return companyCode;
 	}
+	
+	/**
+	 * The firm's archive root path
+	 * @param applicationUser
+	 * @return
+	 */
+	public String getArchiveRootPath(String applicationUser) {
+		String retval = "";
+		try{
+			String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSYFIRMARC.do";
+			StringBuffer urlRequestParamsKeys = new StringBuffer();
+			urlRequestParamsKeys.append("user=" + applicationUser);
+			//Now build the URL and send to the back end via the drop down service
+			String url = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
+			logger.info("AVD BASE_URL:" + BASE_URL);
+			logger.info("AVD BASE_PARAMS:" + urlRequestParamsKeys.toString());
+			JsonTdsFirmArcContainer container = this.firmArcService.getContainer(url);
+			
+			retval = File.separator + container.getArcane();
+			
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return retval;
+		
+	}
+	
 	/**
 	 * This is the only place in which the jsonUserContainer lends over its values to the global SystemWebUser object
 	 * @param request
@@ -418,6 +450,7 @@ public class DashboardController {
 		appUser.setUserName(jsonSystemaUserContainer.getUserName());
 		appUser.setCompanyCode(companyCode);//fifirm in firm
 		appUser.setFallbackCompanyCode(this.getCompanyCodeForLogin()); //as a fallback needed in espedsg use cases
+		appUser.setArchiveRootPath(this.getArchiveRootPath(appUser.getUser()));
 		appUser.setUsrLang(jsonSystemaUserContainer.getUsrLang());
 		appUser.setUserAS400(jsonSystemaUserContainer.getUsrAS400());
 		appUser.setIntern(jsonSystemaUserContainer.getIntern());
@@ -440,7 +473,7 @@ public class DashboardController {
 
 		appUser.setDftdg(jsonSystemaUserContainer.getDftdg());
 		appUser.setAsavd(jsonSystemaUserContainer.getAsavd());
-		
+	
 		//DEBUG
 		/*logger.info("[INFO] user logo:" + appUser.getLogo() );
 		logger.info("[INFO] user banner:" + appUser.getBanner() );
@@ -582,7 +615,8 @@ public class DashboardController {
 	public void setFirmLoginService (FirmLoginService value){ this.firmLoginService = value; }
 	public FirmLoginService getFirmLoginService(){ return this.firmLoginService; }
 	
-	
+	@Autowired
+	private FirmArcService firmArcService;
 	
 		
 }

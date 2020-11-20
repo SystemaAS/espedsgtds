@@ -67,6 +67,8 @@ public class PdfiTextService {
 	public static final String MAP_KEY_FILE_NAME = "file";
 	public static final String MAP_KEY_EMAIL_SUBJECT = "subject";
 	
+	
+	
 	/**
 	 * Creates the Pdf on disk
 	 * @param fileName
@@ -110,7 +112,6 @@ public class PdfiTextService {
 	        }
 	        
 	        document.close();
-	        
 		}catch (Exception e){
 			e.printStackTrace();
 			logger.error("SEVERE ERROR:" + e.toString());
@@ -357,32 +358,6 @@ public class PdfiTextService {
 	}
 		
 	
-	/**
-	 * 
-	 * @param dto
-	 * @param appUser
-	 */
-	public void setFileBasePath(String applicationUser) {
-		
-		try{
-			String BASE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservicesbcore/syjsSYFIRMARC.do";
-			StringBuffer urlRequestParamsKeys = new StringBuffer();
-			urlRequestParamsKeys.append("user=" + applicationUser);
-			//Now build the URL and send to the back end via the drop down service
-			String url = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
-			logger.info("AVD BASE_URL:" + BASE_URL);
-			logger.info("AVD BASE_PARAMS:" + urlRequestParamsKeys.toString());
-			JsonTdsFirmArcContainer container = this.firmArcService.getContainer(url);
-			
-			this.fileBasePath = File.separator + container.getArcane() + this.BASE_DIR_TILLFALLIG_LAGRING_ARCHIVE;
-			logger.warn("path:" + this.fileBasePath);
-			
-		
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-	}
 	
 	/**
 	 * File name must be unique. We use the archive time-stamp of the dao

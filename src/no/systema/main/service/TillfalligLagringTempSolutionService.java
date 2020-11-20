@@ -75,7 +75,7 @@ public class TillfalligLagringTempSolutionService {
 	    	//Only inlägg(I) or rättelse(R) and only when their are activated. We can deactivate one or both.
 	    	if(isActiveDtlUseCase(dao) || isActiveAvvikelseUseCase(dao)){
 		    	//init directory for file on disk
-	    		pdfService.setFileBasePath(appUser.getUser());
+	    		pdfService.setFileBasePath(appUser.getArchiveRootPath() + PdfiTextService.BASE_DIR_TILLFALLIG_LAGRING_ARCHIVE);
 		    	File fbp = new File(pdfService.getFileBasePath());
 		    	
 		    	if(fbp.exists()){
