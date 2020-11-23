@@ -1487,19 +1487,19 @@
 							           			<tr>
 								           			<td class="text14">
 								           				&nbsp;1.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="sviv_bit1_list" id="sviv_bit1" name="sviv_bit1">
-														<datalist id="sviv_bit1_list">
+								           				<c:choose>
+								 				  		<c:when test="${not empty model.record.sviv_bit1}">
+								 				  			<input size="8" maxlength="4" class="selectMediumBlueE2" list="sviv_bit1_list" id="sviv_bit1" name="sviv_bit1" value="${model.record.sviv_bit1}">
+								 				  		</c:when>
+								 				  		<c:otherwise>
+								 				  			<input size="8" maxlength="4" class="selectMediumBlueE2" list="sviv_bit1_list" id="sviv_bit1" name="sviv_bit1" value="${recordTopic.svih_faty}">
+								 				  		</c:otherwise>
+								 				  		</c:choose>
+								           				<datalist id="sviv_bit1_list">
 														  <option value="">-Välj-</option>
-										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
-										 				  		<c:choose>
-										 				  		<c:when test="${not empty model.record.sviv_bit1}">
-										 				  			<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
-										 				  		</c:when>
-										 				  		<c:otherwise>
-										 				  			<option value="${code.svkd_kd}"<c:if test="${recordTopic.svih_faty == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
-										 				  		</c:otherwise>
-										 				  		</c:choose>
-															</c:forEach>  
+														  <c:forEach var="code" items="${model.mcfCodeList}" >
+										 				  	<option value="${code.svkd_kd}"<c:if test="${model.record.sviv_bit1 == code.svkd_kd}"> selected </c:if> >${code.svkd_kd}</option>
+									 				  	  </c:forEach>  
 														</datalist>
 								           				
 								           			</td>
