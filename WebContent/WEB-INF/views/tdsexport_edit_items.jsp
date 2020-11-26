@@ -1128,7 +1128,7 @@
 												<tr>	
 								           			<td class="text14">
 														&nbsp;2.Kod
-														<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit2_list" id="svev_bit2" name="svev_bit2">
+														<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit2_list" id="svev_bit2" name="svev_bit2" value="${model.record.svev_bit2}">
 														<datalist id="svev_bit2_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1144,7 +1144,7 @@
 												<tr>
 								           			<td class="text14">
 								           				&nbsp;3.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit3_list" id="svev_bit3" name="svev_bit3">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit3_list" id="svev_bit3" name="svev_bit3" value="${model.record.svev_bit3}">
 														<datalist id="svev_bit3_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1160,7 +1160,7 @@
 								           		<tr>	
 							           				<td class="text14">
 								           				&nbsp;4.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit4_list" id="svev_bit4" name="svev_bit4">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit4_list" id="svev_bit4" name="svev_bit4" value="${model.record.svev_bit4}">
 														<datalist id="svev_bit4_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1177,7 +1177,7 @@
 								           			<td class="text14">
 								           				&nbsp;5.Kod
 								           				
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit5_list" id="svev_bit5" name="svev_bit5">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit5_list" id="svev_bit5" name="svev_bit5" value="${model.record.svev_bit5}">
 														<datalist id="svev_bit5_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1193,7 +1193,7 @@
 							           			<tr>										           			
 								           			<td class="text14">
 								           				&nbsp;6.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit6_list" id="svev_bit6" name="svev_bit6">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit6_list" id="svev_bit6" name="svev_bit6" value="${model.record.svev_bit6}">
 														<datalist id="svev_bit6_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1210,7 +1210,7 @@
 							           			<tr>
 								           			<td class="text14">
 								           				&nbsp;7.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit7_list" id="svev_bit7" name="svev_bit7">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit7_list" id="svev_bit7" name="svev_bit7" value="${model.record.svev_bit7}">
 														<datalist id="svev_bit7_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1226,7 +1226,7 @@
 								           		<tr>	
 								           			<td class="text14">
 								           				&nbsp;8.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit8_list" id="svev_bit8" name="svev_bit8">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit8_list" id="svev_bit8" name="svev_bit8" value="${model.record.svev_bit8}">
 														<datalist id="svev_bit8_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
@@ -1242,7 +1242,7 @@
 							           			<tr>
 								           			<td class="text14">
 								           				&nbsp;9.Kod
-								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit9_list" id="svev_bit9" name="svev_bit9">
+								           				<input size="8" maxlength="4" class="selectMediumBlueE2" list="svev_bit9_list" id="svev_bit9" name="svev_bit9" value="${model.record.svev_bit9}">
 														<datalist id="svev_bit9_list">
 														  <option value="">-Välj-</option>
 										 				  	<c:forEach var="code" items="${model.mcfCodeList}" >
