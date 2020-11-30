@@ -20,6 +20,13 @@
 	  
   });
   
+  jq(function() {
+	  jq(".mrnLink").click(function() {
+		  var id = this.id;
+		  jq("#"+id).attr(('target','_blank'));
+		  window.open('http://ec.europa.eu/taxation_customs/dds2/tra/transit_home.jsp?Lang=en&Expand=true&MRN=' + id, "codeWin", "top=40px,left=1000px,height=800px,width=800px,scrollbars=yes,status=no,location=no");
+	  });
+  });
   
   //-----------------------------------
   //START Model dialog "Kopiera Ärende

@@ -234,7 +234,18 @@
 	               			</a>
                		   </td>
 		               <td class="tableCell" >&nbsp;${topic.lrnNr}</td>
-		               <td class="tableCell" >&nbsp;${topic.mrnNr}</td>
+		               <td class="tableCell" >
+		               		<c:choose>
+		               		<c:when test="${not empty topic.mrnNr}">
+			               		<a style="display: block; width: 100%; height: 100%; cursor:pointer; color: #4E78A0" class="mrnLink" id="${topic.mrnNr}">
+									&nbsp;${topic.mrnNr}
+								</a> 
+							</c:when>
+							<c:otherwise>
+								&nbsp;
+							</c:otherwise>
+		               		</c:choose>
+		               </td>
 		               <td class="tableCell" >&nbsp;${topic.datum}</td>
 		               <td class="tableCell" >&nbsp;<b>${topic.status}</b></td>
 		               <td class="tableCell" >&nbsp;${topic.motNavn}</td>

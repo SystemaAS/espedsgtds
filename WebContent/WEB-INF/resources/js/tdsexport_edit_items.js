@@ -367,15 +367,31 @@
   			retval = true;
   		}
   		if(jq('#svev_bit3').val()!='' && ( jq('#svev_bit3').val().match("^Y") || jq('#svev_bit3').val().match("^X") || jq('#svev_bit3').val().match("^C")
-  				|| jq('#svev_bit2').val().match("^E")) ){
+  				|| jq('#svev_bit3').val().match("^E")) ){
   			retval = true;
   		}
   		if(jq('#svev_bit4').val()!='' && ( jq('#svev_bit4').val().match("^Y") || jq('#svev_bit4').val().match("^X") || jq('#svev_bit4').val().match("^C")
-  				|| jq('#svev_bit2').val().match("^E")) ){
+  				|| jq('#svev_bit4').val().match("^E")) ){
   			retval = true;
   		}
   		if(jq('#svev_bit5').val()!='' && ( jq('#svev_bit5').val().match("^Y") || jq('#svev_bit5').val().match("^X") || jq('#svev_bit5').val().match("^C")
-  				|| jq('#svev_bit2').val().match("^E")) ){
+  				|| jq('#svev_bit5').val().match("^E")) ){
+  			retval = true;
+  		}
+  		if(jq('#svev_bit6').val()!='' && ( jq('#svev_bit6').val().match("^Y") || jq('#svev_bit6').val().match("^X") || jq('#svev_bit6').val().match("^C")
+  				|| jq('#svev_bit6').val().match("^E")) ){
+  			retval = true;
+  		}
+  		if(jq('#svev_bit7').val()!='' && ( jq('#svev_bit7').val().match("^Y") || jq('#svev_bit7').val().match("^X") || jq('#svev_bit7').val().match("^C")
+  				|| jq('#svev_bit7').val().match("^E")) ){
+  			retval = true;
+  		}
+  		if(jq('#svev_bit8').val()!='' && ( jq('#svev_bit8').val().match("^Y") || jq('#svev_bit8').val().match("^X") || jq('#svev_bit8').val().match("^C")
+  				|| jq('#svev_bit8').val().match("^E")) ){
+  			retval = true;
+  		}
+  		if(jq('#svev_bit9').val()!='' && ( jq('#svev_bit9').val().match("^Y") || jq('#svev_bit9').val().match("^X") || jq('#svev_bit9').val().match("^C")
+  				|| jq('#svev_bit9').val().match("^E")) ){
   			retval = true;
   		}
   		return retval;
