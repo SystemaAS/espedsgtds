@@ -482,9 +482,10 @@ public class TdsImportItemsValidator implements Validator {
 							errors.rejectValue("sviv_ankv", "", "(Extra mängdenhet: antal " + record.getExtraMangdEnhetDescription() + ")");
 						}
 					}else{
+						/*
 						if(record.getSviv_ankv()!=null && !"".equals(record.getSviv_ankv())){
 							errors.rejectValue("sviv_ankv", "systema.tds.import.header.error.rule.item.sviv_ankv.extraMangd.mustNotExist");
-						}
+						}*/
 					}
 					//-------------------
 					//Tidigare Handlingar

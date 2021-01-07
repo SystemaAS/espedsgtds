@@ -1443,7 +1443,7 @@
 					            <div class="text11" style="position: relative;" align="left" >
 					            <span style="position:absolute;top:2px; width:250px;" id="20b_info" class="popupWithInputText text11"  >
 				           			<ul>
-				           				<li>Ort skall vara samma som Avsändares postadress. Undantaget <b>DDP</b> som skall ha samma som Mottagarens postadress</li>
+				           				<li>Ort skall vara samma som Mottagarens postadress. Undantaget <b>EXW</b> som skall ha samma som Avsändarens postadress</li>
 				           			</ul>
 								</span>	
 								</div>
