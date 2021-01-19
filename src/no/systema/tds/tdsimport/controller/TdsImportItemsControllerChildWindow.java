@@ -55,6 +55,7 @@ import no.systema.tds.tdsimport.url.store.TdsImportUrlDataStore;
 
 import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.util.TdsConstants;
+import no.systema.tds.util.manager.CodeDropDownMgr;
 
 
 
@@ -81,7 +82,7 @@ public class TdsImportItemsControllerChildWindow {
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private ApplicationContext context;
 	private LoginValidator loginValidator = new LoginValidator();
-	//private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
+	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
 	private DateTimeManager dateTimeMgr = new DateTimeManager();
 	
 	
@@ -343,6 +344,10 @@ public class TdsImportItemsControllerChildWindow {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}
+		//remove duplicates if applicable
+		if("FOR".equals(typeCode) || "FF1".equals(typeCode) ){
+			list = this.codeDropDownMgr.getNoneDuplicatesList(list);
 		}
 		return list;
 	}

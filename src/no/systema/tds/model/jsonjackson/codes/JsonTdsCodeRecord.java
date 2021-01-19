@@ -3,11 +3,23 @@
  */
 package no.systema.tds.model.jsonjackson.codes;
 
+import java.util.Comparator;
+
+
+
 /**
  * @author oscardelatorre
  * @date Feb 24, 2013
  */
-public class JsonTdsCodeRecord {
+public class JsonTdsCodeRecord implements Comparable<JsonTdsCodeRecord> {
+	
+	
+	@Override
+    public int compareTo(JsonTdsCodeRecord o) {
+        return this.getSvkd_kd().compareTo(o.getSvkd_kd());
+    }
+	
+	
 	
 	private String svkd_kd = null;
 	public void setSvkd_kd(String value){ this.svkd_kd = value;}

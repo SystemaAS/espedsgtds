@@ -4,8 +4,13 @@
 package no.systema.tds.util.manager;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -79,7 +84,7 @@ public class CodeDropDownMgr {
 			
 			
 			JsonTdsCodeContainer codeContainer = tdsDropDownListPopulationService.getCodeContainer(utfPayload);
-			List<JsonTdsCodeRecord> list = new ArrayList();
+			List<JsonTdsCodeRecord> list = new ArrayList<JsonTdsCodeRecord>();
 			
 			for(JsonTdsCodeRecord codeRecord: codeContainer.getKodlista()){
 				list.add(codeRecord);
@@ -105,6 +110,11 @@ public class CodeDropDownMgr {
 			}else if("ADD".equalsIgnoreCase(paramTYP)){
 				//not yet implemented
 			}else if("FF1".equalsIgnoreCase(paramTYP)){
+				//now remove duplicates
+				list = this.getNoneDuplicatesList(list);
+				//sort using Comparable implementation in JsonTdsCodeRecord 
+				Collections.sort(list); //in reverse order if you want --> //Collections.sort(employees, Collections.reverseOrder());
+				
 				model.put(TdsConstants.RESOURCE_MODEL_KEY_CODE_FORFARANDE01_LIST, list);
 				model.put(TdsConstants.URL_EXTERNAL_FORFARANDE01_CODES_TARIC_CODE, new UrlTaricForfarande01Object());
 
@@ -117,6 +127,11 @@ public class CodeDropDownMgr {
 				model.put(TdsConstants.URL_EXTERNAL_SALCODES_TARIC_CODE, new UrlTaricSarskildaUpplysningarObject());
 				
 			}else if("FOR".equalsIgnoreCase(paramTYP)){
+				//now remove duplicates
+				list = this.getNoneDuplicatesList(list);
+				//sort using Comparable implementation in JsonTdsCodeRecord 
+				Collections.sort(list); //in reverse order if you want --> //Collections.sort(employees, Collections.reverseOrder());
+				
 				model.put(TdsConstants.RESOURCE_MODEL_KEY_CODE_FORMAN_LIST, list);
 				model.put(TdsConstants.URL_EXTERNAL_FORMANSKODCODES_TARIC_CODE, new UrlTaricFormanskodObject());
 
@@ -137,6 +152,26 @@ public class CodeDropDownMgr {
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * removes duplicates
+	 * @param list
+	 * @return
+	 */
+	public List<JsonTdsCodeRecord> getNoneDuplicatesList(List<JsonTdsCodeRecord> list){
+		List<JsonTdsCodeRecord> newList = new ArrayList<>();
+		
+		//START remove duplicates (coming from the back-end (Tulltaxa)) by using a Map and then back to a new list (without duplictates)
+		Map<String, JsonTdsCodeRecord> map = new HashMap<String, JsonTdsCodeRecord>();
+		for(JsonTdsCodeRecord rec: list){
+	       map.put(rec.getSvkd_kd(), rec);
+		}
+		Iterator itr=map.keySet().iterator();
+		while (itr.hasNext()) {
+			String id =  itr.next().toString();
+			newList.add((JsonTdsCodeRecord)map.get(id));
+		}//END removeDuplicates 
+		return newList;
 	}
 	/**
 	 * 
