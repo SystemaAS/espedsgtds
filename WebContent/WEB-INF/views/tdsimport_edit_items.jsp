@@ -236,6 +236,7 @@
 						<tr >
 							<td>
 							<form id="createNewItemLine" action="tdsimport_edit_items.do">
+								<input type="hidden" name="messageType" id="messageType" value='${recordTopic.svih_mtyp}'>
 								<input type="hidden" name="action" id="action" value='doFetch'>
 				 				<input type="hidden" name="avd" id="avd" value='${model.avd	}'>
 				 				<input type="hidden" name="sign" id="sign" value='${model.sign}'>
@@ -418,7 +419,9 @@
 							               <td width="4%" class="text14" align="center">${record.sviv_vano}</td>
 							               <td class="text14" >&nbsp;${record.sviv_ulkd}</td>
 							               <td class="text14" >&nbsp;${record.sviv_vata}&nbsp;&nbsp;
-							               	  <img id="recordUpdate_${record.sviv_syli}_${record.sviv_vano}" onClick="updateKundensVarReg(this);" src="resources/images/addOrder.png" width="12px" height="12px" border="0" title="Lägg till i kundensvarureg.">
+							               	  <c:if test="${not empty record.sviv_vata}">
+							               	  	<img id="recordUpdate_${record.sviv_syli}_${record.sviv_vano}" onClick="updateKundensVarReg(this);" src="resources/images/addOrder.png" width="12px" height="12px" border="0" title="Lägg till i kundensvarureg.">
+							               	  </c:if>
 							               </td>
 							               <td class="text14" >&nbsp;${record.sviv_fokd}</td>
 							               <td class="text14" >&nbsp;${record.sviv_eup1}</td>

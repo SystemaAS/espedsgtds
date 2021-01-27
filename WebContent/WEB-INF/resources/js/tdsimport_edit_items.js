@@ -81,8 +81,16 @@
   	//
   	jq(function() {
 	  	jq("#btnItemsSave").click(function( event ) {
-	  		//Has to be done here since it is a "last resort" in case the user does not navigate to sviv_fabl (at some point in the GUI-flow)
-	  		getBilagdaHandlingarYkoder2_OnFormSubmit();
+	  		if('HNK'== jq("#messageType").val() || 'HNU'== jq("#messageType").val()){
+	  			//No validation with ajax with HNK and HNU does not demand the following mandatory fields: Varukod, Förmåner, Varanspris, Statvärde.
+	  			//The user should be able to save and submit without these mandatory fields.
+	  			setBlockUI();
+			  	jq( "#tdsImportEditTopicItemForm" ).submit();
+			  	
+	  		}else{
+	  			//Has to be done here since it is a "last resort" in case the user does not navigate to sviv_fabl (at some point in the GUI-flow)
+	  			getBilagdaHandlingarYkoder2_OnFormSubmit();
+	  		}
 	  	});
 	  	
 	  	
@@ -398,6 +406,8 @@
 					alert('Error loading ...');
 				}
 			});
+  		}else{
+  			alert('Obligatoriska fält saknas för denna typ av meddelande:' + jq("#messageType").val() );
   		}
   		
 	}

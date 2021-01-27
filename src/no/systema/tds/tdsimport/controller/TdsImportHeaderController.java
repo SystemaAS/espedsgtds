@@ -2,6 +2,7 @@ package no.systema.tds.tdsimport.controller;
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
@@ -380,16 +381,26 @@ public class TdsImportHeaderController {
 					    		isValidCreatedRecordTransactionOnRPG = false;
 					    	}else{
 					    		
-					    		if(this.validateItemLines(appUser, avd, opd)){
+					    		//this item lines validation only for message types other than HNU or HNK since these H-messages have many empty fields
+					    		if(StringUtils.isNotEmpty(jsonTdsImportSpecificTopicRecord.getSvih_mtyp()) && 
+					    				!jsonTdsImportSpecificTopicRecord.getSvih_mtyp().startsWith("H") ){
+						    		if(this.validateItemLines(appUser, avd, opd)){
+						    			//Update succefully done!
+						    			logger.info("[INFO] Record successfully updated, OK ");
+						    			//put domain objects
+						    			this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicRecord, sumTopicRecord );
+						    			this.adjustValidUpdateFlag(model, jsonTdsImportSpecificTopicRecord);
+						    		}else{
+						    			rpgReturnResponseHandler.setErrorMessage("Varning: Ärendet har sparats. Det finns varuposter med felstatus som måste korrigeras.  ");
+							    		this.setFatalError(model, rpgReturnResponseHandler, jsonTdsImportSpecificTopicRecord);
+							    		isValidCreatedRecordTransactionOnRPG = false;
+						    		}
+					    		}else{
 					    			//Update succefully done!
 					    			logger.info("[INFO] Record successfully updated, OK ");
 					    			//put domain objects
 					    			this.setDomainObjectsInView(session, model, jsonTdsImportSpecificTopicRecord, sumTopicRecord );
 					    			this.adjustValidUpdateFlag(model, jsonTdsImportSpecificTopicRecord);
-					    		}else{
-					    			rpgReturnResponseHandler.setErrorMessage("Varning: Ärendet har sparats. Det finns varuposter med felstatus som måste korrigeras.  ");
-						    		this.setFatalError(model, rpgReturnResponseHandler, jsonTdsImportSpecificTopicRecord);
-						    		isValidCreatedRecordTransactionOnRPG = false;
 					    		}
 					    	}
 						}else{

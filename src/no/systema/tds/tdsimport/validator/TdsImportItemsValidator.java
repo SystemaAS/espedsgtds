@@ -575,7 +575,9 @@ public class TdsImportItemsValidator implements Validator {
 						}
 					}
 				}else{
-					errors.rejectValue("sviv_vata", "systema.tds.import.header.error.rule.item.svev_vata.invalidNumber");
+					if(!record.getHeader_svih_mtyp().startsWith("H")){
+						errors.rejectValue("sviv_vata", "systema.tds.import.header.error.rule.item.svev_vata.invalidNumber");
+					}
 				}
 				
 			}
