@@ -472,6 +472,7 @@
 				jq('#sviv_eup2').val(""); jq('#sviv_eup2').val(data[i].sviv_eup2); 
 				jq('#sviv_brut').val(""); jq('#sviv_brut').val(data[i].sviv_brut); 
 				jq('#sviv_neto').val(""); jq('#sviv_neto').val(data[i].sviv_neto); 
+				jq('#sviv_kvot').val(""); jq('#sviv_kvot').val(data[i].sviv_kvot);
 				jq('#sviv_ankv').val(""); jq('#sviv_ankv').val(data[i].sviv_ankv); 
 				jq('#sviv_vasl').val(""); jq('#sviv_vasl').val(data[i].sviv_vasl);
 				jq('#sviv_vas2').val(""); jq('#sviv_vas2').val(data[i].sviv_vas2); 

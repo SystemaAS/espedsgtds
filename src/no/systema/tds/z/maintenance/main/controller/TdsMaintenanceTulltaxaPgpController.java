@@ -172,8 +172,8 @@ public class TdsMaintenanceTulltaxaPgpController {
 			String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_TULLTAXA_GET_LIST_URL;
 			String urlRequestParams = "user=" + appUser.getUser() ;
 			logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-	    	logger.info("URL: " + BASE_URL);
-	    	logger.info("URL PARAMS: " + urlRequestParams);
+	    	logger.warn("URL: " + BASE_URL);
+	    	logger.warn("URL PARAMS: " + urlRequestParams);
 	    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
 	    	//END FTP 
 	    	

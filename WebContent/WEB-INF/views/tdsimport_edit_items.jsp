@@ -704,7 +704,7 @@
 										</td>
 										<td class="text14" align="left">
 										<b>&nbsp;38.</b>&nbsp;&nbsp;<font class="text16RedBold" >*</font><span title="sviv_neto">Net.vikt(kg)</span></td>
-										
+										<td class="text14" align="left"><b>&nbsp;39.</b><span title="sviv_kvot">Kvot</td>
 							        </tr>
 							        <tr>
 							        	<td align="left" >&nbsp;<button tabindex=-1 title="Kundens vareregister" name="kundensVaruregisterControlButton" id="kundensVaruregisterControlButton" class="buttonGrayWithGreenFrame" type="button" >Sök i kund.varureg.</button></td>
@@ -835,6 +835,7 @@
 						 				</td>
 						 				<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_brut" id="sviv_brut" size="12" maxlength="13" value="${model.record.sviv_brut}"></td>
 										<td class="text14" align="left"><input onKeyPress="return amountKey(event)" type="text" class="inputTextMediumBlueMandatoryField" name="sviv_neto" id="sviv_neto" size="10" maxlength="11" value="${model.record.sviv_neto}"></td>
+										<td class="text14" align="left"><input type="text" class="inputTextMediumBlue" name="sviv_kvot" id="sviv_kvot" size="10" maxlength="35" value="${model.record.sviv_kvot}"></td>
 										
 							        </tr>
 

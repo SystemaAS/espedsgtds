@@ -231,6 +231,10 @@ public class JsonTdsImportSpecificTopicItemRecord  extends JsonAbstractGrandFath
 	public void setSviv_kono(String value) {  this.sviv_kono = value; }
 	public String getSviv_kono() { return this.sviv_kono; }
 	
+	private String sviv_kvot = null;
+	public void setSviv_kvot(String value) {  this.sviv_kvot = value; }
+	public String getSviv_kvot() { return this.sviv_kvot; }
+	
 	private String sviv_suko = null;
 	public void setSviv_suko(String value) {  this.sviv_suko = value; }
 	public String getSviv_suko() { return this.sviv_suko; }

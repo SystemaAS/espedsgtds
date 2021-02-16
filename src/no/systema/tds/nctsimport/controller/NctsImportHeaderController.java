@@ -2,6 +2,7 @@ package no.systema.tds.nctsimport.controller;
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
@@ -300,6 +301,9 @@ public class NctsImportHeaderController {
 				            binder.bind(request);
 				            //binder.registerCustomEditor(...); // if needed
 							logger.info("TIENKL [after bind]: " + jsonNctsImportSpecificTopicRecord.getTienkl());
+							if(StringUtils.isNotEmpty(jsonNctsImportSpecificTopicRecord.getTitrnr())){
+								jsonNctsImportSpecificTopicRecord.setTitrnr(jsonNctsImportSpecificTopicRecord.getTitrnr().toUpperCase());
+							}
 							//test indicator
 							jsonNctsImportSpecificTopicRecord.setTi0035(ti0035);	
 				            
@@ -326,6 +330,9 @@ public class NctsImportHeaderController {
 					            jsonNctsImportSpecificTopicRecord.setTiavd(avd);
 					            jsonNctsImportSpecificTopicRecord.setTitdn(opd);
 					            jsonNctsImportSpecificTopicRecord.setTisg(sign);
+					            if(StringUtils.isNotEmpty(jsonNctsImportSpecificTopicRecord.getTitrnr())){
+									jsonNctsImportSpecificTopicRecord.setTitrnr(jsonNctsImportSpecificTopicRecord.getTitrnr().toUpperCase());
+								}
 					            //test indicator
 								jsonNctsImportSpecificTopicRecord.setTi0035(ti0035);
 							}else{

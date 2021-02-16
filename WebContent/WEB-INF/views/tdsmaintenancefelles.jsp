@@ -60,7 +60,7 @@
 				               		<c:when test="${record.status == 'G'}">
 				               			<c:choose>
 				               			<c:when test="${record.pgm == 'tulltaxa'}">
-						               		<img src="resources/images/engines.png" width="12" height="12" border="0" alt="edit">
+						               		<img title="TSVT201R.pgm" src="resources/images/engines.png" width="12" height="12" border="0" alt="edit">
 					               		</c:when>
 					               		<c:otherwise>
 					               			<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancefelles_${record.pgm}.do?id=${record.dbTable}">
