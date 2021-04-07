@@ -17,7 +17,7 @@ public class JavaMailSender {
 	    Properties props = System.getProperties();
 	    props.put("mail.smtp.host", smtpHostServer);
 	    Session session = Session.getInstance(props, null);
-	    EmailUtil.sendEmail(session, emailID,"SimpleEmail Testing Subject", "Tillfällig lagring", "/ownfiles/hello_world.pdf");
+	    new EmailUtil().sendEmail(session, emailID,"SimpleEmail Testing Subject", "Tillfällig lagring", "/ownfiles/hello_world.pdf");
 	    
 	}
 

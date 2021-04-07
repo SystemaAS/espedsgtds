@@ -120,7 +120,9 @@ public class EmailService {
 			    if(avvik){ 
 			    	targetEmail = this.emailTullverketAvvik; 
 			    }
-			    EmailUtil.sendEmail(session, targetEmail, subject, body, attachmentFileName);
+			    logger.warn("Sending to Tillfallig lagring(email): " + targetEmail);
+			    logger.warn("Sending to Tillfallig lagring(filename): " + attachmentFileName);
+			    new EmailUtil().sendEmail(session, targetEmail, subject, body, attachmentFileName);
 	    	}
     	}catch (Exception e){
     		logger.error("ERROR SMTP:" + e.toString());

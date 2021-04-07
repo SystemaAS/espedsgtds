@@ -100,7 +100,7 @@ public class TillfalligLagringTempSolutionService {
 		    		//STEP (3) send mail to tullverket
 		    		//---------------------------------
 		    		boolean avvikelseFlag = false;
-		    		if(FilenameUtils.getName(absoluteFileName).toLowerCase().contains("avvikelse")){
+		    		if(FilenameUtils.getName(absoluteFileName).toUpperCase().contains("AVV")){
 		    			//avvikelse type has a different target email address
 		    			avvikelseFlag = true;
 		    		}

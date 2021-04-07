@@ -25,7 +25,7 @@ import org.apache.log4j.Logger;
 public class EmailUtil {
 	private static final Logger logger = Logger.getLogger(EmailUtil.class.getName());
 	
-	public static void sendEmail(Session session, String toEmail, String subject, String body, String attachmentFileName){
+	public void sendEmail(Session session, String toEmail, String subject, String body, String attachmentFileName){
 		try
 	    {
 	      MimeMessage msg = new MimeMessage(session);
