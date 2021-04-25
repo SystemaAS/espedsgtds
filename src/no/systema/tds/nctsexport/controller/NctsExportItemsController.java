@@ -2,6 +2,7 @@ package no.systema.tds.nctsexport.controller;
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
@@ -361,6 +362,68 @@ public class NctsExportItemsController {
 			
 			return successView;
 		}
+	}
+	
+	/**
+	 * 
+	 * @param recordToValidate
+	 * @param bindingResult
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="nctsexport_edit_items_deleteAll.do")
+	public ModelAndView nctsExportEditItemDeleteAll(HttpSession session, HttpServletRequest request){
+		logger.info("Inside: nctsExportEditItemDeleteAll");
+		ModelAndView successView = null;
+		
+		String opd = request.getParameter("opd");
+		String avd = request.getParameter("avd");
+		
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		
+		Map model = new HashMap();
+		try{
+			
+		
+		if(appUser==null){
+			return this.loginView;
+			
+		}else{
+			//redirect
+			StringBuffer params = new StringBuffer();
+			params.append("user=" + appUser.getUser() + "&avd=" + avd + "&opd=" + opd);
+			successView = new ModelAndView("redirect:nctsexport_edit_items.do?" + params);
+			
+			//DELETE all items URL
+			String BASE_URL = UrlDataStore.NCTS_EXPORT_BASE_DELETE_ALL_ITEMS_URL;
+			StringBuffer urlRequestParamsKeys = new StringBuffer();
+			urlRequestParamsKeys.append("user=" + appUser.getUser() + "&mode=D");
+			urlRequestParamsKeys.append("&tvavd=" + avd);
+			urlRequestParamsKeys.append("&tvtdn=" + opd);
+			
+			logger.warn("URL: " + BASE_URL);
+	    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
+	    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
+			logger.warn(jsonPayload);
+	    	//we borrow from SkatExport only because we do need to check only errMsg
+	    	JsonNctsExportSpecificTopicItemContainer container = this.nctsExportSpecificTopicItemService.getNctsExportSpecificTopicItemContainer(jsonPayload);
+	    	if(container!=null){
+	    		if(StringUtils.isEmpty(container.getErrMsg())){
+	    			//OK
+	    		}else{
+	    			String error = "[ERROR] FATAL on DELETE ALL: " + container.getErrMsg();
+	    			model.put(TdsConstants.ASPECT_ERROR_MESSAGE, error);
+	    		}
+	    	}else{
+	    		logger.error("container = NULL ??? check this error- Java code");
+	    	}
+			
+		}
+		}catch(Exception e){
+			e.toString();
+		}
+		return successView;
 	}
 	
 	

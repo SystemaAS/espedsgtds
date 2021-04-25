@@ -79,9 +79,14 @@ public final class UrlDataStore {
 	//sveh_syav = avdelningen till exportangivelsen
 	//sveh_syop = angivelsenr till exportangivelsen
 	//----------------------------------------------
-	static public String NCTS_EXPORT_BASE_IMPORT_EXPORT_AS_ITEMLINE_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE091R.pgm";	
 	//http://gw.systema.no/sycgip/tnce091r.pgm?user=OSCAR&avd=1&opd=188888&sveh_syav=2&sveh_syop=152221
+	static public String NCTS_EXPORT_BASE_IMPORT_EXPORT_AS_ITEMLINE_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TNCE091R.pgm";	
 	
+	//[6.2] DELETE ALL ITEM LINES
+	//http://localhost:8080/syjservicesst/syjsSVXV.do?user=OSCAR&mode=D&tvavd=1&tvtdn=9000049
+	static public String NCTS_EXPORT_BASE_DELETE_ALL_ITEMS_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVXV_U.do";
+			
+		
 	
 	//------------------------------------------
 	//[7] LOG and ARCHIVE for a SPECIFIC ARENDE

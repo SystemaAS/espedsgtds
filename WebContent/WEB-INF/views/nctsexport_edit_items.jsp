@@ -265,6 +265,9 @@
 										   				</div>
 								   				</span>	
 								   		<c:if test="${model.status == 'G' ||  model.status=='F' || model.status == 'M' || empty model.status}">
+								   			<c:if test="${not empty model.list}">
+								   				&nbsp;<button tabindex=-1 title="Delete all lines" name="itemListDeleteAllButton" id="itemListDeleteAllButton" class="inputFormSubmitStd" style="color:#606060;" type="button" >Radera alla</button>
+								   			</c:if>
 								   			&nbsp;<button title="Import av varuposter" name="itemLinesImportButton" id="itemLinesImportButton" class="buttonGrayWithGreenFrame" type="button" >Importera varuposter</button>	
 								   		</c:if>			
 									</td>

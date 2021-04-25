@@ -75,7 +75,17 @@ public class TillfalligLagringTempSolutionService {
 	    	//Only inlägg(I) or rättelse(R) and only when their are activated. We can deactivate one or both.
 	    	if(isActiveDtlUseCase(dao) || isActiveAvvikelseUseCase(dao)){
 		    	//init directory for file on disk
-	    		pdfService.setFileBasePath(appUser.getArchiveRootPath() + PdfiTextService.BASE_DIR_TILLFALLIG_LAGRING_ARCHIVE);
+	    		StringBuffer defaultFileBasePath = new StringBuffer();
+	    		
+	    		//for testing purposes on local env.
+	    		String OS = System.getProperty("os.name").toLowerCase();
+	    		if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+	    			defaultFileBasePath.append("/Users/oscardelatorre/ownfiles");
+	    		}
+	    		
+	    		defaultFileBasePath.append(appUser.getArchiveRootPath() + PdfiTextService.BASE_DIR_TILLFALLIG_LAGRING_ARCHIVE);
+	    		
+	    	    pdfService.setFileBasePath(defaultFileBasePath.toString());
 		    	File fbp = new File(pdfService.getFileBasePath());
 		    	
 		    	if(fbp.exists()){
