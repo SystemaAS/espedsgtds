@@ -958,6 +958,10 @@ public class TdsExportItemsController {
 		if(strMgr.isNotNull(recordToValidate.getSvev_god5())){
 			recordToValidate.setSvev_god5(recordToValidate.getSvev_god5().toUpperCase());
 		}
+		if(strMgr.isNotNull(recordToValidate.getSvev_vasl())){
+			recordToValidate.setSvev_vasl(recordToValidate.getSvev_vasl().trim());
+		}
+		
 		
 	}
 	
