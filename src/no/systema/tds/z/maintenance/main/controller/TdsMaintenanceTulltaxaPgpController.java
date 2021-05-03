@@ -1,5 +1,7 @@
 package no.systema.tds.z.maintenance.main.controller;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,6 +9,9 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPReply;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
@@ -87,9 +92,9 @@ public class TdsMaintenanceTulltaxaPgpController {
 			final String _2Dir = request.getParameter("lnkzip");
 			final String _3Dir = request.getParameter("lnkunzip");
 			
-			logger.info("lnkpgp:" + _1Dir);
-			logger.info("lnkzip:" + _2Dir);
-			logger.info("lnkunzip:" + _3Dir);
+			logger.warn("lnkpgp:" + _1Dir);
+			logger.warn("lnkzip:" + _2Dir);
+			logger.warn("lnkunzip:" + _3Dir);
 			
 			
 			DecryptMain engineDecrypt = new DecryptMain();
@@ -145,7 +150,19 @@ public class TdsMaintenanceTulltaxaPgpController {
 		return certKey;
 	}
 	/**
-	 * The method starts the back-end FTP process that fetches all .pgp files from Tullverket Fildistribution
+	 * 	The method starts the back-end FTP process that fetches all .pgp files from Tullverket Fildistribution
+	 * 	Tulltaxa FTP download
+	 * -------------------------- 
+	 *	FTP: distr.tullverket.se 
+	 *	Userid:M10746-1                     
+	 *	password:kehts3qW
+	 *  --> cd /www1/distr/tulltaxan/xml/tot
+	 *  -------------------------	
+	 *	On the webb
+	 *	http://distr.tullverket.se/tulltaxan/xml/tot/
+
+	 *	This program: TSVT201R.pgm  refers to-->SVT201C
+
 	 * @param session
 	 * @param request
 	 * @return
@@ -184,7 +201,8 @@ public class TdsMaintenanceTulltaxaPgpController {
 	    		container = this.maintTulltaxaService.getList(jsonPayload);
 	    		 
 			}
-			logger.info(container);
+			logger.warn("container:" + container);
+			//DEBUG -->testFTPClient();
 			//String _1Dir = "/ownfiles/tullverketCert/encrypted/";
 			if(container!=null && strMgr.isNull(container.getErrMsg()) &&  Files.exists(Paths.get(container.getLnkpgp()))){
 				try (Stream<Path> paths = Files.walk(Paths.get(container.getLnkpgp()))) {
@@ -193,8 +211,9 @@ public class TdsMaintenanceTulltaxaPgpController {
 		    	        .filter(Files::isRegularFile)
 		    	        .forEach( e ->{
 		    	        		if(!e.getFileName().toString().startsWith(".")){
-		    	        			logger.info(e);
+		    	        			logger.warn(e);
 		        	        		outputList.add(e.getFileName().toString());
+		        	        		logger.warn(e.getFileName().toString());
 		    	        		}
 		    	        	});
 			    
@@ -220,6 +239,66 @@ public class TdsMaintenanceTulltaxaPgpController {
 			
 		}
 	}
+	
+	private void testFTPClient(){
+		try {
+
+            //new ftp client
+            FTPClient ftp = new FTPClient();
+            //try to connect
+            ftp.connect("distr.tullverket.se");
+            //login to server
+            if (!ftp.login("M10746-1", "kehts3qW")) {
+                ftp.logout();
+            }
+            int reply = ftp.getReplyCode();
+            //FTPReply stores a set of constants for FTP reply codes. 
+            if (!FTPReply.isPositiveCompletion(reply)) {
+                ftp.disconnect();
+            }
+
+            //enter passive mode
+            ftp.enterLocalPassiveMode();
+            ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
+            ftp.changeWorkingDirectory("/www1/distr/tulltaxan/xml/tot");
+            
+            //get system name
+            logger.warn("Remote system is " + ftp.getSystemType());
+            //change current directory
+            //ftp.changeWorkingDirectory("/App/PMIGENV/BACK/Finacle/FC/app/CDCI_LOGS/log/UBSADMIN");
+            logger.warn("Current directory is " + ftp.printWorkingDirectory());
+
+            //get list of filenames
+            FTPFile[] ftpFiles = ftp.listFiles();
+
+            if (ftpFiles != null && ftpFiles.length > 0) {
+                //loop thru files
+                for (FTPFile file : ftpFiles) {
+                    if (!file.isFile()) {
+                        continue;
+                    }
+                    logger.warn("File is " + file.getName());
+                    //get output stream
+                    /*OutputStream output;
+                    output = new FileOutputStream("FtpFiles" + "/" + file.getName());
+                    //get the file from the remote system
+                    ftp.retrieveFile(file.getName(), output);
+                    //close output stream
+                    output.close();
+					*/
+                    //delete the file
+                    // ftp.deleteFile(file.getName());
+
+                }
+            }
+
+            ftp.logout();
+            ftp.disconnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+	}
+	
 	
 	//Wired - SERVICES
 	@Qualifier ("urlCgiProxyService")
