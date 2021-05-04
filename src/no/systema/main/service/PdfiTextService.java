@@ -237,7 +237,8 @@ public class PdfiTextService {
         tableAvvikelse.addCell(addCell( setStringValue(dao.getSvlth_id2())) );
         //record
         tableAvvikelse.addCell(addCell("Rättelsesdatum"));
-        tableAvvikelse.addCell(addCell( setStringValue(dao.getSvlth_rd2())) );
+        //tableAvvikelse.addCell(addCell( setStringValue(dao.getSvlth_rd2())) );
+        tableAvvikelse.addCell(addCell( setStringValue(dao.getSvlth_id1())) );
         //record
         tableAvvikelse.addCell(addCell("Kontaktuppgifter"));
         tableAvvikelse.addCell(addCell( contactPersonName + ",  epost:" + contactPersonEmail + ",  mobil:" + contactPersonMobile));
