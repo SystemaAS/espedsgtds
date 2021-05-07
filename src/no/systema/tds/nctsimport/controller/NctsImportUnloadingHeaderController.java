@@ -2,6 +2,7 @@ package no.systema.tds.nctsimport.controller;
 
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.WebDataBinder;
 //application imports
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
+import no.systema.main.util.DateTimeManager;
 import no.systema.main.util.JsonDebugger;
 import no.systema.tds.model.external.url.UrlISOLanguageObject;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
@@ -73,7 +75,7 @@ public class NctsImportUnloadingHeaderController {
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
 	private ModelAndView loginView = new ModelAndView("redirect:logout.do");
 	private CodeDropDownMgr codeDropDownMgr = new CodeDropDownMgr();
-
+	private DateTimeManager dateTimeMgr = new DateTimeManager();
 	private ApplicationContext context;
 	
 	@InitBinder
@@ -262,6 +264,7 @@ public class NctsImportUnloadingHeaderController {
 			    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
 			    	if(jsonPayload!=null){
 			    		JsonNctsImportSpecificTopicUnloadingContainer jsonNctsImportSpecificTopicUnloadingContainer = this.nctsImportSpecificTopicUnloadingService.getNctsImportSpecificTopicUnloadingContainer(jsonPayload);
+			    		
 			    		//add gui lists here
 			    		this.setCodeDropDownMgr(appUser, model);
 			    		this.setDomainObjectsInView(session, model, jsonNctsImportSpecificTopicUnloadingContainer);
@@ -489,6 +492,13 @@ public class NctsImportUnloadingHeaderController {
 		//SET HEADER RECORDS  (from RPG)
 		for (JsonNctsImportSpecificTopicUnloadingRecord record : jsonNctsImportSpecificTopicUnloadingContainer.getOneorder()){
 			logger.info("nidfkd:" + record.getNidfkd());
+			//this to force a default value when it is the first time.
+			if(StringUtils.isEmpty(record.getNidtl())){
+				if("0".equals(record.getNikonf())){
+					//record.setNidtl(dateTimeMgr.getCurrentDate_ISO());
+					record.setNikonf("1");
+				}
+			}
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines
 			session.setAttribute(TdsConstants.DOMAIN_RECORD_TOPIC_UNLOADING, record);

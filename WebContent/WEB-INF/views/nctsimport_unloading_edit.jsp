@@ -462,8 +462,8 @@
 						 			<td class="text14">
 										<select class="selectMediumBlueE2" name="nikonf" id="nikonf">
 						            			<option value="">-Välj-</option>
+						            			<option value="1"<c:if test="${model.record.nikonf == '1'}"> selected </c:if> >Ja</option>
 						            			<option value="0"<c:if test="${model.record.nikonf == '0'}"> selected </c:if> >Nej</option>
-					 					  	<option value="1"<c:if test="${model.record.nikonf == '1'}"> selected </c:if> >Ja</option>
 										</select>
 									</td>
 									<td class="text14">&nbsp;<span title="nifulf">Slutfört</span></td>
@@ -678,9 +678,10 @@
 					 				    <c:when test="${ recordTopic.tist == 'U' || recordTopic.tist == 'H' }">
 						 				    <td class="text9BlueGreen" valign="bottom"  >
 							 				    &nbsp;<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='nctsimport_unloading_edit.do';" value="<spring:message code="systema.ncts.import.unloading.createnew.submit"/>"/>
-							 				
-							 					<%-- NOTE: we use the same routine as for the Topic ... --%>
-						 				    		<input tabindex=-1 class="inputFormSubmit" type="submit" name="send" onclick="javascript: form.action='nctsimport_unloading_send.do';" value='<spring:message code="systema.ncts.import.unloading.createnew.send"/>'/>
+							 					<c:if test="${not empty model.record.nidtl}">
+							 						<%-- NOTE: we use the same routine as for the Topic ... --%>
+						 				    			<input tabindex=-1 class="inputFormSubmit" type="submit" name="send" onclick="javascript: form.action='nctsimport_unloading_send.do';" value='<spring:message code="systema.ncts.import.unloading.createnew.send"/>'/>
+						 				    		</c:if>
 						 				    	</td>	
 					 				    </c:when>
 					 				    <c:otherwise>
