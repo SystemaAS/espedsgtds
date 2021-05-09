@@ -323,6 +323,12 @@ public class JsonNctsImportSpecificTopicUnloadingRecord extends JsonAbstractGran
 	private String tilk = null;
 	private String titin = null;
 	
+	
+	//in order to validate before a "send"
+	private boolean validUpdate = false;
+	public void setValidUpdate(boolean value) {  this.validUpdate = value; }
+	public boolean isValidUpdate() {return this.validUpdate;}
+		
 
 	/**
 	 * 

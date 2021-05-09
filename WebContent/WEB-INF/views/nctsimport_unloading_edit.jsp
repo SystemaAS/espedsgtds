@@ -678,9 +678,9 @@
 					 				    <c:when test="${ recordTopic.tist == 'U' || recordTopic.tist == 'H' }">
 						 				    <td class="text9BlueGreen" valign="bottom"  >
 							 				    &nbsp;<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='nctsimport_unloading_edit.do';" value="<spring:message code="systema.ncts.import.unloading.createnew.submit"/>"/>
-							 					<c:if test="${not empty model.record.nidtl}">
+							 					<c:if test="${model.record.validUpdate}">
 							 						<%-- NOTE: we use the same routine as for the Topic ... --%>
-						 				    			<input tabindex=-1 class="inputFormSubmit" type="submit" name="send" onclick="javascript: form.action='nctsimport_unloading_send.do';" value='<spring:message code="systema.ncts.import.unloading.createnew.send"/>'/>
+						 				    			<input tabindex=-1 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsimport_unloading_send.do';" value='<spring:message code="systema.ncts.import.unloading.createnew.send"/>'/>
 						 				    		</c:if>
 						 				    	</td>	
 					 				    </c:when>

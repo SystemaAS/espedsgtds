@@ -141,6 +141,8 @@ public class NctsImportUnloadingHeaderController {
 		RpgReturnResponseHandler rpgReturnResponseHandler = new RpgReturnResponseHandler();
 		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
 		logger.info("Method: " + method);
+		boolean isValidUpdate = false;
+		
 		//---------------------------------
 		//Crucial request parameters (Keys
 		//---------------------------------
@@ -178,6 +180,9 @@ public class NctsImportUnloadingHeaderController {
 					    	recordToValidate.setTiavd(avd);
 					    	recordToValidate.setTisg(sign);
 					    	this.getSpecificTopicRecord(session, avd, opd, sign, appUser);
+					    	model.put(TdsConstants.DOMAIN_RECORD, recordToValidate);
+					    	successView.addObject(TdsConstants.DOMAIN_MODEL, model);
+					    	return successView;
 					    	
 				    }else{
 				    	
@@ -230,7 +235,7 @@ public class NctsImportUnloadingHeaderController {
 					    	}else{
 					    		//Update succefully done!
 					    		logger.info("[INFO] Record successfully updated, OK ");
-					    		
+					    		isValidUpdate = true;
 					    	}
 							
 				    }
@@ -267,7 +272,7 @@ public class NctsImportUnloadingHeaderController {
 			    		
 			    		//add gui lists here
 			    		this.setCodeDropDownMgr(appUser, model);
-			    		this.setDomainObjectsInView(session, model, jsonNctsImportSpecificTopicUnloadingContainer);
+			    		this.setDomainObjectsInView(isValidUpdate, session, model, jsonNctsImportSpecificTopicUnloadingContainer);
 			    		
 			    		//We must fetch the parent topic record when the end user is coming from the list of topics and not from the topic view
 			    		if(origin!=null && origin.equals("list")){
@@ -488,16 +493,12 @@ public class NctsImportUnloadingHeaderController {
 	 * @param jsonNctsImportSpecificTopicUnloadingContainer
 	 * @return
 	 */
-	private void setDomainObjectsInView(HttpSession session, Map model, JsonNctsImportSpecificTopicUnloadingContainer jsonNctsImportSpecificTopicUnloadingContainer){
+	private void setDomainObjectsInView(boolean isValidUpdate, HttpSession session, Map model, JsonNctsImportSpecificTopicUnloadingContainer jsonNctsImportSpecificTopicUnloadingContainer){
 		//SET HEADER RECORDS  (from RPG)
 		for (JsonNctsImportSpecificTopicUnloadingRecord record : jsonNctsImportSpecificTopicUnloadingContainer.getOneorder()){
 			logger.info("nidfkd:" + record.getNidfkd());
-			//this to force a default value when it is the first time.
-			if(StringUtils.isEmpty(record.getNidtl())){
-				if("0".equals(record.getNikonf())){
-					//record.setNidtl(dateTimeMgr.getCurrentDate_ISO());
-					record.setNikonf("1");
-				}
+			if(isValidUpdate){
+				record.setValidUpdate(true);
 			}
 			model.put(TdsConstants.DOMAIN_RECORD, record);
 			//put the header topic in session for the coming item lines

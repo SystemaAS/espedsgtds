@@ -34,6 +34,10 @@
   	  jq("#nidtl").datepicker({ 
   		  dateFormat: 'yymmdd'
   	  });
+  	    //conform is an important flag that has to force an update as soon as it is change
+	  	jq( "#nikonf" ).change(function() {
+	  		jq("#send").hide();
+	  	});
   	  
     });
   	
