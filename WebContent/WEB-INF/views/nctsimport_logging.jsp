@@ -232,7 +232,14 @@
 	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.time"/>&nbsp;</th>
 	                    <th class="tableHeaderField">&nbsp;Sent/Rec&nbsp;</th>
 	                    
-	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.text"/>&nbsp;</th>
+	                    <th class="tableHeaderField">&nbsp;<spring:message code="systema.ncts.import.logging.list.label.text"/>
+	                    	&nbsp;&nbsp;&nbsp;&nbsp;
+			 				<font class="text10">EDIFACT - Meddelandeflöde</font>
+			 				<a tabindex=-1 href="renderLocalPdf.do?fn=NCTS_Import_messageflow.pdf" target="_blank">
+			 					<img valign="bottom" width="14px" height="14px" src="resources/images/pdf.png" border="0" alt="pdf">
+			 				</a>
+	                    
+	                    </th>
 	               </tr> 
 	               </thead>
 	               <tbody>    
