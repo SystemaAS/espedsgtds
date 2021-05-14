@@ -676,18 +676,28 @@
 					            		<%-- only status = U,H are allowed  --%>
 				 				    <c:choose>
 					 				    <c:when test="${ recordTopic.tist == 'U' || recordTopic.tist == 'H' }">
-						 				    <td class="text9BlueGreen" valign="bottom"  >
-							 				    &nbsp;<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='nctsimport_unloading_edit.do';" value="<spring:message code="systema.ncts.import.unloading.createnew.submit"/>"/>
-							 					<c:if test="${model.record.validUpdate}">
+					 				    	<c:choose>
+					 				    	<c:when test="${ not empty isAlreadyApproved}">
+					 				    		<td align="center" class="text14" valign="bottom"  >
+					 				    			&nbsp;&nbsp;&nbsp;<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value="Ej uppdaterbart"/>
+					 				    			<font style="background-color:red;color:white;")>Ärendet har redan godkänts (fått IE025!)</font>
+					 				    		</td>	
+					 				    	</c:when>
+					 				    	<c:otherwise>
+						 				    	<td class="text9BlueGreen" valign="bottom"  >
+							 				    	&nbsp;<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit" onclick="javascript: form.action='nctsimport_unloading_edit.do';" value="<spring:message code="systema.ncts.import.unloading.createnew.submit"/>"/>
+							 						<c:if test="${model.record.validUpdate}">
 							 						<%-- NOTE: we use the same routine as for the Topic ... --%>
 						 				    			<input tabindex=-1 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsimport_unloading_send.do';" value='<spring:message code="systema.ncts.import.unloading.createnew.send"/>'/>
 						 				    		</c:if>
 						 				    	</td>	
+						 				    </c:otherwise>
+						 				    </c:choose>	
 					 				    </c:when>
 					 				    <c:otherwise>
 						 				    <td  align="center" class="text9BlueGreen" valign="bottom"  >
-						 				    		&nbsp;&nbsp;&nbsp;<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value="Ej uppdaterbart"/>
-						 				    	</td>	
+					 				    		&nbsp;&nbsp;&nbsp;<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit" value="Ej uppdaterbart"/>
+					 				    	</td>	
 					 				    </c:otherwise>	
 				 				    </c:choose>
 		 				    		</tr>

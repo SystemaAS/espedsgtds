@@ -1,63 +1,59 @@
 package no.systema.tds.nctsimport.controller;
 
-import java.util.*;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Scope;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import no.systema.main.model.SystemaWebUser;
 //application imports
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.DateTimeManager;
 import no.systema.main.util.JsonDebugger;
-import no.systema.tds.model.external.url.UrlISOLanguageObject;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsAvdelningRecord;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureContainer;
 import no.systema.tds.model.jsonjackson.avdsignature.JsonTdsSignatureRecord;
-import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
-import no.systema.tds.nctsimport.validator.NctsImportHeaderValidator;
-import no.systema.tds.nctsimport.validator.NctsImportUnloadingHeaderValidator;
-import no.systema.main.model.SystemaWebUser;
+import no.systema.tds.nctsimport.mapper.url.request.UrlRequestParameterMapper;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicContainer;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.JsonNctsImportSpecificTopicRecord;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.logging.JsonNctsImportSpecificTopicLoggingContainer;
+import no.systema.tds.nctsimport.model.jsonjackson.topic.logging.JsonNctsImportSpecificTopicLoggingRecord;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImportSpecificTopicUnloadingContainer;
 import no.systema.tds.nctsimport.model.jsonjackson.topic.unloading.JsonNctsImportSpecificTopicUnloadingRecord;
-
-
 import no.systema.tds.nctsimport.service.NctsImportSpecificTopicService;
 import no.systema.tds.nctsimport.service.NctsImportSpecificTopicUnloadingService;
-
 import no.systema.tds.nctsimport.service.html.dropdown.DropDownListPopulationService;
 import no.systema.tds.nctsimport.url.store.UrlDataStore;
 import no.systema.tds.nctsimport.util.RpgReturnResponseHandler;
+import no.systema.tds.nctsimport.util.manager.CodeDropDownMgr;
+import no.systema.tds.nctsimport.validator.NctsImportUnloadingHeaderValidator;
+import no.systema.tds.service.html.dropdown.TdsDropDownListPopulationService;
 import no.systema.tds.url.store.TdsUrlDataStore;
 import no.systema.tds.util.TdsConstants;
-import no.systema.tds.nctsimport.util.manager.CodeDropDownMgr;
-
-import no.systema.tds.nctsimport.mapper.url.request.UrlRequestParameterMapper;
 
 
 /**
@@ -258,36 +254,41 @@ public class NctsImportUnloadingHeaderController {
 				session.setAttribute(TdsConstants.ACTIVE_URL_RPG, BASE_URL  + "==>params: " + urlRequestParamsKeys.toString()); 
 				
 				logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-			    	logger.info("URL: " + BASE_URL);
-			    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
-			    	//--------------------------------------
-			    	//EXECUTE the FETCH (RPG program) here
-			    	//--------------------------------------
-			    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
-					//Debug --> 
-			    	logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
-			    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
-			    	if(jsonPayload!=null){
-			    		JsonNctsImportSpecificTopicUnloadingContainer jsonNctsImportSpecificTopicUnloadingContainer = this.nctsImportSpecificTopicUnloadingService.getNctsImportSpecificTopicUnloadingContainer(jsonPayload);
-			    		
-			    		//add gui lists here
-			    		this.setCodeDropDownMgr(appUser, model);
-			    		this.setDomainObjectsInView(isValidUpdate, session, model, jsonNctsImportSpecificTopicUnloadingContainer);
-			    		
-			    		//We must fetch the parent topic record when the end user is coming from the list of topics and not from the topic view
-			    		if(origin!=null && origin.equals("list")){
-			    			logger.info("Fetching the specific topic from origin=list...");
-			    			this.getSpecificTopicRecord(session,avd,opd,sign,appUser);
-			    		}
-			    		
-			    		
-			    		successView.addObject(TdsConstants.DOMAIN_MODEL, model);
-					//put the doUpdate action since we are preparing the record for an update (when saving)
-					successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_UPDATE);
-			    		
-			    	}else{
-					logger.fatal("NO CONTENT on jsonPayload from URL... ??? <Null>");
-					return loginView;
+		    	logger.info("URL: " + BASE_URL);
+		    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+		    	//--------------------------------------
+		    	//EXECUTE the FETCH (RPG program) here
+		    	//--------------------------------------
+		    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+				//Debug --> 
+		    	logger.debug(jsonDebugger.debugJsonPayloadWithLog4J(jsonPayload));
+		    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+		    	if(jsonPayload!=null){
+		    		JsonNctsImportSpecificTopicUnloadingContainer jsonNctsImportSpecificTopicUnloadingContainer = this.nctsImportSpecificTopicUnloadingService.getNctsImportSpecificTopicUnloadingContainer(jsonPayload);
+		    		
+		    		//add gui lists here
+		    		this.setCodeDropDownMgr(appUser, model);
+		    		this.setDomainObjectsInView(isValidUpdate, session, model, jsonNctsImportSpecificTopicUnloadingContainer);
+		    		
+		    		//We must fetch the parent topic record when the end user is coming from the list of topics and not from the topic view
+		    		if(origin!=null && origin.equals("list")){
+		    			
+		    			logger.info("Fetching the specific topic from origin=list...");
+		    			this.getSpecificTopicRecord(session,avd,opd,sign,appUser);
+		    		}
+		    		
+		    		//one last check in case the IE025 has been received already. In such a case block the SAVE-button and present a message that the Ärende is already finished
+		    		if(this.isAlreadyApproved(avd, opd, appUser.getUser())) {
+		    			successView.addObject("isAlreadyApproved", "1");
+		    		}
+		    		
+		    		successView.addObject(TdsConstants.DOMAIN_MODEL, model);
+		    		//put the doUpdate action since we are preparing the record for an update (when saving)
+		    		successView.addObject(TdsConstants.EDIT_ACTION_ON_TOPIC, TdsConstants.ACTION_UPDATE);
+		    		
+		    	}else{
+		    		logger.fatal("NO CONTENT on jsonPayload from URL... ??? <Null>");
+		    		return loginView;
 				}    	
 				
 			}
@@ -299,7 +300,49 @@ public class NctsImportUnloadingHeaderController {
 		}
 	}
 	
+	/**
+	 * check in case the topic has been already approved
+	 * 
+	 * @param avd
+	 * @param opd
+	 * @param applicationUser
+	 * @return
+	 */
+	private boolean isAlreadyApproved(String avd, String opd, String applicationUser) {
+		boolean retval = false;
+		
+		final String NCTS_IMPORT_TYPE = "6"; 
+		
+		String BASE_URL = UrlDataStore.NCTS_IMPORT_BASE_LOG_LIST_FOR_SPECIFIC_TOPIC_URL;
+		//url params
+		StringBuffer urlRequestParamsKeys = new StringBuffer();
+		urlRequestParamsKeys.append("user=" + applicationUser);
+		urlRequestParamsKeys.append("&avd=" + avd + "&opd=" + opd + "&typ=" + NCTS_IMPORT_TYPE );
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.info("URL: " + BASE_URL);
+    	logger.info("URL PARAMS: " + urlRequestParamsKeys);
+    	//--------------------------------------
+    	//EXECUTE the FETCH (RPG program) here
+    	//--------------------------------------
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys.toString());
+		//Debug --> 
+    	logger.info(" --> jsonPayload:" + jsonPayload);
+    	logger.info(Calendar.getInstance().getTime() +  " CGI-end timestamp");
+    	if(jsonPayload!=null){
+    		JsonNctsImportSpecificTopicLoggingContainer jsonNctsImportSpecificTopicLoggingContainer = this.nctsImportSpecificTopicService.getNctsImportSpecificTopicLoggingContainer(jsonPayload);
+    		for (JsonNctsImportSpecificTopicLoggingRecord record : jsonNctsImportSpecificTopicLoggingContainer.getLogg()) {
+    			if(record.getM1225() != null && record.getM1225().contains("25")){
+    				retval = true;
+    			}
+    		}
+    		
+    	}
+			
 	
+		return retval;
+		
+	}
 	/**
 	 * 
 	 * @param session
