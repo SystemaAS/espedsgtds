@@ -1036,16 +1036,19 @@
 					 				    			<c:set var="tmpWithNoSeparator" value="${fn:replace(model.record.thgbl, '.' , '')}" />
 					 				    			<c:set var="tmpThbgl" value="${fn:replace(tmpWithNoSeparator, ',' , '.')}" />
 					 				    			<fmt:parseNumber scope="request" var="i" integerOnly = "true" type="number" value="${tmpThbgl}" />	
-						 				    		<c:set var = "finalAmount" value = "${i}" />
-						 						<%--<label>DEBUG:&nbsp;${finalAmount}</label> --%>
+						 				    		<c:set var = "finalAmountGaranti" value = "${i}" />
+						 						<%--<label>DEBUG:&nbsp;${finalAmountGaranti}</label> --%>
 						 						<c:choose>
 						 							<%-- negative guarantee should be valid --%>
 							 				    		<c:when test="${not empty model.record.thgbl && fn:contains(model.record.thgbl,'-') }">
 							 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
 							 				    		</c:when>
 							 				    		<c:otherwise>
-							 				    			<c:if test="${not empty model.record.thgbl && finalAmount > 5}">
+							 				    			<c:if test="${not empty model.record.thgbl && finalAmountGaranti >= 1}">
 							 				    				<input tabindex=-2 class="inputFormSubmit" type="submit" name="send" id="send" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+							 				    			</c:if>
+							 				    			<c:if test="${not empty model.record.thgbl && finalAmountGaranti == 0}">
+							 				    				<font class="text14" style="color:white; background-color:red">Garantibelopp kan inte vara 0,00</font>
 							 				    			</c:if>
 							 				    		</c:otherwise>
 						 				    		</c:choose>
@@ -1828,7 +1831,7 @@
 
 				            <tr >	
 			            		<td class="text9BlueGreen" valign="bottom" align="left" >
-			 				    	<%-- only status = M or emtpy status is allowed --%>
+			            			<%-- only status = M or emtpy status is allowed --%>
 				 				    <c:choose>
 					 				    <c:when test="${ model.record.thst == 'G' ||  model.status=='F' || model.record.thst == 'M' || empty model.record.thst}">
 						 				    	<input tabindex=-1 class="inputFormSubmit" type="submit" name="submit2" id="submit2" onclick="javascript: form.action='nctsexport_edit.do';" value='<spring:message code="systema.ncts.export.createnew.submit"/>'/>
@@ -1839,16 +1842,28 @@
 					 				    			<c:set var="tmpWithNoSeparator" value="${fn:replace(model.record.thgbl, '.' , '')}" />
 					 				    			<c:set var="tmpThbgl" value="${fn:replace(tmpWithNoSeparator, ',' , '.')}" />
 					 				    			<fmt:parseNumber scope="request" var="i" integerOnly = "true" type="number" value="${tmpThbgl}" />	
-						 				    		<c:set var = "finalAmount" value = "${i}" />
-						 						<%--<label>DEBUG:&nbsp;${finalAmount}</label> --%>
-						 				    		<c:if test="${not empty model.record.thgbl && finalAmount > 5}">
-						 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
-						 				    		</c:if>
+						 				    		<c:set var = "finalAmountGaranti" value = "${i}" />
+						 							<%--<label>DEBUG:&nbsp;${finalAmountGaranti}</label> --%>
+						 				    		<c:choose>
+						 							<%-- negative guarantee should be valid --%>
+							 				    		<c:when test="${not empty model.record.thgbl && fn:contains(model.record.thgbl,'-') }">
+							 				    			<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+							 				    		</c:when>
+							 				    		<c:otherwise>
+							 				    			<c:if test="${not empty model.record.thgbl && finalAmountGaranti >= 1}">
+							 				    				<input tabindex=-2 class="inputFormSubmit" type="submit" name="send2" id="send2" onclick="javascript: form.action='nctsexport_send.do';" value='<spring:message code="systema.ncts.export.createnew.send"/>'/>
+							 				    			</c:if>
+							 				    			<c:if test="${not empty model.record.thgbl && finalAmountGaranti == 0}">
+							 				    				<font class="text14" style="color:white; background-color:red">Garantibelopp kan inte vara 0,00</font>
+							 				    			</c:if>
+							 				    			
+							 				    		</c:otherwise>
+						 				    		</c:choose>
 						 				    	</c:if>
-					 				    	</c:when>
-					 				    <c:otherwise>
-				 				    			<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit2" value='Ej uppdaterbart'/>
-					 				    </c:otherwise>	
+				 				    	</c:when>
+				 				    	<c:otherwise>
+			 				    			<input disabled class="inputFormSubmitGrayDisabled" type="submit" name="submit2" id="submit2" value='Ej uppdaterbart'/>
+				 				    	</c:otherwise>	
 				 				    </c:choose>
 	                				</td>
 					        </tr>
