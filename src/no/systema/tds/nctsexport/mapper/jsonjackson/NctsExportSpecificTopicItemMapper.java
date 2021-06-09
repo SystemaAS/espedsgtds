@@ -29,13 +29,18 @@ public class NctsExportSpecificTopicItemMapper extends ObjectMapperAbstractGrand
 		logger.info("[JSON-String payload status=OK]  " + topicItemContainer.getUser());
 		//DEBUG
 		Collection<JsonNctsExportSpecificTopicItemRecord> list = topicItemContainer.getOrderList();
-		for(JsonNctsExportSpecificTopicItemRecord record : list){
-			logger.info("Item description: " + record.getTvvt());
-			logger.info("Sender name: " + record.getTvnas());
-			logger.info("Receiver name: " + record.getTvnak());
-			
-			
+		//DEBUG
+		/*
+		if(list!=null) {
+			for(JsonNctsExportSpecificTopicItemRecord record : list){
+				logger.info("Item description: " + record.getTvvt());
+				logger.info("Sender name: " + record.getTvnas());
+				logger.info("Receiver name: " + record.getTvnak());
+				
+				
+			}
 		}
+		*/
 		return topicItemContainer;
 	}
 }
