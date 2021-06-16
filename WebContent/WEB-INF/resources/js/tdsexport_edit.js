@@ -446,6 +446,16 @@
 					  	jq('#sveh_avlk').val(customer.syland);
 					  	jq('#sveh_avha').val(customer.kpers);
 					  	jq('#sveh_avtl').val(customer.tlf);
+						//deklarant
+						jq('#sveh_dkkn').val(customer.kundnr);
+					  	jq('#sveh_dkna').val(customer.knavn);
+					  	jq('#sveh_dkeo').val(customer.eori);
+					  	jq('#sveh_dka1').val(customer.adr1);
+					  	jq('#sveh_dka2').val(customer.adr2);
+					  	jq('#sveh_dkpn').val(customer.postnr);
+					  	jq('#sveh_dkpa').val(customer.adr3);
+					  	jq('#sveh_dklk').val(customer.syland);
+					  	
 					  	
 					}else{
 						//init fields

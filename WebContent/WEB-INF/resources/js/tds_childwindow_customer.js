@@ -36,6 +36,15 @@
 				  opener.jq('#sveh_avlk').val(land);
 				  opener.jq('#sveh_avha').val("");
 				  opener.jq('#sveh_avtl').val(tlf);
+				  //deklarant
+				  opener.jq('#sveh_dkkn').val(knr);
+				  opener.jq('#sveh_dkna').val(knavn);
+				  opener.jq('#sveh_dkeo').val(eori);
+				  opener.jq('#sveh_dka1').val(adr1);
+				  opener.jq('#sveh_dka2').val(adr2);
+				  opener.jq('#sveh_dkpa').val(adr3);
+				  opener.jq('#sveh_dkpn').val(postnr);
+				  opener.jq('#sveh_dklk').val(land);
 				  //focus
 				  opener.jq('#sveh_avna').focus();
 			  //MOTTAGARE		 

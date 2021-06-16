@@ -28,12 +28,21 @@
 						  opener.jq('#svev_bit4').val(kod);
 					  }else if(checkedCounterYkoder==4){
 						  opener.jq('#svev_bit5').val(kod);
+					  }else if(checkedCounterYkoder==5){
+						  opener.jq('#svev_bit6').val(kod);
+					  }else if(checkedCounterYkoder==6){
+						  opener.jq('#svev_bit7').val(kod);
+					  }else if(checkedCounterYkoder==7){
+						  opener.jq('#svev_bit8').val(kod);
+					  }else if(checkedCounterYkoder==8){
+						  opener.jq('#svev_bit9').val(kod);
 					  }
 					  
 			  	  }
 			 });
 			 //GUI adapt
-			  if( opener.jq('#svev_bit2').val()=='' && opener.jq('#svev_bit3').val()=='' && opener.jq('#svev_bit4').val()=='' && opener.jq('#svev_bit5').val()==''){
+			  if( opener.jq('#svev_bit2').val()=='' && opener.jq('#svev_bit3').val()=='' && opener.jq('#svev_bit4').val()=='' && opener.jq('#svev_bit5').val()=='' &&
+				  opener.jq('#svev_bit6').val()=='' && opener.jq('#svev_bit7').val()=='' && opener.jq('#svev_bit8').val()=='' && opener.jq('#svev_bit9').val()==''){
 				  opener.jq('#warningCodesFlagDivBh').show();
 			  }else{
 				  opener.jq('#warningCodesFlagDivBh').hide();

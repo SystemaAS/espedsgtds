@@ -26,7 +26,7 @@
 					<tr height="15"><td></td></tr>
 					<tr><td valign="top" colspan="3" class="text14Bold">&nbsp;Bilagda handlingar Y-koder <font style="font-weight:normal;">(Rubrik 44)</font></td></tr>
 					<tr>
-						<td class="ownScrollableSubWindow" style="width:600px; height:10em;">
+						<td class="ownScrollableSubWindow" style="width:600px; height:20em;">
 							<table id="codeList" width="100%" cellspacing="0" border="0" cellpadding="0">
 								<tr class="tableHeaderField" height="20" valign="left">
 									<td align="center" class="tableHeaderFieldFirst">&nbsp;Välj&nbsp;</td>
