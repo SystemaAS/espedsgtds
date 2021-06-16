@@ -198,6 +198,7 @@
                 		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.lrnNr"/></th>
                 		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mrnNr"/></th>
                 		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.datum"/></th>
+                		<th class="tableHeaderField" >&nbsp;&nbsp;Frist</th>
                 		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.status"/></th>
                 		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.mottagare"/></th>
                 		<th class="tableHeaderField" >&nbsp;&nbsp;<spring:message code="systema.ncts.export.list.search.label.bruttovikt"/></th>
@@ -208,16 +209,19 @@
 	                     --%>
                 	</tr> 
                 	</thead>
-                	<tbody>    
-		           	<c:forEach items="${list}" var="topic" varStatus="counter">    
-		               <c:choose>           
-		                   <c:when test="${counter.count%2==0}">
-		                       <tr class="tableRow" height="20" >
-		                   </c:when>
-		                   <c:otherwise>   
-		                       <tr class="tableOddRow" height="20" >
-		                   </c:otherwise>
-		               </c:choose>
+                	<tbody>  
+                	
+        			
+		           	<c:forEach items="${list}" var="topic" varStatus="counter"> 
+		           	   <c:if test="${not empty topic.fristdatum}">
+		           	   		<jsp:useBean id="now" class="java.util.Date" scope="request" />  
+		           	   		<c:set var="nowStr"><fmt:formatDate pattern="yyyyMMdd" value="${now}" /></c:set>
+		           	   		<fmt:parseDate pattern="yyyyMMdd" value="${topic.fristdatum}" var="fristdatum" />
+		           	   		<fmt:parseDate pattern="yyyyMMdd" value="${nowStr}" var="today" />
+		           	   		<fmt:parseNumber var="daysDifference" value="${( fristdatum.time - today.time ) / (1000 * 3600 * 24) }" integerOnly="true" />
+		           	   </c:if>   
+		               
+		               <tr class="tableRow" height="20" >
 		               <td class="tableCellFirst" width="5%">&nbsp;${topic.avd}</td>
 		               <td class="tableCell" >&nbsp;${topic.sign}</td>
 		               <td class="tableCell" align="center" >
@@ -247,9 +251,60 @@
 		               		</c:choose>
 		               </td>
 		               <td class="tableCell" >&nbsp;${topic.datum}</td>
-		               <td class="tableCell" >&nbsp;<b>${topic.status}</b></td>
-		               <td class="tableCell" >&nbsp;${topic.motNavn}</td>
-		               <td class="tableCell" >&nbsp;${topic.bruttoVikt}</td>
+		               <c:choose>           
+		                   <c:when test="${not empty topic.fristdatum}">
+		                   	   <c:choose>
+		                   	   <c:when test="${daysDifference >= 1}">	
+		                   	   		<%--
+		                   	   		<c:if test="${daysDifference == 1}">
+		                       			<td title="Days left:${daysDifference}" align="center" class="tableCell" style="color:#D8000C;background-color:#FFBABA;">&nbsp;${topic.fristdatum} </td>
+		                       		</c:if>
+		                       		<c:if test="${daysDifference >= 2 && daysDifference <= 3}">
+		                       			<td title="Days left:${daysDifference}" align="center" class="tableCell" style="color:#9F6000;background-color:#FEEFB3;">&nbsp;${topic.fristdatum}</td>
+		                       		</c:if>
+		                       		<c:if test="${daysDifference > 3}">
+		                       			<td title="Days left:${daysDifference}" align="center" class="tableCell" style="color:#4F8A10;background-color: #DFF2BF;">&nbsp;${topic.fristdatum} </td>
+		                       		</c:if>
+		                       		 --%>
+		                       		<c:if test="${daysDifference == 1}">
+		                       			<td title="Days left:${daysDifference}" class="tableCell" >&nbsp;${topic.fristdatum}  
+		                       				<c:if test="${empty topic.status || topic.status=='M' ||  topic.status=='G' ||  topic.status=='F'}">
+		                       					<img src="resources/images/bulletRed.png" width=10 height=10 border="0">
+		                       				</c:if>
+		                       			</td>
+		                       		</c:if>
+		                       		<c:if test="${daysDifference >= 2 && daysDifference <= 3}">
+		                       			<td title="Days left:${daysDifference}" class="tableCell" >&nbsp;${topic.fristdatum}
+		                       				<c:if test="${empty topic.status || topic.status=='M' ||  topic.status=='G' ||  topic.status=='F'}">
+		                       					<img src="resources/images/bulletYellow.png" width=10 height=10 border="0">
+		                       				</c:if>
+		                       			</td>
+		                       		</c:if>
+		                       		<c:if test="${daysDifference > 3}">
+		                       			<td title="Days left:${daysDifference}" class="tableCell" >&nbsp;${topic.fristdatum}
+		                       				<c:if test="${empty topic.status || topic.status=='M' ||  topic.status=='G' ||  topic.status=='F'}"> 
+		                       					<img style="" src="resources/images/bulletGreen.png" width=10 height=10 border="0">
+		                       				</c:if>
+		                       			</td>
+		                       		</c:if>
+		                       		 
+		                       </c:when>
+		                       <c:otherwise>
+		                       	 <td title="Days left:${daysDifference}" class="tableCell" >&nbsp;${topic.fristdatum}</td>	
+		                       </c:otherwise>
+		                       </c:choose>
+		                   </c:when>
+		                   <c:otherwise>   
+		                       <td title="Days left:${daysDifference}" class="tableCell" >&nbsp;${topic.fristdatum}</td>
+		                   </c:otherwise>
+		               </c:choose>
+		               
+		               
+		               
+		               
+		               <td align="center" class="tableCell" >&nbsp;<b>${topic.status}</b></td>
+		               <td align="center" class="tableCell" >&nbsp;${topic.motNavn}</td>
+		               <td align="right" class="tableCell" >&nbsp;${topic.bruttoVikt}</td>
    		               
    		               <td align="center" class="tableCell" width="2%">&nbsp;
 		               		<a class="copyLink" id="copyLink${counter.count}" runat="server" href="#">

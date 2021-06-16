@@ -68,6 +68,13 @@ public class JsonNctsExportTopicListRecord extends JsonAbstractGrandFatherRecord
 	public void setMotNavn(String value) {  this.motNavn = value; }
 	public String getMotNavn() { return this.motNavn;}
 	
+	private String fristdatum = "";
+	public void setFristdatum(String value) {  this.fristdatum = value; }
+	public String getFristdatum() {return this.fristdatum;}
+	
+	
+	
+	
 	/**
 	 * 
 	 * @return
