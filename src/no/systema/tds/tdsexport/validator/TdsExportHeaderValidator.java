@@ -158,6 +158,13 @@ public class TdsExportHeaderValidator implements Validator {
 					}else if (record.getSveh_fabl()==null || record.getSveh_fabl().equalsIgnoreCase("")){
 						errors.rejectValue("sveh_fabl", "systema.tds.export.header.error.rule.sveh_fabl.totalValidity");
 					}
+					//check the max valid amount: 99.999.999,999
+					
+					double totalAmount = Double.parseDouble(record.getSveh_fabl().replace(",", "."));
+					if(totalAmount > 99999999.999) {
+						errors.rejectValue("sveh_fabl", "systema.tds.export.header.error.rule.sveh_fabl.totalMaxAmount");
+					}
+					
 				}
 				
 				
