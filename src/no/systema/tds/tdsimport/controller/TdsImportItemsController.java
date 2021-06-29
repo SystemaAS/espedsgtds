@@ -978,6 +978,17 @@ public class TdsImportItemsController {
 		if(strMgr.isNotNull(recordToValidate.getSviv_god5())){
 			recordToValidate.setSviv_god5(recordToValidate.getSviv_god5().toUpperCase());
 		}
+		//remove unwanted characters from sviv_bii1-5 since it has proven to cause EDIFACT problems at tullverket.
+		if(strMgr.isNotNull(recordToValidate.getSviv_bii1()) && recordToValidate.getSviv_bii1().contains("/")){
+			recordToValidate.setSviv_bii1(recordToValidate.getSviv_bii1().replaceAll("\\/","-"));
+		}
+		if(strMgr.isNotNull(recordToValidate.getSviv_bii2()) && recordToValidate.getSviv_bii2().contains("/")){
+			recordToValidate.setSviv_bii2(recordToValidate.getSviv_bii2().replaceAll("\\/","-"));
+		}
+		if(strMgr.isNotNull(recordToValidate.getSviv_bii3()) && recordToValidate.getSviv_bii3().contains("/")){
+			recordToValidate.setSviv_bii3(recordToValidate.getSviv_bii3().replaceAll("\\/","-"));
+		}
+		
 		
 	}
 	

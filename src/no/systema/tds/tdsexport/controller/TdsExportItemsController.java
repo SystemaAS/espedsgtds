@@ -961,6 +961,16 @@ public class TdsExportItemsController {
 		if(strMgr.isNotNull(recordToValidate.getSvev_vasl())){
 			recordToValidate.setSvev_vasl(recordToValidate.getSvev_vasl().trim());
 		}
+		//remove unwanted characters from sviv_bii1-5 since it has proven to cause EDIFACT problems at tullverket.
+		if(strMgr.isNotNull(recordToValidate.getSvev_bii1()) && recordToValidate.getSvev_bii1().contains("/")){
+			recordToValidate.setSvev_bii1(recordToValidate.getSvev_bii1().replaceAll("\\/","-"));
+		}
+		if(strMgr.isNotNull(recordToValidate.getSvev_bii2()) && recordToValidate.getSvev_bii2().contains("/")){
+			recordToValidate.setSvev_bii2(recordToValidate.getSvev_bii2().replaceAll("\\/","-"));
+		}
+		if(strMgr.isNotNull(recordToValidate.getSvev_bii3()) && recordToValidate.getSvev_bii3().contains("/")){
+			recordToValidate.setSvev_bii3(recordToValidate.getSvev_bii3().replaceAll("\\/","-"));
+		}
 		
 		
 	}

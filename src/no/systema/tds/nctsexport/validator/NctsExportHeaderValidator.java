@@ -17,6 +17,7 @@ import org.springframework.validation.ValidationUtils;
 import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.service.UrlCgiProxyServiceImpl;
 import no.systema.main.util.BigDecimalFormatter;
+import no.systema.main.util.DateTimeManager;
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicService;
 import no.systema.tds.nctsexport.service.NctsExportSpecificTopicServiceImpl;
 
@@ -37,7 +38,7 @@ public class NctsExportHeaderValidator implements Validator {
 	private UrlCgiProxyService urlCgiProxyService = new UrlCgiProxyServiceImpl();
 	private NctsExportSpecificTopicService nctsExportSpecificTopicService = new NctsExportSpecificTopicServiceImpl();
 	private BigDecimalFormatter bigDecimalFormatter = new BigDecimalFormatter();   
-	
+	private DateTimeManager dateMgr = new DateTimeManager();
 	/**
 	 * 
 	 */
@@ -134,6 +135,10 @@ public class NctsExportHeaderValidator implements Validator {
 				if(record.getThddt()!=null && !"".equals(record.getThddt())){
 					if(!this.isValidDate(record.getThddt())){
 						errors.rejectValue("thddt", "systema.ncts.export.header.error.rule.thddt.invalid.date.format");
+						logger.info("ERROR thddt");
+					}
+					if(!dateMgr.isValidCurrentAndForwardDate(record.getThddt(), "yyyyMMdd")) {
+						errors.rejectValue("thddt", "systema.ncts.export.header.error.rule.thddt.invalid.date.forward");
 						logger.info("ERROR thddt");
 					}
 				}
@@ -256,6 +261,8 @@ public class NctsExportHeaderValidator implements Validator {
 		}
 		
 	}
+	
+	
 	
 	/**
 	 * 
