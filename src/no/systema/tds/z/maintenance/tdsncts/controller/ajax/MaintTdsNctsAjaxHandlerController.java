@@ -32,6 +32,8 @@ import no.systema.tds.z.maintenance.main.url.store.MaintenanceUrlDataStore;
 import no.systema.tds.z.maintenance.tdsncts.service.MaintSvxkodfService;
 import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxghContainer;
 import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxghRecord;
+import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxhContainer;
+import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxhRecord;
 import no.systema.tds.z.maintenance.tdsnctsexport.service.MaintSvxghService;
 import no.systema.tds.z.maintenance.tdsncts.model.jsonjackson.dbtable.JsonMaintSvxkodfContainer;
 import no.systema.tds.z.maintenance.tdsncts.model.jsonjackson.dbtable.JsonMaintSvxkodfRecord;
@@ -73,6 +75,18 @@ public class MaintTdsNctsAjaxHandlerController {
 	
 	}
 	
+	@RequestMapping(value="getSpecificRecord_svx030r_fbrukt.do", method={RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<JsonMaintSvxhRecord> getRecordSvx030_fbrukt
+	  	(@RequestParam String applicationUser, @RequestParam String thavd, String thtdn, String thsg) {
+		final String METHOD = "[DEBUG] getRecordSvx030r_fbrukt";
+		logger.info(METHOD + " Inside...");
+		List<JsonMaintSvxhRecord> result = new ArrayList();
+	 	//get table
+    	result = (List)this.fetchListSvx030_fbrukt(applicationUser, thavd, thtdn, thsg);
+    	
+    	return result;
+	
+	}
 	/**
 	 * 
 	 * @param applicationUser
@@ -124,6 +138,40 @@ public class MaintTdsNctsAjaxHandlerController {
     	return list;
     	
 	}
+	
+	/**
+	 * Reserved garanti
+	 * @param applicationUser
+	 * @param avd
+	 * @param opd
+	 * @param sign
+	 * @return
+	 */
+	private Collection<JsonMaintSvxhRecord> fetchListSvx030_fbrukt(String applicationUser, String avd, String opd, String sign){
+		
+		String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_SVX030R_FBRUKT_GET_LIST_URL;
+		String urlRequestParams = "user=" + applicationUser + "&thavd=" + avd + "&thtdn=" + opd + "&thsg=" + sign ; //OneMatch ...
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.warn("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+    	logger.warn("URL PARAMS: " + urlRequestParams);
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
+    	//extract
+    	List<JsonMaintSvxhRecord> list = new ArrayList();
+    	if(jsonPayload!=null){
+			//lists
+    		JsonMaintSvxhContainer container = this.maintSvxghService.getListReservedGuaranty(jsonPayload);
+	        if(container!=null){
+	        	list = (List)container.getList();
+	        	//Debugg for(JsonMaintSvxhRecord record: list){
+	        		//logger.info(record.getTggnr());
+	        	//}
+	        }
+    	}
+    	
+    	return list;
+    	
+	}
+
 	/**
 	 * 
 	 * @param applicationUser

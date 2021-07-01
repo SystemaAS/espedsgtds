@@ -45,6 +45,9 @@ public final class MaintenanceUrlDataStore {
 	//ALL --> http://gw.systema.no:8080/syjservicesst/syjsDKX030R.do?user=OSCAR
 	static public String MAINTENANCE_BASE_SVX030R_GET_LIST_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX030R.do";
 	
+	//ALL --> http://gw.systema.no:8080/syjservices/syjsSVX030R_FBRUKT.do?user=OSCAR
+	static public String MAINTENANCE_BASE_SVX030R_FBRUKT_GET_LIST_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX030R_FBRUKT.do";
+		
 	//Tulltaxa FTP pgp - dir content
 	//http://10.13.3.22/SYCGIP/TSVT201R.pgm?user=CB 
 	static public String MAINTENANCE_BASE_TULLTAXA_GET_LIST_URL = AppConstants.HTTP_ROOT_CGI + "/sycgip/TSVT201R.pgm";
@@ -79,7 +82,15 @@ public final class MaintenanceUrlDataStore {
 	//Specific code --> TODO http://gw.systema.no:8080/syjservices/syjsSVX001R_U.do?user=OSCAR&mode=U&<record>attributes...
 	static public String MAINTENANCE_BASE_SVX001R_DML_UPDATE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX001R_U.do";
 	//SVX030R
-	//ALL --> http://gw.systema.no:8080/syjservicesst/syjsSVX030R_U.do?user=OSCAR&mode=U&<record>attributes...
+	//ALL --> http://gw.systema.no:8080/syjservices/syjsSVX030R_U.do?user=OSCAR&mode=U&<record>attributes...
 	static public String MAINTENANCE_BASE_SVX030R_DML_UPDATE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX030R_U.do";
-									
+	
+	//ALL --> http://gw.systema.no:8080/syjservices/syjsSVX030R_U_releaseGuarantee.do?user=OSCAR&mode=U&<record>attributes...
+	static public String MAINTENANCE_BASE_SVX030R_DML_RELEASE_GUARANTEE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX030R_U_releaseGuarantee.do";
+	
+	//ALL --> http://gw.systema.no:8080/syjservices/syjsSVX030R_U_releaseGuarantee.do?user=OSCAR&mode=U&<record>attributes...
+	static public String MAINTENANCE_BASE_SVX030R_DML_ADJUST_GUARANTEE_URL = AppConstants.HTTP_ROOT_SERVLET_JSERVICES + "/syjservices/syjsSVX030R_U_adjustGuarantee.do";
+		
+	
+		
 }

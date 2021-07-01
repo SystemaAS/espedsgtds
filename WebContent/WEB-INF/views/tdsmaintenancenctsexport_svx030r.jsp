@@ -34,6 +34,13 @@
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
 					</td>
+					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
+					<td width="20%" valign="bottom" class="tabDisabled" align="center">
+						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancenctsexport_svx030r_fbrukt.do?id=SVXH">
+							<font class="tabDisabledLink">Förbrukat Garanti
+							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
+						</a>
+					</td>
 					<td width="70%" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>	
 				</tr>
 		</table>
@@ -175,7 +182,7 @@
 			</tr>
 			<tr >
 				<td width="5%">&nbsp;</td>
-				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Opret	 ny</button></td>
+				<td><button name="newRecordButton" id="newRecordButton" class="inputFormSubmitStd" type="button" >Skapa ny</button></td>
 			</tr>
 			<tr height="2"><td>&nbsp;</td></tr>
 	 	    <tr >

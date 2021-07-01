@@ -137,7 +137,7 @@ public class NctsExportHeaderValidator implements Validator {
 						errors.rejectValue("thddt", "systema.ncts.export.header.error.rule.thddt.invalid.date.format");
 						logger.info("ERROR thddt");
 					}
-					if(!dateMgr.isValidCurrentAndForwardDate(record.getThddt(), "yyyyMMdd")) {
+					if(!dateMgr.isValidForwardDate(record.getThddt(), "yyyyMMdd")) {
 						errors.rejectValue("thddt", "systema.ncts.export.header.error.rule.thddt.invalid.date.forward");
 						logger.info("ERROR thddt");
 					}

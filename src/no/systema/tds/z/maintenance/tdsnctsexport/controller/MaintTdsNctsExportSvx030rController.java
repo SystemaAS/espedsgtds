@@ -5,6 +5,9 @@ import java.util.*;
 import org.apache.log4j.Logger;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
+
+import javawebparts.core.org.apache.commons.lang.StringUtils;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -28,11 +31,14 @@ import no.systema.main.service.UrlCgiProxyService;
 import no.systema.main.validator.LoginValidator;
 import no.systema.main.util.AppConstants;
 import no.systema.main.util.JsonDebugger;
+import no.systema.main.util.NumberFormatterLocaleAware;
 import no.systema.main.model.SystemaWebUser;
 
 import no.systema.tds.z.maintenance.main.mapper.url.request.UrlRequestParameterMapper;
 import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxghContainer;
 import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxghRecord;
+import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxhContainer;
+import no.systema.tds.z.maintenance.tdsnctsexport.model.jsonjackson.dbtable.JsonMaintSvxhRecord;
 import no.systema.tds.z.maintenance.tdsnctsexport.service.MaintSvxghService;
 import no.systema.tds.z.maintenance.tdsnctsexport.validator.MaintTdsExportSvx030rValidator;
 import no.systema.tds.z.maintenance.main.url.store.MaintenanceUrlDataStore;
@@ -64,7 +70,7 @@ public class MaintTdsNctsExportSvx030rController {
 	private ApplicationContext context;
 	private LoginValidator loginValidator = new LoginValidator();
 	private UrlRequestParameterMapper urlRequestParameterMapper = new UrlRequestParameterMapper();
-	
+	private NumberFormatterLocaleAware formatter = new NumberFormatterLocaleAware();
 	/**
 	 * 
 	 * @param user
@@ -92,6 +98,36 @@ public class MaintTdsNctsExportSvx030rController {
 	    	model.put("currencyList", this.populateDropDownCurrency(appUser.getUser()) );
 	    	model.put("dbTable", dbTable);
 	    	model.put("searchGaranti", id);
+	    	model.put(TdsMaintenanceConstants.DOMAIN_LIST, list);
+	    	successView.addObject(TdsMaintenanceConstants.DOMAIN_MODEL , model);
+			
+	    	return successView;
+		}
+	}
+	
+	/**
+	 * För att veta vilka uppdrag som skräpar och borde multipliceras * -1 för att frigöra garanti
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="tdsmaintenancenctsexport_svx030r_fbrukt.do", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView doTdsMaintNctsExportGarantiListNotFriGaranti(HttpSession session, HttpServletRequest request){
+		ModelAndView successView = new ModelAndView("tdsmaintenancenctsexport_svx030r_fbrukt");
+		SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+		//SearchFilterSadExportTopicList searchFilter = new SearchFilterSadExportTopicList();
+		//String dbTable = request.getParameter("id");
+		//String id = request.getParameter("searchGaranti");
+		String idNr = request.getParameter("searchGaranti");
+		Map model = new HashMap();
+		model.put("searchGaranti", idNr);
+		
+		if(appUser==null){
+			return this.loginView;
+		}else{
+			//get table
+	    	List<JsonMaintSvxhRecord> list = new ArrayList();
+	    	list = this.fetchListReservedGuaranties(appUser.getUser(), idNr );
 	    	model.put(TdsMaintenanceConstants.DOMAIN_LIST, list);
 	    	successView.addObject(TdsMaintenanceConstants.DOMAIN_MODEL , model);
 			
@@ -193,6 +229,156 @@ public class MaintTdsNctsExportSvx030rController {
 		}
 	}
 	
+		/**
+		 * 
+		 * @param recordToValidate
+		 * @param bindingResult
+		 * @param session
+		 * @param request
+		 * @return
+		 */
+		@RequestMapping(value="tdsmaintenancenctsexport_svx030r_fbrukt_edit.do", method={RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView doTdsMaintNctsExportGarantiRelaseEdit(@ModelAttribute ("record") JsonMaintSvxhRecord recordToValidate, BindingResult bindingResult, HttpSession session, HttpServletRequest request){
+			ModelAndView successView = new ModelAndView("tdsmaintenancenctsexport_svx030r_fbrukt");
+			SystemaWebUser appUser = (SystemaWebUser)session.getAttribute(AppConstants.SYSTEMA_WEB_USER_KEY);
+			
+			int dmlRetval = 0;
+			
+			String idNr = request.getParameter("searchGaranti");
+			Map model = new HashMap();
+			model.put("searchGaranti", idNr);
+			
+			if(appUser==null){
+				return this.loginView;
+			}else{
+				logger.warn("A");
+				if(StringUtils.isNotEmpty(recordToValidate.getThavd()) && StringUtils.isNotEmpty(recordToValidate.getThtdn()) 
+						&& StringUtils.isNotEmpty(recordToValidate.getThsg()) && StringUtils.isNotEmpty(recordToValidate.getThgbl()) ){
+					logger.warn("B");
+					//------------
+					//UPDATE table
+					//------------
+					StringBuffer errMsg = new StringBuffer();
+					dmlRetval = 0;
+					//update
+					logger.warn(TdsMaintenanceConstants.ACTION_UPDATE);
+					dmlRetval = this.releaseGuarantee(appUser.getUser(), recordToValidate, errMsg);
+					//check for Update errors
+					if( dmlRetval < 0){
+						logger.error("[ERROR Validation] Record does not validate)");
+						//model.put("dbTable", dbTable);
+						model.put(TdsMaintenanceConstants.ASPECT_ERROR_MESSAGE, errMsg.toString());
+						model.put(TdsMaintenanceConstants.DOMAIN_RECORD, recordToValidate);
+					}else {
+						//at this point we have the guarantee released
+						//now we go on with adjusting the mother guarantee by substracting the newly released amount
+						JsonMaintSvxghRecord svxgh = new JsonMaintSvxghRecord();
+						svxgh.setTggnr(recordToValidate.getThgft1());
+						svxgh.setTggblb(this.getCalculatedRest(appUser.getUser(), recordToValidate));
+						//now update the brukt guarantee amount 
+						dmlRetval = this.adjustGuarantee(appUser.getUser(), svxgh, errMsg);
+						if( dmlRetval < 0){
+							logger.error("[ERROR Validation] Record does not validate)");
+							//model.put("dbTable", dbTable);
+							model.put(TdsMaintenanceConstants.ASPECT_ERROR_MESSAGE, errMsg.toString());
+							model.put(TdsMaintenanceConstants.DOMAIN_RECORD, recordToValidate);
+						}
+					}
+				}
+					
+			}
+			//------------
+			//FETCH table
+			//------------
+			//get table
+	    	List<JsonMaintSvxhRecord> list = new ArrayList();
+	    	list = this.fetchListReservedGuaranties(appUser.getUser(), idNr);
+	    	model.put(TdsMaintenanceConstants.DOMAIN_LIST, list);
+	    	successView.addObject(TdsMaintenanceConstants.DOMAIN_MODEL , model);
+			
+	    	return successView;
+		
+		}
+		
+		
+	/**
+	 * 	
+	 * @param applicationUser
+	 * @param recordToValidate
+	 * @return
+	 */
+    private String getCalculatedRest(String applicationUser, JsonMaintSvxhRecord recordToValidate) {
+    	String retval = "";
+    	double result = 0.00D;
+    	String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_SVX030R_GET_LIST_URL;
+		String urlRequestParams = "user=" + applicationUser + "&tggnr=" + recordToValidate.getThgft1() + "&om=1" ; //OneMatch ...
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.info("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+    	logger.info("URL PARAMS: " + urlRequestParams);
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
+    	//extract
+    	List<JsonMaintSvxghRecord> list = new ArrayList();
+    	if(jsonPayload!=null){
+			//lists
+    		JsonMaintSvxghContainer container = this.maintSvxghService.getList(jsonPayload);
+	        if(container!=null){
+	        	list = (List)container.getList();
+	        	
+	        	for(JsonMaintSvxghRecord record: list){
+	        		if(StringUtils.isNotEmpty(record.getTggblb()) && StringUtils.isNotEmpty(recordToValidate.getThgbl())) {
+	        			String a = record.getTggblb().replace(",", ".");
+	        			logger.warn("a:" + a);
+	        			String b = recordToValidate.getThgbl().replace(",", ".");
+	        			logger.warn("b:" + b);
+	        			result = Double.valueOf(a) - Double.valueOf(b);
+	        			break;
+	        			
+	        		}
+	        	}
+	        	result = formatter.getDouble(result, 2);
+	        	retval = String.valueOf(result); //with english notation since we will be hitting for an update in the database
+	        	logger.warn("retval:" + retval);
+	        }
+    	}
+    	
+    	return retval;
+    }
+		
+	/**
+	 * 
+	 * @param applicationUser
+	 * @param idNr
+	 * @return
+	 */
+	private List<JsonMaintSvxhRecord> fetchListReservedGuaranties(String applicationUser, String idNr){
+		
+		String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_SVX030R_FBRUKT_GET_LIST_URL;
+		StringBuffer urlRequestParams = new StringBuffer();
+		urlRequestParams.append("user="+ applicationUser);
+		if(StringUtils.isNotEmpty(idNr)) {
+			urlRequestParams.append("&id="+ idNr);
+		}
+		
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.info("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+    	logger.info("URL PARAMS: " + urlRequestParams);
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams.toString());
+    	//extract
+    	List<JsonMaintSvxhRecord> list = new ArrayList();
+    	if(jsonPayload!=null){
+			//lists
+    		JsonMaintSvxhContainer container = this.maintSvxghService.getListReservedGuaranty(jsonPayload);
+	        if(container!=null){
+	        	list = (List)container.getList();
+	        	for(JsonMaintSvxhRecord record : list){
+	        		//logger.info("THGBL:" + record.getThgbl());
+	        	}
+	        }
+    	}
+    	return list;
+    	
+	}
 	
 	/**
 	 * 
@@ -232,6 +418,82 @@ public class MaintTdsNctsExportSvx030rController {
     	return list;
     	
 	}
+	
+	/**
+	 * Release guarantee in this oppdrag
+	 * @param applicationUser
+	 * @param record
+	 * @param errMsg
+	 * @return
+	 */
+	private int releaseGuarantee(String applicationUser, JsonMaintSvxhRecord record, StringBuffer errMsg){
+		int retval = 0;
+		
+		String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_SVX030R_DML_RELEASE_GUARANTEE_URL;
+		String urlRequestParamsKeys = "user=" + applicationUser + "&thsg=" + record.getThsg() + "&thavd=" + record.getThavd() + "&thtdn=" + record.getThtdn();
+		//String urlRequestParams = this.urlRequestParameterMapper.getUrlParameterValidString((record));
+		//put the final valid param. string
+		//urlRequestParams = urlRequestParamsKeys + urlRequestParams;
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.warn("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+    	
+    	//extract
+    	if(jsonPayload!=null){
+			//lists
+    		JsonMaintSvxhContainer container = this.maintSvxghService.doReleaseGuarantee(jsonPayload);
+	        if(container!=null){
+	        	if(container.getErrMsg()!=null && !"".equals(container.getErrMsg())){
+	        		if(container.getErrMsg().toUpperCase().startsWith("ERROR")){
+	        			errMsg.append(container.getErrMsg());
+	        			retval = TdsMaintenanceConstants.ERROR_CODE;
+	        		}
+	        	}
+	        }
+    	}
+    	return retval;
+	}
+	
+	
+	/**
+	 * Adjust the amount
+	 * @param applicationUser
+	 * @param record
+	 * @param errMsg
+	 * @return
+	 */
+	private int adjustGuarantee(String applicationUser, JsonMaintSvxghRecord record, StringBuffer errMsg){
+		int retval = 0;
+		
+		String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_SVX030R_DML_ADJUST_GUARANTEE_URL;
+		String urlRequestParamsKeys = "user=" + applicationUser + "&tggnr=" + record.getTggnr() + "&tggblb=" + record.getTggblb();
+		//String urlRequestParams = this.urlRequestParameterMapper.getUrlParameterValidString((record));
+		//put the final valid param. string
+		//urlRequestParams = urlRequestParamsKeys + urlRequestParams;
+		
+		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
+    	logger.warn("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+    	logger.warn("URL PARAMS: " + urlRequestParamsKeys);
+    	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParamsKeys);
+    	
+    	//extract
+    	if(jsonPayload!=null){
+			//lists
+    		JsonMaintSvxghContainer container = this.maintSvxghService.getList(jsonPayload);
+	        if(container!=null){
+	        	if(container.getErrMsg()!=null && !"".equals(container.getErrMsg())){
+	        		if(container.getErrMsg().toUpperCase().startsWith("ERROR")){
+	        			errMsg.append(container.getErrMsg());
+	        			retval = TdsMaintenanceConstants.ERROR_CODE;
+	        		}
+	        	}
+	        }
+    	}
+    	return retval;
+	}
+	
 	
 	/**
 	 * UPDATE/CREATE/DELETE

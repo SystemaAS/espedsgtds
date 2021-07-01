@@ -114,6 +114,57 @@
 	});
 		
   }
+
+//-----------------------
+  //GET specific db-record
+  //-----------------------
+  function getRecordReservedGuaranty(record){
+	var rawId = record.id;
+  	var applicationUserParam = jq('#applicationUser').val();
+  	
+  	rawId = rawId.replace("recordUpdate_", "");
+  	var record = rawId.split('_');
+	var thavd = record[0];
+	var thtdn = record[1];
+	var thsg = record[2];
+	
+	jq.ajax({
+  	  type: 'GET',
+  	  url: 'getSpecificRecord_svx030r_fbrukt.do',
+  	  data: { applicationUser : jq('#applicationUser').val(), 
+  		  	  thavd : thavd,
+  		  	  thtdn : thtdn,
+  		  	  thsg : thsg },
+  	  dataType: 'json',
+  	  cache: false,
+  	  contentType: 'application/json',
+  	  success: function(data) {
+	  	var len = data.length;
+  		for ( var i = 0; i < len; i++) {
+  			
+  			jq('#thst').val("");jq('#thst').val(data[i].thst);
+  			jq('#thavd').val("");jq('#thavd').val(data[i].thavd);
+			jq('#thtdn').val("");jq('#thtdn').val(data[i].thtdn);
+			jq('#thsg').val("");jq('#thsg').val(data[i].thsg);
+			jq('#thdt').val("");jq('#thdt').val(data[i].thdt);
+			jq('#thddt').val("");jq('#thddt').val(data[i].thddt);
+			jq('#thgbl').val("");jq('#thgbl').val(data[i].thgbl);
+			jq('#thgft1').val("");jq('#thgft1').val(data[i].thgft1);
+			
+  			//for a future update
+  			jq('#updateId').val("");jq('#updateId').val(data[i].tggnr);
+
+  		}
+  	  }, 
+  	  error: function() {
+  		  alert('Error loading ...');
+  	  }
+	});
+		
+  }
+
+
+
  
 			
   //-------------------
