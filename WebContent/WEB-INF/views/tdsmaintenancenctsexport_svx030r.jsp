@@ -37,7 +37,7 @@
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="20%" valign="bottom" class="tabDisabled" align="center">
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancenctsexport_svx030r_fbrukt.do?id=SVXH">
-							<font class="tabDisabledLink">Förbrukat Garanti
+							<font class="tabDisabledLink">Friställning av Garanti
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
 					</td>
@@ -288,6 +288,13 @@
 										<td >
 											<input type="text" onKeyPress="return numberKey(event)" class="inputTextMediumBlue" name="tgprm" id="tgprm" size="4" maxlength="3" value='${model.record.tgprm}'>
 											&nbsp;<font class="text11">(När det är användt mer än X %)</font>
+										</td>
+									</tr>
+									<tr>
+										<td class="text14" title="tgst">&nbsp;Status</td>
+										<td >
+											<input type="text" class="inputTextMediumBlue" name="tgst" id="tgst" size="2" maxlength="1" value='${model.record.tgst}'>
+											
 										</td>
 									</tr>	
 								</table>

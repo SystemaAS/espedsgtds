@@ -102,6 +102,7 @@
 			jq('#tggblb').val("");jq('#tggblb').val(data[i].tggblb);
 			jq('#tggvk').val("");jq('#tggvk').val(data[i].tggvk);
 			jq('#tgprm').val("");jq('#tgprm').val(data[i].tgprm);
+			jq('#tgst').val("");jq('#tgst').val(data[i].tgst);
 			
   			//for a future update
   			jq('#updateId').val("");jq('#updateId').val(data[i].tggnr);

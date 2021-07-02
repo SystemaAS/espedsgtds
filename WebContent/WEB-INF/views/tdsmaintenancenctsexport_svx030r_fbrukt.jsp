@@ -36,7 +36,7 @@
 					</td>
 					<td width="1px" class="tabFantomSpace" align="center" nowrap><font class="tabDisabledLink">&nbsp;</font></td>
 					<td width="20%" valign="bottom" class="tab" align="center">
-						<font class="tabLink">Förbrukat Garanti
+						<font class="tabLink">Friställning av Garanti
 						<a id="alinkRecordId_${counter.count}" onClick="setBlockUI(this);" href="tdsmaintenancenctsexport_svx030r_fbrukt.do?id=SVXH">
 							<img style="vertical-align: middle;"  src="resources/images/bulletGreen.png" border="0" width="8px" height="8px" alt="db table">
 						</a>
@@ -56,11 +56,26 @@
 	 	    	<td width="5%">&nbsp;</td>
 				<td width="100%" class="text14">
 					<form action="tdsmaintenancenctsexport_svx030r_fbrukt.do?id=SVXH" name="formRecordSearch" id="formRecordSearch" method="POST" >
+					
+					<img onMouseOver="showPop('g_info');" onMouseOut="hidePop('g_info');"style="vertical-align:middle;" width="12px" height="12px" src="resources/images/info3.png" border="0" alt="info">
 					Garantinr.&nbsp;
 					<input type="text" class="inputTextMediumBlue" name="searchGaranti" id="searchGaranti" size="26" maxlength="25" value='${model.searchGaranti}'>
 					&nbsp;&nbsp;<input onClick="setBlockUI(this);" class="inputFormSubmit" type="submit" name="submitSearch" id="submitSearch" value='<spring:message code="search.label"/>'/>
 					
+					&nbsp;&nbsp;&nbsp;
+					<label nowrap class="inputTextMediumBlue11 isa_warning">
+						Friställning av Garanti gäller endast för avslutade transiteringar (status: <b>P</b> = 029 eller <b>Z</b> = 045)
+					</label>
+					
 					</form>
+					
+					<div class="text12" style="position: relative;" align="left">
+ 					<span style="position:absolute;top:2px; width:250px;" id="g_info" class="popupWithInputText text12"  >
+	           			Sök på ett garantinr för att se alla aktiva och inte aktiva garantibelopp.	
+						
+					</span>		
+		            </div>
+				
 				</td>
 			</tr>
 	 	    
@@ -99,12 +114,17 @@
 						               </td>	
 					               </c:when>
 					               <c:otherwise>
-					               		<td align="center"><img src="resources/images/bulletGreen.png" width="10" height="10" border="0" alt="edit"></td>
+					               		<td style="cursor:crosshair" title="Aktiv garanti. Kan inte friställas än." align="center"><img src="resources/images/bulletGreen.png" width="10" height="10" border="0" alt="edit"></td>
 						           </c:otherwise>
 				               </c:choose>
 				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 1px;border-color:#FAEBD7;"><font class="text14">&nbsp;${record.thst}&nbsp;</font></td>
 				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 1px;border-color:#FAEBD7;"><font class="text14">&nbsp;${record.thavd}&nbsp;</font></td>
-				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.thtdn}&nbsp;</font></td>
+				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" >
+				               
+				               		<a href="nctsexport_edit.do?action=doFetch&avd=${record.thavd}&opd=${record.thtdn}&sysg=${record.thsg}&tuid=&syst=${record.thst}&sydt=${record.thdt}">
+				               			&nbsp;${record.thtdn}&nbsp;
+				               		</a>	
+				               </td>
 				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.thsg}&nbsp;</font></td>
 				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.thdt}&nbsp;</font></td>
 				               <td class="tableCell" style="border-style: solid;border-width: 0px 1px 1px 0px;border-color:#FAEBD7;" ><font class="text14">&nbsp;${record.thddt}&nbsp;</font></td>

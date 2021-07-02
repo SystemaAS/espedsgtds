@@ -269,19 +269,24 @@ public class MaintTdsNctsExportSvx030rController {
 						//model.put("dbTable", dbTable);
 						model.put(TdsMaintenanceConstants.ASPECT_ERROR_MESSAGE, errMsg.toString());
 						model.put(TdsMaintenanceConstants.DOMAIN_RECORD, recordToValidate);
+						
 					}else {
 						//at this point we have the guarantee released
 						//now we go on with adjusting the mother guarantee by substracting the newly released amount
-						JsonMaintSvxghRecord svxgh = new JsonMaintSvxghRecord();
-						svxgh.setTggnr(recordToValidate.getThgft1());
-						svxgh.setTggblb(this.getCalculatedRest(appUser.getUser(), recordToValidate));
-						//now update the brukt guarantee amount 
-						dmlRetval = this.adjustGuarantee(appUser.getUser(), svxgh, errMsg);
-						if( dmlRetval < 0){
-							logger.error("[ERROR Validation] Record does not validate)");
-							//model.put("dbTable", dbTable);
-							model.put(TdsMaintenanceConstants.ASPECT_ERROR_MESSAGE, errMsg.toString());
-							model.put(TdsMaintenanceConstants.DOMAIN_RECORD, recordToValidate);
+						double adjustedAmount = this.getCalculatedRest(appUser.getUser(), recordToValidate);
+						logger.warn(adjustedAmount);
+						if(adjustedAmount>=0) {
+							JsonMaintSvxghRecord svxghDto = new JsonMaintSvxghRecord();
+							svxghDto.setTggnr(recordToValidate.getThgft1());
+							svxghDto.setTggblb(String.valueOf(adjustedAmount));
+							//now update the brukt guarantee amount 
+							dmlRetval = this.adjustGuarantee(appUser.getUser(), svxghDto, errMsg);
+							if( dmlRetval < 0){
+								logger.error("[ERROR Validation] Record does not validate)");
+								//model.put("dbTable", dbTable);
+								model.put(TdsMaintenanceConstants.ASPECT_ERROR_MESSAGE, errMsg.toString());
+								model.put(TdsMaintenanceConstants.DOMAIN_RECORD, recordToValidate);
+							}
 						}
 					}
 				}
@@ -307,14 +312,14 @@ public class MaintTdsNctsExportSvx030rController {
 	 * @param recordToValidate
 	 * @return
 	 */
-    private String getCalculatedRest(String applicationUser, JsonMaintSvxhRecord recordToValidate) {
-    	String retval = "";
-    	double result = 0.00D;
+    private double getCalculatedRest(String applicationUser, JsonMaintSvxhRecord recordToValidate) {
+    
+    	double result = -1.00D;
     	String BASE_URL = MaintenanceUrlDataStore.MAINTENANCE_BASE_SVX030R_GET_LIST_URL;
 		String urlRequestParams = "user=" + applicationUser + "&tggnr=" + recordToValidate.getThgft1() + "&om=1" ; //OneMatch ...
 		logger.info(Calendar.getInstance().getTime() + " CGI-start timestamp");
-    	logger.info("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
-    	logger.info("URL PARAMS: " + urlRequestParams);
+    	logger.warn("URL: " + jsonDebugger.getBASE_URL_NoHostName(BASE_URL));
+    	logger.warn("URL PARAMS: " + urlRequestParams);
     	String jsonPayload = this.urlCgiProxyService.getJsonContent(BASE_URL, urlRequestParams);
     	//extract
     	List<JsonMaintSvxghRecord> list = new ArrayList();
@@ -325,23 +330,30 @@ public class MaintTdsNctsExportSvx030rController {
 	        	list = (List)container.getList();
 	        	
 	        	for(JsonMaintSvxghRecord record: list){
+	        		logger.warn(record.getTggblb());
+	        		logger.warn(recordToValidate.getThgbl());
 	        		if(StringUtils.isNotEmpty(record.getTggblb()) && StringUtils.isNotEmpty(recordToValidate.getThgbl())) {
 	        			String a = record.getTggblb().replace(",", ".");
 	        			logger.warn("a:" + a);
-	        			String b = recordToValidate.getThgbl().replace(",", ".");
-	        			logger.warn("b:" + b);
-	        			result = Double.valueOf(a) - Double.valueOf(b);
-	        			break;
+        				if(Double.valueOf(a)>0) {
+		        			String b = recordToValidate.getThgbl().replace(",", ".");
+		        			logger.warn("b:" + b);
+		        			
+		        			double tmp = Double.valueOf(a) - Double.valueOf(b);
+		        			if(tmp>=0) {
+		        				result = tmp;
+		        				break;
+		        			}
+        				}
 	        			
 	        		}
 	        	}
 	        	result = formatter.getDouble(result, 2);
-	        	retval = String.valueOf(result); //with english notation since we will be hitting for an update in the database
-	        	logger.warn("retval:" + retval);
+	        	logger.warn("result:" + result);
 	        }
     	}
     	
-    	return retval;
+    	return result;
     }
 		
 	/**
