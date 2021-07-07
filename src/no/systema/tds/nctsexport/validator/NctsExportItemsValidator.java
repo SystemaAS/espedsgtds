@@ -4,6 +4,9 @@ import java.util.Calendar;
 
 import org.apache.log4j.Logger;
 import org.springframework.validation.Validator;
+
+import javawebparts.core.org.apache.commons.lang.StringUtils;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
@@ -283,6 +286,28 @@ public class NctsExportItemsValidator implements Validator {
 				}else if("-99".equals(record.getNumberOfItemLinesInTopicStr())){ //this is an update of the only item line in a topic
 					if(record.getTvvktb()==null || "".equals(record.getTvvktb()) ){
 						errors.rejectValue("tvfvnt", "systema.ncts.export.header.error.null.item.grossweight.tvvktb");
+					}
+				}
+				//--------------------------------------------
+				//Net Weight must be less or equal than gross
+				//--------------------------------------------
+				if(StringUtils.isNotEmpty(record.getTvvktb())){
+					if(StringUtils.isNotEmpty(record.getTvvktn())){
+						try{
+							Double grossWeight = Double.parseDouble(record.getTvvktb().replace(",", "."));
+							Double netWeight = Double.parseDouble(record.getTvvktn().replace(",", "."));
+							if(netWeight==0.00D){
+								errors.rejectValue("tvvktn", "systema.ncts.export.header.error.rule.item.tvvktn.biggerThanZero");
+							}else{
+								if(netWeight>grossWeight){
+									errors.rejectValue("tvvktn", "systema.ncts.export.header.error.rule.item.tvvktn.notBiggerThanGross");
+									
+								}
+							}
+							
+						}catch(Exception e){
+							errors.rejectValue("tvvktn", "systema.ncts.export.header.error.rule.item.tvvktn.biggerThanZero");
+						}
 					}
 				}
 				
